@@ -1,0 +1,50 @@
+# Built application files
+*.apk
+*.aar
+*.ap_
+*.aab
+
+# Gradle
+.gradle/
+build/
+**/build/
+
+# Local config (machine-specific paths, SDK location)
+local.properties
+
+# Android Studio / IntelliJ
+*.iml
+.idea/
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+out/
+
+# Native build
+.externalNativeBuild/
+.cxx/
+captures/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs and temp
+*.log
+logcat*.txt
+*.tmp
+*.temp
+*.swp
+*~
+
+# Keystore and signing (keep out of repo)
+*.jks
+*.keystore
+keystore.properties
+
+# Optional: exclude large model files to keep repo small (uncomment if you host models elsewhere)
+# app/src/main/assets/model-bn/
+# app/src/main/assets/test/

@@ -1,0 +1,11 @@
+What is your name? | তোমার নাম কী? | My name is Sharif. | আমার নাম শরীফ।
+Where are you from? | তুমি কোথা থেকে এসেছ? | I am from Khulna. | আমি খুলনা থেকে এসেছি।
+Where do you live now? | তুমি এখন কোথায় থাকো? | I live in Dhaka with my parents. | আমি আমার বাবা-মায়ের সঙ্গে ঢাকায় থাকি।
+How many brothers and sisters do you have? | তোমার কয়জন ভাই ও বোন আছে? | We are two brothers and one sister. | আমরা দুই ভাই ও এক বোন।
+What are you doing now? | তুমি এখন কী করছ? | I am studying English at the University of Dhaka. | আমি ঢাকা বিশ্ববিদ্যালয়ে ইংরেজি পড়ছি।
+What does your sister do? | তোমার বোন কী করে? | My younger sister is studying at a private medical college. | আমার ছোট বোন একটি বেসরকারি মেডিকেল কলেজে পড়ছে।
+What does your brother do? | তোমার ভাই কী করে? | My younger brother is studying at a college. | আমার ছোট ভাই একটি কলেজে পড়ছে।
+What do you want to be? | তুমি কী হতে চাও? | I am preparing to become a BCS cadre. | আমি বিসিএস ক্যাডার হওয়ার প্রস্তুতি নিচ্ছি।
+What do you do in your spare time? | তুমি অবসর সময়ে কী করো? | I play cricket on weekends, and I also like to play chess. | আমি সপ্তাহান্তে ক্রিকেট খেলি, আর দাবা খেলতেও পছন্দ করি।
+What are your hobbies? | তোমার শখ কী? | I like singing, mainly modern songs. | আমার গান গাইতে ভালো লাগে, বিশেষ করে আধুনিক গান।
+What is your plan if you don't get a chance in the BCS? | যদি বিসিএস-এ সুযোগ না পাও, তাহলে তোমার পরিকল্পনা কী? | If I fail to become a BCS cadre, I will most likely go abroad for higher studies. | যদি আমি বিসিএস ক্যাডার হতে ব্যর্থ হই, তাহলে সম্ভবত উচ্চশিক্ষার জন্য বিদেশে যাব।

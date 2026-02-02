@@ -1,0 +1,90 @@
+Root (V1),Past (V2),Past Participle (V3),Bengali Meaning
+Arise,Arose,Arisen,ওঠা / উদিত হওয়া
+Awake,Awoke,Awoken,জাগ্রত হওয়া
+Bear,Bore,Borne,বহন করা / সহ্য করা
+Beat,Beat,Beaten,প্রহার করা
+Become,Became,Become,হওয়া
+Begin,Began,Begun,শুরু করা
+Bend,Bent,Bent,বাঁকানো
+Bite,Bit,Bitten,কামড়ানো
+Bleed,Bled,Bled,রক্তপাত হওয়া
+Blow,Blew,Blown,প্রবাহিত হওয়া
+Break,Broke,Broken,ভাঙা
+Bring,Brought,Brought,আনা
+Build,Built,Built,নির্মাণ করা
+Burn,Burnt,Burnt,পোড়ানো
+Buy,Bought,Bought,কেনা
+Catch,Caught,Caught,ধরা
+Choose,Chose,Chosen,পছন্দ করা
+Come,Came,Come,আসা
+Cost,Cost,Cost,দাম হওয়া
+Cut,Cut,Cut,কাটা
+Dig,Dug,Dug,খনন করা
+Do,Did,Done,করা
+Draw,Drew,Drawn,আঁকা
+Dream,Dreamt,Dreamt,স্বপ্ন দেখা
+Drink,Drank,Drunk,পান করা
+Drive,Drove,Driven,চালানো
+Eat,Ate,Eaten,খাওয়া
+Fall,Fell,Fallen,পড়ে যাওয়া
+Feed,Fed,Fed,খাওয়ানো
+Feel,Felt,Felt,অনুভব করা
+Fight,Fought,Fought,যুদ্ধ করা
+Find,Found,Found,খুঁজে পাওয়া
+Fly,Flew,Flown,ওড়া
+Forget,Forgot,Forgotten,ভুলে যাওয়া
+Forgive,Forgave,Forgiven,ক্ষমা করা
+Freeze,Froze,Frozen,জমাট বাঁধা
+Get,Got,Got/Gotten,পাওয়া
+Give,Gave,Given,দেওয়া
+Go,Went,Gone,যাওয়া
+Grow,Grew,Grown,জন্মানো / বৃদ্ধি পাওয়া
+Hang,Hung,Hung,ঝোলানো
+Hear,Heard,Heard,শোনা
+Hide,Hid,Hidden,লুকানো
+Hit,Hit,Hit,আঘাত করা
+Hold,Held,Held,ধরা / ধরে রাখা
+Keep,Kept,Kept,রাখা
+Know,Knew,Known,জানা
+Lead,Led,Led,পরিচালনা করা
+Learn,Learnt,Learnt,শেখা
+Leave,Left,Left,ত্যাগ করা
+Lend,Lent,Lent,ধার দেওয়া
+Lose,Lost,Lost,হারানো
+Make,Made,Made,তৈরি করা
+Meet,Met,Met,সাক্ষাৎ করা
+Pay,Paid,Paid,পরিশোধ করা
+Put,Put,Put,রাখা
+Read,Read,Read,পড়া
+Ride,Rode,Ridden,চড়া (ঘোড়া/সাইকেল)
+Ring,Rang,Rung,বাজানো
+Rise,Rose,Risen,ওঠা
+Run,Ran,Run,দৌড়ানো
+Say,Said,Said,বলা
+See,Saw,Seen,দেখা
+Sell,Sold,Sold,বিক্রি করা
+Send,Sent,Sent,পাঠানো
+Shake,Shook,Shaken,নাড়ানো
+Shoot,Shot,Shot,গুলি করা
+Show,Showed,Shown,দেখানো
+Shut,Shut,Shut,বন্ধ করা
+Sing,Sang,Sung,গান করা
+Sink,Sank,Sunk,ডুবে যাওয়া
+Sit,Sat,Sat,বসা
+Sleep,Slept,Slept,ঘুমানো
+Speak,Spoke,Spoken,কথা বলা
+Spend,Spent,Spent,ব্যয় করা
+Stand,Stood,Stood,দাঁড়ানো
+Steal,Stole,Stolen,চুরি করা
+Swim,Swam,Swum,সাঁতার কাটা
+Take,Took,Taken,নেওয়া
+Teach,Taught,Taught,শেখানো
+Tear,Tore,Torn,ছেঁড়া
+Tell,Told,Told,বলা
+Think,Thought,Thought,চিন্তা করা
+Throw,Threw,Thrown,ছুড়ে মারা
+Understand,Understood,Understood,বুঝতে পারা
+Wake,Woke,Woken,জাগানো
+Wear,Wore,Worn,পরিধান করা
+Win,Won,Won,জয়ী হওয়া
+Write,Wrote,Written,লেখা
