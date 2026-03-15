@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SV lesson: ribbon pair + Learning/Practice, pronunciation hint, verify then move. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/lesson_box_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="0dp">
+
+        <TextView
+            android:id="@+id/sv_ribbon_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="8dp"
+            android:text="Subject + Verb"
+            android:textSize="16sp"
+            android:textColor="@color/lesson_topic_bar_background"
+            android:textStyle="bold" />
+
+        <!-- Learning / Practice mode -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="8dp"
+            android:background="@color/icon_row_background">
+            <Button
+                android:id="@+id/sv_ribbon_mode_learning"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:text="Learning"
+                android:textSize="14sp" />
+            <Button
+                android:id="@+id/sv_ribbon_mode_practice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:text="Practice"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <include
+            layout="@layout/layout_ribbon_pair"
+            android:layout_width="match_parent"
+            android:layout_height="240dp" />
+
+        <!-- Pronunciation hint (Learning mode) -->
+        <TextView
+            android:id="@+id/sv_ribbon_pronunciation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="4dp"
+            android:textSize="14sp"
+            android:textColor="@color/text_secondary"
+            android:fontStyle="italic"
+            android:text="" />
+
+        <!-- You said: [recognized text] -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="8dp"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/you_said_label"
+                android:textSize="14sp"
+                android:textColor="@color/text_primary" />
+            <TextView
+                android:id="@+id/sv_ribbon_you_said"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:textSize="14sp"
+                android:textColor="@color/lesson_topic_bar_background"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:text="" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/sv_ribbon_next_hint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+            android:text="Say the sentence after hearing. Correct answer moves the ribbon to the next." />
+    </LinearLayout>
+</ScrollView>

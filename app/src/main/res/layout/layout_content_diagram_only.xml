@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layout: Diagram/table only – no input language, Bengali/English panels. Used for pronoun table etc. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <!-- Info button row (speaks instruction for this diagram) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end|center_vertical"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="4dp">
+        <ImageButton
+            android:id="@+id/diagram_info_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="6dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Info"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_info" />
+    </LinearLayout>
+
+    <!-- WebView: diagram/table only -->
+    <WebView
+        android:id="@+id/diagram_webview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="8dp"
+        android:minHeight="160dp"
+        android:background="@color/lesson_box_background"
+        android:scrollbars="vertical" />
+</LinearLayout>

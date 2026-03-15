@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Conversation: two sections (YOU / APP), script with P1/P2 turns.
+     Who speaks first is configurable; user's turn = mic input, app's turn = TTS. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F5F5F7">
+
+    <!-- Mode: Learning | Practice -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="6dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="#FFFFFF"
+        android:elevation="2dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mode:"
+            android:textSize="14sp"
+            android:textColor="#5C5C6E"
+            android:textStyle="bold"
+            android:layout_marginEnd="12dp" />
+
+        <RadioGroup
+            android:id="@+id/conversation_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/conversation_mode_learning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Learning"
+                android:textSize="14sp"
+                android:textColor="#2C2C3E"
+                android:buttonTint="#1565C0"
+                android:checked="true" />
+            <RadioButton
+                android:id="@+id/conversation_mode_practice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Practice"
+                android:textSize="14sp"
+                android:textColor="#2C2C3E"
+                android:buttonTint="#1565C0" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <!-- Learning mode: Hint = With hint (show English) | Without hint (hide English, same comparison) -->
+    <LinearLayout
+        android:id="@+id/conversation_learning_hint_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="#FFFFFF"
+        android:elevation="2dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hint:"
+            android:textSize="14sp"
+            android:textColor="#5C5C6E"
+            android:textStyle="bold"
+            android:layout_marginEnd="12dp" />
+
+        <RadioGroup
+            android:id="@+id/conversation_learning_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/conversation_hint_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="With hint"
+                android:textSize="14sp"
+                android:textColor="#2C2C3E"
+                android:buttonTint="#1565C0"
+                android:checked="true" />
+            <RadioButton
+                android:id="@+id/conversation_hint_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="Without hint"
+                android:textSize="14sp"
+                android:textColor="#2C2C3E"
+                android:buttonTint="#1565C0" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <!-- Who starts: You or App (only for Practice mode) -->
+    <LinearLayout
+        android:id="@+id/conversation_who_starts_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="6dp"
+        android:paddingBottom="8dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:background="#FFFFFF"
+        android:elevation="2dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Who starts?"
+            android:textSize="14sp"
+            android:textColor="#5C5C6E"
+            android:textStyle="bold"
+            android:layout_marginEnd="12dp" />
+
+        <RadioGroup
+            android:id="@+id/conversation_who_starts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/conversation_start_you"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="You"
+                android:textSize="14sp"
+                android:textColor="#2C2C3E"
+                android:buttonTint="#1565C0"
+                android:checked="true" />
+            <RadioButton
+                android:id="@+id/conversation_start_app"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="App"
+                android:textSize="14sp"
+                android:textColor="#2C2C3E"
+                android:buttonTint="#1565C0" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <!-- Conversation display: YOU and APP sections (HTML in WebView) -->
+    <WebView
+        android:id="@+id/conversation_webview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#FFFFFF"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp" />
+
+    <!-- You said: text (what the app heard) - shown when waiting for user -->
+    <LinearLayout
+        android:id="@+id/conversation_recognized_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:background="@drawable/bg_recognized_border"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="You said:"
+            android:textSize="12sp"
+            android:textColor="#5C5C6E"
+            android:textStyle="bold"
+            android:paddingBottom="4dp" />
+
+        <TextView
+            android:id="@+id/conversation_recognized_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="32dp"
+            android:gravity="center_vertical"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:textSize="15sp"
+            android:textColor="#1565C0"
+            android:background="#FFFFFF"
+            android:text="—"
+            android:hint="—" />
+    </LinearLayout>
+
+    <!-- Bottom: status + mic (mic visible when it's user's turn) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="12dp"
+        android:background="#FFFFFF"
+        android:elevation="4dp">
+
+        <View
+            android:id="@+id/conversation_status_dot"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/badge_circle_small"
+            android:layout_marginEnd="10dp" />
+
+        <TextView
+            android:id="@+id/conversation_status_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tap Start to begin"
+            android:textSize="14sp"
+            android:textColor="#5C5C6E" />
+
+        <ImageButton
+            android:id="@+id/conversation_mic_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:padding="10dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Mic - your turn to speak"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_mic"
+            android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>

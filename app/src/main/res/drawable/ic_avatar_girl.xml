@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+    <!-- Head / face (skin tone) -->
+    <path
+        android:fillColor="#FFE0BD"
+        android:pathData="M24,10 a14,14 0,1 1,0 28 a14,14 0,1 1,0 -28"/>
+    <!-- Hair: single dome + sides (dark brown, reads as girl with hair) -->
+    <path
+        android:fillColor="#5D4037"
+        android:pathData="M24,2 Q6,8 6,22 L6,40 L42,40 L42,22 Q42,8 24,2 Z"/>
+    <!-- Left eye -->
+    <path
+        android:fillColor="#4E342E"
+        android:pathData="M18,22 m-1.2,0 a1.2,1.5 0,1 1,2.4 0 a1.2,1.5 0,1 1,-2.4 0"/>
+    <!-- Right eye -->
+    <path
+        android:fillColor="#4E342E"
+        android:pathData="M30,22 m-1.2,0 a1.2,1.5 0,1 1,2.4 0 a1.2,1.5 0,1 1,-2.4 0"/>
+    <!-- Smile -->
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#8D6E63"
+        android:strokeWidth="1.2"
+        android:strokeLineCap="round"
+        android:pathData="M20,28 Q24,32 28,28"/>
+</vector>

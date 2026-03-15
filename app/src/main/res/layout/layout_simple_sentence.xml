@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Reusable simple-sentence lesson: load file (English,Bengali,Pronunciation). Learning: 2 bubbles + TTS Bengali then English, then listen. Practice: Bengali only, listen, say Correct + stats. -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/lesson_box_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="16dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="0dp">
+
+        <!-- Learning / Practice mode -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingBottom="12dp"
+            android:background="#E8E8E8"
+            android:padding="8dp">
+            <Button
+                android:id="@+id/simple_sentence_mode_learning"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:text="Learning"
+                android:textSize="14sp" />
+            <Button
+                android:id="@+id/simple_sentence_mode_practice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:text="Practice"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/simple_sentence_stat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:textColor="#333333"
+                android:textSize="13sp"
+                android:visibility="gone"
+                android:text="0/0" />
+        </LinearLayout>
+
+        <!-- First bubble row: optional avatar or speaking video (left, Let/Practice only) + Bengali bubble -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:baselineAligned="false">
+            <FrameLayout
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginEnd="10dp">
+                <ImageView
+                    android:id="@+id/simple_sentence_avatar"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:contentDescription="Speaking avatar"
+                    android:src="@drawable/ic_avatar_girl"
+                    android:scaleType="fitCenter" />
+                <!-- Speaking video: shown in Let lesson Practice mode; plays while TTS speaks -->
+                <VideoView
+                    android:id="@+id/simple_sentence_speaking_video"
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:contentDescription="Speaking video" />
+            </FrameLayout>
+            <TextView
+                android:id="@+id/simple_sentence_bengali"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="48dp"
+                android:padding="14dp"
+                android:background="@drawable/bg_simple_sentence_bubble"
+                android:textSize="18sp"
+                android:textColor="#111111"
+                android:lineSpacingMultiplier="1.2"
+                android:gravity="center"
+                android:text="" />
+        </LinearLayout>
+
+        <!-- Second bubble: English (hidden in Practice until after speak, or always shown in Learning) -->
+        <TextView
+            android:id="@+id/simple_sentence_english"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:padding="14dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_simple_sentence_bubble"
+            android:textSize="18sp"
+            android:textColor="#1565C0"
+            android:lineSpacingMultiplier="1.2"
+            android:gravity="center"
+            android:text="" />
+
+        <!-- Pronunciation hint -->
+        <TextView
+            android:id="@+id/simple_sentence_pronunciation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:paddingHorizontal="4dp"
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:fontStyle="italic"
+            android:text="" />
+
+        <!-- You said: [recognized text] -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:paddingVertical="6dp"
+            android:gravity="center_vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/you_said_label"
+                android:textSize="14sp"
+                android:textColor="#333333" />
+            <TextView
+                android:id="@+id/simple_sentence_you_said"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:textSize="14sp"
+                android:textColor="#0d6efd"
+                android:maxLines="3"
+                android:ellipsize="end"
+                android:text="" />
+        </LinearLayout>
+
+        <!-- Optional tick/cross badge after recognition -->
+        <ImageView
+            android:id="@+id/simple_sentence_badge"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:visibility="gone"
+            android:contentDescription="Result badge" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Noun type quiz: show a word, ask "What kind of noun it is?", user picks one of 5 tabs -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/noun_test_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FAFAFA"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="12dp">
+
+    <Button
+        android:id="@+id/noun_test_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="← Back to list"
+        android:layout_gravity="start"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="What kind of noun it is?"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#212121"
+        android:gravity="center"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:id="@+id/noun_test_word"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#1565C0"
+        android:gravity="center"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/lesson_box_background" />
+
+    <TextView
+        android:id="@+id/noun_test_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:textColor="#757575"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <!-- 5 options (same labels as tabs) -->
+    <LinearLayout
+        android:id="@+id/noun_test_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/noun_test_option_0"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:text="ব্যক্তির নাম"
+            android:textSize="15sp"
+            android:textColor="#FFFFFF"
+            android:background="#1565C0"
+            android:layout_marginBottom="6dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+        <TextView
+            android:id="@+id/noun_test_option_1"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:text="স্থানের নাম"
+            android:textSize="15sp"
+            android:textColor="#FFFFFF"
+            android:background="#2E7D32"
+            android:layout_marginBottom="6dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+        <TextView
+            android:id="@+id/noun_test_option_2"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:text="দলের নাম"
+            android:textSize="15sp"
+            android:textColor="#FFFFFF"
+            android:background="#EF6C00"
+            android:layout_marginBottom="6dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+        <TextView
+            android:id="@+id/noun_test_option_3"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:text="অনুভূতির নাম"
+            android:textSize="15sp"
+            android:textColor="#FFFFFF"
+            android:background="#7B1FA2"
+            android:layout_marginBottom="6dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+        <TextView
+            android:id="@+id/noun_test_option_4"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:text="বস্তুর নাম"
+            android:textSize="15sp"
+            android:textColor="#FFFFFF"
+            android:background="#00838F"
+            android:layout_marginBottom="6dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+    </LinearLayout>
+
+    <!-- Shown when test is complete -->
+    <LinearLayout
+        android:id="@+id/noun_test_done"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:gravity="center"
+        android:paddingTop="24dp">
+
+        <TextView
+            android:id="@+id/noun_test_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#212121"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/noun_test_done_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back to Noun list" />
+    </LinearLayout>
+
+</LinearLayout>
+
+    <!-- Overlay: covers entire test area so bubble can start at clicked option and fly up -->
+    <FrameLayout
+        android:id="@+id/noun_test_correct_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:clickable="false">
+        <LinearLayout
+            android:id="@+id/noun_test_correct_bubble"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/noun_test_thumbs_bg"
+            android:elevation="12dp">
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_thumbs_up"
+                android:contentDescription="Correct" />
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

@@ -1,0 +1,168 @@
+package com.alphacephei.vosk
+
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+
+/**
+ * Adapter for layout_3coldata_2coldisplay: displays Bengali | English + Hint rows.
+ */
+class ThreeColDataAdapter(
+    private var items: List<ThreeColRow>
+) : RecyclerView.Adapter<ThreeColDataAdapter.RowViewHolder>() {
+
+    /** true = Learning (show hint + full English), false = Practice (hide until answered). */
+    var learningMode: Boolean = true
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
+    /** Per-row answer state for Practice mode. */
+    private var answered: MutableList<Boolean> = MutableList(items.size) { false }
+    private var correct: MutableList<Boolean> = MutableList(items.size) { false }
+    /** Per-row spoken text (what user said) for Practice mode. */
+    private var spoken: MutableList<String> = MutableList(items.size) { "" }
+
+    /** Currently active row index for visual highlight. */
+    private var currentIndex: Int = 0
+
+    class RowViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val bengali: TextView = view.findViewById(R.id.threecol_bengali)
+        val english: TextView = view.findViewById(R.id.threecol_english)
+        val hint: TextView = view.findViewById(R.id.threecol_hint)
+        val statusMark: TextView = view.findViewById(R.id.threecol_status_mark)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RowViewHolder {
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.layout_item_threecol_row, parent, false)
+        return RowViewHolder(v)
+    }
+
+    override fun getItemCount(): Int = items.size
+
+    override fun onBindViewHolder(holder: RowViewHolder, position: Int) {
+        val row = items[position]
+        holder.bengali.text = row.bengali
+
+        val ctx = holder.itemView.context
+        val baseEnglishColor = ctx.getColor(R.color.lesson_topic_bar_background)
+        val successColor = ctx.getColor(R.color.control_success)
+        val dangerColor = ctx.getColor(R.color.control_danger)
+
+        // Highlight the active row; otherwise alternate row background for high contrast
+        if (position == currentIndex) {
+            holder.itemView.setBackgroundResource(R.drawable.bg_threecol_row_active)
+        } else {
+            val stripeColor = if (position % 2 == 0) ctx.getColor(R.color.threecol_row_even) else ctx.getColor(R.color.threecol_row_odd)
+            holder.itemView.setBackgroundColor(stripeColor)
+        }
+
+        // Default: no status mark
+        holder.statusMark.text = ""
+
+        if (learningMode) {
+            // Always show English + hint in Learning mode (display form: first alternative only).
+            holder.english.text = MatchNormalizer.textForSpeakAndDisplay(row.english)
+            holder.english.setTextColor(baseEnglishColor)
+            holder.hint.text = row.hint
+            holder.hint.visibility = if (row.hint.isNotBlank()) View.VISIBLE else View.GONE
+            // Show tick/cross in the fixed-width mark for answered rows.
+            if (position in answered.indices && answered[position]) {
+                holder.statusMark.text = if (position in correct.indices && correct[position]) "✓" else "✗"
+                holder.statusMark.setTextColor(if (position in correct.indices && correct[position]) successColor else dangerColor)
+            }
+        } else {
+            // Practice mode: initially hide English+hint until answered; then show and mark correct/incorrect.
+            if (position in answered.indices && answered[position]) {
+                // Show what the user said; no pronunciation hint in Practice.
+                val said = spoken.getOrNull(position) ?: ""
+                holder.english.text = MatchNormalizer.sanitizeSpokenTextForDisplay(said)
+                holder.english.setTextColor(if (position in correct.indices && correct[position]) successColor else dangerColor)
+                holder.hint.text = ""
+                holder.hint.visibility = View.GONE
+                holder.statusMark.text = if (position in correct.indices && correct[position]) "✓" else "✗"
+                holder.statusMark.setTextColor(if (position in correct.indices && correct[position]) successColor else dangerColor)
+            } else {
+                holder.english.text = ""
+                holder.english.setTextColor(baseEnglishColor)
+                holder.hint.text = ""
+                holder.hint.visibility = View.GONE
+            }
+        }
+    }
+
+    fun updateData(newItems: List<ThreeColRow>) {
+        items = newItems
+        answered = MutableList(items.size) { false }
+        correct = MutableList(items.size) { false }
+        spoken = MutableList(items.size) { "" }
+        notifyDataSetChanged()
+    }
+
+    /**
+     * Apply persisted stats loaded from disk.
+     * Each entry = [A, B] (practice pass, test pass). No attempts; correct when A or B is non-zero.
+     */
+    fun applyStatsFrom(stats: List<IntArray>) {
+        if (items.isEmpty()) return
+        val size = items.size
+        if (answered.size < size) {
+            answered = MutableList(size) { false }
+        }
+        if (correct.size < size) {
+            correct = MutableList(size) { false }
+        }
+        for (i in 0 until size) {
+            val row = stats.getOrNull(i) ?: continue
+            val a = row.getOrNull(0) ?: 0
+            val b = row.getOrNull(1) ?: 0
+            answered[i] = (a != 0 || b != 0)
+            correct[i] = (a != 0 || b != 0)
+        }
+        notifyDataSetChanged()
+    }
+
+    /** Mark row at index as answered with result; used by verification logic. */
+    fun markResult(index: Int, isCorrect: Boolean) {
+        if (index !in items.indices) return
+        if (index >= answered.size) {
+            // Resize defensively if data changed unexpectedly.
+            answered = MutableList(items.size) { i -> answered.getOrNull(i) ?: false }
+            correct = MutableList(items.size) { i -> correct.getOrNull(i) ?: false }
+        }
+        answered[index] = true
+        correct[index] = isCorrect
+        notifyItemChanged(index)
+    }
+
+    /** Update which row is the current one; used to highlight the active sentence. */
+    fun setCurrentIndex(index: Int) {
+        if (index !in items.indices) return
+        val old = currentIndex
+        currentIndex = index
+        if (old in 0 until items.size) notifyItemChanged(old)
+        notifyItemChanged(currentIndex)
+    }
+
+    /** Store what the user said for this row (Practice mode). */
+    fun setSpokenText(index: Int, said: String) {
+        if (index !in items.indices) return
+        if (index >= spoken.size) {
+            spoken = MutableList(items.size) { i -> spoken.getOrNull(i) ?: "" }
+        }
+        spoken[index] = said
+        notifyItemChanged(index)
+    }
+
+    /** @return Triple(correctCount, testedCount, totalCount). */
+    fun getStats(): Triple<Int, Int, Int> {
+        val total = items.size
+        val correctCount = correct.count { it }
+        val testedCount = answered.count { it }
+        return Triple(correctCount, testedCount, total)
+    }
+}
+

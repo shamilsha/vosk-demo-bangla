@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Noun lesson: tabs by type. FlowLayout wraps tabs to next line when they don't fit. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FAFAFA"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Noun – Types and examples"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="#212121"
+        android:paddingTop="12dp"
+        android:paddingBottom="8dp" />
+
+    <!-- Tabs: horizontal flow with wrap — fit as many as possible per row, then next row; each tab = text + padding -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/noun_tabs_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="8dp"
+        android:clipToPadding="false" />
+
+    <Button
+        android:id="@+id/noun_test_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TEST"
+        android:layout_gravity="center_horizontal"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Examples: two-column table with title (loaded as HTML in WebView) -->
+    <WebView
+        android:id="@+id/noun_examples_webview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/lesson_box_background"
+        android:padding="12dp" />
+</LinearLayout>

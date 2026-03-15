@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Venus symbol: circle with cross below -->
+    <path
+        android:fillColor="#C2185B"
+        android:pathData="M12,6m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0"/>
+    <path
+        android:fillColor="@android:color/transparent"
+        android:strokeColor="#C2185B"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:pathData="M12,11v8M9,14h6"/>
+</vector>

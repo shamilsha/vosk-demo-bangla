@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Simple present I: 3 columns x 4 rows. Col1=Bengali 40%, Col2=English 50%, Col3=tick/cross 10%. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center"
+        android:background="#E8E8E8">
+        <Button
+            android:id="@+id/four_section_mode_learning"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:text="Learning"
+            android:textSize="14sp" />
+        <Button
+            android:id="@+id/four_section_mode_practice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="2dp"
+            android:text="Practice"
+            android:textSize="14sp" />
+        <Button
+            android:id="@+id/four_section_mode_test"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="2dp"
+            android:text="Test"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/four_section_stat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:textColor="#333333"
+            android:textSize="13sp"
+            android:visibility="gone"
+            android:text="0/0" />
+    </LinearLayout>
+
+    <!-- Test mode: bold prompt + verb selector -->
+    <LinearLayout
+        android:id="@+id/four_section_test_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp"
+        android:background="#FFF3E0"
+        android:visibility="gone">
+        <TextView
+            android:id="@+id/four_section_test_prompt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#E65100"
+            android:lineSpacingMultiplier="1.2"
+            android:text="Make 4 sentences using: " />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="6dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose verb: "
+                android:textSize="14sp"
+                android:textColor="#333333" />
+            <Spinner
+                android:id="@+id/four_section_verb_spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:minHeight="40dp"
+                android:spinnerMode="dropdown" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Header row: 40% + divider + 50% + divider + 10% -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="8dp"
+                android:paddingHorizontal="4dp"
+                android:background="#E3F2FD"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:paddingEnd="8dp"
+                    android:text="Bengali"
+                    android:textSize="14sp"
+                    android:textColor="#1565C0"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:minHeight="20dp"
+                    android:background="#BBDEFB" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:paddingHorizontal="8dp"
+                    android:text="English"
+                    android:textSize="14sp"
+                    android:textColor="#1565C0"
+                    android:textStyle="bold" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:minHeight="20dp"
+                    android:background="#BBDEFB" />
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center">
+                    <!-- header has no icon -->
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- Row 1: 40% Bengali | 50% English | 10% icon -->
+            <LinearLayout
+                android:id="@+id/four_section_card_0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="4dp"
+                android:layout_marginBottom="2dp"
+                android:background="#F5F8FF"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/four_section_0_bengali"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:paddingEnd="8dp"
+                    android:textSize="16sp"
+                    android:textColor="#212121"
+                    android:text="" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:minHeight="24dp"
+                    android:background="#D0DCE8" />
+                <TextView
+                    android:id="@+id/four_section_0_you_said"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:paddingHorizontal="8dp"
+                    android:minHeight="28dp"
+                    android:textSize="16sp"
+                    android:textColor="#E65100"
+                    android:hint="..."
+                    android:textColorHint="#BDBDBD"
+                    android:text="" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:minHeight="24dp"
+                    android:background="#D0DCE8" />
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center">
+                    <ImageView
+                        android:id="@+id/four_section_0_badge"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:visibility="gone"
+                        android:contentDescription="Result icon" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- Row 2 -->
+            <LinearLayout
+                android:id="@+id/four_section_card_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="4dp"
+                android:layout_marginBottom="2dp"
+                android:background="#EEF2FF"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/four_section_1_bengali"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:paddingEnd="8dp"
+                    android:textSize="16sp"
+                    android:textColor="#212121"
+                    android:text="" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:minHeight="24dp"
+                    android:background="#D0DCE8" />
+                <TextView
+                    android:id="@+id/four_section_1_you_said"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:paddingHorizontal="8dp"
+                    android:minHeight="28dp"
+                    android:textSize="16sp"
+                    android:textColor="#E65100"
+                    android:hint="..."
+                    android:textColorHint="#BDBDBD"
+                    android:text="" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:minHeight="24dp"
+                    android:background="#D0DCE8" />
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center">
+                    <ImageView
+                        android:id="@+id/four_section_1_badge"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:visibility="gone"
+                        android:contentDescription="Result icon" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- Row 3 -->
+            <LinearLayout
+                android:id="@+id/four_section_card_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="4dp"
+                android:layout_marginBottom="2dp"
+                android:background="#F5F8FF"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/four_section_2_bengali"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:paddingEnd="8dp"
+                    android:textSize="16sp"
+                    android:textColor="#212121"
+                    android:text="" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:minHeight="24dp"
+                    android:background="#D0DCE8" />
+                <TextView
+                    android:id="@+id/four_section_2_you_said"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:paddingHorizontal="8dp"
+                    android:minHeight="28dp"
+                    android:textSize="16sp"
+                    android:textColor="#E65100"
+                    android:hint="..."
+                    android:textColorHint="#BDBDBD"
+                    android:text="" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:minHeight="24dp"
+                    android:background="#D0DCE8" />
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center">
+                    <ImageView
+                        android:id="@+id/four_section_2_badge"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:visibility="gone"
+                        android:contentDescription="Result icon" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- Row 4 -->
+            <LinearLayout
+                android:id="@+id/four_section_card_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="4dp"
+                android:layout_marginBottom="2dp"
+                android:background="#EEF2FF"
+                android:gravity="center_vertical">
+                <TextView
+                    android:id="@+id/four_section_3_bengali"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:paddingEnd="8dp"
+                    android:textSize="16sp"
+                    android:textColor="#212121"
+                    android:text="" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:minHeight="24dp"
+                    android:background="#D0DCE8" />
+                <TextView
+                    android:id="@+id/four_section_3_you_said"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:paddingHorizontal="8dp"
+                    android:minHeight="28dp"
+                    android:textSize="16sp"
+                    android:textColor="#E65100"
+                    android:hint="..."
+                    android:textColorHint="#BDBDBD"
+                    android:text="" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:minHeight="24dp"
+                    android:background="#D0DCE8" />
+                <FrameLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingHorizontal="4dp"
+                    android:gravity="center">
+                    <ImageView
+                        android:id="@+id/four_section_3_badge"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:visibility="gone"
+                        android:contentDescription="Result icon" />
+                </FrameLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

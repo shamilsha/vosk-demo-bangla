@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Reusable ribbon pair: include this in any layout for two ConveyorBeltViews (conveyor_left, conveyor_right). Left 5 slots (3rd = center), right 7 slots (4th = center); line connects centers. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp">
+
+    <!-- Left conveyor: 5 visible slots, center = 3rd (index 2). Height = 5 × 40dp = 200dp. -->
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginEnd="4dp">
+
+        <com.alphacephei.vosk.ConveyorBeltView
+            android:id="@+id/conveyor_left"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@drawable/bg_ribbon_window"
+            tools:ignore="MissingPrefix" />
+    </FrameLayout>
+
+    <!-- Gap + horizontal line at vertical center. -->
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="280dp"
+        android:layout_weight="2"
+        android:gravity="center_vertical">
+
+        <View
+            android:id="@+id/ribbon_pair_connector"
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/svo_verb" />
+    </FrameLayout>
+
+    <!-- Right conveyor: 7 visible slots, center = 4th (index 3). Height = 7 × 40dp = 280dp. -->
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="4dp">
+
+        <com.alphacephei.vosk.ConveyorBeltView
+            android:id="@+id/conveyor_right"
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:background="@drawable/bg_ribbon_window"
+            tools:ignore="MissingPrefix" />
+    </FrameLayout>
+</LinearLayout>

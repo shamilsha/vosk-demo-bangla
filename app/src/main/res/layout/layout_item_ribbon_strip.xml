@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Minimal ribbon strip: small div, no box. Center state uses subtle highlight only. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ribbon_strip_root"
+    android:layout_width="match_parent"
+    android:layout_height="28dp"
+    android:minHeight="24dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingStart="6dp"
+    android:paddingEnd="6dp"
+    android:paddingTop="2dp"
+    android:paddingBottom="2dp"
+    android:background="@drawable/bg_ribbon_strip_normal">
+
+    <TextView
+        android:id="@+id/ribbon_strip_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textSize="14sp"
+        android:textColor="#333333" />
+</LinearLayout>

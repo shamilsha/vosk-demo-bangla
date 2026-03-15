@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Legacy content: all existing views (my_text, english_text, description_webview, sentence_list, etc.) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- Radio: Bengali to English / English to Bengali -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="12dp"
+        android:text="@string/input_language"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+    <RadioGroup
+        android:id="@+id/input_language_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="8dp">
+        <RadioButton
+            android:id="@+id/radio_bengali"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/bengali_to_english" />
+        <RadioButton
+            android:id="@+id/radio_english"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="@string/english_to_bengali" />
+    </RadioGroup>
+
+    <!-- First box: Bengali meaning -->
+    <TextView
+        android:id="@+id/bengali_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingTop="8dp"
+        android:text="@string/bengali_meaning_label"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+    <TextView
+        android:id="@+id/my_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25"
+        android:padding="12dp"
+        android:minHeight="44dp"
+        android:scrollbars="vertical"
+        android:singleLine="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:text="@string/hint"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:background="@color/lesson_box_background" />
+
+    <!-- Second box: English meaning + speak icon -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="8dp">
+        <TextView
+            android:id="@+id/translation_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="24dp"
+            android:paddingEnd="8dp"
+            android:text="@string/english_meaning_label"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        <ImageButton
+            android:id="@+id/speak_english_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/speak_english"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_speak_english" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/english_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.25"
+        android:padding="12dp"
+        android:minHeight="44dp"
+        android:scrollbars="vertical"
+        android:singleLine="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:text=""
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:background="@color/lesson_box_background" />
+
+    <!-- Description + speaker icon -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="8dp">
+        <TextView
+            android:id="@+id/description_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingStart="24dp"
+            android:paddingEnd="8dp"
+            android:text="@string/description_label"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        <ImageButton
+            android:id="@+id/description_speaker_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="4dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/speak_instruction"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_speak_english" />
+    </LinearLayout>
+    <WebView
+        android:id="@+id/description_webview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="8dp"
+        android:minHeight="160dp"
+        android:background="@color/lesson_box_background"
+        android:scrollbars="vertical" />
+
+    <!-- Sentence list -->
+    <TextView
+        android:id="@+id/sentence_list_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:paddingStart="24dp"
+        android:paddingTop="8dp"
+        android:text="@string/svo_list_label"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        tools:visibility="visible" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/sentence_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:minHeight="120dp"
+        android:visibility="gone"
+        android:padding="8dp"
+        tools:visibility="visible" />
+</LinearLayout>

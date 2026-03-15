@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SV Words: Learning = hear Bengali then English, repeat. Practice = hear Bengali only, say English. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#1a1a1a">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center"
+        android:background="#2a2a2a">
+        <Button
+            android:id="@+id/sv_words_mode_learning"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:text="Learning"
+            android:textSize="14sp" />
+        <Button
+            android:id="@+id/sv_words_mode_practice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:text="Practice"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/sv_words_practice_stat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:textColor="#CCCCCC"
+            android:textSize="13sp"
+            android:visibility="gone"
+            android:text="0/0 (—%)" />
+    </LinearLayout>
+    <WebView
+        android:id="@+id/sv_words_conveyor_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
