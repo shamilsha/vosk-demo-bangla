@@ -1,0 +1,84 @@
+Are They playing?,তারা কি খেলছে?,আর দে প্লেয়িং
+Are They running?,তারা কি দৌড়াচ্ছে?,আর দে রানিং
+Are They eating?,তারা কি খাচ্ছে?,আর দে ইটিং
+Are They doing?,তারা কি করছে?,আর দে ডুইং
+Are They walking?,তারা কি হাঁটছে?,আর দে ওয়াকিং
+Are They going?,তারা কি যাচ্ছে?,আর দে গোইং
+Are They coming?,তারা কি আসছে?,আর দে কামিং
+Are They reading?,তারা কি পড়ছে?,আর দে রিডিং
+Are They writing?,তারা কি লিখছে?,আর দে রাইটিং
+Are They working?,তারা কি কাজ করছে?,আর দে ওয়ার্কিং
+Are They sleeping?,তারা কি ঘুমাচ্ছে?,আর দে স্লিপিং
+Are They drinking?,তারা কি পান করছে?,আর দে ড্রিঙ্কিং
+Are They sitting?,তারা কি বসছে?,আর দে সিটিং
+Are They standing?,তারা কি দাঁড়াচ্ছে?,আর দে স্ট্যান্ডিং
+Are They listening?,তারা কি শুনছে?,আর দে লিসেনিং
+Are They looking?,তারা কি তাকাচ্ছে?,আর দে লুকিং
+Are They loving?,তারা কি ভালোবাসছে?,আর দে লাভিং
+Are They wanting?,তারা কি চাইছে?,আর দে ওয়ান্টিং
+Are They thinking?,তারা কি ভাবছে?,আর দে থিংকিং
+Are They knowing?,তারা কি জানছে?,আর দে নোইং
+Are They learning?,তারা কি শিখছে?,আর দে লার্নিং
+Are They cooking?,তারা কি রান্না করছে?,আর দে কুকিং
+Are They speaking?,তারা কি কথা বলছে?,আর দে স্পিকিং
+Are They talking?,তারা কি কথা বলছে?,আর দে টকিং
+Are They opening?,তারা কি খুলছে?,আর দে ওপেনিং
+Are They closing?,তারা কি বন্ধ করছে?,আর দে ক্লোজিং
+Are They waiting?,তারা কি অপেক্ষা করছে?,আর দে ওয়েটিং
+Are They trying?,তারা কি চেষ্টা করছে?,আর দে ট্রাইং
+Are They living?,তারা কি বাস করছে?,আর দে লিভিং
+Are They helping?,তারা কি সাহায্য করছে?,আর দে হেল্পিং
+Are They calling?,তারা কি ডাকছে?,আর দে কলিং
+Are They asking?,তারা কি জিজ্ঞাসা করছে?,আর দে আস্কিং
+Are They taking?,তারা কি নিচ্ছে?,আর দে টেকিং
+Are They giving?,তারা কি দিচ্ছে?,আর দে গিভিং
+Are They seeing?,তারা কি দেখছে?,আর দে সিইং
+Are They hearing?,তারা কি শুনছে?,আর দে হিয়ারিং
+Are They feeling?,তারা কি অনুভব করছে?,আর দে ফিলিং
+Are They understanding?,তারা কি বুঝছে?,আর দে আন্ডারস্ট্যান্ডিং
+Are They singing?,তারা কি গান করছে?,আর দে সিংইং
+Are They swimming?,তারা কি সাঁতার কাটছে?,আর দে সুইমিং
+Are They driving?,তারা কি গাড়ি চালাচ্ছে?,আর দে ড্রাইভিং
+Are They studying?,তারা কি পড়াশোনা করছে?,আর দে স্টাডিইং
+Are They washing?,তারা কি ধুছে?,আর দে ওয়াশিং
+Are They watching?,তারা কি দেখছে?,আর দে ওয়াচিং
+Are They buying?,তারা কি কিনছে?,আর দে বাইইং
+Are They selling?,তারা কি বিক্রি করছে?,আর দে সেলিং
+Are They making?,তারা কি তৈরি করছে?,আর দে মেকিং
+Are They cleaning?,তারা কি পরিষ্কার করছে?,আর দে ক্লিনিং
+Are They dancing?,তারা কি নাচছে?,আর দে ড্যান্সিং
+Are They stopping?,তারা কি থামছে?,আর দে স্টপিং
+Are They starting?,তারা কি শুরু করছে?,আর দে স্টার্টিং
+Are They finishing?,তারা কি শেষ করছে?,আর দে ফিনিশিং
+Are They changing?,তারা কি পরিবর্তন করছে?,আর দে চেঞ্জিং
+Are They paying?,তারা কি পরিশোধ করছে?,আর দে পেয়িং
+Are They using?,তারা কি ব্যবহার করছে?,আর দে ইউজিং
+Are They showing?,তারা কি দেখাচ্ছে?,আর দে শোইং
+Are They telling?,তারা কি বলছে?,আর দে টেলিং
+Are They leaving?,তারা কি ছেড়ে যাচ্ছে?,আর দে লিভিং
+Are They bringing?,তারা কি আনছে?,আর দে ব্রিংইং
+Are They keeping?,তারা কি রাখছে?,আর দে কিপিং
+Are They putting?,তারা কি রাখছে?,আর দে পুটিং
+Are They finding?,তারা কি খুঁজে পাচ্ছে?,আর দে ফাইন্ডিং
+Are They forgetting?,তারা কি ভুলে যাচ্ছে?,আর দে ফরগেটিং
+Are They remembering?,তারা কি মনে রাখছে?,আর দে রিমেম্বারিং
+Are They needing?,আমার কি প্রয়োজন হচ্ছে?,আর দে নিডিং
+Are They believing?,তারা কি বিশ্বাস করছে?,আর দে বিলিভিং
+Are They agreeing?,তারা কি রাজি হচ্ছে?,আর দে অ্যাগ্রিইং
+Are They answering?,তারা কি উত্তর দিচ্ছে?,আর দে আন্সারিং
+Are They breaking?,তারা কি ভাঙছে?,আর দে ব্রেকিং
+Are They building?,তারা কি নির্মাণ করছে?,আর দে বিল্ডিং
+Are They choosing?,তারা কি পছন্দ করছে?,আর দে চুজিং
+Are They cutting?,তারা কি কাটছে?,আর দে কাটিং
+Are They deciding?,তারা কি সিদ্ধান্ত নিচ্ছে?,আর দে ডিসাইডিং
+Are They explaining?,তারা কি ব্যাখ্যা করছে?,আর দে এক্সপ্লেইনিং
+Are They falling?,তারা কি পড়ে যাচ্ছে?,আর দে ফলিং
+Are They getting?,তারা কি পাচ্ছে?,আর দে গেটিং
+Are They growing?,তারা কি বড় হচ্ছে?,আর দে গ্রোইং
+Are They hoping?,তারা কি আশা করছে?,আর দে হোপিং
+Are They joining?,তারা কি যোগ দিচ্ছে?,আর দে জয়েনিং
+Are They meeting?,তারা কি সাক্ষাৎ করছে?,আর দে মিটিং
+Are They sending?,তারা কি পাঠাচ্ছে?,আর দে সেন্ডিং
+Are They spending?,তারা কি ব্যয় করছে?,আর দে স্পেন্ডিং
+Are They teaching?,তারা কি শেখাচ্ছে?,আর দে টিচিং
+Are They winning?,তারা কি জয়ী হচ্ছে?,আর দে উইনিং

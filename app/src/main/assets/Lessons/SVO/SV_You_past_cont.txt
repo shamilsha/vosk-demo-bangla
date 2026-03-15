@@ -1,0 +1,84 @@
+You were playing,তুমি খেলছিলে,ইউ ওয়ার প্লেয়িং
+You were running,তুমি দৌড়াচ্ছিলে,ইউ ওয়ার রানিং
+You were eating,তুমি খাচ্ছিলে,ইউ ওয়ার ইটিং
+You were doing,তুমি করছিলে,ইউ ওয়ার ডুইং
+You were walking,তুমি হাঁটছিলে,ইউ ওয়ার ওয়াকিং
+You were going,তুমি যাচ্ছিলে,ইউ ওয়ার গোইং
+You were coming,তুমি আসছিলে,ইউ ওয়ার কামিং
+You were reading,তুমি পড়ছিলে,ইউ ওয়ার রিডিং
+You were writing,তুমি লিখছিলে,ইউ ওয়ার রাইটিং
+You were working,তুমি কাজ করছিলে,ইউ ওয়ার ওয়ার্কিং
+You were sleeping,তুমি ঘুমাচ্ছিলে,ইউ ওয়ার স্লিপিং
+You were drinking,তুমি পান করছিলে,ইউ ওয়ার ড্রিঙ্কিং
+You were sitting,তুমি বসছিলে,ইউ ওয়ার সিটিং
+You were standing,তুমি দাঁড়াচ্ছিলে,ইউ ওয়ার স্ট্যান্ডিং
+You were listening,তুমি শুনছিলে,ইউ ওয়ার লিসেনিং
+You were looking,তুমি তাকাচ্ছিলে,ইউ ওয়ার লুকিং
+You were loving,তুমি ভালোবাসছিলে,ইউ ওয়ার লাভিং
+You were wanting,তুমি চাইছিলে,ইউ ওয়ার ওয়ান্টিং
+You were thinking,তুমি ভাবছিলে,ইউ ওয়ার থিংকিং
+You were knowing,তুমি জানছিলে,ইউ ওয়ার নোইং
+You were learning,তুমি শিখছিলে,ইউ ওয়ার লার্নিং
+You were cooking,তুমি রান্না করছিলে,ইউ ওয়ার কুকিং
+You were speaking,তুমি কথা বলছিলে,ইউ ওয়ার স্পিকিং
+You were talking,তুমি কথা বলছিলে,ইউ ওয়ার টকিং
+You were opening,তুমি খুলছিলে,ইউ ওয়ার ওপেনিং
+You were closing,তুমি বন্ধ করছিলে,ইউ ওয়ার ক্লোজিং
+You were waiting,তুমি অপেক্ষা করছিলে,ইউ ওয়ার ওয়েটিং
+You were trying,তুমি চেষ্টা করছিলে,ইউ ওয়ার ট্রাইং
+You were living,তুমি বাস করছিলে,ইউ ওয়ার লিভিং
+You were helping,তুমি সাহায্য করছিলে,ইউ ওয়ার হেল্পিং
+You were calling,তুমি ডাকছিলে,ইউ ওয়ার কলিং
+You were asking,তুমি জিজ্ঞাসা করছিলে,ইউ ওয়ার আস্কিং
+You were taking,তুমি নিচ্ছিলে,ইউ ওয়ার টেকিং
+You were giving,তুমি দিচ্ছিলে,ইউ ওয়ার গিভিং
+You were seeing,তুমি দেখছিলে,ইউ ওয়ার সিইং
+You were hearing,তুমি শুনছিলে,ইউ ওয়ার হিয়ারিং
+You were feeling,তুমি অনুভব করছিলে,ইউ ওয়ার ফিলিং
+You were understanding,তুমি বুঝছিলে,ইউ ওয়ার আন্ডারস্ট্যান্ডিং
+You were singing,তুমি গান করছিলে,ইউ ওয়ার সিংইং
+You were swimming,তুমি সাঁতার কাটছিলে,ইউ ওয়ার সুইমিং
+You were driving,তুমি গাড়ি চালাচ্ছিলে,ইউ ওয়ার ড্রাইভিং
+You were studying,তুমি পড়াশোনা করছিলে,ইউ ওয়ার স্টাডিইং
+You were washing,তুমি ধুছিলে,ইউ ওয়ার ওয়াশিং
+You were watching,তুমি দেখছিলে,ইউ ওয়ার ওয়াচিং
+You were buying,তুমি কিনছিলে,ইউ ওয়ার বাইইং
+You were selling,তুমি বিক্রি করছিলে,ইউ ওয়ার সেলিং
+You were making,তুমি তৈরি করছিলে,ইউ ওয়ার মেকিং
+You were cleaning,তুমি পরিষ্কার করছিলে,ইউ ওয়ার ক্লিনিং
+You were dancing,তুমি নাচছিলে,ইউ ওয়ার ড্যান্সিং
+You were stopping,তুমি থামছিলে,ইউ ওয়ার স্টপিং
+You were starting,তুমি শুরু করছিলে,ইউ ওয়ার স্টার্টিং
+You were finishing,তুমি শেষ করছিলে,ইউ ওয়ার ফিনিশিং
+You were changing,তুমি পরিবর্তন করছিলে,ইউ ওয়ার চেঞ্জিং
+You were paying,তুমি পরিশোধ করছিলে,ইউ ওয়ার পেয়িং
+You were using,তুমি ব্যবহার করছিলে,ইউ ওয়ার ইউজিং
+You were showing,তুমি দেখাচ্ছিলে,ইউ ওয়ার শোইং
+You were telling,তুমি বলছিলে,ইউ ওয়ার টেলিং
+You were leaving,তুমি ছেড়ে যাচ্ছিলে,ইউ ওয়ার লিভিং
+You were bringing,তুমি আনছিলে,ইউ ওয়ার ব্রিংইং
+You were keeping,তুমি রাখছিলে,ইউ ওয়ার কিপিং
+You were putting,তুমি রাখছিলে,ইউ ওয়ার পুটিং
+You were finding,তুমি খুঁজে পাচ্ছিলে,ইউ ওয়ার ফাইন্ডিং
+You were forgetting,তুমি ভুলে যাচ্ছিলে,ইউ ওয়ার ফরগেটিং
+You were remembering,তুমি মনে রাখছিলে,ইউ ওয়ার রিমেম্বারিং
+You were needing,আমার প্রয়োজন হচ্ছিল,ইউ ওয়ার নিডিং
+You were believing,তুমি বিশ্বাস করছিলে,ইউ ওয়ার বিলিভিং
+You were agreeing,তুমি রাজি হচ্ছিলে,ইউ ওয়ার অ্যাগ্রিইং
+You were answering,তুমি উত্তর দিচ্ছিলে,ইউ ওয়ার আন্সারিং
+You were breaking,তুমি ভাঙছিলে,ইউ ওয়ার ব্রেকিং
+You were building,তুমি নির্মাণ করছিলে,ইউ ওয়ার বিল্ডিং
+You were choosing,তুমি পছন্দ করছিলে,ইউ ওয়ার চুজিং
+You were cutting,তুমি কাটছিলে,ইউ ওয়ার কাটিং
+You were deciding,তুমি সিদ্ধান্ত নিচ্ছিলে,ইউ ওয়ার ডিসাইডিং
+You were explaining,তুমি ব্যাখ্যা করছিলে,ইউ ওয়ার এক্সপ্লেইনিং
+You were falling,তুমি পড়ে যাচ্ছিলে,ইউ ওয়ার ফলিং
+You were getting,তুমি পাচ্ছিলে,ইউ ওয়ার গেটিং
+You were growing,তুমি বড় হচ্ছিলে,ইউ ওয়ার গ্রোইং
+You were hoping,তুমি আশা করছিলে,ইউ ওয়ার হোপিং
+You were joining,তুমি যোগ দিচ্ছিলে,ইউ ওয়ার জয়েনিং
+You were meeting,তুমি সাক্ষাৎ করছিলে,ইউ ওয়ার মিটিং
+You were sending,তুমি পাঠাচ্ছিলে,ইউ ওয়ার সেন্ডিং
+You were spending,তুমি ব্যয় করছিলে,ইউ ওয়ার স্পেন্ডিং
+You were teaching,তুমি শেখাচ্ছিলে,ইউ ওয়ার টিচিং
+You were winning,তুমি জয়ী হচ্ছিলে,ইউ ওয়ার উইনিং

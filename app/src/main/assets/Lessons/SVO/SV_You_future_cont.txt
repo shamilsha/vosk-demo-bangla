@@ -1,0 +1,84 @@
+You will be playing,তুমি খেলতে থাকবে,ইউ উইল বি প্লেয়িং
+You will be running,তুমি দৌড়াইতে থাকবে,ইউ উইল বি রানিং
+You will be eating,তুমি খাইতে থাকবে,ইউ উইল বি ইটিং
+You will be doing,তুমি করতে থাকবে,ইউ উইল বি ডুইং
+You will be walking,তুমি হাঁটতে থাকবে,ইউ উইল বি ওয়াকিং
+You will be going,তুমি যাইতে থাকবে,ইউ উইল বি গোইং
+You will be coming,তুমি আসতে থাকবে,ইউ উইল বি কামিং
+You will be reading,তুমি পড়তে থাকবে,ইউ উইল বি রিডিং
+You will be writing,তুমি লিখতে থাকবে,ইউ উইল বি রাইটিং
+You will be working,তুমি কাজ করতে থাকবে,ইউ উইল বি ওয়ার্কিং
+You will be sleeping,তুমি ঘুমাইতে থাকবে,ইউ উইল বি স্লিপিং
+You will be drinking,তুমি পান করতে থাকবে,ইউ উইল বি ড্রিঙ্কিং
+You will be sitting,তুমি বসতে থাকবে,ইউ উইল বি সিটিং
+You will be standing,তুমি দাঁড়াইতে থাকবে,ইউ উইল বি স্ট্যান্ডিং
+You will be listening,তুমি শুনতে থাকবে,ইউ উইল বি লিসেনিং
+You will be looking,তুমি তাকাইতে থাকবে,ইউ উইল বি লুকিং
+You will be loving,তুমি ভালোবাসতে থাকবে,ইউ উইল বি লাভিং
+You will be wanting,তুমি চাইতে থাকবে,ইউ উইল বি ওয়ান্টিং
+You will be thinking,তুমি ভাবতে থাকবে,ইউ উইল বি থিংকিং
+You will be knowing,তুমি জানতে থাকবে,ইউ উইল বি নোইং
+You will be learning,তুমি শিখতে থাকবে,ইউ উইল বি লার্নিং
+You will be cooking,তুমি রান্না করতে থাকবে,ইউ উইল বি কুকিং
+You will be speaking,তুমি কথা বলতে থাকবে,ইউ উইল বি স্পিকিং
+You will be talking,তুমি কথা বলতে থাকবে,ইউ উইল বি টকিং
+You will be opening,তুমি খুলতে থাকবে,ইউ উইল বি ওপেনিং
+You will be closing,তুমি বন্ধ করতে থাকবে,ইউ উইল বি ক্লোজিং
+You will be waiting,তুমি অপেক্ষা করতে থাকবে,ইউ উইল বি ওয়েটিং
+You will be trying,তুমি চেষ্টা করতে থাকবে,ইউ উইল বি ট্রাইং
+You will be living,তুমি বাস করতে থাকবে,ইউ উইল বি লিভিং
+You will be helping,তুমি সাহায্য করতে থাকবে,ইউ উইল বি হেল্পিং
+You will be calling,তুমি ডাকতে থাকবে,ইউ উইল বি কলিং
+You will be asking,তুমি জিজ্ঞাসা করতে থাকবে,ইউ উইল বি আস্কিং
+You will be taking,তুমি নিইতে থাকবে,ইউ উইল বি টেকিং
+You will be giving,তুমি দিইতে থাকবে,ইউ উইল বি গিভিং
+You will be seeing,তুমি দেখতে থাকবে,ইউ উইল বি সিইং
+You will be hearing,তুমি শুনতে থাকবে,ইউ উইল বি হিয়ারিং
+You will be feeling,তুমি অনুভব করতে থাকবে,ইউ উইল বি ফিলিং
+You will be understanding,তুমি বুঝতে থাকবে,ইউ উইল বি আন্ডারস্ট্যান্ডিং
+You will be singing,তুমি গান করতে থাকবে,ইউ উইল বি সিংইং
+You will be swimming,তুমি সাঁতার কাটতে থাকবে,ইউ উইল বি সুইমিং
+You will be driving,তুমি গাড়ি চালাইতে থাকবে,ইউ উইল বি ড্রাইভিং
+You will be studying,তুমি পড়াশোনা করতে থাকবে,ইউ উইল বি স্টাডিইং
+You will be washing,তুমি ধুইতে থাকবে,ইউ উইল বি ওয়াশিং
+You will be watching,তুমি দেখতে থাকবে,ইউ উইল বি ওয়াচিং
+You will be buying,তুমি কিনতে থাকবে,ইউ উইল বি বাইইং
+You will be selling,তুমি বিক্রি করতে থাকবে,ইউ উইল বি সেলিং
+You will be making,তুমি তৈরি করতে থাকবে,ইউ উইল বি মেকিং
+You will be cleaning,তুমি পরিষ্কার করতে থাকবে,ইউ উইল বি ক্লিনিং
+You will be dancing,তুমি নাচতে থাকবে,ইউ উইল বি ড্যান্সিং
+You will be stopping,তুমি থামতে থাকবে,ইউ উইল বি স্টপিং
+You will be starting,তুমি শুরু করতে থাকবে,ইউ উইল বি স্টার্টিং
+You will be finishing,তুমি শেষ করতে থাকবে,ইউ উইল বি ফিনিশিং
+You will be changing,তুমি পরিবর্তন করতে থাকবে,ইউ উইল বি চেঞ্জিং
+You will be paying,তুমি পরিশোধ করতে থাকবে,ইউ উইল বি পেয়িং
+You will be using,তুমি ব্যবহার করতে থাকবে,ইউ উইল বি ইউজিং
+You will be showing,তুমি দেখাইতে থাকবে,ইউ উইল বি শোইং
+You will be telling,তুমি বলতে থাকবে,ইউ উইল বি টেলিং
+You will be leaving,তুমি ছেড়ে যাইতে থাকবে,ইউ উইল বি লিভিং
+You will be bringing,তুমি আনতে থাকবে,ইউ উইল বি ব্রিংইং
+You will be keeping,তুমি রাখতে থাকবে,ইউ উইল বি কিপিং
+You will be putting,তুমি রাখতে থাকবে,ইউ উইল বি পুটিং
+You will be finding,তুমি খুঁজে পাইতে থাকবে,ইউ উইল বি ফাইন্ডিং
+You will be forgetting,তুমি ভুলে যাইতে থাকবে,ইউ উইল বি ফরগেটিং
+You will be remembering,তুমি মনে রাখতে থাকবে,ইউ উইল বি রিমেম্বারিং
+You will be needing,তুমি প্রয়োজনতে থাকবে,ইউ উইল বি নিডিং
+You will be believing,তুমি বিশ্বাস করতে থাকবে,ইউ উইল বি বিলিভিং
+You will be agreeing,তুমি রাজতে থাকবে,ইউ উইল বি অ্যাগ্রিইং
+You will be answering,তুমি উত্তর দেইতে থাকবে,ইউ উইল বি আন্সারিং
+You will be breaking,তুমি ভাঙতে থাকবে,ইউ উইল বি ব্রেকিং
+You will be building,তুমি নির্মাণ করতে থাকবে,ইউ উইল বি বিল্ডিং
+You will be choosing,তুমি পছন্দ করতে থাকবে,ইউ উইল বি চুজিং
+You will be cutting,তুমি কাটতে থাকবে,ইউ উইল বি কাটিং
+You will be deciding,তুমি সিদ্ধান্ত নিইতে থাকবে,ইউ উইল বি ডিসাইডিং
+You will be explaining,তুমি ব্যাখ্যা করতে থাকবে,ইউ উইল বি এক্সপ্লেইনিং
+You will be falling,তুমি পড়ে যাইতে থাকবে,ইউ উইল বি ফলিং
+You will be getting,তুমি পাইতে থাকবে,ইউ উইল বি গেটিং
+You will be growing,তুমি বড় হইতে থাকবে,ইউ উইল বি গ্রোইং
+You will be hoping,তুমি আশা করতে থাকবে,ইউ উইল বি হোপিং
+You will be joining,তুমি যোগ দিইতে থাকবে,ইউ উইল বি জয়েনিং
+You will be meeting,তুমি সাক্ষাৎ করতে থাকবে,ইউ উইল বি মিটিং
+You will be sending,তুমি পাঠাইতে থাকবে,ইউ উইল বি সেন্ডিং
+You will be spending,তুমি ব্যয় করতে থাকবে,ইউ উইল বি স্পেন্ডিং
+You will be teaching,তুমি শেখাইতে থাকবে,ইউ উইল বি টিচিং
+You will be winning,তুমি জয়ী হইতে থাকবে,ইউ উইল বি উইনিং

@@ -1,0 +1,84 @@
+We will be playing,আমরা খেলতে থাকব,উই উইল বি প্লেয়িং
+We will be running,আমরা দৌড়াইতে থাকব,উই উইল বি রানিং
+We will be eating,আমরা খাইতে থাকব,উই উইল বি ইটিং
+We will be doing,আমরা করতে থাকব,উই উইল বি ডুইং
+We will be walking,আমরা হাঁটতে থাকব,উই উইল বি ওয়াকিং
+We will be going,আমরা যাইতে থাকব,উই উইল বি গোইং
+We will be coming,আমরা আসতে থাকব,উই উইল বি কামিং
+We will be reading,আমরা পড়তে থাকব,উই উইল বি রিডিং
+We will be writing,আমরা লিখতে থাকব,উই উইল বি রাইটিং
+We will be working,আমরা কাজ করতে থাকব,উই উইল বি ওয়ার্কিং
+We will be sleeping,আমরা ঘুমাইতে থাকব,উই উইল বি স্লিপিং
+We will be drinking,আমরা পান করতে থাকব,উই উইল বি ড্রিঙ্কিং
+We will be sitting,আমরা বসতে থাকব,উই উইল বি সিটিং
+We will be standing,আমরা দাঁড়াইতে থাকব,উই উইল বি স্ট্যান্ডিং
+We will be listening,আমরা শুনতে থাকব,উই উইল বি লিসেনিং
+We will be looking,আমরা তাকাইতে থাকব,উই উইল বি লুকিং
+We will be loving,আমরা ভালোবাসতে থাকব,উই উইল বি লাভিং
+We will be wanting,আমরা চাইতে থাকব,উই উইল বি ওয়ান্টিং
+We will be thinking,আমরা ভাবতে থাকব,উই উইল বি থিংকিং
+We will be knowing,আমরা জানতে থাকব,উই উইল বি নোইং
+We will be learning,আমরা শিখতে থাকব,উই উইল বি লার্নিং
+We will be cooking,আমরা রান্না করতে থাকব,উই উইল বি কুকিং
+We will be speaking,আমরা কথা বলতে থাকব,উই উইল বি স্পিকিং
+We will be talking,আমরা কথা বলতে থাকব,উই উইল বি টকিং
+We will be opening,আমরা খুলতে থাকব,উই উইল বি ওপেনিং
+We will be closing,আমরা বন্ধ করতে থাকব,উই উইল বি ক্লোজিং
+We will be waiting,আমরা অপেক্ষা করতে থাকব,উই উইল বি ওয়েটিং
+We will be trying,আমরা চেষ্টা করতে থাকব,উই উইল বি ট্রাইং
+We will be living,আমরা বাস করতে থাকব,উই উইল বি লিভিং
+We will be helping,আমরা সাহায্য করতে থাকব,উই উইল বি হেল্পিং
+We will be calling,আমরা ডাকতে থাকব,উই উইল বি কলিং
+We will be asking,আমরা জিজ্ঞাসা করতে থাকব,উই উইল বি আস্কিং
+We will be taking,আমরা নিইতে থাকব,উই উইল বি টেকিং
+We will be giving,আমরা দিইতে থাকব,উই উইল বি গিভিং
+We will be seeing,আমরা দেখতে থাকব,উই উইল বি সিইং
+We will be hearing,আমরা শুনতে থাকব,উই উইল বি হিয়ারিং
+We will be feeling,আমরা অনুভব করতে থাকব,উই উইল বি ফিলিং
+We will be understanding,আমরা বুঝতে থাকব,উই উইল বি আন্ডারস্ট্যান্ডিং
+We will be singing,আমরা গান করতে থাকব,উই উইল বি সিংইং
+We will be swimming,আমরা সাঁতার কাটতে থাকব,উই উইল বি সুইমিং
+We will be driving,আমরা গাড়ি চালাইতে থাকব,উই উইল বি ড্রাইভিং
+We will be studying,আমরা পড়াশোনা করতে থাকব,উই উইল বি স্টাডিইং
+We will be washing,আমরা ধুইতে থাকব,উই উইল বি ওয়াশিং
+We will be watching,আমরা দেখতে থাকব,উই উইল বি ওয়াচিং
+We will be buying,আমরা কিনতে থাকব,উই উইল বি বাইইং
+We will be selling,আমরা বিক্রি করতে থাকব,উই উইল বি সেলিং
+We will be making,আমরা তৈরি করতে থাকব,উই উইল বি মেকিং
+We will be cleaning,আমরা পরিষ্কার করতে থাকব,উই উইল বি ক্লিনিং
+We will be dancing,আমরা নাচতে থাকব,উই উইল বি ড্যান্সিং
+We will be stopping,আমরা থামতে থাকব,উই উইল বি স্টপিং
+We will be starting,আমরা শুরু করতে থাকব,উই উইল বি স্টার্টিং
+We will be finishing,আমরা শেষ করতে থাকব,উই উইল বি ফিনিশিং
+We will be changing,আমরা পরিবর্তন করতে থাকব,উই উইল বি চেঞ্জিং
+We will be paying,আমরা পরিশোধ করতে থাকব,উই উইল বি পেয়িং
+We will be using,আমরা ব্যবহার করতে থাকব,উই উইল বি ইউজিং
+We will be showing,আমরা দেখাইতে থাকব,উই উইল বি শোইং
+We will be telling,আমরা বলতে থাকব,উই উইল বি টেলিং
+We will be leaving,আমরা ছেড়ে যাইতে থাকব,উই উইল বি লিভিং
+We will be bringing,আমরা আনতে থাকব,উই উইল বি ব্রিংইং
+We will be keeping,আমরা রাখতে থাকব,উই উইল বি কিপিং
+We will be putting,আমরা রাখতে থাকব,উই উইল বি পুটিং
+We will be finding,আমরা খুঁজে পাইতে থাকব,উই উইল বি ফাইন্ডিং
+We will be forgetting,আমরা ভুলে যাইতে থাকব,উই উইল বি ফরগেটিং
+We will be remembering,আমরা মনে রাখতে থাকব,উই উইল বি রিমেম্বারিং
+We will be needing,আমরা প্রয়োজনতে থাকব,উই উইল বি নিডিং
+We will be believing,আমরা বিশ্বাস করতে থাকব,উই উইল বি বিলিভিং
+We will be agreeing,আমরা রাজতে থাকব,উই উইল বি অ্যাগ্রিইং
+We will be answering,আমরা উত্তর দেইতে থাকব,উই উইল বি আন্সারিং
+We will be breaking,আমরা ভাঙতে থাকব,উই উইল বি ব্রেকিং
+We will be building,আমরা নির্মাণ করতে থাকব,উই উইল বি বিল্ডিং
+We will be choosing,আমরা পছন্দ করতে থাকব,উই উইল বি চুজিং
+We will be cutting,আমরা কাটতে থাকব,উই উইল বি কাটিং
+We will be deciding,আমরা সিদ্ধান্ত নিইতে থাকব,উই উইল বি ডিসাইডিং
+We will be explaining,আমরা ব্যাখ্যা করতে থাকব,উই উইল বি এক্সপ্লেইনিং
+We will be falling,আমরা পড়ে যাইতে থাকব,উই উইল বি ফলিং
+We will be getting,আমরা পাইতে থাকব,উই উইল বি গেটিং
+We will be growing,আমরা বড় হইতে থাকব,উই উইল বি গ্রোইং
+We will be hoping,আমরা আশা করতে থাকব,উই উইল বি হোপিং
+We will be joining,আমরা যোগ দিইতে থাকব,উই উইল বি জয়েনিং
+We will be meeting,আমরা সাক্ষাৎ করতে থাকব,উই উইল বি মিটিং
+We will be sending,আমরা পাঠাইতে থাকব,উই উইল বি সেন্ডিং
+We will be spending,আমরা ব্যয় করতে থাকব,উই উইল বি স্পেন্ডিং
+We will be teaching,আমরা শেখাইতে থাকব,উই উইল বি টিচিং
+We will be winning,আমরা জয়ী হইতে থাকব,উই উইল বি উইনিং

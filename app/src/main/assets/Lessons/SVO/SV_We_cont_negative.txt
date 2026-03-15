@@ -1,0 +1,84 @@
+We aren't playing,আমরা খেলছি না,উই আরন্ট প্লেয়িং
+We aren't running,আমরা দৌড়াচ্ছি না,উই আরন্ট রানিং
+We aren't eating,আমরা খাচ্ছি না,উই আরন্ট ইটিং
+We aren't doing,আমরা করছি না,উই আরন্ট ডুইং
+We aren't walking,আমরা হাঁটছি না,উই আরন্ট ওয়াকিং
+We aren't going,আমরা যাচ্ছি না,উই আরন্ট গোইং
+We aren't coming,আমরা আসছি না,উই আরন্ট কামিং
+We aren't reading,আমরা পড়ছি না,উই আরন্ট রিডিং
+We aren't writing,আমরা লিখছি না,উই আরন্ট রাইটিং
+We aren't working,আমরা কাজ করছি না,উই আরন্ট ওয়ার্কিং
+We aren't sleeping,আমরা ঘুমাচ্ছি না,উই আরন্ট স্লিপিং
+We aren't drinking,আমরা পান করছি না,উই আরন্ট ড্রিঙ্কিং
+We aren't sitting,আমরা বসছি না,উই আরন্ট সিটিং
+We aren't standing,আমরা দাঁড়াচ্ছি না,উই আরন্ট স্ট্যান্ডিং
+We aren't listening,আমরা শুনছি না,উই আরন্ট লিসেনিং
+We aren't looking,আমরা তাকাচ্ছি না,উই আরন্ট লুকিং
+We aren't loving,আমরা ভালোবাসছি না,উই আরন্ট লাভিং
+We aren't wanting,আমরা চাইছি না,উই আরন্ট ওয়ান্টিং
+We aren't thinking,আমরা ভাবছি না,উই আরন্ট থিংকিং
+We aren't knowing,আমরা জানছি না,উই আরন্ট নোইং
+We aren't learning,আমরা শিখছি না,উই আরন্ট লার্নিং
+We aren't cooking,আমরা রান্না করছি না,উই আরন্ট কুকিং
+We aren't speaking,আমরা কথা বলছি না,উই আরন্ট স্পিকিং
+We aren't talking,আমরা কথা বলছি না,উই আরন্ট টকিং
+We aren't opening,আমরা খুলছি না,উই আরন্ট ওপেনিং
+We aren't closing,আমরা বন্ধ করছি না,উই আরন্ট ক্লোজিং
+We aren't waiting,আমরা অপেক্ষা করছি না,উই আরন্ট ওয়েটিং
+We aren't trying,আমরা চেষ্টা করছি না,উই আরন্ট ট্রাইং
+We aren't living,আমরা বাস করছি না,উই আরন্ট লিভিং
+We aren't helping,আমরা সাহায্য করছি না,উই আরন্ট হেল্পিং
+We aren't calling,আমরা ডাকছি না,উই আরন্ট কলিং
+We aren't asking,আমরা জিজ্ঞাসা করছি না,উই আরন্ট আস্কিং
+We aren't taking,আমরা নিচ্ছি না,উই আরন্ট টেকিং
+We aren't giving,আমরা দিচ্ছি না,উই আরন্ট গিভিং
+We aren't seeing,আমরা দেখছি না,উই আরন্ট সিইং
+We aren't hearing,আমরা শুনছি না,উই আরন্ট হিয়ারিং
+We aren't feeling,আমরা অনুভব করছি না,উই আরন্ট ফিলিং
+We aren't understanding,আমরা বুঝছি না,উই আরন্ট আন্ডারস্ট্যান্ডিং
+We aren't singing,আমরা গান করছি না,উই আরন্ট সিংইং
+We aren't swimming,আমরা সাঁতার কাটছি না,উই আরন্ট সুইমিং
+We aren't driving,আমরা গাড়ি চালাচ্ছি না,উই আরন্ট ড্রাইভিং
+We aren't studying,আমরা পড়াশোনা করছি না,উই আরন্ট স্টাডিইং
+We aren't washing,আমরা ধুছি না,উই আরন্ট ওয়াশিং
+We aren't watching,আমরা দেখছি না,উই আরন্ট ওয়াচিং
+We aren't buying,আমরা কিনছি না,উই আরন্ট বাইইং
+We aren't selling,আমরা বিক্রি করছি না,উই আরন্ট সেলিং
+We aren't making,আমরা তৈরি করছি না,উই আরন্ট মেকিং
+We aren't cleaning,আমরা পরিষ্কার করছি না,উই আরন্ট ক্লিনিং
+We aren't dancing,আমরা নাচছি না,উই আরন্ট ড্যান্সিং
+We aren't stopping,আমরা থামছি না,উই আরন্ট স্টপিং
+We aren't starting,আমরা শুরু করছি না,উই আরন্ট স্টার্টিং
+We aren't finishing,আমরা শেষ করছি না,উই আরন্ট ফিনিশিং
+We aren't changing,আমরা পরিবর্তন করছি না,উই আরন্ট চেঞ্জিং
+We aren't paying,আমরা পরিশোধ করছি না,উই আরন্ট পেয়িং
+We aren't using,আমরা ব্যবহার করছি না,উই আরন্ট ইউজিং
+We aren't showing,আমরা দেখাচ্ছি না,উই আরন্ট শোইং
+We aren't telling,আমরা বলছি না,উই আরন্ট টেলিং
+We aren't leaving,আমরা ছেড়ে যাচ্ছি না,উই আরন্ট লিভিং
+We aren't bringing,আমরা আনছি না,উই আরন্ট ব্রিংইং
+We aren't keeping,আমরা রাখছি না,উই আরন্ট কিপিং
+We aren't putting,আমরা রাখছি না,উই আরন্ট পুটিং
+We aren't finding,আমরা খুঁজে পাচ্ছি না,উই আরন্ট ফাইন্ডিং
+We aren't forgetting,আমরা ভুলে যাচ্ছি না,উই আরন্ট ফরগেটিং
+We aren't remembering,আমরা মনে রাখছি না,উই আরন্ট রিমেম্বারিং
+We aren't needing,আমার প্রয়োজন হচ্ছে না,উই আরন্ট নিডিং
+We aren't believing,আমরা বিশ্বাস করছি না,উই আরন্ট বিলিভিং
+We aren't agreeing,আমরা রাজি হচ্ছি না,উই আরন্ট অ্যাগ্রিইং
+We aren't answering,আমরা উত্তর দিচ্ছি না,উই আরন্ট আন্সারিং
+We aren't breaking,আমরা ভাঙছি না,উই আরন্ট ব্রেকিং
+We aren't building,আমরা নির্মাণ করছি না,উই আরন্ট বিল্ডিং
+We aren't choosing,আমরা পছন্দ করছি না,উই আরন্ট চুজিং
+We aren't cutting,আমরা কাটছি না,উই আরন্ট কাটিং
+We aren't deciding,আমরা সিদ্ধান্ত নিচ্ছি না,উই আরন্ট ডিসাইডিং
+We aren't explaining,আমরা ব্যাখ্যা করছি না,উই আরন্ট এক্সপ্লেইনিং
+We aren't falling,আমরা পড়ে যাচ্ছি না,উই আরন্ট ফলিং
+We aren't getting,আমরা পাচ্ছি না,উই আরন্ট গেটিং
+We aren't growing,আমরা বড় হচ্ছি না,উই আরন্ট গ্রোইং
+We aren't hoping,আমরা আশা করছি না,উই আরন্ট হোপিং
+We aren't joining,আমরা যোগ দিচ্ছি না,উই আরন্ট জয়েনিং
+We aren't meeting,আমরা সাক্ষাৎ করছি না,উই আরন্ট মিটিং
+We aren't sending,আমরা পাঠাচ্ছি না,উই আরন্ট সেন্ডিং
+We aren't spending,আমরা ব্যয় করছি না,উই আরন্ট স্পেন্ডিং
+We aren't teaching,আমরা শেখাচ্ছি না,উই আরন্ট টিচিং
+We aren't winning,আমরা জয়ী হচ্ছি না,উই আরন্ট উইনিং

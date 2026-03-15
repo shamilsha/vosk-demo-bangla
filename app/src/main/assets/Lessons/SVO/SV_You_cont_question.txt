@@ -1,0 +1,84 @@
+Are You playing?,তুমি কি খেলছো?,আর ইউ প্লেয়িং
+Are You running?,তুমি কি দৌড়াচ্ছো?,আর ইউ রানিং
+Are You eating?,তুমি কি খাচ্ছো?,আর ইউ ইটিং
+Are You doing?,তুমি কি করছো?,আর ইউ ডুইং
+Are You walking?,তুমি কি হাঁটছো?,আর ইউ ওয়াকিং
+Are You going?,তুমি কি যাচ্ছো?,আর ইউ গোইং
+Are You coming?,তুমি কি আসছো?,আর ইউ কামিং
+Are You reading?,তুমি কি পড়ছো?,আর ইউ রিডিং
+Are You writing?,তুমি কি লিখছো?,আর ইউ রাইটিং
+Are You working?,তুমি কি কাজ করছো?,আর ইউ ওয়ার্কিং
+Are You sleeping?,তুমি কি ঘুমাচ্ছো?,আর ইউ স্লিপিং
+Are You drinking?,তুমি কি পান করছো?,আর ইউ ড্রিঙ্কিং
+Are You sitting?,তুমি কি বসছো?,আর ইউ সিটিং
+Are You standing?,তুমি কি দাঁড়াচ্ছো?,আর ইউ স্ট্যান্ডিং
+Are You listening?,তুমি কি শুনছো?,আর ইউ লিসেনিং
+Are You looking?,তুমি কি তাকাচ্ছো?,আর ইউ লুকিং
+Are You loving?,তুমি কি ভালোবাসছো?,আর ইউ লাভিং
+Are You wanting?,তুমি কি চাইছো?,আর ইউ ওয়ান্টিং
+Are You thinking?,তুমি কি ভাবছো?,আর ইউ থিংকিং
+Are You knowing?,তুমি কি জানছো?,আর ইউ নোইং
+Are You learning?,তুমি কি শিখছো?,আর ইউ লার্নিং
+Are You cooking?,তুমি কি রান্না করছো?,আর ইউ কুকিং
+Are You speaking?,তুমি কি কথা বলছো?,আর ইউ স্পিকিং
+Are You talking?,তুমি কি কথা বলছো?,আর ইউ টকিং
+Are You opening?,তুমি কি খুলছো?,আর ইউ ওপেনিং
+Are You closing?,তুমি কি বন্ধ করছো?,আর ইউ ক্লোজিং
+Are You waiting?,তুমি কি অপেক্ষা করছো?,আর ইউ ওয়েটিং
+Are You trying?,তুমি কি চেষ্টা করছো?,আর ইউ ট্রাইং
+Are You living?,তুমি কি বাস করছো?,আর ইউ লিভিং
+Are You helping?,তুমি কি সাহায্য করছো?,আর ইউ হেল্পিং
+Are You calling?,তুমি কি ডাকছো?,আর ইউ কলিং
+Are You asking?,তুমি কি জিজ্ঞাসা করছো?,আর ইউ আস্কিং
+Are You taking?,তুমি কি নিচ্ছো?,আর ইউ টেকিং
+Are You giving?,তুমি কি দিচ্ছো?,আর ইউ গিভিং
+Are You seeing?,তুমি কি দেখছো?,আর ইউ সিইং
+Are You hearing?,তুমি কি শুনছো?,আর ইউ হিয়ারিং
+Are You feeling?,তুমি কি অনুভব করছো?,আর ইউ ফিলিং
+Are You understanding?,তুমি কি বুঝছো?,আর ইউ আন্ডারস্ট্যান্ডিং
+Are You singing?,তুমি কি গান করছো?,আর ইউ সিংইং
+Are You swimming?,তুমি কি সাঁতার কাটছো?,আর ইউ সুইমিং
+Are You driving?,তুমি কি গাড়ি চালাচ্ছো?,আর ইউ ড্রাইভিং
+Are You studying?,তুমি কি পড়াশোনা করছো?,আর ইউ স্টাডিইং
+Are You washing?,তুমি কি ধুছো?,আর ইউ ওয়াশিং
+Are You watching?,তুমি কি দেখছো?,আর ইউ ওয়াচিং
+Are You buying?,তুমি কি কিনছো?,আর ইউ বাইইং
+Are You selling?,তুমি কি বিক্রি করছো?,আর ইউ সেলিং
+Are You making?,তুমি কি তৈরি করছো?,আর ইউ মেকিং
+Are You cleaning?,তুমি কি পরিষ্কার করছো?,আর ইউ ক্লিনিং
+Are You dancing?,তুমি কি নাচছো?,আর ইউ ড্যান্সিং
+Are You stopping?,তুমি কি থামছো?,আর ইউ স্টপিং
+Are You starting?,তুমি কি শুরু করছো?,আর ইউ স্টার্টিং
+Are You finishing?,তুমি কি শেষ করছো?,আর ইউ ফিনিশিং
+Are You changing?,তুমি কি পরিবর্তন করছো?,আর ইউ চেঞ্জিং
+Are You paying?,তুমি কি পরিশোধ করছো?,আর ইউ পেয়িং
+Are You using?,তুমি কি ব্যবহার করছো?,আর ইউ ইউজিং
+Are You showing?,তুমি কি দেখাচ্ছো?,আর ইউ শোইং
+Are You telling?,তুমি কি বলছো?,আর ইউ টেলিং
+Are You leaving?,তুমি কি ছেড়ে যাচ্ছো?,আর ইউ লিভিং
+Are You bringing?,তুমি কি আনছো?,আর ইউ ব্রিংইং
+Are You keeping?,তুমি কি রাখছো?,আর ইউ কিপিং
+Are You putting?,তুমি কি রাখছো?,আর ইউ পুটিং
+Are You finding?,তুমি কি খুঁজে পাচ্ছো?,আর ইউ ফাইন্ডিং
+Are You forgetting?,তুমি কি ভুলে যাচ্ছো?,আর ইউ ফরগেটিং
+Are You remembering?,তুমি কি মনে রাখছো?,আর ইউ রিমেম্বারিং
+Are You needing?,আমার কি প্রয়োজন হচ্ছে?,আর ইউ নিডিং
+Are You believing?,তুমি কি বিশ্বাস করছো?,আর ইউ বিলিভিং
+Are You agreeing?,তুমি কি রাজি হচ্ছো?,আর ইউ অ্যাগ্রিইং
+Are You answering?,তুমি কি উত্তর দিচ্ছো?,আর ইউ আন্সারিং
+Are You breaking?,তুমি কি ভাঙছো?,আর ইউ ব্রেকিং
+Are You building?,তুমি কি নির্মাণ করছো?,আর ইউ বিল্ডিং
+Are You choosing?,তুমি কি পছন্দ করছো?,আর ইউ চুজিং
+Are You cutting?,তুমি কি কাটছো?,আর ইউ কাটিং
+Are You deciding?,তুমি কি সিদ্ধান্ত নিচ্ছো?,আর ইউ ডিসাইডিং
+Are You explaining?,তুমি কি ব্যাখ্যা করছো?,আর ইউ এক্সপ্লেইনিং
+Are You falling?,তুমি কি পড়ে যাচ্ছো?,আর ইউ ফলিং
+Are You getting?,তুমি কি পাচ্ছো?,আর ইউ গেটিং
+Are You growing?,তুমি কি বড় হচ্ছো?,আর ইউ গ্রোইং
+Are You hoping?,তুমি কি আশা করছো?,আর ইউ হোপিং
+Are You joining?,তুমি কি যোগ দিচ্ছো?,আর ইউ জয়েনিং
+Are You meeting?,তুমি কি সাক্ষাৎ করছো?,আর ইউ মিটিং
+Are You sending?,তুমি কি পাঠাচ্ছো?,আর ইউ সেন্ডিং
+Are You spending?,তুমি কি ব্যয় করছো?,আর ইউ স্পেন্ডিং
+Are You teaching?,তুমি কি শেখাচ্ছো?,আর ইউ টিচিং
+Are You winning?,তুমি কি জয়ী হচ্ছো?,আর ইউ উইনিং

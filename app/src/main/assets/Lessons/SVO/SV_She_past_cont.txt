@@ -1,0 +1,84 @@
+She was playing,সে খেলছিল,শি ওয়াজ প্লেয়িং
+She was running,সে দৌড়াচ্ছিল,শি ওয়াজ রানিং
+She was eating,সে খাচ্ছিল,শি ওয়াজ ইটিং
+She was doing,সে করছিল,শি ওয়াজ ডুইং
+She was walking,সে হাঁটছিল,শি ওয়াজ ওয়াকিং
+She was going,সে যাচ্ছিল,শি ওয়াজ গোইং
+She was coming,সে আসছিল,শি ওয়াজ কামিং
+She was reading,সে পড়ছিল,শি ওয়াজ রিডিং
+She was writing,সে লিখছিল,শি ওয়াজ রাইটিং
+She was working,সে কাজ করছিল,শি ওয়াজ ওয়ার্কিং
+She was sleeping,সে ঘুমাচ্ছিল,শি ওয়াজ স্লিপিং
+She was drinking,সে পান করছিল,শি ওয়াজ ড্রিঙ্কিং
+She was sitting,সে বসছিল,শি ওয়াজ সিটিং
+She was standing,সে দাঁড়াচ্ছিল,শি ওয়াজ স্ট্যান্ডিং
+She was listening,সে শুনছিল,শি ওয়াজ লিসেনিং
+She was looking,সে তাকাচ্ছিল,শি ওয়াজ লুকিং
+She was loving,সে ভালোবাসছিল,শি ওয়াজ লাভিং
+She was wanting,সে চাইছিল,শি ওয়াজ ওয়ান্টিং
+She was thinking,সে ভাবছিল,শি ওয়াজ থিংকিং
+She was knowing,সে জানছিল,শি ওয়াজ নোইং
+She was learning,সে শিখছিল,শি ওয়াজ লার্নিং
+She was cooking,সে রান্না করছিল,শি ওয়াজ কুকিং
+She was speaking,সে কথা বলছিল,শি ওয়াজ স্পিকিং
+She was talking,সে কথা বলছিল,শি ওয়াজ টকিং
+She was opening,সে খুলছিল,শি ওয়াজ ওপেনিং
+She was closing,সে বন্ধ করছিল,শি ওয়াজ ক্লোজিং
+She was waiting,সে অপেক্ষা করছিল,শি ওয়াজ ওয়েটিং
+She was trying,সে চেষ্টা করছিল,শি ওয়াজ ট্রাইং
+She was living,সে বাস করছিল,শি ওয়াজ লিভিং
+She was helping,সে সাহায্য করছিল,শি ওয়াজ হেল্পিং
+She was calling,সে ডাকছিল,শি ওয়াজ কলিং
+She was asking,সে জিজ্ঞাসা করছিল,শি ওয়াজ আস্কিং
+She was taking,সে নিচ্ছিল,শি ওয়াজ টেকিং
+She was giving,সে দিচ্ছিল,শি ওয়াজ গিভিং
+She was seeing,সে দেখছিল,শি ওয়াজ সিইং
+She was hearing,সে শুনছিল,শি ওয়াজ হিয়ারিং
+She was feeling,সে অনুভব করছিল,শি ওয়াজ ফিলিং
+She was understanding,সে বুঝছিল,শি ওয়াজ আন্ডারস্ট্যান্ডিং
+She was singing,সে গান করছিল,শি ওয়াজ সিংইং
+She was swimming,সে সাঁতার কাটছিল,শি ওয়াজ সুইমিং
+She was driving,সে গাড়ি চালাচ্ছিল,শি ওয়াজ ড্রাইভিং
+She was studying,সে পড়াশোনা করছিল,শি ওয়াজ স্টাডিইং
+She was washing,সে ধুছিল,শি ওয়াজ ওয়াশিং
+She was watching,সে দেখছিল,শি ওয়াজ ওয়াচিং
+She was buying,সে কিনছিল,শি ওয়াজ বাইইং
+She was selling,সে বিক্রি করছিল,শি ওয়াজ সেলিং
+She was making,সে তৈরি করছিল,শি ওয়াজ মেকিং
+She was cleaning,সে পরিষ্কার করছিল,শি ওয়াজ ক্লিনিং
+She was dancing,সে নাচছিল,শি ওয়াজ ড্যান্সিং
+She was stopping,সে থামছিল,শি ওয়াজ স্টপিং
+She was starting,সে শুরু করছিল,শি ওয়াজ স্টার্টিং
+She was finishing,সে শেষ করছিল,শি ওয়াজ ফিনিশিং
+She was changing,সে পরিবর্তন করছিল,শি ওয়াজ চেঞ্জিং
+She was paying,সে পরিশোধ করছিল,শি ওয়াজ পেয়িং
+She was using,সে ব্যবহার করছিল,শি ওয়াজ ইউজিং
+She was showing,সে দেখাচ্ছিল,শি ওয়াজ শোইং
+She was telling,সে বলছিল,শি ওয়াজ টেলিং
+She was leaving,সে ছেড়ে যাচ্ছিল,শি ওয়াজ লিভিং
+She was bringing,সে আনছিল,শি ওয়াজ ব্রিংইং
+She was keeping,সে রাখছিল,শি ওয়াজ কিপিং
+She was putting,সে রাখছিল,শি ওয়াজ পুটিং
+She was finding,সে খুঁজে পাচ্ছিল,শি ওয়াজ ফাইন্ডিং
+She was forgetting,সে ভুলে যাচ্ছিল,শি ওয়াজ ফরগেটিং
+She was remembering,সে মনে রাখছিল,শি ওয়াজ রিমেম্বারিং
+She was needing,আমার প্রয়োজন হচ্ছিল,শি ওয়াজ নিডিং
+She was believing,সে বিশ্বাস করছিল,শি ওয়াজ বিলিভিং
+She was agreeing,সে রাজি হচ্ছিল,শি ওয়াজ অ্যাগ্রিইং
+She was answering,সে উত্তর দিচ্ছিল,শি ওয়াজ আন্সারিং
+She was breaking,সে ভাঙছিল,শি ওয়াজ ব্রেকিং
+She was building,সে নির্মাণ করছিল,শি ওয়াজ বিল্ডিং
+She was choosing,সে পছন্দ করছিল,শি ওয়াজ চুজিং
+She was cutting,সে কাটছিল,শি ওয়াজ কাটিং
+She was deciding,সে সিদ্ধান্ত নিচ্ছিল,শি ওয়াজ ডিসাইডিং
+She was explaining,সে ব্যাখ্যা করছিল,শি ওয়াজ এক্সপ্লেইনিং
+She was falling,সে পড়ে যাচ্ছিল,শি ওয়াজ ফলিং
+She was getting,সে পাচ্ছিল,শি ওয়াজ গেটিং
+She was growing,সে বড় হচ্ছিল,শি ওয়াজ গ্রোইং
+She was hoping,সে আশা করছিল,শি ওয়াজ হোপিং
+She was joining,সে যোগ দিচ্ছিল,শি ওয়াজ জয়েনিং
+She was meeting,সে সাক্ষাৎ করছিল,শি ওয়াজ মিটিং
+She was sending,সে পাঠাচ্ছিল,শি ওয়াজ সেন্ডিং
+She was spending,সে ব্যয় করছিল,শি ওয়াজ স্পেন্ডিং
+She was teaching,সে শেখাচ্ছিল,শি ওয়াজ টিচিং
+She was winning,সে জয়ী হচ্ছিল,শি ওয়াজ উইনিং

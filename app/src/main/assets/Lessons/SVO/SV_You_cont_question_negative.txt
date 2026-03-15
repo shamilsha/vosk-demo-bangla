@@ -1,0 +1,84 @@
+Aren't You playing?,তুমি কি খেলছো না?,আরন্ট ইউ প্লেয়িং
+Aren't You running?,তুমি কি দৌড়াচ্ছো না?,আরন্ট ইউ রানিং
+Aren't You eating?,তুমি কি খাচ্ছো না?,আরন্ট ইউ ইটিং
+Aren't You doing?,তুমি কি করছো না?,আরন্ট ইউ ডুইং
+Aren't You walking?,তুমি কি হাঁটছো না?,আরন্ট ইউ ওয়াকিং
+Aren't You going?,তুমি কি যাচ্ছো না?,আরন্ট ইউ গোইং
+Aren't You coming?,তুমি কি আসছো না?,আরন্ট ইউ কামিং
+Aren't You reading?,তুমি কি পড়ছো না?,আরন্ট ইউ রিডিং
+Aren't You writing?,তুমি কি লিখছো না?,আরন্ট ইউ রাইটিং
+Aren't You working?,তুমি কি কাজ করছো না?,আরন্ট ইউ ওয়ার্কিং
+Aren't You sleeping?,তুমি কি ঘুমাচ্ছো না?,আরন্ট ইউ স্লিপিং
+Aren't You drinking?,তুমি কি পান করছো না?,আরন্ট ইউ ড্রিঙ্কিং
+Aren't You sitting?,তুমি কি বসছো না?,আরন্ট ইউ সিটিং
+Aren't You standing?,তুমি কি দাঁড়াচ্ছো না?,আরন্ট ইউ স্ট্যান্ডিং
+Aren't You listening?,তুমি কি শুনছো না?,আরন্ট ইউ লিসেনিং
+Aren't You looking?,তুমি কি তাকাচ্ছো না?,আরন্ট ইউ লুকিং
+Aren't You loving?,তুমি কি ভালোবাসছো না?,আরন্ট ইউ লাভিং
+Aren't You wanting?,তুমি কি চাইছো না?,আরন্ট ইউ ওয়ান্টিং
+Aren't You thinking?,তুমি কি ভাবছো না?,আরন্ট ইউ থিংকিং
+Aren't You knowing?,তুমি কি জানছো না?,আরন্ট ইউ নোইং
+Aren't You learning?,তুমি কি শিখছো না?,আরন্ট ইউ লার্নিং
+Aren't You cooking?,তুমি কি রান্না করছো না?,আরন্ট ইউ কুকিং
+Aren't You speaking?,তুমি কি কথা বলছো না?,আরন্ট ইউ স্পিকিং
+Aren't You talking?,তুমি কি কথা বলছো না?,আরন্ট ইউ টকিং
+Aren't You opening?,তুমি কি খুলছো না?,আরন্ট ইউ ওপেনিং
+Aren't You closing?,তুমি কি বন্ধ করছো না?,আরন্ট ইউ ক্লোজিং
+Aren't You waiting?,তুমি কি অপেক্ষা করছো না?,আরন্ট ইউ ওয়েটিং
+Aren't You trying?,তুমি কি চেষ্টা করছো না?,আরন্ট ইউ ট্রাইং
+Aren't You living?,তুমি কি বাস করছো না?,আরন্ট ইউ লিভিং
+Aren't You helping?,তুমি কি সাহায্য করছো না?,আরন্ট ইউ হেল্পিং
+Aren't You calling?,তুমি কি ডাকছো না?,আরন্ট ইউ কলিং
+Aren't You asking?,তুমি কি জিজ্ঞাসা করছো না?,আরন্ট ইউ আস্কিং
+Aren't You taking?,তুমি কি নিচ্ছো না?,আরন্ট ইউ টেকিং
+Aren't You giving?,তুমি কি দিচ্ছো না?,আরন্ট ইউ গিভিং
+Aren't You seeing?,তুমি কি দেখছো না?,আরন্ট ইউ সিইং
+Aren't You hearing?,তুমি কি শুনছো না?,আরন্ট ইউ হিয়ারিং
+Aren't You feeling?,তুমি কি অনুভব করছো না?,আরন্ট ইউ ফিলিং
+Aren't You understanding?,তুমি কি বুঝছো না?,আরন্ট ইউ আন্ডারস্ট্যান্ডিং
+Aren't You singing?,তুমি কি গান করছো না?,আরন্ট ইউ সিংইং
+Aren't You swimming?,তুমি কি সাঁতার কাটছো না?,আরন্ট ইউ সুইমিং
+Aren't You driving?,তুমি কি গাড়ি চালাচ্ছো না?,আরন্ট ইউ ড্রাইভিং
+Aren't You studying?,তুমি কি পড়াশোনা করছো না?,আরন্ট ইউ স্টাডিইং
+Aren't You washing?,তুমি কি ধুছো না?,আরন্ট ইউ ওয়াশিং
+Aren't You watching?,তুমি কি দেখছো না?,আরন্ট ইউ ওয়াচিং
+Aren't You buying?,তুমি কি কিনছো না?,আরন্ট ইউ বাইইং
+Aren't You selling?,তুমি কি বিক্রি করছো না?,আরন্ট ইউ সেলিং
+Aren't You making?,তুমি কি তৈরি করছো না?,আরন্ট ইউ মেকিং
+Aren't You cleaning?,তুমি কি পরিষ্কার করছো না?,আরন্ট ইউ ক্লিনিং
+Aren't You dancing?,তুমি কি নাচছো না?,আরন্ট ইউ ড্যান্সিং
+Aren't You stopping?,তুমি কি থামছো না?,আরন্ট ইউ স্টপিং
+Aren't You starting?,তুমি কি শুরু করছো না?,আরন্ট ইউ স্টার্টিং
+Aren't You finishing?,তুমি কি শেষ করছো না?,আরন্ট ইউ ফিনিশিং
+Aren't You changing?,তুমি কি পরিবর্তন করছো না?,আরন্ট ইউ চেঞ্জিং
+Aren't You paying?,তুমি কি পরিশোধ করছো না?,আরন্ট ইউ পেয়িং
+Aren't You using?,তুমি কি ব্যবহার করছো না?,আরন্ট ইউ ইউজিং
+Aren't You showing?,তুমি কি দেখাচ্ছো না?,আরন্ট ইউ শোইং
+Aren't You telling?,তুমি কি বলছো না?,আরন্ট ইউ টেলিং
+Aren't You leaving?,তুমি কি ছেড়ে যাচ্ছো না?,আরন্ট ইউ লিভিং
+Aren't You bringing?,তুমি কি আনছো না?,আরন্ট ইউ ব্রিংইং
+Aren't You keeping?,তুমি কি রাখছো না?,আরন্ট ইউ কিপিং
+Aren't You putting?,তুমি কি রাখছো না?,আরন্ট ইউ পুটিং
+Aren't You finding?,তুমি কি খুঁজে পাচ্ছো না?,আরন্ট ইউ ফাইন্ডিং
+Aren't You forgetting?,তুমি কি ভুলে যাচ্ছো না?,আরন্ট ইউ ফরগেটিং
+Aren't You remembering?,তুমি কি মনে রাখছো না?,আরন্ট ইউ রিমেম্বারিং
+Aren't You needing?,আমার কি প্রয়োজন হচ্ছে না?,আরন্ট ইউ নিডিং
+Aren't You believing?,তুমি কি বিশ্বাস করছো না?,আরন্ট ইউ বিলিভিং
+Aren't You agreeing?,তুমি কি রাজি হচ্ছো না?,আরন্ট ইউ অ্যাগ্রিইং
+Aren't You answering?,তুমি কি উত্তর দিচ্ছো না?,আরন্ট ইউ আন্সারিং
+Aren't You breaking?,তুমি কি ভাঙছো না?,আরন্ট ইউ ব্রেকিং
+Aren't You building?,তুমি কি নির্মাণ করছো না?,আরন্ট ইউ বিল্ডিং
+Aren't You choosing?,তুমি কি পছন্দ করছো না?,আরন্ট ইউ চুজিং
+Aren't You cutting?,তুমি কি কাটছো না?,আরন্ট ইউ কাটিং
+Aren't You deciding?,তুমি কি সিদ্ধান্ত নিচ্ছো না?,আরন্ট ইউ ডিসাইডিং
+Aren't You explaining?,তুমি কি ব্যাখ্যা করছো না?,আরন্ট ইউ এক্সপ্লেইনিং
+Aren't You falling?,তুমি কি পড়ে যাচ্ছো না?,আরন্ট ইউ ফলিং
+Aren't You getting?,তুমি কি পাচ্ছো না?,আরন্ট ইউ গেটিং
+Aren't You growing?,তুমি কি বড় হচ্ছো না?,আরন্ট ইউ গ্রোইং
+Aren't You hoping?,তুমি কি আশা করছো না?,আরন্ট ইউ হোপিং
+Aren't You joining?,তুমি কি যোগ দিচ্ছো না?,আরন্ট ইউ জয়েনিং
+Aren't You meeting?,তুমি কি সাক্ষাৎ করছো না?,আরন্ট ইউ মিটিং
+Aren't You sending?,তুমি কি পাঠাচ্ছো না?,আরন্ট ইউ সেন্ডিং
+Aren't You spending?,তুমি কি ব্যয় করছো না?,আরন্ট ইউ স্পেন্ডিং
+Aren't You teaching?,তুমি কি শেখাচ্ছো না?,আরন্ট ইউ টিচিং
+Aren't You winning?,তুমি কি জয়ী হচ্ছো না?,আরন্ট ইউ উইনিং

@@ -1,0 +1,10 @@
+What is your name?,তোমার নাম কি?,হোয়াট ইজ ইয়োর নেম?
+What are you doing?,তুমি কি করছো?,হোয়াট আর ইউ ডুয়িং?
+What happened?,কি হয়েছে?,হোয়াট হ্যাপেন্ড?
+What do you want?,তুমি কি চাও?,হোয়াট ডু ইউ ওয়ান্ট?
+What is the time?,এখন সময় কত?,হোয়াট ইজ দ্য টাইম?
+What is this called?,এটাকে কি বলা হয়?,হোয়াট ইজ দিস কল্ড?
+What is your hobby?,তোমার শখ কি?,হোয়াট ইজ ইয়োর হবি?
+What did you say?,তুমি কি বললে?,হোয়াট ডিড ইউ সে?
+What are you looking for?,তুমি কি খুঁজছো?,হোয়াট আর ইউ লুকিং ফর?
+What is the matter?,ব্যাপারটা কি?,হোয়াট ইজ দ্য ম্যাটার?

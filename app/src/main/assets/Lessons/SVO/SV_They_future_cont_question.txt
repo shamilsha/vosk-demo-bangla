@@ -1,0 +1,84 @@
+Will They be playing?,তারা কি খেলতে থাকবে?,উইল দে বি প্লেয়িং
+Will They be running?,তারা কি দৌড়াইতে থাকবে?,উইল দে বি রানিং
+Will They be eating?,তারা কি খাইতে থাকবে?,উইল দে বি ইটিং
+Will They be doing?,তারা কি করতে থাকবে?,উইল দে বি ডুইং
+Will They be walking?,তারা কি হাঁটতে থাকবে?,উইল দে বি ওয়াকিং
+Will They be going?,তারা কি যাইতে থাকবে?,উইল দে বি গোইং
+Will They be coming?,তারা কি আসতে থাকবে?,উইল দে বি কামিং
+Will They be reading?,তারা কি পড়তে থাকবে?,উইল দে বি রিডিং
+Will They be writing?,তারা কি লিখতে থাকবে?,উইল দে বি রাইটিং
+Will They be working?,তারা কি কাজ করতে থাকবে?,উইল দে বি ওয়ার্কিং
+Will They be sleeping?,তারা কি ঘুমাইতে থাকবে?,উইল দে বি স্লিপিং
+Will They be drinking?,তারা কি পান করতে থাকবে?,উইল দে বি ড্রিঙ্কিং
+Will They be sitting?,তারা কি বসতে থাকবে?,উইল দে বি সিটিং
+Will They be standing?,তারা কি দাঁড়াইতে থাকবে?,উইল দে বি স্ট্যান্ডিং
+Will They be listening?,তারা কি শুনতে থাকবে?,উইল দে বি লিসেনিং
+Will They be looking?,তারা কি তাকাইতে থাকবে?,উইল দে বি লুকিং
+Will They be loving?,তারা কি ভালোবাসতে থাকবে?,উইল দে বি লাভিং
+Will They be wanting?,তারা কি চাইতে থাকবে?,উইল দে বি ওয়ান্টিং
+Will They be thinking?,তারা কি ভাবতে থাকবে?,উইল দে বি থিংকিং
+Will They be knowing?,তারা কি জানতে থাকবে?,উইল দে বি নোইং
+Will They be learning?,তারা কি শিখতে থাকবে?,উইল দে বি লার্নিং
+Will They be cooking?,তারা কি রান্না করতে থাকবে?,উইল দে বি কুকিং
+Will They be speaking?,তারা কি কথা বলতে থাকবে?,উইল দে বি স্পিকিং
+Will They be talking?,তারা কি কথা বলতে থাকবে?,উইল দে বি টকিং
+Will They be opening?,তারা কি খুলতে থাকবে?,উইল দে বি ওপেনিং
+Will They be closing?,তারা কি বন্ধ করতে থাকবে?,উইল দে বি ক্লোজিং
+Will They be waiting?,তারা কি অপেক্ষা করতে থাকবে?,উইল দে বি ওয়েটিং
+Will They be trying?,তারা কি চেষ্টা করতে থাকবে?,উইল দে বি ট্রাইং
+Will They be living?,তারা কি বাস করতে থাকবে?,উইল দে বি লিভিং
+Will They be helping?,তারা কি সাহায্য করতে থাকবে?,উইল দে বি হেল্পিং
+Will They be calling?,তারা কি ডাকতে থাকবে?,উইল দে বি কলিং
+Will They be asking?,তারা কি জিজ্ঞাসা করতে থাকবে?,উইল দে বি আস্কিং
+Will They be taking?,তারা কি নিইতে থাকবে?,উইল দে বি টেকিং
+Will They be giving?,তারা কি দিইতে থাকবে?,উইল দে বি গিভিং
+Will They be seeing?,তারা কি দেখতে থাকবে?,উইল দে বি সিইং
+Will They be hearing?,তারা কি শুনতে থাকবে?,উইল দে বি হিয়ারিং
+Will They be feeling?,তারা কি অনুভব করতে থাকবে?,উইল দে বি ফিলিং
+Will They be understanding?,তারা কি বুঝতে থাকবে?,উইল দে বি আন্ডারস্ট্যান্ডিং
+Will They be singing?,তারা কি গান করতে থাকবে?,উইল দে বি সিংইং
+Will They be swimming?,তারা কি সাঁতার কাটতে থাকবে?,উইল দে বি সুইমিং
+Will They be driving?,তারা কি গাড়ি চালাইতে থাকবে?,উইল দে বি ড্রাইভিং
+Will They be studying?,তারা কি পড়াশোনা করতে থাকবে?,উইল দে বি স্টাডিইং
+Will They be washing?,তারা কি ধুইতে থাকবে?,উইল দে বি ওয়াশিং
+Will They be watching?,তারা কি দেখতে থাকবে?,উইল দে বি ওয়াচিং
+Will They be buying?,তারা কি কিনতে থাকবে?,উইল দে বি বাইইং
+Will They be selling?,তারা কি বিক্রি করতে থাকবে?,উইল দে বি সেলিং
+Will They be making?,তারা কি তৈরি করতে থাকবে?,উইল দে বি মেকিং
+Will They be cleaning?,তারা কি পরিষ্কার করতে থাকবে?,উইল দে বি ক্লিনিং
+Will They be dancing?,তারা কি নাচতে থাকবে?,উইল দে বি ড্যান্সিং
+Will They be stopping?,তারা কি থামতে থাকবে?,উইল দে বি স্টপিং
+Will They be starting?,তারা কি শুরু করতে থাকবে?,উইল দে বি স্টার্টিং
+Will They be finishing?,তারা কি শেষ করতে থাকবে?,উইল দে বি ফিনিশিং
+Will They be changing?,তারা কি পরিবর্তন করতে থাকবে?,উইল দে বি চেঞ্জিং
+Will They be paying?,তারা কি পরিশোধ করতে থাকবে?,উইল দে বি পেয়িং
+Will They be using?,তারা কি ব্যবহার করতে থাকবে?,উইল দে বি ইউজিং
+Will They be showing?,তারা কি দেখাইতে থাকবে?,উইল দে বি শোইং
+Will They be telling?,তারা কি বলতে থাকবে?,উইল দে বি টেলিং
+Will They be leaving?,তারা কি ছেড়ে যাইতে থাকবে?,উইল দে বি লিভিং
+Will They be bringing?,তারা কি আনতে থাকবে?,উইল দে বি ব্রিংইং
+Will They be keeping?,তারা কি রাখতে থাকবে?,উইল দে বি কিপিং
+Will They be putting?,তারা কি রাখতে থাকবে?,উইল দে বি পুটিং
+Will They be finding?,তারা কি খুঁজে পাইতে থাকবে?,উইল দে বি ফাইন্ডিং
+Will They be forgetting?,তারা কি ভুলে যাইতে থাকবে?,উইল দে বি ফরগেটিং
+Will They be remembering?,তারা কি মনে রাখতে থাকবে?,উইল দে বি রিমেম্বারিং
+Will They be needing?,তারা কি প্রয়োজনতে থাকবে?,উইল দে বি নিডিং
+Will They be believing?,তারা কি বিশ্বাস করতে থাকবে?,উইল দে বি বিলিভিং
+Will They be agreeing?,তারা কি রাজতে থাকবে?,উইল দে বি অ্যাগ্রিইং
+Will They be answering?,তারা কি উত্তর দেইতে থাকবে?,উইল দে বি আন্সারিং
+Will They be breaking?,তারা কি ভাঙতে থাকবে?,উইল দে বি ব্রেকিং
+Will They be building?,তারা কি নির্মাণ করতে থাকবে?,উইল দে বি বিল্ডিং
+Will They be choosing?,তারা কি পছন্দ করতে থাকবে?,উইল দে বি চুজিং
+Will They be cutting?,তারা কি কাটতে থাকবে?,উইল দে বি কাটিং
+Will They be deciding?,তারা কি সিদ্ধান্ত নিইতে থাকবে?,উইল দে বি ডিসাইডিং
+Will They be explaining?,তারা কি ব্যাখ্যা করতে থাকবে?,উইল দে বি এক্সপ্লেইনিং
+Will They be falling?,তারা কি পড়ে যাইতে থাকবে?,উইল দে বি ফলিং
+Will They be getting?,তারা কি পাইতে থাকবে?,উইল দে বি গেটিং
+Will They be growing?,তারা কি বড় হইতে থাকবে?,উইল দে বি গ্রোইং
+Will They be hoping?,তারা কি আশা করতে থাকবে?,উইল দে বি হোপিং
+Will They be joining?,তারা কি যোগ দিইতে থাকবে?,উইল দে বি জয়েনিং
+Will They be meeting?,তারা কি সাক্ষাৎ করতে থাকবে?,উইল দে বি মিটিং
+Will They be sending?,তারা কি পাঠাইতে থাকবে?,উইল দে বি সেন্ডিং
+Will They be spending?,তারা কি ব্যয় করতে থাকবে?,উইল দে বি স্পেন্ডিং
+Will They be teaching?,তারা কি শেখাইতে থাকবে?,উইল দে বি টিচিং
+Will They be winning?,তারা কি জয়ী হইতে থাকবে?,উইল দে বি উইনিং

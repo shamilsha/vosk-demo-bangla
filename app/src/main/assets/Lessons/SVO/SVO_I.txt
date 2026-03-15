@@ -1,0 +1,19 @@
+Bengali Meaning,English Sentence
+আমি ভাত খাই।,I eat rice.
+আমি পিৎজা খাই।,I eat pizza. (ফিৎজা)
+আমি বার্গার খাই।,I eat burger.
+আমরা ভাত খাই।,We eat rice.
+আমরা পিৎজা খাই।,We eat pizza. (ফিৎজা)
+আমরা বার্গার খাই।,We eat burger.
+ 
+তুমি ভাত খাও।,You eat rice.
+তুমি পিৎজা খাও।,You eat pizza. (ফিৎজা)
+তুমি বার্গার খাও।,You eat burger.
+ 
+সে ভাত খায়।,He eats rice.
+সে পিৎজা খায়।,He eats pizza. (ফিৎজা)
+সে বার্গার খায়।,He eats burger.
+
+সে ভাত খায়। (স্ত্রীলিঙ্গ),She eats rice.
+সে পিৎজা খায়। (স্ত্রীলিঙ্গ),She eats pizza. (ফিৎজা)
+সে বার্গার খায়। (স্ত্রীলিঙ্গ),She eats burger.

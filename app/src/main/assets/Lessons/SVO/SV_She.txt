@@ -1,0 +1,40 @@
+She plays,সে খেলে,শি প্লেজ
+She runs,সে দৌড়ায়,শি রান্স
+She eats,সে খায়,শি ইট্স
+She does,সে করে,শি ডাজ
+She walks,সে হাঁটে,শি ওয়াক্স
+She goes,সে যায়,শি গোজ
+She comes,সে আসে,শি কামজ
+She reads,সে পড়ে,শি রিডজ
+She writes,সে লিখে,শি রাইট্স
+She works,সে কাজ করে,শি ওয়ার্কস
+She sleeps,সে ঘুমায়,শি স্লিপ্স
+She drinks,সে পান করে,শি ড্রিঙ্ক্স
+She sits,সে বসে,শি সিট্স
+She stands,সে দাঁড়ায়,শি স্ট্যান্ড্স
+She listens,সে শোনে,শি লিসেন্স
+She looks,সে তাকায়,শি লুক্স
+She loves,সে ভালোবাসে,শি লাভ্স
+She wants,সে চায়,শি ওয়ান্ট্স
+She thinks,সে ভাবে,শি থিংক্স
+She knows,সে জানে,শি নোজ
+She learns,সে শেখে,শি লার্ন্স
+She cooks,সে রান্না করে,শি কুক্স
+She speaks,সে কথা বলে,শি স্পিক্স
+She talks,সে কথা বলে,শি টক্স
+She opens,সে খোলে,শি ওপেন্স
+She closes,সে বন্ধ করে,শি ক্লোজেজ
+She waits,সে অপেক্ষা করে,শি ওয়েট্স
+She tries,সে চেষ্টা করে,শি ট্রাইজ
+She lives,সে বাস করে,শি লিভ্স
+She helps,সে সাহায্য করে,শি হেল্প্স
+She calls,সে ডাকে,শি কল্স
+She asks,সে জিজ্ঞাসা করে,শি আস্ক্স
+She takes,সে নেয়,শি টেক্স
+She gives,সে দেয়,শি গিভ্স
+She sees,সে দেখে,শি সিজ
+She hears,সে শোনে,শি হিয়ার্স
+She feels,সে অনুভব করে,শি ফিল্স
+She understands,সে বোঝে,শি আন্ডারস্ট্যান্ড্স
+She makes,সে তৈরি করে,শি মেক্স
+She studies,সে পড়াশোনা করে,শি স্টাডিজ

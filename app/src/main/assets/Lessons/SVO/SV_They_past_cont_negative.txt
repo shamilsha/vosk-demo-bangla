@@ -1,0 +1,84 @@
+They weren't playing,তারা খেলছিল না,দে ওয়ারন্ট প্লেয়িং
+They weren't running,তারা দৌড়াচ্ছিল না,দে ওয়ারন্ট রানিং
+They weren't eating,তারা খাচ্ছিল না,দে ওয়ারন্ট ইটিং
+They weren't doing,তারা করছিল না,দে ওয়ারন্ট ডুইং
+They weren't walking,তারা হাঁটছিল না,দে ওয়ারন্ট ওয়াকিং
+They weren't going,তারা যাচ্ছিল না,দে ওয়ারন্ট গোইং
+They weren't coming,তারা আসছিল না,দে ওয়ারন্ট কামিং
+They weren't reading,তারা পড়ছিল না,দে ওয়ারন্ট রিডিং
+They weren't writing,তারা লিখছিল না,দে ওয়ারন্ট রাইটিং
+They weren't working,তারা কাজ করছিল না,দে ওয়ারন্ট ওয়ার্কিং
+They weren't sleeping,তারা ঘুমাচ্ছিল না,দে ওয়ারন্ট স্লিপিং
+They weren't drinking,তারা পান করছিল না,দে ওয়ারন্ট ড্রিঙ্কিং
+They weren't sitting,তারা বসছিল না,দে ওয়ারন্ট সিটিং
+They weren't standing,তারা দাঁড়াচ্ছিল না,দে ওয়ারন্ট স্ট্যান্ডিং
+They weren't listening,তারা শুনছিল না,দে ওয়ারন্ট লিসেনিং
+They weren't looking,তারা তাকাচ্ছিল না,দে ওয়ারন্ট লুকিং
+They weren't loving,তারা ভালোবাসছিল না,দে ওয়ারন্ট লাভিং
+They weren't wanting,তারা চাইছিল না,দে ওয়ারন্ট ওয়ান্টিং
+They weren't thinking,তারা ভাবছিল না,দে ওয়ারন্ট থিংকিং
+They weren't knowing,তারা জানছিল না,দে ওয়ারন্ট নোইং
+They weren't learning,তারা শিখছিল না,দে ওয়ারন্ট লার্নিং
+They weren't cooking,তারা রান্না করছিল না,দে ওয়ারন্ট কুকিং
+They weren't speaking,তারা কথা বলছিল না,দে ওয়ারন্ট স্পিকিং
+They weren't talking,তারা কথা বলছিল না,দে ওয়ারন্ট টকিং
+They weren't opening,তারা খুলছিল না,দে ওয়ারন্ট ওপেনিং
+They weren't closing,তারা বন্ধ করছিল না,দে ওয়ারন্ট ক্লোজিং
+They weren't waiting,তারা অপেক্ষা করছিল না,দে ওয়ারন্ট ওয়েটিং
+They weren't trying,তারা চেষ্টা করছিল না,দে ওয়ারন্ট ট্রাইং
+They weren't living,তারা বাস করছিল না,দে ওয়ারন্ট লিভিং
+They weren't helping,তারা সাহায্য করছিল না,দে ওয়ারন্ট হেল্পিং
+They weren't calling,তারা ডাকছিল না,দে ওয়ারন্ট কলিং
+They weren't asking,তারা জিজ্ঞাসা করছিল না,দে ওয়ারন্ট আস্কিং
+They weren't taking,তারা নিচ্ছিল না,দে ওয়ারন্ট টেকিং
+They weren't giving,তারা দিচ্ছিল না,দে ওয়ারন্ট গিভিং
+They weren't seeing,তারা দেখছিল না,দে ওয়ারন্ট সিইং
+They weren't hearing,তারা শুনছিল না,দে ওয়ারন্ট হিয়ারিং
+They weren't feeling,তারা অনুভব করছিল না,দে ওয়ারন্ট ফিলিং
+They weren't understanding,তারা বুঝছিল না,দে ওয়ারন্ট আন্ডারস্ট্যান্ডিং
+They weren't singing,তারা গান করছিল না,দে ওয়ারন্ট সিংইং
+They weren't swimming,তারা সাঁতার কাটছিল না,দে ওয়ারন্ট সুইমিং
+They weren't driving,তারা গাড়ি চালাচ্ছিল না,দে ওয়ারন্ট ড্রাইভিং
+They weren't studying,তারা পড়াশোনা করছিল না,দে ওয়ারন্ট স্টাডিইং
+They weren't washing,তারা ধুছিল না,দে ওয়ারন্ট ওয়াশিং
+They weren't watching,তারা দেখছিল না,দে ওয়ারন্ট ওয়াচিং
+They weren't buying,তারা কিনছিল না,দে ওয়ারন্ট বাইইং
+They weren't selling,তারা বিক্রি করছিল না,দে ওয়ারন্ট সেলিং
+They weren't making,তারা তৈরি করছিল না,দে ওয়ারন্ট মেকিং
+They weren't cleaning,তারা পরিষ্কার করছিল না,দে ওয়ারন্ট ক্লিনিং
+They weren't dancing,তারা নাচছিল না,দে ওয়ারন্ট ড্যান্সিং
+They weren't stopping,তারা থামছিল না,দে ওয়ারন্ট স্টপিং
+They weren't starting,তারা শুরু করছিল না,দে ওয়ারন্ট স্টার্টিং
+They weren't finishing,তারা শেষ করছিল না,দে ওয়ারন্ট ফিনিশিং
+They weren't changing,তারা পরিবর্তন করছিল না,দে ওয়ারন্ট চেঞ্জিং
+They weren't paying,তারা পরিশোধ করছিল না,দে ওয়ারন্ট পেয়িং
+They weren't using,তারা ব্যবহার করছিল না,দে ওয়ারন্ট ইউজিং
+They weren't showing,তারা দেখাচ্ছিল না,দে ওয়ারন্ট শোইং
+They weren't telling,তারা বলছিল না,দে ওয়ারন্ট টেলিং
+They weren't leaving,তারা ছেড়ে যাচ্ছিল না,দে ওয়ারন্ট লিভিং
+They weren't bringing,তারা আনছিল না,দে ওয়ারন্ট ব্রিংইং
+They weren't keeping,তারা রাখছিল না,দে ওয়ারন্ট কিপিং
+They weren't putting,তারা রাখছিল না,দে ওয়ারন্ট পুটিং
+They weren't finding,তারা খুঁজে পাচ্ছিল না,দে ওয়ারন্ট ফাইন্ডিং
+They weren't forgetting,তারা ভুলে যাচ্ছিল না,দে ওয়ারন্ট ফরগেটিং
+They weren't remembering,তারা মনে রাখছিল না,দে ওয়ারন্ট রিমেম্বারিং
+They weren't needing,আমার প্রয়োজন হচ্ছিল না,দে ওয়ারন্ট নিডিং
+They weren't believing,তারা বিশ্বাস করছিল না,দে ওয়ারন্ট বিলিভিং
+They weren't agreeing,তারা রাজি হচ্ছিল না,দে ওয়ারন্ট অ্যাগ্রিইং
+They weren't answering,তারা উত্তর দিচ্ছিল না,দে ওয়ারন্ট আন্সারিং
+They weren't breaking,তারা ভাঙছিল না,দে ওয়ারন্ট ব্রেকিং
+They weren't building,তারা নির্মাণ করছিল না,দে ওয়ারন্ট বিল্ডিং
+They weren't choosing,তারা পছন্দ করছিল না,দে ওয়ারন্ট চুজিং
+They weren't cutting,তারা কাটছিল না,দে ওয়ারন্ট কাটিং
+They weren't deciding,তারা সিদ্ধান্ত নিচ্ছিল না,দে ওয়ারন্ট ডিসাইডিং
+They weren't explaining,তারা ব্যাখ্যা করছিল না,দে ওয়ারন্ট এক্সপ্লেইনিং
+They weren't falling,তারা পড়ে যাচ্ছিল না,দে ওয়ারন্ট ফলিং
+They weren't getting,তারা পাচ্ছিল না,দে ওয়ারন্ট গেটিং
+They weren't growing,তারা বড় হচ্ছিল না,দে ওয়ারন্ট গ্রোইং
+They weren't hoping,তারা আশা করছিল না,দে ওয়ারন্ট হোপিং
+They weren't joining,তারা যোগ দিচ্ছিল না,দে ওয়ারন্ট জয়েনিং
+They weren't meeting,তারা সাক্ষাৎ করছিল না,দে ওয়ারন্ট মিটিং
+They weren't sending,তারা পাঠাচ্ছিল না,দে ওয়ারন্ট সেন্ডিং
+They weren't spending,তারা ব্যয় করছিল না,দে ওয়ারন্ট স্পেন্ডিং
+They weren't teaching,তারা শেখাচ্ছিল না,দে ওয়ারন্ট টিচিং
+They weren't winning,তারা জয়ী হচ্ছিল না,দে ওয়ারন্ট উইনিং

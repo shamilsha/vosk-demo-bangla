@@ -1,0 +1,84 @@
+They are playing,তারা খেলছে,দে আর প্লেয়িং
+They are running,তারা দৌড়াচ্ছে,দে আর রানিং
+They are eating,তারা খাচ্ছে,দে আর ইটিং
+They are doing,তারা করছে,দে আর ডুইং
+They are walking,তারা হাঁটছে,দে আর ওয়াকিং
+They are going,তারা যাচ্ছে,দে আর গোইং
+They are coming,তারা আসছে,দে আর কামিং
+They are reading,তারা পড়ছে,দে আর রিডিং
+They are writing,তারা লিখছে,দে আর রাইটিং
+They are working,তারা কাজ করছে,দে আর ওয়ার্কিং
+They are sleeping,তারা ঘুমাচ্ছে,দে আর স্লিপিং
+They are drinking,তারা পান করছে,দে আর ড্রিঙ্কিং
+They are sitting,তারা বসছে,দে আর সিটিং
+They are standing,তারা দাঁড়াচ্ছে,দে আর স্ট্যান্ডিং
+They are listening,তারা শুনছে,দে আর লিসেনিং
+They are looking,তারা তাকাচ্ছে,দে আর লুকিং
+They are loving,তারা ভালোবাসছে,দে আর লাভিং
+They are wanting,তারা চাইছে,দে আর ওয়ান্টিং
+They are thinking,তারা ভাবছে,দে আর থিংকিং
+They are knowing,তারা জানছে,দে আর নোইং
+They are learning,তারা শিখছে,দে আর লার্নিং
+They are cooking,তারা রান্না করছে,দে আর কুকিং
+They are speaking,তারা কথা বলছে,দে আর স্পিকিং
+They are talking,তারা কথা বলছে,দে আর টকিং
+They are opening,তারা খুলছে,দে আর ওপেনিং
+They are closing,তারা বন্ধ করছে,দে আর ক্লোজিং
+They are waiting,তারা অপেক্ষা করছে,দে আর ওয়েটিং
+They are trying,তারা চেষ্টা করছে,দে আর ট্রাইং
+They are living,তারা বাস করছে,দে আর লিভিং
+They are helping,তারা সাহায্য করছে,দে আর হেল্পিং
+They are calling,তারা ডাকছে,দে আর কলিং
+They are asking,তারা জিজ্ঞাসা করছে,দে আর আস্কিং
+They are taking,তারা নিচ্ছে,দে আর টেকিং
+They are giving,তারা দিচ্ছে,দে আর গিভিং
+They are seeing,তারা দেখছে,দে আর সিইং
+They are hearing,তারা শুনছে,দে আর হিয়ারিং
+They are feeling,তারা অনুভব করছে,দে আর ফিলিং
+They are understanding,তারা বুঝছে,দে আর আন্ডারস্ট্যান্ডিং
+They are singing,তারা গান করছে,দে আর সিংইং
+They are swimming,তারা সাঁতার কাটছে,দে আর সুইমিং
+They are driving,তারা গাড়ি চালাচ্ছে,দে আর ড্রাইভিং
+They are studying,তারা পড়াশোনা করছে,দে আর স্টাডিইং
+They are washing,তারা ধুছে,দে আর ওয়াশিং
+They are watching,তারা দেখছে,দে আর ওয়াচিং
+They are buying,তারা কিনছে,দে আর বাইইং
+They are selling,তারা বিক্রি করছে,দে আর সেলিং
+They are making,তারা তৈরি করছে,দে আর মেকিং
+They are cleaning,তারা পরিষ্কার করছে,দে আর ক্লিনিং
+They are dancing,তারা নাচছে,দে আর ড্যান্সিং
+They are stopping,তারা থামছে,দে আর স্টপিং
+They are starting,তারা শুরু করছে,দে আর স্টার্টিং
+They are finishing,তারা শেষ করছে,দে আর ফিনিশিং
+They are changing,তারা পরিবর্তন করছে,দে আর চেঞ্জিং
+They are paying,তারা পরিশোধ করছে,দে আর পেয়িং
+They are using,তারা ব্যবহার করছে,দে আর ইউজিং
+They are showing,তারা দেখাচ্ছে,দে আর শোইং
+They are telling,তারা বলছে,দে আর টেলিং
+They are leaving,তারা ছেড়ে যাচ্ছে,দে আর লিভিং
+They are bringing,তারা আনছে,দে আর ব্রিংইং
+They are keeping,তারা রাখছে,দে আর কিপিং
+They are putting,তারা রাখছে,দে আর পুটিং
+They are finding,তারা খুঁজে পাচ্ছে,দে আর ফাইন্ডিং
+They are forgetting,তারা ভুলে যাচ্ছে,দে আর ফরগেটিং
+They are remembering,তারা মনে রাখছে,দে আর রিমেম্বারিং
+They are needing,আমার প্রয়োজন হচ্ছে,দে আর নিডিং
+They are believing,তারা বিশ্বাস করছে,দে আর বিলিভিং
+They are agreeing,তারা রাজি হচ্ছে,দে আর অ্যাগ্রিইং
+They are answering,তারা উত্তর দিচ্ছে,দে আর আন্সারিং
+They are breaking,তারা ভাঙছে,দে আর ব্রেকিং
+They are building,তারা নির্মাণ করছে,দে আর বিল্ডিং
+They are choosing,তারা পছন্দ করছে,দে আর চুজিং
+They are cutting,তারা কাটছে,দে আর কাটিং
+They are deciding,তারা সিদ্ধান্ত নিচ্ছে,দে আর ডিসাইডিং
+They are explaining,তারা ব্যাখ্যা করছে,দে আর এক্সপ্লেইনিং
+They are falling,তারা পড়ে যাচ্ছে,দে আর ফলিং
+They are getting,তারা পাচ্ছে,দে আর গেটিং
+They are growing,তারা বড় হচ্ছে,দে আর গ্রোইং
+They are hoping,তারা আশা করছে,দে আর হোপিং
+They are joining,তারা যোগ দিচ্ছে,দে আর জয়েনিং
+They are meeting,তারা সাক্ষাৎ করছে,দে আর মিটিং
+They are sending,তারা পাঠাচ্ছে,দে আর সেন্ডিং
+They are spending,তারা ব্যয় করছে,দে আর স্পেন্ডিং
+They are teaching,তারা শেখাচ্ছে,দে আর টিচিং
+They are winning,তারা জয়ী হচ্ছে,দে আর উইনিং

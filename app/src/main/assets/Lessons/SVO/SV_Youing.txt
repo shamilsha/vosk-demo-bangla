@@ -1,0 +1,84 @@
+You are playing,তুমি খেলছো,ইউ আর প্লেয়িং
+You are running,তুমি দৌড়াচ্ছো,ইউ আর রানিং
+You are eating,তুমি খাচ্ছো,ইউ আর ইটিং
+You are doing,তুমি করছো,ইউ আর ডুইং
+You are walking,তুমি হাঁটছো,ইউ আর ওয়াকিং
+You are going,তুমি যাচ্ছো,ইউ আর গোইং
+You are coming,তুমি আসছো,ইউ আর কামিং
+You are reading,তুমি পড়ছো,ইউ আর রিডিং
+You are writing,তুমি লিখছো,ইউ আর রাইটিং
+You are working,তুমি কাজ করছো,ইউ আর ওয়ার্কিং
+You are sleeping,তুমি ঘুমাচ্ছো,ইউ আর স্লিপিং
+You are drinking,তুমি পান করছো,ইউ আর ড্রিঙ্কিং
+You are sitting,তুমি বসছো,ইউ আর সিটিং
+You are standing,তুমি দাঁড়াচ্ছো,ইউ আর স্ট্যান্ডিং
+You are listening,তুমি শুনছো,ইউ আর লিসেনিং
+You are looking,তুমি তাকাচ্ছো,ইউ আর লুকিং
+You are loving,তুমি ভালোবাসছো,ইউ আর লাভিং
+You are wanting,তুমি চাইছো,ইউ আর ওয়ান্টিং
+You are thinking,তুমি ভাবছো,ইউ আর থিংকিং
+You are knowing,তুমি জানছো,ইউ আর নোইং
+You are learning,তুমি শিখছো,ইউ আর লার্নিং
+You are cooking,তুমি রান্না করছো,ইউ আর কুকিং
+You are speaking,তুমি কথা বলছো,ইউ আর স্পিকিং
+You are talking,তুমি কথা বলছো,ইউ আর টকিং
+You are opening,তুমি খুলছো,ইউ আর ওপেনিং
+You are closing,তুমি বন্ধ করছো,ইউ আর ক্লোজিং
+You are waiting,তুমি অপেক্ষা করছো,ইউ আর ওয়েটিং
+You are trying,তুমি চেষ্টা করছো,ইউ আর ট্রাইং
+You are living,তুমি বাস করছো,ইউ আর লিভিং
+You are helping,তুমি সাহায্য করছো,ইউ আর হেল্পিং
+You are calling,তুমি ডাকছো,ইউ আর কলিং
+You are asking,তুমি জিজ্ঞাসা করছো,ইউ আর আস্কিং
+You are taking,তুমি নিচ্ছো,ইউ আর টেকিং
+You are giving,তুমি দিচ্ছো,ইউ আর গিভিং
+You are seeing,তুমি দেখছো,ইউ আর সিইং
+You are hearing,তুমি শুনছো,ইউ আর হিয়ারিং
+You are feeling,তুমি অনুভব করছো,ইউ আর ফিলিং
+You are understanding,তুমি বুঝছো,ইউ আর আন্ডারস্ট্যান্ডিং
+You are singing,তুমি গান করছো,ইউ আর সিংইং
+You are swimming,তুমি সাঁতার কাটছো,ইউ আর সুইমিং
+You are driving,তুমি গাড়ি চালাচ্ছো,ইউ আর ড্রাইভিং
+You are studying,তুমি পড়াশোনা করছো,ইউ আর স্টাডিইং
+You are washing,তুমি ধুছো,ইউ আর ওয়াশিং
+You are watching,তুমি দেখছো,ইউ আর ওয়াচিং
+You are buying,তুমি কিনছো,ইউ আর বাইইং
+You are selling,তুমি বিক্রি করছো,ইউ আর সেলিং
+You are making,তুমি তৈরি করছো,ইউ আর মেকিং
+You are cleaning,তুমি পরিষ্কার করছো,ইউ আর ক্লিনিং
+You are dancing,তুমি নাচছো,ইউ আর ড্যান্সিং
+You are stopping,তুমি থামছো,ইউ আর স্টপিং
+You are starting,তুমি শুরু করছো,ইউ আর স্টার্টিং
+You are finishing,তুমি শেষ করছো,ইউ আর ফিনিশিং
+You are changing,তুমি পরিবর্তন করছো,ইউ আর চেঞ্জিং
+You are paying,তুমি পরিশোধ করছো,ইউ আর পেয়িং
+You are using,তুমি ব্যবহার করছো,ইউ আর ইউজিং
+You are showing,তুমি দেখাচ্ছো,ইউ আর শোইং
+You are telling,তুমি বলছো,ইউ আর টেলিং
+You are leaving,তুমি ছেড়ে যাচ্ছো,ইউ আর লিভিং
+You are bringing,তুমি আনছো,ইউ আর ব্রিংইং
+You are keeping,তুমি রাখছো,ইউ আর কিপিং
+You are putting,তুমি রাখছো,ইউ আর পুটিং
+You are finding,তুমি খুঁজে পাচ্ছো,ইউ আর ফাইন্ডিং
+You are forgetting,তুমি ভুলে যাচ্ছো,ইউ আর ফরগেটিং
+You are remembering,তুমি মনে রাখছো,ইউ আর রিমেম্বারিং
+You are needing,আমার প্রয়োজন হচ্ছে,ইউ আর নিডিং
+You are believing,তুমি বিশ্বাস করছো,ইউ আর বিলিভিং
+You are agreeing,তুমি রাজি হচ্ছো,ইউ আর অ্যাগ্রিইং
+You are answering,তুমি উত্তর দিচ্ছো,ইউ আর আন্সারিং
+You are breaking,তুমি ভাঙছো,ইউ আর ব্রেকিং
+You are building,তুমি নির্মাণ করছো,ইউ আর বিল্ডিং
+You are choosing,তুমি পছন্দ করছো,ইউ আর চুজিং
+You are cutting,তুমি কাটছো,ইউ আর কাটিং
+You are deciding,তুমি সিদ্ধান্ত নিচ্ছো,ইউ আর ডিসাইডিং
+You are explaining,তুমি ব্যাখ্যা করছো,ইউ আর এক্সপ্লেইনিং
+You are falling,তুমি পড়ে যাচ্ছো,ইউ আর ফলিং
+You are getting,তুমি পাচ্ছো,ইউ আর গেটিং
+You are growing,তুমি বড় হচ্ছো,ইউ আর গ্রোইং
+You are hoping,তুমি আশা করছো,ইউ আর হোপিং
+You are joining,তুমি যোগ দিচ্ছো,ইউ আর জয়েনিং
+You are meeting,তুমি সাক্ষাৎ করছো,ইউ আর মিটিং
+You are sending,তুমি পাঠাচ্ছো,ইউ আর সেন্ডিং
+You are spending,তুমি ব্যয় করছো,ইউ আর স্পেন্ডিং
+You are teaching,তুমি শেখাচ্ছো,ইউ আর টিচিং
+You are winning,তুমি জয়ী হচ্ছো,ইউ আর উইনিং

@@ -1,0 +1,84 @@
+She is playing,সে খেলছে,শি ইজ প্লেয়িং
+She is running,সে দৌড়াচ্ছে,শি ইজ রানিং
+She is eating,সে খাচ্ছে,শি ইজ ইটিং
+She is doing,সে করছে,শি ইজ ডুইং
+She is walking,সে হাঁটছে,শি ইজ ওয়াকিং
+She is going,সে যাচ্ছে,শি ইজ গোইং
+She is coming,সে আসছে,শি ইজ কামিং
+She is reading,সে পড়ছে,শি ইজ রিডিং
+She is writing,সে লিখছে,শি ইজ রাইটিং
+She is working,সে কাজ করছে,শি ইজ ওয়ার্কিং
+She is sleeping,সে ঘুমাচ্ছে,শি ইজ স্লিপিং
+She is drinking,সে পান করছে,শি ইজ ড্রিঙ্কিং
+She is sitting,সে বসছে,শি ইজ সিটিং
+She is standing,সে দাঁড়াচ্ছে,শি ইজ স্ট্যান্ডিং
+She is listening,সে শুনছে,শি ইজ লিসেনিং
+She is looking,সে তাকাচ্ছে,শি ইজ লুকিং
+She is loving,সে ভালোবাসছে,শি ইজ লাভিং
+She is wanting,সে চাইছে,শি ইজ ওয়ান্টিং
+She is thinking,সে ভাবছে,শি ইজ থিংকিং
+She is knowing,সে জানছে,শি ইজ নোইং
+She is learning,সে শিখছে,শি ইজ লার্নিং
+She is cooking,সে রান্না করছে,শি ইজ কুকিং
+She is speaking,সে কথা বলছে,শি ইজ স্পিকিং
+She is talking,সে কথা বলছে,শি ইজ টকিং
+She is opening,সে খুলছে,শি ইজ ওপেনিং
+She is closing,সে বন্ধ করছে,শি ইজ ক্লোজিং
+She is waiting,সে অপেক্ষা করছে,শি ইজ ওয়েটিং
+She is trying,সে চেষ্টা করছে,শি ইজ ট্রাইং
+She is living,সে বাস করছে,শি ইজ লিভিং
+She is helping,সে সাহায্য করছে,শি ইজ হেল্পিং
+She is calling,সে ডাকছে,শি ইজ কলিং
+She is asking,সে জিজ্ঞাসা করছে,শি ইজ আস্কিং
+She is taking,সে নিচ্ছে,শি ইজ টেকিং
+She is giving,সে দিচ্ছে,শি ইজ গিভিং
+She is seeing,সে দেখছে,শি ইজ সিইং
+She is hearing,সে শুনছে,শি ইজ হিয়ারিং
+She is feeling,সে অনুভব করছে,শি ইজ ফিলিং
+She is understanding,সে বুঝছে,শি ইজ আন্ডারস্ট্যান্ডিং
+She is singing,সে গান করছে,শি ইজ সিংইং
+She is swimming,সে সাঁতার কাটছে,শি ইজ সুইমিং
+She is driving,সে গাড়ি চালাচ্ছে,শি ইজ ড্রাইভিং
+She is studying,সে পড়াশোনা করছে,শি ইজ স্টাডিইং
+She is washing,সে ধুছে,শি ইজ ওয়াশিং
+She is watching,সে দেখছে,শি ইজ ওয়াচিং
+She is buying,সে কিনছে,শি ইজ বাইইং
+She is selling,সে বিক্রি করছে,শি ইজ সেলিং
+She is making,সে তৈরি করছে,শি ইজ মেকিং
+She is cleaning,সে পরিষ্কার করছে,শি ইজ ক্লিনিং
+She is dancing,সে নাচছে,শি ইজ ড্যান্সিং
+She is stopping,সে থামছে,শি ইজ স্টপিং
+She is starting,সে শুরু করছে,শি ইজ স্টার্টিং
+She is finishing,সে শেষ করছে,শি ইজ ফিনিশিং
+She is changing,সে পরিবর্তন করছে,শি ইজ চেঞ্জিং
+She is paying,সে পরিশোধ করছে,শি ইজ পেয়িং
+She is using,সে ব্যবহার করছে,শি ইজ ইউজিং
+She is showing,সে দেখাচ্ছে,শি ইজ শোইং
+She is telling,সে বলছে,শি ইজ টেলিং
+She is leaving,সে ছেড়ে যাচ্ছে,শি ইজ লিভিং
+She is bringing,সে আনছে,শি ইজ ব্রিংইং
+She is keeping,সে রাখছে,শি ইজ কিপিং
+She is putting,সে রাখছে,শি ইজ পুটিং
+She is finding,সে খুঁজে পাচ্ছে,শি ইজ ফাইন্ডিং
+She is forgetting,সে ভুলে যাচ্ছে,শি ইজ ফরগেটিং
+She is remembering,সে মনে রাখছে,শি ইজ রিমেম্বারিং
+She is needing,আমার প্রয়োজন হচ্ছে,শি ইজ নিডিং
+She is believing,সে বিশ্বাস করছে,শি ইজ বিলিভিং
+She is agreeing,সে রাজি হচ্ছে,শি ইজ অ্যাগ্রিইং
+She is answering,সে উত্তর দিচ্ছে,শি ইজ আন্সারিং
+She is breaking,সে ভাঙছে,শি ইজ ব্রেকিং
+She is building,সে নির্মাণ করছে,শি ইজ বিল্ডিং
+She is choosing,সে পছন্দ করছে,শি ইজ চুজিং
+She is cutting,সে কাটছে,শি ইজ কাটিং
+She is deciding,সে সিদ্ধান্ত নিচ্ছে,শি ইজ ডিসাইডিং
+She is explaining,সে ব্যাখ্যা করছে,শি ইজ এক্সপ্লেইনিং
+She is falling,সে পড়ে যাচ্ছে,শি ইজ ফলিং
+She is getting,সে পাচ্ছে,শি ইজ গেটিং
+She is growing,সে বড় হচ্ছে,শি ইজ গ্রোইং
+She is hoping,সে আশা করছে,শি ইজ হোপিং
+She is joining,সে যোগ দিচ্ছে,শি ইজ জয়েনিং
+She is meeting,সে সাক্ষাৎ করছে,শি ইজ মিটিং
+She is sending,সে পাঠাচ্ছে,শি ইজ সেন্ডিং
+She is spending,সে ব্যয় করছে,শি ইজ স্পেন্ডিং
+She is teaching,সে শেখাচ্ছে,শি ইজ টিচিং
+She is winning,সে জয়ী হচ্ছে,শি ইজ উইনিং

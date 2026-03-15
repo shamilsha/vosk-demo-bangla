@@ -1,0 +1,84 @@
+They aren't playing,তারা খেলছে না,দে আরন্ট প্লেয়িং
+They aren't running,তারা দৌড়াচ্ছে না,দে আরন্ট রানিং
+They aren't eating,তারা খাচ্ছে না,দে আরন্ট ইটিং
+They aren't doing,তারা করছে না,দে আরন্ট ডুইং
+They aren't walking,তারা হাঁটছে না,দে আরন্ট ওয়াকিং
+They aren't going,তারা যাচ্ছে না,দে আরন্ট গোইং
+They aren't coming,তারা আসছে না,দে আরন্ট কামিং
+They aren't reading,তারা পড়ছে না,দে আরন্ট রিডিং
+They aren't writing,তারা লিখছে না,দে আরন্ট রাইটিং
+They aren't working,তারা কাজ করছে না,দে আরন্ট ওয়ার্কিং
+They aren't sleeping,তারা ঘুমাচ্ছে না,দে আরন্ট স্লিপিং
+They aren't drinking,তারা পান করছে না,দে আরন্ট ড্রিঙ্কিং
+They aren't sitting,তারা বসছে না,দে আরন্ট সিটিং
+They aren't standing,তারা দাঁড়াচ্ছে না,দে আরন্ট স্ট্যান্ডিং
+They aren't listening,তারা শুনছে না,দে আরন্ট লিসেনিং
+They aren't looking,তারা তাকাচ্ছে না,দে আরন্ট লুকিং
+They aren't loving,তারা ভালোবাসছে না,দে আরন্ট লাভিং
+They aren't wanting,তারা চাইছে না,দে আরন্ট ওয়ান্টিং
+They aren't thinking,তারা ভাবছে না,দে আরন্ট থিংকিং
+They aren't knowing,তারা জানছে না,দে আরন্ট নোইং
+They aren't learning,তারা শিখছে না,দে আরন্ট লার্নিং
+They aren't cooking,তারা রান্না করছে না,দে আরন্ট কুকিং
+They aren't speaking,তারা কথা বলছে না,দে আরন্ট স্পিকিং
+They aren't talking,তারা কথা বলছে না,দে আরন্ট টকিং
+They aren't opening,তারা খুলছে না,দে আরন্ট ওপেনিং
+They aren't closing,তারা বন্ধ করছে না,দে আরন্ট ক্লোজিং
+They aren't waiting,তারা অপেক্ষা করছে না,দে আরন্ট ওয়েটিং
+They aren't trying,তারা চেষ্টা করছে না,দে আরন্ট ট্রাইং
+They aren't living,তারা বাস করছে না,দে আরন্ট লিভিং
+They aren't helping,তারা সাহায্য করছে না,দে আরন্ট হেল্পিং
+They aren't calling,তারা ডাকছে না,দে আরন্ট কলিং
+They aren't asking,তারা জিজ্ঞাসা করছে না,দে আরন্ট আস্কিং
+They aren't taking,তারা নিচ্ছে না,দে আরন্ট টেকিং
+They aren't giving,তারা দিচ্ছে না,দে আরন্ট গিভিং
+They aren't seeing,তারা দেখছে না,দে আরন্ট সিইং
+They aren't hearing,তারা শুনছে না,দে আরন্ট হিয়ারিং
+They aren't feeling,তারা অনুভব করছে না,দে আরন্ট ফিলিং
+They aren't understanding,তারা বুঝছে না,দে আরন্ট আন্ডারস্ট্যান্ডিং
+They aren't singing,তারা গান করছে না,দে আরন্ট সিংইং
+They aren't swimming,তারা সাঁতার কাটছে না,দে আরন্ট সুইমিং
+They aren't driving,তারা গাড়ি চালাচ্ছে না,দে আরন্ট ড্রাইভিং
+They aren't studying,তারা পড়াশোনা করছে না,দে আরন্ট স্টাডিইং
+They aren't washing,তারা ধুছে না,দে আরন্ট ওয়াশিং
+They aren't watching,তারা দেখছে না,দে আরন্ট ওয়াচিং
+They aren't buying,তারা কিনছে না,দে আরন্ট বাইইং
+They aren't selling,তারা বিক্রি করছে না,দে আরন্ট সেলিং
+They aren't making,তারা তৈরি করছে না,দে আরন্ট মেকিং
+They aren't cleaning,তারা পরিষ্কার করছে না,দে আরন্ট ক্লিনিং
+They aren't dancing,তারা নাচছে না,দে আরন্ট ড্যান্সিং
+They aren't stopping,তারা থামছে না,দে আরন্ট স্টপিং
+They aren't starting,তারা শুরু করছে না,দে আরন্ট স্টার্টিং
+They aren't finishing,তারা শেষ করছে না,দে আরন্ট ফিনিশিং
+They aren't changing,তারা পরিবর্তন করছে না,দে আরন্ট চেঞ্জিং
+They aren't paying,তারা পরিশোধ করছে না,দে আরন্ট পেয়িং
+They aren't using,তারা ব্যবহার করছে না,দে আরন্ট ইউজিং
+They aren't showing,তারা দেখাচ্ছে না,দে আরন্ট শোইং
+They aren't telling,তারা বলছে না,দে আরন্ট টেলিং
+They aren't leaving,তারা ছেড়ে যাচ্ছে না,দে আরন্ট লিভিং
+They aren't bringing,তারা আনছে না,দে আরন্ট ব্রিংইং
+They aren't keeping,তারা রাখছে না,দে আরন্ট কিপিং
+They aren't putting,তারা রাখছে না,দে আরন্ট পুটিং
+They aren't finding,তারা খুঁজে পাচ্ছে না,দে আরন্ট ফাইন্ডিং
+They aren't forgetting,তারা ভুলে যাচ্ছে না,দে আরন্ট ফরগেটিং
+They aren't remembering,তারা মনে রাখছে না,দে আরন্ট রিমেম্বারিং
+They aren't needing,আমার প্রয়োজন হচ্ছে না,দে আরন্ট নিডিং
+They aren't believing,তারা বিশ্বাস করছে না,দে আরন্ট বিলিভিং
+They aren't agreeing,তারা রাজি হচ্ছে না,দে আরন্ট অ্যাগ্রিইং
+They aren't answering,তারা উত্তর দিচ্ছে না,দে আরন্ট আন্সারিং
+They aren't breaking,তারা ভাঙছে না,দে আরন্ট ব্রেকিং
+They aren't building,তারা নির্মাণ করছে না,দে আরন্ট বিল্ডিং
+They aren't choosing,তারা পছন্দ করছে না,দে আরন্ট চুজিং
+They aren't cutting,তারা কাটছে না,দে আরন্ট কাটিং
+They aren't deciding,তারা সিদ্ধান্ত নিচ্ছে না,দে আরন্ট ডিসাইডিং
+They aren't explaining,তারা ব্যাখ্যা করছে না,দে আরন্ট এক্সপ্লেইনিং
+They aren't falling,তারা পড়ে যাচ্ছে না,দে আরন্ট ফলিং
+They aren't getting,তারা পাচ্ছে না,দে আরন্ট গেটিং
+They aren't growing,তারা বড় হচ্ছে না,দে আরন্ট গ্রোইং
+They aren't hoping,তারা আশা করছে না,দে আরন্ট হোপিং
+They aren't joining,তারা যোগ দিচ্ছে না,দে আরন্ট জয়েনিং
+They aren't meeting,তারা সাক্ষাৎ করছে না,দে আরন্ট মিটিং
+They aren't sending,তারা পাঠাচ্ছে না,দে আরন্ট সেন্ডিং
+They aren't spending,তারা ব্যয় করছে না,দে আরন্ট স্পেন্ডিং
+They aren't teaching,তারা শেখাচ্ছে না,দে আরন্ট টিচিং
+They aren't winning,তারা জয়ী হচ্ছে না,দে আরন্ট উইনিং

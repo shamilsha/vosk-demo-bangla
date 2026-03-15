@@ -1,0 +1,84 @@
+Will She be playing?,সে কি খেলতে থাকবে?,উইল শি বি প্লেয়িং
+Will She be running?,সে কি দৌড়াইতে থাকবে?,উইল শি বি রানিং
+Will She be eating?,সে কি খাইতে থাকবে?,উইল শি বি ইটিং
+Will She be doing?,সে কি করতে থাকবে?,উইল শি বি ডুইং
+Will She be walking?,সে কি হাঁটতে থাকবে?,উইল শি বি ওয়াকিং
+Will She be going?,সে কি যাইতে থাকবে?,উইল শি বি গোইং
+Will She be coming?,সে কি আসতে থাকবে?,উইল শি বি কামিং
+Will She be reading?,সে কি পড়তে থাকবে?,উইল শি বি রিডিং
+Will She be writing?,সে কি লিখতে থাকবে?,উইল শি বি রাইটিং
+Will She be working?,সে কি কাজ করতে থাকবে?,উইল শি বি ওয়ার্কিং
+Will She be sleeping?,সে কি ঘুমাইতে থাকবে?,উইল শি বি স্লিপিং
+Will She be drinking?,সে কি পান করতে থাকবে?,উইল শি বি ড্রিঙ্কিং
+Will She be sitting?,সে কি বসতে থাকবে?,উইল শি বি সিটিং
+Will She be standing?,সে কি দাঁড়াইতে থাকবে?,উইল শি বি স্ট্যান্ডিং
+Will She be listening?,সে কি শুনতে থাকবে?,উইল শি বি লিসেনিং
+Will She be looking?,সে কি তাকাইতে থাকবে?,উইল শি বি লুকিং
+Will She be loving?,সে কি ভালোবাসতে থাকবে?,উইল শি বি লাভিং
+Will She be wanting?,সে কি চাইতে থাকবে?,উইল শি বি ওয়ান্টিং
+Will She be thinking?,সে কি ভাবতে থাকবে?,উইল শি বি থিংকিং
+Will She be knowing?,সে কি জানতে থাকবে?,উইল শি বি নোইং
+Will She be learning?,সে কি শিখতে থাকবে?,উইল শি বি লার্নিং
+Will She be cooking?,সে কি রান্না করতে থাকবে?,উইল শি বি কুকিং
+Will She be speaking?,সে কি কথা বলতে থাকবে?,উইল শি বি স্পিকিং
+Will She be talking?,সে কি কথা বলতে থাকবে?,উইল শি বি টকিং
+Will She be opening?,সে কি খুলতে থাকবে?,উইল শি বি ওপেনিং
+Will She be closing?,সে কি বন্ধ করতে থাকবে?,উইল শি বি ক্লোজিং
+Will She be waiting?,সে কি অপেক্ষা করতে থাকবে?,উইল শি বি ওয়েটিং
+Will She be trying?,সে কি চেষ্টা করতে থাকবে?,উইল শি বি ট্রাইং
+Will She be living?,সে কি বাস করতে থাকবে?,উইল শি বি লিভিং
+Will She be helping?,সে কি সাহায্য করতে থাকবে?,উইল শি বি হেল্পিং
+Will She be calling?,সে কি ডাকতে থাকবে?,উইল শি বি কলিং
+Will She be asking?,সে কি জিজ্ঞাসা করতে থাকবে?,উইল শি বি আস্কিং
+Will She be taking?,সে কি নিইতে থাকবে?,উইল শি বি টেকিং
+Will She be giving?,সে কি দিইতে থাকবে?,উইল শি বি গিভিং
+Will She be seeing?,সে কি দেখতে থাকবে?,উইল শি বি সিইং
+Will She be hearing?,সে কি শুনতে থাকবে?,উইল শি বি হিয়ারিং
+Will She be feeling?,সে কি অনুভব করতে থাকবে?,উইল শি বি ফিলিং
+Will She be understanding?,সে কি বুঝতে থাকবে?,উইল শি বি আন্ডারস্ট্যান্ডিং
+Will She be singing?,সে কি গান করতে থাকবে?,উইল শি বি সিংইং
+Will She be swimming?,সে কি সাঁতার কাটতে থাকবে?,উইল শি বি সুইমিং
+Will She be driving?,সে কি গাড়ি চালাইতে থাকবে?,উইল শি বি ড্রাইভিং
+Will She be studying?,সে কি পড়াশোনা করতে থাকবে?,উইল শি বি স্টাডিইং
+Will She be washing?,সে কি ধুইতে থাকবে?,উইল শি বি ওয়াশিং
+Will She be watching?,সে কি দেখতে থাকবে?,উইল শি বি ওয়াচিং
+Will She be buying?,সে কি কিনতে থাকবে?,উইল শি বি বাইইং
+Will She be selling?,সে কি বিক্রি করতে থাকবে?,উইল শি বি সেলিং
+Will She be making?,সে কি তৈরি করতে থাকবে?,উইল শি বি মেকিং
+Will She be cleaning?,সে কি পরিষ্কার করতে থাকবে?,উইল শি বি ক্লিনিং
+Will She be dancing?,সে কি নাচতে থাকবে?,উইল শি বি ড্যান্সিং
+Will She be stopping?,সে কি থামতে থাকবে?,উইল শি বি স্টপিং
+Will She be starting?,সে কি শুরু করতে থাকবে?,উইল শি বি স্টার্টিং
+Will She be finishing?,সে কি শেষ করতে থাকবে?,উইল শি বি ফিনিশিং
+Will She be changing?,সে কি পরিবর্তন করতে থাকবে?,উইল শি বি চেঞ্জিং
+Will She be paying?,সে কি পরিশোধ করতে থাকবে?,উইল শি বি পেয়িং
+Will She be using?,সে কি ব্যবহার করতে থাকবে?,উইল শি বি ইউজিং
+Will She be showing?,সে কি দেখাইতে থাকবে?,উইল শি বি শোইং
+Will She be telling?,সে কি বলতে থাকবে?,উইল শি বি টেলিং
+Will She be leaving?,সে কি ছেড়ে যাইতে থাকবে?,উইল শি বি লিভিং
+Will She be bringing?,সে কি আনতে থাকবে?,উইল শি বি ব্রিংইং
+Will She be keeping?,সে কি রাখতে থাকবে?,উইল শি বি কিপিং
+Will She be putting?,সে কি রাখতে থাকবে?,উইল শি বি পুটিং
+Will She be finding?,সে কি খুঁজে পাইতে থাকবে?,উইল শি বি ফাইন্ডিং
+Will She be forgetting?,সে কি ভুলে যাইতে থাকবে?,উইল শি বি ফরগেটিং
+Will She be remembering?,সে কি মনে রাখতে থাকবে?,উইল শি বি রিমেম্বারিং
+Will She be needing?,সে কি প্রয়োজনতে থাকবে?,উইল শি বি নিডিং
+Will She be believing?,সে কি বিশ্বাস করতে থাকবে?,উইল শি বি বিলিভিং
+Will She be agreeing?,সে কি রাজতে থাকবে?,উইল শি বি অ্যাগ্রিইং
+Will She be answering?,সে কি উত্তর দেইতে থাকবে?,উইল শি বি আন্সারিং
+Will She be breaking?,সে কি ভাঙতে থাকবে?,উইল শি বি ব্রেকিং
+Will She be building?,সে কি নির্মাণ করতে থাকবে?,উইল শি বি বিল্ডিং
+Will She be choosing?,সে কি পছন্দ করতে থাকবে?,উইল শি বি চুজিং
+Will She be cutting?,সে কি কাটতে থাকবে?,উইল শি বি কাটিং
+Will She be deciding?,সে কি সিদ্ধান্ত নিইতে থাকবে?,উইল শি বি ডিসাইডিং
+Will She be explaining?,সে কি ব্যাখ্যা করতে থাকবে?,উইল শি বি এক্সপ্লেইনিং
+Will She be falling?,সে কি পড়ে যাইতে থাকবে?,উইল শি বি ফলিং
+Will She be getting?,সে কি পাইতে থাকবে?,উইল শি বি গেটিং
+Will She be growing?,সে কি বড় হইতে থাকবে?,উইল শি বি গ্রোইং
+Will She be hoping?,সে কি আশা করতে থাকবে?,উইল শি বি হোপিং
+Will She be joining?,সে কি যোগ দিইতে থাকবে?,উইল শি বি জয়েনিং
+Will She be meeting?,সে কি সাক্ষাৎ করতে থাকবে?,উইল শি বি মিটিং
+Will She be sending?,সে কি পাঠাইতে থাকবে?,উইল শি বি সেন্ডিং
+Will She be spending?,সে কি ব্যয় করতে থাকবে?,উইল শি বি স্পেন্ডিং
+Will She be teaching?,সে কি শেখাইতে থাকবে?,উইল শি বি টিচিং
+Will She be winning?,সে কি জয়ী হইতে থাকবে?,উইল শি বি উইনিং

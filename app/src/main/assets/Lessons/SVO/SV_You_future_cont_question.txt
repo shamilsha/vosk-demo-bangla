@@ -1,0 +1,84 @@
+Will You be playing?,তুমি কি খেলতে থাকবে?,উইল ইউ বি প্লেয়িং
+Will You be running?,তুমি কি দৌড়াইতে থাকবে?,উইল ইউ বি রানিং
+Will You be eating?,তুমি কি খাইতে থাকবে?,উইল ইউ বি ইটিং
+Will You be doing?,তুমি কি করতে থাকবে?,উইল ইউ বি ডুইং
+Will You be walking?,তুমি কি হাঁটতে থাকবে?,উইল ইউ বি ওয়াকিং
+Will You be going?,তুমি কি যাইতে থাকবে?,উইল ইউ বি গোইং
+Will You be coming?,তুমি কি আসতে থাকবে?,উইল ইউ বি কামিং
+Will You be reading?,তুমি কি পড়তে থাকবে?,উইল ইউ বি রিডিং
+Will You be writing?,তুমি কি লিখতে থাকবে?,উইল ইউ বি রাইটিং
+Will You be working?,তুমি কি কাজ করতে থাকবে?,উইল ইউ বি ওয়ার্কিং
+Will You be sleeping?,তুমি কি ঘুমাইতে থাকবে?,উইল ইউ বি স্লিপিং
+Will You be drinking?,তুমি কি পান করতে থাকবে?,উইল ইউ বি ড্রিঙ্কিং
+Will You be sitting?,তুমি কি বসতে থাকবে?,উইল ইউ বি সিটিং
+Will You be standing?,তুমি কি দাঁড়াইতে থাকবে?,উইল ইউ বি স্ট্যান্ডিং
+Will You be listening?,তুমি কি শুনতে থাকবে?,উইল ইউ বি লিসেনিং
+Will You be looking?,তুমি কি তাকাইতে থাকবে?,উইল ইউ বি লুকিং
+Will You be loving?,তুমি কি ভালোবাসতে থাকবে?,উইল ইউ বি লাভিং
+Will You be wanting?,তুমি কি চাইতে থাকবে?,উইল ইউ বি ওয়ান্টিং
+Will You be thinking?,তুমি কি ভাবতে থাকবে?,উইল ইউ বি থিংকিং
+Will You be knowing?,তুমি কি জানতে থাকবে?,উইল ইউ বি নোইং
+Will You be learning?,তুমি কি শিখতে থাকবে?,উইল ইউ বি লার্নিং
+Will You be cooking?,তুমি কি রান্না করতে থাকবে?,উইল ইউ বি কুকিং
+Will You be speaking?,তুমি কি কথা বলতে থাকবে?,উইল ইউ বি স্পিকিং
+Will You be talking?,তুমি কি কথা বলতে থাকবে?,উইল ইউ বি টকিং
+Will You be opening?,তুমি কি খুলতে থাকবে?,উইল ইউ বি ওপেনিং
+Will You be closing?,তুমি কি বন্ধ করতে থাকবে?,উইল ইউ বি ক্লোজিং
+Will You be waiting?,তুমি কি অপেক্ষা করতে থাকবে?,উইল ইউ বি ওয়েটিং
+Will You be trying?,তুমি কি চেষ্টা করতে থাকবে?,উইল ইউ বি ট্রাইং
+Will You be living?,তুমি কি বাস করতে থাকবে?,উইল ইউ বি লিভিং
+Will You be helping?,তুমি কি সাহায্য করতে থাকবে?,উইল ইউ বি হেল্পিং
+Will You be calling?,তুমি কি ডাকতে থাকবে?,উইল ইউ বি কলিং
+Will You be asking?,তুমি কি জিজ্ঞাসা করতে থাকবে?,উইল ইউ বি আস্কিং
+Will You be taking?,তুমি কি নিইতে থাকবে?,উইল ইউ বি টেকিং
+Will You be giving?,তুমি কি দিইতে থাকবে?,উইল ইউ বি গিভিং
+Will You be seeing?,তুমি কি দেখতে থাকবে?,উইল ইউ বি সিইং
+Will You be hearing?,তুমি কি শুনতে থাকবে?,উইল ইউ বি হিয়ারিং
+Will You be feeling?,তুমি কি অনুভব করতে থাকবে?,উইল ইউ বি ফিলিং
+Will You be understanding?,তুমি কি বুঝতে থাকবে?,উইল ইউ বি আন্ডারস্ট্যান্ডিং
+Will You be singing?,তুমি কি গান করতে থাকবে?,উইল ইউ বি সিংইং
+Will You be swimming?,তুমি কি সাঁতার কাটতে থাকবে?,উইল ইউ বি সুইমিং
+Will You be driving?,তুমি কি গাড়ি চালাইতে থাকবে?,উইল ইউ বি ড্রাইভিং
+Will You be studying?,তুমি কি পড়াশোনা করতে থাকবে?,উইল ইউ বি স্টাডিইং
+Will You be washing?,তুমি কি ধুইতে থাকবে?,উইল ইউ বি ওয়াশিং
+Will You be watching?,তুমি কি দেখতে থাকবে?,উইল ইউ বি ওয়াচিং
+Will You be buying?,তুমি কি কিনতে থাকবে?,উইল ইউ বি বাইইং
+Will You be selling?,তুমি কি বিক্রি করতে থাকবে?,উইল ইউ বি সেলিং
+Will You be making?,তুমি কি তৈরি করতে থাকবে?,উইল ইউ বি মেকিং
+Will You be cleaning?,তুমি কি পরিষ্কার করতে থাকবে?,উইল ইউ বি ক্লিনিং
+Will You be dancing?,তুমি কি নাচতে থাকবে?,উইল ইউ বি ড্যান্সিং
+Will You be stopping?,তুমি কি থামতে থাকবে?,উইল ইউ বি স্টপিং
+Will You be starting?,তুমি কি শুরু করতে থাকবে?,উইল ইউ বি স্টার্টিং
+Will You be finishing?,তুমি কি শেষ করতে থাকবে?,উইল ইউ বি ফিনিশিং
+Will You be changing?,তুমি কি পরিবর্তন করতে থাকবে?,উইল ইউ বি চেঞ্জিং
+Will You be paying?,তুমি কি পরিশোধ করতে থাকবে?,উইল ইউ বি পেয়িং
+Will You be using?,তুমি কি ব্যবহার করতে থাকবে?,উইল ইউ বি ইউজিং
+Will You be showing?,তুমি কি দেখাইতে থাকবে?,উইল ইউ বি শোইং
+Will You be telling?,তুমি কি বলতে থাকবে?,উইল ইউ বি টেলিং
+Will You be leaving?,তুমি কি ছেড়ে যাইতে থাকবে?,উইল ইউ বি লিভিং
+Will You be bringing?,তুমি কি আনতে থাকবে?,উইল ইউ বি ব্রিংইং
+Will You be keeping?,তুমি কি রাখতে থাকবে?,উইল ইউ বি কিপিং
+Will You be putting?,তুমি কি রাখতে থাকবে?,উইল ইউ বি পুটিং
+Will You be finding?,তুমি কি খুঁজে পাইতে থাকবে?,উইল ইউ বি ফাইন্ডিং
+Will You be forgetting?,তুমি কি ভুলে যাইতে থাকবে?,উইল ইউ বি ফরগেটিং
+Will You be remembering?,তুমি কি মনে রাখতে থাকবে?,উইল ইউ বি রিমেম্বারিং
+Will You be needing?,তুমি কি প্রয়োজনতে থাকবে?,উইল ইউ বি নিডিং
+Will You be believing?,তুমি কি বিশ্বাস করতে থাকবে?,উইল ইউ বি বিলিভিং
+Will You be agreeing?,তুমি কি রাজতে থাকবে?,উইল ইউ বি অ্যাগ্রিইং
+Will You be answering?,তুমি কি উত্তর দেইতে থাকবে?,উইল ইউ বি আন্সারিং
+Will You be breaking?,তুমি কি ভাঙতে থাকবে?,উইল ইউ বি ব্রেকিং
+Will You be building?,তুমি কি নির্মাণ করতে থাকবে?,উইল ইউ বি বিল্ডিং
+Will You be choosing?,তুমি কি পছন্দ করতে থাকবে?,উইল ইউ বি চুজিং
+Will You be cutting?,তুমি কি কাটতে থাকবে?,উইল ইউ বি কাটিং
+Will You be deciding?,তুমি কি সিদ্ধান্ত নিইতে থাকবে?,উইল ইউ বি ডিসাইডিং
+Will You be explaining?,তুমি কি ব্যাখ্যা করতে থাকবে?,উইল ইউ বি এক্সপ্লেইনিং
+Will You be falling?,তুমি কি পড়ে যাইতে থাকবে?,উইল ইউ বি ফলিং
+Will You be getting?,তুমি কি পাইতে থাকবে?,উইল ইউ বি গেটিং
+Will You be growing?,তুমি কি বড় হইতে থাকবে?,উইল ইউ বি গ্রোইং
+Will You be hoping?,তুমি কি আশা করতে থাকবে?,উইল ইউ বি হোপিং
+Will You be joining?,তুমি কি যোগ দিইতে থাকবে?,উইল ইউ বি জয়েনিং
+Will You be meeting?,তুমি কি সাক্ষাৎ করতে থাকবে?,উইল ইউ বি মিটিং
+Will You be sending?,তুমি কি পাঠাইতে থাকবে?,উইল ইউ বি সেন্ডিং
+Will You be spending?,তুমি কি ব্যয় করতে থাকবে?,উইল ইউ বি স্পেন্ডিং
+Will You be teaching?,তুমি কি শেখাইতে থাকবে?,উইল ইউ বি টিচিং
+Will You be winning?,তুমি কি জয়ী হইতে থাকবে?,উইল ইউ বি উইনিং

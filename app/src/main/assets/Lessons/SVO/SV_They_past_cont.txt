@@ -1,0 +1,84 @@
+They were playing,তারা খেলছিল,দে ওয়ার প্লেয়িং
+They were running,তারা দৌড়াচ্ছিল,দে ওয়ার রানিং
+They were eating,তারা খাচ্ছিল,দে ওয়ার ইটিং
+They were doing,তারা করছিল,দে ওয়ার ডুইং
+They were walking,তারা হাঁটছিল,দে ওয়ার ওয়াকিং
+They were going,তারা যাচ্ছিল,দে ওয়ার গোইং
+They were coming,তারা আসছিল,দে ওয়ার কামিং
+They were reading,তারা পড়ছিল,দে ওয়ার রিডিং
+They were writing,তারা লিখছিল,দে ওয়ার রাইটিং
+They were working,তারা কাজ করছিল,দে ওয়ার ওয়ার্কিং
+They were sleeping,তারা ঘুমাচ্ছিল,দে ওয়ার স্লিপিং
+They were drinking,তারা পান করছিল,দে ওয়ার ড্রিঙ্কিং
+They were sitting,তারা বসছিল,দে ওয়ার সিটিং
+They were standing,তারা দাঁড়াচ্ছিল,দে ওয়ার স্ট্যান্ডিং
+They were listening,তারা শুনছিল,দে ওয়ার লিসেনিং
+They were looking,তারা তাকাচ্ছিল,দে ওয়ার লুকিং
+They were loving,তারা ভালোবাসছিল,দে ওয়ার লাভিং
+They were wanting,তারা চাইছিল,দে ওয়ার ওয়ান্টিং
+They were thinking,তারা ভাবছিল,দে ওয়ার থিংকিং
+They were knowing,তারা জানছিল,দে ওয়ার নোইং
+They were learning,তারা শিখছিল,দে ওয়ার লার্নিং
+They were cooking,তারা রান্না করছিল,দে ওয়ার কুকিং
+They were speaking,তারা কথা বলছিল,দে ওয়ার স্পিকিং
+They were talking,তারা কথা বলছিল,দে ওয়ার টকিং
+They were opening,তারা খুলছিল,দে ওয়ার ওপেনিং
+They were closing,তারা বন্ধ করছিল,দে ওয়ার ক্লোজিং
+They were waiting,তারা অপেক্ষা করছিল,দে ওয়ার ওয়েটিং
+They were trying,তারা চেষ্টা করছিল,দে ওয়ার ট্রাইং
+They were living,তারা বাস করছিল,দে ওয়ার লিভিং
+They were helping,তারা সাহায্য করছিল,দে ওয়ার হেল্পিং
+They were calling,তারা ডাকছিল,দে ওয়ার কলিং
+They were asking,তারা জিজ্ঞাসা করছিল,দে ওয়ার আস্কিং
+They were taking,তারা নিচ্ছিল,দে ওয়ার টেকিং
+They were giving,তারা দিচ্ছিল,দে ওয়ার গিভিং
+They were seeing,তারা দেখছিল,দে ওয়ার সিইং
+They were hearing,তারা শুনছিল,দে ওয়ার হিয়ারিং
+They were feeling,তারা অনুভব করছিল,দে ওয়ার ফিলিং
+They were understanding,তারা বুঝছিল,দে ওয়ার আন্ডারস্ট্যান্ডিং
+They were singing,তারা গান করছিল,দে ওয়ার সিংইং
+They were swimming,তারা সাঁতার কাটছিল,দে ওয়ার সুইমিং
+They were driving,তারা গাড়ি চালাচ্ছিল,দে ওয়ার ড্রাইভিং
+They were studying,তারা পড়াশোনা করছিল,দে ওয়ার স্টাডিইং
+They were washing,তারা ধুছিল,দে ওয়ার ওয়াশিং
+They were watching,তারা দেখছিল,দে ওয়ার ওয়াচিং
+They were buying,তারা কিনছিল,দে ওয়ার বাইইং
+They were selling,তারা বিক্রি করছিল,দে ওয়ার সেলিং
+They were making,তারা তৈরি করছিল,দে ওয়ার মেকিং
+They were cleaning,তারা পরিষ্কার করছিল,দে ওয়ার ক্লিনিং
+They were dancing,তারা নাচছিল,দে ওয়ার ড্যান্সিং
+They were stopping,তারা থামছিল,দে ওয়ার স্টপিং
+They were starting,তারা শুরু করছিল,দে ওয়ার স্টার্টিং
+They were finishing,তারা শেষ করছিল,দে ওয়ার ফিনিশিং
+They were changing,তারা পরিবর্তন করছিল,দে ওয়ার চেঞ্জিং
+They were paying,তারা পরিশোধ করছিল,দে ওয়ার পেয়িং
+They were using,তারা ব্যবহার করছিল,দে ওয়ার ইউজিং
+They were showing,তারা দেখাচ্ছিল,দে ওয়ার শোইং
+They were telling,তারা বলছিল,দে ওয়ার টেলিং
+They were leaving,তারা ছেড়ে যাচ্ছিল,দে ওয়ার লিভিং
+They were bringing,তারা আনছিল,দে ওয়ার ব্রিংইং
+They were keeping,তারা রাখছিল,দে ওয়ার কিপিং
+They were putting,তারা রাখছিল,দে ওয়ার পুটিং
+They were finding,তারা খুঁজে পাচ্ছিল,দে ওয়ার ফাইন্ডিং
+They were forgetting,তারা ভুলে যাচ্ছিল,দে ওয়ার ফরগেটিং
+They were remembering,তারা মনে রাখছিল,দে ওয়ার রিমেম্বারিং
+They were needing,আমার প্রয়োজন হচ্ছিল,দে ওয়ার নিডিং
+They were believing,তারা বিশ্বাস করছিল,দে ওয়ার বিলিভিং
+They were agreeing,তারা রাজি হচ্ছিল,দে ওয়ার অ্যাগ্রিইং
+They were answering,তারা উত্তর দিচ্ছিল,দে ওয়ার আন্সারিং
+They were breaking,তারা ভাঙছিল,দে ওয়ার ব্রেকিং
+They were building,তারা নির্মাণ করছিল,দে ওয়ার বিল্ডিং
+They were choosing,তারা পছন্দ করছিল,দে ওয়ার চুজিং
+They were cutting,তারা কাটছিল,দে ওয়ার কাটিং
+They were deciding,তারা সিদ্ধান্ত নিচ্ছিল,দে ওয়ার ডিসাইডিং
+They were explaining,তারা ব্যাখ্যা করছিল,দে ওয়ার এক্সপ্লেইনিং
+They were falling,তারা পড়ে যাচ্ছিল,দে ওয়ার ফলিং
+They were getting,তারা পাচ্ছিল,দে ওয়ার গেটিং
+They were growing,তারা বড় হচ্ছিল,দে ওয়ার গ্রোইং
+They were hoping,তারা আশা করছিল,দে ওয়ার হোপিং
+They were joining,তারা যোগ দিচ্ছিল,দে ওয়ার জয়েনিং
+They were meeting,তারা সাক্ষাৎ করছিল,দে ওয়ার মিটিং
+They were sending,তারা পাঠাচ্ছিল,দে ওয়ার সেন্ডিং
+They were spending,তারা ব্যয় করছিল,দে ওয়ার স্পেন্ডিং
+They were teaching,তারা শেখাচ্ছিল,দে ওয়ার টিচিং
+They were winning,তারা জয়ী হচ্ছিল,দে ওয়ার উইনিং

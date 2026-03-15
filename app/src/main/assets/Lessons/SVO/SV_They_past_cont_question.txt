@@ -1,0 +1,84 @@
+Were They playing?,তারা কি খেলছিল?,ওয়ার দে প্লেয়িং
+Were They running?,তারা কি দৌড়াচ্ছিল?,ওয়ার দে রানিং
+Were They eating?,তারা কি খাচ্ছিল?,ওয়ার দে ইটিং
+Were They doing?,তারা কি করছিল?,ওয়ার দে ডুইং
+Were They walking?,তারা কি হাঁটছিল?,ওয়ার দে ওয়াকিং
+Were They going?,তারা কি যাচ্ছিল?,ওয়ার দে গোইং
+Were They coming?,তারা কি আসছিল?,ওয়ার দে কামিং
+Were They reading?,তারা কি পড়ছিল?,ওয়ার দে রিডিং
+Were They writing?,তারা কি লিখছিল?,ওয়ার দে রাইটিং
+Were They working?,তারা কি কাজ করছিল?,ওয়ার দে ওয়ার্কিং
+Were They sleeping?,তারা কি ঘুমাচ্ছিল?,ওয়ার দে স্লিপিং
+Were They drinking?,তারা কি পান করছিল?,ওয়ার দে ড্রিঙ্কিং
+Were They sitting?,তারা কি বসছিল?,ওয়ার দে সিটিং
+Were They standing?,তারা কি দাঁড়াচ্ছিল?,ওয়ার দে স্ট্যান্ডিং
+Were They listening?,তারা কি শুনছিল?,ওয়ার দে লিসেনিং
+Were They looking?,তারা কি তাকাচ্ছিল?,ওয়ার দে লুকিং
+Were They loving?,তারা কি ভালোবাসছিল?,ওয়ার দে লাভিং
+Were They wanting?,তারা কি চাইছিল?,ওয়ার দে ওয়ান্টিং
+Were They thinking?,তারা কি ভাবছিল?,ওয়ার দে থিংকিং
+Were They knowing?,তারা কি জানছিল?,ওয়ার দে নোইং
+Were They learning?,তারা কি শিখছিল?,ওয়ার দে লার্নিং
+Were They cooking?,তারা কি রান্না করছিল?,ওয়ার দে কুকিং
+Were They speaking?,তারা কি কথা বলছিল?,ওয়ার দে স্পিকিং
+Were They talking?,তারা কি কথা বলছিল?,ওয়ার দে টকিং
+Were They opening?,তারা কি খুলছিল?,ওয়ার দে ওপেনিং
+Were They closing?,তারা কি বন্ধ করছিল?,ওয়ার দে ক্লোজিং
+Were They waiting?,তারা কি অপেক্ষা করছিল?,ওয়ার দে ওয়েটিং
+Were They trying?,তারা কি চেষ্টা করছিল?,ওয়ার দে ট্রাইং
+Were They living?,তারা কি বাস করছিল?,ওয়ার দে লিভিং
+Were They helping?,তারা কি সাহায্য করছিল?,ওয়ার দে হেল্পিং
+Were They calling?,তারা কি ডাকছিল?,ওয়ার দে কলিং
+Were They asking?,তারা কি জিজ্ঞাসা করছিল?,ওয়ার দে আস্কিং
+Were They taking?,তারা কি নিচ্ছিল?,ওয়ার দে টেকিং
+Were They giving?,তারা কি দিচ্ছিল?,ওয়ার দে গিভিং
+Were They seeing?,তারা কি দেখছিল?,ওয়ার দে সিইং
+Were They hearing?,তারা কি শুনছিল?,ওয়ার দে হিয়ারিং
+Were They feeling?,তারা কি অনুভব করছিল?,ওয়ার দে ফিলিং
+Were They understanding?,তারা কি বুঝছিল?,ওয়ার দে আন্ডারস্ট্যান্ডিং
+Were They singing?,তারা কি গান করছিল?,ওয়ার দে সিংইং
+Were They swimming?,তারা কি সাঁতার কাটছিল?,ওয়ার দে সুইমিং
+Were They driving?,তারা কি গাড়ি চালাচ্ছিল?,ওয়ার দে ড্রাইভিং
+Were They studying?,তারা কি পড়াশোনা করছিল?,ওয়ার দে স্টাডিইং
+Were They washing?,তারা কি ধুছিল?,ওয়ার দে ওয়াশিং
+Were They watching?,তারা কি দেখছিল?,ওয়ার দে ওয়াচিং
+Were They buying?,তারা কি কিনছিল?,ওয়ার দে বাইইং
+Were They selling?,তারা কি বিক্রি করছিল?,ওয়ার দে সেলিং
+Were They making?,তারা কি তৈরি করছিল?,ওয়ার দে মেকিং
+Were They cleaning?,তারা কি পরিষ্কার করছিল?,ওয়ার দে ক্লিনিং
+Were They dancing?,তারা কি নাচছিল?,ওয়ার দে ড্যান্সিং
+Were They stopping?,তারা কি থামছিল?,ওয়ার দে স্টপিং
+Were They starting?,তারা কি শুরু করছিল?,ওয়ার দে স্টার্টিং
+Were They finishing?,তারা কি শেষ করছিল?,ওয়ার দে ফিনিশিং
+Were They changing?,তারা কি পরিবর্তন করছিল?,ওয়ার দে চেঞ্জিং
+Were They paying?,তারা কি পরিশোধ করছিল?,ওয়ার দে পেয়িং
+Were They using?,তারা কি ব্যবহার করছিল?,ওয়ার দে ইউজিং
+Were They showing?,তারা কি দেখাচ্ছিল?,ওয়ার দে শোইং
+Were They telling?,তারা কি বলছিল?,ওয়ার দে টেলিং
+Were They leaving?,তারা কি ছেড়ে যাচ্ছিল?,ওয়ার দে লিভিং
+Were They bringing?,তারা কি আনছিল?,ওয়ার দে ব্রিংইং
+Were They keeping?,তারা কি রাখছিল?,ওয়ার দে কিপিং
+Were They putting?,তারা কি রাখছিল?,ওয়ার দে পুটিং
+Were They finding?,তারা কি খুঁজে পাচ্ছিল?,ওয়ার দে ফাইন্ডিং
+Were They forgetting?,তারা কি ভুলে যাচ্ছিল?,ওয়ার দে ফরগেটিং
+Were They remembering?,তারা কি মনে রাখছিল?,ওয়ার দে রিমেম্বারিং
+Were They needing?,আমার কি প্রয়োজন হচ্ছিল?,ওয়ার দে নিডিং
+Were They believing?,তারা কি বিশ্বাস করছিল?,ওয়ার দে বিলিভিং
+Were They agreeing?,তারা কি রাজি হচ্ছিল?,ওয়ার দে অ্যাগ্রিইং
+Were They answering?,তারা কি উত্তর দিচ্ছিল?,ওয়ার দে আন্সারিং
+Were They breaking?,তারা কি ভাঙছিল?,ওয়ার দে ব্রেকিং
+Were They building?,তারা কি নির্মাণ করছিল?,ওয়ার দে বিল্ডিং
+Were They choosing?,তারা কি পছন্দ করছিল?,ওয়ার দে চুজিং
+Were They cutting?,তারা কি কাটছিল?,ওয়ার দে কাটিং
+Were They deciding?,তারা কি সিদ্ধান্ত নিচ্ছিল?,ওয়ার দে ডিসাইডিং
+Were They explaining?,তারা কি ব্যাখ্যা করছিল?,ওয়ার দে এক্সপ্লেইনিং
+Were They falling?,তারা কি পড়ে যাচ্ছিল?,ওয়ার দে ফলিং
+Were They getting?,তারা কি পাচ্ছিল?,ওয়ার দে গেটিং
+Were They growing?,তারা কি বড় হচ্ছিল?,ওয়ার দে গ্রোইং
+Were They hoping?,তারা কি আশা করছিল?,ওয়ার দে হোপিং
+Were They joining?,তারা কি যোগ দিচ্ছিল?,ওয়ার দে জয়েনিং
+Were They meeting?,তারা কি সাক্ষাৎ করছিল?,ওয়ার দে মিটিং
+Were They sending?,তারা কি পাঠাচ্ছিল?,ওয়ার দে সেন্ডিং
+Were They spending?,তারা কি ব্যয় করছিল?,ওয়ার দে স্পেন্ডিং
+Were They teaching?,তারা কি শেখাচ্ছিল?,ওয়ার দে টিচিং
+Were They winning?,তারা কি জয়ী হচ্ছিল?,ওয়ার দে উইনিং

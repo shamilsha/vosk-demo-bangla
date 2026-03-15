@@ -1,0 +1,10 @@
+When will you come?,তুমি কখন আসবে?,ওয়েন উইল ইউ কাম?
+When did he leave?,সে কখন গেল?,ওয়েন ডিড হি লিভ?
+When is your birthday?,তোমার জন্মদিন কবে?,ওয়েন ইজ ইয়োর বার্থডে?
+When will we eat?,আমরা কখন খাব?,ওয়েন উইল উই ইট?
+When does it start?,এটা কখন শুরু হয়?,ওয়েন ডাজ ইট স্টার্ট?
+When did you arrive?,তুমি কখন পৌঁছালে?,ওয়েন ডিড ইউ অ্যারাইভ?
+When can we meet?,আমরা কবে দেখা করতে পারি?,ওয়েন ক্যান উই মিট?
+When is the exam?,পরীক্ষা কবে?,ওয়েন ইজ দ্য এক্সাম?
+When will the train arrive?,ট্রেনটি কখন আসবে?,ওয়েন উইল দ্য ট্রেন অ্যারাইভ?
+When did you finish?,তুমি কখন শেষ করলে?,ওয়েন ডিড ইউ ফিনিশ?

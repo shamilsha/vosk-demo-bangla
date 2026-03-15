@@ -1,0 +1,84 @@
+Weren't They playing?,তারা কি খেলছিল না?,ওয়ারন্ট দে প্লেয়িং
+Weren't They running?,তারা কি দৌড়াচ্ছিল না?,ওয়ারন্ট দে রানিং
+Weren't They eating?,তারা কি খাচ্ছিল না?,ওয়ারন্ট দে ইটিং
+Weren't They doing?,তারা কি করছিল না?,ওয়ারন্ট দে ডুইং
+Weren't They walking?,তারা কি হাঁটছিল না?,ওয়ারন্ট দে ওয়াকিং
+Weren't They going?,তারা কি যাচ্ছিল না?,ওয়ারন্ট দে গোইং
+Weren't They coming?,তারা কি আসছিল না?,ওয়ারন্ট দে কামিং
+Weren't They reading?,তারা কি পড়ছিল না?,ওয়ারন্ট দে রিডিং
+Weren't They writing?,তারা কি লিখছিল না?,ওয়ারন্ট দে রাইটিং
+Weren't They working?,তারা কি কাজ করছিল না?,ওয়ারন্ট দে ওয়ার্কিং
+Weren't They sleeping?,তারা কি ঘুমাচ্ছিল না?,ওয়ারন্ট দে স্লিপিং
+Weren't They drinking?,তারা কি পান করছিল না?,ওয়ারন্ট দে ড্রিঙ্কিং
+Weren't They sitting?,তারা কি বসছিল না?,ওয়ারন্ট দে সিটিং
+Weren't They standing?,তারা কি দাঁড়াচ্ছিল না?,ওয়ারন্ট দে স্ট্যান্ডিং
+Weren't They listening?,তারা কি শুনছিল না?,ওয়ারন্ট দে লিসেনিং
+Weren't They looking?,তারা কি তাকাচ্ছিল না?,ওয়ারন্ট দে লুকিং
+Weren't They loving?,তারা কি ভালোবাসছিল না?,ওয়ারন্ট দে লাভিং
+Weren't They wanting?,তারা কি চাইছিল না?,ওয়ারন্ট দে ওয়ান্টিং
+Weren't They thinking?,তারা কি ভাবছিল না?,ওয়ারন্ট দে থিংকিং
+Weren't They knowing?,তারা কি জানছিল না?,ওয়ারন্ট দে নোইং
+Weren't They learning?,তারা কি শিখছিল না?,ওয়ারন্ট দে লার্নিং
+Weren't They cooking?,তারা কি রান্না করছিল না?,ওয়ারন্ট দে কুকিং
+Weren't They speaking?,তারা কি কথা বলছিল না?,ওয়ারন্ট দে স্পিকিং
+Weren't They talking?,তারা কি কথা বলছিল না?,ওয়ারন্ট দে টকিং
+Weren't They opening?,তারা কি খুলছিল না?,ওয়ারন্ট দে ওপেনিং
+Weren't They closing?,তারা কি বন্ধ করছিল না?,ওয়ারন্ট দে ক্লোজিং
+Weren't They waiting?,তারা কি অপেক্ষা করছিল না?,ওয়ারন্ট দে ওয়েটিং
+Weren't They trying?,তারা কি চেষ্টা করছিল না?,ওয়ারন্ট দে ট্রাইং
+Weren't They living?,তারা কি বাস করছিল না?,ওয়ারন্ট দে লিভিং
+Weren't They helping?,তারা কি সাহায্য করছিল না?,ওয়ারন্ট দে হেল্পিং
+Weren't They calling?,তারা কি ডাকছিল না?,ওয়ারন্ট দে কলিং
+Weren't They asking?,তারা কি জিজ্ঞাসা করছিল না?,ওয়ারন্ট দে আস্কিং
+Weren't They taking?,তারা কি নিচ্ছিল না?,ওয়ারন্ট দে টেকিং
+Weren't They giving?,তারা কি দিচ্ছিল না?,ওয়ারন্ট দে গিভিং
+Weren't They seeing?,তারা কি দেখছিল না?,ওয়ারন্ট দে সিইং
+Weren't They hearing?,তারা কি শুনছিল না?,ওয়ারন্ট দে হিয়ারিং
+Weren't They feeling?,তারা কি অনুভব করছিল না?,ওয়ারন্ট দে ফিলিং
+Weren't They understanding?,তারা কি বুঝছিল না?,ওয়ারন্ট দে আন্ডারস্ট্যান্ডিং
+Weren't They singing?,তারা কি গান করছিল না?,ওয়ারন্ট দে সিংইং
+Weren't They swimming?,তারা কি সাঁতার কাটছিল না?,ওয়ারন্ট দে সুইমিং
+Weren't They driving?,তারা কি গাড়ি চালাচ্ছিল না?,ওয়ারন্ট দে ড্রাইভিং
+Weren't They studying?,তারা কি পড়াশোনা করছিল না?,ওয়ারন্ট দে স্টাডিইং
+Weren't They washing?,তারা কি ধুছিল না?,ওয়ারন্ট দে ওয়াশিং
+Weren't They watching?,তারা কি দেখছিল না?,ওয়ারন্ট দে ওয়াচিং
+Weren't They buying?,তারা কি কিনছিল না?,ওয়ারন্ট দে বাইইং
+Weren't They selling?,তারা কি বিক্রি করছিল না?,ওয়ারন্ট দে সেলিং
+Weren't They making?,তারা কি তৈরি করছিল না?,ওয়ারন্ট দে মেকিং
+Weren't They cleaning?,তারা কি পরিষ্কার করছিল না?,ওয়ারন্ট দে ক্লিনিং
+Weren't They dancing?,তারা কি নাচছিল না?,ওয়ারন্ট দে ড্যান্সিং
+Weren't They stopping?,তারা কি থামছিল না?,ওয়ারন্ট দে স্টপিং
+Weren't They starting?,তারা কি শুরু করছিল না?,ওয়ারন্ট দে স্টার্টিং
+Weren't They finishing?,তারা কি শেষ করছিল না?,ওয়ারন্ট দে ফিনিশিং
+Weren't They changing?,তারা কি পরিবর্তন করছিল না?,ওয়ারন্ট দে চেঞ্জিং
+Weren't They paying?,তারা কি পরিশোধ করছিল না?,ওয়ারন্ট দে পেয়িং
+Weren't They using?,তারা কি ব্যবহার করছিল না?,ওয়ারন্ট দে ইউজিং
+Weren't They showing?,তারা কি দেখাচ্ছিল না?,ওয়ারন্ট দে শোইং
+Weren't They telling?,তারা কি বলছিল না?,ওয়ারন্ট দে টেলিং
+Weren't They leaving?,তারা কি ছেড়ে যাচ্ছিল না?,ওয়ারন্ট দে লিভিং
+Weren't They bringing?,তারা কি আনছিল না?,ওয়ারন্ট দে ব্রিংইং
+Weren't They keeping?,তারা কি রাখছিল না?,ওয়ারন্ট দে কিপিং
+Weren't They putting?,তারা কি রাখছিল না?,ওয়ারন্ট দে পুটিং
+Weren't They finding?,তারা কি খুঁজে পাচ্ছিল না?,ওয়ারন্ট দে ফাইন্ডিং
+Weren't They forgetting?,তারা কি ভুলে যাচ্ছিল না?,ওয়ারন্ট দে ফরগেটিং
+Weren't They remembering?,তারা কি মনে রাখছিল না?,ওয়ারন্ট দে রিমেম্বারিং
+Weren't They needing?,আমার কি প্রয়োজন হচ্ছিল না?,ওয়ারন্ট দে নিডিং
+Weren't They believing?,তারা কি বিশ্বাস করছিল না?,ওয়ারন্ট দে বিলিভিং
+Weren't They agreeing?,তারা কি রাজি হচ্ছিল না?,ওয়ারন্ট দে অ্যাগ্রিইং
+Weren't They answering?,তারা কি উত্তর দিচ্ছিল না?,ওয়ারন্ট দে আন্সারিং
+Weren't They breaking?,তারা কি ভাঙছিল না?,ওয়ারন্ট দে ব্রেকিং
+Weren't They building?,তারা কি নির্মাণ করছিল না?,ওয়ারন্ট দে বিল্ডিং
+Weren't They choosing?,তারা কি পছন্দ করছিল না?,ওয়ারন্ট দে চুজিং
+Weren't They cutting?,তারা কি কাটছিল না?,ওয়ারন্ট দে কাটিং
+Weren't They deciding?,তারা কি সিদ্ধান্ত নিচ্ছিল না?,ওয়ারন্ট দে ডিসাইডিং
+Weren't They explaining?,তারা কি ব্যাখ্যা করছিল না?,ওয়ারন্ট দে এক্সপ্লেইনিং
+Weren't They falling?,তারা কি পড়ে যাচ্ছিল না?,ওয়ারন্ট দে ফলিং
+Weren't They getting?,তারা কি পাচ্ছিল না?,ওয়ারন্ট দে গেটিং
+Weren't They growing?,তারা কি বড় হচ্ছিল না?,ওয়ারন্ট দে গ্রোইং
+Weren't They hoping?,তারা কি আশা করছিল না?,ওয়ারন্ট দে হোপিং
+Weren't They joining?,তারা কি যোগ দিচ্ছিল না?,ওয়ারন্ট দে জয়েনিং
+Weren't They meeting?,তারা কি সাক্ষাৎ করছিল না?,ওয়ারন্ট দে মিটিং
+Weren't They sending?,তারা কি পাঠাচ্ছিল না?,ওয়ারন্ট দে সেন্ডিং
+Weren't They spending?,তারা কি ব্যয় করছিল না?,ওয়ারন্ট দে স্পেন্ডিং
+Weren't They teaching?,তারা কি শেখাচ্ছিল না?,ওয়ারন্ট দে টিচিং
+Weren't They winning?,তারা কি জয়ী হচ্ছিল না?,ওয়ারন্ট দে উইনিং

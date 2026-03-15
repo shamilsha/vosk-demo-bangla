@@ -1,0 +1,84 @@
+They played,তারা খেলল,দে প্লেড
+They ran,তারা দৌড়াইল,দে র্যান
+They ate,তারা খাইল,দে এট
+They did,তারা করল,দে ডিড
+They walked,তারা হাঁটল,দে ওয়াকড
+They went,তারা যাইল,দে ওয়েন্ট
+They came,তারা আসল,দে কেম
+They read,তারা পড়ল,দে রিড
+They wrote,তারা লিখল,দে রোট
+They worked,তারা কাজ করল,দে ওয়ার্কড
+They slept,তারা ঘুমাইল,দে স্লেপ্ট
+They drank,তারা পান করল,দে ড্র্যাঙ্ক
+They sat,তারা বসল,দে স্যাট
+They stood,তারা দাঁড়াইল,দে স্টুড
+They listened,তারা শুনল,দে লিসেন্ড
+They looked,তারা তাকাইল,দে লুকড
+They loved,তারা ভালোবাসল,দে লাভড
+They wanted,তারা চাইল,দে ওয়ান্টেড
+They thought,তারা ভাবল,দে থট
+They knew,তারা জানল,দে নিউ
+They learnt,তারা শিখল,দে লার্ন্ট
+They cooked,তারা রান্না করল,দে কুকড
+They spoke,তারা কথা বলল,দে স্পোক
+They talked,তারা কথা বলল,দে টকড
+They opened,তারা খুলল,দে ওপেনড
+They closed,তারা বন্ধ করল,দে ক্লোজড
+They waited,তারা অপেক্ষা করল,দে ওয়েটেড
+They tried,তারা চেষ্টা করল,দে ট্রাইড
+They lived,তারা বাস করল,দে লিভড
+They helped,তারা সাহায্য করল,দে হেল্প্ট
+They called,তারা ডাকল,দে কলড
+They asked,তারা জিজ্ঞাসা করল,দে আস্ক্ট
+They took,তারা নিইল,দে টুক
+They gave,তারা দিইল,দে গেভ
+They saw,তারা দেখল,দে সো
+They heard,তারা শুনল,দে হার্ড
+They felt,তারা অনুভব করল,দে ফেল্ট
+They understood,তারা বুঝল,দে আন্ডারস্টুড
+They sang,তারা গান করল,দে স্যাং
+They swam,তারা সাঁতার কাটল,দে সোয়াম
+They drove,তারা গাড়ি চালাইল,দে ড্রোভ
+They studied,তারা পড়াশোনা করল,দে স্টাডিড
+They washed,তারা ধুইল,দে ওয়াশ্ট
+They watched,তারা দেখল,দে ওয়াচ্ট
+They bought,তারা কিনল,দে বট
+They sold,তারা বিক্রি করল,দে সোল্ড
+They made,তারা তৈরি করল,দে মেড
+They cleaned,তারা পরিষ্কার করল,দে ক্লিনড
+They danced,তারা নাচল,দে ড্যান্স্ট
+They stopped,তারা থামল,দে স্টপ্ট
+They started,তারা শুরু করল,দে স্টার্টেড
+They finished,তারা শেষ করল,দে ফিনিশ্ট
+They changed,তারা পরিবর্তন করল,দে চেঞ্জড
+They paid,তারা পরিশোধ করল,দে পেড
+They used,তারা ব্যবহার করল,দে ইউজড
+They showed,তারা দেখাইল,দে শোড
+They told,তারা বলল,দে টোল্ড
+They left,তারা ছেড়ে যাইল,দে লেফ্ট
+They brought,তারা আনল,দে ব্রট
+They kept,তারা রাখল,দে কেপ্ট
+They put,তারা রাখল,দে পুট
+They found,তারা খুঁজে পাইল,দে ফাউন্ড
+They forgot,তারা ভুলে যাইল,দে ফরগট
+They remembered,তারা মনে রাখল,দে রিমেম্বার্ড
+They needed,তারা প্রয়োজনল,দে নিডেড
+They believed,তারা বিশ্বাস করল,দে বিলিভড
+They agreed,তারা রাজল,দে অ্যাগ্রিড
+They answered,তারা উত্তর দেইল,দে আন্সার্ড
+They broke,তারা ভাঙল,দে ব্রোক
+They built,তারা নির্মাণ করল,দে বিল্ট
+They chose,তারা পছন্দ করল,দে চোজ
+They cut,তারা কাটল,দে কাট
+They decided,তারা সিদ্ধান্ত নিইল,দে ডিসাইডেড
+They explained,তারা ব্যাখ্যা করল,দে এক্সপ্লেইন্ড
+They fell,তারা পড়ে যাইল,দে ফেল
+They got,তারা পাইল,দে গট
+They grew,তারা বড় হইল,দে গ্রু
+They hoped,তারা আশা করল,দে হোপ্ট
+They joined,তারা যোগ দিইল,দে জয়েন্ড
+They met,তারা সাক্ষাৎ করল,দে মেট
+They sent,তারা পাঠাইল,দে সেন্ট
+They spent,তারা ব্যয় করল,দে স্পেন্ট
+They taught,তারা শেখাইল,দে টচ
+They won,তারা জয়ী হইল,দে ওয়ান

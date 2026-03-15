@@ -1,0 +1,84 @@
+Will He be playing?,সে কি খেলতে থাকবে?,উইল হি বি প্লেয়িং
+Will He be running?,সে কি দৌড়াইতে থাকবে?,উইল হি বি রানিং
+Will He be eating?,সে কি খাইতে থাকবে?,উইল হি বি ইটিং
+Will He be doing?,সে কি করতে থাকবে?,উইল হি বি ডুইং
+Will He be walking?,সে কি হাঁটতে থাকবে?,উইল হি বি ওয়াকিং
+Will He be going?,সে কি যাইতে থাকবে?,উইল হি বি গোইং
+Will He be coming?,সে কি আসতে থাকবে?,উইল হি বি কামিং
+Will He be reading?,সে কি পড়তে থাকবে?,উইল হি বি রিডিং
+Will He be writing?,সে কি লিখতে থাকবে?,উইল হি বি রাইটিং
+Will He be working?,সে কি কাজ করতে থাকবে?,উইল হি বি ওয়ার্কিং
+Will He be sleeping?,সে কি ঘুমাইতে থাকবে?,উইল হি বি স্লিপিং
+Will He be drinking?,সে কি পান করতে থাকবে?,উইল হি বি ড্রিঙ্কিং
+Will He be sitting?,সে কি বসতে থাকবে?,উইল হি বি সিটিং
+Will He be standing?,সে কি দাঁড়াইতে থাকবে?,উইল হি বি স্ট্যান্ডিং
+Will He be listening?,সে কি শুনতে থাকবে?,উইল হি বি লিসেনিং
+Will He be looking?,সে কি তাকাইতে থাকবে?,উইল হি বি লুকিং
+Will He be loving?,সে কি ভালোবাসতে থাকবে?,উইল হি বি লাভিং
+Will He be wanting?,সে কি চাইতে থাকবে?,উইল হি বি ওয়ান্টিং
+Will He be thinking?,সে কি ভাবতে থাকবে?,উইল হি বি থিংকিং
+Will He be knowing?,সে কি জানতে থাকবে?,উইল হি বি নোইং
+Will He be learning?,সে কি শিখতে থাকবে?,উইল হি বি লার্নিং
+Will He be cooking?,সে কি রান্না করতে থাকবে?,উইল হি বি কুকিং
+Will He be speaking?,সে কি কথা বলতে থাকবে?,উইল হি বি স্পিকিং
+Will He be talking?,সে কি কথা বলতে থাকবে?,উইল হি বি টকিং
+Will He be opening?,সে কি খুলতে থাকবে?,উইল হি বি ওপেনিং
+Will He be closing?,সে কি বন্ধ করতে থাকবে?,উইল হি বি ক্লোজিং
+Will He be waiting?,সে কি অপেক্ষা করতে থাকবে?,উইল হি বি ওয়েটিং
+Will He be trying?,সে কি চেষ্টা করতে থাকবে?,উইল হি বি ট্রাইং
+Will He be living?,সে কি বাস করতে থাকবে?,উইল হি বি লিভিং
+Will He be helping?,সে কি সাহায্য করতে থাকবে?,উইল হি বি হেল্পিং
+Will He be calling?,সে কি ডাকতে থাকবে?,উইল হি বি কলিং
+Will He be asking?,সে কি জিজ্ঞাসা করতে থাকবে?,উইল হি বি আস্কিং
+Will He be taking?,সে কি নিইতে থাকবে?,উইল হি বি টেকিং
+Will He be giving?,সে কি দিইতে থাকবে?,উইল হি বি গিভিং
+Will He be seeing?,সে কি দেখতে থাকবে?,উইল হি বি সিইং
+Will He be hearing?,সে কি শুনতে থাকবে?,উইল হি বি হিয়ারিং
+Will He be feeling?,সে কি অনুভব করতে থাকবে?,উইল হি বি ফিলিং
+Will He be understanding?,সে কি বুঝতে থাকবে?,উইল হি বি আন্ডারস্ট্যান্ডিং
+Will He be singing?,সে কি গান করতে থাকবে?,উইল হি বি সিংইং
+Will He be swimming?,সে কি সাঁতার কাটতে থাকবে?,উইল হি বি সুইমিং
+Will He be driving?,সে কি গাড়ি চালাইতে থাকবে?,উইল হি বি ড্রাইভিং
+Will He be studying?,সে কি পড়াশোনা করতে থাকবে?,উইল হি বি স্টাডিইং
+Will He be washing?,সে কি ধুইতে থাকবে?,উইল হি বি ওয়াশিং
+Will He be watching?,সে কি দেখতে থাকবে?,উইল হি বি ওয়াচিং
+Will He be buying?,সে কি কিনতে থাকবে?,উইল হি বি বাইইং
+Will He be selling?,সে কি বিক্রি করতে থাকবে?,উইল হি বি সেলিং
+Will He be making?,সে কি তৈরি করতে থাকবে?,উইল হি বি মেকিং
+Will He be cleaning?,সে কি পরিষ্কার করতে থাকবে?,উইল হি বি ক্লিনিং
+Will He be dancing?,সে কি নাচতে থাকবে?,উইল হি বি ড্যান্সিং
+Will He be stopping?,সে কি থামতে থাকবে?,উইল হি বি স্টপিং
+Will He be starting?,সে কি শুরু করতে থাকবে?,উইল হি বি স্টার্টিং
+Will He be finishing?,সে কি শেষ করতে থাকবে?,উইল হি বি ফিনিশিং
+Will He be changing?,সে কি পরিবর্তন করতে থাকবে?,উইল হি বি চেঞ্জিং
+Will He be paying?,সে কি পরিশোধ করতে থাকবে?,উইল হি বি পেয়িং
+Will He be using?,সে কি ব্যবহার করতে থাকবে?,উইল হি বি ইউজিং
+Will He be showing?,সে কি দেখাইতে থাকবে?,উইল হি বি শোইং
+Will He be telling?,সে কি বলতে থাকবে?,উইল হি বি টেলিং
+Will He be leaving?,সে কি ছেড়ে যাইতে থাকবে?,উইল হি বি লিভিং
+Will He be bringing?,সে কি আনতে থাকবে?,উইল হি বি ব্রিংইং
+Will He be keeping?,সে কি রাখতে থাকবে?,উইল হি বি কিপিং
+Will He be putting?,সে কি রাখতে থাকবে?,উইল হি বি পুটিং
+Will He be finding?,সে কি খুঁজে পাইতে থাকবে?,উইল হি বি ফাইন্ডিং
+Will He be forgetting?,সে কি ভুলে যাইতে থাকবে?,উইল হি বি ফরগেটিং
+Will He be remembering?,সে কি মনে রাখতে থাকবে?,উইল হি বি রিমেম্বারিং
+Will He be needing?,সে কি প্রয়োজনতে থাকবে?,উইল হি বি নিডিং
+Will He be believing?,সে কি বিশ্বাস করতে থাকবে?,উইল হি বি বিলিভিং
+Will He be agreeing?,সে কি রাজতে থাকবে?,উইল হি বি অ্যাগ্রিইং
+Will He be answering?,সে কি উত্তর দেইতে থাকবে?,উইল হি বি আন্সারিং
+Will He be breaking?,সে কি ভাঙতে থাকবে?,উইল হি বি ব্রেকিং
+Will He be building?,সে কি নির্মাণ করতে থাকবে?,উইল হি বি বিল্ডিং
+Will He be choosing?,সে কি পছন্দ করতে থাকবে?,উইল হি বি চুজিং
+Will He be cutting?,সে কি কাটতে থাকবে?,উইল হি বি কাটিং
+Will He be deciding?,সে কি সিদ্ধান্ত নিইতে থাকবে?,উইল হি বি ডিসাইডিং
+Will He be explaining?,সে কি ব্যাখ্যা করতে থাকবে?,উইল হি বি এক্সপ্লেইনিং
+Will He be falling?,সে কি পড়ে যাইতে থাকবে?,উইল হি বি ফলিং
+Will He be getting?,সে কি পাইতে থাকবে?,উইল হি বি গেটিং
+Will He be growing?,সে কি বড় হইতে থাকবে?,উইল হি বি গ্রোইং
+Will He be hoping?,সে কি আশা করতে থাকবে?,উইল হি বি হোপিং
+Will He be joining?,সে কি যোগ দিইতে থাকবে?,উইল হি বি জয়েনিং
+Will He be meeting?,সে কি সাক্ষাৎ করতে থাকবে?,উইল হি বি মিটিং
+Will He be sending?,সে কি পাঠাইতে থাকবে?,উইল হি বি সেন্ডিং
+Will He be spending?,সে কি ব্যয় করতে থাকবে?,উইল হি বি স্পেন্ডিং
+Will He be teaching?,সে কি শেখাইতে থাকবে?,উইল হি বি টিচিং
+Will He be winning?,সে কি জয়ী হইতে থাকবে?,উইল হি বি উইনিং

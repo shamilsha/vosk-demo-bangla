@@ -1,0 +1,84 @@
+They will be playing,তারা খেলতে থাকবে,দে উইল বি প্লেয়িং
+They will be running,তারা দৌড়াইতে থাকবে,দে উইল বি রানিং
+They will be eating,তারা খাইতে থাকবে,দে উইল বি ইটিং
+They will be doing,তারা করতে থাকবে,দে উইল বি ডুইং
+They will be walking,তারা হাঁটতে থাকবে,দে উইল বি ওয়াকিং
+They will be going,তারা যাইতে থাকবে,দে উইল বি গোইং
+They will be coming,তারা আসতে থাকবে,দে উইল বি কামিং
+They will be reading,তারা পড়তে থাকবে,দে উইল বি রিডিং
+They will be writing,তারা লিখতে থাকবে,দে উইল বি রাইটিং
+They will be working,তারা কাজ করতে থাকবে,দে উইল বি ওয়ার্কিং
+They will be sleeping,তারা ঘুমাইতে থাকবে,দে উইল বি স্লিপিং
+They will be drinking,তারা পান করতে থাকবে,দে উইল বি ড্রিঙ্কিং
+They will be sitting,তারা বসতে থাকবে,দে উইল বি সিটিং
+They will be standing,তারা দাঁড়াইতে থাকবে,দে উইল বি স্ট্যান্ডিং
+They will be listening,তারা শুনতে থাকবে,দে উইল বি লিসেনিং
+They will be looking,তারা তাকাইতে থাকবে,দে উইল বি লুকিং
+They will be loving,তারা ভালোবাসতে থাকবে,দে উইল বি লাভিং
+They will be wanting,তারা চাইতে থাকবে,দে উইল বি ওয়ান্টিং
+They will be thinking,তারা ভাবতে থাকবে,দে উইল বি থিংকিং
+They will be knowing,তারা জানতে থাকবে,দে উইল বি নোইং
+They will be learning,তারা শিখতে থাকবে,দে উইল বি লার্নিং
+They will be cooking,তারা রান্না করতে থাকবে,দে উইল বি কুকিং
+They will be speaking,তারা কথা বলতে থাকবে,দে উইল বি স্পিকিং
+They will be talking,তারা কথা বলতে থাকবে,দে উইল বি টকিং
+They will be opening,তারা খুলতে থাকবে,দে উইল বি ওপেনিং
+They will be closing,তারা বন্ধ করতে থাকবে,দে উইল বি ক্লোজিং
+They will be waiting,তারা অপেক্ষা করতে থাকবে,দে উইল বি ওয়েটিং
+They will be trying,তারা চেষ্টা করতে থাকবে,দে উইল বি ট্রাইং
+They will be living,তারা বাস করতে থাকবে,দে উইল বি লিভিং
+They will be helping,তারা সাহায্য করতে থাকবে,দে উইল বি হেল্পিং
+They will be calling,তারা ডাকতে থাকবে,দে উইল বি কলিং
+They will be asking,তারা জিজ্ঞাসা করতে থাকবে,দে উইল বি আস্কিং
+They will be taking,তারা নিইতে থাকবে,দে উইল বি টেকিং
+They will be giving,তারা দিইতে থাকবে,দে উইল বি গিভিং
+They will be seeing,তারা দেখতে থাকবে,দে উইল বি সিইং
+They will be hearing,তারা শুনতে থাকবে,দে উইল বি হিয়ারিং
+They will be feeling,তারা অনুভব করতে থাকবে,দে উইল বি ফিলিং
+They will be understanding,তারা বুঝতে থাকবে,দে উইল বি আন্ডারস্ট্যান্ডিং
+They will be singing,তারা গান করতে থাকবে,দে উইল বি সিংইং
+They will be swimming,তারা সাঁতার কাটতে থাকবে,দে উইল বি সুইমিং
+They will be driving,তারা গাড়ি চালাইতে থাকবে,দে উইল বি ড্রাইভিং
+They will be studying,তারা পড়াশোনা করতে থাকবে,দে উইল বি স্টাডিইং
+They will be washing,তারা ধুইতে থাকবে,দে উইল বি ওয়াশিং
+They will be watching,তারা দেখতে থাকবে,দে উইল বি ওয়াচিং
+They will be buying,তারা কিনতে থাকবে,দে উইল বি বাইইং
+They will be selling,তারা বিক্রি করতে থাকবে,দে উইল বি সেলিং
+They will be making,তারা তৈরি করতে থাকবে,দে উইল বি মেকিং
+They will be cleaning,তারা পরিষ্কার করতে থাকবে,দে উইল বি ক্লিনিং
+They will be dancing,তারা নাচতে থাকবে,দে উইল বি ড্যান্সিং
+They will be stopping,তারা থামতে থাকবে,দে উইল বি স্টপিং
+They will be starting,তারা শুরু করতে থাকবে,দে উইল বি স্টার্টিং
+They will be finishing,তারা শেষ করতে থাকবে,দে উইল বি ফিনিশিং
+They will be changing,তারা পরিবর্তন করতে থাকবে,দে উইল বি চেঞ্জিং
+They will be paying,তারা পরিশোধ করতে থাকবে,দে উইল বি পেয়িং
+They will be using,তারা ব্যবহার করতে থাকবে,দে উইল বি ইউজিং
+They will be showing,তারা দেখাইতে থাকবে,দে উইল বি শোইং
+They will be telling,তারা বলতে থাকবে,দে উইল বি টেলিং
+They will be leaving,তারা ছেড়ে যাইতে থাকবে,দে উইল বি লিভিং
+They will be bringing,তারা আনতে থাকবে,দে উইল বি ব্রিংইং
+They will be keeping,তারা রাখতে থাকবে,দে উইল বি কিপিং
+They will be putting,তারা রাখতে থাকবে,দে উইল বি পুটিং
+They will be finding,তারা খুঁজে পাইতে থাকবে,দে উইল বি ফাইন্ডিং
+They will be forgetting,তারা ভুলে যাইতে থাকবে,দে উইল বি ফরগেটিং
+They will be remembering,তারা মনে রাখতে থাকবে,দে উইল বি রিমেম্বারিং
+They will be needing,তারা প্রয়োজনতে থাকবে,দে উইল বি নিডিং
+They will be believing,তারা বিশ্বাস করতে থাকবে,দে উইল বি বিলিভিং
+They will be agreeing,তারা রাজতে থাকবে,দে উইল বি অ্যাগ্রিইং
+They will be answering,তারা উত্তর দেইতে থাকবে,দে উইল বি আন্সারিং
+They will be breaking,তারা ভাঙতে থাকবে,দে উইল বি ব্রেকিং
+They will be building,তারা নির্মাণ করতে থাকবে,দে উইল বি বিল্ডিং
+They will be choosing,তারা পছন্দ করতে থাকবে,দে উইল বি চুজিং
+They will be cutting,তারা কাটতে থাকবে,দে উইল বি কাটিং
+They will be deciding,তারা সিদ্ধান্ত নিইতে থাকবে,দে উইল বি ডিসাইডিং
+They will be explaining,তারা ব্যাখ্যা করতে থাকবে,দে উইল বি এক্সপ্লেইনিং
+They will be falling,তারা পড়ে যাইতে থাকবে,দে উইল বি ফলিং
+They will be getting,তারা পাইতে থাকবে,দে উইল বি গেটিং
+They will be growing,তারা বড় হইতে থাকবে,দে উইল বি গ্রোইং
+They will be hoping,তারা আশা করতে থাকবে,দে উইল বি হোপিং
+They will be joining,তারা যোগ দিইতে থাকবে,দে উইল বি জয়েনিং
+They will be meeting,তারা সাক্ষাৎ করতে থাকবে,দে উইল বি মিটিং
+They will be sending,তারা পাঠাইতে থাকবে,দে উইল বি সেন্ডিং
+They will be spending,তারা ব্যয় করতে থাকবে,দে উইল বি স্পেন্ডিং
+They will be teaching,তারা শেখাইতে থাকবে,দে উইল বি টিচিং
+They will be winning,তারা জয়ী হইতে থাকবে,দে উইল বি উইনিং

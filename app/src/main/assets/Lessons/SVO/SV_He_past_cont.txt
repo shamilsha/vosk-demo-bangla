@@ -1,0 +1,84 @@
+He was playing,সে খেলছিল,হি ওয়াজ প্লেয়িং
+He was running,সে দৌড়াচ্ছিল,হি ওয়াজ রানিং
+He was eating,সে খাচ্ছিল,হি ওয়াজ ইটিং
+He was doing,সে করছিল,হি ওয়াজ ডুইং
+He was walking,সে হাঁটছিল,হি ওয়াজ ওয়াকিং
+He was going,সে যাচ্ছিল,হি ওয়াজ গোইং
+He was coming,সে আসছিল,হি ওয়াজ কামিং
+He was reading,সে পড়ছিল,হি ওয়াজ রিডিং
+He was writing,সে লিখছিল,হি ওয়াজ রাইটিং
+He was working,সে কাজ করছিল,হি ওয়াজ ওয়ার্কিং
+He was sleeping,সে ঘুমাচ্ছিল,হি ওয়াজ স্লিপিং
+He was drinking,সে পান করছিল,হি ওয়াজ ড্রিঙ্কিং
+He was sitting,সে বসছিল,হি ওয়াজ সিটিং
+He was standing,সে দাঁড়াচ্ছিল,হি ওয়াজ স্ট্যান্ডিং
+He was listening,সে শুনছিল,হি ওয়াজ লিসেনিং
+He was looking,সে তাকাচ্ছিল,হি ওয়াজ লুকিং
+He was loving,সে ভালোবাসছিল,হি ওয়াজ লাভিং
+He was wanting,সে চাইছিল,হি ওয়াজ ওয়ান্টিং
+He was thinking,সে ভাবছিল,হি ওয়াজ থিংকিং
+He was knowing,সে জানছিল,হি ওয়াজ নোইং
+He was learning,সে শিখছিল,হি ওয়াজ লার্নিং
+He was cooking,সে রান্না করছিল,হি ওয়াজ কুকিং
+He was speaking,সে কথা বলছিল,হি ওয়াজ স্পিকিং
+He was talking,সে কথা বলছিল,হি ওয়াজ টকিং
+He was opening,সে খুলছিল,হি ওয়াজ ওপেনিং
+He was closing,সে বন্ধ করছিল,হি ওয়াজ ক্লোজিং
+He was waiting,সে অপেক্ষা করছিল,হি ওয়াজ ওয়েটিং
+He was trying,সে চেষ্টা করছিল,হি ওয়াজ ট্রাইং
+He was living,সে বাস করছিল,হি ওয়াজ লিভিং
+He was helping,সে সাহায্য করছিল,হি ওয়াজ হেল্পিং
+He was calling,সে ডাকছিল,হি ওয়াজ কলিং
+He was asking,সে জিজ্ঞাসা করছিল,হি ওয়াজ আস্কিং
+He was taking,সে নিচ্ছিল,হি ওয়াজ টেকিং
+He was giving,সে দিচ্ছিল,হি ওয়াজ গিভিং
+He was seeing,সে দেখছিল,হি ওয়াজ সিইং
+He was hearing,সে শুনছিল,হি ওয়াজ হিয়ারিং
+He was feeling,সে অনুভব করছিল,হি ওয়াজ ফিলিং
+He was understanding,সে বুঝছিল,হি ওয়াজ আন্ডারস্ট্যান্ডিং
+He was singing,সে গান করছিল,হি ওয়াজ সিংইং
+He was swimming,সে সাঁতার কাটছিল,হি ওয়াজ সুইমিং
+He was driving,সে গাড়ি চালাচ্ছিল,হি ওয়াজ ড্রাইভিং
+He was studying,সে পড়াশোনা করছিল,হি ওয়াজ স্টাডিইং
+He was washing,সে ধুছিল,হি ওয়াজ ওয়াশিং
+He was watching,সে দেখছিল,হি ওয়াজ ওয়াচিং
+He was buying,সে কিনছিল,হি ওয়াজ বাইইং
+He was selling,সে বিক্রি করছিল,হি ওয়াজ সেলিং
+He was making,সে তৈরি করছিল,হি ওয়াজ মেকিং
+He was cleaning,সে পরিষ্কার করছিল,হি ওয়াজ ক্লিনিং
+He was dancing,সে নাচছিল,হি ওয়াজ ড্যান্সিং
+He was stopping,সে থামছিল,হি ওয়াজ স্টপিং
+He was starting,সে শুরু করছিল,হি ওয়াজ স্টার্টিং
+He was finishing,সে শেষ করছিল,হি ওয়াজ ফিনিশিং
+He was changing,সে পরিবর্তন করছিল,হি ওয়াজ চেঞ্জিং
+He was paying,সে পরিশোধ করছিল,হি ওয়াজ পেয়িং
+He was using,সে ব্যবহার করছিল,হি ওয়াজ ইউজিং
+He was showing,সে দেখাচ্ছিল,হি ওয়াজ শোইং
+He was telling,সে বলছিল,হি ওয়াজ টেলিং
+He was leaving,সে ছেড়ে যাচ্ছিল,হি ওয়াজ লিভিং
+He was bringing,সে আনছিল,হি ওয়াজ ব্রিংইং
+He was keeping,সে রাখছিল,হি ওয়াজ কিপিং
+He was putting,সে রাখছিল,হি ওয়াজ পুটিং
+He was finding,সে খুঁজে পাচ্ছিল,হি ওয়াজ ফাইন্ডিং
+He was forgetting,সে ভুলে যাচ্ছিল,হি ওয়াজ ফরগেটিং
+He was remembering,সে মনে রাখছিল,হি ওয়াজ রিমেম্বারিং
+He was needing,আমার প্রয়োজন হচ্ছিল,হি ওয়াজ নিডিং
+He was believing,সে বিশ্বাস করছিল,হি ওয়াজ বিলিভিং
+He was agreeing,সে রাজি হচ্ছিল,হি ওয়াজ অ্যাগ্রিইং
+He was answering,সে উত্তর দিচ্ছিল,হি ওয়াজ আন্সারিং
+He was breaking,সে ভাঙছিল,হি ওয়াজ ব্রেকিং
+He was building,সে নির্মাণ করছিল,হি ওয়াজ বিল্ডিং
+He was choosing,সে পছন্দ করছিল,হি ওয়াজ চুজিং
+He was cutting,সে কাটছিল,হি ওয়াজ কাটিং
+He was deciding,সে সিদ্ধান্ত নিচ্ছিল,হি ওয়াজ ডিসাইডিং
+He was explaining,সে ব্যাখ্যা করছিল,হি ওয়াজ এক্সপ্লেইনিং
+He was falling,সে পড়ে যাচ্ছিল,হি ওয়াজ ফলিং
+He was getting,সে পাচ্ছিল,হি ওয়াজ গেটিং
+He was growing,সে বড় হচ্ছিল,হি ওয়াজ গ্রোইং
+He was hoping,সে আশা করছিল,হি ওয়াজ হোপিং
+He was joining,সে যোগ দিচ্ছিল,হি ওয়াজ জয়েনিং
+He was meeting,সে সাক্ষাৎ করছিল,হি ওয়াজ মিটিং
+He was sending,সে পাঠাচ্ছিল,হি ওয়াজ সেন্ডিং
+He was spending,সে ব্যয় করছিল,হি ওয়াজ স্পেন্ডিং
+He was teaching,সে শেখাচ্ছিল,হি ওয়াজ টিচিং
+He was winning,সে জয়ী হচ্ছিল,হি ওয়াজ উইনিং

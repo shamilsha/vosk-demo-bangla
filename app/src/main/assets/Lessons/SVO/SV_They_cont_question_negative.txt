@@ -1,0 +1,84 @@
+Aren't They playing?,তারা কি খেলছে না?,আরন্ট দে প্লেয়িং
+Aren't They running?,তারা কি দৌড়াচ্ছে না?,আরন্ট দে রানিং
+Aren't They eating?,তারা কি খাচ্ছে না?,আরন্ট দে ইটিং
+Aren't They doing?,তারা কি করছে না?,আরন্ট দে ডুইং
+Aren't They walking?,তারা কি হাঁটছে না?,আরন্ট দে ওয়াকিং
+Aren't They going?,তারা কি যাচ্ছে না?,আরন্ট দে গোইং
+Aren't They coming?,তারা কি আসছে না?,আরন্ট দে কামিং
+Aren't They reading?,তারা কি পড়ছে না?,আরন্ট দে রিডিং
+Aren't They writing?,তারা কি লিখছে না?,আরন্ট দে রাইটিং
+Aren't They working?,তারা কি কাজ করছে না?,আরন্ট দে ওয়ার্কিং
+Aren't They sleeping?,তারা কি ঘুমাচ্ছে না?,আরন্ট দে স্লিপিং
+Aren't They drinking?,তারা কি পান করছে না?,আরন্ট দে ড্রিঙ্কিং
+Aren't They sitting?,তারা কি বসছে না?,আরন্ট দে সিটিং
+Aren't They standing?,তারা কি দাঁড়াচ্ছে না?,আরন্ট দে স্ট্যান্ডিং
+Aren't They listening?,তারা কি শুনছে না?,আরন্ট দে লিসেনিং
+Aren't They looking?,তারা কি তাকাচ্ছে না?,আরন্ট দে লুকিং
+Aren't They loving?,তারা কি ভালোবাসছে না?,আরন্ট দে লাভিং
+Aren't They wanting?,তারা কি চাইছে না?,আরন্ট দে ওয়ান্টিং
+Aren't They thinking?,তারা কি ভাবছে না?,আরন্ট দে থিংকিং
+Aren't They knowing?,তারা কি জানছে না?,আরন্ট দে নোইং
+Aren't They learning?,তারা কি শিখছে না?,আরন্ট দে লার্নিং
+Aren't They cooking?,তারা কি রান্না করছে না?,আরন্ট দে কুকিং
+Aren't They speaking?,তারা কি কথা বলছে না?,আরন্ট দে স্পিকিং
+Aren't They talking?,তারা কি কথা বলছে না?,আরন্ট দে টকিং
+Aren't They opening?,তারা কি খুলছে না?,আরন্ট দে ওপেনিং
+Aren't They closing?,তারা কি বন্ধ করছে না?,আরন্ট দে ক্লোজিং
+Aren't They waiting?,তারা কি অপেক্ষা করছে না?,আরন্ট দে ওয়েটিং
+Aren't They trying?,তারা কি চেষ্টা করছে না?,আরন্ট দে ট্রাইং
+Aren't They living?,তারা কি বাস করছে না?,আরন্ট দে লিভিং
+Aren't They helping?,তারা কি সাহায্য করছে না?,আরন্ট দে হেল্পিং
+Aren't They calling?,তারা কি ডাকছে না?,আরন্ট দে কলিং
+Aren't They asking?,তারা কি জিজ্ঞাসা করছে না?,আরন্ট দে আস্কিং
+Aren't They taking?,তারা কি নিচ্ছে না?,আরন্ট দে টেকিং
+Aren't They giving?,তারা কি দিচ্ছে না?,আরন্ট দে গিভিং
+Aren't They seeing?,তারা কি দেখছে না?,আরন্ট দে সিইং
+Aren't They hearing?,তারা কি শুনছে না?,আরন্ট দে হিয়ারিং
+Aren't They feeling?,তারা কি অনুভব করছে না?,আরন্ট দে ফিলিং
+Aren't They understanding?,তারা কি বুঝছে না?,আরন্ট দে আন্ডারস্ট্যান্ডিং
+Aren't They singing?,তারা কি গান করছে না?,আরন্ট দে সিংইং
+Aren't They swimming?,তারা কি সাঁতার কাটছে না?,আরন্ট দে সুইমিং
+Aren't They driving?,তারা কি গাড়ি চালাচ্ছে না?,আরন্ট দে ড্রাইভিং
+Aren't They studying?,তারা কি পড়াশোনা করছে না?,আরন্ট দে স্টাডিইং
+Aren't They washing?,তারা কি ধুছে না?,আরন্ট দে ওয়াশিং
+Aren't They watching?,তারা কি দেখছে না?,আরন্ট দে ওয়াচিং
+Aren't They buying?,তারা কি কিনছে না?,আরন্ট দে বাইইং
+Aren't They selling?,তারা কি বিক্রি করছে না?,আরন্ট দে সেলিং
+Aren't They making?,তারা কি তৈরি করছে না?,আরন্ট দে মেকিং
+Aren't They cleaning?,তারা কি পরিষ্কার করছে না?,আরন্ট দে ক্লিনিং
+Aren't They dancing?,তারা কি নাচছে না?,আরন্ট দে ড্যান্সিং
+Aren't They stopping?,তারা কি থামছে না?,আরন্ট দে স্টপিং
+Aren't They starting?,তারা কি শুরু করছে না?,আরন্ট দে স্টার্টিং
+Aren't They finishing?,তারা কি শেষ করছে না?,আরন্ট দে ফিনিশিং
+Aren't They changing?,তারা কি পরিবর্তন করছে না?,আরন্ট দে চেঞ্জিং
+Aren't They paying?,তারা কি পরিশোধ করছে না?,আরন্ট দে পেয়িং
+Aren't They using?,তারা কি ব্যবহার করছে না?,আরন্ট দে ইউজিং
+Aren't They showing?,তারা কি দেখাচ্ছে না?,আরন্ট দে শোইং
+Aren't They telling?,তারা কি বলছে না?,আরন্ট দে টেলিং
+Aren't They leaving?,তারা কি ছেড়ে যাচ্ছে না?,আরন্ট দে লিভিং
+Aren't They bringing?,তারা কি আনছে না?,আরন্ট দে ব্রিংইং
+Aren't They keeping?,তারা কি রাখছে না?,আরন্ট দে কিপিং
+Aren't They putting?,তারা কি রাখছে না?,আরন্ট দে পুটিং
+Aren't They finding?,তারা কি খুঁজে পাচ্ছে না?,আরন্ট দে ফাইন্ডিং
+Aren't They forgetting?,তারা কি ভুলে যাচ্ছে না?,আরন্ট দে ফরগেটিং
+Aren't They remembering?,তারা কি মনে রাখছে না?,আরন্ট দে রিমেম্বারিং
+Aren't They needing?,আমার কি প্রয়োজন হচ্ছে না?,আরন্ট দে নিডিং
+Aren't They believing?,তারা কি বিশ্বাস করছে না?,আরন্ট দে বিলিভিং
+Aren't They agreeing?,তারা কি রাজি হচ্ছে না?,আরন্ট দে অ্যাগ্রিইং
+Aren't They answering?,তারা কি উত্তর দিচ্ছে না?,আরন্ট দে আন্সারিং
+Aren't They breaking?,তারা কি ভাঙছে না?,আরন্ট দে ব্রেকিং
+Aren't They building?,তারা কি নির্মাণ করছে না?,আরন্ট দে বিল্ডিং
+Aren't They choosing?,তারা কি পছন্দ করছে না?,আরন্ট দে চুজিং
+Aren't They cutting?,তারা কি কাটছে না?,আরন্ট দে কাটিং
+Aren't They deciding?,তারা কি সিদ্ধান্ত নিচ্ছে না?,আরন্ট দে ডিসাইডিং
+Aren't They explaining?,তারা কি ব্যাখ্যা করছে না?,আরন্ট দে এক্সপ্লেইনিং
+Aren't They falling?,তারা কি পড়ে যাচ্ছে না?,আরন্ট দে ফলিং
+Aren't They getting?,তারা কি পাচ্ছে না?,আরন্ট দে গেটিং
+Aren't They growing?,তারা কি বড় হচ্ছে না?,আরন্ট দে গ্রোইং
+Aren't They hoping?,তারা কি আশা করছে না?,আরন্ট দে হোপিং
+Aren't They joining?,তারা কি যোগ দিচ্ছে না?,আরন্ট দে জয়েনিং
+Aren't They meeting?,তারা কি সাক্ষাৎ করছে না?,আরন্ট দে মিটিং
+Aren't They sending?,তারা কি পাঠাচ্ছে না?,আরন্ট দে সেন্ডিং
+Aren't They spending?,তারা কি ব্যয় করছে না?,আরন্ট দে স্পেন্ডিং
+Aren't They teaching?,তারা কি শেখাচ্ছে না?,আরন্ট দে টিচিং
+Aren't They winning?,তারা কি জয়ী হচ্ছে না?,আরন্ট দে উইনিং

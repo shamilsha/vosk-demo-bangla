@@ -1,0 +1,84 @@
+We are playing,আমরা খেলছি,উই আর প্লেয়িং
+We are running,আমরা দৌড়াচ্ছি,উই আর রানিং
+We are eating,আমরা খাচ্ছি,উই আর ইটিং
+We are doing,আমরা করছি,উই আর ডুইং
+We are walking,আমরা হাঁটছি,উই আর ওয়াকিং
+We are going,আমরা যাচ্ছি,উই আর গোইং
+We are coming,আমরা আসছি,উই আর কামিং
+We are reading,আমরা পড়ছি,উই আর রিডিং
+We are writing,আমরা লিখছি,উই আর রাইটিং
+We are working,আমরা কাজ করছি,উই আর ওয়ার্কিং
+We are sleeping,আমরা ঘুমাচ্ছি,উই আর স্লিপিং
+We are drinking,আমরা পান করছি,উই আর ড্রিঙ্কিং
+We are sitting,আমরা বসছি,উই আর সিটিং
+We are standing,আমরা দাঁড়াচ্ছি,উই আর স্ট্যান্ডিং
+We are listening,আমরা শুনছি,উই আর লিসেনিং
+We are looking,আমরা তাকাচ্ছি,উই আর লুকিং
+We are loving,আমরা ভালোবাসছি,উই আর লাভিং
+We are wanting,আমরা চাইছি,উই আর ওয়ান্টিং
+We are thinking,আমরা ভাবছি,উই আর থিংকিং
+We are knowing,আমরা জানছি,উই আর নোইং
+We are learning,আমরা শিখছি,উই আর লার্নিং
+We are cooking,আমরা রান্না করছি,উই আর কুকিং
+We are speaking,আমরা কথা বলছি,উই আর স্পিকিং
+We are talking,আমরা কথা বলছি,উই আর টকিং
+We are opening,আমরা খুলছি,উই আর ওপেনিং
+We are closing,আমরা বন্ধ করছি,উই আর ক্লোজিং
+We are waiting,আমরা অপেক্ষা করছি,উই আর ওয়েটিং
+We are trying,আমরা চেষ্টা করছি,উই আর ট্রাইং
+We are living,আমরা বাস করছি,উই আর লিভিং
+We are helping,আমরা সাহায্য করছি,উই আর হেল্পিং
+We are calling,আমরা ডাকছি,উই আর কলিং
+We are asking,আমরা জিজ্ঞাসা করছি,উই আর আস্কিং
+We are taking,আমরা নিচ্ছি,উই আর টেকিং
+We are giving,আমরা দিচ্ছি,উই আর গিভিং
+We are seeing,আমরা দেখছি,উই আর সিইং
+We are hearing,আমরা শুনছি,উই আর হিয়ারিং
+We are feeling,আমরা অনুভব করছি,উই আর ফিলিং
+We are understanding,আমরা বুঝছি,উই আর আন্ডারস্ট্যান্ডিং
+We are singing,আমরা গান করছি,উই আর সিংইং
+We are swimming,আমরা সাঁতার কাটছি,উই আর সুইমিং
+We are driving,আমরা গাড়ি চালাচ্ছি,উই আর ড্রাইভিং
+We are studying,আমরা পড়াশোনা করছি,উই আর স্টাডিইং
+We are washing,আমরা ধুছি,উই আর ওয়াশিং
+We are watching,আমরা দেখছি,উই আর ওয়াচিং
+We are buying,আমরা কিনছি,উই আর বাইইং
+We are selling,আমরা বিক্রি করছি,উই আর সেলিং
+We are making,আমরা তৈরি করছি,উই আর মেকিং
+We are cleaning,আমরা পরিষ্কার করছি,উই আর ক্লিনিং
+We are dancing,আমরা নাচছি,উই আর ড্যান্সিং
+We are stopping,আমরা থামছি,উই আর স্টপিং
+We are starting,আমরা শুরু করছি,উই আর স্টার্টিং
+We are finishing,আমরা শেষ করছি,উই আর ফিনিশিং
+We are changing,আমরা পরিবর্তন করছি,উই আর চেঞ্জিং
+We are paying,আমরা পরিশোধ করছি,উই আর পেয়িং
+We are using,আমরা ব্যবহার করছি,উই আর ইউজিং
+We are showing,আমরা দেখাচ্ছি,উই আর শোইং
+We are telling,আমরা বলছি,উই আর টেলিং
+We are leaving,আমরা ছেড়ে যাচ্ছি,উই আর লিভিং
+We are bringing,আমরা আনছি,উই আর ব্রিংইং
+We are keeping,আমরা রাখছি,উই আর কিপিং
+We are putting,আমরা রাখছি,উই আর পুটিং
+We are finding,আমরা খুঁজে পাচ্ছি,উই আর ফাইন্ডিং
+We are forgetting,আমরা ভুলে যাচ্ছি,উই আর ফরগেটিং
+We are remembering,আমরা মনে রাখছি,উই আর রিমেম্বারিং
+We are needing,আমার প্রয়োজন হচ্ছে,উই আর নিডিং
+We are believing,আমরা বিশ্বাস করছি,উই আর বিলিভিং
+We are agreeing,আমরা রাজি হচ্ছি,উই আর অ্যাগ্রিইং
+We are answering,আমরা উত্তর দিচ্ছি,উই আর আন্সারিং
+We are breaking,আমরা ভাঙছি,উই আর ব্রেকিং
+We are building,আমরা নির্মাণ করছি,উই আর বিল্ডিং
+We are choosing,আমরা পছন্দ করছি,উই আর চুজিং
+We are cutting,আমরা কাটছি,উই আর কাটিং
+We are deciding,আমরা সিদ্ধান্ত নিচ্ছি,উই আর ডিসাইডিং
+We are explaining,আমরা ব্যাখ্যা করছি,উই আর এক্সপ্লেইনিং
+We are falling,আমরা পড়ে যাচ্ছি,উই আর ফলিং
+We are getting,আমরা পাচ্ছি,উই আর গেটিং
+We are growing,আমরা বড় হচ্ছি,উই আর গ্রোইং
+We are hoping,আমরা আশা করছি,উই আর হোপিং
+We are joining,আমরা যোগ দিচ্ছি,উই আর জয়েনিং
+We are meeting,আমরা সাক্ষাৎ করছি,উই আর মিটিং
+We are sending,আমরা পাঠাচ্ছি,উই আর সেন্ডিং
+We are spending,আমরা ব্যয় করছি,উই আর স্পেন্ডিং
+We are teaching,আমরা শেখাচ্ছি,উই আর টিচিং
+We are winning,আমরা জয়ী হচ্ছি,উই আর উইনিং

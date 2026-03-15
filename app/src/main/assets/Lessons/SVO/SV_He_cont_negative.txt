@@ -1,0 +1,84 @@
+He isn't playing,সে খেলছে না,হি ইজন্ট প্লেয়িং
+He isn't running,সে দৌড়াচ্ছে না,হি ইজন্ট রানিং
+He isn't eating,সে খাচ্ছে না,হি ইজন্ট ইটিং
+He isn't doing,সে করছে না,হি ইজন্ট ডুইং
+He isn't walking,সে হাঁটছে না,হি ইজন্ট ওয়াকিং
+He isn't going,সে যাচ্ছে না,হি ইজন্ট গোইং
+He isn't coming,সে আসছে না,হি ইজন্ট কামিং
+He isn't reading,সে পড়ছে না,হি ইজন্ট রিডিং
+He isn't writing,সে লিখছে না,হি ইজন্ট রাইটিং
+He isn't working,সে কাজ করছে না,হি ইজন্ট ওয়ার্কিং
+He isn't sleeping,সে ঘুমাচ্ছে না,হি ইজন্ট স্লিপিং
+He isn't drinking,সে পান করছে না,হি ইজন্ট ড্রিঙ্কিং
+He isn't sitting,সে বসছে না,হি ইজন্ট সিটিং
+He isn't standing,সে দাঁড়াচ্ছে না,হি ইজন্ট স্ট্যান্ডিং
+He isn't listening,সে শুনছে না,হি ইজন্ট লিসেনিং
+He isn't looking,সে তাকাচ্ছে না,হি ইজন্ট লুকিং
+He isn't loving,সে ভালোবাসছে না,হি ইজন্ট লাভিং
+He isn't wanting,সে চাইছে না,হি ইজন্ট ওয়ান্টিং
+He isn't thinking,সে ভাবছে না,হি ইজন্ট থিংকিং
+He isn't knowing,সে জানছে না,হি ইজন্ট নোইং
+He isn't learning,সে শিখছে না,হি ইজন্ট লার্নিং
+He isn't cooking,সে রান্না করছে না,হি ইজন্ট কুকিং
+He isn't speaking,সে কথা বলছে না,হি ইজন্ট স্পিকিং
+He isn't talking,সে কথা বলছে না,হি ইজন্ট টকিং
+He isn't opening,সে খুলছে না,হি ইজন্ট ওপেনিং
+He isn't closing,সে বন্ধ করছে না,হি ইজন্ট ক্লোজিং
+He isn't waiting,সে অপেক্ষা করছে না,হি ইজন্ট ওয়েটিং
+He isn't trying,সে চেষ্টা করছে না,হি ইজন্ট ট্রাইং
+He isn't living,সে বাস করছে না,হি ইজন্ট লিভিং
+He isn't helping,সে সাহায্য করছে না,হি ইজন্ট হেল্পিং
+He isn't calling,সে ডাকছে না,হি ইজন্ট কলিং
+He isn't asking,সে জিজ্ঞাসা করছে না,হি ইজন্ট আস্কিং
+He isn't taking,সে নিচ্ছে না,হি ইজন্ট টেকিং
+He isn't giving,সে দিচ্ছে না,হি ইজন্ট গিভিং
+He isn't seeing,সে দেখছে না,হি ইজন্ট সিইং
+He isn't hearing,সে শুনছে না,হি ইজন্ট হিয়ারিং
+He isn't feeling,সে অনুভব করছে না,হি ইজন্ট ফিলিং
+He isn't understanding,সে বুঝছে না,হি ইজন্ট আন্ডারস্ট্যান্ডিং
+He isn't singing,সে গান করছে না,হি ইজন্ট সিংইং
+He isn't swimming,সে সাঁতার কাটছে না,হি ইজন্ট সুইমিং
+He isn't driving,সে গাড়ি চালাচ্ছে না,হি ইজন্ট ড্রাইভিং
+He isn't studying,সে পড়াশোনা করছে না,হি ইজন্ট স্টাডিইং
+He isn't washing,সে ধুছে না,হি ইজন্ট ওয়াশিং
+He isn't watching,সে দেখছে না,হি ইজন্ট ওয়াচিং
+He isn't buying,সে কিনছে না,হি ইজন্ট বাইইং
+He isn't selling,সে বিক্রি করছে না,হি ইজন্ট সেলিং
+He isn't making,সে তৈরি করছে না,হি ইজন্ট মেকিং
+He isn't cleaning,সে পরিষ্কার করছে না,হি ইজন্ট ক্লিনিং
+He isn't dancing,সে নাচছে না,হি ইজন্ট ড্যান্সিং
+He isn't stopping,সে থামছে না,হি ইজন্ট স্টপিং
+He isn't starting,সে শুরু করছে না,হি ইজন্ট স্টার্টিং
+He isn't finishing,সে শেষ করছে না,হি ইজন্ট ফিনিশিং
+He isn't changing,সে পরিবর্তন করছে না,হি ইজন্ট চেঞ্জিং
+He isn't paying,সে পরিশোধ করছে না,হি ইজন্ট পেয়িং
+He isn't using,সে ব্যবহার করছে না,হি ইজন্ট ইউজিং
+He isn't showing,সে দেখাচ্ছে না,হি ইজন্ট শোইং
+He isn't telling,সে বলছে না,হি ইজন্ট টেলিং
+He isn't leaving,সে ছেড়ে যাচ্ছে না,হি ইজন্ট লিভিং
+He isn't bringing,সে আনছে না,হি ইজন্ট ব্রিংইং
+He isn't keeping,সে রাখছে না,হি ইজন্ট কিপিং
+He isn't putting,সে রাখছে না,হি ইজন্ট পুটিং
+He isn't finding,সে খুঁজে পাচ্ছে না,হি ইজন্ট ফাইন্ডিং
+He isn't forgetting,সে ভুলে যাচ্ছে না,হি ইজন্ট ফরগেটিং
+He isn't remembering,সে মনে রাখছে না,হি ইজন্ট রিমেম্বারিং
+He isn't needing,আমার প্রয়োজন হচ্ছে না,হি ইজন্ট নিডিং
+He isn't believing,সে বিশ্বাস করছে না,হি ইজন্ট বিলিভিং
+He isn't agreeing,সে রাজি হচ্ছে না,হি ইজন্ট অ্যাগ্রিইং
+He isn't answering,সে উত্তর দিচ্ছে না,হি ইজন্ট আন্সারিং
+He isn't breaking,সে ভাঙছে না,হি ইজন্ট ব্রেকিং
+He isn't building,সে নির্মাণ করছে না,হি ইজন্ট বিল্ডিং
+He isn't choosing,সে পছন্দ করছে না,হি ইজন্ট চুজিং
+He isn't cutting,সে কাটছে না,হি ইজন্ট কাটিং
+He isn't deciding,সে সিদ্ধান্ত নিচ্ছে না,হি ইজন্ট ডিসাইডিং
+He isn't explaining,সে ব্যাখ্যা করছে না,হি ইজন্ট এক্সপ্লেইনিং
+He isn't falling,সে পড়ে যাচ্ছে না,হি ইজন্ট ফলিং
+He isn't getting,সে পাচ্ছে না,হি ইজন্ট গেটিং
+He isn't growing,সে বড় হচ্ছে না,হি ইজন্ট গ্রোইং
+He isn't hoping,সে আশা করছে না,হি ইজন্ট হোপিং
+He isn't joining,সে যোগ দিচ্ছে না,হি ইজন্ট জয়েনিং
+He isn't meeting,সে সাক্ষাৎ করছে না,হি ইজন্ট মিটিং
+He isn't sending,সে পাঠাচ্ছে না,হি ইজন্ট সেন্ডিং
+He isn't spending,সে ব্যয় করছে না,হি ইজন্ট স্পেন্ডিং
+He isn't teaching,সে শেখাচ্ছে না,হি ইজন্ট টিচিং
+He isn't winning,সে জয়ী হচ্ছে না,হি ইজন্ট উইনিং

@@ -1,0 +1,84 @@
+She isn't playing,সে খেলছে না,শি ইজন্ট প্লেয়িং
+She isn't running,সে দৌড়াচ্ছে না,শি ইজন্ট রানিং
+She isn't eating,সে খাচ্ছে না,শি ইজন্ট ইটিং
+She isn't doing,সে করছে না,শি ইজন্ট ডুইং
+She isn't walking,সে হাঁটছে না,শি ইজন্ট ওয়াকিং
+She isn't going,সে যাচ্ছে না,শি ইজন্ট গোইং
+She isn't coming,সে আসছে না,শি ইজন্ট কামিং
+She isn't reading,সে পড়ছে না,শি ইজন্ট রিডিং
+She isn't writing,সে লিখছে না,শি ইজন্ট রাইটিং
+She isn't working,সে কাজ করছে না,শি ইজন্ট ওয়ার্কিং
+She isn't sleeping,সে ঘুমাচ্ছে না,শি ইজন্ট স্লিপিং
+She isn't drinking,সে পান করছে না,শি ইজন্ট ড্রিঙ্কিং
+She isn't sitting,সে বসছে না,শি ইজন্ট সিটিং
+She isn't standing,সে দাঁড়াচ্ছে না,শি ইজন্ট স্ট্যান্ডিং
+She isn't listening,সে শুনছে না,শি ইজন্ট লিসেনিং
+She isn't looking,সে তাকাচ্ছে না,শি ইজন্ট লুকিং
+She isn't loving,সে ভালোবাসছে না,শি ইজন্ট লাভিং
+She isn't wanting,সে চাইছে না,শি ইজন্ট ওয়ান্টিং
+She isn't thinking,সে ভাবছে না,শি ইজন্ট থিংকিং
+She isn't knowing,সে জানছে না,শি ইজন্ট নোইং
+She isn't learning,সে শিখছে না,শি ইজন্ট লার্নিং
+She isn't cooking,সে রান্না করছে না,শি ইজন্ট কুকিং
+She isn't speaking,সে কথা বলছে না,শি ইজন্ট স্পিকিং
+She isn't talking,সে কথা বলছে না,শি ইজন্ট টকিং
+She isn't opening,সে খুলছে না,শি ইজন্ট ওপেনিং
+She isn't closing,সে বন্ধ করছে না,শি ইজন্ট ক্লোজিং
+She isn't waiting,সে অপেক্ষা করছে না,শি ইজন্ট ওয়েটিং
+She isn't trying,সে চেষ্টা করছে না,শি ইজন্ট ট্রাইং
+She isn't living,সে বাস করছে না,শি ইজন্ট লিভিং
+She isn't helping,সে সাহায্য করছে না,শি ইজন্ট হেল্পিং
+She isn't calling,সে ডাকছে না,শি ইজন্ট কলিং
+She isn't asking,সে জিজ্ঞাসা করছে না,শি ইজন্ট আস্কিং
+She isn't taking,সে নিচ্ছে না,শি ইজন্ট টেকিং
+She isn't giving,সে দিচ্ছে না,শি ইজন্ট গিভিং
+She isn't seeing,সে দেখছে না,শি ইজন্ট সিইং
+She isn't hearing,সে শুনছে না,শি ইজন্ট হিয়ারিং
+She isn't feeling,সে অনুভব করছে না,শি ইজন্ট ফিলিং
+She isn't understanding,সে বুঝছে না,শি ইজন্ট আন্ডারস্ট্যান্ডিং
+She isn't singing,সে গান করছে না,শি ইজন্ট সিংইং
+She isn't swimming,সে সাঁতার কাটছে না,শি ইজন্ট সুইমিং
+She isn't driving,সে গাড়ি চালাচ্ছে না,শি ইজন্ট ড্রাইভিং
+She isn't studying,সে পড়াশোনা করছে না,শি ইজন্ট স্টাডিইং
+She isn't washing,সে ধুছে না,শি ইজন্ট ওয়াশিং
+She isn't watching,সে দেখছে না,শি ইজন্ট ওয়াচিং
+She isn't buying,সে কিনছে না,শি ইজন্ট বাইইং
+She isn't selling,সে বিক্রি করছে না,শি ইজন্ট সেলিং
+She isn't making,সে তৈরি করছে না,শি ইজন্ট মেকিং
+She isn't cleaning,সে পরিষ্কার করছে না,শি ইজন্ট ক্লিনিং
+She isn't dancing,সে নাচছে না,শি ইজন্ট ড্যান্সিং
+She isn't stopping,সে থামছে না,শি ইজন্ট স্টপিং
+She isn't starting,সে শুরু করছে না,শি ইজন্ট স্টার্টিং
+She isn't finishing,সে শেষ করছে না,শি ইজন্ট ফিনিশিং
+She isn't changing,সে পরিবর্তন করছে না,শি ইজন্ট চেঞ্জিং
+She isn't paying,সে পরিশোধ করছে না,শি ইজন্ট পেয়িং
+She isn't using,সে ব্যবহার করছে না,শি ইজন্ট ইউজিং
+She isn't showing,সে দেখাচ্ছে না,শি ইজন্ট শোইং
+She isn't telling,সে বলছে না,শি ইজন্ট টেলিং
+She isn't leaving,সে ছেড়ে যাচ্ছে না,শি ইজন্ট লিভিং
+She isn't bringing,সে আনছে না,শি ইজন্ট ব্রিংইং
+She isn't keeping,সে রাখছে না,শি ইজন্ট কিপিং
+She isn't putting,সে রাখছে না,শি ইজন্ট পুটিং
+She isn't finding,সে খুঁজে পাচ্ছে না,শি ইজন্ট ফাইন্ডিং
+She isn't forgetting,সে ভুলে যাচ্ছে না,শি ইজন্ট ফরগেটিং
+She isn't remembering,সে মনে রাখছে না,শি ইজন্ট রিমেম্বারিং
+She isn't needing,আমার প্রয়োজন হচ্ছে না,শি ইজন্ট নিডিং
+She isn't believing,সে বিশ্বাস করছে না,শি ইজন্ট বিলিভিং
+She isn't agreeing,সে রাজি হচ্ছে না,শি ইজন্ট অ্যাগ্রিইং
+She isn't answering,সে উত্তর দিচ্ছে না,শি ইজন্ট আন্সারিং
+She isn't breaking,সে ভাঙছে না,শি ইজন্ট ব্রেকিং
+She isn't building,সে নির্মাণ করছে না,শি ইজন্ট বিল্ডিং
+She isn't choosing,সে পছন্দ করছে না,শি ইজন্ট চুজিং
+She isn't cutting,সে কাটছে না,শি ইজন্ট কাটিং
+She isn't deciding,সে সিদ্ধান্ত নিচ্ছে না,শি ইজন্ট ডিসাইডিং
+She isn't explaining,সে ব্যাখ্যা করছে না,শি ইজন্ট এক্সপ্লেইনিং
+She isn't falling,সে পড়ে যাচ্ছে না,শি ইজন্ট ফলিং
+She isn't getting,সে পাচ্ছে না,শি ইজন্ট গেটিং
+She isn't growing,সে বড় হচ্ছে না,শি ইজন্ট গ্রোইং
+She isn't hoping,সে আশা করছে না,শি ইজন্ট হোপিং
+She isn't joining,সে যোগ দিচ্ছে না,শি ইজন্ট জয়েনিং
+She isn't meeting,সে সাক্ষাৎ করছে না,শি ইজন্ট মিটিং
+She isn't sending,সে পাঠাচ্ছে না,শি ইজন্ট সেন্ডিং
+She isn't spending,সে ব্যয় করছে না,শি ইজন্ট স্পেন্ডিং
+She isn't teaching,সে শেখাচ্ছে না,শি ইজন্ট টিচিং
+She isn't winning,সে জয়ী হচ্ছে না,শি ইজন্ট উইনিং

@@ -1,0 +1,84 @@
+Is She playing?,সে কি খেলছে?,ইজ শি প্লেয়িং
+Is She running?,সে কি দৌড়াচ্ছে?,ইজ শি রানিং
+Is She eating?,সে কি খাচ্ছে?,ইজ শি ইটিং
+Is She doing?,সে কি করছে?,ইজ শি ডুইং
+Is She walking?,সে কি হাঁটছে?,ইজ শি ওয়াকিং
+Is She going?,সে কি যাচ্ছে?,ইজ শি গোইং
+Is She coming?,সে কি আসছে?,ইজ শি কামিং
+Is She reading?,সে কি পড়ছে?,ইজ শি রিডিং
+Is She writing?,সে কি লিখছে?,ইজ শি রাইটিং
+Is She working?,সে কি কাজ করছে?,ইজ শি ওয়ার্কিং
+Is She sleeping?,সে কি ঘুমাচ্ছে?,ইজ শি স্লিপিং
+Is She drinking?,সে কি পান করছে?,ইজ শি ড্রিঙ্কিং
+Is She sitting?,সে কি বসছে?,ইজ শি সিটিং
+Is She standing?,সে কি দাঁড়াচ্ছে?,ইজ শি স্ট্যান্ডিং
+Is She listening?,সে কি শুনছে?,ইজ শি লিসেনিং
+Is She looking?,সে কি তাকাচ্ছে?,ইজ শি লুকিং
+Is She loving?,সে কি ভালোবাসছে?,ইজ শি লাভিং
+Is She wanting?,সে কি চাইছে?,ইজ শি ওয়ান্টিং
+Is She thinking?,সে কি ভাবছে?,ইজ শি থিংকিং
+Is She knowing?,সে কি জানছে?,ইজ শি নোইং
+Is She learning?,সে কি শিখছে?,ইজ শি লার্নিং
+Is She cooking?,সে কি রান্না করছে?,ইজ শি কুকিং
+Is She speaking?,সে কি কথা বলছে?,ইজ শি স্পিকিং
+Is She talking?,সে কি কথা বলছে?,ইজ শি টকিং
+Is She opening?,সে কি খুলছে?,ইজ শি ওপেনিং
+Is She closing?,সে কি বন্ধ করছে?,ইজ শি ক্লোজিং
+Is She waiting?,সে কি অপেক্ষা করছে?,ইজ শি ওয়েটিং
+Is She trying?,সে কি চেষ্টা করছে?,ইজ শি ট্রাইং
+Is She living?,সে কি বাস করছে?,ইজ শি লিভিং
+Is She helping?,সে কি সাহায্য করছে?,ইজ শি হেল্পিং
+Is She calling?,সে কি ডাকছে?,ইজ শি কলিং
+Is She asking?,সে কি জিজ্ঞাসা করছে?,ইজ শি আস্কিং
+Is She taking?,সে কি নিচ্ছে?,ইজ শি টেকিং
+Is She giving?,সে কি দিচ্ছে?,ইজ শি গিভিং
+Is She seeing?,সে কি দেখছে?,ইজ শি সিইং
+Is She hearing?,সে কি শুনছে?,ইজ শি হিয়ারিং
+Is She feeling?,সে কি অনুভব করছে?,ইজ শি ফিলিং
+Is She understanding?,সে কি বুঝছে?,ইজ শি আন্ডারস্ট্যান্ডিং
+Is She singing?,সে কি গান করছে?,ইজ শি সিংইং
+Is She swimming?,সে কি সাঁতার কাটছে?,ইজ শি সুইমিং
+Is She driving?,সে কি গাড়ি চালাচ্ছে?,ইজ শি ড্রাইভিং
+Is She studying?,সে কি পড়াশোনা করছে?,ইজ শি স্টাডিইং
+Is She washing?,সে কি ধুছে?,ইজ শি ওয়াশিং
+Is She watching?,সে কি দেখছে?,ইজ শি ওয়াচিং
+Is She buying?,সে কি কিনছে?,ইজ শি বাইইং
+Is She selling?,সে কি বিক্রি করছে?,ইজ শি সেলিং
+Is She making?,সে কি তৈরি করছে?,ইজ শি মেকিং
+Is She cleaning?,সে কি পরিষ্কার করছে?,ইজ শি ক্লিনিং
+Is She dancing?,সে কি নাচছে?,ইজ শি ড্যান্সিং
+Is She stopping?,সে কি থামছে?,ইজ শি স্টপিং
+Is She starting?,সে কি শুরু করছে?,ইজ শি স্টার্টিং
+Is She finishing?,সে কি শেষ করছে?,ইজ শি ফিনিশিং
+Is She changing?,সে কি পরিবর্তন করছে?,ইজ শি চেঞ্জিং
+Is She paying?,সে কি পরিশোধ করছে?,ইজ শি পেয়িং
+Is She using?,সে কি ব্যবহার করছে?,ইজ শি ইউজিং
+Is She showing?,সে কি দেখাচ্ছে?,ইজ শি শোইং
+Is She telling?,সে কি বলছে?,ইজ শি টেলিং
+Is She leaving?,সে কি ছেড়ে যাচ্ছে?,ইজ শি লিভিং
+Is She bringing?,সে কি আনছে?,ইজ শি ব্রিংইং
+Is She keeping?,সে কি রাখছে?,ইজ শি কিপিং
+Is She putting?,সে কি রাখছে?,ইজ শি পুটিং
+Is She finding?,সে কি খুঁজে পাচ্ছে?,ইজ শি ফাইন্ডিং
+Is She forgetting?,সে কি ভুলে যাচ্ছে?,ইজ শি ফরগেটিং
+Is She remembering?,সে কি মনে রাখছে?,ইজ শি রিমেম্বারিং
+Is She needing?,আমার কি প্রয়োজন হচ্ছে?,ইজ শি নিডিং
+Is She believing?,সে কি বিশ্বাস করছে?,ইজ শি বিলিভিং
+Is She agreeing?,সে কি রাজি হচ্ছে?,ইজ শি অ্যাগ্রিইং
+Is She answering?,সে কি উত্তর দিচ্ছে?,ইজ শি আন্সারিং
+Is She breaking?,সে কি ভাঙছে?,ইজ শি ব্রেকিং
+Is She building?,সে কি নির্মাণ করছে?,ইজ শি বিল্ডিং
+Is She choosing?,সে কি পছন্দ করছে?,ইজ শি চুজিং
+Is She cutting?,সে কি কাটছে?,ইজ শি কাটিং
+Is She deciding?,সে কি সিদ্ধান্ত নিচ্ছে?,ইজ শি ডিসাইডিং
+Is She explaining?,সে কি ব্যাখ্যা করছে?,ইজ শি এক্সপ্লেইনিং
+Is She falling?,সে কি পড়ে যাচ্ছে?,ইজ শি ফলিং
+Is She getting?,সে কি পাচ্ছে?,ইজ শি গেটিং
+Is She growing?,সে কি বড় হচ্ছে?,ইজ শি গ্রোইং
+Is She hoping?,সে কি আশা করছে?,ইজ শি হোপিং
+Is She joining?,সে কি যোগ দিচ্ছে?,ইজ শি জয়েনিং
+Is She meeting?,সে কি সাক্ষাৎ করছে?,ইজ শি মিটিং
+Is She sending?,সে কি পাঠাচ্ছে?,ইজ শি সেন্ডিং
+Is She spending?,সে কি ব্যয় করছে?,ইজ শি স্পেন্ডিং
+Is She teaching?,সে কি শেখাচ্ছে?,ইজ শি টিচিং
+Is She winning?,সে কি জয়ী হচ্ছে?,ইজ শি উইনিং

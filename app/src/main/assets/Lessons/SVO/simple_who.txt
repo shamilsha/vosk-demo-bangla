@@ -1,0 +1,10 @@
+Who is he?,সে কে?,হু ইজ হি?
+Who is calling?,কে ডাকছে?,হু ইজ কলিং?
+Who told you?,তোমাকে কে বলেছে?,হু টোল্ড ইউ?
+Who are they?,ওরা কারা?,হু আর দে?
+Who is your teacher?,তোমার শিক্ষক কে?,হু ইজ ইয়োর টিচার?
+Who made this?,এটা কে বানিয়েছে?,হু মেড দিস?
+Who is at the door?,দরজায় কে?,হু ইজ অ্যাট দ্য ডোর?
+Who is your best friend?,তোমার প্রিয় বন্ধু কে?,হু ইজ ইয়োর বেস্ট ফ্রেন্ড?
+Who wins the game?,খেলায় কে জিতেছে?,হু উইনস দ্য গেম?
+Who is responsible for this?,এর জন্য কে দায়ী?,হু ইজ রেসপন্সিবল ফর দিস?

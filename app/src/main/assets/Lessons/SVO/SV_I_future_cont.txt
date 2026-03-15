@@ -1,0 +1,84 @@
+I will be playing,আমি খেলতে থাকব,আই উইল বি প্লেয়িং
+I will be running,আমি দৌড়াইতে থাকব,আই উইল বি রানিং
+I will be eating,আমি খাইতে থাকব,আই উইল বি ইটিং
+I will be doing,আমি করতে থাকব,আই উইল বি ডুইং
+I will be walking,আমি হাঁটতে থাকব,আই উইল বি ওয়াকিং
+I will be going,আমি যাইতে থাকব,আই উইল বি গোইং
+I will be coming,আমি আসতে থাকব,আই উইল বি কামিং
+I will be reading,আমি পড়তে থাকব,আই উইল বি রিডিং
+I will be writing,আমি লিখতে থাকব,আই উইল বি রাইটিং
+I will be working,আমি কাজ করতে থাকব,আই উইল বি ওয়ার্কিং
+I will be sleeping,আমি ঘুমাইতে থাকব,আই উইল বি স্লিপিং
+I will be drinking,আমি পান করতে থাকব,আই উইল বি ড্রিঙ্কিং
+I will be sitting,আমি বসতে থাকব,আই উইল বি সিটিং
+I will be standing,আমি দাঁড়াইতে থাকব,আই উইল বি স্ট্যান্ডিং
+I will be listening,আমি শুনতে থাকব,আই উইল বি লিসেনিং
+I will be looking,আমি তাকাইতে থাকব,আই উইল বি লুকিং
+I will be loving,আমি ভালোবাসতে থাকব,আই উইল বি লাভিং
+I will be wanting,আমি চাইতে থাকব,আই উইল বি ওয়ান্টিং
+I will be thinking,আমি ভাবতে থাকব,আই উইল বি থিংকিং
+I will be knowing,আমি জানতে থাকব,আই উইল বি নোইং
+I will be learning,আমি শিখতে থাকব,আই উইল বি লার্নিং
+I will be cooking,আমি রান্না করতে থাকব,আই উইল বি কুকিং
+I will be speaking,আমি কথা বলতে থাকব,আই উইল বি স্পিকিং
+I will be talking,আমি কথা বলতে থাকব,আই উইল বি টকিং
+I will be opening,আমি খুলতে থাকব,আই উইল বি ওপেনিং
+I will be closing,আমি বন্ধ করতে থাকব,আই উইল বি ক্লোজিং
+I will be waiting,আমি অপেক্ষা করতে থাকব,আই উইল বি ওয়েটিং
+I will be trying,আমি চেষ্টা করতে থাকব,আই উইল বি ট্রাইং
+I will be living,আমি বাস করতে থাকব,আই উইল বি লিভিং
+I will be helping,আমি সাহায্য করতে থাকব,আই উইল বি হেল্পিং
+I will be calling,আমি ডাকতে থাকব,আই উইল বি কলিং
+I will be asking,আমি জিজ্ঞাসা করতে থাকব,আই উইল বি আস্কিং
+I will be taking,আমি নিইতে থাকব,আই উইল বি টেকিং
+I will be giving,আমি দিইতে থাকব,আই উইল বি গিভিং
+I will be seeing,আমি দেখতে থাকব,আই উইল বি সিইং
+I will be hearing,আমি শুনতে থাকব,আই উইল বি হিয়ারিং
+I will be feeling,আমি অনুভব করতে থাকব,আই উইল বি ফিলিং
+I will be understanding,আমি বুঝতে থাকব,আই উইল বি আন্ডারস্ট্যান্ডিং
+I will be singing,আমি গান করতে থাকব,আই উইল বি সিংইং
+I will be swimming,আমি সাঁতার কাটতে থাকব,আই উইল বি সুইমিং
+I will be driving,আমি গাড়ি চালাইতে থাকব,আই উইল বি ড্রাইভিং
+I will be studying,আমি পড়াশোনা করতে থাকব,আই উইল বি স্টাডিইং
+I will be washing,আমি ধুইতে থাকব,আই উইল বি ওয়াশিং
+I will be watching,আমি দেখতে থাকব,আই উইল বি ওয়াচিং
+I will be buying,আমি কিনতে থাকব,আই উইল বি বাইইং
+I will be selling,আমি বিক্রি করতে থাকব,আই উইল বি সেলিং
+I will be making,আমি তৈরি করতে থাকব,আই উইল বি মেকিং
+I will be cleaning,আমি পরিষ্কার করতে থাকব,আই উইল বি ক্লিনিং
+I will be dancing,আমি নাচতে থাকব,আই উইল বি ড্যান্সিং
+I will be stopping,আমি থামতে থাকব,আই উইল বি স্টপিং
+I will be starting,আমি শুরু করতে থাকব,আই উইল বি স্টার্টিং
+I will be finishing,আমি শেষ করতে থাকব,আই উইল বি ফিনিশিং
+I will be changing,আমি পরিবর্তন করতে থাকব,আই উইল বি চেঞ্জিং
+I will be paying,আমি পরিশোধ করতে থাকব,আই উইল বি পেয়িং
+I will be using,আমি ব্যবহার করতে থাকব,আই উইল বি ইউজিং
+I will be showing,আমি দেখাইতে থাকব,আই উইল বি শোইং
+I will be telling,আমি বলতে থাকব,আই উইল বি টেলিং
+I will be leaving,আমি ছেড়ে যাইতে থাকব,আই উইল বি লিভিং
+I will be bringing,আমি আনতে থাকব,আই উইল বি ব্রিংইং
+I will be keeping,আমি রাখতে থাকব,আই উইল বি কিপিং
+I will be putting,আমি রাখতে থাকব,আই উইল বি পুটিং
+I will be finding,আমি খুঁজে পাইতে থাকব,আই উইল বি ফাইন্ডিং
+I will be forgetting,আমি ভুলে যাইতে থাকব,আই উইল বি ফরগেটিং
+I will be remembering,আমি মনে রাখতে থাকব,আই উইল বি রিমেম্বারিং
+I will be needing,আমার প্রয়োজনতে থাকব,আই উইল বি নিডিং
+I will be believing,আমি বিশ্বাস করতে থাকব,আই উইল বি বিলিভিং
+I will be agreeing,আমি রাজতে থাকব,আই উইল বি অ্যাগ্রিইং
+I will be answering,আমি উত্তর দেইতে থাকব,আই উইল বি আন্সারিং
+I will be breaking,আমি ভাঙতে থাকব,আই উইল বি ব্রেকিং
+I will be building,আমি নির্মাণ করতে থাকব,আই উইল বি বিল্ডিং
+I will be choosing,আমি পছন্দ করতে থাকব,আই উইল বি চুজিং
+I will be cutting,আমি কাটতে থাকব,আই উইল বি কাটিং
+I will be deciding,আমি সিদ্ধান্ত নিইতে থাকব,আই উইল বি ডিসাইডিং
+I will be explaining,আমি ব্যাখ্যা করতে থাকব,আই উইল বি এক্সপ্লেইনিং
+I will be falling,আমি পড়ে যাইতে থাকব,আই উইল বি ফলিং
+I will be getting,আমি পাইতে থাকব,আই উইল বি গেটিং
+I will be growing,আমি বড় হইতে থাকব,আই উইল বি গ্রোইং
+I will be hoping,আমি আশা করতে থাকব,আই উইল বি হোপিং
+I will be joining,আমি যোগ দিইতে থাকব,আই উইল বি জয়েনিং
+I will be meeting,আমি সাক্ষাৎ করতে থাকব,আই উইল বি মিটিং
+I will be sending,আমি পাঠাইতে থাকব,আই উইল বি সেন্ডিং
+I will be spending,আমি ব্যয় করতে থাকব,আই উইল বি স্পেন্ডিং
+I will be teaching,আমি শেখাইতে থাকব,আই উইল বি টিচিং
+I will be winning,আমি জয়ী হইতে থাকব,আই উইল বি উইনিং

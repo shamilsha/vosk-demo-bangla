@@ -1,0 +1,84 @@
+He is playing,সে খেলছে,হি ইজ প্লেয়িং
+He is running,সে দৌড়াচ্ছে,হি ইজ রানিং
+He is eating,সে খাচ্ছে,হি ইজ ইটিং
+He is doing,সে করছে,হি ইজ ডুইং
+He is walking,সে হাঁটছে,হি ইজ ওয়াকিং
+He is going,সে যাচ্ছে,হি ইজ গোইং
+He is coming,সে আসছে,হি ইজ কামিং
+He is reading,সে পড়ছে,হি ইজ রিডিং
+He is writing,সে লিখছে,হি ইজ রাইটিং
+He is working,সে কাজ করছে,হি ইজ ওয়ার্কিং
+He is sleeping,সে ঘুমাচ্ছে,হি ইজ স্লিপিং
+He is drinking,সে পান করছে,হি ইজ ড্রিঙ্কিং
+He is sitting,সে বসছে,হি ইজ সিটিং
+He is standing,সে দাঁড়াচ্ছে,হি ইজ স্ট্যান্ডিং
+He is listening,সে শুনছে,হি ইজ লিসেনিং
+He is looking,সে তাকাচ্ছে,হি ইজ লুকিং
+He is loving,সে ভালোবাসছে,হি ইজ লাভিং
+He is wanting,সে চাইছে,হি ইজ ওয়ান্টিং
+He is thinking,সে ভাবছে,হি ইজ থিংকিং
+He is knowing,সে জানছে,হি ইজ নোইং
+He is learning,সে শিখছে,হি ইজ লার্নিং
+He is cooking,সে রান্না করছে,হি ইজ কুকিং
+He is speaking,সে কথা বলছে,হি ইজ স্পিকিং
+He is talking,সে কথা বলছে,হি ইজ টকিং
+He is opening,সে খুলছে,হি ইজ ওপেনিং
+He is closing,সে বন্ধ করছে,হি ইজ ক্লোজিং
+He is waiting,সে অপেক্ষা করছে,হি ইজ ওয়েটিং
+He is trying,সে চেষ্টা করছে,হি ইজ ট্রাইং
+He is living,সে বাস করছে,হি ইজ লিভিং
+He is helping,সে সাহায্য করছে,হি ইজ হেল্পিং
+He is calling,সে ডাকছে,হি ইজ কলিং
+He is asking,সে জিজ্ঞাসা করছে,হি ইজ আস্কিং
+He is taking,সে নিচ্ছে,হি ইজ টেকিং
+He is giving,সে দিচ্ছে,হি ইজ গিভিং
+He is seeing,সে দেখছে,হি ইজ সিইং
+He is hearing,সে শুনছে,হি ইজ হিয়ারিং
+He is feeling,সে অনুভব করছে,হি ইজ ফিলিং
+He is understanding,সে বুঝছে,হি ইজ আন্ডারস্ট্যান্ডিং
+He is singing,সে গান করছে,হি ইজ সিংইং
+He is swimming,সে সাঁতার কাটছে,হি ইজ সুইমিং
+He is driving,সে গাড়ি চালাচ্ছে,হি ইজ ড্রাইভিং
+He is studying,সে পড়াশোনা করছে,হি ইজ স্টাডিইং
+He is washing,সে ধুছে,হি ইজ ওয়াশিং
+He is watching,সে দেখছে,হি ইজ ওয়াচিং
+He is buying,সে কিনছে,হি ইজ বাইইং
+He is selling,সে বিক্রি করছে,হি ইজ সেলিং
+He is making,সে তৈরি করছে,হি ইজ মেকিং
+He is cleaning,সে পরিষ্কার করছে,হি ইজ ক্লিনিং
+He is dancing,সে নাচছে,হি ইজ ড্যান্সিং
+He is stopping,সে থামছে,হি ইজ স্টপিং
+He is starting,সে শুরু করছে,হি ইজ স্টার্টিং
+He is finishing,সে শেষ করছে,হি ইজ ফিনিশিং
+He is changing,সে পরিবর্তন করছে,হি ইজ চেঞ্জিং
+He is paying,সে পরিশোধ করছে,হি ইজ পেয়িং
+He is using,সে ব্যবহার করছে,হি ইজ ইউজিং
+He is showing,সে দেখাচ্ছে,হি ইজ শোইং
+He is telling,সে বলছে,হি ইজ টেলিং
+He is leaving,সে ছেড়ে যাচ্ছে,হি ইজ লিভিং
+He is bringing,সে আনছে,হি ইজ ব্রিংইং
+He is keeping,সে রাখছে,হি ইজ কিপিং
+He is putting,সে রাখছে,হি ইজ পুটিং
+He is finding,সে খুঁজে পাচ্ছে,হি ইজ ফাইন্ডিং
+He is forgetting,সে ভুলে যাচ্ছে,হি ইজ ফরগেটিং
+He is remembering,সে মনে রাখছে,হি ইজ রিমেম্বারিং
+He is needing,আমার প্রয়োজন হচ্ছে,হি ইজ নিডিং
+He is believing,সে বিশ্বাস করছে,হি ইজ বিলিভিং
+He is agreeing,সে রাজি হচ্ছে,হি ইজ অ্যাগ্রিইং
+He is answering,সে উত্তর দিচ্ছে,হি ইজ আন্সারিং
+He is breaking,সে ভাঙছে,হি ইজ ব্রেকিং
+He is building,সে নির্মাণ করছে,হি ইজ বিল্ডিং
+He is choosing,সে পছন্দ করছে,হি ইজ চুজিং
+He is cutting,সে কাটছে,হি ইজ কাটিং
+He is deciding,সে সিদ্ধান্ত নিচ্ছে,হি ইজ ডিসাইডিং
+He is explaining,সে ব্যাখ্যা করছে,হি ইজ এক্সপ্লেইনিং
+He is falling,সে পড়ে যাচ্ছে,হি ইজ ফলিং
+He is getting,সে পাচ্ছে,হি ইজ গেটিং
+He is growing,সে বড় হচ্ছে,হি ইজ গ্রোইং
+He is hoping,সে আশা করছে,হি ইজ হোপিং
+He is joining,সে যোগ দিচ্ছে,হি ইজ জয়েনিং
+He is meeting,সে সাক্ষাৎ করছে,হি ইজ মিটিং
+He is sending,সে পাঠাচ্ছে,হি ইজ সেন্ডিং
+He is spending,সে ব্যয় করছে,হি ইজ স্পেন্ডিং
+He is teaching,সে শেখাচ্ছে,হি ইজ টিচিং
+He is winning,সে জয়ী হচ্ছে,হি ইজ উইনিং

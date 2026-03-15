@@ -1,0 +1,84 @@
+They won't be playing,তারা খেলতে থাকব না,দে ওয়োন্ট বি প্লেয়িং
+They won't be running,তারা দৌড়াইতে থাকব না,দে ওয়োন্ট বি রানিং
+They won't be eating,তারা খাইতে থাকব না,দে ওয়োন্ট বি ইটিং
+They won't be doing,তারা করতে থাকব না,দে ওয়োন্ট বি ডুইং
+They won't be walking,তারা হাঁটতে থাকব না,দে ওয়োন্ট বি ওয়াকিং
+They won't be going,তারা যাইতে থাকব না,দে ওয়োন্ট বি গোইং
+They won't be coming,তারা আসতে থাকব না,দে ওয়োন্ট বি কামিং
+They won't be reading,তারা পড়তে থাকব না,দে ওয়োন্ট বি রিডিং
+They won't be writing,তারা লিখতে থাকব না,দে ওয়োন্ট বি রাইটিং
+They won't be working,তারা কাজ করতে থাকব না,দে ওয়োন্ট বি ওয়ার্কিং
+They won't be sleeping,তারা ঘুমাইতে থাকব না,দে ওয়োন্ট বি স্লিপিং
+They won't be drinking,তারা পান করতে থাকব না,দে ওয়োন্ট বি ড্রিঙ্কিং
+They won't be sitting,তারা বসতে থাকব না,দে ওয়োন্ট বি সিটিং
+They won't be standing,তারা দাঁড়াইতে থাকব না,দে ওয়োন্ট বি স্ট্যান্ডিং
+They won't be listening,তারা শুনতে থাকব না,দে ওয়োন্ট বি লিসেনিং
+They won't be looking,তারা তাকাইতে থাকব না,দে ওয়োন্ট বি লুকিং
+They won't be loving,তারা ভালোবাসতে থাকব না,দে ওয়োন্ট বি লাভিং
+They won't be wanting,তারা চাইতে থাকব না,দে ওয়োন্ট বি ওয়ান্টিং
+They won't be thinking,তারা ভাবতে থাকব না,দে ওয়োন্ট বি থিংকিং
+They won't be knowing,তারা জানতে থাকব না,দে ওয়োন্ট বি নোইং
+They won't be learning,তারা শিখতে থাকব না,দে ওয়োন্ট বি লার্নিং
+They won't be cooking,তারা রান্না করতে থাকব না,দে ওয়োন্ট বি কুকিং
+They won't be speaking,তারা কথা বলতে থাকব না,দে ওয়োন্ট বি স্পিকিং
+They won't be talking,তারা কথা বলতে থাকব না,দে ওয়োন্ট বি টকিং
+They won't be opening,তারা খুলতে থাকব না,দে ওয়োন্ট বি ওপেনিং
+They won't be closing,তারা বন্ধ করতে থাকব না,দে ওয়োন্ট বি ক্লোজিং
+They won't be waiting,তারা অপেক্ষা করতে থাকব না,দে ওয়োন্ট বি ওয়েটিং
+They won't be trying,তারা চেষ্টা করতে থাকব না,দে ওয়োন্ট বি ট্রাইং
+They won't be living,তারা বাস করতে থাকব না,দে ওয়োন্ট বি লিভিং
+They won't be helping,তারা সাহায্য করতে থাকব না,দে ওয়োন্ট বি হেল্পিং
+They won't be calling,তারা ডাকতে থাকব না,দে ওয়োন্ট বি কলিং
+They won't be asking,তারা জিজ্ঞাসা করতে থাকব না,দে ওয়োন্ট বি আস্কিং
+They won't be taking,তারা নিইতে থাকব না,দে ওয়োন্ট বি টেকিং
+They won't be giving,তারা দিইতে থাকব না,দে ওয়োন্ট বি গিভিং
+They won't be seeing,তারা দেখতে থাকব না,দে ওয়োন্ট বি সিইং
+They won't be hearing,তারা শুনতে থাকব না,দে ওয়োন্ট বি হিয়ারিং
+They won't be feeling,তারা অনুভব করতে থাকব না,দে ওয়োন্ট বি ফিলিং
+They won't be understanding,তারা বুঝতে থাকব না,দে ওয়োন্ট বি আন্ডারস্ট্যান্ডিং
+They won't be singing,তারা গান করতে থাকব না,দে ওয়োন্ট বি সিংইং
+They won't be swimming,তারা সাঁতার কাটতে থাকব না,দে ওয়োন্ট বি সুইমিং
+They won't be driving,তারা গাড়ি চালাইতে থাকব না,দে ওয়োন্ট বি ড্রাইভিং
+They won't be studying,তারা পড়াশোনা করতে থাকব না,দে ওয়োন্ট বি স্টাডিইং
+They won't be washing,তারা ধুইতে থাকব না,দে ওয়োন্ট বি ওয়াশিং
+They won't be watching,তারা দেখতে থাকব না,দে ওয়োন্ট বি ওয়াচিং
+They won't be buying,তারা কিনতে থাকব না,দে ওয়োন্ট বি বাইইং
+They won't be selling,তারা বিক্রি করতে থাকব না,দে ওয়োন্ট বি সেলিং
+They won't be making,তারা তৈরি করতে থাকব না,দে ওয়োন্ট বি মেকিং
+They won't be cleaning,তারা পরিষ্কার করতে থাকব না,দে ওয়োন্ট বি ক্লিনিং
+They won't be dancing,তারা নাচতে থাকব না,দে ওয়োন্ট বি ড্যান্সিং
+They won't be stopping,তারা থামতে থাকব না,দে ওয়োন্ট বি স্টপিং
+They won't be starting,তারা শুরু করতে থাকব না,দে ওয়োন্ট বি স্টার্টিং
+They won't be finishing,তারা শেষ করতে থাকব না,দে ওয়োন্ট বি ফিনিশিং
+They won't be changing,তারা পরিবর্তন করতে থাকব না,দে ওয়োন্ট বি চেঞ্জিং
+They won't be paying,তারা পরিশোধ করতে থাকব না,দে ওয়োন্ট বি পেয়িং
+They won't be using,তারা ব্যবহার করতে থাকব না,দে ওয়োন্ট বি ইউজিং
+They won't be showing,তারা দেখাইতে থাকব না,দে ওয়োন্ট বি শোইং
+They won't be telling,তারা বলতে থাকব না,দে ওয়োন্ট বি টেলিং
+They won't be leaving,তারা ছেড়ে যাইতে থাকব না,দে ওয়োন্ট বি লিভিং
+They won't be bringing,তারা আনতে থাকব না,দে ওয়োন্ট বি ব্রিংইং
+They won't be keeping,তারা রাখতে থাকব না,দে ওয়োন্ট বি কিপিং
+They won't be putting,তারা রাখতে থাকব না,দে ওয়োন্ট বি পুটিং
+They won't be finding,তারা খুঁজে পাইতে থাকব না,দে ওয়োন্ট বি ফাইন্ডিং
+They won't be forgetting,তারা ভুলে যাইতে থাকব না,দে ওয়োন্ট বি ফরগেটিং
+They won't be remembering,তারা মনে রাখতে থাকব না,দে ওয়োন্ট বি রিমেম্বারিং
+They won't be needing,তারা প্রয়োজন নেইতে থাকবে,দে ওয়োন্ট বি নিডিং
+They won't be believing,তারা বিশ্বাস করতে থাকব না,দে ওয়োন্ট বি বিলিভিং
+They won't be agreeing,তারা রাজি নইতে থাকবে,দে ওয়োন্ট বি অ্যাগ্রিইং
+They won't be answering,তারা উত্তর দেইতে থাকব না,দে ওয়োন্ট বি আন্সারিং
+They won't be breaking,তারা ভাঙতে থাকব না,দে ওয়োন্ট বি ব্রেকিং
+They won't be building,তারা নির্মাণ করতে থাকব না,দে ওয়োন্ট বি বিল্ডিং
+They won't be choosing,তারা পছন্দ করতে থাকব না,দে ওয়োন্ট বি চুজিং
+They won't be cutting,তারা কাটতে থাকব না,দে ওয়োন্ট বি কাটিং
+They won't be deciding,তারা সিদ্ধান্ত নিইতে থাকব না,দে ওয়োন্ট বি ডিসাইডিং
+They won't be explaining,তারা ব্যাখ্যা করতে থাকব না,দে ওয়োন্ট বি এক্সপ্লেইনিং
+They won't be falling,তারা পড়ে যাইতে থাকব না,দে ওয়োন্ট বি ফলিং
+They won't be getting,তারা পাইতে থাকব না,দে ওয়োন্ট বি গেটিং
+They won't be growing,তারা বড় হইতে থাকব না,দে ওয়োন্ট বি গ্রোইং
+They won't be hoping,তারা আশা করতে থাকব না,দে ওয়োন্ট বি হোপিং
+They won't be joining,তারা যোগ দিইতে থাকব না,দে ওয়োন্ট বি জয়েনিং
+They won't be meeting,তারা সাক্ষাৎ করতে থাকব না,দে ওয়োন্ট বি মিটিং
+They won't be sending,তারা পাঠাইতে থাকব না,দে ওয়োন্ট বি সেন্ডিং
+They won't be spending,তারা ব্যয় করতে থাকব না,দে ওয়োন্ট বি স্পেন্ডিং
+They won't be teaching,তারা শেখাইতে থাকব না,দে ওয়োন্ট বি টিচিং
+They won't be winning,তারা জয়ী হইতে থাকব না,দে ওয়োন্ট বি উইনিং

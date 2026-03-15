@@ -1,0 +1,84 @@
+He will be playing,সে খেলতে থাকবে,হি উইল বি প্লেয়িং
+He will be running,সে দৌড়াইতে থাকবে,হি উইল বি রানিং
+He will be eating,সে খাইতে থাকবে,হি উইল বি ইটিং
+He will be doing,সে করতে থাকবে,হি উইল বি ডুইং
+He will be walking,সে হাঁটতে থাকবে,হি উইল বি ওয়াকিং
+He will be going,সে যাইতে থাকবে,হি উইল বি গোইং
+He will be coming,সে আসতে থাকবে,হি উইল বি কামিং
+He will be reading,সে পড়তে থাকবে,হি উইল বি রিডিং
+He will be writing,সে লিখতে থাকবে,হি উইল বি রাইটিং
+He will be working,সে কাজ করতে থাকবে,হি উইল বি ওয়ার্কিং
+He will be sleeping,সে ঘুমাইতে থাকবে,হি উইল বি স্লিপিং
+He will be drinking,সে পান করতে থাকবে,হি উইল বি ড্রিঙ্কিং
+He will be sitting,সে বসতে থাকবে,হি উইল বি সিটিং
+He will be standing,সে দাঁড়াইতে থাকবে,হি উইল বি স্ট্যান্ডিং
+He will be listening,সে শুনতে থাকবে,হি উইল বি লিসেনিং
+He will be looking,সে তাকাইতে থাকবে,হি উইল বি লুকিং
+He will be loving,সে ভালোবাসতে থাকবে,হি উইল বি লাভিং
+He will be wanting,সে চাইতে থাকবে,হি উইল বি ওয়ান্টিং
+He will be thinking,সে ভাবতে থাকবে,হি উইল বি থিংকিং
+He will be knowing,সে জানতে থাকবে,হি উইল বি নোইং
+He will be learning,সে শিখতে থাকবে,হি উইল বি লার্নিং
+He will be cooking,সে রান্না করতে থাকবে,হি উইল বি কুকিং
+He will be speaking,সে কথা বলতে থাকবে,হি উইল বি স্পিকিং
+He will be talking,সে কথা বলতে থাকবে,হি উইল বি টকিং
+He will be opening,সে খুলতে থাকবে,হি উইল বি ওপেনিং
+He will be closing,সে বন্ধ করতে থাকবে,হি উইল বি ক্লোজিং
+He will be waiting,সে অপেক্ষা করতে থাকবে,হি উইল বি ওয়েটিং
+He will be trying,সে চেষ্টা করতে থাকবে,হি উইল বি ট্রাইং
+He will be living,সে বাস করতে থাকবে,হি উইল বি লিভিং
+He will be helping,সে সাহায্য করতে থাকবে,হি উইল বি হেল্পিং
+He will be calling,সে ডাকতে থাকবে,হি উইল বি কলিং
+He will be asking,সে জিজ্ঞাসা করতে থাকবে,হি উইল বি আস্কিং
+He will be taking,সে নিইতে থাকবে,হি উইল বি টেকিং
+He will be giving,সে দিইতে থাকবে,হি উইল বি গিভিং
+He will be seeing,সে দেখতে থাকবে,হি উইল বি সিইং
+He will be hearing,সে শুনতে থাকবে,হি উইল বি হিয়ারিং
+He will be feeling,সে অনুভব করতে থাকবে,হি উইল বি ফিলিং
+He will be understanding,সে বুঝতে থাকবে,হি উইল বি আন্ডারস্ট্যান্ডিং
+He will be singing,সে গান করতে থাকবে,হি উইল বি সিংইং
+He will be swimming,সে সাঁতার কাটতে থাকবে,হি উইল বি সুইমিং
+He will be driving,সে গাড়ি চালাইতে থাকবে,হি উইল বি ড্রাইভিং
+He will be studying,সে পড়াশোনা করতে থাকবে,হি উইল বি স্টাডিইং
+He will be washing,সে ধুইতে থাকবে,হি উইল বি ওয়াশিং
+He will be watching,সে দেখতে থাকবে,হি উইল বি ওয়াচিং
+He will be buying,সে কিনতে থাকবে,হি উইল বি বাইইং
+He will be selling,সে বিক্রি করতে থাকবে,হি উইল বি সেলিং
+He will be making,সে তৈরি করতে থাকবে,হি উইল বি মেকিং
+He will be cleaning,সে পরিষ্কার করতে থাকবে,হি উইল বি ক্লিনিং
+He will be dancing,সে নাচতে থাকবে,হি উইল বি ড্যান্সিং
+He will be stopping,সে থামতে থাকবে,হি উইল বি স্টপিং
+He will be starting,সে শুরু করতে থাকবে,হি উইল বি স্টার্টিং
+He will be finishing,সে শেষ করতে থাকবে,হি উইল বি ফিনিশিং
+He will be changing,সে পরিবর্তন করতে থাকবে,হি উইল বি চেঞ্জিং
+He will be paying,সে পরিশোধ করতে থাকবে,হি উইল বি পেয়িং
+He will be using,সে ব্যবহার করতে থাকবে,হি উইল বি ইউজিং
+He will be showing,সে দেখাইতে থাকবে,হি উইল বি শোইং
+He will be telling,সে বলতে থাকবে,হি উইল বি টেলিং
+He will be leaving,সে ছেড়ে যাইতে থাকবে,হি উইল বি লিভিং
+He will be bringing,সে আনতে থাকবে,হি উইল বি ব্রিংইং
+He will be keeping,সে রাখতে থাকবে,হি উইল বি কিপিং
+He will be putting,সে রাখতে থাকবে,হি উইল বি পুটিং
+He will be finding,সে খুঁজে পাইতে থাকবে,হি উইল বি ফাইন্ডিং
+He will be forgetting,সে ভুলে যাইতে থাকবে,হি উইল বি ফরগেটিং
+He will be remembering,সে মনে রাখতে থাকবে,হি উইল বি রিমেম্বারিং
+He will be needing,সে প্রয়োজনতে থাকবে,হি উইল বি নিডিং
+He will be believing,সে বিশ্বাস করতে থাকবে,হি উইল বি বিলিভিং
+He will be agreeing,সে রাজতে থাকবে,হি উইল বি অ্যাগ্রিইং
+He will be answering,সে উত্তর দেইতে থাকবে,হি উইল বি আন্সারিং
+He will be breaking,সে ভাঙতে থাকবে,হি উইল বি ব্রেকিং
+He will be building,সে নির্মাণ করতে থাকবে,হি উইল বি বিল্ডিং
+He will be choosing,সে পছন্দ করতে থাকবে,হি উইল বি চুজিং
+He will be cutting,সে কাটতে থাকবে,হি উইল বি কাটিং
+He will be deciding,সে সিদ্ধান্ত নিইতে থাকবে,হি উইল বি ডিসাইডিং
+He will be explaining,সে ব্যাখ্যা করতে থাকবে,হি উইল বি এক্সপ্লেইনিং
+He will be falling,সে পড়ে যাইতে থাকবে,হি উইল বি ফলিং
+He will be getting,সে পাইতে থাকবে,হি উইল বি গেটিং
+He will be growing,সে বড় হইতে থাকবে,হি উইল বি গ্রোইং
+He will be hoping,সে আশা করতে থাকবে,হি উইল বি হোপিং
+He will be joining,সে যোগ দিইতে থাকবে,হি উইল বি জয়েনিং
+He will be meeting,সে সাক্ষাৎ করতে থাকবে,হি উইল বি মিটিং
+He will be sending,সে পাঠাইতে থাকবে,হি উইল বি সেন্ডিং
+He will be spending,সে ব্যয় করতে থাকবে,হি উইল বি স্পেন্ডিং
+He will be teaching,সে শেখাইতে থাকবে,হি উইল বি টিচিং
+He will be winning,সে জয়ী হইতে থাকবে,হি উইল বি উইনিং

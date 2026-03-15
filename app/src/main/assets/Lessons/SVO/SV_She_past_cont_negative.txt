@@ -1,0 +1,84 @@
+She wasn't playing,সে খেলছিল না,শি ওয়াজন্ট প্লেয়িং
+She wasn't running,সে দৌড়াচ্ছিল না,শি ওয়াজন্ট রানিং
+She wasn't eating,সে খাচ্ছিল না,শি ওয়াজন্ট ইটিং
+She wasn't doing,সে করছিল না,শি ওয়াজন্ট ডুইং
+She wasn't walking,সে হাঁটছিল না,শি ওয়াজন্ট ওয়াকিং
+She wasn't going,সে যাচ্ছিল না,শি ওয়াজন্ট গোইং
+She wasn't coming,সে আসছিল না,শি ওয়াজন্ট কামিং
+She wasn't reading,সে পড়ছিল না,শি ওয়াজন্ট রিডিং
+She wasn't writing,সে লিখছিল না,শি ওয়াজন্ট রাইটিং
+She wasn't working,সে কাজ করছিল না,শি ওয়াজন্ট ওয়ার্কিং
+She wasn't sleeping,সে ঘুমাচ্ছিল না,শি ওয়াজন্ট স্লিপিং
+She wasn't drinking,সে পান করছিল না,শি ওয়াজন্ট ড্রিঙ্কিং
+She wasn't sitting,সে বসছিল না,শি ওয়াজন্ট সিটিং
+She wasn't standing,সে দাঁড়াচ্ছিল না,শি ওয়াজন্ট স্ট্যান্ডিং
+She wasn't listening,সে শুনছিল না,শি ওয়াজন্ট লিসেনিং
+She wasn't looking,সে তাকাচ্ছিল না,শি ওয়াজন্ট লুকিং
+She wasn't loving,সে ভালোবাসছিল না,শি ওয়াজন্ট লাভিং
+She wasn't wanting,সে চাইছিল না,শি ওয়াজন্ট ওয়ান্টিং
+She wasn't thinking,সে ভাবছিল না,শি ওয়াজন্ট থিংকিং
+She wasn't knowing,সে জানছিল না,শি ওয়াজন্ট নোইং
+She wasn't learning,সে শিখছিল না,শি ওয়াজন্ট লার্নিং
+She wasn't cooking,সে রান্না করছিল না,শি ওয়াজন্ট কুকিং
+She wasn't speaking,সে কথা বলছিল না,শি ওয়াজন্ট স্পিকিং
+She wasn't talking,সে কথা বলছিল না,শি ওয়াজন্ট টকিং
+She wasn't opening,সে খুলছিল না,শি ওয়াজন্ট ওপেনিং
+She wasn't closing,সে বন্ধ করছিল না,শি ওয়াজন্ট ক্লোজিং
+She wasn't waiting,সে অপেক্ষা করছিল না,শি ওয়াজন্ট ওয়েটিং
+She wasn't trying,সে চেষ্টা করছিল না,শি ওয়াজন্ট ট্রাইং
+She wasn't living,সে বাস করছিল না,শি ওয়াজন্ট লিভিং
+She wasn't helping,সে সাহায্য করছিল না,শি ওয়াজন্ট হেল্পিং
+She wasn't calling,সে ডাকছিল না,শি ওয়াজন্ট কলিং
+She wasn't asking,সে জিজ্ঞাসা করছিল না,শি ওয়াজন্ট আস্কিং
+She wasn't taking,সে নিচ্ছিল না,শি ওয়াজন্ট টেকিং
+She wasn't giving,সে দিচ্ছিল না,শি ওয়াজন্ট গিভিং
+She wasn't seeing,সে দেখছিল না,শি ওয়াজন্ট সিইং
+She wasn't hearing,সে শুনছিল না,শি ওয়াজন্ট হিয়ারিং
+She wasn't feeling,সে অনুভব করছিল না,শি ওয়াজন্ট ফিলিং
+She wasn't understanding,সে বুঝছিল না,শি ওয়াজন্ট আন্ডারস্ট্যান্ডিং
+She wasn't singing,সে গান করছিল না,শি ওয়াজন্ট সিংইং
+She wasn't swimming,সে সাঁতার কাটছিল না,শি ওয়াজন্ট সুইমিং
+She wasn't driving,সে গাড়ি চালাচ্ছিল না,শি ওয়াজন্ট ড্রাইভিং
+She wasn't studying,সে পড়াশোনা করছিল না,শি ওয়াজন্ট স্টাডিইং
+She wasn't washing,সে ধুছিল না,শি ওয়াজন্ট ওয়াশিং
+She wasn't watching,সে দেখছিল না,শি ওয়াজন্ট ওয়াচিং
+She wasn't buying,সে কিনছিল না,শি ওয়াজন্ট বাইইং
+She wasn't selling,সে বিক্রি করছিল না,শি ওয়াজন্ট সেলিং
+She wasn't making,সে তৈরি করছিল না,শি ওয়াজন্ট মেকিং
+She wasn't cleaning,সে পরিষ্কার করছিল না,শি ওয়াজন্ট ক্লিনিং
+She wasn't dancing,সে নাচছিল না,শি ওয়াজন্ট ড্যান্সিং
+She wasn't stopping,সে থামছিল না,শি ওয়াজন্ট স্টপিং
+She wasn't starting,সে শুরু করছিল না,শি ওয়াজন্ট স্টার্টিং
+She wasn't finishing,সে শেষ করছিল না,শি ওয়াজন্ট ফিনিশিং
+She wasn't changing,সে পরিবর্তন করছিল না,শি ওয়াজন্ট চেঞ্জিং
+She wasn't paying,সে পরিশোধ করছিল না,শি ওয়াজন্ট পেয়িং
+She wasn't using,সে ব্যবহার করছিল না,শি ওয়াজন্ট ইউজিং
+She wasn't showing,সে দেখাচ্ছিল না,শি ওয়াজন্ট শোইং
+She wasn't telling,সে বলছিল না,শি ওয়াজন্ট টেলিং
+She wasn't leaving,সে ছেড়ে যাচ্ছিল না,শি ওয়াজন্ট লিভিং
+She wasn't bringing,সে আনছিল না,শি ওয়াজন্ট ব্রিংইং
+She wasn't keeping,সে রাখছিল না,শি ওয়াজন্ট কিপিং
+She wasn't putting,সে রাখছিল না,শি ওয়াজন্ট পুটিং
+She wasn't finding,সে খুঁজে পাচ্ছিল না,শি ওয়াজন্ট ফাইন্ডিং
+She wasn't forgetting,সে ভুলে যাচ্ছিল না,শি ওয়াজন্ট ফরগেটিং
+She wasn't remembering,সে মনে রাখছিল না,শি ওয়াজন্ট রিমেম্বারিং
+She wasn't needing,আমার প্রয়োজন হচ্ছিল না,শি ওয়াজন্ট নিডিং
+She wasn't believing,সে বিশ্বাস করছিল না,শি ওয়াজন্ট বিলিভিং
+She wasn't agreeing,সে রাজি হচ্ছিল না,শি ওয়াজন্ট অ্যাগ্রিইং
+She wasn't answering,সে উত্তর দিচ্ছিল না,শি ওয়াজন্ট আন্সারিং
+She wasn't breaking,সে ভাঙছিল না,শি ওয়াজন্ট ব্রেকিং
+She wasn't building,সে নির্মাণ করছিল না,শি ওয়াজন্ট বিল্ডিং
+She wasn't choosing,সে পছন্দ করছিল না,শি ওয়াজন্ট চুজিং
+She wasn't cutting,সে কাটছিল না,শি ওয়াজন্ট কাটিং
+She wasn't deciding,সে সিদ্ধান্ত নিচ্ছিল না,শি ওয়াজন্ট ডিসাইডিং
+She wasn't explaining,সে ব্যাখ্যা করছিল না,শি ওয়াজন্ট এক্সপ্লেইনিং
+She wasn't falling,সে পড়ে যাচ্ছিল না,শি ওয়াজন্ট ফলিং
+She wasn't getting,সে পাচ্ছিল না,শি ওয়াজন্ট গেটিং
+She wasn't growing,সে বড় হচ্ছিল না,শি ওয়াজন্ট গ্রোইং
+She wasn't hoping,সে আশা করছিল না,শি ওয়াজন্ট হোপিং
+She wasn't joining,সে যোগ দিচ্ছিল না,শি ওয়াজন্ট জয়েনিং
+She wasn't meeting,সে সাক্ষাৎ করছিল না,শি ওয়াজন্ট মিটিং
+She wasn't sending,সে পাঠাচ্ছিল না,শি ওয়াজন্ট সেন্ডিং
+She wasn't spending,সে ব্যয় করছিল না,শি ওয়াজন্ট স্পেন্ডিং
+She wasn't teaching,সে শেখাচ্ছিল না,শি ওয়াজন্ট টিচিং
+She wasn't winning,সে জয়ী হচ্ছিল না,শি ওয়াজন্ট উইনিং

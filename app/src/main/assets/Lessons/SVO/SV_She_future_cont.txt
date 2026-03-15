@@ -1,0 +1,84 @@
+She will be playing,সে খেলতে থাকবে,শি উইল বি প্লেয়িং
+She will be running,সে দৌড়াইতে থাকবে,শি উইল বি রানিং
+She will be eating,সে খাইতে থাকবে,শি উইল বি ইটিং
+She will be doing,সে করতে থাকবে,শি উইল বি ডুইং
+She will be walking,সে হাঁটতে থাকবে,শি উইল বি ওয়াকিং
+She will be going,সে যাইতে থাকবে,শি উইল বি গোইং
+She will be coming,সে আসতে থাকবে,শি উইল বি কামিং
+She will be reading,সে পড়তে থাকবে,শি উইল বি রিডিং
+She will be writing,সে লিখতে থাকবে,শি উইল বি রাইটিং
+She will be working,সে কাজ করতে থাকবে,শি উইল বি ওয়ার্কিং
+She will be sleeping,সে ঘুমাইতে থাকবে,শি উইল বি স্লিপিং
+She will be drinking,সে পান করতে থাকবে,শি উইল বি ড্রিঙ্কিং
+She will be sitting,সে বসতে থাকবে,শি উইল বি সিটিং
+She will be standing,সে দাঁড়াইতে থাকবে,শি উইল বি স্ট্যান্ডিং
+She will be listening,সে শুনতে থাকবে,শি উইল বি লিসেনিং
+She will be looking,সে তাকাইতে থাকবে,শি উইল বি লুকিং
+She will be loving,সে ভালোবাসতে থাকবে,শি উইল বি লাভিং
+She will be wanting,সে চাইতে থাকবে,শি উইল বি ওয়ান্টিং
+She will be thinking,সে ভাবতে থাকবে,শি উইল বি থিংকিং
+She will be knowing,সে জানতে থাকবে,শি উইল বি নোইং
+She will be learning,সে শিখতে থাকবে,শি উইল বি লার্নিং
+She will be cooking,সে রান্না করতে থাকবে,শি উইল বি কুকিং
+She will be speaking,সে কথা বলতে থাকবে,শি উইল বি স্পিকিং
+She will be talking,সে কথা বলতে থাকবে,শি উইল বি টকিং
+She will be opening,সে খুলতে থাকবে,শি উইল বি ওপেনিং
+She will be closing,সে বন্ধ করতে থাকবে,শি উইল বি ক্লোজিং
+She will be waiting,সে অপেক্ষা করতে থাকবে,শি উইল বি ওয়েটিং
+She will be trying,সে চেষ্টা করতে থাকবে,শি উইল বি ট্রাইং
+She will be living,সে বাস করতে থাকবে,শি উইল বি লিভিং
+She will be helping,সে সাহায্য করতে থাকবে,শি উইল বি হেল্পিং
+She will be calling,সে ডাকতে থাকবে,শি উইল বি কলিং
+She will be asking,সে জিজ্ঞাসা করতে থাকবে,শি উইল বি আস্কিং
+She will be taking,সে নিইতে থাকবে,শি উইল বি টেকিং
+She will be giving,সে দিইতে থাকবে,শি উইল বি গিভিং
+She will be seeing,সে দেখতে থাকবে,শি উইল বি সিইং
+She will be hearing,সে শুনতে থাকবে,শি উইল বি হিয়ারিং
+She will be feeling,সে অনুভব করতে থাকবে,শি উইল বি ফিলিং
+She will be understanding,সে বুঝতে থাকবে,শি উইল বি আন্ডারস্ট্যান্ডিং
+She will be singing,সে গান করতে থাকবে,শি উইল বি সিংইং
+She will be swimming,সে সাঁতার কাটতে থাকবে,শি উইল বি সুইমিং
+She will be driving,সে গাড়ি চালাইতে থাকবে,শি উইল বি ড্রাইভিং
+She will be studying,সে পড়াশোনা করতে থাকবে,শি উইল বি স্টাডিইং
+She will be washing,সে ধুইতে থাকবে,শি উইল বি ওয়াশিং
+She will be watching,সে দেখতে থাকবে,শি উইল বি ওয়াচিং
+She will be buying,সে কিনতে থাকবে,শি উইল বি বাইইং
+She will be selling,সে বিক্রি করতে থাকবে,শি উইল বি সেলিং
+She will be making,সে তৈরি করতে থাকবে,শি উইল বি মেকিং
+She will be cleaning,সে পরিষ্কার করতে থাকবে,শি উইল বি ক্লিনিং
+She will be dancing,সে নাচতে থাকবে,শি উইল বি ড্যান্সিং
+She will be stopping,সে থামতে থাকবে,শি উইল বি স্টপিং
+She will be starting,সে শুরু করতে থাকবে,শি উইল বি স্টার্টিং
+She will be finishing,সে শেষ করতে থাকবে,শি উইল বি ফিনিশিং
+She will be changing,সে পরিবর্তন করতে থাকবে,শি উইল বি চেঞ্জিং
+She will be paying,সে পরিশোধ করতে থাকবে,শি উইল বি পেয়িং
+She will be using,সে ব্যবহার করতে থাকবে,শি উইল বি ইউজিং
+She will be showing,সে দেখাইতে থাকবে,শি উইল বি শোইং
+She will be telling,সে বলতে থাকবে,শি উইল বি টেলিং
+She will be leaving,সে ছেড়ে যাইতে থাকবে,শি উইল বি লিভিং
+She will be bringing,সে আনতে থাকবে,শি উইল বি ব্রিংইং
+She will be keeping,সে রাখতে থাকবে,শি উইল বি কিপিং
+She will be putting,সে রাখতে থাকবে,শি উইল বি পুটিং
+She will be finding,সে খুঁজে পাইতে থাকবে,শি উইল বি ফাইন্ডিং
+She will be forgetting,সে ভুলে যাইতে থাকবে,শি উইল বি ফরগেটিং
+She will be remembering,সে মনে রাখতে থাকবে,শি উইল বি রিমেম্বারিং
+She will be needing,সে প্রয়োজনতে থাকবে,শি উইল বি নিডিং
+She will be believing,সে বিশ্বাস করতে থাকবে,শি উইল বি বিলিভিং
+She will be agreeing,সে রাজতে থাকবে,শি উইল বি অ্যাগ্রিইং
+She will be answering,সে উত্তর দেইতে থাকবে,শি উইল বি আন্সারিং
+She will be breaking,সে ভাঙতে থাকবে,শি উইল বি ব্রেকিং
+She will be building,সে নির্মাণ করতে থাকবে,শি উইল বি বিল্ডিং
+She will be choosing,সে পছন্দ করতে থাকবে,শি উইল বি চুজিং
+She will be cutting,সে কাটতে থাকবে,শি উইল বি কাটিং
+She will be deciding,সে সিদ্ধান্ত নিইতে থাকবে,শি উইল বি ডিসাইডিং
+She will be explaining,সে ব্যাখ্যা করতে থাকবে,শি উইল বি এক্সপ্লেইনিং
+She will be falling,সে পড়ে যাইতে থাকবে,শি উইল বি ফলিং
+She will be getting,সে পাইতে থাকবে,শি উইল বি গেটিং
+She will be growing,সে বড় হইতে থাকবে,শি উইল বি গ্রোইং
+She will be hoping,সে আশা করতে থাকবে,শি উইল বি হোপিং
+She will be joining,সে যোগ দিইতে থাকবে,শি উইল বি জয়েনিং
+She will be meeting,সে সাক্ষাৎ করতে থাকবে,শি উইল বি মিটিং
+She will be sending,সে পাঠাইতে থাকবে,শি উইল বি সেন্ডিং
+She will be spending,সে ব্যয় করতে থাকবে,শি উইল বি স্পেন্ডিং
+She will be teaching,সে শেখাইতে থাকবে,শি উইল বি টিচিং
+She will be winning,সে জয়ী হইতে থাকবে,শি উইল বি উইনিং

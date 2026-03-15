@@ -1,0 +1,84 @@
+You aren't playing,তুমি খেলছো না,ইউ আরন্ট প্লেয়িং
+You aren't running,তুমি দৌড়াচ্ছো না,ইউ আরন্ট রানিং
+You aren't eating,তুমি খাচ্ছো না,ইউ আরন্ট ইটিং
+You aren't doing,তুমি করছো না,ইউ আরন্ট ডুইং
+You aren't walking,তুমি হাঁটছো না,ইউ আরন্ট ওয়াকিং
+You aren't going,তুমি যাচ্ছো না,ইউ আরন্ট গোইং
+You aren't coming,তুমি আসছো না,ইউ আরন্ট কামিং
+You aren't reading,তুমি পড়ছো না,ইউ আরন্ট রিডিং
+You aren't writing,তুমি লিখছো না,ইউ আরন্ট রাইটিং
+You aren't working,তুমি কাজ করছো না,ইউ আরন্ট ওয়ার্কিং
+You aren't sleeping,তুমি ঘুমাচ্ছো না,ইউ আরন্ট স্লিপিং
+You aren't drinking,তুমি পান করছো না,ইউ আরন্ট ড্রিঙ্কিং
+You aren't sitting,তুমি বসছো না,ইউ আরন্ট সিটিং
+You aren't standing,তুমি দাঁড়াচ্ছো না,ইউ আরন্ট স্ট্যান্ডিং
+You aren't listening,তুমি শুনছো না,ইউ আরন্ট লিসেনিং
+You aren't looking,তুমি তাকাচ্ছো না,ইউ আরন্ট লুকিং
+You aren't loving,তুমি ভালোবাসছো না,ইউ আরন্ট লাভিং
+You aren't wanting,তুমি চাইছো না,ইউ আরন্ট ওয়ান্টিং
+You aren't thinking,তুমি ভাবছো না,ইউ আরন্ট থিংকিং
+You aren't knowing,তুমি জানছো না,ইউ আরন্ট নোইং
+You aren't learning,তুমি শিখছো না,ইউ আরন্ট লার্নিং
+You aren't cooking,তুমি রান্না করছো না,ইউ আরন্ট কুকিং
+You aren't speaking,তুমি কথা বলছো না,ইউ আরন্ট স্পিকিং
+You aren't talking,তুমি কথা বলছো না,ইউ আরন্ট টকিং
+You aren't opening,তুমি খুলছো না,ইউ আরন্ট ওপেনিং
+You aren't closing,তুমি বন্ধ করছো না,ইউ আরন্ট ক্লোজিং
+You aren't waiting,তুমি অপেক্ষা করছো না,ইউ আরন্ট ওয়েটিং
+You aren't trying,তুমি চেষ্টা করছো না,ইউ আরন্ট ট্রাইং
+You aren't living,তুমি বাস করছো না,ইউ আরন্ট লিভিং
+You aren't helping,তুমি সাহায্য করছো না,ইউ আরন্ট হেল্পিং
+You aren't calling,তুমি ডাকছো না,ইউ আরন্ট কলিং
+You aren't asking,তুমি জিজ্ঞাসা করছো না,ইউ আরন্ট আস্কিং
+You aren't taking,তুমি নিচ্ছো না,ইউ আরন্ট টেকিং
+You aren't giving,তুমি দিচ্ছো না,ইউ আরন্ট গিভিং
+You aren't seeing,তুমি দেখছো না,ইউ আরন্ট সিইং
+You aren't hearing,তুমি শুনছো না,ইউ আরন্ট হিয়ারিং
+You aren't feeling,তুমি অনুভব করছো না,ইউ আরন্ট ফিলিং
+You aren't understanding,তুমি বুঝছো না,ইউ আরন্ট আন্ডারস্ট্যান্ডিং
+You aren't singing,তুমি গান করছো না,ইউ আরন্ট সিংইং
+You aren't swimming,তুমি সাঁতার কাটছো না,ইউ আরন্ট সুইমিং
+You aren't driving,তুমি গাড়ি চালাচ্ছো না,ইউ আরন্ট ড্রাইভিং
+You aren't studying,তুমি পড়াশোনা করছো না,ইউ আরন্ট স্টাডিইং
+You aren't washing,তুমি ধুছো না,ইউ আরন্ট ওয়াশিং
+You aren't watching,তুমি দেখছো না,ইউ আরন্ট ওয়াচিং
+You aren't buying,তুমি কিনছো না,ইউ আরন্ট বাইইং
+You aren't selling,তুমি বিক্রি করছো না,ইউ আরন্ট সেলিং
+You aren't making,তুমি তৈরি করছো না,ইউ আরন্ট মেকিং
+You aren't cleaning,তুমি পরিষ্কার করছো না,ইউ আরন্ট ক্লিনিং
+You aren't dancing,তুমি নাচছো না,ইউ আরন্ট ড্যান্সিং
+You aren't stopping,তুমি থামছো না,ইউ আরন্ট স্টপিং
+You aren't starting,তুমি শুরু করছো না,ইউ আরন্ট স্টার্টিং
+You aren't finishing,তুমি শেষ করছো না,ইউ আরন্ট ফিনিশিং
+You aren't changing,তুমি পরিবর্তন করছো না,ইউ আরন্ট চেঞ্জিং
+You aren't paying,তুমি পরিশোধ করছো না,ইউ আরন্ট পেয়িং
+You aren't using,তুমি ব্যবহার করছো না,ইউ আরন্ট ইউজিং
+You aren't showing,তুমি দেখাচ্ছো না,ইউ আরন্ট শোইং
+You aren't telling,তুমি বলছো না,ইউ আরন্ট টেলিং
+You aren't leaving,তুমি ছেড়ে যাচ্ছো না,ইউ আরন্ট লিভিং
+You aren't bringing,তুমি আনছো না,ইউ আরন্ট ব্রিংইং
+You aren't keeping,তুমি রাখছো না,ইউ আরন্ট কিপিং
+You aren't putting,তুমি রাখছো না,ইউ আরন্ট পুটিং
+You aren't finding,তুমি খুঁজে পাচ্ছো না,ইউ আরন্ট ফাইন্ডিং
+You aren't forgetting,তুমি ভুলে যাচ্ছো না,ইউ আরন্ট ফরগেটিং
+You aren't remembering,তুমি মনে রাখছো না,ইউ আরন্ট রিমেম্বারিং
+You aren't needing,আমার প্রয়োজন হচ্ছে না,ইউ আরন্ট নিডিং
+You aren't believing,তুমি বিশ্বাস করছো না,ইউ আরন্ট বিলিভিং
+You aren't agreeing,তুমি রাজি হচ্ছো না,ইউ আরন্ট অ্যাগ্রিইং
+You aren't answering,তুমি উত্তর দিচ্ছো না,ইউ আরন্ট আন্সারিং
+You aren't breaking,তুমি ভাঙছো না,ইউ আরন্ট ব্রেকিং
+You aren't building,তুমি নির্মাণ করছো না,ইউ আরন্ট বিল্ডিং
+You aren't choosing,তুমি পছন্দ করছো না,ইউ আরন্ট চুজিং
+You aren't cutting,তুমি কাটছো না,ইউ আরন্ট কাটিং
+You aren't deciding,তুমি সিদ্ধান্ত নিচ্ছো না,ইউ আরন্ট ডিসাইডিং
+You aren't explaining,তুমি ব্যাখ্যা করছো না,ইউ আরন্ট এক্সপ্লেইনিং
+You aren't falling,তুমি পড়ে যাচ্ছো না,ইউ আরন্ট ফলিং
+You aren't getting,তুমি পাচ্ছো না,ইউ আরন্ট গেটিং
+You aren't growing,তুমি বড় হচ্ছো না,ইউ আরন্ট গ্রোইং
+You aren't hoping,তুমি আশা করছো না,ইউ আরন্ট হোপিং
+You aren't joining,তুমি যোগ দিচ্ছো না,ইউ আরন্ট জয়েনিং
+You aren't meeting,তুমি সাক্ষাৎ করছো না,ইউ আরন্ট মিটিং
+You aren't sending,তুমি পাঠাচ্ছো না,ইউ আরন্ট সেন্ডিং
+You aren't spending,তুমি ব্যয় করছো না,ইউ আরন্ট স্পেন্ডিং
+You aren't teaching,তুমি শেখাচ্ছো না,ইউ আরন্ট টিচিং
+You aren't winning,তুমি জয়ী হচ্ছো না,ইউ আরন্ট উইনিং

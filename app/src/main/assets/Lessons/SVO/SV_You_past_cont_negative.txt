@@ -1,0 +1,84 @@
+You weren't playing,তুমি খেলছিলে না,ইউ ওয়ারন্ট প্লেয়িং
+You weren't running,তুমি দৌড়াচ্ছিলে না,ইউ ওয়ারন্ট রানিং
+You weren't eating,তুমি খাচ্ছিলে না,ইউ ওয়ারন্ট ইটিং
+You weren't doing,তুমি করছিলে না,ইউ ওয়ারন্ট ডুইং
+You weren't walking,তুমি হাঁটছিলে না,ইউ ওয়ারন্ট ওয়াকিং
+You weren't going,তুমি যাচ্ছিলে না,ইউ ওয়ারন্ট গোইং
+You weren't coming,তুমি আসছিলে না,ইউ ওয়ারন্ট কামিং
+You weren't reading,তুমি পড়ছিলে না,ইউ ওয়ারন্ট রিডিং
+You weren't writing,তুমি লিখছিলে না,ইউ ওয়ারন্ট রাইটিং
+You weren't working,তুমি কাজ করছিলে না,ইউ ওয়ারন্ট ওয়ার্কিং
+You weren't sleeping,তুমি ঘুমাচ্ছিলে না,ইউ ওয়ারন্ট স্লিপিং
+You weren't drinking,তুমি পান করছিলে না,ইউ ওয়ারন্ট ড্রিঙ্কিং
+You weren't sitting,তুমি বসছিলে না,ইউ ওয়ারন্ট সিটিং
+You weren't standing,তুমি দাঁড়াচ্ছিলে না,ইউ ওয়ারন্ট স্ট্যান্ডিং
+You weren't listening,তুমি শুনছিলে না,ইউ ওয়ারন্ট লিসেনিং
+You weren't looking,তুমি তাকাচ্ছিলে না,ইউ ওয়ারন্ট লুকিং
+You weren't loving,তুমি ভালোবাসছিলে না,ইউ ওয়ারন্ট লাভিং
+You weren't wanting,তুমি চাইছিলে না,ইউ ওয়ারন্ট ওয়ান্টিং
+You weren't thinking,তুমি ভাবছিলে না,ইউ ওয়ারন্ট থিংকিং
+You weren't knowing,তুমি জানছিলে না,ইউ ওয়ারন্ট নোইং
+You weren't learning,তুমি শিখছিলে না,ইউ ওয়ারন্ট লার্নিং
+You weren't cooking,তুমি রান্না করছিলে না,ইউ ওয়ারন্ট কুকিং
+You weren't speaking,তুমি কথা বলছিলে না,ইউ ওয়ারন্ট স্পিকিং
+You weren't talking,তুমি কথা বলছিলে না,ইউ ওয়ারন্ট টকিং
+You weren't opening,তুমি খুলছিলে না,ইউ ওয়ারন্ট ওপেনিং
+You weren't closing,তুমি বন্ধ করছিলে না,ইউ ওয়ারন্ট ক্লোজিং
+You weren't waiting,তুমি অপেক্ষা করছিলে না,ইউ ওয়ারন্ট ওয়েটিং
+You weren't trying,তুমি চেষ্টা করছিলে না,ইউ ওয়ারন্ট ট্রাইং
+You weren't living,তুমি বাস করছিলে না,ইউ ওয়ারন্ট লিভিং
+You weren't helping,তুমি সাহায্য করছিলে না,ইউ ওয়ারন্ট হেল্পিং
+You weren't calling,তুমি ডাকছিলে না,ইউ ওয়ারন্ট কলিং
+You weren't asking,তুমি জিজ্ঞাসা করছিলে না,ইউ ওয়ারন্ট আস্কিং
+You weren't taking,তুমি নিচ্ছিলে না,ইউ ওয়ারন্ট টেকিং
+You weren't giving,তুমি দিচ্ছিলে না,ইউ ওয়ারন্ট গিভিং
+You weren't seeing,তুমি দেখছিলে না,ইউ ওয়ারন্ট সিইং
+You weren't hearing,তুমি শুনছিলে না,ইউ ওয়ারন্ট হিয়ারিং
+You weren't feeling,তুমি অনুভব করছিলে না,ইউ ওয়ারন্ট ফিলিং
+You weren't understanding,তুমি বুঝছিলে না,ইউ ওয়ারন্ট আন্ডারস্ট্যান্ডিং
+You weren't singing,তুমি গান করছিলে না,ইউ ওয়ারন্ট সিংইং
+You weren't swimming,তুমি সাঁতার কাটছিলে না,ইউ ওয়ারন্ট সুইমিং
+You weren't driving,তুমি গাড়ি চালাচ্ছিলে না,ইউ ওয়ারন্ট ড্রাইভিং
+You weren't studying,তুমি পড়াশোনা করছিলে না,ইউ ওয়ারন্ট স্টাডিইং
+You weren't washing,তুমি ধুছিলে না,ইউ ওয়ারন্ট ওয়াশিং
+You weren't watching,তুমি দেখছিলে না,ইউ ওয়ারন্ট ওয়াচিং
+You weren't buying,তুমি কিনছিলে না,ইউ ওয়ারন্ট বাইইং
+You weren't selling,তুমি বিক্রি করছিলে না,ইউ ওয়ারন্ট সেলিং
+You weren't making,তুমি তৈরি করছিলে না,ইউ ওয়ারন্ট মেকিং
+You weren't cleaning,তুমি পরিষ্কার করছিলে না,ইউ ওয়ারন্ট ক্লিনিং
+You weren't dancing,তুমি নাচছিলে না,ইউ ওয়ারন্ট ড্যান্সিং
+You weren't stopping,তুমি থামছিলে না,ইউ ওয়ারন্ট স্টপিং
+You weren't starting,তুমি শুরু করছিলে না,ইউ ওয়ারন্ট স্টার্টিং
+You weren't finishing,তুমি শেষ করছিলে না,ইউ ওয়ারন্ট ফিনিশিং
+You weren't changing,তুমি পরিবর্তন করছিলে না,ইউ ওয়ারন্ট চেঞ্জিং
+You weren't paying,তুমি পরিশোধ করছিলে না,ইউ ওয়ারন্ট পেয়িং
+You weren't using,তুমি ব্যবহার করছিলে না,ইউ ওয়ারন্ট ইউজিং
+You weren't showing,তুমি দেখাচ্ছিলে না,ইউ ওয়ারন্ট শোইং
+You weren't telling,তুমি বলছিলে না,ইউ ওয়ারন্ট টেলিং
+You weren't leaving,তুমি ছেড়ে যাচ্ছিলে না,ইউ ওয়ারন্ট লিভিং
+You weren't bringing,তুমি আনছিলে না,ইউ ওয়ারন্ট ব্রিংইং
+You weren't keeping,তুমি রাখছিলে না,ইউ ওয়ারন্ট কিপিং
+You weren't putting,তুমি রাখছিলে না,ইউ ওয়ারন্ট পুটিং
+You weren't finding,তুমি খুঁজে পাচ্ছিলে না,ইউ ওয়ারন্ট ফাইন্ডিং
+You weren't forgetting,তুমি ভুলে যাচ্ছিলে না,ইউ ওয়ারন্ট ফরগেটিং
+You weren't remembering,তুমি মনে রাখছিলে না,ইউ ওয়ারন্ট রিমেম্বারিং
+You weren't needing,আমার প্রয়োজন হচ্ছিল না,ইউ ওয়ারন্ট নিডিং
+You weren't believing,তুমি বিশ্বাস করছিলে না,ইউ ওয়ারন্ট বিলিভিং
+You weren't agreeing,তুমি রাজি হচ্ছিলে না,ইউ ওয়ারন্ট অ্যাগ্রিইং
+You weren't answering,তুমি উত্তর দিচ্ছিলে না,ইউ ওয়ারন্ট আন্সারিং
+You weren't breaking,তুমি ভাঙছিলে না,ইউ ওয়ারন্ট ব্রেকিং
+You weren't building,তুমি নির্মাণ করছিলে না,ইউ ওয়ারন্ট বিল্ডিং
+You weren't choosing,তুমি পছন্দ করছিলে না,ইউ ওয়ারন্ট চুজিং
+You weren't cutting,তুমি কাটছিলে না,ইউ ওয়ারন্ট কাটিং
+You weren't deciding,তুমি সিদ্ধান্ত নিচ্ছিলে না,ইউ ওয়ারন্ট ডিসাইডিং
+You weren't explaining,তুমি ব্যাখ্যা করছিলে না,ইউ ওয়ারন্ট এক্সপ্লেইনিং
+You weren't falling,তুমি পড়ে যাচ্ছিলে না,ইউ ওয়ারন্ট ফলিং
+You weren't getting,তুমি পাচ্ছিলে না,ইউ ওয়ারন্ট গেটিং
+You weren't growing,তুমি বড় হচ্ছিলে না,ইউ ওয়ারন্ট গ্রোইং
+You weren't hoping,তুমি আশা করছিলে না,ইউ ওয়ারন্ট হোপিং
+You weren't joining,তুমি যোগ দিচ্ছিলে না,ইউ ওয়ারন্ট জয়েনিং
+You weren't meeting,তুমি সাক্ষাৎ করছিলে না,ইউ ওয়ারন্ট মিটিং
+You weren't sending,তুমি পাঠাচ্ছিলে না,ইউ ওয়ারন্ট সেন্ডিং
+You weren't spending,তুমি ব্যয় করছিলে না,ইউ ওয়ারন্ট স্পেন্ডিং
+You weren't teaching,তুমি শেখাচ্ছিলে না,ইউ ওয়ারন্ট টিচিং
+You weren't winning,তুমি জয়ী হচ্ছিলে না,ইউ ওয়ারন্ট উইনিং

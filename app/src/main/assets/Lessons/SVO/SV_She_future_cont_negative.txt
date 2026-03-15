@@ -1,0 +1,84 @@
+She won't be playing,সে খেলতে থাকব না,শি ওয়োন্ট বি প্লেয়িং
+She won't be running,সে দৌড়াইতে থাকব না,শি ওয়োন্ট বি রানিং
+She won't be eating,সে খাইতে থাকব না,শি ওয়োন্ট বি ইটিং
+She won't be doing,সে করতে থাকব না,শি ওয়োন্ট বি ডুইং
+She won't be walking,সে হাঁটতে থাকব না,শি ওয়োন্ট বি ওয়াকিং
+She won't be going,সে যাইতে থাকব না,শি ওয়োন্ট বি গোইং
+She won't be coming,সে আসতে থাকব না,শি ওয়োন্ট বি কামিং
+She won't be reading,সে পড়তে থাকব না,শি ওয়োন্ট বি রিডিং
+She won't be writing,সে লিখতে থাকব না,শি ওয়োন্ট বি রাইটিং
+She won't be working,সে কাজ করতে থাকব না,শি ওয়োন্ট বি ওয়ার্কিং
+She won't be sleeping,সে ঘুমাইতে থাকব না,শি ওয়োন্ট বি স্লিপিং
+She won't be drinking,সে পান করতে থাকব না,শি ওয়োন্ট বি ড্রিঙ্কিং
+She won't be sitting,সে বসতে থাকব না,শি ওয়োন্ট বি সিটিং
+She won't be standing,সে দাঁড়াইতে থাকব না,শি ওয়োন্ট বি স্ট্যান্ডিং
+She won't be listening,সে শুনতে থাকব না,শি ওয়োন্ট বি লিসেনিং
+She won't be looking,সে তাকাইতে থাকব না,শি ওয়োন্ট বি লুকিং
+She won't be loving,সে ভালোবাসতে থাকব না,শি ওয়োন্ট বি লাভিং
+She won't be wanting,সে চাইতে থাকব না,শি ওয়োন্ট বি ওয়ান্টিং
+She won't be thinking,সে ভাবতে থাকব না,শি ওয়োন্ট বি থিংকিং
+She won't be knowing,সে জানতে থাকব না,শি ওয়োন্ট বি নোইং
+She won't be learning,সে শিখতে থাকব না,শি ওয়োন্ট বি লার্নিং
+She won't be cooking,সে রান্না করতে থাকব না,শি ওয়োন্ট বি কুকিং
+She won't be speaking,সে কথা বলতে থাকব না,শি ওয়োন্ট বি স্পিকিং
+She won't be talking,সে কথা বলতে থাকব না,শি ওয়োন্ট বি টকিং
+She won't be opening,সে খুলতে থাকব না,শি ওয়োন্ট বি ওপেনিং
+She won't be closing,সে বন্ধ করতে থাকব না,শি ওয়োন্ট বি ক্লোজিং
+She won't be waiting,সে অপেক্ষা করতে থাকব না,শি ওয়োন্ট বি ওয়েটিং
+She won't be trying,সে চেষ্টা করতে থাকব না,শি ওয়োন্ট বি ট্রাইং
+She won't be living,সে বাস করতে থাকব না,শি ওয়োন্ট বি লিভিং
+She won't be helping,সে সাহায্য করতে থাকব না,শি ওয়োন্ট বি হেল্পিং
+She won't be calling,সে ডাকতে থাকব না,শি ওয়োন্ট বি কলিং
+She won't be asking,সে জিজ্ঞাসা করতে থাকব না,শি ওয়োন্ট বি আস্কিং
+She won't be taking,সে নিইতে থাকব না,শি ওয়োন্ট বি টেকিং
+She won't be giving,সে দিইতে থাকব না,শি ওয়োন্ট বি গিভিং
+She won't be seeing,সে দেখতে থাকব না,শি ওয়োন্ট বি সিইং
+She won't be hearing,সে শুনতে থাকব না,শি ওয়োন্ট বি হিয়ারিং
+She won't be feeling,সে অনুভব করতে থাকব না,শি ওয়োন্ট বি ফিলিং
+She won't be understanding,সে বুঝতে থাকব না,শি ওয়োন্ট বি আন্ডারস্ট্যান্ডিং
+She won't be singing,সে গান করতে থাকব না,শি ওয়োন্ট বি সিংইং
+She won't be swimming,সে সাঁতার কাটতে থাকব না,শি ওয়োন্ট বি সুইমিং
+She won't be driving,সে গাড়ি চালাইতে থাকব না,শি ওয়োন্ট বি ড্রাইভিং
+She won't be studying,সে পড়াশোনা করতে থাকব না,শি ওয়োন্ট বি স্টাডিইং
+She won't be washing,সে ধুইতে থাকব না,শি ওয়োন্ট বি ওয়াশিং
+She won't be watching,সে দেখতে থাকব না,শি ওয়োন্ট বি ওয়াচিং
+She won't be buying,সে কিনতে থাকব না,শি ওয়োন্ট বি বাইইং
+She won't be selling,সে বিক্রি করতে থাকব না,শি ওয়োন্ট বি সেলিং
+She won't be making,সে তৈরি করতে থাকব না,শি ওয়োন্ট বি মেকিং
+She won't be cleaning,সে পরিষ্কার করতে থাকব না,শি ওয়োন্ট বি ক্লিনিং
+She won't be dancing,সে নাচতে থাকব না,শি ওয়োন্ট বি ড্যান্সিং
+She won't be stopping,সে থামতে থাকব না,শি ওয়োন্ট বি স্টপিং
+She won't be starting,সে শুরু করতে থাকব না,শি ওয়োন্ট বি স্টার্টিং
+She won't be finishing,সে শেষ করতে থাকব না,শি ওয়োন্ট বি ফিনিশিং
+She won't be changing,সে পরিবর্তন করতে থাকব না,শি ওয়োন্ট বি চেঞ্জিং
+She won't be paying,সে পরিশোধ করতে থাকব না,শি ওয়োন্ট বি পেয়িং
+She won't be using,সে ব্যবহার করতে থাকব না,শি ওয়োন্ট বি ইউজিং
+She won't be showing,সে দেখাইতে থাকব না,শি ওয়োন্ট বি শোইং
+She won't be telling,সে বলতে থাকব না,শি ওয়োন্ট বি টেলিং
+She won't be leaving,সে ছেড়ে যাইতে থাকব না,শি ওয়োন্ট বি লিভিং
+She won't be bringing,সে আনতে থাকব না,শি ওয়োন্ট বি ব্রিংইং
+She won't be keeping,সে রাখতে থাকব না,শি ওয়োন্ট বি কিপিং
+She won't be putting,সে রাখতে থাকব না,শি ওয়োন্ট বি পুটিং
+She won't be finding,সে খুঁজে পাইতে থাকব না,শি ওয়োন্ট বি ফাইন্ডিং
+She won't be forgetting,সে ভুলে যাইতে থাকব না,শি ওয়োন্ট বি ফরগেটিং
+She won't be remembering,সে মনে রাখতে থাকব না,শি ওয়োন্ট বি রিমেম্বারিং
+She won't be needing,সে প্রয়োজন নেইতে থাকবে,শি ওয়োন্ট বি নিডিং
+She won't be believing,সে বিশ্বাস করতে থাকব না,শি ওয়োন্ট বি বিলিভিং
+She won't be agreeing,সে রাজি নইতে থাকবে,শি ওয়োন্ট বি অ্যাগ্রিইং
+She won't be answering,সে উত্তর দেইতে থাকব না,শি ওয়োন্ট বি আন্সারিং
+She won't be breaking,সে ভাঙতে থাকব না,শি ওয়োন্ট বি ব্রেকিং
+She won't be building,সে নির্মাণ করতে থাকব না,শি ওয়োন্ট বি বিল্ডিং
+She won't be choosing,সে পছন্দ করতে থাকব না,শি ওয়োন্ট বি চুজিং
+She won't be cutting,সে কাটতে থাকব না,শি ওয়োন্ট বি কাটিং
+She won't be deciding,সে সিদ্ধান্ত নিইতে থাকব না,শি ওয়োন্ট বি ডিসাইডিং
+She won't be explaining,সে ব্যাখ্যা করতে থাকব না,শি ওয়োন্ট বি এক্সপ্লেইনিং
+She won't be falling,সে পড়ে যাইতে থাকব না,শি ওয়োন্ট বি ফলিং
+She won't be getting,সে পাইতে থাকব না,শি ওয়োন্ট বি গেটিং
+She won't be growing,সে বড় হইতে থাকব না,শি ওয়োন্ট বি গ্রোইং
+She won't be hoping,সে আশা করতে থাকব না,শি ওয়োন্ট বি হোপিং
+She won't be joining,সে যোগ দিইতে থাকব না,শি ওয়োন্ট বি জয়েনিং
+She won't be meeting,সে সাক্ষাৎ করতে থাকব না,শি ওয়োন্ট বি মিটিং
+She won't be sending,সে পাঠাইতে থাকব না,শি ওয়োন্ট বি সেন্ডিং
+She won't be spending,সে ব্যয় করতে থাকব না,শি ওয়োন্ট বি স্পেন্ডিং
+She won't be teaching,সে শেখাইতে থাকব না,শি ওয়োন্ট বি টিচিং
+She won't be winning,সে জয়ী হইতে থাকব না,শি ওয়োন্ট বি উইনিং
