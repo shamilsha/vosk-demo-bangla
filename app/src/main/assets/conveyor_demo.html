@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Conveyor</title>
+    <style>
+        :root {
+            --x-height: 60px;
+            --visible-count: 7;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 16px;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: #1a1a1a;
+            font-family: sans-serif;
+        }
+        #trigger {
+            margin-bottom: 16px;
+            padding: 12px 24px;
+            cursor: pointer;
+            background: #00c853;
+            color: #000;
+            border: none;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        #viewport {
+            height: calc(var(--x-height) * var(--visible-count));
+            width: 100%;
+            max-width: 280px;
+            overflow: hidden;
+            border: 2px solid #444;
+            background: #222;
+            position: relative;
+        }
+        #tray {
+            position: absolute;
+            width: 100%;
+            top: calc(var(--x-height) * -1);
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+        }
+        .item {
+            height: var(--x-height);
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .item-inner {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+        .center-marker {
+            position: absolute;
+            top: calc(var(--x-height) * 3);
+            left: 0;
+            right: 0;
+            height: var(--x-height);
+            border: 3px solid #00ff00;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .animate {
+            transition: transform 0.4s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+            transform: translateY(var(--x-height));
+        }
+    </style>
+</head>
+<body>
+    <button id="trigger">MOVE DOWN</button>
+    <div id="viewport">
+        <div class="center-marker"></div>
+        <div id="tray"></div>
+    </div>
+    <script>
+        const tray = document.getElementById('tray');
+        const btn = document.getElementById('trigger');
+        var colors = ['#1565c0', '#ef6c00', '#2e7d32', '#c2185b', '#f9a825', '#6a1b9a', '#00838f', '#d84315', '#558b2f', '#ad1457'];
+        let data = [];
+        let currentIndex = 0;
+
+        function n() { return data.length; }
+        function mod(i) {
+            var s = n();
+            if (s === 0) return 0;
+            return ((i % s) + s) % s;
+        }
+        function textAt(offset) {
+            if (n() === 0) return '';
+            return data[mod(currentIndex + offset)] || '';
+        }
+
+        function createItem(text, dataIndexForColor) {
+            const div = document.createElement('div');
+            div.className = 'item';
+            var ci = (dataIndexForColor % colors.length + colors.length) % colors.length;
+            const color = colors[ci];
+            const inner = document.createElement('div');
+            inner.className = 'item-inner';
+            inner.style.background = color;
+            inner.style.color = '#fff';
+            inner.textContent = text;
+            div.appendChild(inner);
+            return div;
+        }
+
+        function buildTray() {
+            tray.innerHTML = '';
+            if (n() === 0) return;
+            for (var i = 0; i < 8; i++) {
+                var offset = 4 - i;
+                var text = textAt(offset);
+                if (i >= 5 && currentIndex < i - 4) text = '';
+                var dataIdx = mod(currentIndex + offset);
+                tray.appendChild(createItem(text, dataIdx));
+            }
+        }
+
+        function setConveyorData(arr) {
+            data = Array.isArray(arr) ? arr : [];
+            currentIndex = 0;
+            buildTray();
+        }
+
+        function updateItemTexts() {
+            var items = tray.querySelectorAll('.item');
+            for (var i = 0; i < items.length; i++) {
+                var offset = 4 - i;
+                var text = textAt(offset);
+                if (i >= 5 && currentIndex < i - 4) text = '';
+                var inner = items[i].querySelector('.item-inner');
+                if (inner) inner.textContent = text;
+            }
+        }
+
+        btn.addEventListener('click', function() {
+            if (tray.classList.contains('animate') || n() === 0) return;
+            tray.classList.add('animate');
+            setTimeout(function() {
+                tray.classList.remove('animate');
+                tray.removeChild(tray.lastElementChild);
+                currentIndex = mod(currentIndex + 1);
+                var newItem = createItem(textAt(4), mod(currentIndex + 4));
+                tray.insertBefore(newItem, tray.firstChild);
+                updateItemTexts();
+            }, 400);
+        });
+
+        buildTray();
+    </script>
+</body>
+</html>

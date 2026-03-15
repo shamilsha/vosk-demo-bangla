@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pronouns Table</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      font-family: sans-serif;
+      background: #fff;
+      padding: 12px;
+      overflow: auto;
+    }
+    .pronouns-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 2px solid #333;
+      font-size: clamp(11px, 2.8vw, 15px);
+    }
+    .pronouns-table th,
+    .pronouns-table td {
+      border: 1px solid #555;
+      padding: clamp(6px, 1.5vw, 10px);
+      text-align: center;
+      vertical-align: middle;
+    }
+    .pronouns-table th {
+      background: #3949ab;
+      color: #fff;
+      font-weight: bold;
+    }
+    .pronouns-table tbody tr:nth-child(odd) {
+      background: #e3f2fd;
+    }
+    .pronouns-table tbody tr:nth-child(even) {
+      background: #fff;
+    }
+    .pronouns-table .col-person {
+      text-align: left;
+      padding-left: 10px;
+      font-weight: 500;
+    }
+    .icon-inline {
+      display: inline-block;
+      vertical-align: middle;
+      width: 1.1em;
+      height: 1.1em;
+      margin-left: 4px;
+    }
+    /* Hide last two columns: Possessive Pronoun, Reflexive */
+    .pronouns-table th:nth-child(5),
+    .pronouns-table th:nth-child(6),
+    .pronouns-table td:nth-child(5),
+    .pronouns-table td:nth-child(6) {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <table class="pronouns-table">
+    <thead>
+      <tr>
+        <th>Person</th>
+        <th>Subject</th>
+        <th>Object</th>
+        <th>Possessive Adjective</th>
+        <th>Possessive Pronoun</th>
+        <th>Reflexive</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="col-person">1st Person</td>
+        <td>I</td>
+        <td>me</td>
+        <td>my</td>
+        <td>mine</td>
+        <td>myself</td>
+      </tr>
+      <tr>
+        <td class="col-person">2nd Person</td>
+        <td>you</td>
+        <td>you</td>
+        <td>your</td>
+        <td>yours</td>
+        <td>yourself</td>
+      </tr>
+      <tr>
+        <td class="col-person">3rd Person <span class="icon-inline"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#1565C0" d="M12 8m-3 0a3 3 0 1 1 6 0a3 3 0 1 1-6 0"/><path fill="none" stroke="#1565C0" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="M12 11L18 5M16 5L18 5L18 7"/></svg></span></td>
+        <td>he</td>
+        <td>him</td>
+        <td>his</td>
+        <td>his</td>
+        <td>himself</td>
+      </tr>
+      <tr>
+        <td class="col-person">3rd Person <span class="icon-inline"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#C2185B" d="M12 6m-3 0a3 3 0 1 1 6 0a3 3 0 1 1-6 0"/><path fill="none" stroke="#C2185B" stroke-width="1.5" stroke-linecap="round" d="M12 11v8M9 14h6"/></svg></span></td>
+        <td>she</td>
+        <td>her</td>
+        <td>her</td>
+        <td>hers</td>
+        <td>herself</td>
+      </tr>
+      <tr>
+        <td class="col-person">3rd Person</td>
+        <td>it</td>
+        <td>it</td>
+        <td>its</td>
+        <td>(not used)</td>
+        <td>itself</td>
+      </tr>
+      <tr>
+        <td class="col-person">1st Person (Plural)</td>
+        <td>we</td>
+        <td>us</td>
+        <td>our</td>
+        <td>ours</td>
+        <td>ourselves</td>
+      </tr>
+      <tr>
+        <td class="col-person">2nd Person (Plural)</td>
+        <td>you</td>
+        <td>you</td>
+        <td>your</td>
+        <td>yours</td>
+        <td>yourselves</td>
+      </tr>
+      <tr>
+        <td class="col-person">3rd Person (Plural)</td>
+        <td>they</td>
+        <td>them</td>
+        <td>their</td>
+        <td>theirs</td>
+        <td>themselves</td>
+      </tr>
+    </tbody>
+  </table></body>
+</html>

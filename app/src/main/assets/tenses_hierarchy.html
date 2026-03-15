@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Tenses Hierarchy</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 8px; background: #f5f5f5; font-family: sans-serif; }
+        .page { max-width: 900px; margin: 0 auto; }
+        h1 { font-size: 1.2rem; color: #1a237e; margin-bottom: 4px; }
+        #diagram { background: #fff; padding: 12px; border-radius: 8px; overflow: auto; }
+        #diagram svg { display: block; min-width: 170px; }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <h1>Tenses Hierarchy</h1>
+        <p style="color:#444;font-size:0.8rem;">Tense → Future, Present, Past. Each has 4 aspects: 2 above and 2 below the tense box (top=future, bottom=past).</p>
+        <div id="diagram">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 170 380">
+                <defs>
+                    <style>
+                        .line { fill: none; stroke: #333; stroke-width: 1.8; }
+                        .box-root { fill: #1a237e; stroke: #0d1442; }
+                        .box-past { fill: #c62828; stroke: #8e0000; }
+                        .box-present { fill: #2e7d32; stroke: #1b5e20; }
+                        .box-future { fill: #1565c0; stroke: #0d47a1; }
+                        .box-leaf { fill: #fff; stroke: #555; }
+                        .text-white { fill: #fff; font: bold 10px sans-serif; text-anchor: middle; }
+                        .text-leaf { fill: #333; font: 8px sans-serif; text-anchor: middle; }
+                    </style>
+                </defs>
+                <!-- 1) Vertical stem -->
+                <line class="line" x1="12" y1="20" x2="12" y2="358"/>
+
+                <!-- Tense box -->
+                <rect class="box-root" x="0" y="0" width="24" height="18" rx="3"/>
+                <text class="text-white" x="12" y="12">Tense</text>
+
+                <!-- 2) Three horizontal lines to time boxes - spaced so each tense has its own band -->
+                <line class="line" x1="12" y1="60" x2="48" y2="60"/>
+                <line class="line" x1="12" y1="180" x2="48" y2="180"/>
+                <line class="line" x1="12" y1="300" x2="48" y2="300"/>
+
+                <!-- Future box (center 60) - zone y ~0 to 120 -->
+                <rect class="box-future" x="48" y="49" width="32" height="22" rx="4"/>
+                <text class="text-white" x="64" y="64">Future</text>
+
+                <!-- Present box (center 180) - zone y ~120 to 240 -->
+                <rect class="box-present" x="48" y="169" width="32" height="22" rx="4"/>
+                <text class="text-white" x="64" y="184">Present</text>
+
+                <!-- Past box (center 300) - zone y ~240 to 360 -->
+                <rect class="box-past" x="48" y="289" width="32" height="22" rx="4"/>
+                <text class="text-white" x="64" y="304">Past</text>
+
+                <!-- 3) Future: 4 leaves - 2 above, 2 below Future box (no overlap with Present) -->
+                <path class="line" d="M 80 60 L 88 60 L 88 25 L 118 25"/>
+                <path class="line" d="M 80 60 L 88 60 L 88 42 L 118 42"/>
+                <path class="line" d="M 80 60 L 88 60 L 88 78 L 118 78"/>
+                <path class="line" d="M 80 60 L 88 60 L 88 95 L 118 95"/>
+                <rect class="box-leaf" x="118" y="16" width="48" height="18" rx="2"/>
+                <text class="text-leaf" x="142" y="25">Simple</text>
+                <text class="text-leaf" x="142" y="32" style="font-size:7px;fill:#666">Future</text>
+                <rect class="box-leaf" x="118" y="34" width="48" height="18" rx="2"/>
+                <text class="text-leaf" x="142" y="42">Continuous</text>
+                <text class="text-leaf" x="142" y="49" style="font-size:7px;fill:#666">Future</text>
+                <rect class="box-leaf" x="118" y="70" width="48" height="18" rx="2"/>
+                <text class="text-leaf" x="142" y="79">Perfect</text>
+                <text class="text-leaf" x="142" y="86" style="font-size:7px;fill:#666">Future</text>
+                <rect class="box-leaf" x="118" y="88" width="48" height="18" rx="2"/>
+                <text class="text-leaf" x="142" y="96" style="font-size:6px">Perf.Cont.</text>
+                <text class="text-leaf" x="142" y="103" style="font-size:7px;fill:#666">Future</text>
+
+                <!-- 4) Present: 4 leaves - 2 above, 2 below Present box (own band) -->
+                <path class="line" d="M 80 180 L 88 180 L 88 145 L 118 145"/>
+                <path class="line" d="M 80 180 L 88 180 L 88 162 L 118 162"/>
+                <path class="line" d="M 80 180 L 88 180 L 88 198 L 118 198"/>
+                <path class="line" d="M 80 180 L 88 180 L 88 215 L 118 215"/>
+                <rect class="box-leaf" x="118" y="136" width="48" height="18" rx="2"/>
+                <text class="text-leaf" x="142" y="145">Simple</text>
+                <text class="text-leaf" x="142" y="152" style="font-size:7px;fill:#666">Present</text>
+                <rect class="box-leaf" x="118" y="154" width="48" height="18" rx="2"/>
+                <text class="text-leaf" x="142" y="162">Continuous</text>
+                <text class="text-leaf" x="142" y="169" style="font-size:7px;fill:#666">Present</text>
+                <rect class="box-leaf" x="118" y="190" width="48" height="18" rx="2"/>
+                <text class="text-leaf" x="142" y="199">Perfect</text>
+                <text class="text-leaf" x="142" y="206" style="font-size:7px;fill:#666">Present</text>
+                <rect class="box-leaf" x="118" y="208" width="48" height="18" rx="2"/>
+                <text class="text-leaf" x="142" y="216" style="font-size:6px">Perf.Cont.</text>
+                <text class="text-leaf" x="142" y="223" style="font-size:7px;fill:#666">Present</text>
+
+                <!-- 5) Past: 4 leaves - 2 above, 2 below Past box (own band) -->
+                <path class="line" d="M 80 300 L 88 300 L 88 265 L 118 265"/>
+                <path class="line" d="M 80 300 L 88 300 L 88 282 L 118 282"/>
+                <path class="line" d="M 80 300 L 88 300 L 88 318 L 118 318"/>
+                <path class="line" d="M 80 300 L 88 300 L 88 335 L 118 335"/>
+                <rect class="box-leaf" x="118" y="256" width="48" height="18" rx="2"/>
+                <text class="text-leaf" x="142" y="265">Simple</text>
+                <text class="text-leaf" x="142" y="272" style="font-size:7px;fill:#666">Past</text>
+                <rect class="box-leaf" x="118" y="274" width="48" height="18" rx="2"/>
+                <text class="text-leaf" x="142" y="282">Continuous</text>
+                <text class="text-leaf" x="142" y="289" style="font-size:7px;fill:#666">Past</text>
+                <rect class="box-leaf" x="118" y="310" width="48" height="18" rx="2"/>
+                <text class="text-leaf" x="142" y="319">Perfect</text>
+                <text class="text-leaf" x="142" y="326" style="font-size:7px;fill:#666">Past</text>
+                <rect class="box-leaf" x="118" y="328" width="48" height="18" rx="2"/>
+                <text class="text-leaf" x="142" y="336" style="font-size:6px">Perf.Cont.</text>
+                <text class="text-leaf" x="142" y="343" style="font-size:7px;fill:#666">Past</text>
+            </svg>
+        </div>
+    </div>
+</body>
+</html>

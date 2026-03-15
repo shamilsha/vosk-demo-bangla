@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[SUBJECT] [VERB] [OBJECT] – All combinations</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background: #1a1a1a;
+      color: #e0e0e0;
+      line-height: 1.5;
+    }
+    h1 { font-size: 1.25rem; margin-top: 0; color: #fff; }
+    h2 { font-size: 1rem; color: #b0b0b0; margin: 1.25rem 0 0.5rem; }
+    .lists { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
+    .list-box { background: #252525; padding: 0.6rem 1rem; border-radius: 6px; }
+    .list-box strong { color: #b0b0b0; font-size: 0.85rem; }
+    .list-box span { margin-right: 0.5rem; }
+    .count { color: #888; font-size: 0.9rem; margin: 0.5rem 0; }
+    .svo-subject { background: #1565C0; color: #fff; padding: 0.15rem 0.35rem; border-radius: 3px; }
+    .svo-verb    { background: #2E7D32; color: #fff; padding: 0.15rem 0.35rem; border-radius: 3px; }
+    .svo-object  { background: #E65100; color: #fff; padding: 0.15rem 0.35rem; border-radius: 3px; }
+    .sentence {
+      margin: 0.35rem 0;
+      padding: 0.4rem 0.5rem;
+      background: #252525;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    .sentence .svo-subject, .sentence .svo-verb, .sentence .svo-object { margin: 0 0.1rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 0.4rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>[SUBJECT] [VERB] [OBJECT] – Sentence combinations</h1>
+  <p>Same structure; one item from each list. All combinations are generated below.</p>
+
+  <h2>Lists</h2>
+  <div class="lists">
+    <div class="list-box">
+      <strong>SUBJECT</strong>
+      <div id="subject-list"></div>
+    </div>
+    <div class="list-box">
+      <strong>VERB</strong>
+      <div id="verb-list"></div>
+    </div>
+    <div class="list-box">
+      <strong>OBJECT</strong>
+      <div id="object-list"></div>
+    </div>
+  </div>
+  <p class="count" id="count"></p>
+
+  <h2>All sentences</h2>
+  <div class="grid" id="sentences"></div>
+
+  <script>
+    // Lists: replace or extend these. Verbs need { base, third } for conjugation.
+    const SUBJECTS = [
+      'I', 'you', 'he', 'she', 'we', 'they',
+      'Shafin', 'Riya', 'The cat', 'The dog'
+    ];
+    const VERBS = [
+      { base: 'eat',  third: 'eats' },
+      { base: 'play', third: 'plays' },
+      { base: 'do',   third: 'does' },
+      { base: 'go',   third: 'goes' },
+      { base: 'run',  third: 'runs' },
+      { base: 'read', third: 'reads' },
+      { base: 'write', third: 'writes' }
+    ];
+    const OBJECTS = [
+      'rice', 'football', 'work', 'home', 'books',
+      'a letter', 'fast', 'games', 'food', 'school'
+    ];
+
+    // 3rd person singular: he, she, it, and names / "The X"
+    function isThirdSingular(subject) {
+      const s = subject.trim().toLowerCase();
+      if (s === 'he' || s === 'she' || s === 'it') return true;
+      if (s.startsWith('the ')) return true;
+      // Capitalized = likely name
+      if (subject.trim()[0] === subject.trim().toUpperCase()[0] && s !== 'i') return true;
+      return false;
+    }
+
+    function verbForm(subject, verb) {
+      return isThirdSingular(subject) ? verb.third : verb.base;
+    }
+
+    // Render lists
+    document.getElementById('subject-list').innerHTML = SUBJECTS.map(s => '<span>' + s + '</span>').join('');
+    document.getElementById('verb-list').innerHTML = VERBS.map(v => '<span>' + v.base + ' / ' + v.third + '</span>').join('');
+    document.getElementById('object-list').innerHTML = OBJECTS.map(o => '<span>' + o + '</span>').join('');
+
+    const total = SUBJECTS.length * VERBS.length * OBJECTS.length;
+    document.getElementById('count').textContent = SUBJECTS.length + ' × ' + VERBS.length + ' × ' + OBJECTS.length + ' = ' + total + ' sentences';
+
+    const container = document.getElementById('sentences');
+    SUBJECTS.forEach(subj => {
+      VERBS.forEach(verb => {
+        OBJECTS.forEach(obj => {
+          const v = verbForm(subj, verb);
+          const div = document.createElement('div');
+          div.className = 'sentence';
+          div.innerHTML = '<span class="svo-subject">' + subj + '</span> <span class="svo-verb">' + v + '</span> <span class="svo-object">' + obj + '</span>.';
+          container.appendChild(div);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

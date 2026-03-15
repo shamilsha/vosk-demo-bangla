@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dual Conveyor</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 16px;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            background: #1a1a1a;
+            font-family: sans-serif;
+        }
+        .conveyor-row-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            flex: 1;
+            min-height: 0;
+        }
+        .conveyor-row {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            width: 100%;
+        }
+        .conveyor-cell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .conveyor-cell.left { width: 25%; }
+        .conveyor-cell.left .conveyor-viewport { margin-top: 30px; }
+        .conveyor-cell.right { width: 25%; }
+        .conveyor-cell.center {
+            width: 50%;
+            min-width: 0;
+        }
+        .red-line {
+            position: absolute;
+            left: 25%;
+            right: 25%;
+            height: 4px;
+            margin-top: -2px;
+            background: #f44336;
+            pointer-events: none;
+            z-index: 5;
+        }
+        .conveyor-viewport {
+            width: 100%;
+            overflow: hidden;
+            border: 2px solid #444;
+            background: #222;
+            position: relative;
+        }
+        .conveyor-viewport .center-marker {
+            top: calc(var(--row-height) * var(--center-index));
+        }
+        .conveyor-tray {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+        }
+        .conveyor-item {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .conveyor-item-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 0.75rem;
+        }
+        .center-marker {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: var(--row-height);
+            border: 3px solid #00ff00;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .animate {
+            transition: transform 0.48s cubic-bezier(0.35, 0.05, 0.55, 0.95);
+        }
+        .belt-btn {
+            display: none;
+        }
+        .conveyor-viewport.touch-scroll {
+            cursor: grab;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        .conveyor-viewport.touch-scroll:active {
+            cursor: grabbing;
+        }
+        .bengali-meaning {
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #b0e0e6;
+            background: #2a2a3a;
+            border: 2px solid #555;
+            border-radius: 8px;
+            min-height: 2em;
+        }
+        .focus-sentence {
+            margin-top: 16px;
+            padding: 12px 16px;
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #fff;
+            background: #333;
+            border: 2px solid #00ff00;
+            border-radius: 8px;
+            min-height: 2em;
+        }
+        .bengali-pronunciation {
+            margin-top: 8px;
+            padding: 10px 16px;
+            text-align: center;
+            font-size: 1rem;
+            color: #a0c0d0;
+            font-style: italic;
+            min-height: 1.5em;
+        }
+        .you-said-section {
+            margin-top: 12px;
+            padding: 10px 16px;
+            text-align: center;
+            font-size: 1rem;
+            color: #ccc;
+            min-height: 1.5em;
+        }
+        .you-said-section .label {
+            color: #888;
+            margin-right: 6px;
+        }
+        .you-said-section .value {
+            color: #fff;
+            font-weight: bold;
+        }
+        body.practice-mode .conveyor-row-wrapper,
+        body.practice-mode .focus-sentence,
+        body.practice-mode .bengali-pronunciation {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="bengali-meaning" id="bengaliMeaning"></div>
+    <div class="conveyor-row-wrapper" id="conveyorWrapper">
+        <div class="conveyor-row">
+            <div class="conveyor-cell left">
+                <div class="conveyor-viewport touch-scroll" id="viewportLeft" style="--visible-count: 5; --row-height: 30px; --center-index: 2; height: 150px;">
+                    <div class="center-marker"></div>
+                    <div class="conveyor-tray" id="trayLeft" style="top: -30px;"></div>
+                </div>
+            </div>
+            <div class="conveyor-cell center"></div>
+            <div class="conveyor-cell right">
+                <div class="conveyor-viewport touch-scroll" id="viewportRight" style="--visible-count: 7; --row-height: 30px; --center-index: 3; height: 210px;">
+                    <div class="center-marker"></div>
+                    <div class="conveyor-tray" id="trayRight" style="top: -30px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="red-line"></div>
+    </div>
+    <div class="focus-sentence" id="focusSentence"></div>
+    <div class="bengali-pronunciation" id="bengaliPronunciation"></div>
+    <div class="you-said-section"><span class="label">You said:</span><span class="value" id="youSaidValue"></span></div>
+    <script src="conveyor_belt.js"></script>
+    <script>
+        var colors = (typeof CONVEYOR_COLORS !== 'undefined' && CONVEYOR_COLORS.length) ? CONVEYOR_COLORS : ['#1565c0', '#ef6c00', '#2e7d32', '#c2185b', '#f9a825', '#6a1b9a', '#00838f', '#d84315', '#558b2f', '#ad1457'];
+        var ANIM_MS = typeof CONVEYOR_ANIM_MS !== 'undefined' ? CONVEYOR_ANIM_MS : 480;
+
+        var beltLeft, beltRight;
+        var dataPerSubject = {};
+        var bengaliForSubject = [];
+        var pronunciationForSubject = [];
+
+        function setRightBeltForSubject(subject) {
+            var entries = dataPerSubject[subject];
+            if (!entries || !entries.length) return;
+            var verbs = [];
+            var bengali = [];
+            var pronunciation = [];
+            for (var i = 0; i < entries.length; i++) {
+                verbs.push(entries[i].v || entries[i].verb || '');
+                bengali.push(entries[i].b || entries[i].bengali || '');
+                pronunciation.push(entries[i].p || entries[i].pronunciation || '');
+            }
+            bengaliForSubject = bengali;
+            pronunciationForSubject = pronunciation;
+            if (beltRight) beltRight.setData(verbs);
+        }
+
+        function updateSentence() {
+            var left = beltLeft && beltLeft.getFocusText ? beltLeft.getFocusText() : '';
+            var right = beltRight && beltRight.getFocusText ? beltRight.getFocusText() : '';
+            var el = document.getElementById('focusSentence');
+            if (el) el.textContent = (left + ' ' + right).trim() || '\u00a0';
+        }
+        function updateBengali() {
+            var el = document.getElementById('bengaliMeaning');
+            if (!el) return;
+            var idx = beltRight && beltRight.getCurrentIndex ? beltRight.getCurrentIndex() : 0;
+            el.textContent = (bengaliForSubject[idx] != null && bengaliForSubject[idx] !== '') ? bengaliForSubject[idx] : '\u00a0';
+        }
+        function updatePronunciation() {
+            var el = document.getElementById('bengaliPronunciation');
+            if (!el) return;
+            var idx = beltRight && beltRight.getCurrentIndex ? beltRight.getCurrentIndex() : 0;
+            el.textContent = (pronunciationForSubject[idx] != null && pronunciationForSubject[idx] !== '') ? pronunciationForSubject[idx] : '\u00a0';
+        }
+        function onLeftFocusChange() {
+            var subject = beltLeft && beltLeft.getFocusText ? beltLeft.getFocusText() : '';
+            setRightBeltForSubject(subject);
+            if (beltRight && beltRight.setCurrentIndex) beltRight.setCurrentIndex(0);
+            updateSentence();
+            updateBengali();
+            updatePronunciation();
+        }
+        function onRightFocusChange() {
+            updateSentence();
+            updateBengali();
+            updatePronunciation();
+        }
+
+        beltLeft = createWordBelt('viewportLeft', 'trayLeft', {
+            visibleCount: 5,
+            rowHeight: 30,
+            centerIndex: 2,
+            animMs: ANIM_MS,
+            colors: colors,
+            data: [],
+            onFocusChange: onLeftFocusChange
+        });
+        beltRight = createWordBelt('viewportRight', 'trayRight', {
+            visibleCount: 7,
+            rowHeight: 30,
+            centerIndex: 3,
+            animMs: ANIM_MS,
+            colors: colors,
+            data: [],
+            onFocusChange: onRightFocusChange
+        });
+        var btnLeft = document.getElementById('btnLeft');
+        var btnRight = document.getElementById('btnRight');
+        if (btnLeft && beltLeft) btnLeft.addEventListener('click', function() { beltLeft.animateMoveToNext(); });
+        if (btnRight && beltRight) btnRight.addEventListener('click', function() { beltRight.animateMoveToNext(); });
+
+        function setConveyorData(leftArr, dataObj) {
+            if (leftArr && leftArr.length > 0) beltLeft.setData(leftArr);
+            dataPerSubject = dataObj || {};
+            var firstSubject = (leftArr && leftArr[0]) ? leftArr[0] : (Object.keys(dataPerSubject)[0] || '');
+            setRightBeltForSubject(firstSubject);
+            updateSentence();
+            updateBengali();
+            updatePronunciation();
+        }
+        function setYouSaid(text) {
+            var el = document.getElementById('youSaidValue');
+            if (el) el.textContent = (text != null && text !== undefined) ? String(text) : '';
+        }
+        function nextVerb() {
+            if (!beltRight || !beltRight.getCount()) return;
+            var count = beltRight.getCount();
+            if (count === 0) return;
+            var idx = beltRight.getCurrentIndex();
+            if (idx < count - 1) {
+                beltRight.animateMoveToNext();
+            } else {
+                nextSubject();
+            }
+        }
+        function nextSubject() {
+            if (!beltLeft || !beltLeft.getCount()) return;
+            var count = beltLeft.getCount();
+            if (count === 0) return;
+            var idx = beltLeft.getCurrentIndex();
+            if (idx < count - 1) {
+                beltLeft.animateMoveToNext();
+                setTimeout(function() {
+                    setRightBeltForSubject(beltLeft.getFocusText());
+                    if (beltRight && beltRight.setCurrentIndex) beltRight.setCurrentIndex(0);
+                    updateSentence();
+                    updateBengali();
+                    updatePronunciation();
+                }, ANIM_MS);
+            } else {
+                subjectReset();
+            }
+        }
+        function verbReset() {
+            if (beltRight && beltRight.setCurrentIndex) beltRight.setCurrentIndex(0);
+        }
+        function subjectReset() {
+            if (beltLeft && beltLeft.setCurrentIndex) beltLeft.setCurrentIndex(0);
+            var subject = beltLeft && beltLeft.getFocusText ? beltLeft.getFocusText() : '';
+            setRightBeltForSubject(subject);
+            if (beltRight && beltRight.setCurrentIndex) beltRight.setCurrentIndex(0);
+            updateSentence();
+            updateBengali();
+            updatePronunciation();
+        }
+        function getExpectedSentence() {
+            var left = beltLeft && beltLeft.getFocusText ? beltLeft.getFocusText() : '';
+            var right = beltRight && beltRight.getFocusText ? beltRight.getFocusText() : '';
+            return (left + ' ' + right).trim();
+        }
+        function getBengaliMeaning() {
+            var el = document.getElementById('bengaliMeaning');
+            return (el && el.textContent) ? el.textContent.trim() : '';
+        }
+        function getSvLessonStrings() {
+            return JSON.stringify({ bengali: getBengaliMeaning(), english: getExpectedSentence() });
+        }
+        function setPracticeMode(isPractice) {
+            if (isPractice) document.body.classList.add('practice-mode');
+            else document.body.classList.remove('practice-mode');
+        }
+
+        function alignRedLine() {
+            var wrapper = document.getElementById('conveyorWrapper');
+            var leftMarker = document.querySelector('#viewportLeft .center-marker');
+            var rightMarker = document.querySelector('#viewportRight .center-marker');
+            var line = document.querySelector('.red-line');
+            if (!wrapper || !leftMarker || !rightMarker || !line) return;
+            var wr = wrapper.getBoundingClientRect();
+            var lr = leftMarker.getBoundingClientRect();
+            var rr = rightMarker.getBoundingClientRect();
+            var centerY = (lr.top + lr.bottom) / 2;
+            var topPx = centerY - wr.top;
+            line.style.top = topPx + 'px';
+        }
+        window.addEventListener('load', function() {
+            setTimeout(function() { alignRedLine(); updateSentence(); updateBengali(); updatePronunciation(); }, 50);
+        });
+        window.addEventListener('resize', alignRedLine);
+    </script>
+</body>
+</html>

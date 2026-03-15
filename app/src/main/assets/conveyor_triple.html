@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Triple Conveyor</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 16px;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            background: #1a1a1a;
+            font-family: sans-serif;
+        }
+        .conveyor-row-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            flex: 1;
+            min-height: 0;
+            align-items: flex-start;
+        }
+        .conveyor-cell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .conveyor-cell.left { width: 20%; }
+        .conveyor-cell.spacer { width: 20%; min-width: 0; }
+        .conveyor-cell.middle { width: 15%; }
+        .conveyor-cell.right { width: 25%; }
+        .conveyor-cell .conveyor-viewport {
+            width: 100%;
+            /* margin-top set by JS in applyCenterAlignment() so center rows align for any config */
+        }
+        .connector-lines {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+        .connector-lines line {
+            stroke: #f44336;
+            stroke-width: 4;
+        }
+        .conveyor-viewport {
+            overflow: hidden;
+            border: 2px solid #444;
+            background: #222;
+            position: relative;
+        }
+        .conveyor-viewport .center-marker {
+            top: calc(var(--row-height) * var(--center-index));
+        }
+        .conveyor-tray {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+        }
+        .conveyor-item {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .conveyor-item-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 0.75rem;
+        }
+        .center-marker {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: var(--row-height);
+            border: 3px solid #00ff00;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .animate {
+            transition: transform 0.48s cubic-bezier(0.35, 0.05, 0.55, 0.95);
+        }
+        .conveyor-viewport.touch-scroll {
+            cursor: grab;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        .conveyor-viewport.touch-scroll:active {
+            cursor: grabbing;
+        }
+        .bengali-meaning {
+            margin-bottom: 16px;
+            padding: 12px 16px;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #b0e0e6;
+            background: #2a2a3a;
+            border: 2px solid #555;
+            border-radius: 8px;
+            min-height: 2em;
+        }
+        .focus-sentence {
+            margin-top: 16px;
+            padding: 12px 16px;
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #fff;
+            background: #333;
+            border: 2px solid #00ff00;
+            border-radius: 8px;
+            min-height: 2em;
+        }
+        .bengali-pronunciation {
+            margin-top: 8px;
+            padding: 10px 16px;
+            text-align: center;
+            font-size: 1rem;
+            color: #a0c0d0;
+            font-style: italic;
+            min-height: 1.5em;
+        }
+        .you-said-section {
+            margin-top: 12px;
+            padding: 10px 16px;
+            text-align: center;
+            font-size: 1rem;
+            color: #ccc;
+            min-height: 1.5em;
+        }
+        .you-said-section .label { color: #888; margin-right: 6px; }
+        .you-said-section .value { color: #fff; font-weight: bold; }
+        body.practice-mode .conveyor-row-wrapper,
+        body.practice-mode .focus-sentence,
+        body.practice-mode .bengali-pronunciation {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="bengali-meaning" id="bengaliMeaning"></div>
+    <div class="conveyor-row-wrapper" id="conveyorWrapper">
+        <div class="conveyor-cell left">
+            <div class="conveyor-viewport touch-scroll" id="viewportLeft" data-default-height="216" style="--row-height: 36px; height: 216px;">
+                <div class="center-marker"></div>
+                <div class="conveyor-tray" id="trayLeft" style="top: -36px;"></div>
+            </div>
+        </div>
+        <div class="conveyor-cell spacer"></div>
+        <div class="conveyor-cell middle">
+            <div class="conveyor-viewport touch-scroll" id="viewportMiddle" data-default-height="144" style="--row-height: 36px; height: 144px;">
+                <div class="center-marker"></div>
+                <div class="conveyor-tray" id="trayMiddle" style="top: -36px;"></div>
+            </div>
+        </div>
+        <div class="conveyor-cell spacer"></div>
+        <div class="conveyor-cell right">
+            <div class="conveyor-viewport touch-scroll" id="viewportRight" data-default-height="252" style="--row-height: 36px; height: 252px;">
+                <div class="center-marker"></div>
+                <div class="conveyor-tray" id="trayRight" style="top: -36px;"></div>
+            </div>
+        </div>
+        <svg class="connector-lines" id="connectorSvg" xmlns="http://www.w3.org/2000/svg">
+            <line id="lineLeftToMiddle" x1="0" y1="0" x2="0" y2="0"/>
+            <line id="lineMiddleToRight" x1="0" y1="0" x2="0" y2="0"/>
+        </svg>
+    </div>
+    <div class="focus-sentence" id="focusSentence"></div>
+    <div class="bengali-pronunciation" id="bengaliPronunciation"></div>
+    <div class="you-said-section"><span class="label">You said:</span><span class="value" id="youSaidValue"></span></div>
+    <script src="conveyor_belt.js"></script>
+    <script>
+        var colors = (typeof CONVEYOR_COLORS !== 'undefined' && CONVEYOR_COLORS.length) ? CONVEYOR_COLORS : ['#1565c0', '#ef6c00', '#2e7d32', '#c2185b', '#f9a825', '#6a1b9a', '#00838f', '#d84315', '#558b2f', '#ad1457'];
+        var ROW_HEIGHT = 36;
+        var ANIM_MS = typeof CONVEYOR_ANIM_MS !== 'undefined' ? CONVEYOR_ANIM_MS : 480;
+
+        var beltLeft, beltMiddle, beltRight;
+        var currentTripleConfig = null;
+
+        var CENTER_MARKER_BORDER = 3;
+        function applyViewportConfig(viewportId, visibleCount, centerIndex) {
+            var vp = document.getElementById(viewportId);
+            if (!vp) return;
+            vp.style.setProperty('--visible-count', String(visibleCount));
+            vp.style.setProperty('--center-index', String(centerIndex));
+            var h = visibleCount * ROW_HEIGHT;
+            if (visibleCount === 1) h += CENTER_MARKER_BORDER;
+            vp.style.height = h + 'px';
+            var tray = vp.querySelector('.conveyor-tray');
+            if (tray) tray.style.top = '-' + ROW_HEIGHT + 'px';
+        }
+
+        /** Align all belts so the focused (center) row is on the same horizontal line. Use left belt center as baseline. */
+        function applyCenterAlignment(leftC, midC, rightC) {
+            var baseline = leftC * ROW_HEIGHT;
+            var leftVp = document.querySelector('.conveyor-cell.left .conveyor-viewport');
+            var midVp = document.querySelector('.conveyor-cell.middle .conveyor-viewport');
+            var rightVp = document.querySelector('.conveyor-cell.right .conveyor-viewport');
+            if (leftVp) leftVp.style.marginTop = '0';
+            if (midVp) midVp.style.marginTop = (baseline - midC * ROW_HEIGHT) + 'px';
+            if (rightVp) rightVp.style.marginTop = (baseline - rightC * ROW_HEIGHT) + 'px';
+        }
+
+        function ensureBelts(config) {
+            config = config || {};
+            var leftV = config.leftVisible != null ? config.leftVisible : 5;
+            var leftC = config.leftCenter != null ? config.leftCenter : 2;
+            var midV = config.middleVisible != null ? config.middleVisible : 3;
+            var midC = config.middleCenter != null ? config.middleCenter : 1;
+            var rightV = config.rightVisible != null ? config.rightVisible : 7;
+            var rightC = config.rightCenter != null ? config.rightCenter : 3;
+            var key = leftV + ',' + leftC + ',' + midV + ',' + midC + ',' + rightV + ',' + rightC;
+            if (currentTripleConfig === key && beltLeft && beltMiddle && beltRight) return;
+            currentTripleConfig = key;
+            applyViewportConfig('viewportLeft', leftV, leftC);
+            applyViewportConfig('viewportMiddle', midV, midC);
+            applyViewportConfig('viewportRight', rightV, rightC);
+            applyCenterAlignment(leftC, midC, rightC);
+            beltLeft = createWordBelt('viewportLeft', 'trayLeft', { visibleCount: leftV, rowHeight: ROW_HEIGHT, centerIndex: leftC, animMs: ANIM_MS, colors: colors, data: [], onFocusChange: onLeftFocusChange });
+            beltMiddle = createWordBelt('viewportMiddle', 'trayMiddle', { visibleCount: midV, rowHeight: ROW_HEIGHT, centerIndex: midC, animMs: ANIM_MS, colors: colors, data: [], onFocusChange: onMiddleFocusChangeWrapper });
+            beltRight = createWordBelt('viewportRight', 'trayRight', { visibleCount: rightV, rowHeight: ROW_HEIGHT, centerIndex: rightC, animMs: ANIM_MS, colors: colors, data: [], onFocusChange: onFocusChange });
+        }
+
+        function updateSentence() {
+            var a = beltLeft && beltLeft.getFocusText ? beltLeft.getFocusText() : '';
+            var b = beltMiddle && beltMiddle.getFocusText ? beltMiddle.getFocusText() : '';
+            var c = beltRight && beltRight.getFocusText ? beltRight.getFocusText() : '';
+            var parts = [a, b, c].filter(function(x) { return x !== '' && x != null; });
+            var el = document.getElementById('focusSentence');
+            if (el) el.textContent = parts.join(' ') || '\u00a0';
+        }
+
+        var dataPerSubject = {};
+        var bengaliForSubject = [];
+        var pronunciationForSubject = [];
+        var subjectInMiddleMode = false;
+        var allSubjectsList = [];
+        var syncingAuxMiddle = false;
+
+        /** Return subjects that match the given auxiliary (grammatically). */
+        function getSubjectsForAux(auxText) {
+            if (!auxText) return allSubjectsList.length ? allSubjectsList.slice() : [];
+            var t = auxText.trim();
+            var lower = t.toLowerCase();
+            if (t === 'Does' || t === "Doesn't" || lower === "does" || lower === "doesn't") return ['He', 'She'];
+            if (t === 'Do' || t === "Don't" || lower === "do" || lower === "don't") return ['I', 'You', 'We', 'They'];
+            if (t === 'Am' || t === "Am not" || lower === "am" || lower === "am not") return ['I'];
+            if (t === 'Is' || t === "Isn't" || lower === "is" || lower === "isn't") return ['He', 'She'];
+            if (t === 'Are' || t === "Aren't" || lower === "are" || lower === "aren't") return ['You', 'We', 'They'];
+            if (t === 'Was' || t === "Wasn't" || lower === "was" || lower === "wasn't") return ['I', 'He', 'She'];
+            if (t === 'Were' || t === "Weren't" || lower === "were" || lower === "weren't") return ['You', 'We', 'They'];
+            return allSubjectsList.length ? allSubjectsList.slice() : [];
+        }
+
+        /** When left (aux) changes: filter middle to matching subjects and sync right. */
+        function syncMiddleAndRightToLeftAux() {
+            if (syncingAuxMiddle) return;
+            syncingAuxMiddle = true;
+            var aux = beltLeft && beltLeft.getFocusText ? beltLeft.getFocusText() : '';
+            var subjects = getSubjectsForAux(aux);
+            if (subjects.length > 0) {
+                if (beltMiddle) beltMiddle.setData(subjects);
+                if (beltMiddle && beltMiddle.setCurrentIndex) beltMiddle.setCurrentIndex(0);
+                setRightBeltForSubject(subjects[0]);
+                if (beltRight && beltRight.setCurrentIndex) beltRight.setCurrentIndex(0);
+            }
+            syncingAuxMiddle = false;
+            updateSentence();
+            updateBengali();
+            updatePronunciation();
+            alignConnectorLines();
+        }
+
+        function onMiddleFocusChangeForQuestion() {
+            var subject = beltMiddle && beltMiddle.getFocusText ? beltMiddle.getFocusText() : '';
+            setRightBeltForSubject(subject);
+            if (beltRight && beltRight.setCurrentIndex) beltRight.setCurrentIndex(0);
+            if (!syncingAuxMiddle && beltLeft && beltLeft.getCount && beltLeft.setCurrentIndex) {
+                var n = beltLeft.getCount();
+                if (n === 2) beltLeft.setCurrentIndex((subject === 'He' || subject === 'She') ? 1 : 0);
+                else if (n === 3) beltLeft.setCurrentIndex(getAuxIndexForSubject(subject));
+            }
+            updateSentence();
+            updateBengali();
+            updatePronunciation();
+            alignConnectorLines();
+        }
+        function onMiddleFocusChangeWrapper() {
+            if (subjectInMiddleMode) onMiddleFocusChangeForQuestion();
+            else onFocusChange();
+        }
+
+        function setRightBeltForSubject(subject) {
+            var entries = dataPerSubject[subject];
+            if (!entries || !entries.length) return;
+            var verbs = [];
+            bengaliForSubject = [];
+            pronunciationForSubject = [];
+            for (var i = 0; i < entries.length; i++) {
+                verbs.push(entries[i].v || entries[i].verb || '');
+                bengaliForSubject.push(entries[i].b || entries[i].bengali || '');
+                pronunciationForSubject.push(entries[i].p || entries[i].pronunciation || '');
+            }
+            if (beltRight) beltRight.setData(verbs);
+        }
+
+        function updateBengali() {
+            var el = document.getElementById('bengaliMeaning');
+            if (!el) return;
+            var idx = beltRight && beltRight.getCurrentIndex ? beltRight.getCurrentIndex() : 0;
+            el.textContent = (bengaliForSubject[idx] != null && bengaliForSubject[idx] !== '') ? bengaliForSubject[idx] : '\u00a0';
+        }
+        function updatePronunciation() {
+            var el = document.getElementById('bengaliPronunciation');
+            if (!el) return;
+            var idx = beltRight && beltRight.getCurrentIndex ? beltRight.getCurrentIndex() : 0;
+            el.textContent = (pronunciationForSubject[idx] != null && pronunciationForSubject[idx] !== '') ? pronunciationForSubject[idx] : '\u00a0';
+        }
+
+        function getAuxIndexForSubject(subject) {
+            return subject === 'I' ? 0 : (subject === 'He' || subject === 'She') ? 1 : 2;
+        }
+        function onLeftFocusChange() {
+            if (subjectInMiddleMode) {
+                syncMiddleAndRightToLeftAux();
+            } else {
+                var subject = beltLeft && beltLeft.getFocusText ? beltLeft.getFocusText() : '';
+                setRightBeltForSubject(subject);
+                if (beltRight && beltRight.setCurrentIndex) beltRight.setCurrentIndex(0);
+                if (beltMiddle && beltMiddle.getCount && beltMiddle.setCurrentIndex) {
+                    var n = beltMiddle.getCount();
+                    if (n === 2) beltMiddle.setCurrentIndex((subject === 'He' || subject === 'She') ? 1 : 0);
+                    else if (n === 3) beltMiddle.setCurrentIndex(getAuxIndexForSubject(subject));
+                }
+            }
+            updateSentence();
+            updateBengali();
+            updatePronunciation();
+            alignConnectorLines();
+        }
+
+        function onFocusChange() {
+            updateSentence();
+            updateBengali();
+            updatePronunciation();
+            alignConnectorLines();
+        }
+
+        var DEFAULT_MIDDLE_AUX = ['am', 'is', 'are', 'was', 'were', 'will', 'would', 'have', 'has', 'had', 'do', 'does', 'did', 'can', 'could', 'may', 'might', 'must', 'shall', 'should'];
+
+        function setTripleConveyorData(configOrLeftArr, middleArrOrDataObj, dataObjOrRightList, rightListOptional) {
+            var config, leftArr, middleArr, dataObjOrRight;
+            if (arguments.length >= 4 && typeof configOrLeftArr === 'object' && configOrLeftArr !== null && (configOrLeftArr.leftVisible != null || configOrLeftArr.mode)) {
+                config = configOrLeftArr;
+                leftArr = middleArrOrDataObj;
+                middleArr = dataObjOrRightList;
+                dataObjOrRight = rightListOptional;
+            } else {
+                config = {};
+                leftArr = configOrLeftArr;
+                dataObjOrRight = middleArrOrDataObj;
+                middleArr = null;
+            }
+            subjectInMiddleMode = (config.mode === 'subject_in_middle');
+            if (config.mode === 'subject_in_middle' && dataObjOrRight && typeof dataObjOrRight === 'object') {
+                dataPerSubject = dataObjOrRight;
+                allSubjectsList = (middleArr && middleArr.length) ? middleArr.slice() : Object.keys(dataPerSubject);
+            }
+            ensureBelts(config);
+            if (leftArr && leftArr.length) beltLeft.setData(leftArr);
+            if (middleArr && middleArr.length) {
+                beltMiddle.setData(middleArr);
+            } else if (arguments.length < 4 && beltMiddle) {
+                beltMiddle.setData(DEFAULT_MIDDLE_AUX);
+            }
+            if (config.mode === 'fixed' && Array.isArray(dataObjOrRight)) {
+                var verbs = [], bengali = [], pron = [];
+                for (var i = 0; i < dataObjOrRight.length; i++) {
+                    var e = dataObjOrRight[i];
+                    verbs.push(e.v || e.verb || '');
+                    bengali.push(e.b || e.bengali || '');
+                    pron.push(e.p || e.pronunciation || '');
+                }
+                bengaliForSubject = bengali;
+                pronunciationForSubject = pron;
+                if (beltRight) beltRight.setData(verbs);
+            } else if (config.mode === 'subject_in_middle' && dataObjOrRight && typeof dataObjOrRight === 'object') {
+                var firstSubject = (middleArr && middleArr[0]) ? middleArr[0] : (Object.keys(dataPerSubject)[0] || '');
+                setRightBeltForSubject(firstSubject);
+                if (beltLeft && beltLeft.getCount && beltLeft.setCurrentIndex) {
+                    var n = beltLeft.getCount();
+                    beltLeft.setCurrentIndex(n === 3 ? getAuxIndexForSubject(firstSubject) : 0);
+                }
+                syncMiddleAndRightToLeftAux();
+            } else {
+                dataPerSubject = dataObjOrRight || {};
+                var firstSubject = (leftArr && leftArr[0]) ? leftArr[0] : (Object.keys(dataPerSubject)[0] || '');
+                setRightBeltForSubject(firstSubject);
+            }
+            updateSentence();
+            updateBengali();
+            updatePronunciation();
+            alignConnectorLines();
+        }
+        function setMiddleBeltData(middleArr) {
+            if (beltMiddle && middleArr && middleArr.length) beltMiddle.setData(middleArr);
+        }
+        function setYouSaid(text) {
+            var el = document.getElementById('youSaidValue');
+            if (el) el.textContent = (text != null && text !== undefined) ? String(text) : '';
+        }
+        function getExpectedSentence() {
+            var a = beltLeft && beltLeft.getFocusText ? beltLeft.getFocusText() : '';
+            var b = beltMiddle && beltMiddle.getFocusText ? beltMiddle.getFocusText() : '';
+            var c = beltRight && beltRight.getFocusText ? beltRight.getFocusText() : '';
+            var parts = [a, b, c].filter(function(x) { return x !== '' && x != null; });
+            return parts.join(' ').trim();
+        }
+        function getBengaliMeaning() {
+            var el = document.getElementById('bengaliMeaning');
+            return (el && el.textContent) ? el.textContent.trim() : '';
+        }
+        function getSvLessonStrings() {
+            return JSON.stringify({ bengali: getBengaliMeaning(), english: getExpectedSentence() });
+        }
+        function setPracticeMode(isPractice) {
+            if (isPractice) document.body.classList.add('practice-mode');
+            else document.body.classList.remove('practice-mode');
+        }
+        function nextVerb() {
+            if (!beltRight || !beltRight.getCount()) return;
+            var count = beltRight.getCount();
+            if (count === 0) return;
+            var idx = beltRight.getCurrentIndex();
+            if (idx < count - 1) {
+                beltRight.animateMoveToNext();
+            } else {
+                nextSubject();
+            }
+        }
+        function nextSubject() {
+            if (!beltLeft || !beltLeft.getCount()) return;
+            var count = beltLeft.getCount();
+            if (count === 0) return;
+            var idx = beltLeft.getCurrentIndex();
+            if (idx < count - 1) {
+                beltLeft.animateMoveToNext();
+                setTimeout(function() {
+                    setRightBeltForSubject(beltLeft.getFocusText());
+                    if (beltRight && beltRight.setCurrentIndex) beltRight.setCurrentIndex(0);
+                    updateSentence();
+                    updateBengali();
+                    updatePronunciation();
+                    alignConnectorLines();
+                }, ANIM_MS);
+            } else {
+                subjectReset();
+            }
+        }
+        function verbReset() {
+            if (beltRight && beltRight.setCurrentIndex) beltRight.setCurrentIndex(0);
+        }
+        function subjectReset() {
+            if (beltLeft && beltLeft.setCurrentIndex) beltLeft.setCurrentIndex(0);
+            var subject = beltLeft && beltLeft.getFocusText ? beltLeft.getFocusText() : '';
+            setRightBeltForSubject(subject);
+            if (beltRight && beltRight.setCurrentIndex) beltRight.setCurrentIndex(0);
+            updateSentence();
+            updateBengali();
+            updatePronunciation();
+        }
+
+        function alignConnectorLines() {
+            var wrapper = document.getElementById('conveyorWrapper');
+            var leftMarker = document.querySelector('#viewportLeft .center-marker');
+            var middleMarker = document.querySelector('#viewportMiddle .center-marker');
+            var rightMarker = document.querySelector('#viewportRight .center-marker');
+            var line1 = document.getElementById('lineLeftToMiddle');
+            var line2 = document.getElementById('lineMiddleToRight');
+            var svg = document.getElementById('connectorSvg');
+            if (!wrapper || !leftMarker || !middleMarker || !rightMarker || !line1 || !line2 || !svg) return;
+            var wr = wrapper.getBoundingClientRect();
+            var lr = leftMarker.getBoundingClientRect();
+            var mr = middleMarker.getBoundingClientRect();
+            var rr = rightMarker.getBoundingClientRect();
+            var w = wr.width;
+            var h = wr.height;
+            svg.setAttribute('width', w);
+            svg.setAttribute('height', h);
+            var x1L = lr.right - wr.left;
+            var y1L = (lr.top + lr.bottom) / 2 - wr.top;
+            var x2M = mr.left - wr.left;
+            var y2M = (mr.top + mr.bottom) / 2 - wr.top;
+            var x1M = mr.right - wr.left;
+            var y1M = y2M;
+            var x2R = rr.left - wr.left;
+            var y2R = (rr.top + rr.bottom) / 2 - wr.top;
+            line1.setAttribute('x1', x1L);
+            line1.setAttribute('y1', y1L);
+            line1.setAttribute('x2', x2M);
+            line1.setAttribute('y2', y2M);
+            line2.setAttribute('x1', x1M);
+            line2.setAttribute('y1', y1M);
+            line2.setAttribute('x2', x2R);
+            line2.setAttribute('y2', y2R);
+        }
+
+        window.addEventListener('load', function() {
+            setTimeout(function() { alignConnectorLines(); updateSentence(); updateBengali(); updatePronunciation(); }, 50);
+        });
+        window.addEventListener('resize', alignConnectorLines);
+    </script>
+</body>
+</html>

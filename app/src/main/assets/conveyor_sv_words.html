@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SV Words</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            padding: 12px;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            background: #1a1a1a;
+            font-family: sans-serif;
+        }
+        .conveyor-row-wrapper {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            flex: 1;
+            min-height: 0;
+            align-items: stretch;
+        }
+        .conveyor-cell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        .conveyor-cell.belt1 { width: 40%; }
+        .conveyor-cell.spacer { width: 4%; min-width: 0; }
+        .conveyor-cell.belt2 { width: 28%; }
+        .conveyor-cell.belt3 { width: 28%; }
+        .conveyor-cell .conveyor-viewport {
+            width: 100%;
+        }
+        .conveyor-viewport {
+            overflow: hidden;
+            border: 2px solid #444;
+            background: #222;
+            position: relative;
+        }
+        .conveyor-viewport .center-marker {
+            top: calc(var(--row-height) * var(--center-index));
+        }
+        .conveyor-tray {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+        }
+        .conveyor-item {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .conveyor-item-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+        .center-marker {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: var(--row-height);
+            border: 3px solid #00ff00;
+            pointer-events: none;
+            z-index: 10;
+        }
+        .animate { transition: transform 0.48s cubic-bezier(0.35, 0.05, 0.55, 0.95); }
+        .tick-item .conveyor-item-inner { color: #fff; font-size: 1.2rem; }
+        .conveyor-cell.belt2Tick { display: none; width: 50%; }
+        .connector-svg { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; display: none; }
+        .connector-svg line { stroke: #f44336; stroke-width: 4; }
+        body.practice-mode .conveyor-cell.belt2Tick { display: flex; }
+        body.practice-mode .connector-svg { display: block; }
+        .single-cell {
+            border: 2px solid #444;
+            background: #2a2a3a;
+            min-height: var(--row-height);
+            height: var(--row-height);
+            /* Align with belt1 center row (index 3) */
+            margin-top: calc(var(--row-height) * 3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #b0e0e6;
+            font-size: 1rem;
+            padding: 8px;
+            text-align: center;
+        }
+        .single-cell.pronunciation {
+            color: #a0c0d0;
+            font-style: italic;
+        }
+        .you-said-section {
+            margin-top: 12px;
+            padding: 10px 16px;
+            text-align: center;
+            font-size: 1rem;
+            color: #ccc;
+        }
+        .you-said-section .label { color: #888; margin-right: 6px; }
+        .you-said-section .value { color: #fff; font-weight: bold; }
+        .conveyor-viewport.touch-scroll { cursor: grab; -webkit-user-select: none; user-select: none; }
+        .conveyor-viewport.touch-scroll:active { cursor: grabbing; }
+        body.practice-mode .conveyor-cell.belt2,
+        body.practice-mode .conveyor-cell.belt3,
+        body.practice-mode .conveyor-cell.spacer { display: none; }
+        body.practice-mode .conveyor-cell.belt1 { width: 50%; }
+    </style>
+</head>
+<body>
+    <div class="conveyor-row-wrapper" id="conveyorWrapper">
+        <div class="conveyor-cell belt1">
+            <div class="conveyor-viewport touch-scroll" id="viewportBelt1" style="--visible-count: 7; --row-height: 40px; --center-index: 3; height: 280px;">
+                <div class="center-marker"></div>
+                <div class="conveyor-tray" id="trayBelt1" style="top: -40px;"></div>
+            </div>
+        </div>
+        <div class="conveyor-cell belt2Tick">
+            <div class="conveyor-viewport" id="viewportBelt2Tick" style="--visible-count: 7; --row-height: 40px; --center-index: 3; height: 280px;">
+                <div class="center-marker"></div>
+                <div class="conveyor-tray" id="trayBelt2Tick" style="top: -40px;"></div>
+            </div>
+        </div>
+        <div class="conveyor-cell spacer"></div>
+        <div class="conveyor-cell belt2">
+            <div class="single-cell" id="cellMeaning" style="--row-height: 40px;">—</div>
+        </div>
+        <div class="conveyor-cell spacer"></div>
+        <div class="conveyor-cell belt3">
+            <div class="single-cell pronunciation" id="cellPronunciation" style="--row-height: 40px;">—</div>
+        </div>
+        <svg class="connector-svg" id="connectorSvg"><line id="connectorLine" x1="0" y1="0" x2="0" y2="0"/></svg>
+    </div>
+    <div class="you-said-section"><span class="label">You said:</span><span class="value" id="youSaidValue"></span></div>
+    <script src="conveyor_belt.js"></script>
+    <script>
+        var ROW_HEIGHT = typeof CONVEYOR_ROW_HEIGHT !== 'undefined' ? CONVEYOR_ROW_HEIGHT : 40;
+        var ANIM_MS = typeof CONVEYOR_ANIM_MS !== 'undefined' ? CONVEYOR_ANIM_MS : 480;
+        var colors = (typeof CONVEYOR_COLORS !== 'undefined' && CONVEYOR_COLORS.length) ? CONVEYOR_COLORS : ['#1565c0', '#ef6c00', '#2e7d32', '#c2185b', '#f9a825', '#6a1b9a', '#00838f', '#d84315', '#558b2f', '#ad1457'];
+        var words = [], meanings = [], pronunciations = [];
+        var tickData = [];
+        var belt2 = null;
+        var belt1 = null;
+
+        function createTickItem(text, dataIndexForColor, rowHeight) {
+            var div = document.createElement('div');
+            div.className = 'conveyor-item tick-item';
+            div.style.height = rowHeight + 'px';
+            var inner = document.createElement('div');
+            inner.className = 'conveyor-item-inner';
+            var len = colors.length;
+            var ci = len ? ((dataIndexForColor % len + len) % len) : 0;
+            inner.style.background = len ? colors[ci] : '#333';
+            var sym = '';
+            if (text === '✓' || text === '\u2713') sym = '\u2713';
+            else if (text === '✗' || text === '\u2717') sym = '\u2717';
+            inner.textContent = sym;
+            div.appendChild(inner);
+            return div;
+        }
+
+        belt2 = createWordBelt('viewportBelt2Tick', 'trayBelt2Tick', {
+            visibleCount: 7,
+            rowHeight: ROW_HEIGHT,
+            animMs: ANIM_MS,
+            centerIndex: 3,
+            data: [],
+            colors: colors,
+            createItem: createTickItem,
+            interactive: false
+        });
+
+        belt1 = createWordBelt('viewportBelt1', 'trayBelt1', {
+            visibleCount: 7,
+            rowHeight: ROW_HEIGHT,
+            animMs: ANIM_MS,
+            centerIndex: 3,
+            data: [],
+            colors: colors,
+            syncSlave: belt2,
+            onFocusChange: updateMeaningAndPronunciation
+        });
+
+        function updateMeaningAndPronunciation() {
+            var idx = belt1 ? belt1.getCurrentIndex() : 0;
+            var elM = document.getElementById('cellMeaning');
+            var elP = document.getElementById('cellPronunciation');
+            if (elM) elM.textContent = (meanings[idx] != null && meanings[idx] !== '') ? meanings[idx] : '\u00a0';
+            if (elP) elP.textContent = (pronunciations[idx] != null && pronunciations[idx] !== '') ? pronunciations[idx] : '\u00a0';
+        }
+
+        function setSvWordsData(wordsArr, meaningsArr, pronsArr) {
+            words = wordsArr || [];
+            meanings = meaningsArr || [];
+            pronunciations = pronsArr || [];
+            belt1.setData(words);
+            updateMeaningAndPronunciation();
+        }
+
+        function setPracticeMode(isPractice) {
+            if (isPractice) {
+                document.body.classList.add('practice-mode');
+                if (belt1 && meanings.length) {
+                    belt1.setData(meanings);
+                    tickData = meanings.map(function() { return ''; });
+                    if (belt2) belt2.setData(tickData);
+                }
+            } else {
+                document.body.classList.remove('practice-mode');
+                if (belt1 && words.length) belt1.setData(words);
+            }
+            updateMeaningAndPronunciation();
+            setTimeout(alignConnectorLines, 50);
+        }
+
+        function setTickAtCurrent() {
+            if (!belt1 || !belt2) return;
+            var idx = belt1.getCurrentIndex();
+            tickData[idx] = '\u2713';
+            belt2.updateFocusItemText('\u2713');
+        }
+
+        function setCrossAtCurrent() {
+            if (!belt1 || !belt2) return;
+            var idx = belt1.getCurrentIndex();
+            tickData[idx] = '\u2717';
+            belt2.updateFocusItemText('\u2717');
+        }
+
+        function advanceBothBelts() {
+            if (!belt1 || !belt2 || !belt1.getCount()) return;
+            setTickAtCurrent();
+            belt1.animateMoveToNext();
+            belt2.animateMoveToNext();
+        }
+
+        function advanceBothBeltsNoTick() {
+            if (!belt1 || !belt2 || !belt1.getCount()) return;
+            belt1.animateMoveToNext();
+            belt2.animateMoveToNext();
+        }
+
+        function alignConnectorLines() {
+            if (!document.body.classList.contains('practice-mode')) return;
+            var v1 = document.getElementById('viewportBelt1');
+            var v2 = document.getElementById('viewportBelt2Tick');
+            var line = document.getElementById('connectorLine');
+            var wrapper = document.getElementById('conveyorWrapper');
+            if (!v1 || !v2 || !line || !wrapper) return;
+            var r1 = v1.getBoundingClientRect();
+            var r2 = v2.getBoundingClientRect();
+            var rw = wrapper.getBoundingClientRect();
+            var rowH = ROW_HEIGHT;
+            var cy = rowH * 3 + rowH / 2;
+            var x1 = r1.left - rw.left + r1.width;
+            var y1 = r1.top - rw.top + cy;
+            var x2 = r2.left - rw.left;
+            var y2 = r2.top - rw.top + cy;
+            line.setAttribute('x1', x1);
+            line.setAttribute('y1', y1);
+            line.setAttribute('x2', x2);
+            line.setAttribute('y2', y2);
+        }
+        window.addEventListener('resize', alignConnectorLines);
+
+        function getExpectedWord() {
+            if (!belt1) return '';
+            var idx = belt1.getCurrentIndex();
+            return (words[idx] != null && words[idx] !== '') ? words[idx] : '';
+        }
+        function getCurrentMeaning() {
+            if (!belt1) return '';
+            var idx = belt1.getCurrentIndex();
+            return (meanings[idx] != null && meanings[idx] !== '') ? meanings[idx] : '';
+        }
+        function getCurrentPronunciation() {
+            var idx = belt1 ? belt1.getCurrentIndex() : 0;
+            return pronunciations[idx] != null ? pronunciations[idx] : '';
+        }
+        function nextWord() {
+            if (!belt1 || !belt1.getCount()) return;
+            var count = belt1.getCount();
+            if (count === 0) return;
+            var idx = belt1.getCurrentIndex();
+            if (idx < count - 1) {
+                belt1.setCurrentIndex(idx + 1);
+            } else {
+                belt1.setCurrentIndex(0);
+            }
+            if (belt2) belt2.setCurrentIndex(belt1.getCurrentIndex());
+        }
+
+        function markCurrentCorrectAndAdvance() {
+            advanceBothBelts();
+        }
+        function setYouSaid(text) {
+            var el = document.getElementById('youSaidValue');
+            if (el) el.textContent = (text != null && text !== undefined) ? String(text) : '';
+        }
+    </script>
+</body>
+</html>

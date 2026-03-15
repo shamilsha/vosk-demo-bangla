@@ -1,0 +1,29 @@
+P1:Hello.:হ্যালো।
+P2:Hello.:হ্যালো।
+P1:My name is [Riya].:আমার নাম [রিয়া]।
+P1:What is your name?:আপনার নাম কি?
+P2:My name is [Sam].:আমার নাম [স্যাম]।
+P2:Nice to meet you.:আপনার সাথে দেখা করে ভালো লাগলো।
+P1:Nice to meet you too.:আপনার সাথেও দেখা করে ভালো লাগলো।
+P2:Where are you from?:আপনি কোথা থেকে এসেছেন?
+P1:I am from Dhaka.:আমি ঢাকা থেকে।
+P1:And you?:আর আপনি?
+P2:I am from Kolkata.:আমি কলকাতা থেকে।
+P1:What do you do?:আপনি কি করেন?
+P2:I am a student.:আমি ছাত্র।
+P2:I study English.:আমি ইংরেজি পড়ি।
+P2:What about you?:আপনি?
+P1:I am a student too.:আমিও ছাত্র।
+P1:I study English as well.:আমিও ইংরেজি পড়ি।
+P2:That is good.:ভালো।
+P2:How are you today?:আজ আপনি কেমন আছেন?
+P1:I am fine, thank you.:আমি ভালো আছি, ধন্যবাদ।
+P1:How are you?:আপনি কেমন আছেন?
+P2:I am good too, thanks.:আমিও ভালো, ধন্যবাদ।
+P1:Okay.:ঠিক আছে।
+P1:I have to go now.:এখন আমাকে যেতে হবে।
+P1:It was nice talking to you.:আপনার সাথে কথা বলে ভালো লাগলো।
+P2:Yes, nice talking to you too.:হ্যাঁ, আপনার সাথেও কথা বলে ভালো লাগলো।
+P2:Goodbye.:বিদায়।
+P1:Goodbye.:বিদায়।
+P1:Take care.:যত্ন নিন।

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parts of Speech – Color Guide &amp; Sentence Pattern</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background: #1a1a1a;
+      color: #e0e0e0;
+      line-height: 1.5;
+    }
+    h1 { font-size: 1.25rem; margin-top: 0; color: #fff; }
+    h2 { font-size: 1rem; color: #b0b0b0; margin: 1.25rem 0 0.5rem; }
+
+    /* Color legend table – high contrast foreground + background */
+    .legend {
+      width: 100%;
+      max-width: 360px;
+      border-collapse: collapse;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+    .legend th, .legend td {
+      padding: 0.4rem 0.6rem;
+      text-align: left;
+      border: 1px solid #333;
+    }
+    .legend th { background: #2a2a2a; color: #fff; }
+    .legend .swatch {
+      display: inline-block;
+      min-width: 2.5rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    /* Parts of speech – high-contrast pairs (fg on bg) */
+    .pos-noun      { background: #1565C0; color: #fff; }  /* blue */
+    .pos-pronoun   { background: #7B1FA2; color: #fff; }  /* purple */
+    .pos-verb      { background: #2E7D32; color: #fff; }  /* green */
+    .pos-adverb    { background: #00838F; color: #fff; }  /* teal */
+    .pos-adjective { background: #E65100; color: #fff; }  /* orange */
+    .pos-conjunction{ background: #C62828; color: #fff; } /* red */
+    .pos-preposition{ background: #6A1B9A; color: #fff; }/* deep purple */
+    .pos-interjection{ background: #F9A825; color: #1a1a1a; } /* amber – dark text */
+
+    .sentence {
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      background: #252525;
+      border-radius: 6px;
+      font-size: 1.1rem;
+    }
+    .sentence .word {
+      padding: 0.15rem 0.25rem;
+      border-radius: 3px;
+      margin: 0 0.05rem;
+    }
+    .pattern-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.5rem;
+    }
+    .pattern-card {
+      background: #252525;
+      padding: 0.6rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+    .pattern-card .subj { padding: 0.1rem 0.25rem; border-radius: 3px; }
+    .pattern-card .verb { padding: 0.1rem 0.25rem; border-radius: 3px; }
+    .pattern-card .rest { color: #888; }
+  </style>
+</head>
+<body>
+  <h1>Parts of Speech – Color Table (High Contrast)</h1>
+  <p>Use these colors to mark words in sentences. Background + foreground for clear reading.</p>
+
+  <table class="legend">
+    <thead>
+      <tr><th>Part of speech</th><th>Sample</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Noun</td>       <td><span class="swatch pos-noun">dog</span></td></tr>
+      <tr><td>Pronoun</td>    <td><span class="swatch pos-pronoun">I, you, he</span></td></tr>
+      <tr><td>Verb</td>       <td><span class="swatch pos-verb">eat, play</span></td></tr>
+      <tr><td>Adverb</td>     <td><span class="swatch pos-adverb">quickly</span></td></tr>
+      <tr><td>Adjective</td>  <td><span class="swatch pos-adjective">big, red</span></td></tr>
+      <tr><td>Conjunction</td><td><span class="swatch pos-conjunction">and, but</span></td></tr>
+      <tr><td>Preposition</td><td><span class="swatch pos-preposition">in, on, from</span></td></tr>
+      <tr><td>Interjection</td><td><span class="swatch pos-interjection">Oh! Wow!</span></td></tr>
+    </tbody>
+  </table>
+
+  <h2>Subject + Verb pattern</h2>
+  <p>Subjects from list: <strong>I, you, he, she, they, Shafin</strong>. Verbs from list: <strong>eat, play, do, go, run</strong>. Each sentence uses one subject (pronoun/noun) and one verb with the chosen colors.</p>
+
+  <div class="sentence">
+    <span class="word pos-pronoun">I</span> <span class="word pos-verb">eat</span> <span class="word pos-noun">rice</span>.
+  </div>
+  <div class="sentence">
+    <span class="word pos-pronoun">You</span> <span class="word pos-verb">play</span> <span class="word pos-noun">football</span>.
+  </div>
+  <div class="sentence">
+    <span class="word pos-pronoun">He</span> <span class="word pos-verb">does</span> <span class="word pos-noun">work</span>.
+  </div>
+  <div class="sentence">
+    <span class="word pos-pronoun">She</span> <span class="word pos-verb">goes</span> <span class="word pos-adverb">home</span>.
+  </div>
+  <div class="sentence">
+    <span class="word pos-pronoun">They</span> <span class="word pos-verb">run</span> <span class="word pos-adverb">fast</span>.
+  </div>
+  <div class="sentence">
+    <span class="word pos-noun">Shafin</span> <span class="word pos-verb">eats</span> <span class="word pos-adjective">good</span> <span class="word pos-noun">food</span>.
+  </div>
+
+  <h2>All subject × verb combinations (sample)</h2>
+  <div class="pattern-grid" id="pattern-grid"></div>
+
+  <script>
+    const subjects = [
+      { text: 'I',      pos: 'pronoun' },
+      { text: 'you',    pos: 'pronoun' },
+      { text: 'he',     pos: 'pronoun' },
+      { text: 'she',    pos: 'pronoun' },
+      { text: 'they',   pos: 'pronoun' },
+      { text: 'Shafin', pos: 'noun' }
+    ];
+    const verbs = [
+      { base: 'eat',  third: 'eats' },
+      { base: 'play', third: 'plays' },
+      { base: 'do',   third: 'does' },
+      { base: 'go',   third: 'goes' },
+      { base: 'run',  third: 'runs' }
+    ];
+    function verbForm(subj, v) {
+      const t = subj.text.toLowerCase();
+      if (t === 'i' || t === 'you' || t === 'they') return v.base;
+      return v.third;
+    }
+    const grid = document.getElementById('pattern-grid');
+    subjects.forEach(subj => {
+      verbs.forEach(v => {
+        const form = verbForm(subj, v);
+        const card = document.createElement('div');
+        card.className = 'pattern-card';
+        const subjClass = subj.pos === 'noun' ? 'pos-noun' : 'pos-pronoun';
+        card.innerHTML = '<span class="subj ' + subjClass + '">' + subj.text + '</span> <span class="verb pos-verb">' + form + '</span> <span class="rest">…</span>';
+        grid.appendChild(card);
+      });
+    });
+  </script>
+</body>
+</html>
