@@ -1,0 +1,42 @@
+PersonA: May I sit here?, আমি কি এখানে বসতে পারি?, মে আই সিট হেয়ার?
+PersonB: Sure. What’s your name?, অবশ্যই। তোমার নাম কি?, শিউর। হোয়াটস ইয়োর নেম?
+PersonA: My name is Adnan., আমার নাম আদনান।, মাই নেম ইজ আদনান।
+PersonB: How old are you?, তোমার বয়স কত?, হাউ ওল্ড আর ইউ?
+PersonA: I’m 5 years old., আমার বয়স ৫ বছর।, আই অ্যাম ফাইভ ইয়ার্স ওল্ড।
+PersonB: Are you a student?, তুমি কি একজন ছাত্র?, আর ইউ আ স্টুডেন্ট?
+PersonA: Yes. I’m a student., হ্যাঁ| আমি একজন ছাত্র।, ইয়েস| আই অ্যাম আ স্টুডেন্ট।
+PersonB: What class do you read in?, তুমি কোন শ্রেণীতে পড়?, হোয়াট ক্লাস ডু ইউ রিড ইন?
+PersonA: I read in class one., আমি প্রথম শ্রেণীতে পড়ি।, আই রিড ইন ক্লাস ওয়ান।
+PersonB: What’s the name of your school?, তোমার স্কুলের নাম কি?, হোয়াটস দ্য নেম অফ ইয়োর স্কুল?
+PersonA: Shaheen Cadet School., শাহীন ক্যাডেট স্কুল।, শাহীন ক্যাডেট স্কুল।
+PersonB: How many students are there in your class?, তোমার ক্লাসে কতজন ছাত্র আছে?, হাউ মেনি স্টুডেন্টস আর দেয়ার ইন ইয়োর ক্লাস?
+PersonA: About two hundred., প্রায় দুইশ জন।, অ্যাবাউট টু হান্ড্রেড।
+PersonB: What’s your favourite subject?, তোমার প্রিয় বিষয় কি?, হোয়াটস ইয়োর ফেভারিট সাবজেক্ট?
+PersonA: My favourite subject is English., আমার প্রিয় বিষয় ইংরেজি।, মাই ফেভারিট সাবজেক্ট ইজ ইংলিশ।
+PersonB: Do you like sports?, তুমি কি খেলাধুলা পছন্দ করো?, ডু ইউ লাইক স্পোর্টস?
+PersonA: Yes. I like badminton., হ্যাঁ| আমি ব্যাডমিন্টন পছন্দ করি।, ইয়েস| আই লাইক ব্যাডমিন্টন।
+PersonB: Fine. Who is your favourite person?, বেশ। তোমার প্রিয় ব্যক্তি কে?, ফাইন। হু ইজ ইয়োর ফেভারিট পারসন?
+PersonA: My favourite person is prophet Muhammad (sm.)., আমার প্রিয় ব্যক্তি হযরত মুহাম্মদ (সা.)।, মাই ফেভারিট পারসন ইজ প্রফেট মুহাম্মদ (সা.)।
+PersonB: What is your father?, তোমার বাবা কি করেন?,  হোয়াট ইজ ইয়োর ফাদার?
+PersonA: My father is a businessman., আমার বাবা একজন ব্যবসায়ী।, মাই ফাদার ইজ আ বিজনেসম্যান।
+PersonB: Where is he now?, তিনি এখন কোথায়?, হোয়্যার ইজ হি নাও?
+PersonA: He is at his job., তিনি তার কাজে আছেন।, হি ইজ অ্যাট হিজ জব।
+PersonB: Is your grandfather alive?, তোমার দাদা কি জীবিত আছেন?, ইজ ইয়োর গ্র্যান্ডফাদার অ্যালাইভ?
+PersonA: Alhamdulillah. He is still now., আলহামদুলিল্লাহ। তিনি এখনও আছেন।, আলহামদুলিল্লাহ। হি ইজ স্টিল নাও।
+PersonB: Who is that?, ওটা কে?, হু ইজ দ্যাট?
+PersonA: He’s my grandfather., তিনি আমার দাদা।, হিজ মাই গ্র্যান্ডফাদার।
+PersonB: Is he busy now?, তিনি কি এখন ব্যস্ত?, ইজ হি বিজি নাও?
+PersonA: Yes. he is going to market., হ্যাঁ| তিনি বাজারে যাচ্ছেন।, ইয়েস| হি ইজ গোয়িং টু মার্কেট।
+PersonB: For why?, কেন?, ফর হোয়াই?
+PersonA: For buying some medicines., কিছু ঔষধ কেনার জন্য।, ফর বায়িং সাম মেডিসিনস।
+PersonB: Who is sick?, কে অসুস্থ?, হু ইজ সিক?
+PersonA: My grandmother is sick., আমার দাদী অসুস্থ।, মাই গ্র্যান্ডমাদার ইজ সিক।
+PersonB: but.... Who is calling you?,  কিন্তু.... তোমাকে কে ডাকছে?, বাট.... হু ইজ কলিং ইউ?
+PersonA: My (best) friend is calling me., আমার (সেরা) বন্ধু আমাকে ডাকছে।, মাই (বেস্ট) ফ্রেন্ড ইজ কলিং মি।
+PersonB: Why is he calling you?, সে তোমাকে কেন ডাকছে?, হোয়াই ইজ হি কলিং ইউ?
+PersonA: For playing cricket., ক্রিকেট খেলার জন্য।, ফর প্লেয়িং ক্রিকেট।
+PersonB: Ok. I see.!, ঠিক আছে| বুঝতে পেরেছি!, ওকে| আই সি!
+PersonA: Uncle! may I go now?, আঙ্কেল! আমি কি এখন যেতে পারি?, আঙ্কেল! মে আই গো নাও?
+PersonB: Yes. you can., হ্যাঁ| তুমি পারো।, ইয়েস| ইউ ক্যান।
+PersonA: Thank you., ধন্যবাদ।, থ্যাঙ্ক ইউ।
+PersonB: Welcome., স্বাগতম।, ওয়েলকাম।

@@ -1,0 +1,10 @@
+PersonA:What is your name?, আপনার নাম কি?,হোয়াট ইজ ইয়োর নেম?  
+PersonB: My name is Rahul., আমার নাম রাহুল।, মাই নেম ইজ রাহুল।
+PersonB: What about you., আপ-নার  খ-বর কি?, হোয়াট অ্যাবাউট ইউ?
+PersonA: I am Sumi., আমি সুমি।,আই অ্যাম সুমি।
+PersonA: Nice to meet you.,আপনার সাথে দেখা হয়ে ভালো লাগলো।, নাইস টু মিট ইউ|
+PersonB: Nice to meet you too., আপনার সাথে দেখা হয়েও ভালো লাগলো।, নাইস টু মিট ইউ টু।
+PersonB: Where do you live?,আপনি কোথায় থাকেন?, হোয়্যার ডু ইউ লিভ?
+PersonA: I live in Dhaka. আমি ঢাকায় থাকি। , আই লিভ ইন ঢাকা।
+PersonA: What do you do?, আপনি কি করেন?, হোয়াট ডু ইউ ডু?
+  
