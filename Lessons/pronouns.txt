@@ -1,0 +1,9 @@
+English Word,Bengali Meaning,Simple Sentence
+I,আমি,I am fine.
+You,তুমি / আপনি,You go now.
+He,সে (ছেলে),He is coming.
+She,সে (মেয়ে),She likes tea.
+We,আমরা,We are ready.
+They,তারা,They are here.
+Me,আমাকে,Give me water.
+Us,আমাদের,Help us please.

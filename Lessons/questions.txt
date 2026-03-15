@@ -1,0 +1,8 @@
+English Word,Bengali Meaning,Simple Sentence
+Who,কে,Who is he?
+What,কি,What is this?
+When,কখন,When to go?
+Where,কোথায়,Where is Dhaka?
+Why,কেন,Why are you?
+How,কিভাবে / কেমন,How are you?
+Which,কোনটি,Which one mine?

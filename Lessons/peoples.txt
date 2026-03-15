@@ -1,0 +1,7 @@
+English Word,Bengali Meaning,Simple Sentence
+Man,পুরুষ,A tall man.
+Woman,মহিলা,She is woman.
+Child,শিশু,Child is sleeping.
+Friend,বন্ধু,He is friend.
+Doctor,ডাক্তার,Call the doctor.
+Teacher,শিক্ষক,Respect your teacher.

@@ -1,0 +1,200 @@
+He plays,সে খেলে
+He runs,সে দৌড়ায়
+He eats,সে খায়
+He does,সে করে
+He walks,সে হাঁটে
+He goes,সে যায়
+He comes,সে আসে
+He reads,সে পড়ে
+He writes,সে লিখে
+He works,সে কাজ করে
+He sleeps,সে ঘুমায়
+He drinks,সে পান করে
+He sits,সে বসে
+He stands,সে দাঁড়ায়
+He listens,সে শোনে
+He looks,সে তাকায়
+He loves,সে ভালোবাসে
+He wants,সে চায়
+He thinks,সে ভাবে
+He knows,সে জানে
+He learns,সে শেখে
+He cooks,সে রান্না করে
+He speaks,সে কথা বলে
+He talks,সে কথা বলে
+He opens,সে খোলে
+He closes,সে বন্ধ করে
+He waits,সে অপেক্ষা করে
+He tries,সে চেষ্টা করে
+He lives,সে বাস করে
+He helps,সে সাহায্য করে
+He calls,সে ডাকে
+He asks,সে জিজ্ঞাসা করে
+He takes,সে নেয়
+He gives,সে দেয়
+He sees,সে দেখে
+He hears,সে শোনে
+He feels,সে অনুভব করে
+He understands,সে বোঝে
+He makes,সে তৈরি করে
+He studies,সে পড়াশোনা করে
+She plays,সে খেলে
+She runs,সে দৌড়ায়
+She eats,সে খায়
+She does,সে করে
+She walks,সে হাঁটে
+She goes,সে যায়
+She comes,সে আসে
+She reads,সে পড়ে
+She writes,সে লিখে
+She works,সে কাজ করে
+She sleeps,সে ঘুমায়
+She drinks,সে পান করে
+She sits,সে বসে
+She stands,সে দাঁড়ায়
+She listens,সে শোনে
+She looks,সে তাকায়
+She loves,সে ভালোবাসে
+She wants,সে চায়
+She thinks,সে ভাবে
+She knows,সে জানে
+She learns,সে শেখে
+She cooks,সে রান্না করে
+She speaks,সে কথা বলে
+She talks,সে কথা বলে
+She opens,সে খোলে
+She closes,সে বন্ধ করে
+She waits,সে অপেক্ষা করে
+She tries,সে চেষ্টা করে
+She lives,সে বাস করে
+She helps,সে সাহায্য করে
+She calls,সে ডাকে
+She asks,সে জিজ্ঞাসা করে
+She takes,সে নেয়
+She gives,সে দেয়
+She sees,সে দেখে
+She hears,সে শোনে
+She feels,সে অনুভব করে
+She understands,সে বোঝে
+She makes,সে তৈরি করে
+She studies,সে পড়াশোনা করে
+You play,তুমি খেলো
+You run,তুমি দৌড়াও
+You eat,তুমি খাও
+You do,তুমি করো
+You walk,তুমি হাঁটো
+You go,তুমি যাও
+You come,তুমি আসো
+You read,তুমি পড়ো
+You write,তুমি লেখো
+You work,তুমি কাজ করো
+You sleep,তুমি ঘুমাও
+You drink,তুমি পান করো
+You sit,তুমি বসো
+You stand,তুমি দাঁড়াও
+You listen,তুমি শোনো
+You look,তুমি তাকাও
+You love,তুমি ভালোবাসো
+You want,তুমি চাও
+You think,তুমি ভাবো
+You know,তুমি জানো
+You learn,তুমি শেখো
+You cook,তুমি রান্না করো
+You speak,তুমি কথা বলো
+You talk,তুমি কথা বলো
+You open,তুমি খোলো
+You close,তুমি বন্ধ করো
+You wait,তুমি অপেক্ষা করো
+You try,তুমি চেষ্টা করো
+You live,তুমি বাস করো
+You help,তুমি সাহায্য করো
+You call,তুমি ডাকো
+You ask,তুমি জিজ্ঞাসা করো
+You take,তুমি নাও
+You give,তুমি দাও
+You see,তুমি দেখো
+You hear,তুমি শোনো
+You feel,তুমি অনুভব করো
+You understand,তুমি বোঝো
+You make,তুমি তৈরি করো
+You study,তুমি পড়াশোনা করো
+We play,আমরা খেলি
+We run,আমরা দৌড়াই
+We eat,আমরা খাই
+We do,আমরা করি
+We walk,আমরা হাঁটি
+We go,আমরা যাই
+We come,আমরা আসি
+We read,আমরা পড়ি
+We write,আমরা লিখি
+We work,আমরা কাজ করি
+We sleep,আমরা ঘুমাই
+We drink,আমরা পান করি
+We sit,আমরা বসি
+We stand,আমরা দাঁড়াই
+We listen,আমরা শুনি
+We look,আমরা তাকাই
+We love,আমরা ভালোবাসি
+We want,আমরা চাই
+We think,আমরা ভাবি
+We know,আমরা জানি
+We learn,আমরা শিখি
+We cook,আমরা রান্না করি
+We speak,আমরা কথা বলি
+We talk,আমরা কথা বলি
+We open,আমরা খুলি
+We close,আমরা বন্ধ করি
+We wait,আমরা অপেক্ষা করি
+We try,আমরা চেষ্টা করি
+We live,আমরা বাস করি
+We help,আমরা সাহায্য করি
+We call,আমরা ডাকি
+We ask,আমরা জিজ্ঞাসা করি
+We take,আমরা নিই
+We give,আমরা দিই
+We see,আমরা দেখি
+We hear,আমরা শুনি
+We feel,আমরা অনুভব করি
+We understand,আমরা বুঝি
+We make,আমরা তৈরি করি
+We study,আমরা পড়াশোনা করি
+They play,তারা খেলে
+They run,তারা দৌড়ায়
+They eat,তারা খায়
+They do,তারা করে
+They walk,তারা হাঁটে
+They go,তারা যায়
+They come,তারা আসে
+They read,তারা পড়ে
+They write,তারা লিখে
+They work,তারা কাজ করে
+They sleep,তারা ঘুমায়
+They drink,তারা পান করে
+They sit,তারা বসে
+They stand,তারা দাঁড়ায়
+They listen,তারা শোনে
+They look,তারা তাকায়
+They love,তারা ভালোবাসে
+They want,তারা চায়
+They think,তারা ভাবে
+They know,তারা জানে
+They learn,তারা শেখে
+They cook,তারা রান্না করে
+They speak,তারা কথা বলে
+They talk,তারা কথা বলে
+They open,তারা খোলে
+They close,তারা বন্ধ করে
+They wait,তারা অপেক্ষা করে
+They try,তারা চেষ্টা করে
+They live,তারা বাস করে
+They help,তারা সাহায্য করে
+They call,তারা ডাকে
+They ask,তারা জিজ্ঞাসা করে
+They take,তারা নেয়
+They give,তারা দেয়
+They see,তারা দেখে
+They hear,তারা শোনে
+They feel,তারা অনুভব করে
+They understand,তারা বোঝে
+They make,তারা তৈরি করে
+They study,তারা পড়াশোনা করে

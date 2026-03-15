@@ -1,0 +1,84 @@
+I play,আমি খেলি
+I run,আমি দৌড়াই
+I eat,আমি খাই
+I do,আমি করি
+I walk,আমি হাঁটি
+I go,আমি যাই
+I come,আমি আসি
+I read,আমি পড়ি
+I write,আমি লিখি
+I work,আমি কাজ করি
+I sleep,আমি ঘুমাই
+I drink,আমি পান করি
+I sit,আমি বসি
+I stand,আমি দাঁড়াই
+I listen,আমি শুনি
+I look,আমি তাকাই
+I love,আমি ভালোবাসি
+I want,আমি চাই
+I think,আমি ভাবি
+I know,আমি জানি
+I learn,আমি শিখি
+I cook,আমি রান্না করি
+I speak,আমি কথা বলি
+I talk,আমি কথা বলি
+I open,আমি খুলি
+I close,আমি বন্ধ করি
+I wait,আমি অপেক্ষা করি
+I try,আমি চেষ্টা করি
+I live,আমি বাস করি
+I help,আমি সাহায্য করি
+I call,আমি ডাকি
+I ask,আমি জিজ্ঞাসা করি
+I take,আমি নিই
+I give,আমি দিই
+I see,আমি দেখি
+I hear,আমি শুনি
+I feel,আমি অনুভব করি
+I understand,আমি বুঝি
+I sing,আমি গান করি
+I swim,আমি সাঁতার কাটি
+I drive,আমি গাড়ি চালাই
+I study,আমি পড়াশোনা করি
+I wash,আমি ধুই
+I watch,আমি দেখি
+I buy,আমি কিনি
+I sell,আমি বিক্রি করি
+I make,আমি তৈরি করি
+I clean,আমি পরিষ্কার করি
+I dance,আমি নাচি
+I stop,আমি থামি
+I start,আমি শুরু করি
+I finish,আমি শেষ করি
+I change,আমি পরিবর্তন করি
+I pay,আমি পরিশোধ করি
+I use,আমি ব্যবহার করি
+I show,আমি দেখাই
+I tell,আমি বলি
+I leave,আমি ছেড়ে যাই
+I bring,আমি আনি
+I keep,আমি রাখি
+I put,আমি রাখি
+I find,আমি খুঁজে পাই
+I forget,আমি ভুলে যাই
+I remember,আমি মনে রাখি
+I need,আমার প্রয়োজন
+I believe,আমি বিশ্বাস করি
+I agree,আমি রাজি
+I answer,আমি উত্তর দেই
+I break,আমি ভাঙি
+I build,আমি নির্মাণ করি
+I choose,আমি পছন্দ করি
+I cut,আমি কাটি
+I decide,আমি সিদ্ধান্ত নিই
+I explain,আমি ব্যাখ্যা করি
+I fall,আমি পড়ে যাই
+I get,আমি পাই
+I grow,আমি বড় হই
+I hope,আমি আশা করি
+I join,আমি যোগ দিই
+I meet,আমি সাক্ষাৎ করি
+I send,আমি পাঠাই
+I spend,আমি ব্যয় করি
+I teach,আমি শেখাই
+I win,আমি জয়ী হই
