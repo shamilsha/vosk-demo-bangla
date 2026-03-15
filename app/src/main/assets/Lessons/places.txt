@@ -1,0 +1,7 @@
+English Word,Bengali Meaning,Simple Sentence
+Home,বাড়ি,Go back home.
+School,স্কুল,School is closed.
+Market,বাজার,Market is far.
+City,শহর,Big city life.
+Office,অফিস,Office is open.
+Road,রাস্তা,Cross the road.

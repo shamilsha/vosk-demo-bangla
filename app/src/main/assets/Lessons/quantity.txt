@@ -1,0 +1,7 @@
+English Word,Bengali Meaning,Simple Sentence
+Many,অনেক,Many people came.
+Few,অল্প,Just few minutes.
+Some,কিছু,Need some sugar.
+All,সব,All are gone.
+Half,অর্ধেক,Give me half.
+Enough,পর্যাপ্ত,That is enough.

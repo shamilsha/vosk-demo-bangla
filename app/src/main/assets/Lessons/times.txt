@@ -1,0 +1,7 @@
+English Word,Bengali Meaning,Simple Sentence
+Now,এখন,Do it now.
+Today,আজ,Today is Monday.
+Soon,শীঘ্রই,Come back soon.
+Early,তাড়াতাড়ি,Wake up early.
+Late,দেরি,Don't be late.
+Night,রাত,Good night friend.

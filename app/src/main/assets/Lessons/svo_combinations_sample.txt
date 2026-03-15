@@ -1,0 +1,12 @@
+# [SUBJECT] [VERB] [OBJECT] – sample combinations
+# Structure is the same; one from each list. Full list is in app: menu → SVO sentences.
+# Format: English sentence (one per row for lessons). Conjugation: he/she/name + verb with s.
+I eat rice.
+I play football.
+You do work.
+He goes home.
+She runs fast.
+They read books.
+Shafin writes a letter.
+We eat food.
+The cat runs home.

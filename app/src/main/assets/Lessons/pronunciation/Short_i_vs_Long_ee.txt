@@ -1,0 +1,21 @@
+Short_i_Word,Short_i_IPA,Short_i_Bengali_Pronunciation,Short_i_Bengali_Meaning,Long_ee_Word,Long_ee_IPA,Long_ee_Bengali_Pronunciation,Long_ee_Bengali_Meaning
+it,/ɪt/,ইট,এটি,eat,/iːt/,ঈট,খাওয়া
+sit,/sɪt/,সিট,বসা,seat,/siːt/,সীট,আসন
+bit,/bɪt/,বিট,ছোট অংশ,beat,/biːt/,বীট,আঘাত করা
+fit,/fɪt/,ফিট,মানানসই,feet,/fiːt/,ফীট,পা (বহুবচন)
+ship,/ʃɪp/,শিপ,জাহাজ,sheep,/ʃiːp/,শীপ,ভেড়া
+live,/lɪv/,লিভ,বসবাস করা,leave,/liːv/,লীভ,ছেড়ে যাওয়া
+fill,/fɪl/,ফিল,পূর্ণ করা,feel,/fiːl/,ফীল,অনুভব করা
+rich,/rɪtʃ/,রিচ,ধনী,reach,/riːtʃ/,রীচ,পৌঁছানো
+hill,/hɪl/,হিল,পাহাড়,heel,/hiːl/,হীল,পায়ের গোড়ালি
+pick,/pɪk/,পিক,বেছে নেওয়া,peak,/piːk/,পীক,চূড়া
+slip,/slɪp/,স্লিপ,পিছলে পড়া,sleep,/sliːp/,স্লীপ,ঘুমানো
+grin,/ɡrɪn/,গ্রিন,মুচকি হাসি,green,/ɡriːn/,গ্রীন,সবুজ
+tin,/tɪn/,টিন,টিন ধাতু,teen,/tiːn/,টীন,কিশোর
+win,/wɪn/,উইন,জয় করা,wean,/wiːn/,উইন,দুধ ছাড়ানো
+sin,/sɪn/,সিন,পাপ,seen,/siːn/,সীন,দেখা হয়েছে
+lid,/lɪd/,লিড,ঢাকনা,lead,/liːd/,লীড,নেতৃত্ব দেওয়া
+mill,/mɪl/,মিল,কল,meal,/miːl/,মীল,খাবার
+pill,/pɪl/,পিল,বড়ি,peel,/piːl/,পীল,খোসা ছাড়ানো
+lick,/lɪk/,লিক,চাটা,leak,/liːk/,লী ক,ফুটো হওয়া
+chip,/tʃɪp/,চিপ,টুকরো,cheap,/tʃiːp/,চীপ,সস্তা

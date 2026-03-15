@@ -1,0 +1,29 @@
+Topic: SVO, Play verb
+আমি ক্রিকেট খেলি।,I play cricket.
+আমি ফুটবল খেলি।,I play football.
+আমি টেনিস খেলি।,I play tennis.
+আমি ব্যাডমিন্টন খেলি।,I play badminton.
+আমরা ক্রিকেট খেলি।,We play cricket.
+আমরা ফুটবল খেলি।,We play football.
+আমরা টেনিস খেলি।,We play tennis.
+আমরা ব্যাডমিন্টন খেলি।,We play badminton.
+তুমি ক্রিকেট খেলো।,You play cricket.
+তুমি ফুটবল খেলো।,You play football.
+তুমি টেনিস খেলো।,You play tennis.
+তুমি ব্যাডমিন্টন খেলো।,You play badminton.
+সে ক্রিকেট খেলে।,He plays cricket.
+সে ফুটবল খেলে।,He plays football.
+সে টেনিস খেলে।,He plays tennis.
+সে ব্যাডমিন্টন খেলে।,He plays badminton.
+সে ক্রিকেট খেলে (women)।,She plays cricket.
+সে ফুটবল খেলে (women)।,She plays football.
+সে টেনিস খেলে (women)।,She plays tennis.
+সে ব্যাডমিন্টন খেলে (women)।,She plays badminton.
+তারা ক্রিকেট খেলে।,They play cricket.
+তারা ফুটবল খেলে।,	They play football.
+তারা টেনিস খেলে।,They play tennis.
+তারা ব্যাডমিন্টন খেলে।,They play badminton.
+শাফিন ক্রিকেট খেলে।,Shafin plays cricket.
+শাফিন ফুটবল খেলে।,Shafin plays football.
+শাফিন টেনিস খেলে।,Shafin plays tennis.
+শাফিন ব্যাডমিন্টন খেলে।,Shafin plays badminton.

@@ -1,0 +1,9 @@
+English Word,Bengali Meaning,Simple Sentence
+Good,ভালো,This is good.
+Big,বড়,A big house.
+Happy,খুশি,Be happy always.
+Fast,দ্রুত,Run very fast.
+New,নতুন,Buy new shirt.
+Easy,সহজ,It is easy.
+Hot,গরম,Tea is hot.
+Clean,পরিষ্কার,Keep it clean.

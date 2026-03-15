@@ -1,0 +1,7 @@
+English Word,Bengali Meaning,Simple Sentence
+And,এবং,Rice and dal.
+But,কিন্তু,Small but strong.
+Or,অথবা,Tea or coffee?
+Because,কারণ,Because it's hot.
+So,তাই,So I went.
+Then,তারপর,Then he left.
