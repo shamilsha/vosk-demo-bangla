@@ -1,0 +1,5 @@
+English Word,Pronunciation in Bengali
+Conclusion,কনক্লুশান,উপসংহার
+Decision,ডিসিশান,সিদ্ধান্ত
+Vision,ভিশান,দৃষ্টি
+Television,টেলিভিশন,টেলিভিশন

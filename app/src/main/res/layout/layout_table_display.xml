@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layout: Reusable N-column table display.
+     A WebView renders a dynamic HTML table built from column count + CSV-style text.
+     Optional title row at top. Tap-to-speak support on any column.
+     Interactive mode adds Next / Restart control buttons. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <!-- Title row with optional speaker icon -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="4dp">
+
+        <TextView
+            android:id="@+id/table_display_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="#1565C0"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/table_display_info_button"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:padding="6dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Lesson info"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_info"
+            android:visibility="gone" />
+
+        <ImageButton
+            android:id="@+id/table_display_speak_button"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:padding="6dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Read aloud"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_speak_english"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- WebView for the table -->
+    <WebView
+        android:id="@+id/table_display_webview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Interactive control bar (hidden by default, shown in interactive mode) -->
+    <LinearLayout
+        android:id="@+id/table_interactive_controls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="6dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:background="#F5F5F5"
+        android:visibility="gone">
+
+        <!-- Restart button -->
+        <TextView
+            android:id="@+id/table_btn_restart"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text="⟲ Restart"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="#FF7043"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+
+        <!-- Next button -->
+        <TextView
+            android:id="@+id/table_btn_next"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:gravity="center"
+            android:text="Next ▶"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="#1565C0"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp" />
+
+    </LinearLayout>
+</LinearLayout>

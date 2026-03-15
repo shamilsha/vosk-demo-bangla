@@ -1,0 +1,8 @@
+English Word,Bengali Pronunciation,Bengali Meaning
+At,অ্যাট,নির্দিষ্ট সময়ে/স্থানে
+To,ঠো,দিকে / প্রতি
+Past,ফাস্ট,অতিবাহিত / আগে
+Until,আনঠিল,পর্যন্ত
+During,ডিউরিং,সময়কাল ধরে
+Before,বিফোহ্,আগে
+After,আফঠাহ্,পরে

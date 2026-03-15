@@ -1,0 +1,8 @@
+Word,Bengali Pronunciation (উচ্চারণ),Meaning in Bengali (অর্থ),Pronunciation Tip
+Violet,ভায়ো-লেট,বেগুনি,"Focus on the ""V"" (ভ) sound, not ""B"" (ব)."
+Biography,বায়ো-গ্রাফি,জীবনী,Break it into: বায়ো-গ্রাফি।
+Violation,ভায়ো-লেইশন,লঙ্ঘন,"Ends with ""Shon"" (শন), not ""Sion"" (সিয়ন)।"
+Biology,বায়ো-লজি,জীববিজ্ঞান,Very common in school/college.
+Violence,ভায়ো-লেন্স,সহিংসতা,"Focus on the ""V"" vibration at the start."
+Vitamin,ভাই-টামিন,ভিটামিন,"In English, it's ""Vai"" (ভাই), not ""Vi"" (ভি)।"
+Bicycle,বাই-সাইকেল,বাইসাইকেল,"Two ""S"" sounds: বাই-সাই-কেল।"

@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Common text -->
+    <color name="text_primary">#212529</color>
     <!-- Icon row: better contrast background -->
     <color name="icon_row_background">#E0E0E0</color>
     <!-- Mic icon: blue when Start, red when Stop -->
     <color name="mic_color_start">#2196F3</color>
     <color name="mic_color_stop">#F44336</color>
+    <!-- Subject + Verb + Object color coding for sentences -->
+    <color name="svo_subject">#1565C0</color>
+    <color name="svo_verb">#2E7D32</color>
+    <color name="svo_object">#E65100</color>
+    <!-- Lesson UI: topic bar high contrast -->
+    <color name="lesson_topic_bar_background">#1565C0</color>
+    <color name="lesson_topic_bar_text">#FFFFFF</color>
+    <color name="lesson_box_background">#FAFAFA</color>
+    <color name="lesson_box_stroke">#BDBDBD</color>
+    <color name="text_secondary">#757575</color>
+    <!-- Control bar: Bootstrap-style -->
+    <color name="control_primary">#0d6efd</color>
+    <color name="control_danger">#dc3545</color>
+    <color name="control_warning">#fd7e14</color>
+    <color name="control_success">#198754</color>
+    <color name="control_btn_text">#FFFFFF</color>
+    <!-- 3col table: alternate row background for high contrast -->
+    <color name="threecol_row_even">#FFFFFF</color>
+    <color name="threecol_row_odd">#E8E8E8</color>
+    <!-- Conversation bubbles: left (Person A) and right (Person B) -->
+    <color name="conv_bubble_left">#E3F2FD</color>
+    <color name="conv_bubble_right">#F3E5F5</color>
 </resources>

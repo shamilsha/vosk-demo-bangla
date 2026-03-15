@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layout 3: Practice — Bengali word, English meaning, User's spoken English.
+     3 text areas, each approximately 3 rows high. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:paddingTop="4dp">
+
+    <!-- ─── Area 1: Bengali word / sentence ─── -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="6dp"
+        android:text="বাংলা (Bengali)"
+        android:textSize="13sp"
+        android:textColor="#1565C0"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/practice_bengali_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:minLines="3"
+        android:maxLines="5"
+        android:scrollbars="vertical"
+        android:textSize="20sp"
+        android:textColor="#212121"
+        android:lineSpacingMultiplier="1.3"
+        android:background="#F5F8FF"
+        android:gravity="center_vertical"
+        android:text="" />
+
+    <!-- Thin separator -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp" />
+
+    <!-- ─── Area 2: English meaning ─── -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="6dp"
+        android:text="English"
+        android:textSize="13sp"
+        android:textColor="#2E7D32"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/practice_english_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:minLines="3"
+        android:maxLines="5"
+        android:scrollbars="vertical"
+        android:textSize="20sp"
+        android:textColor="#212121"
+        android:lineSpacingMultiplier="1.3"
+        android:background="#F5FFF5"
+        android:gravity="center_vertical"
+        android:text="" />
+
+    <!-- Thin separator -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp" />
+
+    <!-- ─── Area 3: User's spoken text (from mic) ─── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="6dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Your answer"
+            android:textSize="13sp"
+            android:textColor="#E65100"
+            android:textStyle="bold" />
+        <!-- Result indicator (Correct / Incorrect) -->
+        <TextView
+            android:id="@+id/practice_result_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:visibility="gone" />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/practice_user_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:minLines="3"
+        android:maxLines="5"
+        android:scrollbars="vertical"
+        android:textSize="20sp"
+        android:textColor="#212121"
+        android:lineSpacingMultiplier="1.3"
+        android:background="#FFF8F0"
+        android:gravity="center_vertical"
+        android:hint="Speak the English meaning…"
+        android:textColorHint="#BDBDBD"
+        android:text="" />
+</LinearLayout>

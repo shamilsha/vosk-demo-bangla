@@ -1,0 +1,6 @@
+English Word,Pronunciation in Bengali
+King,
+Kite,
+Keep,
+Key,
+Kind,

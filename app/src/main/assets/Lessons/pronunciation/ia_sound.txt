@@ -1,0 +1,9 @@
+Word,Bengali Pronunciation (উচ্চারণ),Meaning in Bengali (অর্থ),Pronunciation Tip
+Dialog,ডাই-আ-লগ,সংলাপ,Break it: ডাই + আ + লগ।
+Diamond,ডাই-আ-মন্ড,হীরা,"The ""D"" at the end is very soft."
+Liar,লাই-আর,মিথ্যাবাদী,"Sounds like ""লাই"" followed by a quick ""আর।"""
+Liability,লাই-আ-বিলিটি,দায়বদ্ধতা,A long word: লাই + আ + বিলি + টি।
+Diary,ডাই-আ-রি,ডায়েরি,"Common mistake: don't say ""ডি-আরি।"""
+Giant,জাই-আন্ট,বিশাল,"Start with a ""J"" (জ) sound."
+Dial,ডাই-আল,ডায়াল করা,"Focus on the ""L"" (ল) at the end."
+Reliance,রি-লাই-আন্স,নির্ভরতা,Focus on the middle: রি-লাই-আন্স।

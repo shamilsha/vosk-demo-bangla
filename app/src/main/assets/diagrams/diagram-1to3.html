@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>English Grammar Rules – 1 to 3</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: sans-serif;
+      background: #fff;
+      padding: 8px;
+      min-height: 100vh;
+    }
+    .title-bar {
+      background: #c62828;
+      color: #fff;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+      border-radius: 4px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .cell {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 72px;
+    }
+    .pronoun-oval {
+      flex-shrink: 0;
+      width: 44px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 15px;
+      color: #000;
+    }
+    .pronoun-oval.blue   { background: #42A5F5; }
+    .pronoun-oval.green  { background: #66BB6A; }
+    .pronoun-oval.purple { background: #AB47BC; }
+    .pronoun-oval.black  { background: #37474F; color: #fff; }
+    .pronoun-oval.red    { background: #EF5350; }
+    .pronoun-oval.orange { background: #FFA726; }
+    .verbs {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2px;
+      flex: 1;
+    }
+    .verb-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .arrow-line {
+      width: 20px;
+      height: 0;
+      border-top: 1.5px solid #000;
+      position: relative;
+    }
+    .arrow-line::after {
+      content: '';
+      position: absolute;
+      right: -6px;
+      top: -4px;
+      border: 4px solid transparent;
+      border-left-color: #000;
+      border-width: 4px 0 4px 6px;
+    }
+    .verb-text { font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="title-bar">English Grammar Rules</div>
+  <div class="grid">
+    <div class="cell">
+      <div class="pronoun-oval blue">I</div>
+      <div class="verbs">
+        <div class="verb-row"><span class="arrow-line"></span><span class="verb-text">am</span></div>
+        <div class="verb-row"><span class="arrow-line"></span><span class="verb-text">do</span></div>
+        <div class="verb-row"><span class="arrow-line"></span><span class="verb-text">have</span></div>
+      </div>
+    </div>
+    <div class="cell">
+      <div class="pronoun-oval green">She</div>
+      <div class="verbs">
+        <div class="verb-row"><span class="arrow-line"></span><span class="verb-text">is</span></div>
+        <div class="verb-row"><span class="arrow-line"></span><span class="verb-text">does</span></div>
+        <div class="verb-row"><span class="arrow-line"></span><span class="verb-text">has</span></div>
+      </div>
+    </div>
+    <div class="cell">
+      <div class="pronoun-oval purple">You</div>
+      <div class="verbs">
+        <div class="verb-row"><span class="arrow-line"></span><span class="verb-text">are</span></div>
+        <div class="verb-row"><span class="arrow-line"></span><span class="verb-text">do</span></div>
+        <div class="verb-row"><span class="arrow-line"></span><span class="verb-text">have</span></div>
+      </div>
+    </div>
+    <div class="cell">
+      <div class="pronoun-oval black">We</div>
+      <div class="verbs">
+        <div class="verb-row"><span class="arrow-line"></span><span class="verb-text">are</span></div>
+        <div class="verb-row"><span class="arrow-line"></span><span class="verb-text">do</span></div>
+        <div class="verb-row"><span class="arrow-line"></span><span class="verb-text">have</span></div>
+      </div>
+    </div>
+    <div class="cell">
+      <div class="pronoun-oval red">He</div>
+      <div class="verbs">
+        <div class="verb-row"><span class="arrow-line"></span><span class="verb-text">is</span></div>
+        <div class="verb-row"><span class="arrow-line"></span><span class="verb-text">does</span></div>
+        <div class="verb-row"><span class="arrow-line"></span><span class="verb-text">has</span></div>
+      </div>
+    </div>
+    <div class="cell">
+      <div class="pronoun-oval orange">They</div>
+      <div class="verbs">
+        <div class="verb-row"><span class="arrow-line"></span><span class="verb-text">are</span></div>
+        <div class="verb-row"><span class="arrow-line"></span><span class="verb-text">do</span></div>
+        <div class="verb-row"><span class="arrow-line"></span><span class="verb-text">have</span></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

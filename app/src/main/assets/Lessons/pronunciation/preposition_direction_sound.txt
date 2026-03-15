@@ -1,0 +1,7 @@
+English Word,Bengali Pronunciation,Bengali Meaning
+Across,আ-খ্রস,আড়াআড়িভাবে
+Toward,ঠো-ওয়াড,অভিমুখে
+From,ফ্রম,হতে / থেকে
+With,উইথ,সাথে
+About,অ্যাবাউট,সম্পর্কে
+Per,ফাহ্,প্রতি

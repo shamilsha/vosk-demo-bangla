@@ -1,0 +1,6 @@
+English Word,Pronunciation in Bengali
+Village,ভিলিজ,গ্রাম
+Courage,কারিজ,সাহস
+Marriage,ম্যারিজ,বিবাহ
+Language,ল্যাংগুয়েজ,ভাষা
+Message,মেসেজ,বার্তা

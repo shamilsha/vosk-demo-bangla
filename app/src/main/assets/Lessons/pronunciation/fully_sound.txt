@@ -1,0 +1,5 @@
+English Word,Pronunciation in Bengali
+Beautifully,বিউটিফুলি,সুন্দরভাবে
+Carefully,খেয়ারফুলি,সতর্কভাবে
+Successfully,সাকসেসফুলি,সফলভাবে
+Faithfully,ফেইথফুলি,বিশ্বস্তভাবে

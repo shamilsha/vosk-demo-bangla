@@ -1,0 +1,10 @@
+English Word,Pronunciation in Bengali
+father,
+found,
+fan,
+fight,
+Fan,
+Fish,
+Food,
+Face,
+Full,

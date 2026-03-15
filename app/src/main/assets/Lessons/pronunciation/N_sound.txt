@@ -1,0 +1,6 @@
+English Word,Pronunciation in Bengali
+Nose,
+Name,
+Next,
+Nice,
+Note

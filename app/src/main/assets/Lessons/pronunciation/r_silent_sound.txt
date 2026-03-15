@@ -1,0 +1,9 @@
+Word,Bengali Pronunciation (উচ্চারণ),Meaning (অর্থ),Pronunciation Tip
+Father,ফা-দা(হ্),বাবা,"Don't say ""ফাদার""; end with a soft ""আ"" sound."
+Mother,মা-দা(হ্),মা,"Use a soft ""দ"" for the ""th."""
+Sister,সিস্-টা(হ্),বোন,"The ""T"" is a sharp ""ট"" sound."
+Brother,ব্রা-দা(হ্),ভাই,"Start with a clear ""Br"" and end softly."
+Teacher,টী-চা(হ্),শিক্ষক,"Very common mistake: avoid saying ""টিচার।"""
+Water,ওয়া-টা(হ্),পানি,"Focus on the ""W"" and the silent ""R."""
+Doctor,ডক্-টা(হ্),ডাক্তার,"The ""O"" sounds like ""অ""; end is soft."
+Paper,পেই-পা(হ্),কাগজ,"Remember the ""Magic E"" sound for the ""A."""

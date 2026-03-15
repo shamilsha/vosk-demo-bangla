@@ -1,90 +1,90 @@
-Root (V1),Past (V2),Past Participle (V3),Bengali Meaning
-Arise,Arose,Arisen,ওঠা / উদিত হওয়া
-Awake,Awoke,Awoken,জাগ্রত হওয়া
-Bear,Bore,Borne,বহন করা / সহ্য করা
-Beat,Beat,Beaten,প্রহার করা
-Become,Became,Become,হওয়া
-Begin,Began,Begun,শুরু করা
-Bend,Bent,Bent,বাঁকানো
-Bite,Bit,Bitten,কামড়ানো
-Bleed,Bled,Bled,রক্তপাত হওয়া
-Blow,Blew,Blown,প্রবাহিত হওয়া
-Break,Broke,Broken,ভাঙা
-Bring,Brought,Brought,আনা
-Build,Built,Built,নির্মাণ করা
-Burn,Burnt,Burnt,পোড়ানো
-Buy,Bought,Bought,কেনা
-Catch,Caught,Caught,ধরা
-Choose,Chose,Chosen,পছন্দ করা
-Come,Came,Come,আসা
-Cost,Cost,Cost,দাম হওয়া
-Cut,Cut,Cut,কাটা
-Dig,Dug,Dug,খনন করা
-Do,Did,Done,করা
-Draw,Drew,Drawn,আঁকা
-Dream,Dreamt,Dreamt,স্বপ্ন দেখা
-Drink,Drank,Drunk,পান করা
-Drive,Drove,Driven,চালানো
-Eat,Ate,Eaten,খাওয়া
-Fall,Fell,Fallen,পড়ে যাওয়া
-Feed,Fed,Fed,খাওয়ানো
-Feel,Felt,Felt,অনুভব করা
-Fight,Fought,Fought,যুদ্ধ করা
-Find,Found,Found,খুঁজে পাওয়া
-Fly,Flew,Flown,ওড়া
-Forget,Forgot,Forgotten,ভুলে যাওয়া
-Forgive,Forgave,Forgiven,ক্ষমা করা
-Freeze,Froze,Frozen,জমাট বাঁধা
-Get,Got,Got/Gotten,পাওয়া
-Give,Gave,Given,দেওয়া
-Go,Went,Gone,যাওয়া
-Grow,Grew,Grown,জন্মানো / বৃদ্ধি পাওয়া
-Hang,Hung,Hung,ঝোলানো
-Hear,Heard,Heard,শোনা
-Hide,Hid,Hidden,লুকানো
-Hit,Hit,Hit,আঘাত করা
-Hold,Held,Held,ধরা / ধরে রাখা
-Keep,Kept,Kept,রাখা
-Know,Knew,Known,জানা
-Lead,Led,Led,পরিচালনা করা
-Learn,Learnt,Learnt,শেখা
-Leave,Left,Left,ত্যাগ করা
-Lend,Lent,Lent,ধার দেওয়া
-Lose,Lost,Lost,হারানো
-Make,Made,Made,তৈরি করা
-Meet,Met,Met,সাক্ষাৎ করা
-Pay,Paid,Paid,পরিশোধ করা
-Put,Put,Put,রাখা
-Read,Read,Read,পড়া
-Ride,Rode,Ridden,চড়া (ঘোড়া/সাইকেল)
-Ring,Rang,Rung,বাজানো
-Rise,Rose,Risen,ওঠা
-Run,Ran,Run,দৌড়ানো
-Say,Said,Said,বলা
-See,Saw,Seen,দেখা
-Sell,Sold,Sold,বিক্রি করা
-Send,Sent,Sent,পাঠানো
-Shake,Shook,Shaken,নাড়ানো
-Shoot,Shot,Shot,গুলি করা
-Show,Showed,Shown,দেখানো
-Shut,Shut,Shut,বন্ধ করা
-Sing,Sang,Sung,গান করা
-Sink,Sank,Sunk,ডুবে যাওয়া
-Sit,Sat,Sat,বসা
-Sleep,Slept,Slept,ঘুমানো
-Speak,Spoke,Spoken,কথা বলা
-Spend,Spent,Spent,ব্যয় করা
-Stand,Stood,Stood,দাঁড়ানো
-Steal,Stole,Stolen,চুরি করা
-Swim,Swam,Swum,সাঁতার কাটা
-Take,Took,Taken,নেওয়া
-Teach,Taught,Taught,শেখানো
-Tear,Tore,Torn,ছেঁড়া
-Tell,Told,Told,বলা
-Think,Thought,Thought,চিন্তা করা
-Throw,Threw,Thrown,ছুড়ে মারা
-Understand,Understood,Understood,বুঝতে পারা
-Wake,Woke,Woken,জাগানো
-Wear,Wore,Worn,পরিধান করা
-Win,Won,Won,জয়ী হওয়া
-Write,Wrote,Written,লেখা
+Root (V1),Past (V2),Past Participle (V3),Bengali Meaning,Common Local Sentence
+Arise,Arose,Arisen,ওঠা / উদিত হওয়া,A new problem arose yesterday.
+Awake,Awoke,Awoken,জাগ্রত হওয়া,I awoke early in the morning.
+Bear,Bore,Borne,বহন করা / সহ্য করা,He bore all the expenses.
+Beat,Beat,Beaten,প্রহার করা,Our team beat them in the final.
+Become,Became,Become,হওয়া,He became a famous doctor.
+Begin,Began,Begun,শুরু করা,The class began at 9 AM.
+Bend,Bent,Bent,বাঁকানো,Don't bend the wire too much.
+Bite,Bit,Bitten,কামড়ানো,The street dog bit him.
+Bleed,Bled,Bled,রক্তপাত হওয়া,His finger is bleeding.
+Blow,Blew,Blown,প্রবাহিত হওয়া,The wind blew away my cap.
+Break,Broke,Broken,ভাঙা,I accidentally broke the mobile screen.
+Bring,Brought,Brought,আনা,Did you bring the file from the office?
+Build,Built,Built,নির্মাণ করা,They built a big house in our village.
+Burn,Burnt,Burnt,পোড়ানো,The sun burnt my skin in this heat.
+Buy,Bought,Bought,কেনা,I bought some fish from the market.
+Catch,Caught,Caught,ধরা,The police caught the thief red-handed.
+Choose,Chose,Chosen,পছন্দ করা,Choose your favorite color.
+Come,Came,Come,আসা,Please come to my house tomorrow.
+Cost,Cost,Cost,দাম হওয়া,This phone cost me twenty thousand rupees.
+Cut,Cut,Cut,কাটা,I cut the cake into four pieces.
+Dig,Dug,Dug,খনন করা,They dug a deep well here.
+Do,Did,Done,করা,I did my work on time.
+Draw,Drew,Drawn,আঁকা,She drew a beautiful landscape.
+Dream,Dreamt,Dreamt,স্বপ্ন দেখা,I dreamt of flying last night.
+Drink,Drank,Drunk,পান করা,Drink some tea or coffee.
+Drive,Drove,Driven,চালানো,He drives the car very safely.
+Eat,Ate,Eaten,খাওয়া,I ate biryani for dinner.
+Fall,Fell,Fallen,পড়ে যাওয়া,The child fell from the bed.
+Feed,Fed,Fed,খাওয়ানো,Please feed the cat.
+Feel,Felt,Felt,অনুভব করা,I felt very happy after seeing him.
+Fight,Fought,Fought,যুদ্ধ করা,The soldiers fought bravely.
+Find,Found,Found,খুঁজে পাওয়া,I found my lost wallet.
+Fly,Flew,Flown,ওড়া,The birds flew over the river.
+Forget,Forgot,Forgotten,ভুলে যাওয়া,I forgot to bring the keys.
+Forgive,Forgave,Forgiven,ক্ষমা করা,Please forgive me for my mistake.
+Freeze,Froze,Frozen,জমাট বাঁধা,Keep the water in the freezer.
+Get,Got,Got/Gotten,পাওয়া,I got a call from my mother.
+Give,Gave,Given,দেওয়া,Give me some time to think.
+Go,Went,Gone,যাওয়া,I went to the market yesterday.
+Grow,Grew,Grown,জন্মানো / বৃদ্ধি পাওয়া,The plant grew very fast.
+Hang,Hung,Hung,ঝোলানো,Hang the picture on the wall.
+Hear,Heard,Heard,শোনা,I heard a loud noise outside.
+Hide,Hid,Hidden,লুকানো,Where did you hide the money?
+Hit,Hit,Hit,আঘাত করা,He hit the ball very hard.
+Hold,Held,Held,ধরা / ধরে রাখা,Hold my hand while crossing the road.
+Keep,Kept,Kept,রাখা,Keep the change with you.
+Know,Knew,Known,জানা,I know your brother very well.
+Lead,Led,Led,পরিচালনা করা,He led the team to victory.
+Learn,Learnt,Learnt,শেখা,I want to learn how to drive.
+Leave,Left,Left,ত্যাগ করা,The train left the station.
+Lend,Lent,Lent,ধার দেওয়া,Can you lend me five hundred taka?
+Lose,Lost,Lost,হারানো,I lost my mobile in the bus.
+Make,Made,Made,তৈরি করা,My sister made some snacks.
+Meet,Met,Met,সাক্ষাৎ করা,I will meet you at the station.
+Pay,Paid,Paid,পরিশোধ করা,I paid the bill online.
+Put,Put,Put,রাখা,Put the book in your bag.
+Read,Read,Read,পড়া,I read the newspaper every morning.
+Ride,Rode,Ridden,চড়া (ঘোড়া/সাইকেল),He rode his bike to school.
+Ring,Rang,Rung,বাজানো,The school bell rang loudly.
+Rise,Rose,Risen,ওঠা,The sun rises in the east.
+Run,Ran,Run,দৌড়ানো,He ran to catch the train.
+Say,Said,Said,বলা,What did the teacher say?
+See,Saw,Seen,দেখা,I saw him at the park.
+Sell,Sold,Sold,বিক্রি করা,He sells vegetables in the market.
+Send,Sent,Sent,পাঠানো,I sent the parcel yesterday.
+Shake,Shook,Shaken,নাড়ানো,Shake the bottle before use.
+Shoot,Shot,Shot,গুলি করা,The hunter shot the bird.
+Show,Showed,Shown,দেখানো,Show me your new watch.
+Shut,Shut,Shut,বন্ধ করা,Shut the door properly.
+Sing,Sang,Sung,গান করা,She sang a beautiful song.
+Sink,Sank,Sunk,ডুবে যাওয়া,The boat sank in the river.
+Sit,Sat,Sat,বসা,Please sit on the chair.
+Sleep,Slept,Slept,ঘুমানো,I slept for eight hours last night.
+Speak,Spoke,Spoken,কথা বলা,Can you speak in English?
+Spend,Spent,Spent,ব্যয় করা,I spent all my pocket money.
+Stand,Stood,Stood,দাঁড়ানো,Stand in the queue please.
+Steal,Stole,Stolen,চুরি করা,Someone stole my bicycle.
+Swim,Swam,Swum,সাঁতার কাটা,I can swim across the pond.
+Take,Took,Taken,নেওয়া,Take your umbrella with you.
+Teach,Taught,Taught,শেখানো,My uncle taught me how to fish.
+Tear,Tore,Torn,ছেঁড়া,Don't tear the pages of the book.
+Tell,Told,Told,বলা,Tell me a funny story.
+Think,Thought,Thought,চিন্তা করা,I thought you were at home.
+Throw,Threw,Thrown,ছুড়ে মারা,Don't throw garbage on the road.
+Understand,Understood,Understood,বুঝতে পারা,I understood everything clearly.
+Wake,Woke,Woken,জাগানো,Wake me up at 6 AM.
+Wear,Wore,Worn,পরিধান করা,I wore a new shirt today.
+Win,Won,Won,জয়ী হওয়া,We won the football match.
+Write,Wrote,Written,লেখা,Write your name on the paper.

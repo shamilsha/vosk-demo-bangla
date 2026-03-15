@@ -1,0 +1,5 @@
+English Word,Bengali Pronunciation,Bengali Meaning
+Always,অল-ওয়েজ,সব সময়
+Often,ওফেন,প্রায়ই
+Sometimes,সাম-ঠাইমস,মাঝে মাঝে
+Never,নেভাঃ,কখনোই না

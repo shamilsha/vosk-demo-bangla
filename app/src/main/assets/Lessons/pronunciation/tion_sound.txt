@@ -1,0 +1,10 @@
+English Word,Pronunciation in Bengali
+Mention,মেনশন,উল্লেখ করা
+Fiction,ফিকশন,কথাসাহিত্য
+Condition,কন্ডিশন,অবস্থা
+Action,অ্যাকশন,কাজ
+Relation,রিলেশন,সম্পর্ক
+Nation,নেশন,জাতি
+Pronunciation,প্রোনাউনসিয়েশন,উচ্চারণ
+Education,এডুকেশন,শিক্ষা
+Presentation,প্রেজেন্টেশন,উপস্থাপন

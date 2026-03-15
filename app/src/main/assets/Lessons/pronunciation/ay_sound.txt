@@ -1,0 +1,7 @@
+English Word,Pronunciation in Bengali
+Way,ওয়েই,পথ
+Say,সেই,বলা
+Play,প্লেই,খেলা
+Pray,প্রেই,প্রার্থনা
+May,মেই,মে মাস
+Stay,স্টেই,অবস্থান

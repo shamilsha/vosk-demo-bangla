@@ -1,0 +1,5 @@
+English Word,Pronunciation in Bengali
+Automatically,অটোমেটিকালী,স্বয়ংক্রিয়ভাবে
+Basically,বেইসিকালী,মূলত
+Politically,পলিটিকালী,রাজনৈতিকভাবে
+Specifically,স্পেসিফিকালী,বিশেষভাবে

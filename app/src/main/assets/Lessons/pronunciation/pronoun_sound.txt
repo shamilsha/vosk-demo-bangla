@@ -1,0 +1,9 @@
+Word,Bengali Pronunciation (উচ্চারণ),Meaning in Bengali (অর্থ),Pronunciation Tip
+I,আই,আমি,"Stretch the ""I"" sound slightly."
+You,ইউ,তুমি / আপনি,"A smooth ""U"" sound."
+He,হি,সে (পুরুষ),"A short, sharp ""H"" followed by ""i""."
+She,শী,সে (মহিলা),"Use the ""শ"" (Sh) sound, not ""স"" (S)."
+We,উই,আমরা,"Round your lips like a circle for the ""W""."
+They,দেই,তারা,"Use a soft ""দ"" sound, not a hard ""ড""."
+Me,মি,আমাকে,"Similar to ""He"" but with an ""M""."
+Us,আস,আমাদের,"A very short ""Ah"" sound followed by ""S""."

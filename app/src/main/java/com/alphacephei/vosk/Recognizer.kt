@@ -87,14 +87,12 @@ class Recognizer {
 
         val samples = FloatArray(buffer.size) { buffer[it] / 32768.0f }
         stream.acceptWaveform(samples, sampleRate = sampleRateInHz)
-        var text = ""
-        var isEndpoint = false
+        var text: String
+        var isEndpoint: Boolean
         val timeMillis = measureTimeMillis {
-
             while (model.isReady(stream)) {
                 model.decode(stream)
             }
-
             isEndpoint = model.isEndpoint(stream)
             text = model.getResult(stream).text
         }

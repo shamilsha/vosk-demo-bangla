@@ -1,0 +1,11 @@
+English Word,Pronunciation in Bengali
+Cute,কিউট্ঠ
+Keyboard,খীবোর্ড
+Clean,ক্লিন
+Kick,খীক
+Careful,খেয়া:ফুল
+King,খীং
+Queen,খ্যুইন
+Quick,কুইখ
+Question,খোয়েশ্চেন্
+Quality,খোয়ালিটি

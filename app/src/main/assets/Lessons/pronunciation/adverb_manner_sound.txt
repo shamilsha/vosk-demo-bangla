@@ -1,0 +1,7 @@
+English Word,Bengali Pronunciation,Bengali Meaning
+Quickly,খুইখ-লি,দ্রুততার সাথে
+Perfectly,ফাফেক্ট-লি,নিখুঁতভাবে
+Carefully,খেয়া:ফুল-লি,সতর্কতার সাথে
+Quietly,খুয়ায়েট-লি,শান্তভাবে
+Slowly,স্লো-লি,ধীরে ধীরে
+Hard,হা:ড,কঠোরভাবে

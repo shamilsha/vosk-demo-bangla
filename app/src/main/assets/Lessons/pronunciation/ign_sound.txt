@@ -1,0 +1,5 @@
+English Word,Pronunciation in Bengali
+Design,ডিজাইন,নকশা
+Resign,রিজাইন,পদত্যাগ করা
+Campaign,ক্যাম্পেইন,অভিযান
+Foreign,ফরেন,বিদেশ

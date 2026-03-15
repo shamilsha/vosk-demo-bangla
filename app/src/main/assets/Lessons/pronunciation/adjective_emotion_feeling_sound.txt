@@ -1,0 +1,6 @@
+English Word,Bengali Pronunciation,Bengali Meaning
+Happy,হ্যাপি,সুখী
+Sad,স্যাড,দুঃখিত
+Angry,অ্যাংগ্রি,রাগান্বিত
+Proud,ফাউড,গর্বিত
+Tired,ঠায়াড,ক্লান্ত

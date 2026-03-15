@@ -1,0 +1,16 @@
+English Word,Bengali Pronunciation,Bengali Meaning,Pronunciation Note
+And,অ্যান্ড,এবং / ও,Common neutral sound.
+But,বাট,কিন্তু,"Use a sharp ""ট"" at the end."
+Or,অঃ,অথবা / বা,The 'r' is silent.
+Because,বি-খজ,কারণ,Start the second part with 'খ'.
+So,সো,তাই / সুতরাং,"Simple ""S"" sound."
+If,ইফ,যদি,"Short ""i"" sound."
+But,বাট,কিন্তু,"A sharp ""T"" ending."
+Yet,ইয়েট,তবুও / এখনো,"Start with a ""Y"" sound."
+As,অ্যাজ,যেহেতু / মতো,The 's' sounds like a 'z' (জ).
+Than,দ্যান,চেয়ে / থেকে,Often used for comparison.
+Till,ঠিল,পর্যন্ত,Start with the aspirated 'ঠ'.
+Until,আন-ঠিল,যে পর্যন্ত না,Note the 'ঠ' in the middle.
+Either,আই-দাঃ,হয় এটা (নয় ওটা),The 'r' is silent.
+Neither,নাই-দাঃ,এটাও না (ওটাও না),The 'r' is silent.
+Provided,ফ্রো-ভায়েডেড,যদি / এই শর্তে যে,Start with the aspirated 'ফ'.

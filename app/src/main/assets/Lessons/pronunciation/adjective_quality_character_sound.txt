@@ -1,0 +1,9 @@
+English Word,Bengali Pronunciation,Bengali Meaning
+Perfect,ফাফেক্ট,নিখুঁত
+Popular,ফফিউলাহ্,জনপ্রিয়
+Cute,খিউঠ,আকর্ষণীয় / সুন্দর
+Creative,খ্রিয়েটিভ,সৃজনশীল
+Kind,খাইন্ড,দয়ালু
+Pure,ফিউয়াহ্,বিশুদ্ধ
+Good,গুড,ভালো
+Bad,ব্যাড,খারাপ

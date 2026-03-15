@@ -1,0 +1,11 @@
+English Word,Pronunciation in Bengali
+Pencil,ফেন্সিল্
+Party,ফা:র্টি
+Pen,ফেন্ট,
+Please,প্লীয
+Power,ফাওয়ায়ঃ
+Person,ফা:র্সন
+Paper,ফেইফায়ঃ
+Popular,ফফিউলা
+Public,ফাবলিখ
+Private,প্রাইভেট্ঠ

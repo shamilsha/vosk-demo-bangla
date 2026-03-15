@@ -1,0 +1,6 @@
+English Word,Pronunciation in Bengali
+Famous,ফেইমাস,বিখ্যাত
+Pious,ফাইয়াস,ধার্মিক
+Serious,সিরিয়াস,গুরুতর
+Continuous,কন্টিনিউয়াস,নিরবিচ্ছিন্ন
+Dangerous,ডেইঞ্জারাস,বিপজ্জনক

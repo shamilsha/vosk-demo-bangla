@@ -1,0 +1,6 @@
+English Word,Pronunciation in Bengali
+Pleasure,প্লেঝার,আনন্দ
+Measure,মেঝার,পরিমাপ
+Treasure,ট্রেঝার,সম্পদ/গুপ্তধন
+Leisure,লেঝার,অবসর
+

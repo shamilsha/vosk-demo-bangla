@@ -1,0 +1,6 @@
+English Word,Pronunciation in Bengali
+Government,গাভার্নমান্ট,সরকার
+Development,ডিভেলাপমান্ট,উন্নয়ন
+Movement,মুভমান্ট,আন্দোলন
+Management,ম্যানেজমান্ট,ব্যবস্থাপনা
+Environment,এনভায়রনমান্ট,পরিবেশ

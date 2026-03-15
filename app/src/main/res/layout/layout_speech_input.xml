@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Layout 2: Speech Input — mic testing, storytelling.
+     Shows recognized text. Clear language toggle (Bangla / English). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF">
+
+    <!-- Language toggle row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:paddingBottom="6dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <TextView
+            android:id="@+id/speech_lang_bangla"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="বাংলা  (Bangla)"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="#1565C0"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:tag="selected" />
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="36dp"
+            android:background="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/speech_lang_english"
+            android:layout_width="0dp"
+            android:layout_height="36dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="English"
+            android:textSize="15sp"
+            android:textColor="#555555"
+            android:background="#E0E0E0"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:tag="unselected" />
+    </LinearLayout>
+
+    <!-- Thin separator -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0" />
+
+    <!-- Recognized text display (scrollable, fills remaining space) -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <TextView
+            android:id="@+id/speech_recognized_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="16dp"
+            android:textSize="20sp"
+            android:textColor="#212121"
+            android:lineSpacingMultiplier="1.4"
+            android:hint="Tap mic and start speaking…"
+            android:textColorHint="#BDBDBD"
+            android:text="" />
+    </ScrollView>
+
+    <!-- Status bar: shows listening state -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="8dp"
+        android:background="#F5F5F5">
+
+        <View
+            android:id="@+id/speech_status_dot"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:background="@drawable/badge_circle_small"
+            android:layout_marginEnd="8dp" />
+
+        <TextView
+            android:id="@+id/speech_status_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ready"
+            android:textSize="13sp"
+            android:textColor="#757575" />
+    </LinearLayout>
+</LinearLayout>

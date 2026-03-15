@@ -1,0 +1,10 @@
+English Word,Pronunciation in Bengali
+Write,রাইট,লেখা
+Wrong,রং,ভুল
+Wrist,রিস্ট,কবজি
+Wrap,র‍্যাপ,মোড়ানো
+Know,নো,জানা
+Knee,নী,হাঁটু
+Knife,নাইফ,ছুরি
+Knowledge,নলেজ,জ্ঞান
+Knight,নাইট,বীর যোদ্ধা

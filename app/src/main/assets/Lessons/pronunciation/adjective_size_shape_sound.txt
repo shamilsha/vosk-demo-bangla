@@ -1,0 +1,7 @@
+English Word,Bengali Pronunciation,Bengali Meaning
+Tall,ঠল,লম্বা
+Tiny,ঠাইনি,খুব ছোট
+Big,বিগ,বড়
+Short,শো-ট (Silent R),খাটো / ছোট
+Great,গ্রেইট,মহান / বিশাল
+Thin,থিন,পাতলা

@@ -1,0 +1,10 @@
+English Word,Bengali Pronunciation,Bengali Meaning
+Can,খ্যান,পারা
+Could,খুড,পারতো
+Shall,শ্যাল,হবে (ভবিষ্যৎ)
+Should,শুড,উচিত
+Will,উইল,হবে (ভবিষ্যৎ)
+Would,উড,হতো/করতো
+May,মেই,হতে পারে
+Might,মাইট,হতে পারতো
+Must,মাস্ট,অবশ্যই

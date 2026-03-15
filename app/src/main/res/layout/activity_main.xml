@@ -1,147 +1,192 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="24dp"
-        android:paddingEnd="24dp"
-        android:paddingTop="8dp"
-        android:text="@string/input_language"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-    <RadioGroup
-        android:id="@+id/input_language_group"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingStart="24dp"
-        android:paddingEnd="24dp">
-
-        <RadioButton
-            android:id="@+id/radio_bengali"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:text="@string/input_bengali" />
-
-        <RadioButton
-            android:id="@+id/radio_english"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/input_english" />
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/my_text"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:padding="24dp"
-        android:scrollbars="vertical"
-        android:singleLine="false"
-        android:text="@string/hint"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-    <TextView
-        android:id="@+id/translation_label"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="24dp"
-        android:paddingEnd="24dp"
-        android:paddingTop="8dp"
-        android:text="@string/english_translation_label"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-    <TextView
-        android:id="@+id/english_text"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="24dp"
-        android:scrollbars="vertical"
-        android:singleLine="false"
-        android:text=""
-        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="24dp"
-        android:paddingTop="8dp"
-        android:text="@string/sentence_list_label"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/sentence_list"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:minHeight="60dp"
-        android:padding="8dp" />
-
+    <!-- Main content -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:padding="8dp"
-        android:background="@color/icon_row_background">
-        <ImageButton
-            android:id="@+id/save_list_button"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- ═══ TOP BAR (always visible) ═══ -->
+        <LinearLayout
+            android:id="@+id/top_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/lesson_topic_bar_background"
+            android:paddingStart="4dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:minHeight="40dp">
+            <ImageButton
+                android:id="@+id/hamburger_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Menu"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_menu_hamburger"
+                android:padding="6dp" />
+            <TextView
+                android:id="@+id/lesson_topic_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/lesson_topic_hint"
+                android:textColor="@color/lesson_topic_bar_text"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingStart="4dp" />
+            <TextView
+                android:id="@+id/lesson_stat_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:textColor="@color/lesson_topic_bar_text"
+                android:textSize="14sp"
+                android:visibility="gone"
+                tools:text="0/10 (0%)"
+                tools:visibility="visible" />
+            <ImageButton
+                android:id="@+id/lecture_button"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/lecture_play"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_lecture_play"
+                android:padding="6dp" />
+        </LinearLayout>
+
+        <!-- ═══ CONTENT AREA (switchable layouts go here) ═══ -->
+        <FrameLayout
+            android:id="@+id/content_frame"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/save_list"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_save" />
-        <ImageButton
-            android:id="@+id/load_list_button"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/load_list"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_folder_open" />
-        <ImageButton
-            android:id="@+id/next_button"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/next"
-            android:enabled="false"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_next" />
-        <ImageButton
-            android:id="@+id/skip_button"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/skip"
-            android:enabled="false"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_skip" />
-        <ImageButton
-            android:id="@+id/mic_button"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/start_mic"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_mic" />
+            android:background="@color/lesson_box_background">
+
+            <!-- Default / legacy content (all existing views) -->
+            <include layout="@layout/layout_content_legacy" />
+
+        </FrameLayout>
+
+        <!-- ═══ CONTROL ACTIONS (Start / Stop / Pause / Resume) — visible when layout uses them ═══ -->
+        <include
+            android:id="@+id/control_actions_include"
+            layout="@layout/layout_control_actions" />
+
+        <!-- ═══ BOTTOM BAR (always visible) ═══ -->
+        <LinearLayout
+            android:id="@+id/bottom_bar"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="2dp"
+            android:background="@color/icon_row_background">
+            <ImageButton
+                android:id="@+id/save_list_button"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/save_list"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_save" />
+            <ImageButton
+                android:id="@+id/load_list_button"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/load_lesson"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_folder_open" />
+            <ImageButton
+                android:id="@+id/next_button"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/next"
+                android:enabled="false"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_next" />
+            <ImageButton
+                android:id="@+id/skip_button"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/skip"
+                android:enabled="false"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_skip" />
+            <ImageButton
+                android:id="@+id/mic_button"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/start_mic"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_mic" />
+        </LinearLayout>
     </LinearLayout>
 
-</LinearLayout>
+    <!-- ═══ NAVIGATION DRAWER ═══ -->
+    <LinearLayout
+        android:id="@+id/nav_drawer"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:clickable="true"
+        android:focusable="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/lesson_topic_bar_background"
+            android:padding="16dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lesson Topics"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select a topic to start learning"
+                android:textColor="#B3FFFFFF"
+                android:textSize="13sp"
+                android:paddingTop="4dp" />
+        </LinearLayout>
+        <ListView
+            android:id="@+id/drawer_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="#E0E0E0"
+            android:dividerHeight="1dp"
+            android:choiceMode="none" />
+    </LinearLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

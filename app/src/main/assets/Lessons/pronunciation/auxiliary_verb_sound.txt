@@ -1,0 +1,7 @@
+English Word,Bengali Pronunciation,Bengali Meaning
+Do,ডু,করা
+Does,ডাজ,করে
+Did,ডিড,করেছিল
+Have,হ্যাভ,আছে
+Has,হ্যাজ,আছে (একবচন)
+Had,হ্যাড,ছিল

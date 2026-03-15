@@ -1,0 +1,8 @@
+English Word,Bengali Pronunciation,Bengali Meaning
+In,ইন্,ভেতরে
+On,অন্,উপরে (লেগে থাকা)
+Under,আন্ডাহ্,নিচে
+Between,বিটুইন,দুইয়ের মাঝে
+Behind,বিহাইন্ড,পেছনে
+Above,অ্যাভাফ্,উপরে (শূন্যে)
+Beside,বিসাইড,পাশে

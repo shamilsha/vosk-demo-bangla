@@ -1,0 +1,6 @@
+English Word,Bengali Pronunciation,Bengali Meaning
+Here,হিয়াঃ,এখানে
+There,দেয়াঃ,সেখানে
+Everywhere,এভরি-অয়্যার,সর্বত্র
+Outside,আউট-সাইড,বাইরে
+Inside,ইন্-সাইড,ভেতরে

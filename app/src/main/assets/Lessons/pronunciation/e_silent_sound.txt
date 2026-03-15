@@ -1,0 +1,15 @@
+INFO_START:
+এই শব্দগুলোর শেষে 'e' থাকলেও এই 'e' অক্ষরটি নীরব; উচ্চারণ করা হয় না। তাই শেষের 'e' বাদ দিয়েই শব্দটি উচ্চারণ করতে হবে।
+INFO_END
+
+Word,Bengali Pronunciation (উচ্চারণ),Meaning in Bengali (অর্থ),Pronunciation Tip
+Name,নেইম,নাম,"Don't say ""নাম,"" say ""নেইম."""
+Come,কাম,আসা,"Exception: The 'o' sounds like ""Ah"" (আ)."
+Take,টেইক,নেওয়া,"A sharp ""T"" followed by ""Ei."""
+Fake,ফেইক,নকল,"Use the ""F"" sound (teeth on lip)."
+Make,মেইক,তৈরি করা,Very common in daily talk.
+Cake,কেইক,পিঠা/কেক,"Focus on the ""K"" sound at the end."
+Game,গেইম,খেলা,"A hard ""G"" (গ) sound."
+Face,ফেইস,মুখমণ্ডল,"Ends with a soft ""S"" (স) sound."
+Page,পেইজ,পৃষ্ঠা,"Ends with a ""J"" (জ) sound."
+Date,ডেইট,তারিখ,"A clear ""D"" and ""T"" sound."

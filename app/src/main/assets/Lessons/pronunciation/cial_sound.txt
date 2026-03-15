@@ -1,0 +1,11 @@
+English Word,Pronunciation in Bengali
+Official,অফিসিয়াল,দাপ্তরিক
+Social,সোশ্যাল,সামাজিক
+Special,স্পেশাল,বিশেষ
+Essential,এসেনশিয়াল,অপরিহার্য
+Potential,পটেনশিয়াল,সম্ভাবনা
+Partial,পার্শিয়াল,আংশিক
+Beneficial,বেনিফিশিয়াল,উপকারী
+Artificial,আর্টিফিশিয়াল,কৃত্রিম
+
+

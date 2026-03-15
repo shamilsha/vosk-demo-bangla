@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Correct English Pronunciation Rule-01</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      font-family: sans-serif;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+    }
+    .title-box {
+      flex-shrink: 0;
+      text-align: center;
+      padding: 12px;
+      background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%);
+      border: 1px solid #9fa8da;
+      margin: 8px 12px;
+      border-radius: 8px;
+      font-size: clamp(0.95rem, 3.5vw, 1.3rem);
+      font-weight: bold;
+    }
+    .subtitle {
+      flex-shrink: 0;
+      padding: 0 12px 8px;
+      font-size: clamp(0.85rem, 2.8vw, 1rem);
+      color: #333;
+    }
+    .subtitle::before {
+      content: "✓ ";
+      color: #2e7d32;
+      font-weight: bold;
+    }
+    .table-wrap {
+      flex: 1;
+      overflow: auto;
+      padding: 0 12px 12px;
+      min-height: 0;
+    }
+    .pronunciation-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 2px solid #333;
+      font-size: clamp(12px, 3vw, 18px);
+    }
+    .pronunciation-table th,
+    .pronunciation-table td {
+      border: 1px solid #555;
+      padding: clamp(6px, 1.5vw, 12px);
+      text-align: center;
+      vertical-align: middle;
+    }
+    .pronunciation-table th {
+      background: #3949ab;
+      color: #fff;
+      font-weight: bold;
+    }
+    .pronunciation-table .col-english {
+      background: #e3f2fd;
+      font-weight: bold;
+      width: 12%;
+    }
+    .pronunciation-table .col-bengali {
+      background: #fff8e1;
+      font-size: 1.1em;
+      width: 22%;
+    }
+    .col-english.highlight-letter {
+      background: #fff59d;
+      border: 2px solid #f9a825;
+    }
+    .col-english.highlight-letter a {
+      display: block;
+      color: #000;
+      text-decoration: none;
+      padding: 4px;
+      -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+    }
+    .footer-note {
+      flex-shrink: 0;
+      padding: 8px 12px 12px;
+      font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+      color: #555;
+      text-align: center;
+      border-top: 1px solid #ddd;
+      background: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <div class="title-box">Correct English Pronunciation Rule-01</div>
+  <div class="subtitle">সঠিকভাবে ২৬টি ইংরেজি বর্ণের উচ্চারণ শেখা:</div>
+
+  <div class="intro-link" style="margin: 8px 12px 12px; padding: 10px 12px; background: #e3f2fd; border-radius: 8px; border: 1px solid #90caf9; font-size: clamp(0.85rem, 2.8vw, 1rem);">
+    <strong>Introduction (ভূমিকা):</strong><br>
+    <a href="https://youtu.be/n0OTGGiJPpE?feature=shared" style="color: #1565c0; font-weight: bold; text-decoration: underline;">▶ A–Z Alphabet pronunciation (YouTube)</a><br>
+    <a href="https://youtube.com/shorts/PAzJMEGwM6I?feature=shared" style="color: #1565c0; font-weight: bold; text-decoration: underline;">▶ Alphabet (YouTube Shorts)</a><br>
+    <a href="https://youtu.be/OWfaVUaaqO0?si=VKjb-SubZhrhMTrG" style="color: #1565c0; font-weight: bold; text-decoration: underline;">▶ Common mistakes in alphabet pronunciation (YouTube)</a>
+  </div>
+
+  <div class="table-wrap">
+    <table class="pronunciation-table">
+      <thead>
+        <tr>
+          <th>Letter</th>
+          <th>উচ্চারণ</th>
+          <th>Letter</th>
+          <th>উচ্চারণ</th>
+          <th>Letter</th>
+          <th>উচ্চারণ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-english highlight-letter"><a href="letter://A">A</a></td>
+          <td class="col-bengali">এই</td>
+          <td class="col-english">B</td>
+          <td class="col-bengali">বী</td>
+          <td class="col-english">C</td>
+          <td class="col-bengali">ছী</td>
+        </tr>
+        <tr>
+          <td class="col-english">D</td>
+          <td class="col-bengali">ডী</td>
+          <td class="col-english">E</td>
+          <td class="col-bengali">ঈ</td>
+          <td class="col-english highlight-letter"><a href="letter://F">F</a></td>
+          <td class="col-bengali">এফ</td>
+        </tr>
+        <tr>
+          <td class="col-english">G</td>
+          <td class="col-bengali">জ্বী</td>
+          <td class="col-english">H</td>
+          <td class="col-bengali">এইচ</td>
+          <td class="col-english">I</td>
+          <td class="col-bengali">আই</td>
+        </tr>
+        <tr>
+          <td class="col-english highlight-letter"><a href="letter://J">J</a></td>
+          <td class="col-bengali">জ্বেই</td>
+          <td class="col-english highlight-letter"><a href="letter://K">K</a></td>
+          <td class="col-bengali">খেই</td>
+          <td class="col-english">L</td>
+          <td class="col-bengali">এল</td>
+        </tr>
+        <tr>
+          <td class="col-english">M</td>
+          <td class="col-bengali">এম</td>
+          <td class="col-english">N</td>
+          <td class="col-bengali">এন</td>
+          <td class="col-english highlight-letter"><a href="letter://O">O</a></td>
+          <td class="col-bengali">ওউ</td>
+        </tr>
+        <tr>
+          <td class="col-english highlight-letter"><a href="letter://P">P</a></td>
+          <td class="col-bengali">ফী</td>
+          <td class="col-english highlight-letter"><a href="letter://Q">Q</a></td>
+          <td class="col-bengali">খিউ</td>
+          <td class="col-english">R</td>
+          <td class="col-bengali">আঃ</td>
+        </tr>
+        <tr>
+          <td class="col-english">S</td>
+          <td class="col-bengali">এস</td>
+          <td class="col-english highlight-letter"><a href="letter://T">T</a></td>
+          <td class="col-bengali">ঠী</td>
+          <td class="col-english">U</td>
+          <td class="col-bengali">ইউ</td>
+        </tr>
+        <tr>
+          <td class="col-english highlight-letter"><a href="letter://V">V</a></td>
+          <td class="col-bengali">ভী</td>
+          <td class="col-english">W</td>
+          <td class="col-bengali">ডাবলইউ</td>
+          <td class="col-english">X</td>
+          <td class="col-bengali">এক্স</td>
+        </tr>
+        <tr>
+          <td class="col-english">Y</td>
+          <td class="col-bengali">ওয়াই</td>
+          <td class="col-english highlight-letter"><a href="letter://Z">Z</a></td>
+          <td class="col-bengali">জী / যেড</td>
+          <td class="col-english">—</td>
+          <td class="col-bengali">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="footer-note">
+    বিঃদ্র: ইংরেজি ভাষা শেখার শুরুতে অবশ্যই আমাদের ২৬টি লেটারের সঠিক উচ্চারণ শেখা উচিত।
+  </div>
+</body>
+</html>

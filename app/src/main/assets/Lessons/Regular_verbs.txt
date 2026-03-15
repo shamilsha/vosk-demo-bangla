@@ -1,129 +1,87 @@
-Root (V1)	Past (V2/V3)	Bengali Meaning
-Accept	Accepted	গ্রহণ করা
-Add	Added	যোগ করা
-Admire	Admired	প্রশংসা করা
-Advise	Advised	উপদেশ দেওয়া
-Agree	Agreed	রাজি হওয়া
-Allow	Allowed	অনুমতি দেওয়া
-Announce	Announced	ঘোষণা করা
-Answer	Answered	উত্তর দেওয়া
-Appear	Appeared	উপস্থিত হওয়া
-Apply	Applied	আবেদন করা
-Argue	Argued	তর্ক করা
-Arrive	Arrived	পৌঁছানো
-Ask	Asked	জিজ্ঞাসা করা
-Attack	Attacked	আক্রমণ করা
-Avoid	Avoided	এড়িয়ে চলা
-Bake	Baked	সেঁকা / বেক করা
-Beg	Begged	ভিক্ষা করা / প্রার্থনা করা
-Behave	Behaved	আচরণ করা
-Believe	Believed	বিশ্বাস করা
-Borrow	Borrowed	ধার করা
-Call	Called	ডাকা
-Cancel	Cancelled	বাতিল করা
-Change	Changed	পরিবর্তন করা
-Clean	Cleaned	পরিষ্কার করা
-Close	Closed	বন্ধ করা
-Compare	Compared	তুলনা করা
-Complain	Complained	অভিযোগ করা
-Complete	Completed	সম্পন্ন করা
-Confirm	Confirmed	নিশ্চিত করা
-Cook	Cooked	রান্না করা
-Copy	Copied	নকল করা
-Count	Counted	গণনা করা
-Create	Created	সৃষ্টি করা
-Cry	Cried	কাঁদা
-Dance	Danced	নাচা
-Decide	Decided	সিদ্ধান্ত নেওয়া
-Describe	Described	বর্ণনা করা
-Destroy	Destroyed	ধ্বংস করা
-Die	Died	মারা যাওয়া
-Divide	Divided	ভাগ করা
-Dress	Dressed	পোশাক পরা
-Dry	Dried	শুকানো
-Earn	Earned	আয় করা
-Educate	Educated	শিক্ষিত করা
-Enjoy	Enjoyed	উপভোগ করা
-Enter	Entered	প্রবেশ করা
-Explain	Explained	ব্যাখ্যা করা
-Fail	Failed	ব্যর্থ হওয়া
-Fear	Feared	ভয় পাওয়া
-Finish	Finished	শেষ করা
-Fix	Fixed	মেরামত করা
-Follow	Followed	অনুসরণ করা
-Guess	Guessed	অনুমান করা
-Happen	Happened	ঘটা
-Hate	Hated	ঘৃণা করা
-Help	Helped	সাহায্য করা
-Hope	Hoped	আশা করা
-Imagine	Imagined	কল্পনা করা
-Improve	Improved	উন্নতি করা
-Include	Included	অন্তর্ভুক্ত করা
-Inform	Informed	জানানো
-Insult	Insulted	অপমান করা
-Invite	Invited	আমন্ত্রণ জানানো
-Join	Joined	যোগদান করা
-Jump	Jumped	লাফানো
-Kill	Killed	হত্যা করা
-Kiss	Kissed	চুম্বন করা
-Laugh	Laughed	হাসা
-Lie	Lied	মিথ্যা বলা
-Like	Liked	পছন্দ করা
-Listen	Listened	শোনা
-Live	Lived	বাস করা
-Look	Looked	তাকানো
-Love	Loved	ভালোবাসা
-Manage	Managed	পরিচালনা করা
-Marry	Married	বিয়ে করা
-Measure	Measured	পরিমাপ করা
-Move	Moved	নড়াচড়া করা
-Notice	Noticed	লক্ষ করা
-Obey	Obeyed	মান্য করা
-Open	Opened	খোলা
-Order	Ordered	আদেশ করা
-Paint	Painted	রং করা
-Pass	Passed	অতিক্রম করা
-Phone	Phoned	ফোন করা
-Plan	Planned	পরিকল্পনা করা
-Play	Played	খেলা করা
-Pray	Prayed	প্রার্থনা করা
-Prepare	Prepared	প্রস্তুত করা
-Promise	Promised	প্রতিজ্ঞা করা
-Pull	Pulled	টানা
-Push	Pushed	ঠেলা দেওয়া
-Rain	Rained	বৃষ্টি হওয়া
-Reach	Reached	পৌঁছানো
-Refuse	Refused	প্রত্যাখ্যান করা
-Relax	Relaxed	বিশ্রাম নেওয়া
-Remember	Remembered	মনে রাখা
-Repair	Repaired	মেরামত করা
-Repeat	Repeated	পুনরাবৃত্তি করা
-Reply	Replied	উত্তর দেওয়া
-Save	Saved	রক্ষা করা / জমানো
-Search	Searched	খোঁজা
-Seem	Seemed	মনে হওয়া
-Select	Selected	নির্বাচন করা
-Serve	Served	সেবা করা
-Shop	Shopped	কেনাকাটা করা
-Shout	Shouted	চিৎকার করা
-Smile	Smiled	হাসা
-Start	Started	শুরু করা
-Stop	Stopped	থামা
-Study	Studied	পড়াশোনা করা
-Talk	Talked	কথা বলা
-Taste	Tasted	স্বাদ নেওয়া
-Thank	Thanked	ধন্যবাদ দেওয়া
-Touch	Touched	স্পর্শ করা
-Travel	Travelled	ভ্রমণ করা
-Trust	Trusted	বিশ্বাস করা
-Try	Tried	চেষ্টা করা
-Use	Used	ব্যবহার করা
-Visit	Visited	পরিদর্শন করা
-Wait	Waited	অপেক্ষা করা
-Walk	Walked	হাঁটা
-Want	Wanted	চাওয়া
-Wash	Washed	ধোয়া
-Watch	Watched	দেখা / পাহারা দেওয়া
-Welcome	Welcomed	স্বাগত জানানো
-Work	Worked	কাজ করা
-Worry	Worried	দুশ্চিন্তা করা
+Root (V1),Past (V2),Past Participle (V3),Bengali Meaning,Common Local Sentence
+Accept,Accepted,Accepted,গ্রহণ করা,They accepted my invitation., আক্ ছেপ্ট
+Add,Added,Added,যোগ করা,Please add some sugar to the tea.
+Advise,Advised,Advised,উপদেশ দেওয়া,My teacher advised me to study hard.
+Agree,Agreed,Agreed,রাজি হওয়া,I agree with your point.
+Allow,Allowed,Allowed,অনুমতি দেওয়া,My parents allowed me to go out.
+Answer,Answered,Answered,উত্তর দেওয়া,He answered all the questions.
+Arrive,Arrived,Arrived,পৌঁছানো,The train arrived on time.
+Ask,Asked,Asked,জিজ্ঞাসা করা,I asked him for his name.
+Become,Became,Become,হওয়া,He became a doctor last year.
+Begin,Began,Begun,শুরু করা,The match began at 10 AM.
+Believe,Believed,Believed,বিশ্বাস করা,I believe in honest work.
+Break,Broke,Broken,ভাঙা,Who broke the glass?
+Bring,Brought,Brought,আনা,Did you bring the file?
+Build,Built,Built,নির্মাণ করা,They built a new bridge here.
+Buy,Bought,Bought,কেনা,I bought some vegetables from the market.
+Call,Called,Called,ডাকা,Please call me later.
+Change,Changed,Changed,পরিবর্তন করা,I need to change my clothes.
+Choose,Chose,Chosen,পছন্দ করা,Choose the best one from here.
+Clean,Cleaned,Cleaned,পরিষ্কার করা,Clean your room properly.
+Close,Closed,Closed,বন্ধ করা,Please close the door.
+Come,Came,Come,আসা,He came to my house yesterday.
+Cook,Cooked,Cooked,রান্না করা,My mother cooked delicious biryani.
+Cut,Cut,Cut,কাটা,Don't cut the trees.
+Decide,Decided,Decided,সিদ্ধান্ত নেওয়া,I decided to join the course.
+Do,Did,Done,করা,I did my homework already.
+Drink,Drank,Drunk,পান করা,Drink plenty of water.
+Drive,Drove,Driven,চালানো,He drives very fast.
+Eat,Ate,Eaten,খাওয়া,I ate rice and dal for lunch.
+Explain,Explained,Explained,ব্যাখ্যা করা,Can you explain this again?
+Fall,Fell,Fallen,পড়ে যাওয়া,Be careful or you will fall.
+Feel,Felt,Felt, অনুভব করা,I feel very tired today.
+Find,Found,Found,খুঁজে পাওয়া,I found my lost keys.
+Finish,Finished,Finished,শেষ করা,Finish your work quickly.
+Forget,Forgot,Forgotten,ভুলে যাওয়া,I forgot my umbrella.
+Get,Got,Gotten,পাওয়া,I got a gift from my friend.
+Give,Gave,Given,দেওয়া,Please give me a glass of water.
+Go,Went,Gone,যাওয়া,I go to office every day.
+Grow,Grew,Grown,জন্মানো,Rice grows well in this soil.
+Help,Helped,Helped,সাহায্য করা,Please help me with this bag.
+Hope,Hoped,Hoped,আশা করা,I hope you pass the exam.
+Join,Joined,Joined,যোগদান করা,I joined the new office today.
+Keep,Kept,Kept,রাখা,Keep the book on the table.
+Know,Knew,Known,জানা,I know him very well.
+Learn,Learnt,Learnt,শেখা,I want to learn English.
+Leave,Left,Left,ত্যাগ করা,The bus left the station.
+Listen,Listened,Listened,শোনা,Listen to what I am saying.
+Live,Lived,Lived,বাস করা,We live in a big city.
+Look,Looked,Looked,তাকানো,Look at the blackboard.
+Love,Loved,Loved,ভালোবাসা,I love my country.
+Make,Made,Made,তৈরি করা,She made tea for everyone.
+Meet,Met,Met,সাক্ষাৎ করা,I will meet you tomorrow.
+Open,Opened,Opened,খোলা,Open the window for fresh air.
+Pay,Paid,Paid,পরিশোধ করা,I paid the electric bill.
+Play,Played,Played,খেলা করা,Children are playing in the field.
+Put,Put,Put,রাখা,Put your signature here.
+Read,Read,Read,পড়া,I read the newspaper daily.
+Remember,Remembered,Remembered,মনে রাখা,I remember your face.
+Run,Ran,Run,দৌড়ানো,The boy ran very fast.
+Say,Said,Said,বলা,What did you say?
+See,Saw,Seen,দেখা,I saw a movie yesterday.
+Sell,Sold,Sold,বিক্রি করা,He sells fruits in the market.
+Send,Sent,Sent,পাঠানো,I sent you an email.
+Show,Showed,Shown,দেখানো,Show me your identity card.
+Sing,Sang,Sung,গান করা,She sings very well.
+Sit,Sat,Sat,বসা,Please sit down here.
+Sleep,Slept,Slept,ঘুমানো,I sleep at 10 PM.
+Speak,Spoke,Spoken,কথা বলা,He speaks Bengali very well.
+Spend,Spent,Spent,ব্যয় করা,Don't spend too much money.
+Stand,Stood,Stood,দাঁড়ানো,Stand up on the bench.
+Study,Studied,Studied,পড়াশোনা করা,I study in class ten.
+Take,Took,Taken,নেওয়া,Take your medicine on time.
+Talk,Talked,Talked,কথা বলা,I will talk to you later.
+Teach,Taught,Taught,শেখানো,My father taught me math.
+Tell,Told,Told,বলা,Tell me the truth.
+Think,Thought,Thought,চিন্তা করা,I think he is right.
+Try,Tried,Tried,চেষ্টা করা,Try to do your best.
+Understand,Understood,Understood,বুঝতে পারা,Do you understand my words?
+Use,Used,Used,ব্যবহার করা,Can I use your phone?
+Wait,Waited,Waited,অপেক্ষা করা,Please wait for five minutes.
+Walk,Walked,Walked,হাঁটা,I walk in the morning.
+Want,Wanted,Wanted,চাওয়া,I want a cup of coffee.
+Wash,Washed,Washed,ধোয়া,Wash your hands before eating.
+Watch,Watched,Watched,দেখা,We watched the cricket match.
+Win,Won,Won,জয়ী হওয়া,Our team won the trophy.
+Work,Worked,Worked,কাজ করা,I work in a private bank.
+Write,Wrote,Written,লেখা,I wrote a letter to him.

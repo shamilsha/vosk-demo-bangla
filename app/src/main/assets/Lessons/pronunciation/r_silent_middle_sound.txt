@@ -1,0 +1,9 @@
+Word,Bengali Pronunciation (উচ্চারণ),Meaning (অর্থ),Pronunciation Tip
+Morning,মোন-ইং,সকাল,"Don't say ""মর্নিং""; stretch the ""Mo"" sound."
+Part,পা-ট,অংশ,"Stretch the ""Aa"" (আ) sound; skip the ""R."""
+Saturday,স্যাটা-ডেই,শনিবার,"It’s ""Sata-dei,"" not ""স্যাটার-ডে।"""
+First,ফাস-ট,প্রথম,"Sounds like ""Fust"" (ফাস-ট), skip the ""R."""
+Party,পা-টি,দল / অনুষ্ঠান,"Stretch the ""Pa"" (পা); the ""T"" is a sharp ""ট।"""
+Short,শো-ট,ছোট / খাটো,"Use the ""Sh"" (শ) sound and a long ""O."""
+Formal,ফো-মাল,আনুষ্ঠানিক,"Break it: ফো + মাল (No ""R"" sound)."
+Park,পা-ক,বাগান / পার্ক,"Just like ""Part,"" stretch the ""Aa."""

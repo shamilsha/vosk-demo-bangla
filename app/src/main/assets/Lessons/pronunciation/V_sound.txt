@@ -1,0 +1,6 @@
+English Word,Pronunciation in Bengali
+Van,
+Vote,
+Very,
+Vase,
+View,

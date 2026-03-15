@@ -1,0 +1,8 @@
+English Word,Bengali Pronunciation,Bengali Meaning
+Cold,খোল্ড,ঠান্ডা
+Clean,খ্লিন,পরিষ্কার
+Tough,ঠাফ,কঠিন / শক্ত
+Possible,ফসিবল্,সম্ভব
+Quick,খুইখ,দ্রুত
+Quiet,খুয়ায়েট,শান্ত
+Easy,ইজি,সহজ

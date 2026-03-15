@@ -1,0 +1,7 @@
+English Word,Bengali Pronunciation,Bengali Meaning
+Today,ঠো-ডেই,আজ
+Tomorrow,ঠো-মোরো,আগামীকাল
+Yesterday,ইয়েস-ঠা-ডেই,গতকাল
+Now,নাও,এখন
+Soon,সুন,শীঘ্রই
+Early,আহ-লি,ভোরে / আগে

@@ -1,0 +1,9 @@
+English Word,Bengali Pronunciation,Bengali Meaning
+Am|I'm|I am,অ্যাম,হই/আছি
+Is,ইজ,হয়/আছে
+Are,আর,হয়/আছো/আছেন
+Was,ওয়াজ,ছিল
+Were|we're,ওয়ার,ছিল/ছিলেন
+Be|bee,বী,হওয়া
+Being,বীইং,হওয়া/অবস্থায়
+Been,বীন,হয়েছে/হয়েছিল

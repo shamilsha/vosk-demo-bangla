@@ -1,0 +1,11 @@
+English Word,Pronunciation in Bengali
+Tall,ঠল্
+Talk,ঠক
+Town,ঠাউন
+Tower,ঠাওয়ায়ঃ
+Table,ঠেইবল্
+Teaching,ঠিচিং
+Team,ঠীম
+Technology,ঠেকনোলজি
+Time,ঠাইম্
+Topic,ঠফিখ

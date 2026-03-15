@@ -1,0 +1,8 @@
+Word,Bengali Pronunciation (উচ্চারণ),Meaning in Bengali (অর্থ),Pronunciation Tip
+What,ওয়াট,কি,"Round your lips for the ""W"" sound."
+When,ওয়েন,কখন,"Keep the ""n"" sound short at the end."
+Where,ওয়্যার,কোথায়,"Sounds like ""Ware"" (খুবই হালকা 'র' উচ্চারণ)।"
+Why,ওয়াই,কেন,Start with a small circle of the lips.
+Which,উইচ,কোনটি,"Ends with a sharp ""Ch"" (চ) sound."
+Who,হু,কে,"The ""W"" is silent here; it's just an ""H"" sound."
+Whose,হুজ,কার,"The ""s"" sounds like a buzzing ""Z"" (জ)।"

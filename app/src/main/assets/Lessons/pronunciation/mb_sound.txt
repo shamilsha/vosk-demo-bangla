@@ -1,0 +1,6 @@
+English Word,Pronunciation in Bengali
+Bomb,বাম,বোমা
+Comb,কোম,চিরুনি
+Thumb,থাম,হাতের বৃদ্ধাঙ্গুলি
+Climb,ক্লাইম,আরোহণ করা
+Dumb,ডাম,বোবা

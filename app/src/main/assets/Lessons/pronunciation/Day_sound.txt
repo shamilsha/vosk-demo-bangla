@@ -1,0 +1,12 @@
+English Word,Pronunciation in Bengali
+Saturday,স্যাঠারডেই
+Sunday,সানডেই
+Monday,মানডেই
+Tuesday,টিউযডেই
+Wednesday,ওয়েন্জডেই
+Thursday,থারযডেই
+Friday,ফ্রাইডেই
+Today,টুডেই,আজ
+Birthday,বার্থডেই,জন্মদিন
+Holiday,হলিডেই,ছুটির দিন
+

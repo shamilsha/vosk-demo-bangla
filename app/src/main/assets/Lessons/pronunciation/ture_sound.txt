@@ -1,0 +1,7 @@
+English Word,Pronunciation in Bengali
+Nature,নেইচার,প্রকৃতি
+Future,ফিউচার,ভবিষ্যৎ
+Picture,পিকচার,ছবি
+Culture,কালচার,সংস্কৃতি
+Furniture,ফার্নিচার,আসবাবপত্র
+Structure,স্ট্রাকচার,কাঠামো
