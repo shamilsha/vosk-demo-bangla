@@ -6,6 +6,18 @@ The app may close (crash) when you tap **Start Microphone**. To find the **exact
 
 1. **Connect the device via USB** and enable USB debugging.
 
+2. **Make sure `adb` works (Windows / PowerShell)**  
+   Sometimes `adb` is not on PATH inside Cursor/PowerShell. On this PC, the SDK `adb.exe` is at:
+   - `C:\Users\sharif\AppData\Local\Android\Sdk\platform-tools\adb.exe`
+
+   In PowerShell, run `adb` using the call operator `&`:
+
+   ```powershell
+   & "C:\Users\sharif\AppData\Local\Android\Sdk\platform-tools\adb.exe" devices -l
+   ```
+
+   If you prefer, you can add `...\platform-tools\` to PATH so you can use `adb` directly.
+
 2. **Start logcat with a filter for this app** (run in a terminal **before** tapping Start Microphone):
 
    ```bash

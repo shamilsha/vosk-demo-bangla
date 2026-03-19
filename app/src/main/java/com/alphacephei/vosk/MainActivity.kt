@@ -12,6 +12,7 @@ import android.media.ToneGenerator
 import android.media.AudioManager
 import android.media.AudioRecord
 import android.media.MediaRecorder
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -57,6 +58,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.BaseAdapter
 import android.widget.ListView
+import android.view.MotionEvent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.drawerlayout.widget.DrawerLayout
 import android.content.SharedPreferences
@@ -68,6 +70,8 @@ import androidx.recyclerview.widget.RecyclerView
 import org.json.JSONArray
 import org.json.JSONObject
 import java.io.File
+import java.io.FileOutputStream
+import java.io.ByteArrayOutputStream
 import java.io.InputStreamReader
 import java.net.URLDecoder
 import java.net.URLEncoder
@@ -574,6 +578,13 @@ class MainActivity : AppCompatActivity() {
     private var controlActionsBar: View? = null
     private var controlStartStopButton: Button? = null
     private var controlPauseResumeButton: Button? = null
+    private var controlPlaybackLastButton: ImageButton? = null
+    @Volatile
+    private var playbackHoldRecording = false
+    private var playbackHoldAudioRecord: AudioRecord? = null
+    private var playbackHoldThread: Thread? = null
+    private var playbackHoldPcm: ByteArrayOutputStream? = null
+    private var playbackHoldSampleRate = 16000
     /** For SV_RIBBON layout: left labels (subjects), right labels (verbs), Bengali for TTS; same length. */
     private var svRibbonBengali: List<String>? = null
     /** Pronunciation hint per index (Learning mode). Same length as svRibbonBengali. */
@@ -1129,6 +1140,8 @@ class MainActivity : AppCompatActivity() {
     private var voskEnInRecognizer: VoskEnInRecognizer? = null
     private var englishAudioRecord: AudioRecord? = null
     private var englishVoskRecordingThread: Thread? = null
+    private var lastUtteranceWavFile: File? = null
+    private var lastUtteranceMediaPlayer: MediaPlayer? = null
     /** When true, we're waiting for user to speak English to verify against expected translation. */
     @Volatile
     private var verificationMode = false
@@ -1297,7 +1310,9 @@ class MainActivity : AppCompatActivity() {
         // Bind from the activity-level bar so START/STOP work when this bar is shown (content_frame may contain another include with same ids)
         controlStartStopButton = controlActionsBar?.findViewById(R.id.control_start_stop)
         controlPauseResumeButton = controlActionsBar?.findViewById(R.id.control_pause_resume)
+        controlPlaybackLastButton = controlActionsBar?.findViewById(R.id.control_playback_last)
         controlActionsBar?.visibility = View.GONE
+        setupHoldToRecordPlaybackButton(controlPlaybackLastButton)
         controlStartStopButton?.setOnClickListener {
             when {
                 currentContentLayout == ContentLayout.SIMPLE_SENTENCE && lessonRows != null -> onSimpleSentenceStartStop()
@@ -1362,6 +1377,38 @@ class MainActivity : AppCompatActivity() {
             if (lessonRows == null) textView.text = getText(R.string.ready_to_start)
         }
         setMicButtonAppearance(recording = false)
+    }
+
+    private fun setupHoldToRecordPlaybackButton(btn: ImageButton?) {
+        btn ?: return
+        // Press-and-hold to record; release to playback immediately.
+        btn.isEnabled = true
+        btn.alpha = 1f
+        btn.isClickable = true
+        btn.isFocusable = true
+        btn.setOnTouchListener { _, event ->
+            when (event.actionMasked) {
+                MotionEvent.ACTION_DOWN -> {
+                    btn.isPressed = true
+                    btn.alpha = 1f
+                    btn.scaleX = 0.96f
+                    btn.scaleY = 0.96f
+                    btn.translationY = (2f * resources.displayMetrics.density)
+                    startHoldToRecordPlayback()
+                    true
+                }
+                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                    btn.isPressed = false
+                    btn.alpha = 1f
+                    btn.scaleX = 1f
+                    btn.scaleY = 1f
+                    btn.translationY = 0f
+                    stopHoldToRecordPlaybackAndPlay()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     /** Update the topic bar text from current lesson/sentence list name. */
@@ -2072,6 +2119,174 @@ class MainActivity : AppCompatActivity() {
             clearSentenceListUi()
         }
         Log.i(TAG, "Stopped English mic")
+    }
+
+    // ───────────────────── Playback (used by hold-to-record) ─────────────────────
+    private fun stopLastUtterancePlayback() {
+        lastUtteranceMediaPlayer?.let { mp ->
+            try { mp.stop() } catch (_: Exception) {}
+            try { mp.release() } catch (_: Exception) {}
+        }
+        lastUtteranceMediaPlayer = null
+    }
+
+    private fun playLastUtteranceRecording() {
+        if (lastUtteranceWavFile == null || !lastUtteranceWavFile!!.exists()) {
+            Toast.makeText(this, "No recording available yet.", Toast.LENGTH_SHORT).show()
+            return
+        }
+        stopLastUtterancePlayback()
+
+        val file = lastUtteranceWavFile ?: return
+        val mp = MediaPlayer()
+        lastUtteranceMediaPlayer = mp
+        try {
+            mp.setDataSource(file.absolutePath)
+            mp.setOnPreparedListener { it.start() }
+            mp.setOnCompletionListener {
+                try { it.release() } catch (_: Exception) {}
+                if (lastUtteranceMediaPlayer === it) lastUtteranceMediaPlayer = null
+            }
+            mp.setOnErrorListener { mpErr, _, _ ->
+                try { mpErr.release() } catch (_: Exception) {}
+                if (lastUtteranceMediaPlayer === mpErr) lastUtteranceMediaPlayer = null
+                true
+            }
+            mp.prepareAsync()
+        } catch (e: Exception) {
+            try { mp.release() } catch (_: Exception) {}
+            lastUtteranceMediaPlayer = null
+            Toast.makeText(this, "Playback failed: ${e.message}", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun writeWavPcm16Mono(outFile: File, pcm16le: ByteArray, sampleRate: Int) {
+        // WAV header (PCM16 mono):
+        // RIFF chunk size = 36 + dataSize
+        // byteRate = sampleRate * channels * bits/8
+        val channels = 1
+        val bitsPerSample = 16
+        val byteRate = sampleRate * channels * bitsPerSample / 8
+        val blockAlign = channels * bitsPerSample / 8
+        val dataSize = pcm16le.size
+        val riffSize = 36 + dataSize
+
+        val header = ByteArray(44)
+        fun putString(offset: Int, s: String) {
+            for (i in s.indices) header[offset + i] = s[i].code.toByte()
+        }
+        fun putIntLE(offset: Int, v: Int) {
+            header[offset] = (v and 0xFF).toByte()
+            header[offset + 1] = ((v shr 8) and 0xFF).toByte()
+            header[offset + 2] = ((v shr 16) and 0xFF).toByte()
+            header[offset + 3] = ((v shr 24) and 0xFF).toByte()
+        }
+        fun putShortLE(offset: Int, v: Int) {
+            header[offset] = (v and 0xFF).toByte()
+            header[offset + 1] = ((v shr 8) and 0xFF).toByte()
+        }
+
+        putString(0, "RIFF")
+        putIntLE(4, riffSize)
+        putString(8, "WAVE")
+        putString(12, "fmt ")
+        putIntLE(16, 16) // fmt chunk size
+        putShortLE(20, 1) // audioFormat = 1 (PCM)
+        putShortLE(22, channels)
+        putIntLE(24, sampleRate)
+        putIntLE(28, byteRate)
+        putShortLE(32, blockAlign)
+        putShortLE(34, bitsPerSample)
+        putString(36, "data")
+        putIntLE(40, dataSize)
+
+        FileOutputStream(outFile).use { fos ->
+            fos.write(header)
+            fos.write(pcm16le)
+            fos.flush()
+        }
+    }
+
+    // ───────────────────── Hold-to-record Playback Button ─────────────────────
+    private fun startHoldToRecordPlayback() {
+        if (playbackHoldRecording) return
+        if (!checkForPermission(RECORD_AUDIO)) {
+            Toast.makeText(this, "Microphone permission required", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        // Stop any ongoing verification/listening to avoid mic contention.
+        try { speechRecognizer?.cancel() } catch (_: Exception) {}
+        stopEnglishVoskRecording()
+
+        stopLastUtterancePlayback()
+        playbackHoldPcm = ByteArrayOutputStream()
+
+        val sampleRate = playbackHoldSampleRate
+        val bufferSizeBytes = AudioRecord.getMinBufferSize(sampleRate, channelConfig, audioFormat).let {
+            if (it == AudioRecord.ERROR || it == AudioRecord.ERROR_BAD_VALUE) sampleRate * 2 else it
+        }.coerceAtLeast(2048)
+
+        val rec = try {
+            AudioRecord(MediaRecorder.AudioSource.MIC, sampleRate, channelConfig, audioFormat, bufferSizeBytes)
+        } catch (_: Exception) {
+            null
+        }
+        if (rec == null || rec.state != AudioRecord.STATE_INITIALIZED) {
+            try { rec?.release() } catch (_: Exception) {}
+            playbackHoldAudioRecord = null
+            playbackHoldPcm = null
+            Toast.makeText(this, "Audio capture failed", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        playbackHoldAudioRecord = rec
+        playbackHoldRecording = true
+        try { rec.startRecording() } catch (_: Exception) {}
+
+        playbackHoldThread = thread(start = true) {
+            val out = playbackHoldPcm ?: return@thread
+            val buf = ShortArray((bufferSizeBytes / 2).coerceAtLeast(800))
+            try {
+                while (playbackHoldRecording) {
+                    val read = rec.read(buf, 0, buf.size)
+                    if (read <= 0) continue
+                    for (i in 0 until read) {
+                        val s = buf[i].toInt()
+                        out.write(s and 0xFF)
+                        out.write((s shr 8) and 0xFF)
+                    }
+                }
+            } catch (_: Exception) {
+            } finally {
+                try { rec.stop() } catch (_: Exception) {}
+                try { rec.release() } catch (_: Exception) {}
+            }
+        }
+    }
+
+    private fun stopHoldToRecordPlaybackAndPlay() {
+        if (!playbackHoldRecording) return
+        playbackHoldRecording = false
+
+        val t = playbackHoldThread
+        playbackHoldThread = null
+        val pcmStream = playbackHoldPcm
+        playbackHoldPcm = null
+        playbackHoldAudioRecord = null
+
+        Thread {
+            try { t?.join(1500) } catch (_: Exception) {}
+            val bytes = pcmStream?.toByteArray() ?: ByteArray(0)
+            if (bytes.isEmpty()) return@Thread
+            val outFile = File(filesDir, "last_utterance.wav")
+            try {
+                writeWavPcm16Mono(outFile, bytes, playbackHoldSampleRate)
+                lastUtteranceWavFile = outFile
+                runOnUiThread { playLastUtteranceRecording() }
+            } catch (_: Exception) {
+            }
+        }.start()
     }
 
     /** Start AudioRecord + thread that feeds Vosk Indian English recognizer. Call on main thread after Vosk is ready. */
@@ -4770,6 +4985,10 @@ class MainActivity : AppCompatActivity() {
         contentFrame.addView(view)
         currentContentLayout = layout
 
+        // Some layouts include their own copy of layout_control_actions.
+        // Ensure the hold-to-record handler is attached wherever it is visible.
+        setupHoldToRecordPlaybackButton(view.findViewById(R.id.control_playback_last))
+
         // Show Start/Stop, Pause/Resume bar for all custom subtopic layouts that use it
         controlActionsBar?.visibility = if (usesControlActions(layout)) View.VISIBLE else View.GONE
         // Hide bottom bar for THREECOL_TABLE and CONVERSATION_BUBBLES — use their own control bar
@@ -6936,9 +7155,11 @@ $introHtml
             }
         }
         verificationHandler.postDelayed(verificationTimeoutRunnable!!, 15000)
-        setMicButtonAppearance(recording = true)
+        // Only show "recording" once the mic is actually listening.
+        setMicButtonAppearance(recording = false)
         if (USE_SYSTEM_SPEECH_FOR_ENGLISH_VERIFICATION) {
             initEnglishRecognizer()
+            setMicButtonAppearance(recording = true)
             speechRecognizer?.startListening(recognizerIntent)
             Log.d(TAG, "Verification: listening for user to speak English (system SpeechRecognizer)")
             return
@@ -6956,6 +7177,9 @@ $introHtml
                     Toast.makeText(this@MainActivity, "Vosk Indian English model failed to load", Toast.LENGTH_SHORT).show()
                     return@withContext
                 }
+                // Now it's safe to show mic active and give an audible cue.
+                setMicButtonAppearance(recording = true)
+                playStartBeep()
                 startEnglishVoskRecording()
             }
         }
@@ -7009,7 +7233,11 @@ $introHtml
         verificationMode = false
         expectedEnglishForVerification = null
         verificationResultHandled = true
-        if (USE_SYSTEM_SPEECH_FOR_ENGLISH_VERIFICATION) speechRecognizer?.stopListening() else stopEnglishVoskRecording()
+        if (USE_SYSTEM_SPEECH_FOR_ENGLISH_VERIFICATION) {
+            speechRecognizer?.stopListening()
+        } else {
+            stopEnglishVoskRecording()
+        }
         setMicButtonAppearance(recording = false)
         advanceLessonToNextRow()
         updateLessonStatistic()

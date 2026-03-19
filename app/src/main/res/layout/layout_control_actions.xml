@@ -49,4 +49,20 @@
         android:paddingEnd="12dp"
         android:drawableStart="@drawable/ic_mic"
         android:drawablePadding="8dp" />
+
+    <!-- Play back last user utterance (overwritten every new sentence) -->
+    <ImageButton
+        android:id="@+id/control_playback_last"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="6dp"
+        android:background="@drawable/bg_playback_hold_button"
+        android:contentDescription="@string/playback_last"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_lecture_play"
+        android:clickable="true"
+        android:focusable="true"
+        android:enabled="true"
+        android:alpha="1"
+        android:padding="8dp" />
 </LinearLayout>

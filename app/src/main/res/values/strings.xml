@@ -73,6 +73,7 @@
     <string name="english_meaning_label">English meaning</string>
     <string name="lecture_play">Play lecture</string>
     <string name="lecture_pause">Pause lecture</string>
+    <string name="playback_last">Play last recording</string>
     <string name="description_label">Description</string>
     <string name="description_svo_format">Here subject is \"%1$s\", verb is \"%2$s\" and object is \"%3$s\".</string>
     <string name="description_third_person_hint">When he, she, it or a name is used, add -s or -es to the verb.</string>
