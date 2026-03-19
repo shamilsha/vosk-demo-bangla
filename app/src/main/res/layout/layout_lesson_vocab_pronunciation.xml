@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Reusable: 3-column vocabulary list (Word | Pronunciation | Meaning) for V tab. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lesson_vocab_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/lesson_box_background"
+    android:clipChildren="false">
+
+    <!-- Header row: 25% / 25% / 50% + 32dp to match row columns -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/lesson_topic_bar_background"
+        android:paddingVertical="6dp"
+        android:paddingHorizontal="6dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Word"
+            android:textColor="@color/lesson_topic_bar_text"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Pronunciation"
+            android:textColor="@color/lesson_topic_bar_text"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="Meaning"
+            android:textColor="@color/lesson_topic_bar_text"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:minWidth="32dp"
+            android:minHeight="32dp" />
+    </LinearLayout>
+
+    <!-- Toggle: off = only untested/failed words; on = all words -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+        android:background="@color/lesson_box_background">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Show all words"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary" />
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/lesson_vocab_show_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            app:trackTint="@color/lesson_vocab_switch_track"
+            app:thumbTint="@color/lesson_vocab_switch_thumb" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lesson_vocab_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="0dp"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:overScrollMode="ifContentScrolls" />
+</LinearLayout>

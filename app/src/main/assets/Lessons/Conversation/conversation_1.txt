@@ -7,4 +7,25 @@ PersonB: Nice to meet you too., আপনার সাথে দেখা হয়
 PersonB: Where do you live?,আপনি কোথায় থাকেন?, হোয়্যার ডু ইউ লিভ?
 PersonA: I live in Dhaka. আমি ঢাকায় থাকি। , আই লিভ ইন ঢাকা।
 PersonA: What do you do?, আপনি কি করেন?, হোয়াট ডু ইউ ডু?
-  
+
+# --- VOCABULARY ---
+about
+am
+dhaka
+do
+in
+is
+live
+meet
+my
+name
+nice
+rahul
+sumi
+to
+too
+what
+where
+you
+your
+# --- END VOCABULARY ---

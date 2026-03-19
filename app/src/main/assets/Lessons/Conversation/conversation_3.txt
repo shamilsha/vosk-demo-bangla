@@ -1,7 +1,7 @@
 PersonA: Excuse me. where can I find eggs?, মাফ করবেন| আমি ডিম কোথায় পাব?, এক্সকিউজ মি| হোয়্যার ক্যান আই ফাইন্ড এগস?
 PersonB: They are in the dairy aisle. near the milk., সেগুলো দুগ্ধজাত পণ্যের সারিতে| দুধের কাছে আছে।, দে আর ইন দ্য ডেইরি আইল| নিয়ার দ্য মিল্ক।
 PersonA: Thank you. How much is a dozen?, ধন্যবাদ। এক ডজন কত?, থ্যাঙ্ক ইউ। হাউ মাচ ইজ আ ডজন?
-PersonB: It is [one hundred and fifty |150] taka., এটা একশ পঞ্চাশ টাকা।, ইট ইজ ওয়ান হান্ড্রেড অ্যান্ড ফিফটি টাকা।
+PersonB: It is [one hundred and fifty|150] taka., এটা একশ পঞ্চাশ টাকা।, ইট ইজ ওয়ান হান্ড্রেড অ্যান্ড ফিফটি টাকা।
 PersonA: Are these mangoes fresh?, এই আমগুলো কি তাজা?, আর দিজ ম্যাঙ্গোজ ফ্রেশ?
 PersonB: Yes. they arrived just this morning., হ্যাঁ| এগুলো আজ সকালেই এসেছে।, ইয়েস| দে অ্যারাইভড জাস্ট দিস মর্নিং।
 PersonA: I will take [two kilograms|2 kg]. please., আমি দুই কেজি নেব| দয়া করে।, আই উইল টেক টু কিলোগ্রামস| প্লিজ।
@@ -10,3 +10,16 @@ PersonA: I also need a bottle of water., আমার এক বোতল পা
 PersonB: Here you go. Anything else?, এই যে নিন। আর কিছু?, হেয়ার ইউ গো। এনিথিং এলস?
 PersonA: No. that is all. Give me the bill., না| এইটুকুই। আমাকে বিল দিন।, নৌ| দ্যাট ইজ অল। গিভ মি দ্য বিল।
 PersonB: Total is [four hundred|400] taka., মোট চারশ টাকা।, টোটাল ইজ ফোর হান্ড্রেড টাকা।
+
+# --- VOCABULARY ---
+about
+bottle
+find
+fresh
+give
+much
+need
+take
+thank
+water
+# --- END VOCABULARY ---

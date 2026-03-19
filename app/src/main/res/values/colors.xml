@@ -29,4 +29,10 @@
     <!-- Conversation bubbles: left (Person A) and right (Person B) -->
     <color name="conv_bubble_left">#E3F2FD</color>
     <color name="conv_bubble_right">#F3E5F5</color>
+    <!-- V tab: focused (current) row (yellow + red border in drawable) -->
+    <color name="lesson_vocab_focused_bg">#FFF9C4</color>
+    <!-- V tab: Show all words switch - track (bar) and thumb -->
+    <color name="lesson_vocab_switch_track_off">#BDBDBD</color>
+    <color name="lesson_vocab_switch_track_on">#90CAF9</color>
+    <color name="lesson_vocab_switch_thumb_off">#EEEEEE</color>
 </resources>

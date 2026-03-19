@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One row: Word 25% | Pronunciation 25% | Meaning 50% | fixed 32dp for tick/cross (no layout shift). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingVertical="8dp"
+    android:paddingHorizontal="6dp"
+    android:minHeight="48dp">
+
+    <TextView
+        android:id="@+id/lesson_vocab_word"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingEnd="4dp"
+        android:textColor="@color/text_primary"
+        android:textSize="15sp"
+        android:ellipsize="end"
+        android:maxLines="2" />
+
+    <TextView
+        android:id="@+id/lesson_vocab_pronunciation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:paddingHorizontal="4dp"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp"
+        android:ellipsize="end"
+        android:maxLines="2" />
+
+    <TextView
+        android:id="@+id/lesson_vocab_meaning"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:paddingStart="4dp"
+        android:paddingEnd="4dp"
+        android:textColor="@color/text_primary"
+        android:textSize="14sp"
+        android:ellipsize="end"
+        android:maxLines="2" />
+
+    <!-- Fixed 32dp so tick/cross never shifts layout; icon inside can be GONE or VISIBLE. -->
+    <FrameLayout
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:minWidth="32dp"
+        android:minHeight="32dp"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/lesson_vocab_result_icon"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:contentDescription="Pass or fail"
+            android:visibility="gone"
+            android:scaleType="fitCenter" />
+    </FrameLayout>
+</LinearLayout>

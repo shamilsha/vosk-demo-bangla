@@ -43,6 +43,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.DecelerateInterpolator
 import android.widget.Button
+import android.widget.CompoundButton
 import android.widget.Switch
 import android.widget.EditText
 import android.widget.FrameLayout
@@ -593,7 +594,7 @@ class MainActivity : AppCompatActivity() {
     private var threeColDisplayToBaseIndex: List<Int> = emptyList()
     private var threeColAdapter: ThreeColDataAdapter? = null
     private var threeColLearningMode: Boolean = true
-    private enum class ThreeColMode { LEARNING, PRACTICE, TEST }
+    private enum class ThreeColMode { LEARNING, PRACTICE, TEST, VOCAB }
     private var threeColMode: ThreeColMode = ThreeColMode.LEARNING
     private var threeColStats: MutableList<IntArray> = mutableListOf()
     private var threeColWeakOnlyFilter: Boolean = false
@@ -620,6 +621,7 @@ class MainActivity : AppCompatActivity() {
             ThreeColMode.PRACTICE -> a == 0
             ThreeColMode.TEST -> b == 0
             ThreeColMode.LEARNING -> a == 0 || b == 0
+            ThreeColMode.VOCAB -> false
         }
     }
 
@@ -678,7 +680,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /** Map actionKey → asset path for THREECOL_TABLE lessons. To add a lesson: add here, add Subtopic in DrawerTopicBuilders, add .txt in assets/Lessons/SVO/. */
+    /**
+     * THREECOL_TABLE lessons: actionKey → asset path. Same layout and V tab for all; only the .txt file differs.
+     * To add a new similar lesson: (1) add entry here, (2) add Subtopic in DrawerTopicBuilders with this actionKey, (3) add .txt in assets.
+     */
     private val threeColLessonAssetPaths: Map<String, String> = mapOf(
         "test_layout" to "Lessons/SVO/simple_what.txt",
         "simple_what" to "Lessons/SVO/simple_what.txt",
@@ -697,11 +702,15 @@ class MainActivity : AppCompatActivity() {
     private var threeColControlRunning: Boolean = false
     private var threeColControlPaused: Boolean = false
 
-    /** Conversation bubbles (Person A left, Person B right): same pattern as 3col (Learning/Practice/Test, A/B stats). */
+    /**
+     * Conversation bubbles: actionKey → asset path. Same layout and V tab for all; only the .txt file differs.
+     * To add a new similar lesson: (1) add entry here, (2) add a Subtopic in DrawerTopicBuilders with this actionKey.
+     */
     private val conversationBubbleLessonAssetPaths: Map<String, String> = mapOf(
         "conv_bubble_first_meeting" to "Lessons/Conversation/conversation_1.txt",
         "conv_bubble_second_lesson" to "Lessons/Conversation/conversation_2.txt",
-        "conv_bubble_third_lesson" to "Lessons/Conversation/conversation_3.txt"
+        "conv_bubble_third_lesson" to "Lessons/Conversation/conversation_3.txt",
+        "conv_bubble_fourth_lesson" to "Lessons/Conversation/conversation_4.txt"
     )
     private var convBubbleCurrentLessonKey: String = ""
     private var convBubbleBaseRows: List<ConversationBubbleRow> = emptyList()
@@ -728,6 +737,23 @@ class MainActivity : AppCompatActivity() {
     private var convBubbleCachedItemHeightPx: Int = -1
     /** Pending runnable for "advance to next bubble" after correct/3-fail; cancelled when user taps prev/next. */
     private var convBubbleAdvanceRunnable: Runnable? = null
+
+    /** V tab: words from current lesson's embedded vocabulary block. */
+    private var currentLessonVocabWords: List<String> = emptyList()
+    /** V tab: rows (word, pronunciation, meaning) for current lesson. */
+    private var lessonVocabRows: List<LessonVocabRow> = emptyList()
+    /** Master word list (lazy): word lowercase -> (meaning, pronunciation). */
+    private var masterWordListMap: Map<String, Pair<String, String>>? = null
+    /** Adapter for V tab 3-column list; shared between conv and 3col layouts. */
+    private var lessonVocabAdapter: LessonVocabAdapter? = null
+    /** V tab: incorrect attempts for current word; advance to next after 3. */
+    private var vocabIncorrectCount: Int = 0
+    /** Per-word progress for master list: 0=never seen, 1=passed, 2=tested but failed. Loaded/saved to filesDir. */
+    private var vocabularyProgress: MutableMap<String, Int> = mutableMapOf()
+    /** V tab: rows actually shown (filtered by master then by need-test or all). Use this for current word / size in VOCAB. */
+    private var currentVTabRows: List<LessonVocabRow> = emptyList()
+    /** V tab: when false show only untested/failed (0,2); when true show all words in lesson (from master). */
+    private var vocabShowAllWords: Boolean = false
 
     private val openLessonLauncher = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
         uri ?: return@registerForActivityResult
@@ -1276,7 +1302,10 @@ class MainActivity : AppCompatActivity() {
             when {
                 currentContentLayout == ContentLayout.SIMPLE_SENTENCE && lessonRows != null -> onSimpleSentenceStartStop()
                 currentContentLayout == ContentLayout.SV_RIBBON && svRibbonBengali != null -> onSvRibbonStartStop()
+                currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleMode == ConversationMode.VOCAB && lessonVocabRows.isNotEmpty() -> onVocabStartStop()
                 currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleRows.isNotEmpty() -> onConvBubbleStartStop()
+                currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB && lessonVocabRows.isNotEmpty() -> onVocabStartStop()
+                currentContentLayout == ContentLayout.THREECOL_TABLE && threeColRows.isNotEmpty() -> onThreeColStartStop()
                 else -> dispatchControlStartStop()
             }
         }
@@ -1284,7 +1313,10 @@ class MainActivity : AppCompatActivity() {
             when {
                 currentContentLayout == ContentLayout.SIMPLE_SENTENCE && lessonRows != null -> onSimpleSentencePauseResume()
                 currentContentLayout == ContentLayout.SV_RIBBON && svRibbonBengali != null -> onSvRibbonPauseResume()
+                currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleMode == ConversationMode.VOCAB -> { /* V tab: no pause/resume for POC */ }
                 currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleRows.isNotEmpty() -> onConvBubblePauseResume()
+                currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB -> { /* V tab: no pause/resume for POC */ }
+                currentContentLayout == ContentLayout.THREECOL_TABLE && threeColRows.isNotEmpty() -> onThreeColPauseResume()
                 else -> dispatchControlPauseResume()
             }
         }
@@ -2265,6 +2297,8 @@ class MainActivity : AppCompatActivity() {
         if (currentContentLayout == ContentLayout.SV_RIBBON) setSvRibbonYouSaid(said)
         if (currentContentLayout == ContentLayout.THREECOL_TABLE) onThreeColVerificationResult(match, said)
         if (currentContentLayout == ContentLayout.CONVERSATION_BUBBLES) onConvBubbleVerificationResult(match, said)
+        if ((currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleMode == ConversationMode.VOCAB) ||
+            (currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB)) return
         val resultWord = if (match) getString(R.string.correct) else getString(R.string.incorrect)
         val inLesson = lessonRows != null
         val inSvoSentenceList = sentenceList.isNotEmpty() && !inLesson
@@ -3217,6 +3251,14 @@ class MainActivity : AppCompatActivity() {
         }
         threeColCurrentLessonKey = lessonKey
         threeColBaseRows = rows
+        if (masterWordListMap == null) {
+            masterWordListMap = LessonFileParsers.loadMasterWordList(assets)
+        }
+        currentLessonVocabWords = LessonFileParsers.extractVocabularyBlock(content)
+        lessonVocabRows = LessonFileParsers.filterLessonVocabRowsByMaster(
+            LessonFileParsers.buildLessonVocabRowsOnlyInMaster(currentLessonVocabWords, masterWordListMap ?: emptyMap()),
+            masterWordListMap
+        )
         threeColStats = LessonFileParsers.loadThreeColStats(filesDir, lessonKey, rows.size)
         // Merge optional A,B from lesson file when present
         for (i in rows.indices) {
@@ -3264,6 +3306,8 @@ class MainActivity : AppCompatActivity() {
             setupThreeColModeButtons(root)
             updateThreeColStats()
             updateThreeColRowPositionText()
+            controlActionsBar?.visibility = View.VISIBLE
+            root.findViewById<View>(R.id.threecol_control_actions_include)?.visibility = View.GONE
         }
     }
 
@@ -3281,6 +3325,20 @@ class MainActivity : AppCompatActivity() {
         }
         convBubbleCurrentLessonKey = lessonKey
         convBubbleBaseRows = rows
+        val assetMaster = LessonFileParsers.loadMasterWordList(assets)
+        val additions = LessonFileParsers.loadMasterListAdditions(filesDir)
+        val mergedMaster = assetMaster.toMutableMap()
+        mergedMaster.putAll(additions)
+        val extractedWords = LessonFileParsers.extractWordsFromConversationContent(content)
+        for (word in extractedWords) {
+            if (word !in mergedMaster) {
+                LessonFileParsers.saveMasterListAddition(filesDir, word, "—", "—")
+                mergedMaster[word] = "—" to "—"
+            }
+        }
+        masterWordListMap = mergedMaster
+        currentLessonVocabWords = extractedWords
+        lessonVocabRows = LessonFileParsers.buildLessonVocabRowsOnlyInMaster(extractedWords, mergedMaster)
         convBubbleStats = LessonFileParsers.loadConversationBubbleStats(filesDir, lessonKey, rows.size)
         for (i in rows.indices) {
             val ab = initialABPerRow.getOrNull(i)
@@ -3359,6 +3417,7 @@ class MainActivity : AppCompatActivity() {
             ConversationMode.PRACTICE -> a == 0
             ConversationMode.TEST -> b == 0
             ConversationMode.LEARNING -> a == 0 || b == 0
+            ConversationMode.VOCAB -> false
         }
     }
 
@@ -3421,17 +3480,54 @@ class MainActivity : AppCompatActivity() {
         if (convBubbleControlRunning && convBubbleRows.isNotEmpty()) speakConvBubbleCurrent()
     }
 
+    /**
+     * Shared V tab setup: uses current lesson's [lessonVocabRows] (set by loadConversationBubbleLesson or loadThreeColLessonFromAsset).
+     * Same layout (layout_lesson_vocab_pronunciation) and behaviour for all similar lessons; only data differs per lesson file.
+     */
+    private fun setupVocabTabForCurrentLesson(vocabInclude: View?, onUpdateRowPosition: () -> Unit) {
+        val vocabRecycler = vocabInclude?.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.lesson_vocab_recycler)
+        if (lessonVocabAdapter == null) {
+            lessonVocabAdapter = LessonVocabAdapter(lessonVocabRows.toMutableList())
+        }
+        val vTabRows = LessonFileParsers.filterLessonVocabRowsByMaster(lessonVocabRows, masterWordListMap)
+        // Always load latest progress so words already passed in any lesson are hidden unless "Show all words" is on
+        vocabularyProgress = LessonFileParsers.loadVocabularyProgress(filesDir).toMutableMap()
+        currentVTabRows = if (vocabShowAllWords) vTabRows else LessonFileParsers.filterLessonVocabRowsNeedingTest(vTabRows, vocabularyProgress)
+        lessonVocabAdapter?.updateRows(currentVTabRows)
+        vocabRecycler?.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
+        vocabRecycler?.adapter = lessonVocabAdapter
+        val showAllSwitch = vocabInclude?.findViewById<CompoundButton>(R.id.lesson_vocab_show_all)
+        showAllSwitch?.isChecked = vocabShowAllWords
+        showAllSwitch?.setOnCheckedChangeListener { _, isChecked ->
+            vocabShowAllWords = isChecked
+            val v = LessonFileParsers.filterLessonVocabRowsByMaster(lessonVocabRows, masterWordListMap)
+            currentVTabRows = if (vocabShowAllWords) v else LessonFileParsers.filterLessonVocabRowsNeedingTest(v, vocabularyProgress)
+            runOnUiThread {
+                lessonVocabAdapter?.updateRows(currentVTabRows)
+                lessonVocabAdapter?.currentIndex = 0
+                vocabRecycler?.scrollToPosition(0)
+                onUpdateRowPosition()
+            }
+        }
+    }
+
     private fun setupConvBubbleModeButtons(root: View) {
         val learningBtn = root.findViewById<Button>(R.id.conv_bubble_mode_learning)
         val practiceBtn = root.findViewById<Button>(R.id.conv_bubble_mode_practice)
         val testBtn = root.findViewById<Button>(R.id.conv_bubble_mode_test)
+        val vocabBtn = root.findViewById<Button>(R.id.conv_bubble_mode_vocab)
         val prevRowBtn = root.findViewById<ImageButton>(R.id.conv_bubble_prev_row)
         val nextRowBtn = root.findViewById<ImageButton>(R.id.conv_bubble_next_row)
         val weakOnlyCheck = root.findViewById<Switch>(R.id.conv_bubble_weak_only)
         val weakOnlyRow = root.findViewById<View>(R.id.conv_bubble_row_nav)
         val testOptionsRow = root.findViewById<View>(R.id.conv_bubble_test_options_row)
+        val mainContent = root.findViewById<View>(R.id.conv_bubble_main_content)
+        val vocabInclude = root.findViewById<View>(R.id.conv_bubble_vocab_include)
+        val vocabRecycler = vocabInclude?.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.lesson_vocab_recycler)
         val initiatorAppRadio = root.findViewById<android.widget.RadioButton>(R.id.conv_bubble_initiator_app)
         val initiatorUserRadio = root.findViewById<android.widget.RadioButton>(R.id.conv_bubble_initiator_user)
+
+        setupVocabTabForCurrentLesson(vocabInclude) { updateConvBubbleRowPositionText() }
 
         learningBtn?.setOnClickListener {
             convBubbleMode = ConversationMode.LEARNING
@@ -3441,7 +3537,7 @@ class MainActivity : AppCompatActivity() {
             convBubbleSessionCorrect = 0
             convBubbleSessionAttempted = 0
             applyConvBubbleFilterForCurrentMode()
-            updateConvBubbleTabAppearance(learningBtn, practiceBtn, testBtn, weakOnlyCheck, weakOnlyRow, testOptionsRow)
+            updateConvBubbleTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, weakOnlyCheck, weakOnlyRow, testOptionsRow, mainContent, vocabInclude)
         }
         practiceBtn?.setOnClickListener {
             convBubbleMode = ConversationMode.PRACTICE
@@ -3451,7 +3547,7 @@ class MainActivity : AppCompatActivity() {
             convBubbleSessionCorrect = 0
             convBubbleSessionAttempted = 0
             applyConvBubbleFilterForCurrentMode()
-            updateConvBubbleTabAppearance(learningBtn, practiceBtn, testBtn, weakOnlyCheck, weakOnlyRow, testOptionsRow)
+            updateConvBubbleTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, weakOnlyCheck, weakOnlyRow, testOptionsRow, mainContent, vocabInclude)
         }
         testBtn?.setOnClickListener {
             convBubbleMode = ConversationMode.TEST
@@ -3461,9 +3557,16 @@ class MainActivity : AppCompatActivity() {
             convBubbleSessionCorrect = 0
             convBubbleSessionAttempted = 0
             applyConvBubbleFilterForCurrentMode()
-            updateConvBubbleTabAppearance(learningBtn, practiceBtn, testBtn, weakOnlyCheck, weakOnlyRow, testOptionsRow)
+            updateConvBubbleTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, weakOnlyCheck, weakOnlyRow, testOptionsRow, mainContent, vocabInclude)
             initiatorAppRadio?.isChecked = convBubbleTestInitiatorApp
             initiatorUserRadio?.isChecked = !convBubbleTestInitiatorApp
+        }
+        vocabBtn?.setOnClickListener {
+            convBubbleMode = ConversationMode.VOCAB
+            lessonVocabAdapter?.currentIndex = 0
+            vocabRecycler?.scrollToPosition(0)
+            updateConvBubbleTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, weakOnlyCheck, weakOnlyRow, testOptionsRow, mainContent, vocabInclude)
+            updateConvBubbleRowPositionText()
         }
         weakOnlyCheck?.setOnCheckedChangeListener { _, isChecked ->
             convBubbleWeakOnlyFilter = isChecked
@@ -3477,9 +3580,19 @@ class MainActivity : AppCompatActivity() {
             convBubbleTestInitiatorApp = false
             if (convBubbleMode == ConversationMode.TEST) applyConvBubbleFilterForCurrentMode()
         }
-        updateConvBubbleTabAppearance(learningBtn, practiceBtn, testBtn, weakOnlyCheck, weakOnlyRow, testOptionsRow)
+        updateConvBubbleTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, weakOnlyCheck, weakOnlyRow, testOptionsRow, mainContent, vocabInclude)
 
         prevRowBtn?.setOnClickListener {
+            if (convBubbleMode == ConversationMode.VOCAB) {
+                val n = currentVTabRows.size
+                if (n == 0) return@setOnClickListener
+                val idx = (lessonVocabAdapter?.currentIndex ?: 0).coerceIn(0, n - 1)
+                val newIdx = (idx - 1).coerceAtLeast(0)
+                lessonVocabAdapter?.currentIndex = newIdx
+                vocabRecycler?.scrollToPosition(newIdx)
+                updateConvBubbleRowPositionText()
+                return@setOnClickListener
+            }
             if (convBubbleRows.isEmpty()) return@setOnClickListener
             clearConvBubbleSpeechAndVerificationState()
             convBubbleCurrentIndex = (convBubbleCurrentIndex - 1).coerceAtLeast(0)
@@ -3488,6 +3601,16 @@ class MainActivity : AppCompatActivity() {
             if (convBubbleControlRunning && !convBubbleControlPaused) speakConvBubbleCurrent()
         }
         nextRowBtn?.setOnClickListener {
+            if (convBubbleMode == ConversationMode.VOCAB) {
+                val n = currentVTabRows.size
+                if (n == 0) return@setOnClickListener
+                val idx = lessonVocabAdapter?.currentIndex ?: 0
+                val newIdx = (idx + 1).coerceAtMost(n - 1)
+                lessonVocabAdapter?.currentIndex = newIdx
+                vocabRecycler?.scrollToPosition(newIdx)
+                updateConvBubbleRowPositionText()
+                return@setOnClickListener
+            }
             if (convBubbleRows.isEmpty()) return@setOnClickListener
             clearConvBubbleSpeechAndVerificationState()
             convBubbleCurrentIndex = (convBubbleCurrentIndex + 1).coerceAtMost(convBubbleRows.lastIndex)
@@ -3497,7 +3620,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateConvBubbleTabAppearance(learningBtn: View?, practiceBtn: View?, testBtn: View?, weakOnlyCheck: View?, weakOnlyRow: View?, testOptionsRow: View?) {
+    private fun updateConvBubbleTabAppearance(learningBtn: View?, practiceBtn: View?, testBtn: View?, vocabBtn: View?, weakOnlyCheck: View?, weakOnlyRow: View?, testOptionsRow: View?, mainContent: View?, vocabInclude: View?) {
         val blue = ContextCompat.getColor(this, R.color.lesson_topic_bar_background)
         val gray = 0xFFE0E0E0.toInt()
         val white = 0xFFFFFFFF.toInt()
@@ -3505,24 +3628,40 @@ class MainActivity : AppCompatActivity() {
         val isLearning = convBubbleMode == ConversationMode.LEARNING
         val isPractice = convBubbleMode == ConversationMode.PRACTICE
         val isTest = convBubbleMode == ConversationMode.TEST
+        val isVocab = convBubbleMode == ConversationMode.VOCAB
         (learningBtn as? TextView)?.setBackgroundColor(if (isLearning) blue else gray)
         (learningBtn as? TextView)?.setTextColor(if (isLearning) white else darkText)
         (practiceBtn as? TextView)?.setBackgroundColor(if (isPractice) blue else gray)
         (practiceBtn as? TextView)?.setTextColor(if (isPractice) white else darkText)
         (testBtn as? TextView)?.setBackgroundColor(if (isTest) blue else gray)
         (testBtn as? TextView)?.setTextColor(if (isTest) white else darkText)
-        // Practice: show Failed & untried only; Test: show role + initiator; Learning: hide both
+        (vocabBtn as? TextView)?.setBackgroundColor(if (isVocab) blue else gray)
+        (vocabBtn as? TextView)?.setTextColor(if (isVocab) white else darkText)
+        mainContent?.visibility = if (isVocab) View.GONE else View.VISIBLE
+        vocabInclude?.visibility = if (isVocab) View.VISIBLE else View.GONE
+        vocabBtn?.visibility = if (lessonVocabRows.isEmpty()) View.GONE else View.VISIBLE
+        // Practice: show Failed & untried only; Test: show role + initiator; Learning/Vocab: hide both
         weakOnlyRow?.visibility = if (isPractice) View.VISIBLE else View.GONE
         weakOnlyCheck?.visibility = if (isPractice) View.VISIBLE else View.GONE
         testOptionsRow?.visibility = if (isTest) View.VISIBLE else View.GONE
     }
 
-    /** Reusable scroll logic for any lesson: on load we determine the center index; once past it, always scroll one bubble height at a time (smooth). */
+    /** Reusable scroll logic for any lesson: on load we determine the center index; once past it, always scroll one bubble height at a time (smooth). In V mode, prev/next refer to vocab list. */
     private fun updateConvBubbleRowPositionText() {
         if (currentContentLayout != ContentLayout.CONVERSATION_BUBBLES) return
         val root = contentFrame.getChildAt(0) ?: return
         val prevBtn = root.findViewById<ImageButton>(R.id.conv_bubble_prev_row)
         val nextBtn = root.findViewById<ImageButton>(R.id.conv_bubble_next_row)
+        if (convBubbleMode == ConversationMode.VOCAB) {
+            val n = currentVTabRows.size
+            val cur = (lessonVocabAdapter?.currentIndex ?: 0).coerceIn(0, (n - 1).coerceAtLeast(0))
+            prevBtn?.isEnabled = n > 0 && cur > 0
+            nextBtn?.isEnabled = n > 0 && cur < n - 1
+            val vocabInclude = root.findViewById<View>(R.id.conv_bubble_vocab_include)
+            val vocabRecycler = vocabInclude?.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.lesson_vocab_recycler)
+            vocabRecycler?.scrollToPosition(cur)
+            return
+        }
         val n = convBubbleRows.size
         val cur = convBubbleCurrentIndex.coerceIn(0, (n - 1).coerceAtLeast(0))
         prevBtn?.isEnabled = n > 0 && cur > 0
@@ -3656,6 +3795,45 @@ class MainActivity : AppCompatActivity() {
         updateConvBubbleControlBar()
     }
 
+    /** V tab: Start = speak current word (TTS) then listen for it; Stop = stop TTS and recognition. Used from both CONVERSATION_BUBBLES and THREECOL_TABLE when in V mode. */
+    private fun onVocabStartStop() {
+        if (convBubbleControlRunning) {
+            textToSpeech?.stop()
+            cancelVerificationTimeout()
+            if (verificationMode) {
+                verificationMode = false
+                expectedEnglishForVerification = null
+                try { speechRecognizer?.stopListening() } catch (_: Exception) { }
+                stopEnglishVoskRecording()
+                setMicButtonAppearance(recording = false)
+            }
+            isEnglishMicActive = false
+            isRecording = false
+            convBubbleControlRunning = false
+            if (currentContentLayout == ContentLayout.THREECOL_TABLE) threeColControlRunning = false
+        } else {
+            if (currentVTabRows.isEmpty()) return
+            val idx = (lessonVocabAdapter?.currentIndex ?: 0).coerceIn(0, currentVTabRows.lastIndex)
+            val row = currentVTabRows.getOrNull(idx) ?: return
+            vocabIncorrectCount = 0
+            convBubbleControlRunning = true
+            if (currentContentLayout == ContentLayout.THREECOL_TABLE) threeColControlRunning = true
+            textToSpeech?.stop()
+            textToSpeech?.setLanguage(Locale.US)
+            textToSpeech?.speak(MatchNormalizer.textForSpeakAndDisplay(row.word), TextToSpeech.QUEUE_FLUSH, null, "vocab_word")
+            expectedEnglishForVerification = row.word
+            verificationHandler.postDelayed({
+                if (!isDestroyed && convBubbleControlRunning) {
+                    val inConvV = currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleMode == ConversationMode.VOCAB
+                    val inThreeV = currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB
+                    if (inConvV || inThreeV) startVerificationListening(row.word)
+                }
+            }, 800)
+        }
+        if (currentContentLayout == ContentLayout.CONVERSATION_BUBBLES) updateConvBubbleControlBar()
+        else if (currentContentLayout == ContentLayout.THREECOL_TABLE) updateThreeColControlBar()
+    }
+
     private fun onConvBubblePauseResume() {
         if (convBubbleControlPaused) {
             if (convBubbleRows.isEmpty()) return
@@ -3683,6 +3861,7 @@ class MainActivity : AppCompatActivity() {
     /** Speak current row. Test: app row = speak English; user row = listen. Role/initiator set by toggle and radio. Practice/Learning: speak Bengali then listen. */
     private fun speakConvBubbleCurrent() {
         if (currentContentLayout != ContentLayout.CONVERSATION_BUBBLES || convBubbleRows.isEmpty()) return
+        if (convBubbleMode == ConversationMode.VOCAB) return
         val idx = convBubbleCurrentIndex.coerceIn(0, convBubbleRows.lastIndex)
         val row = convBubbleRows[idx]
         convBubbleAdapter?.setCurrentIndex(idx)
@@ -3707,7 +3886,76 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onConvBubbleVerificationResult(match: Boolean, said: String) {
-        if (currentContentLayout != ContentLayout.CONVERSATION_BUBBLES || convBubbleRows.isEmpty()) return
+        if (currentContentLayout != ContentLayout.CONVERSATION_BUBBLES) return
+        if (convBubbleMode == ConversationMode.VOCAB && currentVTabRows.isNotEmpty()) {
+            runOnUiThread {
+                Toast.makeText(this, if (match) getString(R.string.correct) else getString(R.string.incorrect), Toast.LENGTH_SHORT).show()
+            }
+            val curIdx = (lessonVocabAdapter?.currentIndex ?: 0).coerceIn(0, currentVTabRows.lastIndex)
+            val row = currentVTabRows.getOrNull(curIdx) ?: return
+            val wordKey = row.word.trim().lowercase()
+            val advance: Boolean = if (match) {
+                vocabIncorrectCount = 0
+                true
+            } else {
+                vocabIncorrectCount++
+                vocabIncorrectCount >= 3
+            }
+            if (advance) {
+                runOnUiThread { lessonVocabAdapter?.setResult(curIdx, match) }
+                vocabIncorrectCount = 0
+                vocabularyProgress[wordKey] = if (match) LessonFileParsers.VOCAB_PROGRESS_PASSED else LessonFileParsers.VOCAB_PROGRESS_FAILED
+                LessonFileParsers.saveVocabularyProgress(filesDir, vocabularyProgress)
+                if (match && !vocabShowAllWords) {
+                    val vTabRows = LessonFileParsers.filterLessonVocabRowsByMaster(lessonVocabRows, masterWordListMap)
+                    currentVTabRows = LessonFileParsers.filterLessonVocabRowsNeedingTest(vTabRows, vocabularyProgress)
+                    runOnUiThread { lessonVocabAdapter?.updateRows(currentVTabRows) }
+                }
+                val nextIdx = if (match && !vocabShowAllWords) curIdx.coerceAtMost((currentVTabRows.size - 1).coerceAtLeast(0)) else (curIdx + 1).coerceAtMost((currentVTabRows.size - 1).coerceAtLeast(0))
+                lessonVocabAdapter?.currentIndex = nextIdx
+                val root = contentFrame.getChildAt(0)
+                root?.findViewById<View>(R.id.conv_bubble_vocab_include)?.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.lesson_vocab_recycler)?.scrollToPosition(nextIdx)
+                root?.findViewById<View>(R.id.threecol_vocab_include)?.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.lesson_vocab_recycler)?.scrollToPosition(nextIdx)
+                if (currentVTabRows.isNotEmpty() && convBubbleControlRunning) {
+                    verificationHandler.postDelayed({
+                        if (!isDestroyed && convBubbleControlRunning && currentVTabRows.isNotEmpty()) {
+                            val idx = (lessonVocabAdapter?.currentIndex ?: nextIdx).coerceIn(0, currentVTabRows.lastIndex)
+                            val nextRow = currentVTabRows.getOrNull(idx) ?: return@postDelayed
+                            textToSpeech?.stop()
+                            textToSpeech?.setLanguage(Locale.US)
+                            textToSpeech?.speak(MatchNormalizer.textForSpeakAndDisplay(nextRow.word), TextToSpeech.QUEUE_FLUSH, null, "vocab_word")
+                            expectedEnglishForVerification = nextRow.word
+                            verificationHandler.postDelayed({
+                                if (!isDestroyed && convBubbleControlRunning) startVerificationListening(nextRow.word)
+                            }, 800)
+                        }
+                    }, 1500)
+                } else {
+                    convBubbleControlRunning = false
+                    if (currentContentLayout == ContentLayout.THREECOL_TABLE) threeColControlRunning = false
+                    runOnUiThread {
+                        if (currentContentLayout == ContentLayout.CONVERSATION_BUBBLES) updateConvBubbleControlBar()
+                        else if (currentContentLayout == ContentLayout.THREECOL_TABLE) updateThreeColControlBar()
+                    }
+                }
+            } else {
+                verificationHandler.postDelayed({
+                    if (!isDestroyed && convBubbleControlRunning && currentVTabRows.isNotEmpty()) {
+                        val idx = (lessonVocabAdapter?.currentIndex ?: curIdx).coerceIn(0, currentVTabRows.lastIndex)
+                        val retryRow = currentVTabRows.getOrNull(idx) ?: return@postDelayed
+                        textToSpeech?.stop()
+                        textToSpeech?.setLanguage(Locale.US)
+                        textToSpeech?.speak(MatchNormalizer.textForSpeakAndDisplay(retryRow.word), TextToSpeech.QUEUE_FLUSH, null, "vocab_word_after_fail")
+                        expectedEnglishForVerification = retryRow.word
+                        verificationHandler.postDelayed({
+                            if (!isDestroyed && convBubbleControlRunning) startVerificationListening(retryRow.word)
+                        }, 800)
+                    }
+                }, 1500)
+            }
+            return
+        }
+        if (convBubbleRows.isEmpty()) return
         // Test role-play: result applies to the row we were listening for (left=app spoke then we listened for right; or right=we only listened).
         val userRowIdx = if (convBubbleMode == ConversationMode.TEST) {
             if (convBubbleListeningForRowIndex in convBubbleRows.indices) convBubbleListeningForRowIndex
@@ -3773,12 +4021,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /** Update prev/next button enabled state for THREECOL_TABLE and scroll so current row is visible. */
+    /** Update prev/next button enabled state for THREECOL_TABLE and scroll so current row is visible. In V mode use vocab list. */
     private fun updateThreeColRowPositionText() {
         if (currentContentLayout != ContentLayout.THREECOL_TABLE) return
         val root = contentFrame.getChildAt(0) ?: return
         val prevBtn = root.findViewById<ImageButton>(R.id.threecol_prev_row)
         val nextBtn = root.findViewById<ImageButton>(R.id.threecol_next_row)
+        if (threeColMode == ThreeColMode.VOCAB) {
+            val n = currentVTabRows.size
+            val cur = (lessonVocabAdapter?.currentIndex ?: 0).coerceIn(0, (n - 1).coerceAtLeast(0))
+            prevBtn?.isEnabled = n > 0 && cur > 0
+            nextBtn?.isEnabled = n > 0 && cur < n - 1
+            root.findViewById<View>(R.id.threecol_vocab_include)?.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.lesson_vocab_recycler)?.scrollToPosition(cur)
+            return
+        }
         val n = threeColRows.size
         val cur = threeColCurrentIndex.coerceIn(0, (n - 1).coerceAtLeast(0))
         prevBtn?.isEnabled = n > 0 && cur > 0
@@ -4019,14 +4275,20 @@ class MainActivity : AppCompatActivity() {
         root.findViewById<TextView>(R.id.sv_ribbon_you_said)?.text = MatchNormalizer.sanitizeSpokenTextForDisplay(text)
     }
 
-    /** Wire Learning / Practice / Test tabs, prev/next row, and Weak-only filter for THREECOL_TABLE. */
+    /** Wire Learning / Practice / Test / V tabs, prev/next row, and Weak-only filter for THREECOL_TABLE. */
     private fun setupThreeColModeButtons(root: View) {
         val learningBtn = root.findViewById<Button>(R.id.threecol_mode_learning)
         val practiceBtn = root.findViewById<Button>(R.id.threecol_mode_practice)
         val testBtn = root.findViewById<Button>(R.id.threecol_mode_test)
+        val vocabBtn = root.findViewById<Button>(R.id.threecol_mode_vocab)
         val prevRowBtn = root.findViewById<ImageButton>(R.id.threecol_prev_row)
         val nextRowBtn = root.findViewById<ImageButton>(R.id.threecol_next_row)
         val weakOnlyCheck = root.findViewById<Switch>(R.id.threecol_weak_only)
+        val mainContent = root.findViewById<View>(R.id.threecol_main_content)
+        val vocabInclude = root.findViewById<View>(R.id.threecol_vocab_include)
+        val vocabRecycler = vocabInclude?.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.lesson_vocab_recycler)
+
+        setupVocabTabForCurrentLesson(vocabInclude) { updateThreeColRowPositionText() }
 
         learningBtn?.setOnClickListener {
             threeColMode = ThreeColMode.LEARNING
@@ -4036,7 +4298,7 @@ class MainActivity : AppCompatActivity() {
             threeColSessionCorrect = 0
             threeColSessionAttempted = 0
             applyThreeColFilterForCurrentMode()
-            updateThreeColTabAppearance(learningBtn, practiceBtn, testBtn, weakOnlyCheck)
+            updateThreeColTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, weakOnlyCheck, mainContent, vocabInclude)
         }
         practiceBtn?.setOnClickListener {
             threeColMode = ThreeColMode.PRACTICE
@@ -4046,7 +4308,7 @@ class MainActivity : AppCompatActivity() {
             threeColSessionCorrect = 0
             threeColSessionAttempted = 0
             applyThreeColFilterForCurrentMode()
-            updateThreeColTabAppearance(learningBtn, practiceBtn, testBtn, weakOnlyCheck)
+            updateThreeColTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, weakOnlyCheck, mainContent, vocabInclude)
         }
         testBtn?.setOnClickListener {
             threeColMode = ThreeColMode.TEST
@@ -4056,17 +4318,32 @@ class MainActivity : AppCompatActivity() {
             threeColSessionCorrect = 0
             threeColSessionAttempted = 0
             applyThreeColFilterForCurrentMode()
-            updateThreeColTabAppearance(learningBtn, practiceBtn, testBtn, weakOnlyCheck)
+            updateThreeColTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, weakOnlyCheck, mainContent, vocabInclude)
+        }
+        vocabBtn?.setOnClickListener {
+            threeColMode = ThreeColMode.VOCAB
+            lessonVocabAdapter?.currentIndex = 0
+            vocabRecycler?.scrollToPosition(0)
+            updateThreeColTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, weakOnlyCheck, mainContent, vocabInclude)
+            updateThreeColRowPositionText()
         }
 
         weakOnlyCheck?.setOnCheckedChangeListener { _, isChecked ->
             threeColWeakOnlyFilter = isChecked
             applyThreeColFilterForCurrentMode()
         }
-        // Toggle visible only in Practice and Test (hidden in Learning)
-        weakOnlyCheck?.visibility = if (threeColMode == ThreeColMode.LEARNING) View.GONE else View.VISIBLE
 
         prevRowBtn?.setOnClickListener {
+            if (threeColMode == ThreeColMode.VOCAB) {
+                val n = currentVTabRows.size
+                if (n == 0) return@setOnClickListener
+                val idx = (lessonVocabAdapter?.currentIndex ?: 0).coerceIn(0, n - 1)
+                val newIdx = (idx - 1).coerceAtLeast(0)
+                lessonVocabAdapter?.currentIndex = newIdx
+                vocabRecycler?.scrollToPosition(newIdx)
+                updateThreeColRowPositionText()
+                return@setOnClickListener
+            }
             if (threeColRows.isEmpty()) return@setOnClickListener
             threeColCurrentIndex = (threeColCurrentIndex - 1).coerceAtLeast(0)
             threeColAdapter?.setCurrentIndex(threeColCurrentIndex)
@@ -4074,6 +4351,16 @@ class MainActivity : AppCompatActivity() {
             if (threeColControlRunning && !threeColControlPaused) speakThreeColCurrent()
         }
         nextRowBtn?.setOnClickListener {
+            if (threeColMode == ThreeColMode.VOCAB) {
+                val n = currentVTabRows.size
+                if (n == 0) return@setOnClickListener
+                val idx = lessonVocabAdapter?.currentIndex ?: 0
+                val newIdx = (idx + 1).coerceAtMost(n - 1)
+                lessonVocabAdapter?.currentIndex = newIdx
+                vocabRecycler?.scrollToPosition(newIdx)
+                updateThreeColRowPositionText()
+                return@setOnClickListener
+            }
             if (threeColRows.isEmpty()) return@setOnClickListener
             threeColCurrentIndex = (threeColCurrentIndex + 1).coerceAtMost(threeColRows.lastIndex)
             threeColAdapter?.setCurrentIndex(threeColCurrentIndex)
@@ -4081,10 +4368,10 @@ class MainActivity : AppCompatActivity() {
             if (threeColControlRunning && !threeColControlPaused) speakThreeColCurrent()
         }
 
-        updateThreeColTabAppearance(learningBtn, practiceBtn, testBtn, weakOnlyCheck)
+        updateThreeColTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, weakOnlyCheck, mainContent, vocabInclude)
     }
 
-    private fun updateThreeColTabAppearance(learningBtn: View?, practiceBtn: View?, testBtn: View?, weakOnlyCheck: View?) {
+    private fun updateThreeColTabAppearance(learningBtn: View?, practiceBtn: View?, testBtn: View?, vocabBtn: View?, weakOnlyCheck: View?, mainContent: View?, vocabInclude: View?) {
         val blue = ContextCompat.getColor(this, R.color.lesson_topic_bar_background)
         val gray = 0xFFE0E0E0.toInt()
         val white = 0xFFFFFFFF.toInt()
@@ -4092,6 +4379,7 @@ class MainActivity : AppCompatActivity() {
         val isLearning = threeColMode == ThreeColMode.LEARNING
         val isPractice = threeColMode == ThreeColMode.PRACTICE
         val isTest = threeColMode == ThreeColMode.TEST
+        val isVocab = threeColMode == ThreeColMode.VOCAB
         (learningBtn as? TextView)?.let {
             it.setBackgroundColor(if (isLearning) blue else gray)
             it.setTextColor(if (isLearning) white else darkText)
@@ -4104,8 +4392,14 @@ class MainActivity : AppCompatActivity() {
             it.setBackgroundColor(if (isTest) blue else gray)
             it.setTextColor(if (isTest) white else darkText)
         }
-        // Toggle and its row visible only in Practice and Test (show both when not Learning)
-        val showToggle = !isLearning
+        (vocabBtn as? TextView)?.let {
+            it.setBackgroundColor(if (isVocab) blue else gray)
+            it.setTextColor(if (isVocab) white else darkText)
+        }
+        mainContent?.visibility = if (isVocab) View.GONE else View.VISIBLE
+        vocabInclude?.visibility = if (isVocab) View.VISIBLE else View.GONE
+        vocabBtn?.visibility = if (lessonVocabRows.isEmpty()) View.GONE else View.VISIBLE
+        val showToggle = !isLearning && !isVocab
         weakOnlyCheck?.visibility = if (showToggle) View.VISIBLE else View.GONE
         (weakOnlyCheck?.parent as? View)?.visibility = if (showToggle) View.VISIBLE else View.GONE
     }
@@ -4172,6 +4466,7 @@ class MainActivity : AppCompatActivity() {
     /** Speak Bengali then English for current THREECOL row, then verification. */
     private fun speakThreeColCurrent() {
         if (currentContentLayout != ContentLayout.THREECOL_TABLE) return
+        if (threeColMode == ThreeColMode.VOCAB) return
         if (threeColRows.isEmpty()) return
         val idx = threeColCurrentIndex.coerceIn(0, threeColRows.lastIndex)
         val row = threeColRows[idx]
@@ -4184,9 +4479,72 @@ class MainActivity : AppCompatActivity() {
         textToSpeech?.speak(row.bengali, TextToSpeech.QUEUE_FLUSH, null, utteranceId)
     }
 
-    /** Handle verification result for THREECOL_TABLE: reveal second column, update stats, and advance when appropriate. */
+    /** Handle verification result for THREECOL_TABLE: reveal second column, update stats, and advance when appropriate. V tab: Toast, advance to next word or stop. */
     private fun onThreeColVerificationResult(match: Boolean, said: String) {
         if (currentContentLayout != ContentLayout.THREECOL_TABLE) return
+        if (threeColMode == ThreeColMode.VOCAB && currentVTabRows.isNotEmpty()) {
+            runOnUiThread {
+                Toast.makeText(this, if (match) getString(R.string.correct) else getString(R.string.incorrect), Toast.LENGTH_SHORT).show()
+            }
+            val curIdx = (lessonVocabAdapter?.currentIndex ?: 0).coerceIn(0, currentVTabRows.lastIndex)
+            val row = currentVTabRows.getOrNull(curIdx) ?: return
+            val wordKey = row.word.trim().lowercase()
+            val advance: Boolean = if (match) {
+                vocabIncorrectCount = 0
+                true
+            } else {
+                vocabIncorrectCount++
+                vocabIncorrectCount >= 3
+            }
+            if (advance) {
+                runOnUiThread { lessonVocabAdapter?.setResult(curIdx, match) }
+                vocabIncorrectCount = 0
+                vocabularyProgress[wordKey] = if (match) LessonFileParsers.VOCAB_PROGRESS_PASSED else LessonFileParsers.VOCAB_PROGRESS_FAILED
+                LessonFileParsers.saveVocabularyProgress(filesDir, vocabularyProgress)
+                if (match && !vocabShowAllWords) {
+                    val vTabRows = LessonFileParsers.filterLessonVocabRowsByMaster(lessonVocabRows, masterWordListMap)
+                    currentVTabRows = LessonFileParsers.filterLessonVocabRowsNeedingTest(vTabRows, vocabularyProgress)
+                    runOnUiThread { lessonVocabAdapter?.updateRows(currentVTabRows) }
+                }
+                val nextIdx = if (match && !vocabShowAllWords) curIdx.coerceAtMost((currentVTabRows.size - 1).coerceAtLeast(0)) else (curIdx + 1).coerceAtMost((currentVTabRows.size - 1).coerceAtLeast(0))
+                lessonVocabAdapter?.currentIndex = nextIdx
+                contentFrame.getChildAt(0)?.findViewById<View>(R.id.threecol_vocab_include)?.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.lesson_vocab_recycler)?.scrollToPosition(nextIdx)
+                if (currentVTabRows.isNotEmpty() && convBubbleControlRunning) {
+                    verificationHandler.postDelayed({
+                        if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB && convBubbleControlRunning && currentVTabRows.isNotEmpty()) {
+                            val idx = (lessonVocabAdapter?.currentIndex ?: nextIdx).coerceIn(0, currentVTabRows.lastIndex)
+                            val nextRow = currentVTabRows.getOrNull(idx) ?: return@postDelayed
+                            textToSpeech?.stop()
+                            textToSpeech?.setLanguage(Locale.US)
+                            textToSpeech?.speak(MatchNormalizer.textForSpeakAndDisplay(nextRow.word), TextToSpeech.QUEUE_FLUSH, null, "vocab_word")
+                            expectedEnglishForVerification = nextRow.word
+                            verificationHandler.postDelayed({
+                                if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB && convBubbleControlRunning) startVerificationListening(nextRow.word)
+                            }, 800)
+                        }
+                    }, 1500)
+                } else {
+                    convBubbleControlRunning = false
+                    threeColControlRunning = false
+                    runOnUiThread { updateThreeColControlBar() }
+                }
+            } else {
+                verificationHandler.postDelayed({
+                    if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB && convBubbleControlRunning && currentVTabRows.isNotEmpty()) {
+                        val idx = (lessonVocabAdapter?.currentIndex ?: curIdx).coerceIn(0, currentVTabRows.lastIndex)
+                        val retryRow = currentVTabRows.getOrNull(idx) ?: return@postDelayed
+                        textToSpeech?.stop()
+                        textToSpeech?.setLanguage(Locale.US)
+                        textToSpeech?.speak(MatchNormalizer.textForSpeakAndDisplay(retryRow.word), TextToSpeech.QUEUE_FLUSH, null, "vocab_word_after_fail")
+                        expectedEnglishForVerification = retryRow.word
+                        verificationHandler.postDelayed({
+                            if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB && convBubbleControlRunning) startVerificationListening(retryRow.word)
+                        }, 800)
+                    }
+                }, 1500)
+            }
+            return
+        }
         if (threeColRows.isEmpty()) return
         val idx = threeColCurrentIndex.coerceIn(0, threeColRows.lastIndex)
         if (!threeColLearningMode) {

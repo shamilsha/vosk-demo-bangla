@@ -14,9 +14,11 @@ object DrawerTopicBuilders {
             Subtopic("Mic Test", "mic_test", ContentLayout.MIC_SPEAKER_TEST),
             Subtopic("Translation Practice", "translation_practice", ContentLayout.PRACTICE_THREE_AREA),
             Subtopic("First meeting (conversation)", "conversation_first_meeting", ContentLayout.CONVERSATION),
+            // Same layout + V tab for all; actionKey must match conversationBubbleLessonAssetPaths in MainActivity.
             Subtopic("First meeting (bubbles)", "conv_bubble_first_meeting", ContentLayout.CONVERSATION_BUBBLES),
             Subtopic("Second lesson (bubbles)", "conv_bubble_second_lesson", ContentLayout.CONVERSATION_BUBBLES),
-            Subtopic("Third lesson (bubbles)", "conv_bubble_third_lesson", ContentLayout.CONVERSATION_BUBBLES)
+            Subtopic("Third lesson (bubbles)", "conv_bubble_third_lesson", ContentLayout.CONVERSATION_BUBBLES),
+            Subtopic("Fourth lesson (bubbles)", "conv_bubble_fourth_lesson", ContentLayout.CONVERSATION_BUBBLES)
         )),
         Topic("Silent Letters", listOf(
             Subtopic("Silent e (a-e)", "pron_silent_e"),

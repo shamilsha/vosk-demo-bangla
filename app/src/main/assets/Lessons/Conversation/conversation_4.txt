@@ -1,0 +1,98 @@
+PersonA: Excuse me. could you help me? I think I am lost., মাফ করবেন| আপনি কি আমাকে সাহায্য করতে পারেন? আমার মনে হয় আমি পথ হারিয়ে ফেলেছি।, এক্সকিউজ মি কুড ইউ হেল্প মি? আই থিঙ্ক আই অ্যাম লস্ট।
+PersonB: Certainly! Where are you trying to go?, অবশ্যই! আপনি কোথায় যাওয়ার চেষ্টা করছেন?, সারটেইনলি! হোয়ার আর ইউ ট্রাইং টু গো?
+PersonA: I am looking for the city library. Is it far from here?, আমি সিটি লাইব্রেরি খুঁজছি। এটা কি এখান থেকে দূরে?, আই অ্যাম লুকিং ফর দ্য সিটি লাইব্রেরি। ইজ ইট ফার ফ্রম হিয়ার?
+PersonB: Not at all. It is about a ten-minute walk., একদমই না। এটা প্রায় দশ মিনিটের হাঁটা পথ।, নট অ্যাট অল। ইট ইজ অ্যাবাউট আ টেন-মিনিট ওয়াক।
+PersonA: That is good to hear. Which way should I go?, এটা শুনে ভালো লাগল। আমাকে কোন দিকে যেতে হবে?, দ্যাট ইজ গুড টু হিয়ার। হুইচ ওয়ে শুড আই গো?
+PersonB: Go straight down this road until you see a big park., এই রাস্তা দিয়ে সোজা যান যতক্ষণ না আপনি একটি বড় পার্ক দেখতে পান।, গো স্ট্রেইট ডাউন দিস রোড আনটিল ইউ সি আ বিগ পার্ক।
+PersonA: Okay. I go straight to the park. What do I do next?, ঠিক আছে| আমি পার্ক পর্যন্ত সোজা যাব। এরপর আমি কী করব?, ওকে আই গো স্ট্রেইট টু দ্য পার্ক। হোয়াট ডু আই ডু নেক্সট?
+PersonB: Turn left at the park and walk past the coffee shop., পার্কের ওখানে বামে মোড় নিন এবং কফি শপটি পার হয়ে যান।, টার্ন লেফট অ্যাট দ্য পার্ক অ্যান্ড ওয়াক পাস্ট দ্য কফি শপ।
+PersonA: Do I need to cross the street at any point?, আমাকে কি কোনো জায়গায় রাস্তা পার হতে হবে?, ডু আই নিড টু ক্রস দ্য স্ট্রিট অ্যাট এনি পয়েন্ট?
+PersonB: Yes cross the street at the traffic lights., হ্যাঁ ট্রাফিক লাইটের ওখানে রাস্তা পার হোন।, ইয়েস ক্রস দ্য স্ট্রিট অ্যাট দ্য ট্রাফিক লাইটস।
+PersonA: Will the library be on my left or my right?, লাইব্রেরি কি আমার বাম দিকে না কি ডান দিকে হবে?, উইল দ্য লাইব্রেরি বি অন মাই লেফট অর মাই রাইট?
+PersonB: It will be right in front of you. You cannot miss it., এটা ঠিক আপনার সামনেই থাকবে। আপনি এটি মিস করবেন না।, ইট উইল বি রাইট ইন ফ্রন্ট অফ ইউ। ইউ ক্যাননট মিস ইট।
+PersonA: Thank you so much for your help!, আপনার সাহায্যের জন্য অনেক ধন্যবাদ!, থ্যাঙ্ক ইউ সো মাচ ফর ইয়োর হেল্প!
+PersonB: You are very welcome. Have a nice day!, আপনাকে স্বাগতম। আপনার দিনটি ভালো কাটুক!, ইউ আর ভেরি ওয়েলকাম। হ্যাভ আ নাইস ডে!
+
+# --- VOCABULARY ---
+# Words extracted from the conversation above (all English words from dialogue)
+a
+all
+am
+and
+any
+are
+at
+be
+big
+cannot
+certainly
+city
+coffee
+could
+cross
+day
+do
+down
+excuse
+far
+for
+front
+go
+good
+have
+hear
+help
+here
+i
+in
+is
+it
+left
+library
+lights
+looking
+lost
+me
+minute
+miss
+much
+my
+next
+nice
+not
+of
+okay
+on
+or
+park
+past
+point
+right
+road
+see
+shop
+should
+so
+straight
+street
+thank
+that
+the
+think
+this
+to
+traffic
+turn
+trying
+until
+very
+walk
+way
+welcome
+what
+which
+will
+yes
+you
+your
+# --- END VOCABULARY ---

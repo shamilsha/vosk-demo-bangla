@@ -40,7 +40,7 @@
                 android:id="@+id/conv_bubble_mode_learning"
                 android:layout_width="0dp"
                 android:layout_height="32dp"
-                android:layout_weight="0.33"
+                android:layout_weight="0.25"
                 android:minHeight="32dp"
                 android:layout_marginHorizontal="2dp"
                 android:text="Learning"
@@ -50,7 +50,7 @@
                 android:id="@+id/conv_bubble_mode_practice"
                 android:layout_width="0dp"
                 android:layout_height="32dp"
-                android:layout_weight="0.33"
+                android:layout_weight="0.25"
                 android:minHeight="32dp"
                 android:layout_marginHorizontal="2dp"
                 android:text="Practice"
@@ -60,10 +60,20 @@
                 android:id="@+id/conv_bubble_mode_test"
                 android:layout_width="0dp"
                 android:layout_height="32dp"
-                android:layout_weight="0.34"
+                android:layout_weight="0.25"
                 android:minHeight="32dp"
                 android:layout_marginHorizontal="2dp"
                 android:text="Test"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/conv_bubble_mode_vocab"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_weight="0.25"
+                android:minHeight="32dp"
+                android:layout_marginHorizontal="2dp"
+                android:text="V"
                 android:textSize="12sp" />
 
             <ImageButton
@@ -78,6 +88,17 @@
                 android:scaleType="centerInside"
                 android:padding="4dp" />
         </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:id="@+id/conv_bubble_main_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
         <!-- Failed & untried only (Practice only; hidden in Test) -->
         <LinearLayout
@@ -172,7 +193,7 @@
                 android:textSize="12sp" />
         </LinearLayout>
 
-    <!-- Scrollable area only: bubbles (no extra padding; control bar is fixed below) -->
+    <!-- Scrollable area only: bubbles -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/conv_bubble_recycler"
         android:layout_width="match_parent"
@@ -181,6 +202,17 @@
         android:padding="0dp"
         android:clipToPadding="false"
         android:overScrollMode="ifContentScrolls" />
+
+        </LinearLayout>
+
+    <!-- V tab: 3-column vocabulary (Word | Pronunciation | Meaning). Same top/bottom bar. -->
+    <include
+        android:id="@+id/conv_bubble_vocab_include"
+        layout="@layout/layout_lesson_vocab_pronunciation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+    </FrameLayout>
 
     <!-- Bottom: Start/Stop (fixed, always visible) -->
     <include

@@ -40,3 +40,31 @@ PersonA: Uncle! may I go now?, আঙ্কেল! আমি কি এখন �
 PersonB: Yes. you can., হ্যাঁ| তুমি পারো।, ইয়েস| ইউ ক্যান।
 PersonA: Thank you., ধন্যবাদ।, থ্যাঙ্ক ইউ।
 PersonB: Welcome., স্বাগতম।, ওয়েলকাম।
+
+# --- VOCABULARY ---
+about
+class
+english
+father
+friend
+job
+like
+many
+market
+name
+need
+old
+person
+read
+school
+sick
+sports
+student
+subject
+thank
+welcome
+what
+where
+who
+your
+# --- END VOCABULARY ---

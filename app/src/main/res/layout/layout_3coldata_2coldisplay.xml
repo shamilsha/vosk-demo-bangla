@@ -54,7 +54,7 @@
                 android:id="@+id/threecol_mode_learning"
                 android:layout_width="0dp"
                 android:layout_height="32dp"
-                android:layout_weight="0.33"
+                android:layout_weight="0.25"
                 android:minHeight="32dp"
                 android:layout_marginHorizontal="2dp"
                 android:text="Learning"
@@ -64,7 +64,7 @@
                 android:id="@+id/threecol_mode_practice"
                 android:layout_width="0dp"
                 android:layout_height="32dp"
-                android:layout_weight="0.33"
+                android:layout_weight="0.25"
                 android:minHeight="32dp"
                 android:layout_marginHorizontal="2dp"
                 android:text="Practice"
@@ -74,10 +74,20 @@
                 android:id="@+id/threecol_mode_test"
                 android:layout_width="0dp"
                 android:layout_height="32dp"
-                android:layout_weight="0.34"
+                android:layout_weight="0.25"
                 android:minHeight="32dp"
                 android:layout_marginHorizontal="2dp"
                 android:text="Test"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/threecol_mode_vocab"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_weight="0.25"
+                android:minHeight="32dp"
+                android:layout_marginHorizontal="2dp"
+                android:text="V"
                 android:textSize="12sp" />
 
             <ImageButton
@@ -92,6 +102,12 @@
                 android:scaleType="centerInside"
                 android:padding="4dp" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/threecol_main_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
         <!-- Filter: show only failed & untried sentences (toggle) -->
         <LinearLayout
@@ -171,9 +187,19 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:minHeight="200dp"
             android:paddingVertical="2dp"
             android:clipToPadding="false"
             android:overScrollMode="ifContentScrolls" />
+        </LinearLayout>
+
+        <!-- V tab: 3-column vocabulary (Word | Pronunciation | Meaning). Same top/bottom bar. -->
+        <include
+            android:id="@+id/threecol_vocab_include"
+            layout="@layout/layout_lesson_vocab_pronunciation"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:visibility="gone" />
 
         <!-- Start / Stop + Pause / Resume bar with mic icons (reused layout). -->
         <include

@@ -1,5 +1,6 @@
 package com.alphacephei.vosk
 
+import android.content.res.AssetManager
 import android.util.Log
 import org.json.JSONArray
 import org.json.JSONObject
@@ -9,6 +10,65 @@ import java.io.File
  * Parse lesson file content into LessonRow lists. Extracted to reduce MainActivity.kt size.
  */
 object LessonFileParsers {
+
+    /** Begin marker for embedded vocabulary list in a lesson file (content below is ignored when parsing). */
+    const val VOCABULARY_BLOCK_START = "# --- VOCABULARY ---"
+    /** End marker for embedded vocabulary list. */
+    const val VOCABULARY_BLOCK_END = "# --- END VOCABULARY ---"
+
+    /** Strip the embedded vocabulary block so parsers only see lesson content. */
+    fun stripVocabularyBlock(content: String): String {
+        val startMarker = VOCABULARY_BLOCK_START
+        val lines = content.lines()
+        val sb = StringBuilder()
+        for (line in lines) {
+            if (line.trim() == startMarker) break
+            if (sb.isNotEmpty()) sb.append('\n')
+            sb.append(line)
+        }
+        return sb.toString()
+    }
+
+    /**
+     * Extract all English words from a conversation file (PersonA/PersonB lines).
+     * Takes the English part (first segment) of each line, splits on non-letters, lowercases, returns distinct words.
+     */
+    fun extractWordsFromConversationContent(content: String): List<String> {
+        val words = mutableSetOf<String>()
+        stripVocabularyBlock(content).lines().forEach { line ->
+            val trimmed = line.trim()
+            if (trimmed.isEmpty()) return@forEach
+            val colonIdx = trimmed.indexOf(':')
+            if (colonIdx <= 0) return@forEach
+            val rest = trimmed.substring(colonIdx + 1).trim()
+            val parts = rest.split(",", limit = 3).map { it.trim() }
+            if (parts.isEmpty()) return@forEach
+            val english = parts[0]
+            english.split(Regex("[^a-zA-Z]+")).forEach { token ->
+                val w = token.trim().lowercase()
+                if (w.isNotEmpty()) words.add(w)
+            }
+        }
+        return words.toList().sorted()
+    }
+
+    /** Extract the embedded vocabulary list (lines between VOCABULARY markers). Blank lines and # lines are skipped. */
+    fun extractVocabularyBlock(content: String): List<String> {
+        val startMarker = VOCABULARY_BLOCK_START
+        val endMarker = VOCABULARY_BLOCK_END
+        val lines = content.lines().toList()
+        var inBlock = false
+        val words = mutableListOf<String>()
+        for (line in lines) {
+            val t = line.trim()
+            when {
+                t == startMarker -> inBlock = true
+                t == endMarker -> break
+                inBlock && t.isNotEmpty() && !t.startsWith("#") -> words.add(t)
+            }
+        }
+        return words
+    }
 
     /** Incorrect list file name = original lesson name + this suffix (e.g. regular_verbs_inc.json). */
     const val INCORRECT_LESSON_SUFFIX = "_inc.json"
@@ -27,7 +87,7 @@ object LessonFileParsers {
     fun parseThreeColLessonFile(content: String): Pair<List<ThreeColRow>, List<IntArray?>> {
         val rows = mutableListOf<ThreeColRow>()
         val initialAB = mutableListOf<IntArray?>()
-        content.lines().forEach { line ->
+        stripVocabularyBlock(content).lines().forEach { line ->
             val parts = line.split(",").map { it.trim() }
             if (parts.size < 3) return@forEach
             val eng = parts[0]
@@ -54,7 +114,7 @@ object LessonFileParsers {
     fun parseConversationBubbleFile(content: String): Pair<List<ConversationBubbleRow>, List<IntArray?>> {
         val rows = mutableListOf<ConversationBubbleRow>()
         val initialAB = mutableListOf<IntArray?>()
-        content.lines().forEach { line ->
+        stripVocabularyBlock(content).lines().forEach { line ->
             val trimmed = line.trim()
             if (trimmed.isEmpty()) return@forEach
             val colonIdx = trimmed.indexOf(':')
@@ -411,5 +471,173 @@ object LessonFileParsers {
         } catch (e: Exception) {
             Log.e(TAG, "Save conversation-bubble stats failed", e)
         }
+    }
+
+    // ─── Vocabulary master list: per-word progress (stored in app storage; assets are read-only) ───
+    /** File name for vocabulary progress: word -> 0/1/2 (0=never tried, 1=passed pronunciation, 2=tried but failed). */
+    const val VOCABULARY_PROGRESS_FILE = "vocabulary_progress.json"
+    const val VOCAB_PROGRESS_NEVER = 0
+    const val VOCAB_PROGRESS_PASSED = 1
+    const val VOCAB_PROGRESS_FAILED = 2
+
+    /**
+     * Load per-word progress from filesDir. Key = word (lowercase), value = 0/1/2.
+     * Merge with master list in memory: for each word, progress = loaded[word] ?: 0.
+     */
+    fun loadVocabularyProgress(filesDir: File): Map<String, Int> {
+        val file = File(filesDir, VOCABULARY_PROGRESS_FILE)
+        if (!file.exists()) return emptyMap()
+        return try {
+            val text = file.readText().trim()
+            if (text.isEmpty()) return emptyMap()
+            val root = JSONObject(text)
+            val obj = root.optJSONObject("progress") ?: return emptyMap()
+            val keys = obj.keys()
+            val map = mutableMapOf<String, Int>()
+            while (keys.hasNext()) {
+                val k = keys.next()
+                map[k] = obj.optInt(k, VOCAB_PROGRESS_NEVER).coerceIn(VOCAB_PROGRESS_NEVER, VOCAB_PROGRESS_FAILED)
+            }
+            map
+        } catch (e: Exception) {
+            Log.e(TAG, "Load vocabulary progress failed", e)
+            emptyMap()
+        }
+    }
+
+    /** Save per-word progress to filesDir. Call after user passes or fails a pronunciation test for a word. */
+    fun saveVocabularyProgress(filesDir: File, progress: Map<String, Int>) {
+        val file = File(filesDir, VOCABULARY_PROGRESS_FILE)
+        try {
+            val root = JSONObject()
+            root.put("version", 1)
+            val obj = JSONObject()
+            for ((word, value) in progress) {
+                obj.put(word, value.coerceIn(VOCAB_PROGRESS_NEVER, VOCAB_PROGRESS_FAILED))
+            }
+            root.put("progress", obj)
+            file.writeText(root.toString())
+        } catch (e: Exception) {
+            Log.e(TAG, "Save vocabulary progress failed", e)
+        }
+    }
+
+    /** File in filesDir for words added from lessons (not in asset master list). Same format as master list. */
+    const val VOCABULARY_MASTER_ADDITIONS_FILE = "vocabulary_master_additions.txt"
+
+    /**
+     * Load master list additions from filesDir (words added from lessons). Format per line: "word, category, meaning, pronunciation"
+     */
+    fun loadMasterListAdditions(filesDir: java.io.File): Map<String, Pair<String, String>> {
+        val file = java.io.File(filesDir, VOCABULARY_MASTER_ADDITIONS_FILE)
+        if (!file.exists()) return emptyMap()
+        val map = mutableMapOf<String, Pair<String, String>>()
+        try {
+            file.readText().lines().forEach { line ->
+                val t = line.trim()
+                if (t.isEmpty() || t.startsWith("#")) return@forEach
+                val parts = t.split(", ", limit = 4)
+                if (parts.size < 4) return@forEach
+                val word = parts[0].trim().lowercase()
+                val meaning = parts[2].trim()
+                val pronunciation = parts[3].trim()
+                if (word.isNotEmpty()) map[word] = meaning to pronunciation
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Load master list additions failed", e)
+        }
+        return map
+    }
+
+    /** Append one word to the master list additions file. Use "—" for meaning/pronunciation if unknown. */
+    fun saveMasterListAddition(filesDir: java.io.File, word: String, meaning: String, pronunciation: String) {
+        val file = java.io.File(filesDir, VOCABULARY_MASTER_ADDITIONS_FILE)
+        val key = word.trim().lowercase()
+        if (key.isEmpty()) return
+        val line = "$key, lesson, $meaning, $pronunciation\n"
+        try {
+            file.appendText(line)
+        } catch (e: Exception) {
+            Log.e(TAG, "Save master list addition failed", e)
+        }
+    }
+
+    /**
+     * Load master word list from assets. Returns map: word (lowercase) -> (meaning, pronunciation).
+     * Format per line: "word, category, bengali_meaning, bengali_pronunciation"
+     */
+    fun loadMasterWordList(assets: AssetManager, path: String = "vocabulary/master_word_list.txt"): Map<String, Pair<String, String>> {
+        val map = mutableMapOf<String, Pair<String, String>>()
+        try {
+            assets.open(path).bufferedReader().use { reader ->
+                reader.forEachLine { line ->
+                    val t = line.trim()
+                    if (t.isEmpty() || t.startsWith("#")) return@forEachLine
+                    val parts = t.split(", ", limit = 4)
+                    if (parts.size < 4) return@forEachLine
+                    val word = parts[0].trim().lowercase()
+                    val meaning = parts[2].trim()
+                    val pronunciation = parts[3].trim()
+                    if (word.isNotEmpty()) map[word] = meaning to pronunciation
+                }
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Load master word list failed", e)
+        }
+        return map
+    }
+
+    /**
+     * Build lesson vocab rows from list of words and master list lookup.
+     * For each word, look up (meaning, pronunciation); use "—" if not in master.
+     */
+    fun buildLessonVocabRows(
+        words: List<String>,
+        masterMap: Map<String, Pair<String, String>>
+    ): List<LessonVocabRow> = words.map { w ->
+        val key = w.trim().lowercase()
+        val (meaning, pronunciation) = masterMap[key] ?: ("—" to "—")
+        LessonVocabRow(word = w.trim(), pronunciation = pronunciation, meaning = meaning)
+    }
+
+    /**
+     * Build lesson vocab rows only for words that are in the master list (dictionary words).
+     * Excludes names, place names, river names, etc. that are not in the master list.
+     * Use this for the V tab so only dictionary words are shown.
+     * Cross-checks each word with the master map; only includes if the word (lowercase) exists there.
+     */
+    fun buildLessonVocabRowsOnlyInMaster(
+        words: List<String>,
+        masterMap: Map<String, Pair<String, String>>
+    ): List<LessonVocabRow> = words.mapNotNull { w ->
+        val key = w.trim().lowercase()
+        if (key.isEmpty()) return@mapNotNull null
+        if (!masterMap.containsKey(key)) return@mapNotNull null
+        val pair = masterMap[key]!!
+        val (meaning, pronunciation) = pair
+        LessonVocabRow(word = w.trim(), pronunciation = pronunciation, meaning = meaning)
+    }
+
+    /**
+     * Filter lesson vocab rows to only those whose word exists in the master list.
+     * Use when populating the V tab to ensure names/places (e.g. Dhaka, Rahul) are never shown.
+     */
+    fun filterLessonVocabRowsByMaster(
+        rows: List<LessonVocabRow>,
+        masterMap: Map<String, Pair<String, String>>?
+    ): List<LessonVocabRow> {
+        val map = masterMap ?: return emptyList()
+        return rows.filter { map.containsKey(it.word.trim().lowercase()) }
+    }
+
+    /**
+     * Filter to only rows that still need testing: progress is 0 (never seen) or 2 (tested but failed).
+     * Excludes words that already passed (progress == 1). Missing key in progressMap is treated as 0.
+     */
+    fun filterLessonVocabRowsNeedingTest(
+        rows: List<LessonVocabRow>,
+        progressMap: Map<String, Int>
+    ): List<LessonVocabRow> = rows.filter { row ->
+        (progressMap[row.word.trim().lowercase()] ?: VOCAB_PROGRESS_NEVER) != VOCAB_PROGRESS_PASSED
     }
 }

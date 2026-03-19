@@ -1,0 +1,1561 @@
+a, Determiner, একটি, আ
+about, Adverb | Preposition, সম্পর্কে, অ্যাবাউট
+above, Adverb | Preposition, উপরে, অ্যাবোভ
+accept, Action Verb, গ্রহণ করা, একসেপ্ট
+accepted, Action Verb (Past), গৃহীত, একসেপ্টেড
+accidentally, Adverb, দুর্ঘটনাবশত, এক্সিডেন্টালি
+across, Adverb | Preposition, আড়াআড়িভাবে, অ্যাক্রস
+action, Noun, কাজ, অ্যাকশন
+add, Action Verb, যোগ করা, অ্যাড
+added, Action Verb (Past), যোগ করা হয়েছে এমন, অ্যাডেড
+advise, Action Verb, উপদেশ দেওয়া, অ্যাডভাইস
+advised, Action Verb (Past), উপদেশ দিয়েছিল, অ্যাডভাইসড
+after, Preposition | Conjunction, পরে, আফটার
+again, Adverb, আবার, এগেইন
+agree, Action Verb, একমত হওয়া, এগ্রি
+agreed, Action Verb (Past), একমত হয়েছিল, এগ্রিড
+agreeing, Action Verb (Present Participle), একমত হচ্ছে এমন, এগ্রিইং
+ah, Interjection, আঃ, আ
+ahead, Adverb, সামনে, এহেড
+air, Noun, বাতাস, এয়ার
+aisle, Noun, সারির মধ্যবর্তী পথ, আইল
+alive, Adjective, জীবিত, অ্যালাইভ
+all, Determiner | Pronoun, সব, অল
+allow, Action Verb, অনুমতি দেওয়া, অ্যালাউ
+allowed, Action Verb (Past), অনুমতিপ্রাপ্ত, অ্যালাউড
+already, Adverb, ইতিমধ্যে, অলরেডি
+also, Adverb, আরও, অলসো
+always, Adverb, সবসময়, অলওয়েজ
+am, Be Verb | Helping Verb, হই, অ্যাম
+an, Determiner, একটি, অ্যান
+and, Conjunction, এবং, অ্যান্ড
+angry, Adjective, রাগান্বিত, অ্যাংরি
+answer, Noun | Action Verb, উত্তর, অ্যানসার
+answered, Action Verb (Past), উত্তর দিয়েছিল, অ্যানসারড
+answering, Action Verb (Present Participle), উত্তর দিচ্ছে এমন, অ্যানসারিং
+anything, Pronoun, যেকোনো কিছু, এনিথিং
+app, Noun, অ্যাপ, অ্যাপ
+are, Be Verb | Helping Verb, হয় / হও, আর
+aren't, Be Verb (Contraction), নয়, আরেন্ট
+arise, Action Verb, জেগে ওঠা, অ্যারাইজ
+arisen, Action Verb (Past Participle), জেগে উঠেছে এমন, অ্যারাইজেন
+arose, Action Verb (Past), জেগে উঠেছিল, অ্যারোজ
+arrive, Action Verb, পৌঁছানো, অ্যারাইভ
+arrived, Action Verb (Past), পৌঁছেছিল, অ্যারাইভড
+artificial, Adjective, কৃত্রিম, আর্টিফিশিয়াল
+as, Adverb | Conjunction, মতো / যেহেতু, অ্যাজ
+aside, Adverb, পাশে, এসাইড
+ask, Action Verb, জিজ্ঞাসা করা, আস্ক
+asked, Action Verb (Past), জিজ্ঞাসা করেছিল, আস্কড
+asking, Action Verb (Present Participle), জিজ্ঞাসা করছে এমন, আস্কিং
+asks, Action Verb (Third Person), জিজ্ঞাসা করে, আস্কস
+aspirated, Adjective, মহাপ্রাণ, অ্যাসপিরেটেড
+at, Preposition, দিকে / তে, অ্যাট
+ate, Action Verb (Past), খেয়েছিল, এট
+automatically, Adverb, স্বয়ংক্রিয়ভাবে, অটোমেটিক্যালি
+avoid, Action Verb, এড়িয়ে চলা, এভয়েড
+awake, Adjective | Action Verb, জাগ্রত, অ্যাওয়েক
+away, Adverb, দূরে, অ্যাওয়ে
+awoke, Action Verb (Past), জেগেছিল, অ্যাওোক
+awoken, Action Verb (Past Participle), জেগে উঠেছে এমন, অ্যাওোকেন
+back, Noun | Adverb | Action Verb, পিছনে, ব্যাক
+bad, Adjective, খারাপ, ব্যাড
+badminton, Noun, ব্যাডমিন্টন, ব্যাডমিন্টন
+bag, Noun, থলে, ব্যাগ
+ball, Noun, বল, বল
+bank, Noun, ব্যাংক / তট, ব্যাংক
+basically, Adverb, মূলত, বেসিক্যালি
+bathroom, Noun, গোসলখানা, বাথরুম
+be, Be Verb | Helping Verb, হওয়া, বি
+bear, Noun | Action Verb, ভাল্লুক / সহ্য করা, বিয়ার
+beat, Action Verb | Noun, প্রহার করা / তাল, বিট
+beaten, Action Verb (Past Participle), প্রহৃত / পরাজিত, বিটেন
+beautiful, Adjective, সুন্দর, বিউটিফুল
+beautifully, Adverb, সুন্দরভাবে, বিউটিফুলি
+became, Linking Verb (Past), হয়েছিল, বিকেম
+because, Conjunction, কারণ, বিকজ
+become, Linking Verb, হওয়া, বিকাম
+bed, Noun, বিছানা, বেড
+bee, Noun, মৌমাছি, বি
+been, Be Verb (Past)
+bicycle, Noun, বাইসাইকেল, বাইসাইকেল
+big, Adjective, বড়, বিগ
+bike, Noun, বাইক, বাইক
+bill, Noun | Action Verb, বিল বা হিসাব, বিল
+biography, Noun, জীবনী, বায়োগ্রাফি
+biology, Noun, জীববিজ্ঞান, বায়োলজি
+bird, Noun, পাখি, বার্ড
+birds, Noun (Plural), পাখিগুলো, বার্ডস
+birthday, Noun, জন্মদিন, বার্থডে
+biryani, Noun, বিরিয়ানি, বিরিয়ানি
+bit, Noun | Action Verb (Past), অল্প বা কামড়েছিল, বিট
+bite, Action Verb | Noun, কামড় দেওয়া, বাইট
+bitten, Action Verb (Past Participle), কামড় দিয়েছে এমন, বিটেন
+blackboard, Noun, ব্ল্যাকবোর্ড, ব্ল্যাকবোর্ড
+bled, Action Verb (Past), রক্তক্ষরণ হয়েছিল, ব্লেড
+bleed, Action Verb, রক্তক্ষরণ হওয়া, ব্লিড
+bleeding, Action Verb (Present Participle) | Noun, রক্তক্ষরণ হচ্ছে এমন, ব্লিডিং
+blew, Action Verb (Past), প্রবাহিত হয়েছিল (বাতাস), ব্লু
+blow, Action Verb | Noun, ফুঁ দেওয়া বা আঘাত, ব্লো
+blown, Action Verb (Past Participle), প্রবাহিত হয়েছে এমন, ব্লোন
+blue, Adjective | Noun, নীল রঙ, ব্লু
+boat, Noun, নৌকা, বোট
+bomb, Noun | Action Verb, বোমা, বোম
+book, Noun | Action Verb, বই বা সংরক্ষণ করা, বুক
+books, Noun (Plural), বইগুলো, বুকস
+bore, Action Verb (Past) | Noun, বিরক্ত করা, বোর
+borne, Action Verb (Past Participle), সহ্য করা হয়েছে এমন, বোর্ন
+bottle, Noun, বোতল, বটল
+bought, Action Verb (Past), কিনেছিল, বট
+boy, Noun, বালক বা ছেলে, বয়
+bravely, Adverb, সাহসের সাথে, ব্রেভলি
+break, Action Verb | Noun, ভেঙে ফেলা বা বিরতি, ব্রেক
+breaking, Action Verb (Present Participle), ভাঙছে এমন, ব্রেকিং
+bridge, Noun, সেতু বা ব্রিজ, ব্রিজ
+bring, Action Verb, আনা, ব্রিং
+bringing, Action Verb (Present Participle), আনছে এমন, ব্রিঙ্গিং
+broke, Action Verb (Past), ভেঙেছিল, ব্রোক
+broken, Adjective | Action Verb (Past Participle), ভাঙা, ব্রোকেন
+brother, Noun, ভাই, ব্রাদার
+brought, Action Verb (Past), এনেছিল, ব্রট
+build, Action Verb, নির্মাণ করা, বিল্ড
+building, Noun | Action Verb (Present Participle), দালান বা নির্মাণ করছে এমন, বিল্ডিং
+built, Action Verb (Past) | Adjective, নির্মিত, বিল্ট
+burger, Noun, বার্গার, বার্গার
+burn, Action Verb | Noun, পুড়িয়ে ফেলা, বার্ন
+burnt, Adjective | Action Verb (Past), পোড়া, বার্ন্ট
+bus, Noun, বাস, বাস
+businessman, Noun, ব্যবসায়ী, বিজনেসম্যান
+busy, Adjective, ব্যস্ত, বিজি
+but, Conjunction, কিন্তু, বাট
+buy, Action Verb, কেনা, বাই
+buying, Action Verb (Present Participle), কিনছে এমন, বাইং
+buzzing, Adjective | Action Verb (Present Participle), গুনগুন শব্দ করা, বাজিং
+by, Preposition, দ্বারা বা পাশে, বাই
+cadet, Noun, ক্যাডেট বা সামরিক ছাত্র, ক্যাডেট
+cake, Noun, কেক বা পিঠা, কেক
+call, Action Verb | Noun, ডাকা বা ডাক, কল
+called, Action Verb (Past), ডেকেছিল, কলড
+calling, Action Verb (Present Participle), ডাকছে এমন, কলিং
+calls, Action Verb (Third Person), ডাকে, কলস
+came, Action Verb (Past), এসেছিল, কেম
+camera, Noun, ক্যামেরা, ক্যামেরা
+campaign, Noun | Action Verb, প্রচার অভিযান, ক্যাম্পেইন
+campus, Noun, ক্যাম্পাস বা প্রাঙ্গণ, ক্যাম্পাস
+can, Helping Verb | Noun, পারা বা টিনের পাত্র, ক্যান
+cane, Noun, বেত, কেইন
+cap, Noun, টুপি, ক্যাপ
+cape, Noun, অন্তরীপ, কেইপ
+car, Noun, গাড়ি, কার
+card, Noun, কার্ড বা তাসের পাতা, কার্ড
+care, Noun | Action Verb, যত্ন বা যত্ন নেওয়া, কেয়ার
+careful, Adjective, সতর্ক, কেয়ারফুল
+carefully, Adverb, সতর্কতার সাথে, কেয়ারফুলি
+cat, Noun, বিড়াল, ক্যাট
+catch, Action Verb, ধরা, ক্যাচ
+caught, Action Verb (Past), ধরেছিল, কট
+cell, Noun, কোষ বা ঘর, সেল
+central, Adjective, কেন্দ্রীয়, সেন্ট্রাল
+certainly, Adverb, অবশ্যই, সারটেইনলি
+certificate, Noun, প্রশংসাপত্র, সার্টিফিকেট
+chair, Noun, চেয়ার, চেয়ার
+champions, Noun (Plural), চ্যাম্পিয়ন বা বিজয়ীরা, চ্যাম্পিয়নস
+chance, Noun, সুযোগ, চান্স
+change, Action Verb | Noun, পরিবর্তন, চেইঞ্জ
+changed, Action Verb (Past), পরিবর্তিত, চেইঞ্জড
+changing, Action Verb (Present Participle), পরিবর্তন হচ্ছে এমন, চেইঞ্জিং
+charge, Noun | Action Verb, দায়িত্ব বা চার্জ করা, চার্জ
+chase, Action Verb, ধাওয়া করা, চেইজ
+cheap, Adjective, সস্তা, চিপ
+check, Action Verb | Noun, পরীক্ষা করা বা চেক, চেক
+checked, Action Verb (Past), পরীক্ষা করা হয়েছিল এমন, চেকড
+chicken, Noun, মুরগি, চিকেন
+child, Noun, শিশু, চাইল্ড
+children, Noun (Plural), শিশুরা, চিলড্রেন
+chin, Noun, চিবুক, চিন
+chip, Noun, চিপ বা টুকরো, চিপ
+choose, Action Verb, পছন্দ করা বা বেছে নেওয়া, চুজ
+choosing, Action Verb (Present Participle), বেছে নিচ্ছে এমন, চুজিং
+chose, Action Verb (Past), বেছে নিয়েছিল, চোজ
+chosen, Action Verb (Past Participle), মনোনীত, চোজেন
+cinema, Noun, সিনেমা বা চলচ্চিত্র, সিনেমা
+circle, Noun, বৃত্ত, সার্কেল
+city, Noun, শহর, সিটি
+class, Noun, শ্রেণী, ক্লাস
+classes, Noun (Plural), শ্রেণীসমূহ, ক্লাসেস
+clean, Adjective | Action Verb, পরিষ্কার, ক্লিন
+cleaned, Action Verb (Past), পরিষ্কার করেছিল, ক্লিনড
+cleaning, Action Verb (Present Participle), পরিষ্কার করছে এমন, ক্লিনিং
+clear, Adjective | Action Verb, স্পষ্ট বা পরিষ্কার করা, ক্লিয়ার
+clearly, Adverb, স্পষ্টভাবে, ক্লিয়ারলি
+clerk, Noun, কেরানি বা অফিস সহকারী, ক্লার্ক
+climb, Action Verb, আরোহণ করা, ক্লাইম্ব
+clock, Noun, ঘড়ি, ক্লক
+close, Action Verb | Adjective, বন্ধ করা বা নিকটবর্তী, ক্লোজ
+closed, Action Verb (Past) | Adjective, বন্ধ, ক্লোজড
+closes, Action Verb (Third Person), বন্ধ করে, ক্লোজেস
+closing, Action Verb (Present Participle), সমাপ্তি বা বন্ধ করা, ক্লোজিং
+cloth, Noun, কাপড়, ক্লথ
+clothes, Noun (Plural), জামাকাপড়, ক্লোদস
+cloud, Noun, মেঘ, ক্লাউড
+coat, Noun, কোট বা আস্তরণ, কোট
+coffee, Noun, কফি, কফি
+cold, Adjective | Noun, ঠান্ডা, কোল্ড
+collect, Action Verb, সংগ্রহ করা, কালেক্ট
+college, Noun, কলেজ, কলেজ
+color, Noun | Action Verb, রঙ, কালার
+comb, Noun | Action Verb, চিরুনি বা আঁচড়ানো, কোম্ব
+come, Action Verb, আসা, কাম
+comes, Action Verb (Third Person), আসে, কামস
+coming, Action Verb (Present Participle), আসছে এমন, কামিং
+common, Adjective, সাধারণ, কমন
+compare, Action Verb, তুলনা করা, কম্পেয়ার
+complain, Action Verb, অভিযোগ করা, কমপ্লেইন
+complete, Adjective | Action Verb, সম্পূর্ণ, কমপ্লিট
+completed, Action Verb (Past), সম্পন্ন হয়েছিল, কমপ্লিটেড
+completely, Adverb, সম্পূর্ণভাবে, কমপ্লিটলি
+computer, Noun, কম্পিউটার, কম্পিউটার
+condition, Noun, অবস্থা বা শর্ত, কন্ডিশন
+congratulations, Noun | Interjection, অভিনন্দন, কনগ্র্যাচুলেশনস
+connect, Action Verb, সংযোগ করা, কানেক্ট
+continue, Action Verb, চালিয়ে যাওয়া, কন্টিনিউ
+continuous, Adjective, নিরবচ্ছিন্ন, কন্টিনিউয়াস
+control, Noun | Action Verb, নিয়ন্ত্রণ, কন্ট্রোল
+conversation, Noun, কথোপকথন, কনভারসেশন
+cook, Action Verb | Noun, রান্না করা বা বাবুর্চি, কুক
+cooked, Action Verb (Past), রান্না করা হয়েছে এমন, কুকড
+cooking, Action Verb (Present Participle), রান্না করছে এমন, কুকিং
+cooks, Action Verb (Third Person), রান্না করে, কুকস
+cool, Adjective | Action Verb, শীতল বা চমৎকার, কুল
+copy, Noun | Action Verb, নকল বা অনুলিপি করা, কপি
+correct, Adjective | Action Verb, সঠিক বা সংশোধন করা, কারেক্ট
+cost, Noun | Action Verb, মূল্য বা খরচ হওয়া, কস্ট
+could, Helping Verb, পারতেন বা পারত, কুড
+couldn't, Helping Verb (Contraction), পারত না, কুডন্ট
+count, Action Verb | Noun, গণনা করা, কাউন্ট
+country, Noun, দেশ, কান্ট্রি
+course, Noun, কোর্স বা পাঠ্যক্রম, কোর্স
+cover, Action Verb | Noun, ঢাকা বা মলাট, কাভার
+cow, Noun, গরু, কাউ
+cricket, Noun, ক্রিকেট বা ঝিঁঝিঁ পোকা, ক্রিকেট
+cross, Action Verb | Noun, পার হওয়া বা ক্রুশ, ক্রস
+crowd, Noun, ভিড়, ক্রাউড
+cry, Action Verb | Noun, কাঁদা বা চিৎকার, ক্রাই
+crying, Action Verb (Present Participle), কাঁদছে এমন, ক্রাইং
+cup, Noun, কাপ বা পেয়ালা, কাপ
+cut, Action Verb | Noun, কাটা, কাট
+cute, Adjective, কিউট বা সুন্দর, কিউট
+daily, Adjective | Adverb, দৈনন্দিন, ডেইলি
+dance, Action Verb | Noun, নাচ বা নাচা, ড্যান্স
+dancing, Action Verb (Present Participle), নাচছে এমন, ড্যান্সিং
+danger, Noun, বিপদ, ডেঞ্জার
+dangerous, Adjective, বিপজ্জনক, ডেঞ্জারাস
+dark, Adjective | Noun, অন্ধকার, ডার্ক
+date, Noun, তারিখ বা খেজুর, ডেট
+day, Noun, দিন, ডে
+dead, Adjective, মৃত, ডেড
+deal, Action Verb | Noun, চুক্তি বা মোকাবিলা করা, ডিল
+dear, Adjective, প্রিয়, ডিয়ার
+decide, Action Verb, সিদ্ধান্ত নেওয়া, ডিসাইড
+deep, Adjective, গভীর, ডিপ
+definitely, Adverb, নিশ্চিতভাবে, ডেফিনিটলি
+degree, Noun, ডিগ্রি বা মাত্রা, ডিগ্রি
+delay, Noun | Action Verb, বিলম্ব, ডিলে
+delicious, Adjective, সুস্বাদু, ডিলিশিয়াস
+dentist, Noun, দন্তচিকিৎসক, ডেন্টিস্ট
+depend, Action Verb, নির্ভর করা, ডিপেন্ড
+describe, Action Verb, বর্ণনা করা, ডেসক্রাইব
+deserve, Action Verb, যোগ্য হওয়া, ডিজার্ভ
+design, Noun | Action Verb, নকশা, ডিজাইন
+desk, Noun, ডেস্ক বা লেখার টেবিল, ডেস্ক
+detail, Noun, বিস্তারিত বিবরণ, ডিটেইল
+did, Action Verb (Past) | Helping Verb, করেছিল, ডিড
+didn't, Action Verb (Contraction), করেনি, ডিডন্ট
+die, Action Verb, মারা যাওয়া, ডাই
+died, Action Verb (Past), মারা গিয়েছিল, ডাইড
+difference, Noun, পার্থক্য, ডিফারেন্স
+different, Adjective, ভিন্ন, ডিফারেন্ট
+difficult, Adjective, কঠিন, ডিফিকাল্ট
+dig, Action Verb, খনন করা, ডিগ
+dinner, Noun, রাতের খাবার, ডিনার
+direction, Noun, দিক বা নির্দেশনা, ডিরেকশন
+dirty, Adjective, নোংরা, ডার্টি
+disappear, Action Verb, অদৃশ্য হওয়া, ডিসঅ্যাপিয়ার
+discuss, Action Verb, আলোচনা করা, ডিসকাস
+distance, Noun, দূরত্ব, ডিস্টেন্স
+do, Action Verb | Helping Verb, করা, ডু
+doctor, Noun, ডাক্তার, ডাক্তার
+does, Action Verb | Helping Verb (Third Person), করে, ডাজ
+doesn't, Action Verb (Contraction), করে না, ডাজন্ট
+dog, Noun, কুকুর, ডগ
+doing, Action Verb (Present Participle), করছে এমন, ডুইং
+done, Action Verb (Past Participle), করা হয়েছে এমন, ডান
+door, Noun, দরজা, ডোর
+double, Adjective | Action Verb, দ্বিগুণ, ডাবল
+doubt, Noun | Action Verb, সন্দেহ, ডাউট
+down, Adverb | Preposition, নিচে, ডাউন
+draw, Action Verb, আঁকা, ড্র
+drawing, Action Verb (Present Participle) | Noun, আঁকছে এমন বা অঙ্কন, ড্রয়িং
+dream, Noun | Action Verb, স্বপ্ন, ড্রিম
+dress, Noun | Action Verb, পোশাক, ড্রেস
+drew, Action Verb (Past), এঁকেছিল, ড্রু
+drink, Action Verb | Noun, পান করা বা পানীয়, ড্রিংক
+drinking, Action Verb (Present Participle), পান করছে এমন, ড্রিংকিং
+drive, Action Verb | Noun, চালানো, ড্রাইভ
+driver, Noun, চালক, ড্রাইভার
+driving, Action Verb (Present Participle), চালাচ্ছে এমন, ড্রাইভিং
+drop, Action Verb | Noun, ফেলে দেওয়া বা ফোঁটা, ড্রপ
+drove, Action Verb (Past), চালিয়েছিল, ড্রোভ
+dry, Adjective | Action Verb, শুকনো, ড্রাই
+duck, Noun, হাঁস, ডাক
+during, Preposition, সময়ে বা চলাকালে, ডিউরিং
+each, Determiner | Pronoun, প্রতিটি, ইচ
+ear, Noun, কান, ইয়ার
+early, Adjective | Adverb, সকাল সকাল বা তাড়াতাড়ি, আর্লি
+earn, Action Verb, আয় করা, আর্ন
+ears, Noun (Plural), কানগুলো, ইয়ারস
+earth, Noun, পৃথিবী, আর্থ
+easily, Adverb, সহজে, ইজিলি
+easy, Adjective, সহজ, ইজি
+eat, Action Verb, খাওয়া, ইট
+eaten, Action Verb (Past Participle), খেয়েছে এমন, ইটেন
+eating, Action Verb (Present Participle), খাচ্ছে এমন, ইটিং
+eats, Action Verb (Third Person), খায়, ইটস
+education, Noun, শিক্ষা, এডুকেশন
+egg, Noun, ডিম, এগ
+eggs, Noun (Plural), ডিমগুলো, এগস
+eight, Number, আট, এইট
+either, Determiner | Pronoun | Conjunction, হয় এটি না হয় ওটি, আইদার
+elder, Adjective | Noun, বয়োজ্যেষ্ঠ, এল্ডার
+electric, Adjective, বৈদ্যুতিক, ইলেকট্রিক
+elephant, Noun, হাতি, এলিফ্যান্ট
+else, Adjective | Adverb, অন্য বা আর, এলস
+empty, Adjective | Action Verb, খালি, এম্পটি
+end, Noun | Action Verb, শেষ, এন্ড
+engineer, Noun, প্রকৌশলী, ইঞ্জিনিয়ার
+english, Noun | Adjective, ইংরেজি, ইংলিশ
+enjoy, Action Verb, উপভোগ করা, এনজয়
+enough, Adjective | Adverb | Pronoun, যথেষ্ট, এনাফ
+enter, Action Verb, প্রবেশ করা, এন্টার
+envelope, Noun, খাম, এনভেলাপ
+environment, Noun, পরিবেশ, এনভায়রনমেন্ট
+error, Noun, ভুল, এরর
+escape, Action Verb | Noun, মুক্তি পাওয়া বা পালানো, এস্কেপ
+especially, Adverb, বিশেষভাবে, স্পেশালি
+even, Adjective | Adverb, এমনকি বা সমান, ইভেন
+evening, Noun, সন্ধ্যা, ইভনিং
+ever, Adverb, কখনো, এভার
+every, Determiner, প্রত্যেক, এভরি
+everyone, Pronoun, প্রত্যেকে, এভরিওয়ান
+everything, Pronoun, সবকিছু, এভরিথিং
+everywhere, Adverb, সবখানে, এভরিহোয়্যার
+exact, Adjective, সঠিক বা হুবহু, এক্স্যাক্ট
+exactly, Adverb, ঠিক তাই বা হুবহু, এক্স্যাক্টলি
+exam, Noun, পরীক্ষা, এক্সাম
+example, Noun, উদাহরণ, এক্সাম্পল
+excellent, Adjective, চমৎকার, এক্সিলেন্ট
+except, Preposition | Conjunction, ব্যতীত, এক্সেপ্ট
+excited, Adjective, উত্তেজিত, এক্সাইটেড
+excuse, Action Verb | Noun, ক্ষমা করা বা অজুহাত, এক্সকিউজ
+exercise, Noun | Action Verb, ব্যায়াম, এক্সারসাইজ
+expect, Action Verb, আশা করা, এক্সপেক্ট
+expensive, Adjective, ব্যয়বহুল বা দামি, এক্সপেন্সিভ
+experience, Noun | Action Verb, অভিজ্ঞতা, এক্সপেরিয়েন্স
+explain, Action Verb, ব্যাখ্যা করা, এক্সপ্লেইন
+extra, Adjective | Adverb | Noun, অতিরিক্ত, এক্সট্রা
+eye, Noun, চোখ, আই
+eyes, Noun (Plural), চোখগুলো, আইস
+face, Noun | Action Verb, মুখমণ্ডল বা মোকাবিলা করা, ফেইস
+fact, Noun, তথ্য বা সত্য ঘটনা, ফ্যাক্ট
+factory, Noun, কারখানা, ফ্যাক্টরি
+fail, Action Verb, ব্যর্থ হওয়া, ফেইল
+fair, Adjective | Noun, ফর্সা বা মেলা, ফেয়ার
+fall, Action Verb | Noun, পড়ে যাওয়া বা শরৎকাল, ফল
+fallen, Action Verb (Past Participle) | Adjective, পতিত, ফলেন
+falling, Action Verb (Present Participle), পড়ছে এমন, ফলিং
+falls, Action Verb (Third Person) | Noun, পড়ে বা জলপ্রপাত, ফলস
+family, Noun, পরিবার, ফ্যামিলি
+famous, Adjective, বিখ্যাত, ফেমাস
+fan, Noun | Action Verb, পাখা বা ভক্ত, ফ্যান
+far, Adjective | Adverb, দূরে, ফার
+farm, Noun | Action Verb, খামার, ফার্ম
+farmer, Noun, কৃষক, ফার্মার
+fast, Adjective | Adverb, দ্রুত, ফাস্ট
+fat, Adjective | Noun, মোটা বা চর্বি, ফ্যাট
+father, Noun, বাবা, ফাদার
+favourite, Adjective | Noun, প্রিয়, ফেভারিট
+fear, Noun | Action Verb, ভয়, ফিয়ার
+feel, Action Verb | Noun, অনুভব করা, ফিল
+feeling, Noun | Action Verb (Present Participle), অনুভূতি, ফিলিং
+feet, Noun (Plural of foot), পায়ের পাতাগুলো, ফিট
+fell, Action Verb (Past), পড়ে গিয়েছিল, ফেল
+felt, Action Verb (Past), অনুভব করেছিল, ফেল্ট
+few, Adjective | Pronoun, অল্প বা সামান্য, ফিউ
+field, Noun, মাঠ, ফিল্ড
+fight, Action Verb | Noun, যুদ্ধ বা লড়াই করা, ফাইট
+fill, Action Verb, পূর্ণ করা, ফিল
+final, Adjective | Noun, চূড়ান্ত, ফাইনাল
+finally, Adverb, অবশেষে, ফাইনালি
+find, Action Verb, খুঁজে পাওয়া, ফাইন্ড
+finding, Action Verb (Present Participle) | Noun, খুঁজছে এমন বা প্রাপ্তি, ফাইন্ডিং
+fine, Adjective | Noun | Action Verb, চমৎকার বা জরিমানা, ফাইন
+finger, Noun, আঙুল, ফিঙ্গার
+finish, Action Verb | Noun, শেষ করা, ফিনিশ
+finished, Action Verb (Past) | Adjective, শেষ হয়েছে এমন, ফিনিশড
+fire, Noun | Action Verb, আগুন বা বরখাস্ত করা, ফায়ার
+first, Adjective | Adverb, প্রথম, ফার্স্ট
+fish, Noun | Action Verb, মাছ, ফিশ
+five, Number, পাঁচ, ফাইভ
+fix, Action Verb | Noun, ঠিক করা, ফিক্স
+flag, Noun, পতাকা, ফ্ল্যাগ
+flat, Adjective | Noun, সমতল বা ফ্ল্যাট, ফ্ল্যাট
+flew, Action Verb (Past), উড়েছিল, ফ্লু
+flies, Action Verb (Third Person) | Noun (Plural), ওড়ে বা মাছিগুলো, ফ্লাইস
+flight, Noun, বিমান ভ্রমণ, ফ্লাইট
+floor, Noun, মেঝে, ফ্লোর
+flower, Noun, ফুল, ফ্লাওয়ার
+flowers, Noun (Plural), ফুলগুলো, ফ্লাওয়ারস
+flown, Action Verb (Past Participle), উড়েছে এমন, ফ্লোন
+fly, Action Verb | Noun, ওড়া বা মাছি, ফ্লাই
+flying, Action Verb (Present Participle) | Adjective, উড়ছে এমন, ফ্লাইং
+follow, Action Verb, অনুসরণ করা, ফলো
+food, Noun, খাবার, ফুড
+foot, Noun, পায়ের পাতা, ফুট
+football, Noun, ফুটবল, ফুটবল
+for, Preposition | Conjunction, জন্য, ফর
+foreign, Adjective, বিদেশি, ফরেন
+forest, Noun, বন বা অরণ্য, ফরেস্ট
+forget, Action Verb, ভুলে যাওয়া, ফরগেট
+forgetting, Action Verb (Present Participle), ভুলে যাচ্ছে এমন, ফরগেটিং
+forgot, Action Verb (Past), ভুলে গিয়েছিল, ফরগট
+forgotten, Action Verb (Past Participle) | Adjective, বিস্মৃত, ফরগটেন
+form, Noun | Action Verb, গঠন বা ফর্ম, ফর্ম
+found, Action Verb (Past), খুঁজে পেয়েছিল, ফাউন্ড
+four, Number, চার, ফোর
+free, Adjective | Adverb | Action Verb, মুক্ত বা বিনামূল্যে, ফ্রি
+fresh, Adjective, তাজা, ফ্রেশ
+friday, Noun, শুক্রবার, ফ্রাইডে
+friend, Noun, বন্ধু, ফ্রেন্ড
+friends, Noun (Plural), বন্ধুরা, ফ্রেন্ডস
+from, Preposition, থেকে, ফ্রম
+front, Noun | Adjective, সামনে, ফ্রন্ট
+fruit, Noun, ফল, ফ্রুট
+fruits, Noun (Plural), ফলমূল, ফ্রুটস
+full, Adjective, পূর্ণ, ফুল
+fun, Noun | Adjective, মজা, ফান
+funny, Adjective, মজাদার, ফানি
+future, Noun | Adjective, ভবিষ্যৎ, ফিউচার
+game, Noun, খেলা, গেম
+garden, Noun, বাগান, গার্ডেন
+gate, Noun, গেট বা ফটক, গেট
+gave, Action Verb (Past), দিয়েছিল, গেইভ
+general, Adjective | Noun, সাধারণ, জেনারেল
+generally, Adverb, সাধারণত, জেনারেলি
+get, Action Verb, পাওয়া, গেট
+gets, Action Verb (Third Person), পায়, গেটস
+getting, Action Verb (Present Participle), পাচ্ছে এমন, গেটিং
+gift, Noun | Action Verb, উপহার, গিফট
+girl, Noun, বালিকা বা মেয়ে, গার্ল
+girls, Noun (Plural), বালিকারা, গার্লস
+give, Action Verb, দেওয়া, গিভ
+given, Action Verb (Past Participle) | Adjective, দেওয়া হয়েছে এমন, গিভেন
+gives, Action Verb (Third Person), দেয়, গিভস
+giving, Action Verb (Present Participle), দিচ্ছে এমন, গিভিং
+glad, Adjective, আনন্দিত, গ্ল্যাড
+glass, Noun, গ্লাস বা কাঁচ, গ্লাস
+go, Action Verb, যাওয়া, গো
+goes, Action Verb (Third Person), যায়, গোজ
+going, Action Verb (Present Participle), যাচ্ছে এমন, গোয়িং
+gold, Noun | Adjective, সোনা বা সোনালি, গোল্ড
+gone, Action Verb (Past Participle) | Adjective, চলে গেছে এমন, গান
+good, Adjective | Noun, ভালো, গুড
+goodbye, Interjection | Noun, বিদায়, গুডবাই
+got, Action Verb (Past), পেয়েছিল, গট
+gotten, Action Verb (Past Participle), পেয়েছে এমন, গটেন
+government, Noun, সরকার, গভর্নমেন্ট
+grade, Noun | Action Verb, শ্রেণী বা মান, গ্রেড
+grandfather, Noun, দাদা বা নানা, গ্র্যান্ডফাদার
+grandmother, Noun, দাদী বা নানী, গ্র্যান্ডমাদার
+grass, Noun, ঘাস, গ্রাস
+great, Adjective, মহান বা চমৎকার, গ্রেট
+green, Adjective | Noun, সবুজ, গ্রিন
+grew, Action Verb (Past), বেড়েছিল, গ্রু
+ground, Noun | Action Verb (Past), ভূমি বা পিষে ফেলা, গ্রাউন্ড
+group, Noun | Action Verb, দল বা গ্রুপ, গ্রুপ
+grow, Action Verb, জন্মানো বা বেড়ে ওঠা, গ্রো
+growing, Action Verb (Present Participle) | Adjective, বাড়ছে এমন, গ্রোয়িং
+grown, Action Verb (Past Participle) | Adjective, বড় হয়েছে এমন, গ্রোন
+grows, Action Verb (Third Person), জন্মায়, গ্রোস
+guest, Noun, অতিথি, গেস্ট
+guide, Noun | Action Verb, পথপ্রদর্শক বা গাইড করা, গাইড
+habit, Noun, অভ্যাস, হ্যাবিট
+had, Action Verb (Past) | Helping Verb, ছিল, হ্যাড
+hair, Noun, চুল, হেয়ার
+half, Noun | Adjective | Adverb, অর্ধেক, হাফ
+hall, Noun, হল বা বড় কক্ষ, হল
+hand, Noun | Action Verb, হাত বা হস্তান্তরের করা, হ্যান্ড
+hands, Noun (Plural), হাতগুলো, হ্যান্ডস
+happen, Action Verb, ঘটা, হ্যাপেন
+happened, Action Verb (Past), ঘটেছিল, হ্যাপেনড
+happening, Action Verb (Present Participle) | Noun, ঘটছে এমন বা ঘটনা, হ্যাপেনিং
+happens, Action Verb (Third Person), ঘটে, হ্যাপেনস
+happily, Adverb, খুশিতে, হ্যাপিলি
+happy, Adjective, খুশি, হ্যাপি
+hard, Adjective | Adverb, শক্ত বা কঠিন, হার্ড
+hardly, Adverb, কদাচিৎ বা প্রায় না, হার্ডলি
+has, Action Verb (Third Person) | Helping Verb, আছে, হ্যাজ
+hasn't, Helping Verb (Contraction), নেই, হ্যাজন্ট
+hat, Noun, টুপি, হ্যাট
+hate, Action Verb | Noun, ঘৃণা করা, হেইট
+have, Action Verb | Helping Verb, আছে, হ্যাভ
+haven't, Helping Verb (Contraction), নেই, হ্যাভন্ট
+having, Action Verb (Present Participle), আছে এমন বা গ্রহণ করছে, হ্যাভিং
+he, Pronoun, সে (পুরুষ), হি
+he's, Pronoun (Contraction), সে হয়, হিজ
+head, Noun | Action Verb, মাথা বা নেতৃত্ব দেওয়া, হেড
+health, Noun, স্বাস্থ্য, হেলথ
+healthy, Adjective, স্বাস্থ্যকর, হেলদি
+hear, Action Verb, শোনা, হিয়ার
+heard, Action Verb (Past), শুনেছিল, হার্ড
+hearing, Action Verb (Present Participle) | Noun, শুনছে এমন বা শুনানি, হিয়ারিং
+hears, Action Verb (Third Person), শোনে, হিয়ারস
+heart, Noun, হৃদয়, হার্ট
+heavy, Adjective, ভারী, হেভি
+held, Action Verb (Past), ধরেছিল, হেল্ড
+hello, Interjection | Noun, হ্যালো, হ্যালো
+help, Action Verb | Noun, সাহায্য করা, হেল্প
+helped, Action Verb (Past), সাহায্য করেছিল, হেল্পড
+helpful, Adjective, সাহায্যকারী, হেল্পফুল
+helping, Action Verb (Present Participle) | Noun, সাহায্য করছে এমন, হেল্পিং
+her, Pronoun | Determiner, তাকে বা তার (নারী), হার
+here, Adverb, এখানে, হেয়ার
+hers, Pronoun, তার (নারী), হার্স
+herself, Pronoun, সে নিজে (নারী), হারসেলফ
+hey, Interjection, হেই, হেই
+hi, Interjection, হাই, হাই
+hid, Action Verb (Past), লুকিয়েছিল, হিড
+hidden, Action Verb (Past Participle) | Adjective, লুকানো, হিডেন
+hide, Action Verb | Noun, লুকানো, হাইড
+hiding, Action Verb (Present Participle), লুকাচ্ছে এমন, হাইডিং
+high, Adjective | Adverb | Noun, উঁচু, হাই
+hill, Noun, পাহাড়, হিল
+him, Pronoun, তাকে (পুরুষ), হিম
+himself, Pronoun, সে নিজে (পুরুষ), হিমসেলফ
+his, Determiner | Pronoun, তার (পুরুষ), হিজ
+history, Noun, ইতিহাস, হিস্ট্রি
+hit, Action Verb | Noun, আঘাত করা, হিট
+hobbies, Noun (Plural), শখগুলো, হবিজ
+hobby, Noun, শখ, হবি
+hold, Action Verb | Noun, ধরা, হোল্ড
+holding, Action Verb (Present Participle), ধরছে এমন, হোল্ডিং
+holds, Action Verb (Third Person), ধরে, হোল্ডস
+holiday, Noun, ছুটির দিন, হলিডে
+home, Noun | Adverb | Adjective, বাড়ি, হোম
+homework, Noun, বাড়ির কাজ, হোমওয়ার্ক
+honest, Adjective, সৎ, অনেস্ট
+honestly, Adverb, সততার সাথে, অনেস্টলি
+honor, Noun | Action Verb, সম্মান, অনার
+hope, Action Verb | Noun, আশা করা, হোপ
+horse, Noun, ঘোড়া, হর্স
+hospital, Noun, হাসপাতাল, হসপিটাল
+hot, Adjective, গরম, হট
+hotel, Noun, হোটেল, হোটেল
+hour, Noun, ঘণ্টা, আওয়ার
+hours, Noun (Plural), ঘণ্টাগুলো, আওয়ারস
+house, Noun, বাড়ি, হাউস
+how, Adverb | Conjunction, কিভাবে, হাউ
+however, Adverb | Conjunction, যা-ই হোক, হাউএভার
+huge, Adjective, বিশাল, হিউজ
+hum, Action Verb | Noun, গুনগুন করা, হাম
+hundred, Number, একশ, হান্ড্রেড
+hungry, Adjective, ক্ষুধার্ত, হাংরি
+hurry, Action Verb | Noun, তাড়াতাড়ি করা, হারি
+hurt, Action Verb | Noun | Adjective, আঘাত করা বা আহত, হার্ট
+husband, Noun, স্বামী, হাজব্যান্ড
+i, Pronoun, আমি, আই
+ice, Noun, বরফ, আইস
+idea, Noun, ধারণা, আইডিয়া
+if, Conjunction, যদি, ইফ
+ill, Adjective, অসুস্থ, ইল
+immediately, Adverb, অবিলম্বে বা তক্ষুনি, ইমিডিয়েটলি
+important, Adjective, গুরুত্বপূর্ণ, ইমপর্ট্যান্ট
+impossible, Adjective, অসম্ভব, ইম্পসিবল
+improve, Action Verb, উন্নতি করা, ইম্প্রুভ
+in, Preposition | Adverb, ভেতরে বা মধ্যে, ইন
+include, Action Verb, অন্তর্ভুক্ত করা, ইনক্লুড
+including, Preposition | Action Verb (Present Participle), অন্তর্ভুক্ত করে এমন, ইনক্লুডিং
+increase, Action Verb | Noun, বৃদ্ধি করা বা বৃদ্ধি, ইনক্রিস
+indeed, Adverb, প্রকৃতপক্ষে, ইন্ডিড
+independent, Adjective, স্বাধীন, ইন্ডিপেন্ডেন্ট
+information, Noun, তথ্য, ইনফরমেশন
+inside, Preposition | Adverb | Noun, ভেতরে, ইনসাইড
+instead, Adverb, পরিবর্তে, ইনস্টেড
+intelligent, Adjective, বুদ্ধিমান, ইনটেলিজেন্ট
+interest, Noun | Action Verb, আগ্রহ, ইন্টারেস্ট
+interesting, Adjective, মজাদার বা আকর্ষণীয়, ইন্টারেস্টিং
+international, Adjective, আন্তর্জাতিক, ইন্টারন্যাশনাল
+into, Preposition, ভেতরে, ইনটু
+introduce, Action Verb, পরিচয় করিয়ে দেওয়া, ইনট্রোডিউস
+is, Be Verb | Helping Verb, হয়, ইজ
+isn't, Be Verb (Contraction), নয়, ইজন্ট
+it, Pronoun, ইহা বা এটা, ইট
+it's, Pronoun (Contraction), এটা হয়, ইটস
+item, Noun, বস্তু বা পদ, আইটেম
+its, Determiner, এটার, ইটস
+itself, Pronoun, এটা নিজে, ইটসেলফ
+jacket, Noun, জ্যাকেট, জ্যাকেট
+jam, Noun | Action Verb, জ্যাম বা জট, জ্যাম
+january, Noun, জানুয়ারি, জানুয়ারি
+job, Noun, কাজ বা চাকরি, জব
+join, Action Verb, যোগদান করা, জয়েন
+joke, Noun | Action Verb, কৌতুক, জোক
+journey, Noun, ভ্রমণ, জার্নি
+joy, Noun, আনন্দ, জয়
+july, Noun, জুলাই, জুলাই
+jump, Action Verb | Noun, লাফ দেওয়া, জাম্প
+june, Noun, জুন, জুন
+just, Adverb | Adjective, শুধু বা ন্যায়সঙ্গত, জাস্ট
+keep, Action Verb, রাখা, কিপ
+keeping, Action Verb (Present Participle), রাখছে এমন, কিপিং
+keeps, Action Verb (Third Person), রাখে, কিপস
+kept, Action Verb (Past), রেখেছিল, কেপ্ট
+key, Noun | Adjective, চাবি বা মূল, কি
+kick, Action Verb | Noun, লাথি দেওয়া, কিক
+kid, Noun, শিশু বা বাচ্চা, কিড
+kill, Action Verb, হত্যা করা, কিল
+kind, Adjective | Noun, দয়ালু বা প্রকার, কাইন্ড
+king, Noun, রাজা, কিং
+kitchen, Noun, রান্নাঘর, কিচেন
+knee, Noun, হাঁটু, নি
+knew, Action Verb (Past), জানত, নিউ
+knife, Noun, ছুরি, নাইফ
+knives, Noun (Plural), ছুরিগুলো, নাইভস
+know, Action Verb, জানা, নো
+knowing, Action Verb (Present Participle), জানছে এমন, নোয়িং
+known, Action Verb (Past Participle) | Adjective, পরিচিত, নোন
+knows, Action Verb (Third Person), জানে, নোজ
+ladder, Noun, মই, ল্যাডার
+lady, Noun, মহিলা, লেডি
+lake, Noun, হ্রদ, লেইক
+lamp, Noun, বাতি, ল্যাম্প
+land, Noun | Action Verb, ভূমি বা অবতরণ করা, ল্যান্ড
+language, Noun, ভাষা, ল্যাঙ্গুয়েজ
+large, Adjective, বড় বা বিশাল, লার্জ
+last, Adjective | Adverb | Action Verb, শেষ বা স্থায়িত্ব হওয়া, লাস্ট
+late, Adjective | Adverb, দেরি বা মৃত, লেইট
+later, Adverb | Adjective, পরে, লেটার
+laugh, Action Verb | Noun, হাসা, লাফ
+laughing, Action Verb (Present Participle), হাসছে এমন, লাফিং
+law, Noun, আইন, ল
+lazy, Adjective, অলস, লেজি
+lead, Action Verb | Noun, নেতৃত্ব দেওয়া বা সিসা, লিড
+learn, Action Verb, শেখা, লার্ন
+learning, Action Verb (Present Participle) | Noun, শিখছে এমন বা শিক্ষা, লার্নিং
+least, Adjective | Adverb, সবচেয়ে কম, লিস্ট
+leave, Action Verb | Noun, ত্যাগ করা বা ছুটি, লিভ
+leaving, Action Verb (Present Participle), ত্যাগ করছে এমন, লিভিং
+left, Action Verb (Past) | Adjective, ত্যাগ করেছিল বা বাম, লেফট
+leg, Noun, পা, লেগ
+legs, Noun (Plural), পাগুলো, লেগস
+lemon, Noun, লেবু, লেমন
+less, Adjective | Adverb, কম, লেস
+lesson, Noun, পাঠ, লেসন
+let, Action Verb, অনুমতি দেওয়া বা করতে দেওয়া, লেট
+letter, Noun, চিঠি বা অক্ষর, লেটার
+letters, Noun (Plural), চিঠিগুলো বা অক্ষরগুলো, লেটারস
+level, Noun | Adjective, স্তর বা সমান, লেভেল
+liar, Noun, মিথ্যাবাদী, লায়ার
+library, Noun, গ্রন্থাগার বা লাইব্রেরি, লাইব্রেরি
+lie, Action Verb | Noun, মিথ্যা বলা বা শুয়ে থাকা, লাই
+life, Noun, জীবন, লাইফ
+light, Noun | Adjective | Action Verb, আলো বা হালকা, লাইট
+like, Action Verb | Preposition, পছন্দ করা বা মতো, লাইক
+liked, Action Verb (Past), পছন্দ করেছিল, লাইকড
+likes, Action Verb (Third Person), পছন্দ করে, লাইকস
+liking, Action Verb (Present Participle) | Noun, পছন্দ করছে এমন, লাইকিং
+limit, Noun | Action Verb, সীমা, লিমিট
+line, Noun | Action Verb, রেখা বা লাইন, লাইন
+lion, Noun, সিংহ, লায়ন
+lip, Noun, ঠোঁট, লিপ
+lips, Noun (Plural), ঠোঁটগুলো, লিপস
+list, Noun | Action Verb, তালিকা, লিস্ট
+listen, Action Verb, শোনা, লিসেন
+listening, Action Verb (Present Participle), শুনছে এমন, লিসেনিং
+little, Adjective | Adverb, ছোট বা সামান্য, লিটল
+live, Action Verb | Adjective, বাস করা বা সরাসরি, লিভ
+lives, Action Verb (Third Person) | Noun (Plural), বাস করে বা জীবনগুলো, লিভস
+living, Action Verb (Present Participle) | Noun, বাস করছে এমন বা জীবিকা, লিভিং
+local, Adjective | Noun, স্থানীয়, লোকাল
+lock, Noun | Action Verb, তালা বা আটকানো, লক
+long, Adjective | Adverb | Action Verb, লম্বা বা দীর্ঘ সময়, লং
+look, Action Verb | Noun, তাকানো বা চেহারা, লুক
+looking, Action Verb (Present Participle), তাকাচ্ছে এমন, লুকিং
+looks, Action Verb (Third Person), তাকায় বা দেখা যায়, লুকস
+loose, Adjective, ঢিলেঢালা, লুস
+lose, Action Verb, হারানো, লুজ
+losing, Action Verb (Present Participle), হারাচ্ছে এমন, লুজিং
+lost, Action Verb (Past) | Adjective, হারিয়েছিল বা হারানো, লস্ট
+lot, Noun | Adverb | Pronoun, প্রচুর বা ভাগ্য, লট
+loud, Adjective | Adverb, উচ্চস্বরে, লাউড
+loudly, Adverb, উচ্চস্বরে, লাউডলি
+love, Action Verb | Noun, ভালোবাসা, লাভ
+lovely, Adjective, চমৎকার বা সুন্দর, লাভলি
+loving, Adjective | Action Verb (Present Participle), স্নেহময় বা ভালোবাসছে এমন, লাভিং
+low, Adjective | Adverb, নিচু, লো
+luck, Noun, ভাগ্য, লাক
+lunch, Noun, দুপুরের খাবার, লাঞ্চ
+machine, Noun, যন্ত্র, মেশিন
+made, Action Verb (Past) | Adjective, তৈরি করেছিল বা তৈরি, মেইড
+main, Adjective, প্রধান, মেইন
+make, Action Verb | Noun, তৈরি করা, মেইক
+makes, Action Verb (Third Person), তৈরি করে, মেইকস
+making, Action Verb (Present Participle), তৈরি করছে এমন, মেইকিং
+man, Noun, মানুষ বা পুরুষ, ম্যান
+manage, Action Verb, পরিচালনা করা, ম্যানেজ
+management, Noun, ব্যবস্থাপনা, ম্যানেজমেন্ট
+manager, Noun, ব্যবস্থাপক, ম্যানেজার
+mango, Noun, আম, ম্যাঙ্গো
+mangoes, Noun (Plural), আমগুলো, ম্যাঙ্গোজ
+many, Adjective | Pronoun, অনেক, মেনি
+map, Noun, মানচিত্র, ম্যাপ
+march, Noun | Action Verb, মার্চ মাস বা পদযাত্রা, মার্চ
+market, Noun, বাজার, মার্কেট
+marry, Action Verb, বিয়ে করা, ম্যারি
+match, Noun | Action Verb, মিল বা দিয়াশলাই, ম্যাচ
+matter, Noun | Action Verb, বিষয় বা গুরুত্ব থাকা, ম্যাটার
+may, Helping Verb | Noun, পারা বা মে মাস, মে
+me, Pronoun, আমাকে, মি
+meal, Noun, খাবার, মিল
+mean, Action Verb | Adjective, অর্থ বোঝানো বা নীচ, মিন
+meaning, Noun | Action Verb (Present Participle), অর্থ, মিনিং
+means, Noun | Action Verb (Third Person), উপায় বা বোঝায়, মিনস
+meant, Action Verb (Past), বুঝিয়েছিল, মেন্ট
+meat, Noun, মাংস, মিট
+medicine, Noun, ঔষধ, মেডিসিন
+medicines, Noun (Plural), ঔষধপত্র, মেডিসিনস
+meet, Action Verb | Noun, দেখা করা, মিট
+meeting, Noun | Action Verb (Present Participle), সভা বা দেখা করছে এমন, মিটিং
+men, Noun (Plural of man), পুরুষেরা, মেন
+message, Noun, বার্তা, মেসেজ
+met, Action Verb (Past), দেখা করেছিল, মেট
+method, Noun, পদ্ধতি, মেথড
+middle, Noun | Adjective, মধ্যবর্তী, মিডল
+might, Helping Verb | Noun, হতে পারে বা শক্তি, মাইট
+milk, Noun | Action Verb, দুধ, মিল্ক
+million, Number, দশ লক্ষ বা মিলিয়ন, মিলিয়ন
+mind, Noun | Action Verb, মন বা মনে করা, মাইন্ড
+mine, Pronoun | Noun, আমার বা খনি, মাইন
+minimalist, Adjective, ন্যূনতমবাদী বা ছিমছাম, মিনিমালিস্ট
+minute, Noun | Adjective, মিনিট বা অতি ক্ষুদ্র, মিনিট
+miss, Action Verb | Noun, মিস করা বা কুমারী, মিস
+missing, Adjective | Action Verb (Present Participle), নিখোঁজ, মিসিং
+mistake, Noun | Action Verb, ভুল, মিসটেক
+mobile, Adjective | Noun, মোবাইল বা ভ্রাম্যমাণ, মোবাইল
+moment, Noun, মুহূর্ত, মোমেন্ট
+monday, Noun, সোমবার, মানডে
+money, Noun, টাকা, মানি
+monkey, Noun, বানর, মাঙ্কি
+month, Noun, মাস, মান্থ
+months, Noun (Plural), মাসগুলো, মান্থস
+moon, Noun, চাঁদ, মুন
+more, Adjective | Adverb | Pronoun, আরও বা অধিক, মোর
+morning, Noun, সকাল, মর্নিং
+most, Adjective | Adverb | Pronoun, অধিকাংশ বা সবচেয়ে বেশি, মোস্ট
+mostly, Adverb, প্রধানত, মোস্টলি
+mother, Noun, মা, মাদার
+mountain, Noun, পর্বত, মাউন্টেন
+mouth, Noun, মুখ, মাউথ
+move, Action Verb | Noun, নড়াচড়া করা, মুভ
+moving, Action Verb (Present Participle) | Adjective, নড়ছে এমন, মুভিং
+much, Adjective | Adverb | Pronoun, অনেক, মাচ
+museum, Noun, জাদুঘর, মিউজিয়াম
+music, Noun, সঙ্গীত, মিউজিক
+must, Helping Verb | Noun, অবশ্যই, মাস্ট
+my, Determiner, আমার, মাই
+myself, Pronoun, আমি নিজে, মাইসেলফ
+name, Noun | Action Verb, নাম, নেইম
+narrow, Adjective | Action Verb, সংকীর্ণ বা সরু, ন্যারো
+national, Adjective, জাতীয়, ন্যাশনাল
+nature, Noun, প্রকৃতি, নেচার
+near, Preposition | Adverb | Adjective, কাছে, নিয়ার
+nearly, Adverb, প্রায়, নিয়ারলি
+necessary, Adjective, প্রয়োজনীয়, নেসেসারি
+neck, Noun, ঘাড় বা গলা, নেক
+need, Action Verb | Noun, প্রয়োজন, নিড
+needed, Action Verb (Past) | Adjective, প্রয়োজন ছিল এমন, নিডেড
+needs, Action Verb (Third Person) | Noun (Plural), প্রয়োজন বা দরকারগুলো, নিডস
+neighbor, Noun, প্রতিবেশী, নেইবার
+neither, Determiner | Pronoun | Conjunction, দুটির কোনটিই নয়, নাইদার
+never, Adverb, কখনো না, নেভার
+new, Adjective, নতুন, নিউ
+news, Noun, খবর, নিউজ
+newspaper, Noun, সংবাদপত্র, নিউজপেপার
+next, Adjective | Adverb, পরবর্তী, নেক্সট
+nice, Adjective, সুন্দর বা চমৎকার, নাইস
+nicely, Adverb, সুন্দরভাবে, নাইসলি
+night, Noun, রাত, নাইট
+nine, Number, নয়, নাইন
+no, Adverb | Determiner, না, নো
+nobody, Pronoun, কেউ না, নোবডি
+noise, Noun, গোলমাল বা শব্দ, নয়েজ
+none, Pronoun | Adverb, কেউ না বা কিছুই না, নান
+noon, Noun, দুপুর, নুন
+nor, Conjunction, অথবা না, নর
+nose, Noun, নাক, নোজ
+not, Adverb, না, নট
+note, Noun | Action Verb, নোট বা লক্ষ্য করা, নোট
+nothing, Pronoun, কিছুই না, নাথিং
+notice, Noun | Action Verb, লক্ষ্য করা বা নোটিশ, নোটিশ
+noticing, Action Verb (Present Participle), লক্ষ্য করছে এমন, নোটিসিং
+novel, Noun | Adjective, উপন্যাস বা নতুন ধরনের, নভেল
+now, Adverb, এখন, নাও
+number, Noun | Action Verb, সংখ্যা, নাম্বার
+numbers, Noun (Plural), সংখ্যাগুলো, নাম্বারস
+obvious, Adjective, স্পষ্ট বা প্রতীয়মান, অবভিয়াস
+obviously, Adverb, স্পষ্টতই, অবভিয়াসলি
+occasion, Noun, উপলক্ষে বা বিশেষ সময়, অকেশান
+o'clock, Adverb, ঘড়ির কাঁটায়, ও'ক্লক
+october, Noun, অক্টোবর, অক্টোবর
+of, Preposition, এর, অফ
+off, Adverb | Preposition, বন্ধ বা দূরে, অফ
+office, Noun, অফিস বা কার্যালয়, অফিস
+officer, Noun, অফিসার বা কর্মকর্তা, অফিসার
+often, Adverb, প্রায়ই, অফেন
+oh, Interjection, ওহ, ওহ
+oil, Noun | Action Verb, তেল, অয়েল
+ok, Adjective | Adverb | Interjection, ঠিক আছে, ওকে
+okay, Adjective | Adverb | Interjection, ঠিক আছে, ওকে
+old, Adjective, পুরনো বা বৃদ্ধ, ওল্ড
+on, Preposition | Adverb, উপরে বা চালু, অন
+once, Adverb | Conjunction, একবার, ওয়ান্স
+one, Number | Pronoun, এক, ওয়ান
+ones, Pronoun (Plural), গুলো, ওয়ানস
+online, Adjective | Adverb, অনলাইন বা ইন্টারনেটে যুক্ত, অনলাইন
+only, Adjective | Adverb, শুধু বা একমাত্র, অনলি
+open, Action Verb | Adjective, খোলা, ওপেন
+opened, Action Verb (Past) | Adjective, খোলা হয়েছিল এমন, ওপেন্ড
+opening, Noun | Action Verb (Present Participle), উদ্বোধন বা খুলছে এমন, ওপেনিং
+opens, Action Verb (Third Person), খোলে, ওপেনস
+option, Noun, বিকল্প বা পছন্দ, অপশন
+or, Conjunction, অথবা, অর
+orange, Noun | Adjective, কমলালেবু বা কমলা রঙ, অরেঞ্জ
+order, Noun | Action Verb, আদেশ বা ক্রম, অর্ডার
+ordered, Action Verb (Past), আদেশ দিয়েছিল, অর্ডারড
+orders, Noun (Plural) | Action Verb (Third Person), আদেশগুলো, অর্ডারস
+other, Adjective | Pronoun, অন্য, আদার
+others, Pronoun (Plural), অন্যান্যরা, আদারস
+ought, Helping Verb, উচিত, অট
+our, Determiner, আমাদের, আওয়ার
+ours, Pronoun, আমাদের, আওয়ারস
+ourselves, Pronoun, আমরা নিজেরা, আওয়ারসেলভস
+out, Adverb | Preposition, বাইরে, আউট
+outside, Preposition | Adverb | Noun, বাইরে, আউটসাইড
+over, Preposition | Adverb, উপরে বা সমাপ্ত, ওভার
+own, Adjective | Action Verb, নিজস্ব বা মালিক হওয়া, ওন
+owner, Noun, মালিক, ওনার
+pack, Action Verb | Noun, প্যাক করা বা পুটলি, প্যাক
+package, Noun | Action Verb, প্যাকেট বা মোড়কজাত করা, প্যাকেজ
+page, Noun, পৃষ্ঠা, পেইজ
+pain, Noun, ব্যথা, পেইন
+paint, Noun | Action Verb, রঙ বা রঙ করা, পেইন্ট
+painting, Noun | Action Verb (Present Participle), চিত্রকর্ম বা রঙ করছে এমন, পেইন্টিং
+pair, Noun, জোড়া, পেয়ার
+palace, Noun, প্রাসাদ, প্যালেস
+pan, Noun, কড়াই বা পাত্র, প্যান
+paper, Noun, কাগজ, পেপার
+parade, Noun | Action Verb, কুচকাওয়াজ, প্যারেড
+pardon, Noun | Action Verb, ক্ষমা, পারডন
+parent, Noun, পিতা বা মাতা, প্যারেন্ট
+parents, Noun (Plural), বাবা-মা, প্যারেন্টস
+park, Noun | Action Verb, উদ্যান বা গাড়ি রাখা, পার্ক
+part, Noun | Action Verb, অংশ, পার্ট
+particular, Adjective, বিশেষ, পার্টিকুলার
+particularly, Adverb, বিশেষভাবে, পার্টিকুলারলি
+party, Noun, পার্টি বা দল, পার্টি
+pass, Action Verb | Noun, অতিক্রম করা বা পাস, পাস
+passed, Action Verb (Past), অতিক্রম করেছিল, পাসড
+past, Adjective | Noun | Preposition, অতীত, পাস্ট
+path, Noun, পথ, পাথ
+patient, Noun | Adjective, রোগী বা ধৈর্যশীল, পেশেন্ট
+pay, Action Verb | Noun, পরিশোধ করা বা বেতন, পে
+paying, Action Verb (Present Participle), পরিশোধ করছে এমন, পেয়িং
+payment, Noun, পরিশোধ বা পেমেন্ট, পেমেন্ট
+peace, Noun, শান্তি, পিস
+pen, Noun, কলম, পেন
+pencil, Noun, পেন্সিল, পেন্সিল
+people, Noun, জনগণ, পিপল
+per, Preposition, প্রতি, পার
+perfect, Adjective | Action Verb, নিখুঁত, পারফেক্ট
+perfectly, Adverb, নিখুঁতভাবে, পারফেক্টলি
+perform, Action Verb, সম্পাদন করা বা অভিনয় করা, পারফর্ম
+performance, Noun, পারফরম্যান্স বা দক্ষতা, পারফরম্যান্স
+perhaps, Adverb, সম্ভবত, পারহ্যাপস
+person, Noun, ব্যক্তি, পারসন
+personal, Adjective, ব্যক্তিগত, পার্সোনাল
+phone, Noun | Action Verb, ফোন, ফোন
+photo, Noun, ছবি বা ফটো, ফটো
+photograph, Noun | Action Verb, স্থিরচিত্র, ফটোগ্রাফ
+phrase, Noun | Action Verb, শব্দগুচ্ছ, ফ্রেজ
+pick, Action Verb | Noun, তোলা বা পছন্দ করা, পিক
+picking, Action Verb (Present Participle), তুলছে এমন, পিকিং
+picnic, Noun, বনভোজন, পিকনিক
+picture, Noun | Action Verb, ছবি, পিকচার
+piece, Noun, টুকরো, পিস
+pieces, Noun (Plural), টুকরোগুলো, পিসেস
+pilot, Noun | Action Verb, বিমান চালক, পাইলট
+pink, Adjective | Noun, গোলাপি, পিঙ্ক
+place, Noun | Action Verb, স্থান বা রাখা, প্লেইস
+plan, Noun | Action Verb, পরিকল্পনা, প্ল্যান
+plane, Noun, বিমান, প্লেইন
+planning, Noun | Action Verb (Present Participle), পরিকল্পনা করছে এমন, প্ল্যানিং
+plant, Noun | Action Verb, চারাগাছ বা রোপণ করা, প্ল্যান্ট
+plate, Noun, থালা, প্লেইট
+play, Action Verb | Noun, খেলা বা নাটক, প্লে
+played, Action Verb (Past), খেলেছিল, প্লেড
+player, Noun, খেলোয়াড়, প্লেয়ার
+playing, Action Verb (Present Participle), খেলছে এমন, প্লেয়িং
+plays, Action Verb (Third Person) | Noun (Plural), খেলে বা নাটকগুলো, প্লেস
+please, Adverb | Action Verb, দয়া করে বা সন্তুষ্ট করা, প্লিজ
+pleased, Adjective | Action Verb (Past), সন্তুষ্ট, প্লিজড
+pleasure, Noun, আনন্দ, প্লেজার
+plus, Preposition | Adjective | Noun, যোগ বা ধনাত্মক, প্লাস
+p.m., Adverb, অপরাহ্ন, পিএম
+pocket, Noun, পকেট, পকেট
+poem, Noun, কবিতা, পোয়েম
+point, Noun | Action Verb, বিন্দু বা নির্দেশ করা, পয়েন্ট
+police, Noun, পুলিশ, পুলিশ
+polite, Adjective, নম্র, পোলাইট
+politely, Adverb, নম্রভাবে, পোলাইটলি
+political, Adjective, রাজনৈতিক, পলিটিক্যাল
+politics, Noun, রাজনীতি, পলিটিক্স
+pollution, Noun, দূষণ, পলিউশন
+pool, Noun, পুকুর বা পুল, পুল
+poor, Adjective, গরিব, পুওর
+popular, Adjective, জনপ্রিয়, পপুলার
+population, Noun, জনসংখ্যা, পপুলেশন
+position, Noun | Action Verb, অবস্থান, পজিশন
+possible, Adjective, সম্ভব, পসিবল
+possibly, Adverb, সম্ভবত, পসিবলি
+post, Noun | Action Verb, ডাক বা পোস্ট করা, পোস্ট
+pot, Noun, পাত্র, পট
+potato, Noun, আলু, পটেটো
+potatoes, Noun (Plural), আলুগুলো, পটেটোজ
+power, Noun | Action Verb, ক্ষমতা বা শক্তি, পাওয়ার
+practice, Noun | Action Verb, অনুশীলন, প্র্যাকটিস
+practicing, Action Verb (Present Participle), অনুশীলন করছে এমন, প্র্যাকটিসিং
+praise, Action Verb | Noun, প্রশংসা করা, প্রেইজ
+pray, Action Verb, প্রার্থনা করা, প্রে
+predict, Action Verb, ভবিষ্যৎবাণী করা, প্রেডিক্ট
+prefer, Action Verb, অধিক পছন্দ করা, প্রিফার
+prepare, Action Verb, প্রস্তুতি নেওয়া, প্রিপেয়ার
+prepared, Action Verb (Past) | Adjective, প্রস্তুত, প্রিপেয়ার্ড
+preparing, Action Verb (Present Participle), প্রস্তুত করছে এমন, প্রিপেয়ারিং
+presence, Noun, উপস্থিতি, প্রেজেন্স
+present, Adjective | Noun | Action Verb, বর্তমান বা উপহার, প্রেজেন্ট
+president, Noun, রাষ্ট্রপতি বা সভাপতি, প্রেসিডেন্ট
+press, Action Verb | Noun, চাপ দেওয়া বা সংবাদ মাধ্যম, প্রেস
+pretty, Adjective | Adverb, সুন্দর বা বেশ, প্রিটি
+price, Noun | Action Verb, দাম, প্রাইস
+primary, Adjective, প্রাথমিক, প্রাইমারি
+prince, Noun, রাজকুমার, প্রিন্স
+princess, Noun, রাজকুমারী, প্রিন্সেস
+principal, Noun | Adjective, অধ্যক্ষ বা প্রধান, প্রিন্সিপাল
+private, Adjective, ব্যক্তিগত, প্রাইভেট
+prize, Noun, পুরস্কার, প্রাইজ
+probably, Adverb, সম্ভবত, প্রবাবলি
+problem, Noun, সমস্যা, প্রবলেম
+process, Noun | Action Verb, প্রক্রিয়া, প্রসেস
+produce, Action Verb | Noun, উৎপাদন করা, প্রডিউস
+product, Noun, পণ্য, প্রোডাক্ট
+professional, Adjective | Noun, পেশাদার, প্রফেশনাল
+professor, Noun, অধ্যাপক, প্রফেসর
+program, Noun | Action Verb, প্রোগ্রাম বা কার্যক্রম, প্রোগ্রাম
+progress, Noun | Action Verb, অগ্রগতি, প্রগ্রেস
+project, Noun | Action Verb, প্রকল্প, প্রজেক্ট
+promise, Noun | Action Verb, প্রতিশ্রুতি, প্রমিস
+pronounce, Action Verb, উচ্চারণ করা, প্রোনাউন্স
+pronunciation, Noun, উচ্চারণ, প্রোনাউনসিয়েশন
+proper, Adjective, সঠিক, প্রপার
+properly, Adverb, সঠিকভাবে, প্রপারলি
+protect, Action Verb, রক্ষা করা, প্রোটেক্ট
+proud, Adjective, গর্বিত, প্রাউড
+prove, Action Verb, প্রমাণ করা, প্রুভ
+provide, Action Verb, প্রদান করা, প্রোভাইড
+public, Adjective | Noun, সরকারি বা জনসাধারণ, পাবলিক
+pull, Action Verb | Noun, টানা, পুল
+pulp, Noun | Action Verb, মণ্ড বা শাঁস, পাল্প
+punish, Action Verb, শাস্তি দেওয়া, পানিশ
+pure, Adjective, বিশুদ্ধ, পিউর
+purple, Adjective | Noun, বেগুনি, পার্পল
+purpose, Noun, উদ্দেশ্য, পারপাস
+push, Action Verb | Noun, ধাক্কা দেওয়া, পুশ
+put, Action Verb, রাখা, পুট
+putting, Action Verb (Present Participle), রাখছে এমন, পুটিং
+quality, Noun, গুণমান, কোয়ালিটি
+quarter, Noun, এক-চতুর্থাংশ বা পোয়া, কোয়ার্টার
+queen, Noun, রানী, কুইন
+question, Noun | Action Verb, প্রশ্ন, কোয়েশ্চন
+questions, Noun (Plural) | Action Verb (Third Person), প্রশ্নগুলো, কোয়েশ্চনস
+quick, Adjective | Adverb, দ্রুত, কুইক
+quickly, Adverb, দ্রুততার সাথে, কুইকলি
+quiet, Adjective | Noun | Action Verb, শান্ত, কোয়ায়েট
+quietly, Adverb, শান্তভাবে, কোয়ায়েটলি
+quite, Adverb, বেশ বা সম্পূর্ণভাবে, কোয়াইট
+race, Noun | Action Verb, দৌড় প্রতিযোগিতা বা জাতি, রেইস
+radio, Noun, রেডিও, রেডিও
+railway, Noun, রেলপথ, রেইলওয়ে
+rain, Noun | Action Verb, বৃষ্টি, রেইন
+raining, Action Verb (Present Participle), বৃষ্টি পড়ছে এমন, রেইনিং
+rainy, Adjective, বৃষ্টিবহুল, রেইনি
+raise, Action Verb | Noun, তোলা বা বাড়ানো, রেইজ
+ran, Action Verb (Past), দৌড়েছিল, র‍্যান
+rang, Action Verb (Past), বেজেছিল, র‍্যাং
+range, Noun | Action Verb, পরিসর বা সীমা, রেইঞ্জ
+rarely, Adverb, কদাচিৎ, রেয়ারলি
+rat, Noun, ইঁদুর, র‍্যাট
+rather, Adverb, বরং, রাদার
+reach, Action Verb | Noun, পৌঁছানো, রিচ
+reached, Action Verb (Past), পৌঁছেছিল, রিচড
+read, Action Verb | Noun, পড়া, রিড
+reading, Action Verb (Present Participle) | Noun, পড়ছে এমন বা পাঠ, রিডিং
+reads, Action Verb (Third Person), পড়ে, রিডস
+ready, Adjective, প্রস্তুত, রেডি
+real, Adjective, আসল বা প্রকৃত, রিয়েল
+realise, Action Verb, বুঝতে পারা, রিয়ালাইজ
+really, Adverb, সত্যি বা প্রকৃতপক্ষে, রিয়েলি
+reason, Noun | Action Verb, কারণ, রিজন
+receive, Action Verb, গ্রহণ করা, রিসিভ
+recently, Adverb, সম্প্রতি, রিসেন্টলি
+record, Noun | Action Verb, রেকর্ড বা নথিভুক্ত করা, রেকর্ড
+red, Adjective | Noun, লাল, রেড
+reduce, Action Verb, কমানো, রিডিউস
+refresh, Action Verb, সতেজ করা, রিফ্রেশ
+refuse, Action Verb | Noun, প্রত্যাখ্যান করা বা আবর্জনা, রিফিউজ
+regular, Adjective | Noun, নিয়মিত, রেগুলার
+regularly, Adverb, নিয়মিতভাবে, রেগুলারলি
+relation, Noun, সম্পর্ক, রিলেশন
+relative, Noun | Adjective, আত্মীয় বা আপেক্ষিক, রিলেটিভ
+relax, Action Verb, বিশ্রাম নেওয়া, রিল্যাক্স
+religion, Noun, ধর্ম, রিলিজিয়ন
+remain, Action Verb, থাকা বা অবশিষ্ট থাকা, রিমেইন
+remember, Action Verb, মনে রাখা, রিমেম্বার
+remind, Action Verb, মনে করিয়ে দেওয়া, রিমাইন্ড
+remove, Action Verb, সরিয়ে ফেলা, রিমুভ
+repeat, Action Verb | Noun, পুনরাবৃত্তি করা, রিপিট
+reply, Action Verb | Noun, উত্তর দেওয়া, রিপ্লাই
+report, Noun | Action Verb, প্রতিবেদন বা রিপোর্ট, রিপোর্ট
+request, Noun | Action Verb, অনুরোধ, রিকোয়েস্ট
+rescue, Action Verb | Noun, উদ্ধার করা, রেসকিউ
+respect, Noun | Action Verb, সম্মান, রেসপেক্ট
+responsible, Adjective, দায়ী, রেসপন্সিবল
+rest, Noun | Action Verb, বিশ্রাম বা অবশিষ্ট, রেস্ট
+restaurant, Noun, রেস্তোরাঁ, রেস্টুরেন্ট
+result, Noun | Action Verb, ফলাফল, রেজাল্ট
+return, Action Verb | Noun, ফিরে আসা বা ফেরত, রিটার্ন
+rice, Noun, চাল বা ভাত, রাইস
+rich, Adjective, ধনী, রিচ
+ride, Action Verb | Noun, চড়া বা সওয়ার হওয়া, রাইড
+riding, Action Verb (Present Participle), চড়ছে এমন, রাইডিং
+right, Adjective | Adverb | Noun, সঠিক বা ডান, রাইট
+ring, Noun | Action Verb, আংটি বা বাজা, রিং
+rise, Action Verb | Noun, ওঠা বা বৃদ্ধি, রাইজ
+rising, Action Verb (Present Participle) | Adjective, উঠছে এমন, রাইজিং
+river, Noun, নদী, রিভার
+road, Noun, রাস্তা, রোড
+rock, Noun | Action Verb, পাথর বা দোলানো, রক
+role, Noun, ভূমিকা বা পাঠ, রোল
+roll, Action Verb | Noun, গড়ানো বা তালিকা, রোল
+rolling, Action Verb (Present Participle) | Adjective, গড়াচ্ছে এমন, রোলিং
+roof, Noun, ছাদ, রুফ
+room, Noun, কক্ষ বা ঘর, রুম
+root, Noun | Action Verb, মূল বা শিকড়, রুট
+rope, Noun, দড়ি, রোপ
+rose, Noun | Action Verb (Past), গোলাপ বা উঠেছিল, রোজ
+round, Adjective | Adverb | Preposition, গোল, রাউন্ড
+row, Noun | Action Verb, সারি বা নৌকা চালানো, রো
+rub, Action Verb | Noun, ঘষা, রাব
+rubber, Noun, রবার, রাবার
+rule, Noun | Action Verb, নিয়ম বা শাসন করা, রুল
+run, Action Verb | Noun, দৌড়ানো, রান
+running, Action Verb (Present Participle) | Adjective, দৌড়াচ্ছে এমন, রানিং
+runs, Action Verb (Third Person) | Noun (Plural), দৌড়ায় বা দৌড়গুলো, রানস
+sad, Adjective, দুঃখিত, স্যাড
+safe, Adjective | Noun, নিরাপদ বা সিন্দুক, সেইফ
+said, Action Verb (Past), বলেছিল, সেড
+sail, Action Verb | Noun, পাল তোলা বা জলযাত্রা, সেইল
+salad, Noun, সালাদ, স্যালাড
+salt, Noun | Action Verb, লবণ, সল্ট
+same, Adjective | Pronoun | Adverb, একই, সেইম
+sand, Noun, বালু, স্যান্ড
+sandwich, Noun, স্যান্ডউইচ, স্যান্ডউইচ
+sang, Action Verb (Past), গেয়েছিল, স্যাং
+sat, Action Verb (Past), বসেছিল, স্যাট
+saturday, Noun, শনিবার, স্যাটারডে
+sauce, Noun, সস, সস
+save, Action Verb | Noun, রক্ষা করা বা জমানো, সেইভ
+saving, Action Verb (Present Participle) | Noun, জমাচ্ছে এমন বা সঞ্চয়, সেইভিং
+saw, Action Verb (Past) | Noun, দেখেছিল বা করাত, স
+say, Action Verb | Noun, বলা, সে
+saying, Action Verb (Present Participle) | Noun, বলছে এমন বা প্রবাদ, সেয়িং
+says, Action Verb (Third Person), বলে, সেজ
+scene, Noun, দৃশ্য, সিন
+school, Noun | Action Verb, স্কুল বা বিদ্যালয়, স্কুল
+science, Noun, বিজ্ঞান, সায়েন্স
+scientist, Noun, বিজ্ঞানী, সায়েন্টিস্ট
+score, Noun | Action Verb, রান বা স্কোর, স্কোর
+sea, Noun, সমুদ্র, সি
+search, Action Verb | Noun, অনুসন্ধান, সার্চ
+season, Noun | Action Verb, ঋতু, সিজন
+seat, Noun | Action Verb, আসন, সিট
+second, Number | Noun | Adjective, দ্বিতীয় বা সেকেন্ড, সেকেন্ড
+secret, Adjective | Noun, গোপন, সিক্রেট
+secretary, Noun, সচিব বা সম্পাদক, সেক্রেটারি
+see, Action Verb, দেখা, সি
+seeing, Action Verb (Present Participle), দেখছে এমন, সিয়িং
+seem, Linking Verb, মনে হওয়া, সিম
+seemed, Linking Verb (Past), মনে হয়েছিল, সিমড
+seems, Linking Verb (Third Person), মনে হয়, সিমস
+seen, Action Verb (Past Participle), দেখা হয়েছে এমন, সিন
+sees, Action Verb (Third Person), দেখে, সিজ
+sell, Action Verb, বিক্রি করা, সেল
+selling, Action Verb (Present Participle), বিক্রি করছে এমন, সেলিং
+send, Action Verb, পাঠানো, সেন্ড
+sending, Action Verb (Present Participle), পাঠাচ্ছে এমন, সেন্ডিং
+sense, Noun | Action Verb, অনুভূতি বা জ্ঞান, সেন্স
+sentence, Noun | Action Verb, বাক্য বা দণ্ডাদেশ, সেন্টেন্স
+sentences, Noun (Plural), বাক্যগুলো, সেন্টেন্সেস
+separate, Adjective | Action Verb, আলাদা, সেপারেট
+september, Noun, সেপ্টেম্বর, সেপ্টেম্বর
+serious, Adjective, গুরুতর, সিরিয়াস
+seriously, Adverb, গুরুত্বের সাথে, সিরিয়াসলি
+servant, Noun, চাকর, সার্ভেন্ট
+serve, Action Verb, সেবা করা বা পরিবেশন করা, সার্ভ
+service, Noun | Action Verb, সেবা, সার্ভিস
+set, Action Verb | Noun, স্থাপন করা বা সেট, সেট
+seven, Number, সাত, সেভেন
+several, Adjective | Pronoun, বেশ কয়েকটি, সেভারেল
+shall, Helping Verb, হবে বা হবে কি, শ্যাল
+shape, Noun | Action Verb, আকৃতি, শেপ
+share, Action Verb | Noun, ভাগ করা বা অংশ, শেয়ার
+sharp, Adjective | Adverb, ধারালো বা ঠিক, শার্প
+she, Pronoun, সে (স্ত্রী), শি
+sheep, Noun, ভেড়া, শিপ
+sheet, Noun, চাদর বা কাগজ, শিট
+shelf, Noun, তাক, শেলফ
+shine, Action Verb | Noun, উজ্জ্বল হওয়া বা কিরণ, শাইন
+shining, Action Verb (Present Participle) | Adjective, উজ্জ্বল, শাইনিং
+ship, Noun | Action Verb, জাহাজ, শিপ
+shirt, Noun, জামা বা শার্ট, শার্ট
+shoe, Noun | Action Verb, জুতো, শু
+shoes, Noun (Plural), জুতোজোড়া, শুজ
+shop, Noun | Action Verb, দোকান, শপ
+shopping, Noun | Action Verb (Present Participle), কেনাকাটা, শপিং
+short, Adjective | Adverb, ছোট বা খাটো, শর্ট
+shot, Action Verb (Past) | Noun, গুলি করেছিল বা শট, শট
+should, Helping Verb, উচিত, শুড
+shouldn't, Helping Verb (Contraction), উচিত নয়, শুডন্ট
+shoulder, Noun, কাঁধ, শোল্ডার
+shoulders, Noun (Plural), কাঁধগুলো, শোল্ডারস
+shout, Action Verb | Noun, চিৎকার করা, শাউট
+show, Action Verb | Noun, দেখানো বা প্রদর্শনী, শো
+showed, Action Verb (Past), দেখিয়েছিল, শোড
+showing, Action Verb (Present Participle), দেখাচ্ছে এমন, শোয়িং
+shown, Action Verb (Past Participle), দেখানো হয়েছে এমন, শোন
+shows, Action Verb (Third Person) | Noun (Plural), দেখায় বা প্রদর্শনীগুলো, শোজ
+shut, Action Verb | Adjective, বন্ধ করা বা বন্ধ, শাট
+sick, Adjective, অসুস্থ, সিক
+side, Noun | Adjective, পাশ, সাইড
+sight, Noun, দৃষ্টি বা দৃশ্য, সাইট
+sign, Noun | Action Verb, চিহ্ন বা স্বাক্ষর করা, সাইন
+silence, Noun | Action Verb, নীরবতা, সাইলেন্স
+silent, Adjective, নীরব, সাইলেন্ট
+silk, Noun | Adjective, সিল্ক বা রেশম, সিল্ক
+silly, Adjective, নির্বোধ, সিলি
+silver, Noun | Adjective, রুপো, সিলভার
+simple, Adjective, সরল, সিম্পল
+simply, Adverb, সহজভাবে, সিম্পলি
+since, Preposition | Conjunction | Adverb, থেকে বা যেহেতু, সিন্স
+sing, Action Verb, গান গাওয়া, সিং
+singing, Action Verb (Present Participle) | Noun, গান গাইছে এমন, সিংয়িং
+single, Adjective | Noun | Action Verb, একক বা অবিবাহিত, সিঙ্গেল
+sink, Action Verb | Noun, ডুবে যাওয়া বা সিঙ্ক, সিঙ্ক
+sir, Noun, স্যার বা মহোদয়, স্যার
+sister, Noun, বোন, সিস্টার
+sit, Action Verb, বসা, সিট
+sitting, Action Verb (Present Participle), বসে আছে এমন, সিটিং
+situation, Noun, পরিস্থিতি, সিচুয়েশন
+six, Number, ছয়, সিক্স
+size, Noun | Action Verb, আকার, সাইজ
+skill, Noun, দক্ষতা, স্কিল
+skin, Noun, ত্বক বা চামড়া, স্কিন
+sky, Noun, আকাশ, স্কাই
+sleep, Action Verb | Noun, ঘুমানো, স্লিপ
+sleeping, Action Verb (Present Participle) | Adjective, ঘুমাচ্ছে এমন, স্লিপিং
+sleepy, Adjective, ঘুমঘুম ভাব, স্লিপি
+slept, Action Verb (Past), ঘুমিয়েছিল, স্লেপ্ট
+slid, Action Verb (Past), পিছলে গিয়েছিল, স্লিড
+slide, Action Verb | Noun, পিছলে যাওয়া, স্লাইড
+slight, Adjective | Action Verb, সামান্য, স্লাইট
+slightly, Adverb, সামান্যভাবে, স্লাইটলি
+slow, Adjective | Adverb | Action Verb, ধীর, স্লো
+slowly, Adverb, ধীরে ধীরে, স্লোলি
+small, Adjective, ছোট, স্মল
+smart, Adjective, চতুর বা পরিপাটি, স্মার্ট
+smell, Noun | Action Verb, গন্ধ, স্মেল
+smile, Action Verb | Noun, হাসা বা মুচকি হাসি, স্মাইল
+smiling, Action Verb (Present Participle) | Adjective, হাসছে এমন, স্মাইলিং
+smoke, Noun | Action Verb, ধোঁয়া বা ধূমপান করা, স্মোক
+snake, Noun, সাপ, স্নেক
+snow, Noun | Action Verb, তুষার, স্নো
+so, Adverb | Conjunction, তাই বা খুব, সো
+soap, Noun | Action Verb, সাবান, সোপ
+soccer, Noun, ফুটবল (সকার), সকার
+society, Noun, সমাজ, সোসাইটি
+soft, Adjective, নরম, সফট
+softly, Adverb, নরমভাবে বা মৃদুস্বরে, সফটলি
+sold, Action Verb (Past) | Adjective, বিক্রি করেছিল বা বিক্রিত, সোল্ড
+soldier, Noun, সৈনিক, সোলজার
+solution, Noun, সমাধান, সলিউশন
+solve, Action Verb, সমাধান করা, সলভ
+some, Adjective | Pronoun | Adverb, কিছু, সাম
+somebody, Pronoun, কেউ একজন, সামবডি
+someone, Pronoun, কেউ একজন, সামওয়ান
+something, Pronoun, কিছু একটা, সামথিং
+sometimes, Adverb, মাঝে মাঝে, সামটাইমস
+somewhere, Adverb, কোথাও, সামহোয়্যার
+son, Noun, ছেলে বা পুত্র, সান
+song, Noun, গান, সং
+songs, Noun (Plural), গানগুলো, সংস
+soon, Adverb, শীঘ্রই, সুন
+sorry, Adjective, দুঃখিত, সরি
+sort, Noun | Action Verb, ধরন বা বাছাই করা, সর্ট
+sound, Noun | Action Verb | Adjective, শব্দ বা সুস্থ, সাউন্ড
+soup, Noun, সুপ বা ঝোল, সুপ
+sour, Adjective, টক, সাওয়ার
+south, Noun | Adjective | Adverb, দক্ষিণ, সাউথ
+space, Noun | Action Verb, মহাশূন্য বা জায়গা, স্পেস
+speak, Action Verb, কথা বলা, স্পিক
+speaking, Action Verb (Present Participle) | Noun, কথা বলছে এমন, স্পিকিং
+speaks, Action Verb (Third Person), কথা বলে, স্পিকস
+special, Adjective, বিশেষ, স্পেশাল
+specially, Adverb, বিশেষভাবে, স্পেশালি
+speed, Noun | Action Verb, গতি, স্পিড
+spell, Action Verb | Noun, বানান করা বা মন্ত্র, স্পেল
+spelling, Noun | Action Verb (Present Participle), বানান, স্পেলিং
+spend, Action Verb, ব্যয় করা, স্পেন্ড
+spending, Action Verb (Present Participle), ব্যয় করছে এমন, স্পেন্ডিং
+spent, Action Verb (Past), ব্যয় করেছিল, স্পেন্ট
+spoon, Noun, চামচ, স্পুন
+sport, Noun | Action Verb, খেলাধুলা, স্পোর্ট
+sports, Noun (Plural), খেলাধুলা, স্পোর্টস
+spot, Noun | Action Verb, স্থান বা দাগ, স্পট
+spread, Action Verb | Noun, ছড়িয়ে দেওয়া, স্প্রেড
+spring, Noun | Action Verb, বসন্তকাল বা লাফানো, স্প্রিং
+square, Noun | Adjective, বর্গক্ষেত্র বা চৌকো, স্কয়ার
+staff, Noun, কর্মী বা কর্মকর্তা, স্টাফ
+stage, Noun | Action Verb, মঞ্চ বা পর্যায়, স্টেজ
+stair, Noun, সিঁড়ি, স্টেয়ার
+stamp, Noun | Action Verb, ডাকটিকিট বা স্ট্যাম্প, স্ট্যাম্প
+stand, Action Verb | Noun, দাঁড়ানো, স্ট্যান্ড
+standing, Action Verb (Present Participle), দাঁড়িয়ে আছে এমন, স্ট্যান্ডিং
+star, Noun | Action Verb, তারা বা তারকা, স্টার
+start, Action Verb | Noun, শুরু করা, স্টার্ট
+started, Action Verb (Past), শুরু করেছিল, স্টার্টেড
+starting, Action Verb (Present Participle) | Noun, শুরু করছে এমন, স্টার্টিং
+starts, Action Verb (Third Person), শুরু করে, স্টার্টস
+state, Noun | Action Verb, রাষ্ট্র বা অবস্থা, স্টেট
+station, Noun | Action Verb, স্টেশন, স্টেশন
+stay, Action Verb | Noun, থাকা, স্টে
+staying, Action Verb (Present Participle), থাকছে এমন, স্টেয়িং
+step, Noun | Action Verb, পদক্ষেপ বা ধাপ, স্টেপ
+stick, Noun | Action Verb, লাঠি বা লেগে থাকা, স্টিক
+still, Adverb | Adjective, এখনো বা স্থির, স্টিল
+stone, Noun, পাথর, স্টোন
+stop, Action Verb | Noun, থামা, স্টপ
+stopped, Action Verb (Past), থেমেছিল, স্টপড
+stopping, Action Verb (Present Participle), থামছে এমন, স্টপিং
+stops, Action Verb (Third Person) | Noun (Plural), থামে বা স্টপগুলো, স্টপস
+store, Noun | Action Verb, দোকান বা জমা করা, স্টোর
+stories, Noun (Plural), গল্পগুলো, স্টোরিজ
+storm, Noun | Action Verb, ঝড়, স্টর্ম
+story, Noun, গল্প, স্টোরি
+straight, Adjective | Adverb, সোজা, স্ট্রেইট
+strange, Adjective, অদ্ভুত, স্ট্রেঞ্জ
+street, Noun, রাস্তা, স্ট্রিট
+strong, Adjective, শক্তিশালী, স্ট্রং
+structure, Noun | Action Verb, কাঠামো, স্ট্রাকচার
+student, Noun, ছাত্র বা ছাত্রী, স্টুডেন্ট
+students, Noun (Plural), ছাত্র-ছাত্রীরা, স্টুডেন্টস
+studied, Action Verb (Past), পড়াশোনা করেছিল, স্টাডিড
+study, Action Verb | Noun, পড়াশোনা করা, স্টাডি
+studying, Action Verb (Present Participle), পড়াশোনা করছে এমন, স্টাডিং
+stupid, Adjective, বোকা, স্টুপিড
+style, Noun | Action Verb, শৈলী বা ধরন, স্টাইল
+subject, Noun | Adjective, বিষয়, সাবজেক্ট
+success, Noun, সফলতা, সাকসেস
+successful, Adjective, সফল, সাকসেসফুল
+such, Adjective | Pronoun, এমন, সাচ
+sudden, Adjective, হঠাৎ, সাডেন
+suddenly, Adverb, হঠাৎ করে, সাডেনলি
+sugar, Noun, চিনি, সুগার
+suggest, Action Verb, পরামর্শ দেওয়া, সাজেস্ট
+suit, Noun | Action Verb, স্যুট বা মানানসই হওয়া, স্যুট
+summer, Noun, গ্রীষ্মকাল, সামার
+sun, Noun, সূর্য, সান
+sunday, Noun, রবিবার, সানডে
+sunny, Adjective, রৌদ্রোজ্জ্বল, সানি
+super, Adjective | Adverb, চমৎকার বা সুপার, সুপার
+supermarket, Noun, সুপারমার্কেট, সুপারমার্কেট
+supper, Noun, রাতের হালকা খাবার, সাপার
+support, Action Verb | Noun, সমর্থন, সাপোর্ট
+suppose, Action Verb, মনে করা বা ধরা যাক, সাপোজ
+sure, Adjective | Adverb, নিশ্চিত, শিউর
+surely, Adverb, নিশ্চিতভাবে, শিউরলি
+surprise, Noun | Action Verb, বিস্ময়, সারপ্রাইজ
+surprising, Adjective, বিস্ময়কর, সারপ্রাইজিং
+sweet, Adjective | Noun, মিষ্টি, সুইট
+swim, Action Verb | Noun, সাঁতার কাটা, সুইম
+swimming, Action Verb (Present Participle) | Noun, সাঁতার কাটছে এমন, সুইমিং
+swum, Action Verb (Past Participle), সাঁতার কেটেছে এমন, সোয়াম
+system, Noun, পদ্ধতি বা ব্যবস্থা, সিস্টেম
+table, Noun, টেবিল, টেবিল
+take, Action Verb, নেওয়া, টেইক
+taken, Action Verb (Past Participle), নেওয়া হয়েছে এমন, টেইকেন
+takes, Action Verb (Third Person), নেয়, টেইকস
+taking, Action Verb (Present Participle), নিচ্ছে এমন, টেইকিং
+talk, Action Verb | Noun, কথা বলা, টক
+talking, Action Verb (Present Participle), কথা বলছে এমন, টকিং
+tall, Adjective, লম্বা, টল
+tea, Noun, চা, টি
+teach, Action Verb, শেখানো, টিচ
+teacher, Noun, শিক্ষক বা শিক্ষিকা, টিচার
+teaching, Action Verb (Present Participle) | Noun, শেখাচ্ছে এমন বা শিক্ষকতা, টিচিং
+team, Noun, দল বা টিম, টিম
+telephone, Noun | Action Verb, টেলিফোন, টেলিফোন
+television, Noun, টেলিভিশন, টেলিভিশন
+tell, Action Verb, বলা, টেল
+telling, Action Verb (Present Participle), বলছে এমন, টেলিং
+ten, Number, দশ, টেন
+tennis, Noun, টেনিস, টেনিস
+terrible, Adjective, ভয়াবহ, টেরিবল
+text, Noun | Action Verb, পাঠ্য বা টেক্সট পাঠানো, টেক্সট
+than, Conjunction | Preposition, চেয়ে বা থেকে, দ্যান
+thank, Action Verb, ধন্যবাদ দেওয়া, থ্যাঙ্ক
+thanks, Noun | Interjection, ধন্যবাদ, থ্যাঙ্কস
+that, Pronoun | Conjunction | Determiner, ওই বা যে, দ্যাট
+the, Determiner, টি বা টা, দি/দ্য
+them, Pronoun, তাদেরকে, দেম
+themselves, Pronoun, তারা নিজেরা, দেমসেলভস
+then, Adverb, তখন বা তারপর, দেন
+there, Adverb | Pronoun, সেখানে, দেয়ার
+these, Determiner | Pronoun, এইগুলো, দিজ
+they, Pronoun, তারা, দে
+thick, Adjective, পুরু বা ঘন, থিক
+thief, Noun, চোর, থিফ
+thin, Adjective, পাতলা, থিন
+thing, Noun, জিনিস বা বিষয়, থিং
+things, Noun (Plural), জিনিসপত্র, থিংস
+think, Action Verb, চিন্তা করা বা মনে করা, থিঙ্ক
+thinking, Action Verb (Present Participle) | Noun, চিন্তা করছে এমন বা চিন্তা, থিঙ্কিং
+thinks, Action Verb (Third Person), চিন্তা করে, থিঙ্কস
+third, Number | Adjective, তৃতীয়, থার্ড
+thirsty, Adjective, তৃষ্ণার্থ, থার্স্টি
+thirteen, Number, তেরো, থার্টিন
+thirty, Number, ত্রিশ, থার্টি
+this, Determiner | Pronoun, এটি, দিস
+those, Determiner | Pronoun, ওইগুলো, দোজ
+though, Conjunction | Adverb, যদিও, দো
+thought, Action Verb (Past) | Noun, চিন্তা করেছিল বা চিন্তা, থট
+thousand, Number, হাজার, থাউজেন্ড
+three, Number, তিন, থ্রি
+threw, Action Verb (Past), ছুড়েছিল, থ্রু
+throat, Noun, গলা, থ্রোট
+through, Preposition | Adverb, মধ্য দিয়ে, থ্রু
+throw, Action Verb | Noun, ছুড়ে মারা, থ্রো
+throwing, Action Verb (Present Participle), ছুড়ছে এমন, থ্রোয়িং
+thrown, Action Verb (Past Participle), ছুড়ে মারা হয়েছে এমন, থ্রোন
+thursday, Noun, বৃহস্পতিবার, থার্সডে
+ticket, Noun, টিকিট, টিকিট
+tidy, Adjective | Action Verb, পরিপাটি, টাইডি
+tie, Noun | Action Verb, টাই বা বাঁধা, টাই
+tiger, Noun, বাঘ, টাইগার
+till, Preposition | Conjunction, পর্যন্ত, টিল
+time, Noun | Action Verb, সময়, টাইম
+times, Noun (Plural) | Preposition, সময়গুলো বা গুণ, টাইমস
+tiny, Adjective, অতি ক্ষুদ্র, টাইনি
+tired, Adjective, ক্লান্ত, টায়ার্ড
+title, Noun | Action Verb, শিরোনাম বা পদবি, টাইটেল
+to, Preposition, প্রতি বা দিকে, টু
+today, Adverb | Noun, আজ, টুডে
+together, Adverb, একসাথে, টুগেদার
+toilet, Noun, শৌচাগার, টয়লেট
+told, Action Verb (Past), বলেছিল, টোল্ড
+tomato, Noun, টমেটো, টমেটো
+tomorrow, Adverb | Noun, আগামীকাল, টুমরো
+tonight, Adverb | Noun, আজ রাত, টুনাইট
+too, Adverb, খুব বা আরও, টু
+took, Action Verb (Past), নিয়েছিল, টুক
+tooth, Noun, দাঁত, টুথ
+top, Noun | Adjective, শীর্ষ বা উপরে, টপ
+total, Adjective | Noun | Action Verb, মোট, টোটাল
+touch, Action Verb | Noun, স্পর্শ করা, টাচ
+toward, Preposition, দিকে, টোয়ার্ড
+towel, Noun, তোয়ালে, টাওয়াল
+tower, Noun, টাওয়ার বা মিনার, টাওয়ার
+town, Noun, শহর, টাউন
+toy, Noun, খেলনা, টয়
+train, Noun | Action Verb, ট্রেন বা প্রশিক্ষণ দেওয়া, ট্রেইন
+training, Noun | Action Verb (Present Participle), প্রশিক্ষণ, ট্রেইনিং
+travel, Action Verb | Noun, ভ্রমণ করা, ট্রাভেল
+tree, Noun, গাছ, ট্রি
+trees, Noun (Plural), গাছপালা, ট্রিস
+trip, Noun | Action Verb, ছোট ভ্রমণ, ট্রিপ
+trouble, Noun | Action Verb, সমস্যা বা কষ্ট, ট্রাবল
+true, Adjective, সত্য, ট্রু
+trust, Noun | Action Verb, বিশ্বাস, ট্রাস্ট
+truth, Noun, সত্য, ট্রুথ
+try, Action Verb | Noun, চেষ্টা করা, ট্রাই
+trying, Action Verb (Present Participle), চেষ্টা করছে এমন, ট্রাইং
+tuesday, Noun, মঙ্গলবার, টিউজডে
+turn, Action Verb | Noun, ঘোরানো বা পাল্লা, টার্ন
+twice, Adverb, দুইবার, টোয়াইস
+two, Number, দুই, টু
+type, Noun | Action Verb, ধরন বা টাইপ করা, টাইপ
+typical, Adjective, সাধারণ বা বৈশিষ্ট্যপূর্ণ, টিপিক্যাল
+ugly, Adjective, কুৎসিত, আগলি
+umbrella, Noun, ছাতা, আমব্রেলা
+uncle, Noun, কাকা বা মামা, আঙ্কেল
+under, Preposition | Adverb, নিচে, আন্ডার
+understand, Action Verb, বুঝতে পারা, আন্ডারস্ট্যান্ড
+understanding, Noun | Action Verb (Present Participle), উপলব্ধি বা বুঝছে এমন, আন্ডারস্ট্যান্ডিং
+understood, Action Verb (Past), বুঝেছিল, আন্ডারস্টুড
+university, Noun, বিশ্ববিদ্যালয়, ইউনিভার্সিটি
+until, Preposition | Conjunction, পর্যন্ত, আনটিল
+up, Adverb | Preposition, উপরে, আপ
+upon, Preposition, উপরে, আপন
+us, Pronoun, আমাদের, আস
+use, Action Verb | Noun, ব্যবহার করা, ইউজ
+used, Action Verb (Past) | Adjective, ব্যবহার করেছিল বা ব্যবহৃত, ইউজড
+useful, Adjective, উপকারী, ইউজফুল
+using, Action Verb (Present Participle), ব্যবহার করছে এমন, ইউজিং
+usually, Adverb, সাধারণত, ইউজুয়ালি
+vacation, Noun, ছুটি, ভ্যাকেশন
+value, Noun | Action Verb, মূল্য, ভ্যালু
+van, Noun, ভ্যান গাড়ি, ভ্যান
+various, Adjective, বিভিন্ন, ভ্যারিয়াস
+vegetable, Noun, সবজি, ভেজিটেবল
+vegetables, Noun (Plural), শাকসবজি, ভেজিটেবলস
+very, Adverb | Adjective, খুব, ভেরি
+victory, Noun, বিজয়, ভিক্টরি
+video, Noun | Action Verb, ভিডিও, ভিডিও
+village, Noun, গ্রাম, ভিলেজ
+visit, Action Verb | Noun, পরিদর্শন করা, ভিজিট
+voice, Noun | Action Verb, কণ্ঠস্বর, ভয়েস
+wait, Action Verb | Noun, অপেক্ষা করা, ওয়েইট
+waiting, Action Verb (Present Participle), অপেক্ষা করছে এমন, ওয়েইটিং
+walk, Action Verb | Noun, হাঁটা, ওয়াক
+walking, Action Verb (Present Participle), হাঁটছে এমন, ওয়াকিং
+wall, Noun, দেয়াল, ওয়াল
+want, Action Verb | Noun, চাওয়া, ওয়ান্ট
+wanted, Action Verb (Past), চেয়েছিল, ওয়ান্টেড
+wanting, Action Verb (Present Participle), চাচ্ছে এমন, ওয়ান্টিং
+wants, Action Verb (Third Person), চায়, ওয়ান্টস
+war, Noun, যুদ্ধ, ওয়ার
+warm, Adjective | Action Verb, উষ্ণ বা গরম, ওয়ার্ম
+was, Be Verb (Past), ছিল, ওয়াজ
+wash, Action Verb | Noun, ধোয়া, ওয়াশ
+washing, Action Verb (Present Participle), ধুচ্ছে এমন, ওয়াশিং
+wasn't, Be Verb (Contraction), ছিল না, ওয়াজন্ট
+watch, Action Verb | Noun, দেখা বা ঘড়ি, ওয়াচ
+watching, Action Verb (Present Participle), দেখছে এমন, ওয়াচিং
+water, Noun | Action Verb, পানি, ওয়াটার
+way, Noun | Adverb, পথ বা উপায়, ওয়ে
+we, Pronoun, আমরা, উই
+weak, Adjective, দুর্বল, উইক
+wear, Action Verb | Noun, পরিধান করা, ওয়্যার
+wearing, Action Verb (Present Participle), পরে আছে এমন, ওয়্যারিং
+weather, Noun, আবহাওয়া, ওয়েদার
+wednesday, Noun, বুধবার, ওয়েডনেসডে
+week, Noun, সপ্তাহ, উইক
+weekend, Noun, সপ্তাহের শেষ দিন, উইকেন্ড
+weeks, Noun (Plural), সপ্তাহগুলো, উইকস
+weight, Noun | Action Verb, ওজন, ওয়েইট
+well, Adverb | Adjective | Noun, ভালো বা কুয়া, ওয়েল
+went, Action Verb (Past), গিয়েছিল, ওয়েন্ট
+were, Be Verb (Past), ছিল, ওয়ার
+weren't, Be Verb (Contraction), ছিল না, ওয়ারেন্ট
+west, Noun | Adjective | Adverb, পশ্চিম, ওয়েস্ট
+wet, Adjective | Action Verb, ভেজা, ওয়েট
+what, Pronoun | Determiner | Adverb, কি, হোয়াট
+whatever, Pronoun | Determiner, যা-ই হোক, হোয়াটএভার
+when, Adverb | Conjunction, কখন, হোয়েন
+whenever, Conjunction | Adverb, যখনই, হোয়েনএভার
+where, Adverb | Conjunction, কোথায়, হোয়্যার
+whether, Conjunction, কি-না, হোয়েদার
+which, Pronoun | Determiner, কোনটি, হুইচ
+while, Conjunction | Noun, যখন বা কিছু সময়, হোয়াইল
+white, Adjective | Noun, সাদা, হোয়াইট
+who, Pronoun, কে, হু
+whole, Adjective | Noun, সম্পূর্ণ, হোল
+whom, Pronoun, কাকে, হুম
+whose, Pronoun | Determiner, কার, হুজ
+why, Adverb | Conjunction, কেন, হোয়াই
+wide, Adjective | Adverb, প্রশস্ত, ওয়াইড
+wife, Noun, স্ত্রী, ওয়াইফ
+will, Helping Verb | Noun, ইচ্ছা বা হবে, উইল
+win, Action Verb | Noun, জেতা, উইন
+wind, Noun | Action Verb, বাতাস বা দম দেওয়া, উইন্ড
+window, Noun, জানালা, উইন্ডো
+winning, Action Verb (Present Participle) | Adjective, জিতছে এমন, উইনিং
+winter, Noun, শীতকাল, উইন্টার
+wise, Adjective, জ্ঞানী, ওয়াইজ
+wish, Action Verb | Noun, ইচ্ছা করা, উইশ
+with, Preposition, সাথে, উইথ
+within, Preposition | Adverb, মধ্যে, উইদিন
+without, Preposition | Adverb, ছাড়া, উইদাউট
+woman, Noun, নারী বা মহিলা, ওম্যান
+women, Noun (Plural), নারীরা, উইমেন
+won, Action Verb (Past), জিতেছিল, ওয়ান
+wonder, Action Verb | Noun, অবাক হওয়া বা বিস্ময়, ওয়ান্ডার
+wonderful, Adjective, চমৎকার, ওয়ান্ডারফুল
+wood, Noun, কাঠ, উড
+word, Noun | Action Verb, শব্দ, ওয়ার্ড
+words, Noun (Plural), শব্দগুলো, ওয়ার্ডস
+work, Action Verb | Noun, কাজ করা, ওয়ার্ক
+worked, Action Verb (Past), কাজ করেছিল, ওয়ার্কড
+worker, Noun, কর্মী, ওয়ার্কার
+working, Action Verb (Present Participle), কাজ করছে এমন, ওয়ার্কিং
+works, Action Verb (Third Person) | Noun (Plural), কাজ করে বা রচনাবলী, ওয়ার্কস
+world, Noun, পৃথিবী, ওয়ার্ল্ড
+worry, Action Verb | Noun, চিন্তা করা, ওয়ারি
+worse, Adjective | Adverb, আরও খারাপ, ওয়ার্স
+worst, Adjective | Adverb, সবচেয়ে খারাপ, ওয়ার্স্ট
+worth, Adjective | Noun, যোগ্য বা মূল্য, ওয়ার্থ
+would, Helping Verb, করত বা হবে, উড
+wouldn't, Helping Verb (Contraction), করত না, উডন্ট
+write, Action Verb, লেখা, রাইট
+writer, Noun, লেখক, রাইটার
+writes, Action Verb (Third Person), লেখে, রাইটস
+writing, Action Verb (Present Participle) | Noun, লিখছে এমন বা লেখা, রাইটিং
+written, Action Verb (Past Participle) | Adjective, লিখিত, রিটেন
+wrong, Adjective | Adverb | Noun, ভুল, রং
+wrote, Action Verb (Past), লিখেছিল, রোট
+yard, Noun, উঠান বা গজ, ইয়ার্ড
+year, Noun, বছর, ইয়ার
+years, Noun (Plural), বছরগুলো, ইয়ারস
+yellow, Adjective | Noun, হলুদ, ইয়েলো
+yes, Adverb | Noun, হ্যাঁ, ইয়েস
+yesterday, Adverb | Noun, গতকাল, ইয়েস্টারডে
+yet, Adverb | Conjunction, এখনো বা তবুও, ইয়েট
+you, Pronoun, তুমি বা আপনি, ইউ
+you're, Pronoun (Contraction), তুমি হও, ইউর
+young, Adjective | Noun, তরুণ, ইয়াং
+your, Determiner, তোমার বা আপনার, ইউর
+yours, Pronoun, তোমার বা আপনার, ইউরস
+yourself, Pronoun, তুমি নিজে, ইউরসেলফ
+yourselves, Pronoun (Plural), তোমরা নিজেরা, ইউরসেলভস
+zero, Number, শূন্য, জিরো
+zone, Noun | Action Verb, এলাকা বা অঞ্চল, জোন
+zoo, Noun, চিড়িয়াখানা, জু
+
+

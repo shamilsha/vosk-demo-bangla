@@ -6,18 +6,15 @@ This document gives you **concrete ideas** for building that list: where to put 
 
 ---
 
-## 1. Where to Store the Prebuilt List
+## 1. Where to Store the Prebuilt List: In the Same Lesson File
 
-**Convention:** One file per lesson, keyed by **lesson key** (the same key used in the drawer and in `conversationBubbleLessonAssetPaths` / `threeColLessonAssetPaths`, etc.).
+The vocabulary list is **embedded at the bottom of each lesson .txt file** between two markers. No separate file — so it cannot get out of sync.
 
-**Suggested paths (choose one and stick to it):**
+**Markers (must match `LessonFileParsers` in the app):**
+- `# --- VOCABULARY ---` (start)
+- `# --- END VOCABULARY ---` (end)
 
-| Option | Path pattern | Example |
-|--------|------------------|---------|
-| **A. Next to the lesson file** | Same folder as lesson, prefix `vocabulary_` | `Lessons/Conversation/vocabulary_conversation_1.txt` |
-| **B. Central vocabulary folder** | One folder for all lesson vocab, filename = lesson key | `vocabulary/lessons/conv_bubble_first_meeting.txt` |
-
-**Recommendation:** **B** — one folder `assets/vocabulary/lessons/` and files named by **lesson key** (e.g. `conv_bubble_first_meeting.txt`, `simple_what.txt`). That way the app only needs the lesson key to load: `vocabulary/lessons/{lessonKey}.txt`.
+**Lesson content** = everything **above** the first marker. The app parses only that part. **Vocabulary list** = lines between the two markers (blank and `#` lines skipped).
 
 ---
 
@@ -48,7 +45,7 @@ live	verb
 Nice to meet you	phrase
 ```
 
-**Parsing rule:** Strip leading/trailing whitespace; lowercase for matching if you want (or keep original and normalize in code). Skip empty lines and lines starting with `#`.
+**App:** `LessonFileParsers.stripVocabularyBlock(content)` returns only the part above the first marker. `LessonFileParsers.extractVocabularyBlock(content)` returns the list of lines between the markers (skipping blank and `#` lines).
 
 ---
 
@@ -83,7 +80,7 @@ You run this script **once per lesson** when you add or change the lesson (e.g. 
 **Pros:** Repeatable; same logic for all lessons of the same type; no app code for “build”.  
 **Cons:** You need to run it when the lesson changes.
 
-**Example script:** Use `scripts/build_lesson_vocabulary.py` (see repo). It parses conversation-style and 3-col-style lesson files and writes `app/src/main/assets/vocabulary/lessons/<lesson_key>.txt` with phrases and Latin-only words. You can then hand-trim or add phrases. If a lesson line has English and Bengali mixed in the first column, edit the generated file to fix that phrase.
+**Script:** `scripts/build_lesson_vocabulary.py` extracts **words only** (no full sentences) from the lesson and embeds them in the same file between the markers. Use `--short-phrases` to also add 2–3 word phrases. You can hand-add any extra phrases in the vocabulary block.
 
 ---
 
@@ -128,29 +125,53 @@ What to extract from each lesson type:
 
 ---
 
-## 5. Using the provided script
+## 5. Using the provided script (embed in same file)
 
-Run from the project root:
+Run from the project root. The script **updates the lesson file in place** (adds or replaces the vocabulary block at the bottom).
 
 ```bash
-python scripts/build_lesson_vocabulary.py <lesson_file> <lesson_key>
+python scripts/build_lesson_vocabulary.py <lesson_file>
 ```
 
 Examples:
 
 ```bash
-# Conversation lesson
-python scripts/build_lesson_vocabulary.py app/src/main/assets/Lessons/Conversation/conversation_1.txt conv_bubble_first_meeting
+# Conversation lesson — adds/updates the block in conversation_1.txt
+python scripts/build_lesson_vocabulary.py app/src/main/assets/Lessons/Conversation/conversation_1.txt
 
 # 3-col / simple lesson
-python scripts/build_lesson_vocabulary.py app/src/main/assets/Lessons/SVO/simple_what.txt simple_what
+python scripts/build_lesson_vocabulary.py app/src/main/assets/Lessons/SVO/simple_what.txt
 ```
 
-Output is written to `app/src/main/assets/vocabulary/lessons/<lesson_key>.txt`. Options: `--phrases-only`, `--words-only`, `--keep-short`, `--include-non-latin`, `--output-dir DIR`. Run it once when you create or change a lesson, then commit the file.
+Options: `--short-phrases` (add 2–3 word n-grams), `--keep-short`, `--include-non-latin`. By default only **words** are added (no full sentences). Run whenever you create or change a lesson so the embedded list stays in sync.
 
 ---
 
-## 6. Load-time flow (reminder)
+## 6. Check new lesson against master list
+
+When you add a **new lesson**, run `scripts/check_lesson_against_master_vocab.py` so every word in that lesson is in `assets/vocabulary/master_word_list.txt`. The script:
+
+- Reads the lesson file and uses only the content **above** the vocabulary block (same as the app) to extract words.
+- Compares them to the master list (format: `word, category, bengali_meaning, bengali_pronunciation`).
+- **Skips** likely non-dictionary items: people names, place names, and other entries in a built-in skip list (e.g. rahul, sumi, dhaka, persona, personb). You can extend the skip list in the script.
+- Optionally skips words that **only appear capitalized** in the lesson (e.g. always “Rahul” never “rahul”) with `--skip-capitalized-only`.
+- **Adds** any missing words to the master list with empty category, Bengali meaning, and pronunciation (`word, , , `) so you can fill them later.
+
+**Usage (from project root):**
+
+```bash
+# Report missing words only (no file change)
+python scripts/check_lesson_against_master_vocab.py --dry-run app/src/main/assets/Lessons/Conversation/conversation_4.txt
+
+# Add missing words to assets/vocabulary/master_word_list.txt
+python scripts/check_lesson_against_master_vocab.py app/src/main/assets/Lessons/Conversation/conversation_4.txt
+```
+
+Options: `--master <path>`, `--dry-run`, `--skip-capitalized-only`.
+
+---
+
+## 7. Load-time flow (reminder)
 
 1. User selects a lesson (lesson key known).
 2. App loads **prebuilt list** from `vocabulary/lessons/<lessonKey>.txt` (if missing, treat as empty or “no gate”).

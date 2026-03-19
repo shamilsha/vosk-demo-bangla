@@ -76,7 +76,7 @@ data class LessonRow(val engQ: String, val bnQ: String, val engA: String, val bn
 /** One line in a conversation script: speaker (P1/P2), English text, Bengali meaning. */
 data class ConversationLine(val speaker: String, val english: String, val bengali: String)
 
-enum class ConversationMode { LEARNING, PRACTICE, TEST }
+enum class ConversationMode { LEARNING, PRACTICE, TEST, VOCAB }
 
 /** One row for verb/tense display: English and Bengali. */
 data class VerbRow(val english: String, val bengali: String)
@@ -86,6 +86,9 @@ data class ThreeColRow(val english: String, val bengali: String, val hint: Strin
 
 /** One turn in conversation-bubble format: PersonA (left) or PersonB (right), then English, Bengali, Pronunciation. */
 data class ConversationBubbleRow(val speaker: String, val english: String, val bengali: String, val pronunciation: String)
+
+/** One row for lesson vocabulary pronunciation (V tab): word, pronunciation hint, meaning from master list. */
+data class LessonVocabRow(val word: String, val pronunciation: String, val meaning: String)
 
 enum class ModelStatus { MODEL_STATUS_INIT, MODEL_STATUS_START, MODEL_STATUS_READY }
 
