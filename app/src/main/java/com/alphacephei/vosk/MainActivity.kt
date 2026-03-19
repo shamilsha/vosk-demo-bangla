@@ -585,6 +585,11 @@ class MainActivity : AppCompatActivity() {
     private var playbackHoldThread: Thread? = null
     private var playbackHoldPcm: ByteArrayOutputStream? = null
     private var playbackHoldSampleRate = 16000
+    private var playbackHoldAutoPaused = false
+    private var playbackHoldResumeAfterPlayback = false
+    private var playbackHoldPausedLayout: ContentLayout? = null
+    private var playbackHoldAutoPausedByClick = false
+    private var playbackHoldPauseButtonToToggle: Button? = null
     /** For SV_RIBBON layout: left labels (subjects), right labels (verbs), Bengali for TTS; same length. */
     private var svRibbonBengali: List<String>? = null
     /** Pronunciation hint per index (Learning mode). Same length as svRibbonBengali. */
@@ -1313,28 +1318,7 @@ class MainActivity : AppCompatActivity() {
         controlPlaybackLastButton = controlActionsBar?.findViewById(R.id.control_playback_last)
         controlActionsBar?.visibility = View.GONE
         setupHoldToRecordPlaybackButton(controlPlaybackLastButton)
-        controlStartStopButton?.setOnClickListener {
-            when {
-                currentContentLayout == ContentLayout.SIMPLE_SENTENCE && lessonRows != null -> onSimpleSentenceStartStop()
-                currentContentLayout == ContentLayout.SV_RIBBON && svRibbonBengali != null -> onSvRibbonStartStop()
-                currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleMode == ConversationMode.VOCAB && lessonVocabRows.isNotEmpty() -> onVocabStartStop()
-                currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleRows.isNotEmpty() -> onConvBubbleStartStop()
-                currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB && lessonVocabRows.isNotEmpty() -> onVocabStartStop()
-                currentContentLayout == ContentLayout.THREECOL_TABLE && threeColRows.isNotEmpty() -> onThreeColStartStop()
-                else -> dispatchControlStartStop()
-            }
-        }
-        controlPauseResumeButton?.setOnClickListener {
-            when {
-                currentContentLayout == ContentLayout.SIMPLE_SENTENCE && lessonRows != null -> onSimpleSentencePauseResume()
-                currentContentLayout == ContentLayout.SV_RIBBON && svRibbonBengali != null -> onSvRibbonPauseResume()
-                currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleMode == ConversationMode.VOCAB -> { /* V tab: no pause/resume for POC */ }
-                currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleRows.isNotEmpty() -> onConvBubblePauseResume()
-                currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB -> { /* V tab: no pause/resume for POC */ }
-                currentContentLayout == ContentLayout.THREECOL_TABLE && threeColRows.isNotEmpty() -> onThreeColPauseResume()
-                else -> dispatchControlPauseResume()
-            }
-        }
+        bindControlBarListeners()
         nextButton = findViewById(R.id.next_button)
         nextButton?.setOnClickListener {
             if (currentContentLayout == ContentLayout.SV_RIBBON && svRibbonBengali != null) {
@@ -1394,7 +1378,8 @@ class MainActivity : AppCompatActivity() {
                     btn.scaleX = 0.96f
                     btn.scaleY = 0.96f
                     btn.translationY = (2f * resources.displayMetrics.density)
-                    startHoldToRecordPlayback()
+                    val pauseBtn = (btn.parent as? View)?.findViewById<Button>(R.id.control_pause_resume)
+                    startHoldToRecordPlayback(pauseBtn)
                     true
                 }
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
@@ -1407,6 +1392,32 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 else -> false
+            }
+        }
+    }
+
+    /** Attach Start/Stop and Pause/Resume click logic to the current control bar buttons. Call after rebinding controlStartStopButton/controlPauseResumeButton so the visible bar always has the same behavior. */
+    private fun bindControlBarListeners() {
+        controlStartStopButton?.setOnClickListener {
+            when {
+                currentContentLayout == ContentLayout.SIMPLE_SENTENCE && lessonRows != null -> onSimpleSentenceStartStop()
+                currentContentLayout == ContentLayout.SV_RIBBON && svRibbonBengali != null -> onSvRibbonStartStop()
+                currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleMode == ConversationMode.VOCAB && lessonVocabRows.isNotEmpty() -> onVocabStartStop()
+                currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleRows.isNotEmpty() -> onConvBubbleStartStop()
+                currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB && lessonVocabRows.isNotEmpty() -> onVocabStartStop()
+                currentContentLayout == ContentLayout.THREECOL_TABLE && threeColRows.isNotEmpty() -> onThreeColStartStop()
+                else -> dispatchControlStartStop()
+            }
+        }
+        controlPauseResumeButton?.setOnClickListener {
+            when {
+                currentContentLayout == ContentLayout.SIMPLE_SENTENCE && lessonRows != null -> onSimpleSentencePauseResume()
+                currentContentLayout == ContentLayout.SV_RIBBON && svRibbonBengali != null -> onSvRibbonPauseResume()
+                currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleMode == ConversationMode.VOCAB -> { /* V tab: no pause/resume for POC */ }
+                currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleRows.isNotEmpty() -> onConvBubblePauseResume()
+                currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB -> { /* V tab: no pause/resume for POC */ }
+                currentContentLayout == ContentLayout.THREECOL_TABLE && threeColRows.isNotEmpty() -> onThreeColPauseResume()
+                else -> dispatchControlPauseResume()
             }
         }
     }
@@ -2131,13 +2142,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun playLastUtteranceRecording() {
-        if (lastUtteranceWavFile == null || !lastUtteranceWavFile!!.exists()) {
+        val file = lastUtteranceWavFile
+        if (file == null || !file.exists()) {
             Toast.makeText(this, "No recording available yet.", Toast.LENGTH_SHORT).show()
             return
         }
         stopLastUtterancePlayback()
 
-        val file = lastUtteranceWavFile ?: return
         val mp = MediaPlayer()
         lastUtteranceMediaPlayer = mp
         try {
@@ -2146,10 +2157,18 @@ class MainActivity : AppCompatActivity() {
             mp.setOnCompletionListener {
                 try { it.release() } catch (_: Exception) {}
                 if (lastUtteranceMediaPlayer === it) lastUtteranceMediaPlayer = null
+                if (playbackHoldResumeAfterPlayback) {
+                    playbackHoldResumeAfterPlayback = false
+                    autoResumeAfterPlaybackHoldIfNeeded()
+                }
             }
             mp.setOnErrorListener { mpErr, _, _ ->
                 try { mpErr.release() } catch (_: Exception) {}
                 if (lastUtteranceMediaPlayer === mpErr) lastUtteranceMediaPlayer = null
+                if (playbackHoldResumeAfterPlayback) {
+                    playbackHoldResumeAfterPlayback = false
+                    autoResumeAfterPlaybackHoldIfNeeded()
+                }
                 true
             }
             mp.prepareAsync()
@@ -2208,16 +2227,123 @@ class MainActivity : AppCompatActivity() {
     }
 
     // ───────────────────── Hold-to-record Playback Button ─────────────────────
-    private fun startHoldToRecordPlayback() {
+    private fun autoPauseForPlaybackHoldIfNeeded(pauseBtn: Button?) {
+        playbackHoldAutoPaused = false
+        playbackHoldAutoPausedByClick = false
+        playbackHoldPausedLayout = null
+        playbackHoldPauseButtonToToggle = null
+        // CONVERSATION_BUBBLES uses its own control bar in content but is not in usesControlActions; still handle it.
+        if (!usesControlActions(currentContentLayout) && currentContentLayout != ContentLayout.CONVERSATION_BUBBLES) return
+
+        when (currentContentLayout) {
+            ContentLayout.SIMPLE_SENTENCE -> {
+                if (simpleSentenceControlRunning && !simpleSentenceControlPaused) {
+                    onSimpleSentencePauseResume()
+                    playbackHoldAutoPaused = true
+                }
+            }
+            ContentLayout.SV_RIBBON -> {
+                if (svRibbonControlRunning && !svRibbonControlPaused) {
+                    onSvRibbonPauseResume()
+                    playbackHoldAutoPaused = true
+                }
+            }
+            ContentLayout.THREECOL_TABLE -> {
+                if (threeColControlRunning && !threeColControlPaused) {
+                    onThreeColPauseResume()
+                    playbackHoldAutoPaused = true
+                }
+            }
+            ContentLayout.CONVERSATION_BUBBLES -> {
+                if (convBubbleControlRunning && !convBubbleControlPaused) {
+                    onConvBubblePauseResume()
+                    playbackHoldAutoPaused = true
+                }
+            }
+            else -> {
+                // Fallback: trigger the real Pause/Resume click so the UI toggles to Resume.
+                // This covers layouts that use the shared control bar but don't have dedicated paused flags here.
+                val btn = pauseBtn ?: controlPauseResumeButton
+                if (btn != null && btn.isShown && btn.isEnabled) {
+                    btn.performClick()
+                    playbackHoldAutoPaused = true
+                    playbackHoldAutoPausedByClick = true
+                    playbackHoldPauseButtonToToggle = btn
+                }
+            }
+        }
+        if (playbackHoldAutoPaused) {
+            playbackHoldPausedLayout = currentContentLayout
+            // Ensure UI reflects the paused state immediately.
+            when (currentContentLayout) {
+                ContentLayout.SIMPLE_SENTENCE -> updateSimpleSentenceControlBar()
+                ContentLayout.SV_RIBBON -> updateSvRibbonControlBar()
+                ContentLayout.THREECOL_TABLE -> updateThreeColControlBar()
+                ContentLayout.CONVERSATION_BUBBLES -> updateConvBubbleControlBar()
+                else -> {}
+            }
+        }
+    }
+
+    private fun autoResumeAfterPlaybackHoldIfNeeded() {
+        if (!playbackHoldAutoPaused) return
+        val pausedLayout = playbackHoldPausedLayout
+        val pausedByClick = playbackHoldAutoPausedByClick
+        val btnToToggle = playbackHoldPauseButtonToToggle
+        playbackHoldAutoPaused = false
+        playbackHoldAutoPausedByClick = false
+        playbackHoldPausedLayout = null
+        playbackHoldPauseButtonToToggle = null
+
+        // Only resume if user is still on the same layout.
+        if (pausedLayout == null || pausedLayout != currentContentLayout) return
+
+        when (currentContentLayout) {
+            ContentLayout.SIMPLE_SENTENCE -> if (simpleSentenceControlPaused) onSimpleSentencePauseResume()
+            ContentLayout.SV_RIBBON -> if (svRibbonControlPaused) onSvRibbonPauseResume()
+            ContentLayout.THREECOL_TABLE -> if (threeColControlPaused) onThreeColPauseResume()
+            ContentLayout.CONVERSATION_BUBBLES -> if (convBubbleControlPaused) onConvBubblePauseResume()
+            else -> {
+                // Fallback: press Resume (same button) only if we paused via click.
+                if (pausedByClick) {
+                    val btn = btnToToggle ?: controlPauseResumeButton
+                    if (btn != null && btn.isShown && btn.isEnabled) btn.performClick()
+                }
+            }
+        }
+        // Refresh UI after resume.
+        when (currentContentLayout) {
+            ContentLayout.SIMPLE_SENTENCE -> updateSimpleSentenceControlBar()
+            ContentLayout.SV_RIBBON -> updateSvRibbonControlBar()
+            ContentLayout.THREECOL_TABLE -> updateThreeColControlBar()
+            ContentLayout.CONVERSATION_BUBBLES -> updateConvBubbleControlBar()
+            else -> {}
+        }
+    }
+
+    private fun startHoldToRecordPlayback(pauseBtn: Button?) {
         if (playbackHoldRecording) return
         if (!checkForPermission(RECORD_AUDIO)) {
             Toast.makeText(this, "Microphone permission required", Toast.LENGTH_SHORT).show()
             return
         }
 
-        // Stop any ongoing verification/listening to avoid mic contention.
+        // If something is running, auto-pause it (so Pause button becomes Resume).
+        autoPauseForPlaybackHoldIfNeeded(pauseBtn)
+        playbackHoldResumeAfterPlayback = playbackHoldAutoPaused
+
+        // Stop any ongoing speech/listening/playback so the user's recording is clean.
+        textToSpeech?.stop()
+        cancelVerificationTimeout()
+        verificationMode = false
+        expectedEnglishForVerification = null
+        pendingRestartVerificationWith = null
+        pendingSpeakCorrectWordAfterIncorrect = null
+        pendingBengaliAfterIncorrect = null
         try { speechRecognizer?.cancel() } catch (_: Exception) {}
+        try { speechRecognizer?.stopListening() } catch (_: Exception) {}
         stopEnglishVoskRecording()
+        setMicButtonAppearance(recording = false)
 
         stopLastUtterancePlayback()
         playbackHoldPcm = ByteArrayOutputStream()
@@ -2283,8 +2409,16 @@ class MainActivity : AppCompatActivity() {
             try {
                 writeWavPcm16Mono(outFile, bytes, playbackHoldSampleRate)
                 lastUtteranceWavFile = outFile
-                runOnUiThread { playLastUtteranceRecording() }
+                runOnUiThread {
+                    // Resume after playback completes (only if we auto-paused).
+                    playbackHoldResumeAfterPlayback = playbackHoldResumeAfterPlayback && playbackHoldAutoPaused
+                    playLastUtteranceRecording()
+                }
             } catch (_: Exception) {
+                runOnUiThread {
+                    if (playbackHoldResumeAfterPlayback) autoResumeAfterPlaybackHoldIfNeeded()
+                    playbackHoldResumeAfterPlayback = false
+                }
             }
         }.start()
     }
@@ -3521,8 +3655,9 @@ class MainActivity : AppCompatActivity() {
             setupThreeColModeButtons(root)
             updateThreeColStats()
             updateThreeColRowPositionText()
-            controlActionsBar?.visibility = View.VISIBLE
-            root.findViewById<View>(R.id.threecol_control_actions_include)?.visibility = View.GONE
+            // Use the control bar inside this layout; hide the activity-level bar.
+            findViewById<View>(R.id.control_actions_include)?.visibility = View.GONE
+            root.findViewById<View>(R.id.threecol_control_actions_include)?.visibility = View.VISIBLE
         }
     }
 
@@ -3617,9 +3752,9 @@ class MainActivity : AppCompatActivity() {
             setupConvBubbleModeButtons(root)
             updateConvBubbleStats()
             updateConvBubbleRowPositionText()
-            // Ensure START/STOP bar is visible (activity-level bar only; hide the duplicate inside this layout)
-            controlActionsBar?.visibility = View.VISIBLE
-            root.findViewById<View>(R.id.conv_bubble_control_actions_include)?.visibility = View.GONE
+            // Use the control bar inside this layout; hide the activity-level bar.
+            findViewById<View>(R.id.control_actions_include)?.visibility = View.GONE
+            root.findViewById<View>(R.id.conv_bubble_control_actions_include)?.visibility = View.VISIBLE
             updateConvBubbleControlBar()
         }
     }
@@ -4985,12 +5120,26 @@ class MainActivity : AppCompatActivity() {
         contentFrame.addView(view)
         currentContentLayout = layout
 
-        // Some layouts include their own copy of layout_control_actions.
-        // Ensure the hold-to-record handler is attached wherever it is visible.
-        setupHoldToRecordPlaybackButton(view.findViewById(R.id.control_playback_last))
+        // Rebind control bar to the one that is visible for this layout, so PAUSE/RESUME text and clicks apply to the same bar the user sees.
+        val activeBar = when (layout) {
+            ContentLayout.CONVERSATION_BUBBLES -> view.findViewById<View>(R.id.conv_bubble_control_actions_include)
+            ContentLayout.THREECOL_TABLE -> view.findViewById<View>(R.id.threecol_control_actions_include)
+            else -> findViewById(R.id.control_actions_include)
+        }
+        controlActionsBar = activeBar
+        controlStartStopButton = activeBar?.findViewById(R.id.control_start_stop)
+        controlPauseResumeButton = activeBar?.findViewById(R.id.control_pause_resume)
+        controlPlaybackLastButton = activeBar?.findViewById(R.id.control_playback_last)
+        setupHoldToRecordPlaybackButton(controlPlaybackLastButton)
+        bindControlBarListeners()
 
-        // Show Start/Stop, Pause/Resume bar for all custom subtopic layouts that use it
-        controlActionsBar?.visibility = if (usesControlActions(layout)) View.VISIBLE else View.GONE
+        // Main bar (activity-level) visibility: only when this layout uses it; CONVERSATION_BUBBLES/THREECOL_TABLE use their own bar in content.
+        if (layout == ContentLayout.CONVERSATION_BUBBLES || layout == ContentLayout.THREECOL_TABLE) {
+            findViewById<View>(R.id.control_actions_include)?.visibility = View.GONE
+            activeBar?.visibility = View.VISIBLE
+        } else {
+            findViewById<View>(R.id.control_actions_include)?.visibility = if (usesControlActions(layout)) View.VISIBLE else View.GONE
+        }
         // Hide bottom bar for THREECOL_TABLE and CONVERSATION_BUBBLES — use their own control bar
         findViewById<View>(R.id.bottom_bar)?.visibility = if (layout == ContentLayout.THREECOL_TABLE || layout == ContentLayout.CONVERSATION_BUBBLES) View.GONE else View.VISIBLE
         when (layout) {
