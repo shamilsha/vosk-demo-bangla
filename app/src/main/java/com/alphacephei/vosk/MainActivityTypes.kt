@@ -11,7 +11,11 @@ import com.alphacephei.vosk.R
 enum class ContentLayout {
     LEGACY, TEXT_DISPLAY, SPEECH_INPUT, PRACTICE_THREE_AREA, TABLE_DISPLAY, DIAGRAM_ONLY,
     MIC_SPEAKER_TEST, NOUN_TABS, NOUN_TEST, CONVERSATION, CONVERSATION_BUBBLES, SV_RIBBON, CONVEYOR_TRIPLE,
-    SV_WORDS_CONVEYOR, SV_I_FOUR_SECTIONS, SIMPLE_SENTENCE, THREECOL_TABLE
+    SV_WORDS_CONVEYOR, SV_I_FOUR_SECTIONS, SIMPLE_SENTENCE, THREECOL_TABLE,
+    /** POC: subtopics shown as iPhone-style buttons; tap navigates to that subtopic. */
+    POC_BUTTON_MENU,
+    /** Table-like triplets: Present/Past/Future columns. */
+    TENSE_TRIPLETS
 }
 
 /** Layout resource ID for the given content layout. */
@@ -33,6 +37,8 @@ fun getContentLayoutResId(layout: ContentLayout): Int = when (layout) {
     ContentLayout.SV_I_FOUR_SECTIONS -> R.layout.layout_sv_i_four_sections
     ContentLayout.SIMPLE_SENTENCE -> R.layout.layout_simple_sentence
     ContentLayout.THREECOL_TABLE -> R.layout.layout_3coldata_2coldisplay
+    ContentLayout.POC_BUTTON_MENU -> R.layout.layout_poc_button_menu
+    ContentLayout.TENSE_TRIPLETS -> R.layout.layout_tense_triplets
 }
 
 /** True if this layout shows the reusable Start / Stop / Pause / Resume bar. */
@@ -46,7 +52,8 @@ fun usesControlActions(layout: ContentLayout): Boolean = layout in setOf(
     ContentLayout.SV_WORDS_CONVEYOR,
     ContentLayout.SV_I_FOUR_SECTIONS,
     ContentLayout.SIMPLE_SENTENCE,
-    ContentLayout.THREECOL_TABLE
+    ContentLayout.THREECOL_TABLE,
+    ContentLayout.TENSE_TRIPLETS
 )
 
 /** One ribbon item height in pixels (stripHeightDp default 40). For scroll-by-one-row. */
@@ -83,6 +90,16 @@ data class VerbRow(val english: String, val bengali: String)
 
 /** One row of generic 3-column lesson data: English, Bengali, Pronunciation/Hint. */
 data class ThreeColRow(val english: String, val bengali: String, val hint: String)
+
+/** One cell in a tense triplet (single column). */
+data class TenseTripletCell(val english: String, val bengali: String, val hint: String)
+
+/** One triplet row: present + past + future columns. */
+data class TenseTripletRow(
+    val present: TenseTripletCell,
+    val past: TenseTripletCell,
+    val future: TenseTripletCell
+)
 
 /** One turn in conversation-bubble format: PersonA (left) or PersonB (right), then English, Bengali, Pronunciation. */
 data class ConversationBubbleRow(val speaker: String, val english: String, val bengali: String, val pronunciation: String)

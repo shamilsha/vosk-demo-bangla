@@ -28,6 +28,8 @@ class LessonVocabAdapter(
 
     /** Pass/fail per word (lowercase key): true = pass (tick), false = fail (cross). Not cleared on updateRows so marks persist when list is refreshed. */
     private val resultPerWord = mutableMapOf<String, Boolean>()
+    /** What user spoke per word (lowercase key). */
+    private val spokenPerWord = mutableMapOf<String, String>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VocabViewHolder {
         val v = LayoutInflater.from(parent.context)
@@ -40,13 +42,15 @@ class LessonVocabAdapter(
         holder.word.text = row.word
         holder.pronunciation.text = row.pronunciation
         holder.meaning.text = row.meaning
+        val wordKey = row.word.trim().lowercase()
+        holder.spoken.text = spokenPerWord[wordKey].orEmpty()
         val isCurrent = position == currentIndex
         if (isCurrent) {
             holder.itemView.setBackgroundResource(R.drawable.bg_lesson_vocab_current)
         } else {
             holder.itemView.setBackgroundColor(Color.TRANSPARENT)
         }
-        val result = resultPerWord[row.word.trim().lowercase()]
+        val result = resultPerWord[wordKey]
         when (result) {
             true -> {
                 holder.resultIcon.visibility = View.VISIBLE
@@ -76,10 +80,20 @@ class LessonVocabAdapter(
         notifyItemChanged(position)
     }
 
+    /** Save recognized user speech into fixed "You said" column for this word. */
+    fun setSpokenText(position: Int, spoken: String) {
+        if (position !in rows.indices) return
+        val wordKey = rows[position].word.trim().lowercase()
+        val cleaned = MatchNormalizer.sanitizeSpokenTextForDisplay(spoken).trim()
+        spokenPerWord[wordKey] = if (cleaned.isBlank()) "(no speech)" else cleaned
+        notifyItemChanged(position)
+    }
+
     class VocabViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         val word: TextView = v.findViewById(R.id.lesson_vocab_word)
         val pronunciation: TextView = v.findViewById(R.id.lesson_vocab_pronunciation)
         val meaning: TextView = v.findViewById(R.id.lesson_vocab_meaning)
+        val spoken: TextView = v.findViewById(R.id.lesson_vocab_spoken)
         val resultIcon: ImageView = v.findViewById(R.id.lesson_vocab_result_icon)
     }
 }

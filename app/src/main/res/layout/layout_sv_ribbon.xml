@@ -34,7 +34,7 @@
             android:gravity="center_vertical"
             android:paddingHorizontal="12dp"
             android:paddingVertical="8dp"
-            android:background="@color/icon_row_background">
+            android:background="@color/lesson_mode_bar_background">
             <Button
                 android:id="@+id/sv_ribbon_mode_learning"
                 android:layout_width="0dp"

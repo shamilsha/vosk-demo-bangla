@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- One row: Word 25% | Pronunciation 25% | Meaning 50% | fixed 32dp for tick/cross (no layout shift). -->
+<!-- One row: table-style Word | Pronunciation | Meaning | You said + result icon. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:paddingVertical="8dp"
-    android:paddingHorizontal="6dp"
-    android:minHeight="48dp">
+    android:paddingVertical="0dp"
+    android:paddingHorizontal="0dp"
+    android:minHeight="36dp">
 
     <TextView
         android:id="@+id/lesson_vocab_word"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:paddingEnd="4dp"
+        android:background="@drawable/bg_tense_triplet_cell"
+        android:gravity="center_vertical"
+        android:padding="3dp"
         android:textColor="@color/text_primary"
-        android:textSize="15sp"
+        android:textSize="14sp"
         android:ellipsize="end"
         android:maxLines="2" />
 
@@ -25,9 +27,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:paddingHorizontal="4dp"
+        android:background="@drawable/bg_tense_triplet_cell"
+        android:gravity="center_vertical"
+        android:padding="3dp"
         android:textColor="@color/text_secondary"
-        android:textSize="14sp"
+        android:textSize="13sp"
         android:ellipsize="end"
         android:maxLines="2" />
 
@@ -35,28 +39,40 @@
         android:id="@+id/lesson_vocab_meaning"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:paddingStart="4dp"
-        android:paddingEnd="4dp"
+        android:layout_weight="3"
+        android:background="@drawable/bg_tense_triplet_cell"
+        android:gravity="center_vertical"
+        android:padding="3dp"
         android:textColor="@color/text_primary"
-        android:textSize="14sp"
+        android:textSize="13sp"
         android:ellipsize="end"
         android:maxLines="2" />
 
-    <!-- Fixed 32dp so tick/cross never shifts layout; icon inside can be GONE or VISIBLE. -->
-    <FrameLayout
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:minWidth="32dp"
-        android:minHeight="32dp"
-        android:gravity="center">
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:layout_weight="2"
+        android:background="@drawable/bg_tense_triplet_cell"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="3dp">
+
+        <TextView
+            android:id="@+id/lesson_vocab_spoken"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/text_primary"
+            android:textSize="12sp"
+            android:ellipsize="end"
+            android:maxLines="1" />
+
         <ImageView
             android:id="@+id/lesson_vocab_result_icon"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:layout_gravity="center"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:contentDescription="Pass or fail"
             android:visibility="gone"
             android:scaleType="fitCenter" />
-    </FrameLayout>
+    </LinearLayout>
 </LinearLayout>

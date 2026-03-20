@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Reusable: 3-column vocabulary list (Word | Pronunciation | Meaning) for V tab. -->
+<!-- Reusable: 4-column vocabulary list (Word | Pronunciation | Meaning | You said) for V tab. -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/lesson_vocab_root"
@@ -9,22 +9,25 @@
     android:background="@color/lesson_box_background"
     android:clipChildren="false">
 
-    <!-- Header row: 25% / 25% / 50% + 32dp to match row columns -->
+    <!-- Header row: table-style 4 columns -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:background="@color/lesson_topic_bar_background"
-        android:paddingVertical="6dp"
-        android:paddingHorizontal="6dp">
+        android:background="@color/icon_row_background"
+        android:padding="0dp">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/bg_tense_triplet_cell"
+            android:gravity="center"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="4dp"
             android:text="Word"
-            android:textColor="@color/lesson_topic_bar_text"
+            android:textColor="@color/lesson_topic_bar_background"
             android:textSize="13sp"
             android:textStyle="bold" />
 
@@ -32,8 +35,25 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/bg_tense_triplet_cell"
+            android:gravity="center"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="4dp"
             android:text="Pronunciation"
-            android:textColor="@color/lesson_topic_bar_text"
+            android:textColor="@color/lesson_topic_bar_background"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@drawable/bg_tense_triplet_cell"
+            android:gravity="center"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="4dp"
+            android:text="Meaning"
+            android:textColor="@color/lesson_topic_bar_background"
             android:textSize="13sp"
             android:textStyle="bold" />
 
@@ -41,16 +61,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:text="Meaning"
-            android:textColor="@color/lesson_topic_bar_text"
+            android:background="@drawable/bg_tense_triplet_cell"
+            android:gravity="center"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="4dp"
+            android:text="You said"
+            android:textColor="@color/lesson_topic_bar_background"
             android:textSize="13sp"
             android:textStyle="bold" />
-
-        <View
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:minWidth="32dp"
-            android:minHeight="32dp" />
     </LinearLayout>
 
     <!-- Toggle: off = only untested/failed words; on = all words -->

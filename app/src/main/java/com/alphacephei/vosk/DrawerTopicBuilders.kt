@@ -43,7 +43,8 @@ object DrawerTopicBuilders {
             Subtopic("3-to-1 (Have/Has)", "diagram_3to1")
         )),
         Topic("Tense", listOf(
-            Subtopic("Tenses hierarchy", "tense_diagram")
+            Subtopic("Tenses hierarchy", "tense_diagram"),
+            Subtopic("Simple tense triplets", "simple_tense_triplets", ContentLayout.TENSE_TRIPLETS)
         )),
         Topic("Lessons", listOf(
             Subtopic("Load lesson (.txt)", "lesson_file"),
@@ -108,6 +109,12 @@ object DrawerTopicBuilders {
             Subtopic("2-Column Table", "table_test_2col", ContentLayout.TABLE_DISPLAY),
             Subtopic("3-Column Table", "table_test_3col", ContentLayout.TABLE_DISPLAY),
             Subtopic("4-Column Table", "table_test_4col", ContentLayout.TABLE_DISPLAY)
+        )),
+        // POC: tap topic to show subtopics as iPhone-style buttons in content (no drawer expansion).
+        Topic("POC Menu", listOf(
+            Subtopic("Introduction (Bengali)", "intro_bengali", ContentLayout.TEXT_DISPLAY),
+            Subtopic("Mic Test", "mic_test", ContentLayout.MIC_SPEAKER_TEST),
+            Subtopic("Translation Practice", "translation_practice", ContentLayout.PRACTICE_THREE_AREA)
         ))
     )
 
