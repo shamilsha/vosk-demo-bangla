@@ -1,0 +1,35 @@
+I read
+আমি পড়ি
+আই রীড
+------------------------------------------------------------
+I read a book
+আমি একটি বই পড়ি
+আই রীড আ বুক
+------------------------------------------------------------
+I read an interesting book
+আমি একটি চমৎকার বই পড়ি
+আই রীড অ্যান ইন্টারেস্টিং বুক
+------------------------------------------------------------
+I read an interesting book daily
+আমি প্রতিদিন একটি চমৎকার বই পড়ি
+আই রীড অ্যান ইন্টারেস্টিং বুক ডেইলি
+------------------------------------------------------------
+I read an interesting book daily in the library
+আমি প্রতিদিন লাইব্রেরিতে একটি চমৎকার বই পড়ি
+আই রীড অ্যান ইন্টারেস্টিং বুক ডেইলি ইন দ্য লাইব্রেরি
+
+----------
+Step,Structure,Sentence & Translation,Pronunciation
+1. Basic,S + V,I work.আমি কাজ করি।,আই ওয়ার্ক।
+2. Add Location,S+V+Place,I work in an office.আমি একটি অফিসে কাজ করি।,আই ওয়ার্ক ইন অ্যান অফিস।
+3. Add Adjective,S+V+Adj+Place,I work in a big office.আমি একটি বড় অফিসে কাজ করি।,আই ওয়ার্ক ইন আ বিগ অফিস।
+4. Add Adverb,S+V+Adj+Place+Adv,I work in a big office happily.আমি একটি বড় অফিসে খুশিতে কাজ করি।,আই ওয়ার্ক ইন আ বিগ অফিস হ্যাপিলি।
+5. Add Time,Extended,I work in a big office happily every morning.আমি প্রতিদিন সকালে একটি বড় অফিসে খুশিতে কাজ করি।,আই ওয়ার্ক ইন আ বিগ অফিস হ্যাপিলি এভরি মর্নিং।
+
+---------
+Step,Structure,Sentence & Translation,Pronunciation
+1. Basic,S + V,I play.আমি খেলি।,আই প্লেই।
+2. Add Object,S + V + O,I play football.আমি ফুটবল খেলি।,আই প্লেই ফুটবল।
+3. Add Company,S+V+O+With,I play football with friends.আমি বন্ধুদের সাথে ফুটবল খেলি।,আই প্লেই ফুটবল উইথ ফ্রেন্ডস।
+4. Add Adverb,S+V+O+With+Adv,I play football with friends skillfully.আমি বন্ধুদের সাথে দক্ষতার সাথে ফুটবল খেলি।,আই প্লেই ফুটবল উইথ ফ্রেন্ডস স্কিলফুলি।
+5. Add Location,Extended,I play football with friends skillfully in the field.আমি মাঠে বন্ধুদের সাথে দক্ষতার সাথে ফুটবল খেলি।,আই প্লেই ফুটবল উইথ ফ্রেন্ডস স্কিলফুলি ইন দ্য ফিল্ড।

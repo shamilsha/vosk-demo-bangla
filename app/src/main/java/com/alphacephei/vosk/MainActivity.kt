@@ -3485,9 +3485,34 @@ class MainActivity : AppCompatActivity() {
             loadSimpleTenseTripletLessonFromAsset("Lessons/Tense/simple_perfect.txt", "Simple perfect triplets")
             return
         }
+        if (actionKey == "simple_question_triplets") {
+            if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
+            loadSimpleTenseTripletLessonFromAsset("Lessons/Tense/simple_question.txt", "Simple question triplets")
+            return
+        }
+        if (actionKey == "simple_continuous_question_triplets") {
+            if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
+            loadSimpleTenseTripletLessonFromAsset("Lessons/Tense/simple_continuous_question.txt", "Simple continuous question triplets")
+            return
+        }
         if (actionKey == "present_negative_duplex") {
             if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
             loadSimpleTenseDuplexLessonFromAsset("Lessons/Tense/present_negative.txt", "Present negative (duplex)")
+            return
+        }
+        if (actionKey == "past_negative_duplex") {
+            if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
+            loadSimpleTenseDuplexLessonFromAsset("Lessons/Tense/past_negative.txt", "Past negative (duplex)")
+            return
+        }
+        if (actionKey == "future_negative_duplex") {
+            if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
+            loadSimpleTenseDuplexLessonFromAsset("Lessons/Tense/future_negative.txt", "Future negative (duplex)")
+            return
+        }
+        if (actionKey == "perfect_question_duplex") {
+            if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
+            loadSimpleTenseDuplexLessonFromAsset("Lessons/Tense/perfect_question.txt", "Perfect question")
             return
         }
         // Simple-sentence lessons (Let, How, Who, When, etc.): keep SIMPLE_SENTENCE layout, load into two bubbles
@@ -3641,9 +3666,29 @@ class MainActivity : AppCompatActivity() {
                 if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
                 loadSimpleTenseTripletLessonFromAsset("Lessons/Tense/simple_perfect.txt", "Simple perfect triplets")
             }
+            "simple_question_triplets" -> {
+                if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
+                loadSimpleTenseTripletLessonFromAsset("Lessons/Tense/simple_question.txt", "Simple question triplets")
+            }
+            "simple_continuous_question_triplets" -> {
+                if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
+                loadSimpleTenseTripletLessonFromAsset("Lessons/Tense/simple_continuous_question.txt", "Simple continuous question triplets")
+            }
             "present_negative_duplex" -> {
                 if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
                 loadSimpleTenseDuplexLessonFromAsset("Lessons/Tense/present_negative.txt", "Present negative (duplex)")
+            }
+            "past_negative_duplex" -> {
+                if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
+                loadSimpleTenseDuplexLessonFromAsset("Lessons/Tense/past_negative.txt", "Past negative (duplex)")
+            }
+            "future_negative_duplex" -> {
+                if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
+                loadSimpleTenseDuplexLessonFromAsset("Lessons/Tense/future_negative.txt", "Future negative (duplex)")
+            }
+            "perfect_question_duplex" -> {
+                if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
+                loadSimpleTenseDuplexLessonFromAsset("Lessons/Tense/perfect_question.txt", "Perfect question")
             }
 
             // ── Table Display tests ──
@@ -6085,9 +6130,8 @@ class MainActivity : AppCompatActivity() {
      * Switching to LEGACY restores the original layout with all existing views.
      */
     fun switchContentLayout(layout: ContentLayout): View {
-        if (layout == currentContentLayout && contentFrame.childCount > 0) {
-            return contentFrame.getChildAt(0)
-        }
+        // Always re-inflate when requested from drawer/subtopic navigation.
+        // Reusing the existing same-layout view can leave stale/empty content in some paths.
         contentFrame.removeAllViews()
         // Clear references to previous layout-specific views
         if (currentContentLayout == ContentLayout.SPEECH_INPUT) speechInputView = null

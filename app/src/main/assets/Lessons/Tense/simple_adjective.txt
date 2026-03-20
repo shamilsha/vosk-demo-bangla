@@ -1,0 +1,20 @@
+I am happy., আমি সুখী।, আই অ্যাম হ্যাপি।
+The water is cold., পানি ঠান্ডা।, দ্য ওয়াটার ইজ কোল্ড।
+The tea is hot., চা গরম।, দ্য টি ইজ হট।
+The car is red., গাড়িটি লাল।, দ্য কার ইজ রেড।
+He is tall., সে লম্বা।, হী ইজ টল।
+The room is clean., রুমটি পরিষ্কার।, দ্য রুম ইজ ক্লীন।
+The book is old., বইটি পুরাতন।, দ্য বুক ইজ ওল্ড।
+The sky is blue., আকাশ নীল।, দ্য স্কাই ইজ ব্লু।
+She is beautiful., সে সুন্দরী।, শী ইজ বিউটিফুল।
+The dog is small., কুকুরটি ছোট।,	দ্য ডগ ইজ স্মল।
+I am busy, আমি ব্যস্ত, আই অ্যাম বিজি
+You are kind, আপনি দয়ালু, ইউ আর কাইন্ড
+He is strong, সে শক্তিশালী, হী ইজ স্ট্রং
+She is smart, সে বুদ্ধিমান, শী ইজ স্মার্ট
+The apple is sweet,  আপেলটি মিষ্টি, দ্য অ্যাপল ইজ সুইট
+The lemon is sour, লেবুটি টক, দ্য লেমন ইজ সাওয়ার
+The food is fresh, খাবারটি টাটকা, দ্য ফুড ইজ ফ্রেশ
+The bag is heavy, ব্যাগটি ভারী, দ্য ব্যাগ ইজ হেভি
+The knife is sharp, ছুরিটি ধারালো, দ্য নাইফ ইজ শার্প
+The road is wide, রাস্তাটি প্রশস্ত, দ্য রোড ইজ ওয়াইড

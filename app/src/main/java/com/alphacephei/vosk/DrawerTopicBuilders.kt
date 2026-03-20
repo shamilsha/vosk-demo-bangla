@@ -44,10 +44,15 @@ object DrawerTopicBuilders {
         )),
         Topic("Tense", listOf(
             Subtopic("Tenses hierarchy", "tense_diagram"),
-            Subtopic("Simple tense triplets", "simple_tense_triplets", ContentLayout.TENSE_TRIPLETS),
-            Subtopic("Simple continuous triplets", "simple_continuous_triplets", ContentLayout.TENSE_TRIPLETS),
-            Subtopic("Simple perfect triplets", "simple_perfect_triplets", ContentLayout.TENSE_TRIPLETS),
-            Subtopic("Present negative (duplex)", "present_negative_duplex", ContentLayout.TENSE_TRIPLETS)
+            Subtopic("Simple tense", "simple_tense_triplets", ContentLayout.TENSE_TRIPLETS),
+            Subtopic("Simple continuous", "simple_continuous_triplets", ContentLayout.TENSE_TRIPLETS),
+            Subtopic("Simple perfect", "simple_perfect_triplets", ContentLayout.TENSE_TRIPLETS),
+            Subtopic("Simple question", "simple_question_triplets", ContentLayout.TENSE_TRIPLETS),
+            Subtopic("Simple continuous question", "simple_continuous_question_triplets", ContentLayout.TENSE_TRIPLETS),
+            Subtopic("Present negative", "present_negative_duplex", ContentLayout.TENSE_TRIPLETS),
+            Subtopic("Past negative", "past_negative_duplex", ContentLayout.TENSE_TRIPLETS),
+            Subtopic("Future negative", "future_negative_duplex", ContentLayout.TENSE_TRIPLETS),
+            Subtopic("Perfect question", "perfect_question_duplex", ContentLayout.TENSE_TRIPLETS)
         )),
         Topic("Lessons", listOf(
             Subtopic("Load lesson (.txt)", "lesson_file"),
