@@ -3,14 +3,15 @@ package com.alphacephei.vosk
 import android.graphics.Color
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.RecyclerView
 
 /** Adapter for tense triplet rows (Present | Past | Future). */
@@ -30,17 +31,26 @@ class TenseTripletAdapter(
         val pCell: LinearLayout = view.findViewById(R.id.triplet_present_cell)
         val paCell: LinearLayout = view.findViewById(R.id.triplet_past_cell)
         val fCell: LinearLayout = view.findViewById(R.id.triplet_future_cell)
+        val pEngRow: FrameLayout = view.findViewById(R.id.triplet_present_english_row)
         val pEng: TextView = view.findViewById(R.id.triplet_present_english)
         val pBn: TextView = view.findViewById(R.id.triplet_present_bengali)
         val pHint: TextView = view.findViewById(R.id.triplet_present_hint)
+        val pEngMark: ImageView = view.findViewById(R.id.triplet_present_english_mark)
+        val pBnMark: ImageView = view.findViewById(R.id.triplet_present_bengali_mark)
 
+        val paEngRow: FrameLayout = view.findViewById(R.id.triplet_past_english_row)
         val paEng: TextView = view.findViewById(R.id.triplet_past_english)
         val paBn: TextView = view.findViewById(R.id.triplet_past_bengali)
         val paHint: TextView = view.findViewById(R.id.triplet_past_hint)
+        val paEngMark: ImageView = view.findViewById(R.id.triplet_past_english_mark)
+        val paBnMark: ImageView = view.findViewById(R.id.triplet_past_bengali_mark)
 
+        val fEngRow: FrameLayout = view.findViewById(R.id.triplet_future_english_row)
         val fEng: TextView = view.findViewById(R.id.triplet_future_english)
         val fBn: TextView = view.findViewById(R.id.triplet_future_bengali)
         val fHint: TextView = view.findViewById(R.id.triplet_future_hint)
+        val fEngMark: ImageView = view.findViewById(R.id.triplet_future_english_mark)
+        val fBnMark: ImageView = view.findViewById(R.id.triplet_future_bengali_mark)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TripletViewHolder {
@@ -49,8 +59,15 @@ class TenseTripletAdapter(
         return TripletViewHolder(view)
     }
 
+    override fun onViewRecycled(holder: TripletViewHolder) {
+        hideAllMarks(holder)
+        super.onViewRecycled(holder)
+    }
+
     override fun onBindViewHolder(holder: TripletViewHolder, position: Int) {
         val row = items[position]
+        clearTextViewCompoundDrawables(holder)
+
         holder.pEng.text = if (showPresentColumn) colorEnglish(row.present.english, tense = Tense.PRESENT) else ""
         holder.pBn.text = if (showPresentColumn) row.present.bengali else ""
         holder.pHint.text = if (showPresentColumn) row.present.hint else ""
@@ -82,36 +99,32 @@ class TenseTripletAdapter(
                 holder.fHint.visibility = View.GONE
             }
             DisplayMode.TEST -> {
-                // TEST mode: show Bengali prompt; when matched, replace that column with spoken English only.
-                holder.pEng.visibility = View.GONE
-                holder.paEng.visibility = View.GONE
-                holder.fEng.visibility = View.GONE
+                // TEST: only Bengali line(s) — English row is hidden entirely (no blank band).
+                holder.pEngRow.visibility = View.GONE
+                holder.paEngRow.visibility = View.GONE
+                holder.fEngRow.visibility = View.GONE
                 holder.pBn.visibility = View.VISIBLE
                 holder.paBn.visibility = View.VISIBLE
                 holder.fBn.visibility = View.VISIBLE
                 holder.pHint.visibility = View.GONE
                 holder.paHint.visibility = View.GONE
                 holder.fHint.visibility = View.GONE
+                // Single line per cell: either lesson Bengali or replaced recognized text (never both).
                 if (showPresentColumn && !spoken.first.isNullOrBlank()) holder.pBn.text = spoken.first
                 if (showPastColumn && !spoken.second.isNullOrBlank()) holder.paBn.text = spoken.second
                 if (showFutureColumn && !spoken.third.isNullOrBlank()) holder.fBn.text = spoken.third
             }
         }
         val marks = rowResultMarks[position] ?: Triple(null, null, null)
+        hideAllMarks(holder)
         if (displayMode == DisplayMode.TEST) {
-            applyResultMark(holder.pBn, if (showPresentColumn) marks.first else null)
-            applyResultMark(holder.paBn, if (showPastColumn) marks.second else null)
-            applyResultMark(holder.fBn, if (showFutureColumn) marks.third else null)
-            applyResultMark(holder.pEng, null)
-            applyResultMark(holder.paEng, null)
-            applyResultMark(holder.fEng, null)
+            applyResultMarkToImage(holder.pBnMark, if (showPresentColumn) marks.first else null)
+            applyResultMarkToImage(holder.paBnMark, if (showPastColumn) marks.second else null)
+            applyResultMarkToImage(holder.fBnMark, if (showFutureColumn) marks.third else null)
         } else {
-            applyResultMark(holder.pEng, if (showPresentColumn) marks.first else null)
-            applyResultMark(holder.paEng, if (showPastColumn) marks.second else null)
-            applyResultMark(holder.fEng, if (showFutureColumn) marks.third else null)
-            applyResultMark(holder.pBn, null)
-            applyResultMark(holder.paBn, null)
-            applyResultMark(holder.fBn, null)
+            applyResultMarkToImage(holder.pEngMark, if (showPresentColumn) marks.first else null)
+            applyResultMarkToImage(holder.paEngMark, if (showPastColumn) marks.second else null)
+            applyResultMarkToImage(holder.fEngMark, if (showFutureColumn) marks.third else null)
         }
         val focused = position == currentIndex
         val bg = if (focused) R.drawable.bg_tense_triplet_cell_focus else R.drawable.bg_tense_triplet_cell
@@ -119,9 +132,30 @@ class TenseTripletAdapter(
         holder.paCell.setBackgroundResource(bg)
         holder.fCell.setBackgroundResource(bg)
         if (displayMode != DisplayMode.TEST) {
+            holder.pEngRow.visibility = View.VISIBLE
+            holder.paEngRow.visibility = View.VISIBLE
+            holder.fEngRow.visibility = View.VISIBLE
             holder.pEng.visibility = View.VISIBLE
             holder.paEng.visibility = View.VISIBLE
             holder.fEng.visibility = View.VISIBLE
+        }
+    }
+
+    private fun clearTextViewCompoundDrawables(holder: TripletViewHolder) {
+        listOf(holder.pEng, holder.pBn, holder.paEng, holder.paBn, holder.fEng, holder.fBn).forEach {
+            it.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, null, null)
+        }
+    }
+
+    private fun hideAllMarks(holder: TripletViewHolder) {
+        listOf(
+            holder.pEngMark, holder.pBnMark,
+            holder.paEngMark, holder.paBnMark,
+            holder.fEngMark, holder.fBnMark
+        ).forEach {
+            it.visibility = View.INVISIBLE
+            it.clearColorFilter()
+            it.setImageDrawable(null)
         }
     }
 
@@ -129,6 +163,11 @@ class TenseTripletAdapter(
 
     fun updateData(newItems: List<TenseTripletRow>) {
         items = newItems
+        clearMarksAndSpokenState()
+    }
+
+    /** Clears tick/cross and TEST "spoken" replacement text (e.g. tab switch or fresh lesson). */
+    fun clearMarksAndSpokenState() {
         rowResultMarks.clear()
         rowSpokenText.clear()
         notifyDataSetChanged()
@@ -204,17 +243,28 @@ class TenseTripletAdapter(
         }
     }
 
-    private fun applyResultMark(view: TextView, match: Boolean?) {
-        view.setCompoundDrawablePadding(
-            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4f, view.resources.displayMetrics).toInt()
-        )
-        val icon = when (match) {
-            true -> AppCompatResources.getDrawable(view.context, R.drawable.ic_check_mark_plain)?.mutate()
-            false -> AppCompatResources.getDrawable(view.context, R.drawable.ic_clear)?.mutate()?.also {
-                DrawableCompat.setTint(it, Color.parseColor("#C62828"))
+    /** Tick/cross as overlay — does not affect TextView line width / wrapping. */
+    private fun applyResultMarkToImage(markView: ImageView, match: Boolean?) {
+        when (match) {
+            true -> {
+                markView.visibility = View.VISIBLE
+                markView.clearColorFilter()
+                val d = AppCompatResources.getDrawable(markView.context, R.drawable.ic_check_mark_plain)?.mutate()
+                markView.setImageDrawable(d)
             }
-            null -> null
+            false -> {
+                markView.visibility = View.VISIBLE
+                val d = AppCompatResources.getDrawable(markView.context, R.drawable.ic_clear)?.mutate()
+                if (d != null) {
+                    DrawableCompat.setTint(d, Color.parseColor("#C62828"))
+                }
+                markView.setImageDrawable(d)
+            }
+            null -> {
+                markView.visibility = View.INVISIBLE
+                markView.clearColorFilter()
+                markView.setImageDrawable(null)
+            }
         }
-        view.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, icon, null)
     }
 }

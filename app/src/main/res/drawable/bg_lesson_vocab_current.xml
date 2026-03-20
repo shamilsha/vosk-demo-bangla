@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Current row in V tab: red boundary + yellow background so focused row is obvious. -->
+<!-- Current row in V tab: red border focus like other tabs. -->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
     <stroke
         android:width="2dp"
         android:color="#D32F2F" />
-    <solid android:color="#FFF9C4" />
+    <solid android:color="#FFFFFF" />
 </shape>

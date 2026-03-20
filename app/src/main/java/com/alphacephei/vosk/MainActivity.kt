@@ -1178,6 +1178,8 @@ class MainActivity : AppCompatActivity() {
     /** Guard: only process one verification result per listening session (avoids double-counting). */
     @Volatile
     private var verificationResultHandled = false
+    // Last non-empty partial/final heard while verification is active; used as fallback on timeout.
+    private var verificationLastHeardText: String = ""
     /** When non-null, TTS onDone("incorrect_then_correct") will speak this word (correct pronunciation). */
     private var pendingSpeakCorrectWordAfterIncorrect: String? = null
     /** After speaking correct word, restart listening with this expected (so user can try again without pressing Next). */
@@ -1736,8 +1738,10 @@ class MainActivity : AppCompatActivity() {
                                         }
                                         return@runOnUiThread
                                     }
-                                    val expected = expectedEnglishForVerification
-                                    if (expected == null) return@runOnUiThread
+                                    val currentRow = convBubbleRows.getOrNull(
+                                        convBubbleCurrentIndex.coerceIn(0, (convBubbleRows.size - 1).coerceAtLeast(0))
+                                    ) ?: return@runOnUiThread
+                                    val expected = currentRow.english
                                     // Practice: speak Bengali only, then listen. Learning: speak English then listen.
                                     if (!convBubbleLearningMode) {
                                         startVerificationListening(expected)
@@ -1751,7 +1755,9 @@ class MainActivity : AppCompatActivity() {
                             }
                             "conv_bubble_english" -> {
                                 runOnUiThread {
-                                    val expected = expectedEnglishForVerification
+                                    val expected = convBubbleRows.getOrNull(
+                                        convBubbleCurrentIndex.coerceIn(0, (convBubbleRows.size - 1).coerceAtLeast(0))
+                                    )?.english
                                     // Learning only: after app spoke English, listen for user to repeat
                                     if (expected != null && !isDestroyed && currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleLearningMode) {
                                         startVerificationListening(expected)
@@ -1971,8 +1977,10 @@ class MainActivity : AppCompatActivity() {
                                     }
                                     return@runOnUiThread
                                 }
-                                val expected = expectedEnglishForVerification
-                                if (expected == null) return@runOnUiThread
+                                val currentRow = convBubbleRows.getOrNull(
+                                    convBubbleCurrentIndex.coerceIn(0, (convBubbleRows.size - 1).coerceAtLeast(0))
+                                ) ?: return@runOnUiThread
+                                val expected = currentRow.english
                                 if (!convBubbleLearningMode) {
                                     startVerificationListening(expected)
                                 } else if (!expected.isNullOrBlank() && ttsReady && textToSpeech != null) {
@@ -1985,7 +1993,9 @@ class MainActivity : AppCompatActivity() {
                         }
                         if (utteranceId == "conv_bubble_english") {
                             runOnUiThread {
-                                val expected = expectedEnglishForVerification
+                                val expected = convBubbleRows.getOrNull(
+                                    convBubbleCurrentIndex.coerceIn(0, (convBubbleRows.size - 1).coerceAtLeast(0))
+                                )?.english
                                 if (expected != null && !isDestroyed && currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleLearningMode) {
                                     startVerificationListening(expected)
                                 }
@@ -2683,6 +2693,7 @@ class MainActivity : AppCompatActivity() {
                         lastPartialText = text
                         lastPartialTimeMs = nowMs
                     }
+                    if (verificationMode) verificationLastHeardText = text.trim()
                     runOnUiThread {
                         if (!isDestroyed && !verificationMode) {
                             if (!feedSpeechInputText(text, isFinal = false)) {
@@ -2729,6 +2740,7 @@ class MainActivity : AppCompatActivity() {
         if (isDestroyed) return
         val trimmed = text.trim()
         if (trimmed.isEmpty()) return
+        verificationLastHeardText = trimmed
         if (pronunciationPracticeActive && !pronunciationPracticeResultHandled) {
             pronunciationPracticeResultHandled = true
             cancelVerificationTimeout()
@@ -3463,6 +3475,11 @@ class MainActivity : AppCompatActivity() {
             loadSimpleTenseTripletLessonFromAsset("Lessons/Tense/simple_tense.txt", "Simple tense triplets")
             return
         }
+        if (actionKey == "simple_continuous_triplets") {
+            if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
+            loadSimpleTenseTripletLessonFromAsset("Lessons/Tense/simple_continuous.txt", "Simple continuous triplets")
+            return
+        }
         // Simple-sentence lessons (Let, How, Who, When, etc.): keep SIMPLE_SENTENCE layout, load into two bubbles
         if (actionKey.startsWith("simple_")) {
             if (currentContentLayout != ContentLayout.SIMPLE_SENTENCE) switchContentLayout(ContentLayout.SIMPLE_SENTENCE)
@@ -3605,6 +3622,10 @@ class MainActivity : AppCompatActivity() {
             "simple_tense_triplets" -> {
                 if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
                 loadSimpleTenseTripletLessonFromAsset("Lessons/Tense/simple_tense.txt", "Simple tense triplets")
+            }
+            "simple_continuous_triplets" -> {
+                if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
+                loadSimpleTenseTripletLessonFromAsset("Lessons/Tense/simple_continuous.txt", "Simple continuous triplets")
             }
 
             // ── Table Display tests ──
@@ -3774,6 +3795,8 @@ class MainActivity : AppCompatActivity() {
             tenseTripletAdapter?.setCurrentIndex(tenseTripletCurrentIndex)
             updateTenseTripletAutoScrollPosition(forceTop = true)
         }
+        // Fresh lesson: no stale V-tab ticks / "You said" from another screen.
+        lessonVocabAdapter?.clearSessionMarksAndSpoken()
         setupTenseTripletModeButtons(root)
         setupTenseTripletColumnToggles(root)
         // Keep default universal bars: top bar always visible, bottom bar remains visible for this layout.
@@ -3851,30 +3874,53 @@ class MainActivity : AppCompatActivity() {
         setupVocabTabForCurrentLesson(vocabInclude) { updateTenseTripletAutoScrollPosition() }
 
         learningBtn?.setOnClickListener {
+            if (tenseTripletMode == TenseTripletMode.LEARNING) return@setOnClickListener
+            resetTenseTripletListToTop()
             tenseTripletMode = TenseTripletMode.LEARNING
             applyTenseTripletModeToAdapter()
             updateTenseTripletModeTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, mainContent, vocabInclude)
         }
         practiceBtn?.setOnClickListener {
+            if (tenseTripletMode == TenseTripletMode.PRACTICE) return@setOnClickListener
+            resetTenseTripletListToTop()
             tenseTripletMode = TenseTripletMode.PRACTICE
             applyTenseTripletModeToAdapter()
             updateTenseTripletModeTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, mainContent, vocabInclude)
         }
         testBtn?.setOnClickListener {
+            if (tenseTripletMode == TenseTripletMode.TEST) return@setOnClickListener
+            resetTenseTripletListToTop()
             tenseTripletMode = TenseTripletMode.TEST
             applyTenseTripletModeToAdapter()
             updateTenseTripletModeTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, mainContent, vocabInclude)
         }
         vocabBtn?.setOnClickListener {
+            if (tenseTripletMode == TenseTripletMode.VOCAB) return@setOnClickListener
+            resetTenseTripletListToTop()
             tenseTripletMode = TenseTripletMode.VOCAB
             lessonVocabAdapter?.currentIndex = 0
             vocabRecycler?.scrollToPosition(0)
+            applyTenseTripletModeToAdapter()
             updateTenseTripletModeTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, mainContent, vocabInclude)
         }
         prevBtn?.setOnClickListener { moveTenseTripletBy(-1) }
         nextBtn?.setOnClickListener { moveTenseTripletBy(1) }
 
         updateTenseTripletModeTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, mainContent, vocabInclude)
+    }
+
+    /** Any mode tab (L/P/T/V) starts the triplet list at row 0 so scroll position does not carry over. */
+    private fun resetTenseTripletListToTop() {
+        // V tab session UI; triplet tick/cross is cleared in applyTenseTripletModeToAdapter().
+        lessonVocabAdapter?.clearSessionMarksAndSpoken()
+        if (tenseTripletRows.isEmpty()) return
+        tenseTripletCurrentIndex = 0
+        tenseTripletIncorrectCount = 0
+        tenseTripletLastScrolledPosition = -1
+        tenseTripletAdapter?.setCurrentIndex(0)
+        val root = if (contentFrame.childCount > 0) contentFrame.getChildAt(0) else return
+        root.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.tense_triplet_recycler)?.scrollToPosition(0)
+        updateTenseTripletAutoScrollPosition(forceTop = true)
     }
 
     private fun applyTenseTripletModeToAdapter() {
@@ -3885,7 +3931,8 @@ class MainActivity : AppCompatActivity() {
             TenseTripletMode.TEST -> TenseTripletAdapter.DisplayMode.TEST
             TenseTripletMode.VOCAB -> TenseTripletAdapter.DisplayMode.VOCAB
         }
-        adapter.notifyDataSetChanged()
+        // Single notify: drop tick/cross + TEST replacements whenever mode is applied (tab or lesson load).
+        adapter.clearMarksAndSpokenState()
     }
 
     private fun moveTenseTripletBy(delta: Int) {
@@ -3982,6 +4029,11 @@ class MainActivity : AppCompatActivity() {
         mainContent?.visibility = if (isVocab) View.GONE else View.VISIBLE
         vocabInclude?.visibility = if (isVocab) View.VISIBLE else View.GONE
         vocabBtn?.visibility = if (lessonVocabRows.isEmpty()) View.GONE else View.VISIBLE
+        // Table was GONE on V tab: force rebind when shown again so tick/cross ImageViews are not stale.
+        if (!isVocab) {
+            mainContent?.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.tense_triplet_recycler)
+                ?.post { tenseTripletAdapter?.notifyDataSetChanged() }
+        }
     }
 
     /**
@@ -5552,9 +5604,22 @@ class MainActivity : AppCompatActivity() {
         val presentMatch = if (tenseTripletShowPresent) tenseTripletSentenceMatch(row.present.english, spokenTextIgnored) else null
         val pastMatch = if (tenseTripletShowPast) tenseTripletSentenceMatch(row.past.english, spokenTextIgnored) else null
         val futureMatch = if (tenseTripletShowFuture) tenseTripletSentenceMatch(row.future.english, spokenTextIgnored) else null
-        val presentSpoken = if (presentMatch == true) MatchNormalizer.textForSpeakAndDisplay(row.present.english) else null
-        val pastSpoken = if (pastMatch == true) MatchNormalizer.textForSpeakAndDisplay(row.past.english) else null
-        val futureSpoken = if (futureMatch == true) MatchNormalizer.textForSpeakAndDisplay(row.future.english) else null
+        val (presentSpoken, pastSpoken, futureSpoken) = if (tenseTripletMode == TenseTripletMode.TEST) {
+            // TEST: user speaks all columns in one go — split utterance into one substring per column in order.
+            tenseTripletSplitSpokenIntoColumns(
+                spokenTextIgnored,
+                row,
+                tenseTripletShowPresent,
+                tenseTripletShowPast,
+                tenseTripletShowFuture
+            )
+        } else {
+            Triple(
+                if (presentMatch == true) MatchNormalizer.textForSpeakAndDisplay(row.present.english) else null,
+                if (pastMatch == true) MatchNormalizer.textForSpeakAndDisplay(row.past.english) else null,
+                if (futureMatch == true) MatchNormalizer.textForSpeakAndDisplay(row.future.english) else null
+            )
+        }
         tenseTripletAdapter?.setSpokenText(idx, presentSpoken, pastSpoken, futureSpoken)
         tenseTripletAdapter?.markCellResults(idx, presentMatch, pastMatch, futureMatch)
         val enabledMatches = listOf(presentMatch, pastMatch, futureMatch).filterNotNull()
@@ -5616,6 +5681,163 @@ class MainActivity : AppCompatActivity() {
         val spokenNorm = normalizeForMatch(spokenCombined)
         if (expectedNorm.isBlank() || spokenNorm.isBlank()) return false
         return spokenNorm.contains(expectedNorm) || expectedNorm.contains(spokenNorm)
+    }
+
+    /**
+     * Split one recognition string into present / past / future display slices by matching each expected
+     * English sentence **in speak order** (left to right). Fills gaps between good matches so each
+     * column gets a different part of the utterance.
+     */
+    private fun tenseTripletSplitSpokenIntoColumns(
+        spokenRaw: String,
+        row: TenseTripletRow,
+        showP: Boolean,
+        showPa: Boolean,
+        showF: Boolean
+    ): Triple<String?, String?, String?> {
+        val spoken = MatchNormalizer.sanitizeSpokenTextForDisplay(spokenRaw).trim()
+        if (spoken.isBlank()) return Triple(null, null, null)
+
+        data class Col(val key: String, val english: String)
+        val cols = buildList {
+            if (showP) add(Col("p", row.present.english))
+            if (showPa) add(Col("pa", row.past.english))
+            if (showF) add(Col("f", row.future.english))
+        }
+        if (cols.isEmpty()) return Triple(null, null, null)
+        if (cols.size == 1) {
+            val only = spoken
+            return when (cols[0].key) {
+                "p" -> Triple(only, null, null)
+                "pa" -> Triple(null, only, null)
+                else -> Triple(null, null, only)
+            }
+        }
+
+        val ranges = Array<IntRange?>(cols.size) { null }
+        var cursor = 0
+        for (i in cols.indices) {
+            val r = findTripletPhraseRangeSequential(spoken, cols[i].english, cursor)
+            ranges[i] = r
+            if (r != null) {
+                cursor = (r.last + 1).coerceAtMost(spoken.length)
+                while (cursor < spoken.length && spoken[cursor].isWhitespace()) cursor++
+            }
+        }
+
+        // Assign text between successful phrase matches to any column that failed (middle of utterance).
+        tenseTripletFillMissingColumnRanges(spoken, ranges)
+
+        fun textOrNull(r: IntRange?): String? {
+            if (r == null || r.isEmpty()) return null
+            val a = r.first.coerceIn(0, spoken.length)
+            val b = (r.last + 1).coerceIn(a, spoken.length)
+            return spoken.substring(a, b).trim().ifBlank { null }
+        }
+
+        val byKey = cols.mapIndexed { i, c -> c.key to ranges[i] }.toMap()
+        return Triple(
+            if (showP) textOrNull(byKey["p"]) else null,
+            if (showPa) textOrNull(byKey["pa"]) else null,
+            if (showF) textOrNull(byKey["f"]) else null
+        )
+    }
+
+    /** Finds [expected] in [spoken] starting at or after [minStart], matching word-by-word in order. */
+    private fun findTripletPhraseRangeSequential(spoken: String, expected: String, minStart: Int): IntRange? {
+        if (expected.isBlank()) return null
+        val words = expected.split(Regex("\\s+")).map { it.trim() }.filter { it.isNotBlank() }
+            .map { w -> w.trimEnd('.', ',', '!', '?', ';', ':', '"', '\'') }
+            .filter { it.isNotBlank() }
+        if (words.isEmpty()) return null
+        var firstIdx = -1
+        var pos = minStart.coerceIn(0, spoken.length)
+        for (w in words) {
+            val i = tenseTripletFindWordStart(spoken, w, pos)
+            if (i < 0) return null
+            if (firstIdx < 0) firstIdx = i
+            pos = (i + w.length).coerceAtMost(spoken.length)
+        }
+        if (firstIdx < 0) return null
+        return firstIdx until pos
+    }
+
+    private fun tenseTripletFindWordStart(spoken: String, word: String, from: Int): Int {
+        if (word.length <= 2) {
+            val m = Regex("\\b${Regex.escape(word)}\\b", RegexOption.IGNORE_CASE).find(spoken, from)
+            return m?.range?.first ?: -1
+        }
+        return spoken.indexOf(word, from, ignoreCase = true)
+    }
+
+    /**
+     * For columns where sequential match failed, use gaps between neighbours, then split prefix/suffix,
+     * so the utterance is partitioned across columns instead of repeating the full text.
+     */
+    private fun tenseTripletFillMissingColumnRanges(spoken: String, ranges: Array<IntRange?>) {
+        val n = ranges.size
+        if (n == 0) return
+        val firstNonNull = ranges.indexOfFirst { it != null }
+        if (firstNonNull < 0) {
+            tenseTripletSplitEvenCharSlices(spoken, ranges, (0 until n).toList(), 0, spoken.length)
+            return
+        }
+        var changed = true
+        while (changed) {
+            changed = false
+            for (i in 0 until n) {
+                if (ranges[i] != null) continue
+                val leftEnd = (i - 1 downTo 0).mapNotNull { ranges[it]?.last }.firstOrNull()?.plus(1)
+                val rightStart = (i + 1 until n).mapNotNull { ranges[it]?.first }.firstOrNull()
+                if (leftEnd != null && rightStart != null && rightStart > leftEnd) {
+                    ranges[i] = leftEnd until rightStart
+                    changed = true
+                }
+            }
+        }
+        if (firstNonNull > 0) {
+            val end = ranges[firstNonNull]!!.first
+            tenseTripletSplitEvenCharSlices(
+                spoken,
+                ranges,
+                (0 until firstNonNull).filter { ranges[it] == null },
+                0,
+                end
+            )
+        }
+        val lastNonNull = ranges.indexOfLast { it != null }
+        if (lastNonNull >= 0 && lastNonNull < n - 1) {
+            val start = ranges[lastNonNull]!!.last + 1
+            tenseTripletSplitEvenCharSlices(
+                spoken,
+                ranges,
+                (lastNonNull + 1 until n).filter { ranges[it] == null },
+                start,
+                spoken.length
+            )
+        }
+        // Any column still null: keep Bengali there (avoid re-splitting whole utterance over good ranges).
+    }
+
+    private fun tenseTripletSplitEvenCharSlices(
+        @Suppress("UNUSED_PARAMETER") spoken: String,
+        ranges: Array<IntRange?>,
+        colIndices: List<Int>,
+        start: Int,
+        end: Int
+    ) {
+        val targets = colIndices.filter { ranges[it] == null }
+        if (targets.isEmpty() || end <= start) return
+        val k = targets.size
+        var pos = start
+        for (i in targets.indices) {
+            val remainingCols = k - i
+            val remainingLen = end - pos
+            val len = (remainingLen + remainingCols - 1) / remainingCols
+            val e = (pos + len).coerceAtMost(end)
+            if (e > pos) ranges[targets[i]] = pos until e
+            pos = e
+        }
     }
 
     /** Update THREECOL_TABLE statistics text: session correct / session attempted / total. Capped so never exceeds total. */
@@ -8085,6 +8307,7 @@ $introHtml
         cancelVerificationTimeout()
         verificationMode = true
         verificationResultHandled = false
+        verificationLastHeardText = ""
         expectedEnglishForVerification = expectedEnglish
         isEnglishMicActive = true
         isRecording = true
@@ -8109,7 +8332,7 @@ $introHtml
                         // For lessons (including 3-col, simple-sentence, etc.), treat silence as an incorrect attempt
                         // so the same Correct/Incorrect + advance logic runs and the mic will be re-armed or the
                         // lesson will move to the next sentence instead of staying idle.
-                        handleVerificationResult(false, expected, "")
+                        handleVerificationResult(false, expected, verificationLastHeardText)
                     } else {
                         // Fallback: no expected text; just inform the user.
                         speakEnglishString(getString(R.string.no_speech_detected))

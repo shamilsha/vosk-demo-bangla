@@ -4,7 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:weightSum="100"
     android:gravity="center_vertical"
+    android:baselineAligned="false"
     android:paddingVertical="0dp"
     android:paddingHorizontal="0dp"
     android:minHeight="36dp">
@@ -12,8 +14,8 @@
     <TextView
         android:id="@+id/lesson_vocab_word"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_weight="20"
         android:background="@drawable/bg_tense_triplet_cell"
         android:gravity="center_vertical"
         android:padding="3dp"
@@ -25,8 +27,8 @@
     <TextView
         android:id="@+id/lesson_vocab_pronunciation"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_weight="20"
         android:background="@drawable/bg_tense_triplet_cell"
         android:gravity="center_vertical"
         android:padding="3dp"
@@ -38,8 +40,8 @@
     <TextView
         android:id="@+id/lesson_vocab_meaning"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="3"
+        android:layout_height="match_parent"
+        android:layout_weight="35"
         android:background="@drawable/bg_tense_triplet_cell"
         android:gravity="center_vertical"
         android:padding="3dp"
@@ -49,19 +51,23 @@
         android:maxLines="2" />
 
     <LinearLayout
+        android:id="@+id/lesson_vocab_spoken_cell"
         android:layout_width="0dp"
-        android:layout_height="36dp"
-        android:layout_weight="2"
+        android:layout_height="match_parent"
+        android:minHeight="36dp"
+        android:layout_weight="25"
         android:background="@drawable/bg_tense_triplet_cell"
         android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:baselineAligned="false"
         android:paddingHorizontal="3dp">
 
         <TextView
             android:id="@+id/lesson_vocab_spoken"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center_vertical"
             android:textColor="@color/text_primary"
             android:textSize="12sp"
             android:ellipsize="end"
@@ -72,7 +78,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:contentDescription="Pass or fail"
-            android:visibility="gone"
+            android:visibility="invisible"
             android:scaleType="fitCenter" />
     </LinearLayout>
 </LinearLayout>

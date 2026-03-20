@@ -5,12 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 /**
  * Adapter for the reusable 3-column vocabulary list (Word | Pronunciation | Meaning) in the V tab.
- * Shows tick (pass) or cross (fail) when the user has attempted the word; current row has focused background color.
+ * Shows tick (pass) or cross (fail) when the user has attempted the word. Current row is not tinted (avoids layout noise).
  */
 class LessonVocabAdapter(
     private var rows: List<LessonVocabRow>
@@ -44,12 +45,12 @@ class LessonVocabAdapter(
         holder.meaning.text = row.meaning
         val wordKey = row.word.trim().lowercase()
         holder.spoken.text = spokenPerWord[wordKey].orEmpty()
-        val isCurrent = position == currentIndex
-        if (isCurrent) {
-            holder.itemView.setBackgroundResource(R.drawable.bg_lesson_vocab_current)
-        } else {
-            holder.itemView.setBackgroundColor(Color.TRANSPARENT)
-        }
+        val cellBg = if (position == currentIndex) R.drawable.bg_tense_triplet_cell_focus else R.drawable.bg_tense_triplet_cell
+        holder.word.setBackgroundResource(cellBg)
+        holder.pronunciation.setBackgroundResource(cellBg)
+        holder.meaning.setBackgroundResource(cellBg)
+        holder.spokenCell.setBackgroundResource(cellBg)
+        holder.itemView.setBackgroundColor(Color.TRANSPARENT)
         val result = resultPerWord[wordKey]
         when (result) {
             true -> {
@@ -60,7 +61,7 @@ class LessonVocabAdapter(
                 holder.resultIcon.visibility = View.VISIBLE
                 holder.resultIcon.setImageResource(R.drawable.ic_cross)
             }
-            null -> holder.resultIcon.visibility = View.GONE
+            null -> holder.resultIcon.visibility = View.INVISIBLE
         }
     }
 
@@ -69,6 +70,13 @@ class LessonVocabAdapter(
     fun updateRows(newRows: List<LessonVocabRow>) {
         rows = newRows
         currentIndex = 0
+        notifyDataSetChanged()
+    }
+
+    /** Clear in-row tick/cross and "You said" text (e.g. when switching lesson mode tabs). Progress file is unchanged. */
+    fun clearSessionMarksAndSpoken() {
+        resultPerWord.clear()
+        spokenPerWord.clear()
         notifyDataSetChanged()
     }
 
@@ -85,7 +93,12 @@ class LessonVocabAdapter(
         if (position !in rows.indices) return
         val wordKey = rows[position].word.trim().lowercase()
         val cleaned = MatchNormalizer.sanitizeSpokenTextForDisplay(spoken).trim()
-        spokenPerWord[wordKey] = if (cleaned.isBlank()) "(no speech)" else cleaned
+        val raw = spoken.trim()
+        spokenPerWord[wordKey] = when {
+            cleaned.isNotBlank() -> cleaned
+            raw.isNotBlank() -> raw
+            else -> "(no speech)"
+        }
         notifyItemChanged(position)
     }
 
@@ -94,6 +107,7 @@ class LessonVocabAdapter(
         val pronunciation: TextView = v.findViewById(R.id.lesson_vocab_pronunciation)
         val meaning: TextView = v.findViewById(R.id.lesson_vocab_meaning)
         val spoken: TextView = v.findViewById(R.id.lesson_vocab_spoken)
+        val spokenCell: LinearLayout = v.findViewById(R.id.lesson_vocab_spoken_cell)
         val resultIcon: ImageView = v.findViewById(R.id.lesson_vocab_result_icon)
     }
 }
