@@ -3480,6 +3480,11 @@ class MainActivity : AppCompatActivity() {
             loadSimpleTenseTripletLessonFromAsset("Lessons/Tense/simple_continuous.txt", "Simple continuous triplets")
             return
         }
+        if (actionKey == "simple_perfect_triplets") {
+            if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
+            loadSimpleTenseTripletLessonFromAsset("Lessons/Tense/simple_perfect.txt", "Simple perfect triplets")
+            return
+        }
         // Simple-sentence lessons (Let, How, Who, When, etc.): keep SIMPLE_SENTENCE layout, load into two bubbles
         if (actionKey.startsWith("simple_")) {
             if (currentContentLayout != ContentLayout.SIMPLE_SENTENCE) switchContentLayout(ContentLayout.SIMPLE_SENTENCE)
@@ -3626,6 +3631,10 @@ class MainActivity : AppCompatActivity() {
             "simple_continuous_triplets" -> {
                 if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
                 loadSimpleTenseTripletLessonFromAsset("Lessons/Tense/simple_continuous.txt", "Simple continuous triplets")
+            }
+            "simple_perfect_triplets" -> {
+                if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
+                loadSimpleTenseTripletLessonFromAsset("Lessons/Tense/simple_perfect.txt", "Simple perfect triplets")
             }
 
             // ── Table Display tests ──
