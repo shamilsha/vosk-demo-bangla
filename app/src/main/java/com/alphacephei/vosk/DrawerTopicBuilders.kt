@@ -46,7 +46,8 @@ object DrawerTopicBuilders {
             Subtopic("Tenses hierarchy", "tense_diagram"),
             Subtopic("Simple tense triplets", "simple_tense_triplets", ContentLayout.TENSE_TRIPLETS),
             Subtopic("Simple continuous triplets", "simple_continuous_triplets", ContentLayout.TENSE_TRIPLETS),
-            Subtopic("Simple perfect triplets", "simple_perfect_triplets", ContentLayout.TENSE_TRIPLETS)
+            Subtopic("Simple perfect triplets", "simple_perfect_triplets", ContentLayout.TENSE_TRIPLETS),
+            Subtopic("Present negative (duplex)", "present_negative_duplex", ContentLayout.TENSE_TRIPLETS)
         )),
         Topic("Lessons", listOf(
             Subtopic("Load lesson (.txt)", "lesson_file"),

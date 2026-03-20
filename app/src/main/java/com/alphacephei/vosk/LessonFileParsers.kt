@@ -142,6 +142,43 @@ object LessonFileParsers {
     }
 
     /**
+     * Parse duplex tense file:
+     * English,Bengali Meaning,Bengali Pronunciation
+     * Every 2 consecutive lines form one row:
+     * positive, negative.
+     * Returned as TenseTripletRow with empty future cell so existing tense engine can be reused.
+     */
+    fun parseSimpleTenseDuplex(content: String): List<TenseTripletRow> {
+        val cells = mutableListOf<TenseTripletCell>()
+        stripVocabularyBlock(content).lines().forEach { line ->
+            val trimmed = line.trim()
+            if (trimmed.isEmpty() || trimmed.startsWith("#")) return@forEach
+            val parts = trimmed.split(",").map { it.trim() }
+            if (parts.size < 3) return@forEach
+            cells.add(
+                TenseTripletCell(
+                    english = parts[0],
+                    bengali = parts[1],
+                    hint = parts[2]
+                )
+            )
+        }
+        val rows = mutableListOf<TenseTripletRow>()
+        var i = 0
+        while (i + 1 < cells.size) {
+            rows.add(
+                TenseTripletRow(
+                    present = cells[i],
+                    past = cells[i + 1],
+                    future = TenseTripletCell("", "", "")
+                )
+            )
+            i += 2
+        }
+        return rows
+    }
+
+    /**
      * Parse conversation-bubble lesson file.
      * Format per line: PersonA: English,Bengali,Pronunciation  or  PersonB: English,Bengali,Pronunciation
      * Optional 5th/6th columns: A,B (practice/test pass 0 or 1).

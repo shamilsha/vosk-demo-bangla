@@ -67,6 +67,7 @@ class TenseTripletAdapter(
     override fun onBindViewHolder(holder: TripletViewHolder, position: Int) {
         val row = items[position]
         clearTextViewCompoundDrawables(holder)
+        holder.fCell.visibility = if (showFutureColumn) View.VISIBLE else View.GONE
 
         holder.pEng.text = if (showPresentColumn) colorEnglish(row.present.english, tense = Tense.PRESENT) else ""
         holder.pBn.text = if (showPresentColumn) row.present.bengali else ""

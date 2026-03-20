@@ -3485,6 +3485,11 @@ class MainActivity : AppCompatActivity() {
             loadSimpleTenseTripletLessonFromAsset("Lessons/Tense/simple_perfect.txt", "Simple perfect triplets")
             return
         }
+        if (actionKey == "present_negative_duplex") {
+            if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
+            loadSimpleTenseDuplexLessonFromAsset("Lessons/Tense/present_negative.txt", "Present negative (duplex)")
+            return
+        }
         // Simple-sentence lessons (Let, How, Who, When, etc.): keep SIMPLE_SENTENCE layout, load into two bubbles
         if (actionKey.startsWith("simple_")) {
             if (currentContentLayout != ContentLayout.SIMPLE_SENTENCE) switchContentLayout(ContentLayout.SIMPLE_SENTENCE)
@@ -3636,6 +3641,10 @@ class MainActivity : AppCompatActivity() {
                 if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
                 loadSimpleTenseTripletLessonFromAsset("Lessons/Tense/simple_perfect.txt", "Simple perfect triplets")
             }
+            "present_negative_duplex" -> {
+                if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
+                loadSimpleTenseDuplexLessonFromAsset("Lessons/Tense/present_negative.txt", "Present negative (duplex)")
+            }
 
             // ── Table Display tests ──
             "table_alphabet_sound" -> {
@@ -3784,11 +3793,7 @@ class MainActivity : AppCompatActivity() {
         clearPronunciationLessonState()
         updateLessonTopicDisplay()
 
-        val root = if (currentContentLayout == ContentLayout.TENSE_TRIPLETS && contentFrame.childCount > 0) {
-            contentFrame.getChildAt(0)
-        } else {
-            switchContentLayout(ContentLayout.TENSE_TRIPLETS)
-        }
+        val root = ensureTenseLessonRoot(R.layout.layout_tense_triplets, R.id.tense_triplet_root)
         val recycler = root.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.tense_triplet_recycler)
         if (recycler != null) {
             if (tenseTripletAdapter == null) {
@@ -3809,6 +3814,76 @@ class MainActivity : AppCompatActivity() {
         setupTenseTripletModeButtons(root)
         setupTenseTripletColumnToggles(root)
         // Keep default universal bars: top bar always visible, bottom bar remains visible for this layout.
+    }
+
+    /** Load duplex tense rows (Positive | Negative) using same tense tabs/control behavior. */
+    private fun loadSimpleTenseDuplexLessonFromAsset(assetPath: String, displayTitle: String) {
+        val content = try {
+            assets.open(assetPath).bufferedReader(StandardCharsets.UTF_8).use { it.readText() }
+        } catch (e: Exception) {
+            Toast.makeText(this, "Could not load $assetPath", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val rows = LessonFileParsers.parseSimpleTenseDuplex(content)
+        if (rows.isEmpty()) {
+            Toast.makeText(this, "No valid duplex rows in $assetPath", Toast.LENGTH_SHORT).show()
+            return
+        }
+        tenseTripletRows = rows
+        lessonVocabRows = buildTenseTripletVocabRows(rows)
+        tenseTripletMode = TenseTripletMode.LEARNING
+        tenseTripletCurrentIndex = 0
+        tenseTripletLastScrolledPosition = -1
+        tenseTripletCachedRowHeightPx = -1
+        tenseTripletShowPresent = true
+        tenseTripletShowPast = true
+        tenseTripletShowFuture = false
+        lessonName = displayTitle
+        lessonRows = null
+        clearPronunciationLessonState()
+        updateLessonTopicDisplay()
+
+        val root = ensureTenseLessonRoot(R.layout.layout_tense_duplex, R.id.tense_duplex_root)
+        val recycler = root.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.tense_triplet_recycler)
+        if (recycler != null) {
+            if (tenseTripletAdapter == null) {
+                tenseTripletAdapter = TenseTripletAdapter(tenseTripletRows)
+                recycler.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
+                recycler.adapter = tenseTripletAdapter
+            } else {
+                tenseTripletAdapter?.updateData(tenseTripletRows)
+                if (recycler.adapter !== tenseTripletAdapter) recycler.adapter = tenseTripletAdapter
+            }
+            applyTenseTripletModeToAdapter()
+            tenseTripletAdapter?.setColumnVisibility(tenseTripletShowPresent, tenseTripletShowPast, tenseTripletShowFuture)
+            tenseTripletAdapter?.setCurrentIndex(tenseTripletCurrentIndex)
+            updateTenseTripletAutoScrollPosition(forceTop = true)
+        }
+        lessonVocabAdapter?.clearSessionMarksAndSpoken()
+        setupTenseTripletModeButtons(root)
+        setupTenseTripletColumnToggles(root)
+    }
+
+    private fun ensureTenseLessonRoot(layoutRes: Int, requiredRootId: Int): View {
+        if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
+        val existing = if (contentFrame.childCount > 0) contentFrame.getChildAt(0) else null
+        if (existing != null && existing.findViewById<View>(requiredRootId) != null) return existing
+        contentFrame.removeAllViews()
+        val root = layoutInflater.inflate(layoutRes, contentFrame, false)
+        contentFrame.addView(root)
+        // Rebind in-content control bar because this custom root replace bypasses switchContentLayout() binding.
+        val activeBar = root.findViewById<View>(R.id.tense_triplet_control_actions_include)
+        controlActionsBar = activeBar
+        controlStartStopButton = activeBar?.findViewById(R.id.control_start_stop)
+        controlPauseResumeButton = activeBar?.findViewById(R.id.control_pause_resume)
+        controlPlaybackLastButton = activeBar?.findViewById(R.id.control_playback_last)
+        setupHoldToRecordPlaybackButton(controlPlaybackLastButton)
+        bindControlBarListeners()
+        findViewById<View>(R.id.control_actions_include)?.visibility = View.GONE
+        activeBar?.visibility = View.VISIBLE
+        findViewById<View>(R.id.bottom_bar)?.visibility = View.GONE
+        updateTenseTripletControlBar()
+        return root
     }
 
     private fun setupTenseTripletColumnToggles(root: View) {

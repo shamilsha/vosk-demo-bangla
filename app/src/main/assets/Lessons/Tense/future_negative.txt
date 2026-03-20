@@ -1,0 +1,40 @@
+I will eat, আমি খাব, আই উইল ইট
+I will not eat, আমি খাব না, আই উইল নট ইট
+I will go, আমি যাব, আই উইল গো
+I will not go, আমি যাব না, আই উইল নট গো
+I will see, আমি দেখব, আই উইল সী
+I will not see, আমি দেখব না, আই উইল নট সী
+I will do, আমি করব, আই উইল ডু
+I will not do, আমি করব না, আই উইল নট ডু
+I will sleep, আমি ঘুমাব, আই উইল স্লীপ
+I will not sleep, আমি ঘুমাব না, আই উইল নট স্লীপ
+I will speak, আমি কথা বলব, আই উইল স্পীক
+I will not speak, আমি কথা বলব না, আই উইল নট স্পীক
+I will read, আমি পড়ব, আই উইল রীড
+I will not read, আমি পড়ব না, আই উইল নট রীড
+I will write, আমি লিখব, আই উইল রাইট
+I will not write, আমি লিখব না, আই উইল নট রাইট
+I will work, আমি কাজ করব, আই উইল ওয়ার্ক
+I will not work, আমি কাজ করব না, আই উইল নট ওয়ার্ক
+I will come, আমি আসব, আই উইল কাম
+I will not come, আমি আসব না, আই উইল নট কাম
+I will play, আমি খেলব, আই উইল প্লেই
+I will not play, আমি খেলব না, আই উইল নট প্লেই
+I will learn, আমি শিখব, আই উইল লার্ন
+I will not learn, আমি শিখব না, আই উইল নট লার্ন
+I will drink, আমি পান করব, আই উইল ড্রিঙ্ক
+I will not drink, আমি পান করব না, আই উইল নট ড্রিঙ্ক
+I will buy, আমি কিনব, আই উইল বাই
+I will not buy, আমি কিনব না, আই উইল নট বাই
+I will take, আমি নেব, আই উইল টেক
+I will not take, আমি নেব না, আই উইল নট টেক
+I will give, আমি দেব, আই উইল গিভ
+I will not give, আমি দেব না, আই উইল নট গিভ
+I will help, আমি সাহায্য করব, আই উইল হেল্প
+I will not help, আমি সাহায্য করব না, আই উইল নট হেল্প
+I will make, আমি তৈরি করব, আই উইল মেইক
+I will not make, আমি তৈরি করব না, আই উইল নট মেইক
+I will tell, আমি বলব, আই উইল টেল
+I will not tell, আমি বলব না, আই উইল নট টেল
+I will sit, আমি বসব, আই উইল সিট
+I will not sit, আমি বসব না, আই উইল নট সিট
