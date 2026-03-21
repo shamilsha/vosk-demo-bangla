@@ -1,0 +1,21 @@
+# English sentence, Bengali meaning, Bengali pronunciation (same format as simple_adjective)
+The tea is too hot, চা খুব বেশি গরম, দ্য টি ইজ টু হট
+He is quite smart, সে বেশ বুদ্ধিমান, হী ইজ কোয়াইট স্মার্ট
+I am so happy, আমি খুব খুশি, আই সো হ্যাপি
+The water is nearly cold, পানি প্রায় ঠান্ডা, দ্য ওয়াটার ইজ নিয়ারলি কোল্ড
+The car is extremely fast, গাড়িটি অত্যন্ত দ্রুত, দ্য কার ইজ এক্সট্রিমলি ফাস্ট
+She is really beautiful, সে সত্যিই সুন্দরী, শী ইজ রিয়ালি বিউটিফুল
+The room is perfectly clean, রুমটি একদম পরিষ্কার, দ্য রুম ইজ পারফেক্টলি ক্লীন
+The dog is fairly small, কুকুরটি মোটামুটি ছোট, দ্য ডগ ইজ ফেয়ারলি স্মল
+He is remarkably tall, সে অসাধারণ লম্বা, হী ইজ রিমার্কাবলি টল
+The bag is incredibly heavy, ব্যাগটি অবিশ্বাস্যভাবে ভারী, দ্য ব্যাগ ইজ ইনক্রেডিবলি হেভি
+I am mostly busy, আমি বেশিরভাগ সময় ব্যস্ত, আই অ্যাম মোস্টলি বিজি
+You are truly kind, আপনি সত্যিই দয়ালু, ইউ আর ট্রুলি কাইন্ড
+He is absolutely strong, সে পুরোপুরি শক্তিশালী, হী ইজ অ্যাবসোলিউটলি স্ট্রং
+The apple is naturally sweet, আপেলটি স্বাভাবিকভাবেই মিষ্টি, দ্য অ্যাপল ইজ ন্যাচারালি সুইট
+The knife is dangerously sharp, ছুরিটি বিপজ্জনকভাবে ধারালো, দ্য নাইফ ইজ ডেনজারাসলি শার্প
+The road is clearly wide, রাস্তাটি স্পষ্টভাবে প্রশস্ত, দ্য রোড ইজ ক্লিয়ারলি ওয়াইড
+The book is slightly old, বইটি সামান্য পুরাতন, দ্য বুক ইজ স্লাইটলি ওল্ড
+The food is always fresh, খাবারটি সবসময় টাটকা, দ্য ফুড ইজ অলওয়েজ ফ্রেশ
+It is certainly raining, নিশ্চিতভাবেই বৃষ্টি হচ্ছে, ইট ইজ সার্টেনলি রেইনিং
+The sky is deeply blue, আকাশ গাঢ় নীল, দ্য স্কাই ইজ ডী্পলি ব্লু

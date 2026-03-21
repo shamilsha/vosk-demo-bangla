@@ -16,7 +16,10 @@ import androidx.recyclerview.widget.RecyclerView
 
 /** Adapter for tense triplet rows (Present | Past | Future). */
 class TenseTripletAdapter(
-    private var items: List<TenseTripletRow>
+    private var items: List<TenseTripletRow>,
+    private val itemLayoutResId: Int = R.layout.layout_item_tense_triplet,
+    private val alwaysShowFutureCell: Boolean = false,
+    private val adjectiveDualMode: Boolean = false
 ) : RecyclerView.Adapter<TenseTripletAdapter.TripletViewHolder>() {
     enum class DisplayMode { LEARNING, PRACTICE, TEST, VOCAB }
     var displayMode: DisplayMode = DisplayMode.LEARNING
@@ -55,7 +58,7 @@ class TenseTripletAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TripletViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.layout_item_tense_triplet, parent, false)
+            .inflate(itemLayoutResId, parent, false)
         return TripletViewHolder(view)
     }
 
@@ -67,7 +70,7 @@ class TenseTripletAdapter(
     override fun onBindViewHolder(holder: TripletViewHolder, position: Int) {
         val row = items[position]
         clearTextViewCompoundDrawables(holder)
-        holder.fCell.visibility = if (showFutureColumn) View.VISIBLE else View.GONE
+        holder.fCell.visibility = if (showFutureColumn || alwaysShowFutureCell) View.VISIBLE else View.GONE
 
         holder.pEng.text = if (showPresentColumn) colorEnglish(row.present.english, tense = Tense.PRESENT) else ""
         holder.pBn.text = if (showPresentColumn) row.present.bengali else ""
@@ -77,12 +80,49 @@ class TenseTripletAdapter(
         holder.paBn.text = if (showPastColumn) row.past.bengali else ""
         holder.paHint.text = if (showPastColumn) row.past.hint else ""
 
-        holder.fEng.text = if (showFutureColumn) colorEnglish(row.future.english, tense = Tense.FUTURE) else ""
-        holder.fBn.text = if (showFutureColumn) row.future.bengali else ""
-        holder.fHint.text = if (showFutureColumn) row.future.hint else ""
+        holder.fEng.text = if (showFutureColumn || alwaysShowFutureCell) colorEnglish(row.future.english, tense = Tense.FUTURE) else ""
+        holder.fBn.text = if (showFutureColumn || alwaysShowFutureCell) row.future.bengali else ""
+        holder.fHint.text = if (showFutureColumn || alwaysShowFutureCell) row.future.hint else ""
         val spoken = rowSpokenText[position] ?: Triple(null, null, null)
+        (holder.pBn.parent as? View)?.visibility = View.VISIBLE
+        (holder.paBn.parent as? View)?.visibility = View.VISIBLE
+        (holder.fBn.parent as? View)?.visibility = View.VISIBLE
 
-        when (displayMode) {
+        if (adjectiveDualMode) {
+            holder.pEng.text = if (showPresentColumn) row.present.bengali else ""
+            holder.pEng.visibility = View.VISIBLE
+            holder.paBn.text = row.future.english
+            holder.pHint.visibility = View.GONE
+            holder.paHint.visibility = View.GONE
+            holder.fBn.visibility = View.GONE
+            holder.fHint.visibility = View.GONE
+            holder.fEng.visibility = View.GONE
+            holder.fCell.visibility = View.GONE
+            holder.pBn.visibility = View.GONE
+            holder.paEng.visibility = View.VISIBLE
+            (holder.pBn.parent as? View)?.visibility = View.GONE
+            (holder.paBn.parent as? View)?.visibility = View.VISIBLE
+            (holder.fBn.parent as? View)?.visibility = View.GONE
+            when (displayMode) {
+                DisplayMode.LEARNING, DisplayMode.VOCAB -> {
+                    holder.paEng.visibility = View.VISIBLE
+                    holder.paBn.visibility = View.VISIBLE
+                    (holder.paBn.parent as? View)?.visibility = View.VISIBLE
+                }
+                DisplayMode.PRACTICE -> {
+                    holder.paEng.visibility = View.VISIBLE
+                    holder.paBn.visibility = View.GONE
+                    (holder.paBn.parent as? View)?.visibility = View.GONE
+                }
+                DisplayMode.TEST -> {
+                    val hasSpoken = !spoken.second.isNullOrBlank()
+                    holder.paBn.visibility = View.GONE
+                    (holder.paBn.parent as? View)?.visibility = View.GONE
+                    holder.paEng.visibility = if (hasSpoken) View.VISIBLE else View.GONE
+                    if (hasSpoken) holder.paEng.text = spoken.second
+                }
+            }
+        } else when (displayMode) {
             DisplayMode.LEARNING, DisplayMode.VOCAB -> {
                 holder.pBn.visibility = View.VISIBLE
                 holder.paBn.visibility = View.VISIBLE
@@ -118,7 +158,9 @@ class TenseTripletAdapter(
         }
         val marks = rowResultMarks[position] ?: Triple(null, null, null)
         hideAllMarks(holder)
-        if (displayMode == DisplayMode.TEST) {
+        if (adjectiveDualMode) {
+            applyResultMarkToImage(holder.paEngMark, if (showPastColumn) marks.second else null)
+        } else if (displayMode == DisplayMode.TEST) {
             applyResultMarkToImage(holder.pBnMark, if (showPresentColumn) marks.first else null)
             applyResultMarkToImage(holder.paBnMark, if (showPastColumn) marks.second else null)
             applyResultMarkToImage(holder.fBnMark, if (showFutureColumn) marks.third else null)
@@ -132,7 +174,7 @@ class TenseTripletAdapter(
         holder.pCell.setBackgroundResource(bg)
         holder.paCell.setBackgroundResource(bg)
         holder.fCell.setBackgroundResource(bg)
-        if (displayMode != DisplayMode.TEST) {
+        if (displayMode != DisplayMode.TEST && !adjectiveDualMode) {
             holder.pEngRow.visibility = View.VISIBLE
             holder.paEngRow.visibility = View.VISIBLE
             holder.fEngRow.visibility = View.VISIBLE

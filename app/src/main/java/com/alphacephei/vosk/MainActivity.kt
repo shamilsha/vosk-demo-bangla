@@ -727,6 +727,8 @@ class MainActivity : AppCompatActivity() {
     private var tenseTripletCurrentIndex: Int = 0
     private var tenseTripletControlRunning: Boolean = false
     private var tenseTripletControlPaused: Boolean = false
+    private var tenseTripletBengaliFirst: Boolean = false
+    private var tenseTripletAdjectiveDualMode: Boolean = false
     private var tenseTripletIncorrectCount: Int = 0
     private var tenseTripletShowPresent: Boolean = true
     private var tenseTripletShowPast: Boolean = true
@@ -753,6 +755,10 @@ class MainActivity : AppCompatActivity() {
     private var convBubbleLearningMode: Boolean = true
     private var convBubbleWeakOnlyFilter: Boolean = false
     private var convBubbleCurrentIndex: Int = 0
+    /** Incremented each time conversation bubble TTS starts; embedded in utterance ids so completion ignores stale callbacks. */
+    private var convBubbleTtsGeneration: Int = 0
+    private val convBubbleBengaliUtteranceRegex = Regex("^conv_bubble_bengali_(\\d+)_(\\d+)$")
+    private val convBubbleEnglishUtteranceRegex = Regex("^conv_bubble_english_(\\d+)_(\\d+)$")
     private var convBubbleSessionCorrect: Int = 0
     private var convBubbleSessionAttempted: Int = 0
     private var convBubbleIncorrectCount: Int = 0
@@ -1626,6 +1632,11 @@ class MainActivity : AppCompatActivity() {
                             "tense_triplet_p_bn" -> {
                                 runOnUiThread {
                                     if (!tenseTripletControlRunning || currentContentLayout != ContentLayout.TENSE_TRIPLETS || tenseTripletRows.isEmpty()) return@runOnUiThread
+                                    if (tenseTripletAdjectiveDualMode) {
+                                        val expected = expectedEnglishForVerification
+                                        if (!expected.isNullOrBlank()) startVerificationListening(expected)
+                                        return@runOnUiThread
+                                    }
                                     val row = tenseTripletRows.getOrNull(tenseTripletCurrentIndex.coerceIn(0, tenseTripletRows.lastIndex)) ?: return@runOnUiThread
                                     if (tenseTripletShowPast) {
                                         if (tenseTripletMode == TenseTripletMode.TEST) {
@@ -1652,6 +1663,11 @@ class MainActivity : AppCompatActivity() {
                             "tense_triplet_pa_eng" -> {
                                 runOnUiThread {
                                     if (!tenseTripletControlRunning || currentContentLayout != ContentLayout.TENSE_TRIPLETS || tenseTripletRows.isEmpty()) return@runOnUiThread
+                                    if (tenseTripletAdjectiveDualMode) {
+                                        val expected = expectedEnglishForVerification
+                                        if (!expected.isNullOrBlank()) startVerificationListening(expected)
+                                        return@runOnUiThread
+                                    }
                                     val row = tenseTripletRows.getOrNull(tenseTripletCurrentIndex.coerceIn(0, tenseTripletRows.lastIndex)) ?: return@runOnUiThread
                                     if (tenseTripletShowPast) {
                                         textToSpeech?.setLanguage(Locale("bn"))
@@ -1706,62 +1722,6 @@ class MainActivity : AppCompatActivity() {
                                     if (!tenseTripletControlRunning || currentContentLayout != ContentLayout.TENSE_TRIPLETS) return@runOnUiThread
                                     val expected = expectedEnglishForVerification
                                     if (!expected.isNullOrBlank()) startVerificationListening(expected)
-                                }
-                            }
-                            "conv_bubble_bengali" -> {
-                                runOnUiThread {
-                                    if (isDestroyed || currentContentLayout != ContentLayout.CONVERSATION_BUBBLES) return@runOnUiThread
-                                    // Test role-play: app (A) just spoke; no compare. If next is A again, speak it; only if next is B, listen and compare.
-                                    if (convBubbleMode == ConversationMode.TEST) {
-                                        convBubbleAdapter?.revealEnglishForAppSpoke(convBubbleCurrentIndex.coerceIn(0, convBubbleRows.lastIndex))
-                                        val nextIdx = convBubbleCurrentIndex + 1
-                                        val nextRow = convBubbleRows.getOrNull(nextIdx)
-                                        if (nextRow == null) {
-                                            convBubbleControlRunning = false
-                                            convBubbleControlPaused = false
-                                            updateConvBubbleControlBar()
-                                            return@runOnUiThread
-                                        }
-                                        if (isConvBubbleRowAppByInitiator(nextRow, nextIdx)) {
-                                            // Consecutive app bubble: speak next (no compare)
-                                            convBubbleCurrentIndex = nextIdx
-                                            convBubbleAdapter?.setCurrentIndex(convBubbleCurrentIndex)
-                                            updateConvBubbleRowPositionText()
-                                            speakConvBubbleCurrent()
-                                        } else {
-                                            // Next is user: move focus to user's bubble, then listen and compare
-                                            convBubbleCurrentIndex = nextIdx
-                                            convBubbleAdapter?.setCurrentIndex(convBubbleCurrentIndex)
-                                            updateConvBubbleRowPositionText()
-                                            convBubbleListeningForRowIndex = nextIdx
-                                            startVerificationListening(nextRow.english)
-                                        }
-                                        return@runOnUiThread
-                                    }
-                                    val currentRow = convBubbleRows.getOrNull(
-                                        convBubbleCurrentIndex.coerceIn(0, (convBubbleRows.size - 1).coerceAtLeast(0))
-                                    ) ?: return@runOnUiThread
-                                    val expected = currentRow.english
-                                    // Practice: speak Bengali only, then listen. Learning: speak English then listen.
-                                    if (!convBubbleLearningMode) {
-                                        startVerificationListening(expected)
-                                    } else if (!expected.isNullOrBlank() && ttsReady && textToSpeech != null) {
-                                        textToSpeech?.setLanguage(Locale.US)
-                                        textToSpeech?.speak(MatchNormalizer.textForSpeakAndDisplay(expected), TextToSpeech.QUEUE_FLUSH, null, "conv_bubble_english")
-                                    } else {
-                                        startVerificationListening(expected)
-                                    }
-                                }
-                            }
-                            "conv_bubble_english" -> {
-                                runOnUiThread {
-                                    val expected = convBubbleRows.getOrNull(
-                                        convBubbleCurrentIndex.coerceIn(0, (convBubbleRows.size - 1).coerceAtLeast(0))
-                                    )?.english
-                                    // Learning only: after app spoke English, listen for user to repeat
-                                    if (expected != null && !isDestroyed && currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleLearningMode) {
-                                        startVerificationListening(expected)
-                                    }
                                 }
                             }
                             "lesson_verify" -> {
@@ -1878,6 +1838,13 @@ class MainActivity : AppCompatActivity() {
                                 }
                             }
                         }
+                        // Conversation bubble TTS: ids are conv_bubble_{bengali|english}_{rowIdx}_{generation} — handle outside when() so stale callbacks are ignored.
+                        if (utteranceId != null && utteranceId.startsWith("conv_bubble_bengali_")) {
+                            runOnUiThread { handleConvBubbleBengaliUtteranceFinished(utteranceId) }
+                        }
+                        if (utteranceId != null && utteranceId.startsWith("conv_bubble_english_")) {
+                            runOnUiThread { handleConvBubbleEnglishUtteranceFinished(utteranceId) }
+                        }
                         // Track segment progress for resume: "intro_0", "intro_1", etc.
                         if (utteranceId != null && utteranceId.startsWith("intro_") && utteranceId != "intro_done") {
                             val idx = utteranceId.removePrefix("intro_").toIntOrNull()
@@ -1950,56 +1917,11 @@ class MainActivity : AppCompatActivity() {
                                 }
                             }
                         }
-                        if (utteranceId == "conv_bubble_bengali") {
-                            runOnUiThread {
-                                if (isDestroyed || currentContentLayout != ContentLayout.CONVERSATION_BUBBLES) return@runOnUiThread
-                                if (convBubbleMode == ConversationMode.TEST) {
-                                    convBubbleAdapter?.revealEnglishForAppSpoke(convBubbleCurrentIndex.coerceIn(0, convBubbleRows.lastIndex))
-                                    val nextIdx = convBubbleCurrentIndex + 1
-                                    val nextRow = convBubbleRows.getOrNull(nextIdx)
-                                    if (nextRow == null) {
-                                        convBubbleControlRunning = false
-                                        convBubbleControlPaused = false
-                                        updateConvBubbleControlBar()
-                                        return@runOnUiThread
-                                    }
-                                    if (isConvBubbleRowAppByInitiator(nextRow, nextIdx)) {
-                                        convBubbleCurrentIndex = nextIdx
-                                        convBubbleAdapter?.setCurrentIndex(convBubbleCurrentIndex)
-                                        updateConvBubbleRowPositionText()
-                                        speakConvBubbleCurrent()
-                                    } else {
-                                        convBubbleCurrentIndex = nextIdx
-                                        convBubbleAdapter?.setCurrentIndex(convBubbleCurrentIndex)
-                                        updateConvBubbleRowPositionText()
-                                        convBubbleListeningForRowIndex = nextIdx
-                                        startVerificationListening(nextRow.english)
-                                    }
-                                    return@runOnUiThread
-                                }
-                                val currentRow = convBubbleRows.getOrNull(
-                                    convBubbleCurrentIndex.coerceIn(0, (convBubbleRows.size - 1).coerceAtLeast(0))
-                                ) ?: return@runOnUiThread
-                                val expected = currentRow.english
-                                if (!convBubbleLearningMode) {
-                                    startVerificationListening(expected)
-                                } else if (!expected.isNullOrBlank() && ttsReady && textToSpeech != null) {
-                                    textToSpeech?.setLanguage(Locale.US)
-                                    textToSpeech?.speak(MatchNormalizer.textForSpeakAndDisplay(expected), TextToSpeech.QUEUE_FLUSH, null, "conv_bubble_english")
-                                } else {
-                                    startVerificationListening(expected)
-                                }
-                            }
+                        if (utteranceId != null && utteranceId.startsWith("conv_bubble_bengali_")) {
+                            runOnUiThread { handleConvBubbleBengaliUtteranceFinished(utteranceId) }
                         }
-                        if (utteranceId == "conv_bubble_english") {
-                            runOnUiThread {
-                                val expected = convBubbleRows.getOrNull(
-                                    convBubbleCurrentIndex.coerceIn(0, (convBubbleRows.size - 1).coerceAtLeast(0))
-                                )?.english
-                                if (expected != null && !isDestroyed && currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleLearningMode) {
-                                    startVerificationListening(expected)
-                                }
-                            }
+                        if (utteranceId != null && utteranceId.startsWith("conv_bubble_english_")) {
+                            runOnUiThread { handleConvBubbleEnglishUtteranceFinished(utteranceId) }
                         }
                         if (utteranceId == "lesson_verify_bengali") {
                             runOnUiThread {
@@ -3458,14 +3380,13 @@ class MainActivity : AppCompatActivity() {
         // CONVERSATION_BUBBLES (Person A / Person B bubble format)
         val convBubbleAssetPath = conversationBubbleLessonAssetPaths[actionKey]
         if (convBubbleAssetPath != null) {
-            if (currentContentLayout != ContentLayout.CONVERSATION_BUBBLES) switchContentLayout(ContentLayout.CONVERSATION_BUBBLES)
+            // Layout switch happens inside loader only after file parses successfully (avoids empty shell + bars).
             loadConversationBubbleLesson(convBubbleAssetPath, actionKey, subtopic.title)
             return
         }
         // THREECOL_TABLE lessons (so e.g. simple_where uses 3col layout, not simple-sentence)
         val threeColAssetPath = threeColLessonAssetPaths[actionKey]
         if (threeColAssetPath != null) {
-            if (currentContentLayout != ContentLayout.THREECOL_TABLE) switchContentLayout(ContentLayout.THREECOL_TABLE)
             loadThreeColLessonFromAsset(threeColAssetPath, actionKey, subtopic.title)
             return
         }
@@ -3513,6 +3434,19 @@ class MainActivity : AppCompatActivity() {
         if (actionKey == "perfect_question_duplex") {
             if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
             loadSimpleTenseDuplexLessonFromAsset("Lessons/Tense/perfect_question.txt", "Perfect question")
+            return
+        }
+        // Adjective-style lessons: load parses file first; loader switches to TENSE_TRIPLETS only after valid rows (avoids empty shell + bars).
+        if (actionKey == "simple_adjective_dual") {
+            loadSimpleAdjectiveDualLessonFromAsset("Lessons/Adjective/simple_adjective.txt", "Simple adjective")
+            return
+        }
+        if (actionKey == "simple_adverb_dual") {
+            loadSimpleAdjectiveDualLessonFromAsset("Lessons/Adjective/simple_adverb.txt", "Simple adverb")
+            return
+        }
+        if (actionKey == "simple_preposition_dual") {
+            loadSimpleAdjectiveDualLessonFromAsset("Lessons/Adjective/simple_preposition.txt", "Simple preposition")
             return
         }
         // Simple-sentence lessons (Let, How, Who, When, etc.): keep SIMPLE_SENTENCE layout, load into two bubbles
@@ -3833,6 +3767,8 @@ class MainActivity : AppCompatActivity() {
         tenseTripletShowPresent = true
         tenseTripletShowPast = true
         tenseTripletShowFuture = true
+        tenseTripletBengaliFirst = false
+        tenseTripletAdjectiveDualMode = false
         lessonName = displayTitle
         lessonRows = null
         clearPronunciationLessonState()
@@ -3841,14 +3777,9 @@ class MainActivity : AppCompatActivity() {
         val root = ensureTenseLessonRoot(R.layout.layout_tense_triplets, R.id.tense_triplet_root)
         val recycler = root.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.tense_triplet_recycler)
         if (recycler != null) {
-            if (tenseTripletAdapter == null) {
-                tenseTripletAdapter = TenseTripletAdapter(tenseTripletRows)
-                recycler.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
-                recycler.adapter = tenseTripletAdapter
-            } else {
-                tenseTripletAdapter?.updateData(tenseTripletRows)
-                if (recycler.adapter !== tenseTripletAdapter) recycler.adapter = tenseTripletAdapter
-            }
+            tenseTripletAdapter = TenseTripletAdapter(tenseTripletRows, R.layout.layout_item_tense_triplet, alwaysShowFutureCell = false, adjectiveDualMode = false)
+            recycler.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
+            recycler.adapter = tenseTripletAdapter
             applyTenseTripletModeToAdapter()
             tenseTripletAdapter?.setColumnVisibility(tenseTripletShowPresent, tenseTripletShowPast, tenseTripletShowFuture)
             tenseTripletAdapter?.setCurrentIndex(tenseTripletCurrentIndex)
@@ -3883,6 +3814,8 @@ class MainActivity : AppCompatActivity() {
         tenseTripletShowPresent = true
         tenseTripletShowPast = true
         tenseTripletShowFuture = false
+        tenseTripletBengaliFirst = false
+        tenseTripletAdjectiveDualMode = false
         lessonName = displayTitle
         lessonRows = null
         clearPronunciationLessonState()
@@ -3891,14 +3824,9 @@ class MainActivity : AppCompatActivity() {
         val root = ensureTenseLessonRoot(R.layout.layout_tense_duplex, R.id.tense_duplex_root)
         val recycler = root.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.tense_triplet_recycler)
         if (recycler != null) {
-            if (tenseTripletAdapter == null) {
-                tenseTripletAdapter = TenseTripletAdapter(tenseTripletRows)
-                recycler.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
-                recycler.adapter = tenseTripletAdapter
-            } else {
-                tenseTripletAdapter?.updateData(tenseTripletRows)
-                if (recycler.adapter !== tenseTripletAdapter) recycler.adapter = tenseTripletAdapter
-            }
+            tenseTripletAdapter = TenseTripletAdapter(tenseTripletRows, R.layout.layout_item_tense_triplet, alwaysShowFutureCell = false, adjectiveDualMode = false)
+            recycler.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
+            recycler.adapter = tenseTripletAdapter
             applyTenseTripletModeToAdapter()
             tenseTripletAdapter?.setColumnVisibility(tenseTripletShowPresent, tenseTripletShowPast, tenseTripletShowFuture)
             tenseTripletAdapter?.setCurrentIndex(tenseTripletCurrentIndex)
@@ -3909,10 +3837,59 @@ class MainActivity : AppCompatActivity() {
         setupTenseTripletColumnToggles(root)
     }
 
-    private fun ensureTenseLessonRoot(layoutRes: Int, requiredRootId: Int): View {
+    private fun loadSimpleAdjectiveDualLessonFromAsset(assetPath: String, displayTitle: String) {
+        val content = try {
+            assets.open(assetPath).bufferedReader(StandardCharsets.UTF_8).use { it.readText() }
+        } catch (e: Exception) {
+            Toast.makeText(this, "Could not load $assetPath", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val rows = LessonFileParsers.parseSimpleAdjectiveDual(content)
+        if (rows.isEmpty()) {
+            Toast.makeText(this, "No valid rows in $assetPath", Toast.LENGTH_SHORT).show()
+            return
+        }
+        tenseTripletRows = rows
+        lessonVocabRows = buildTenseTripletVocabRows(rows)
+        tenseTripletMode = TenseTripletMode.LEARNING
+        tenseTripletCurrentIndex = 0
+        tenseTripletLastScrolledPosition = -1
+        tenseTripletCachedRowHeightPx = -1
+        tenseTripletShowPresent = true
+        tenseTripletShowPast = true
+        tenseTripletShowFuture = false
+        tenseTripletBengaliFirst = true
+        tenseTripletAdjectiveDualMode = true
+        lessonName = displayTitle
+        lessonRows = null
+        clearPronunciationLessonState()
+        updateLessonTopicDisplay()
+
+        val root = ensureTenseLessonRoot(R.layout.layout_tense_adjective_dual, R.id.tense_adjective_dual_root, forceReplace = true)
+        val recycler = root.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.tense_triplet_recycler)
+        if (recycler != null) {
+            tenseTripletAdapter = TenseTripletAdapter(
+                tenseTripletRows,
+                R.layout.layout_item_tense_adjective_dual,
+                alwaysShowFutureCell = true,
+                adjectiveDualMode = true
+            )
+            recycler.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
+            recycler.adapter = tenseTripletAdapter
+            applyTenseTripletModeToAdapter()
+            tenseTripletAdapter?.setColumnVisibility(tenseTripletShowPresent, tenseTripletShowPast, tenseTripletShowFuture)
+            tenseTripletAdapter?.setCurrentIndex(tenseTripletCurrentIndex)
+            updateTenseTripletAutoScrollPosition(forceTop = true)
+        }
+        lessonVocabAdapter?.clearSessionMarksAndSpoken()
+        setupTenseTripletModeButtons(root)
+        setupTenseTripletColumnToggles(root)
+    }
+
+    private fun ensureTenseLessonRoot(layoutRes: Int, requiredRootId: Int, forceReplace: Boolean = false): View {
         if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
         val existing = if (contentFrame.childCount > 0) contentFrame.getChildAt(0) else null
-        if (existing != null && existing.findViewById<View>(requiredRootId) != null) return existing
+        if (!forceReplace && existing != null && existing.findViewById<View>(requiredRootId) != null) return existing
         contentFrame.removeAllViews()
         val root = layoutInflater.inflate(layoutRes, contentFrame, false)
         contentFrame.addView(root)
@@ -4194,6 +4171,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "No rows in $assetPath", Toast.LENGTH_SHORT).show()
             return
         }
+        if (currentContentLayout != ContentLayout.THREECOL_TABLE) switchContentLayout(ContentLayout.THREECOL_TABLE)
         threeColCurrentLessonKey = lessonKey
         threeColBaseRows = rows
         if (masterWordListMap == null) {
@@ -4269,6 +4247,10 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "No rows in $assetPath", Toast.LENGTH_SHORT).show()
             return
         }
+        // Always re-inflate bubble shell when loading a lesson so switching e.g. First meeting → Second lesson
+        // cannot leave a stale RecyclerView / tab visibility (empty area with bars still visible).
+        switchContentLayout(ContentLayout.CONVERSATION_BUBBLES)
+        convBubbleAdapter = null
         convBubbleCurrentLessonKey = lessonKey
         convBubbleBaseRows = rows
         val assetMaster = LessonFileParsers.loadMasterWordList(assets)
@@ -4313,14 +4295,9 @@ class MainActivity : AppCompatActivity() {
             val root = contentFrame.getChildAt(0)
             val recycler = root.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.conv_bubble_recycler)
             if (recycler != null) {
-                if (convBubbleAdapter == null) {
-                    convBubbleAdapter = ConversationBubbleAdapter(convBubbleRows)
-                    recycler.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
-                    recycler.adapter = convBubbleAdapter
-                } else {
-                    convBubbleAdapter?.updateData(convBubbleRows)
-                    if (recycler.adapter !== convBubbleAdapter) recycler.adapter = convBubbleAdapter
-                }
+                convBubbleAdapter = ConversationBubbleAdapter(convBubbleRows)
+                recycler.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
+                recycler.adapter = convBubbleAdapter
                 recycler.setPadding(0, 0, 0, 0)
                 recycler.clipToPadding = false
                 convBubbleAdapter?.learningMode = convBubbleLearningMode
@@ -4345,6 +4322,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 })
             }
+            root.findViewById<android.widget.Switch>(R.id.conv_bubble_weak_only)?.isChecked = convBubbleWeakOnlyFilter
             setupConvBubbleModeButtons(root)
             updateConvBubbleStats()
             updateConvBubbleRowPositionText()
@@ -4816,12 +4794,15 @@ class MainActivity : AppCompatActivity() {
         val row = convBubbleRows[idx]
         convBubbleAdapter?.setCurrentIndex(idx)
         textToSpeech?.stop()
+        convBubbleTtsGeneration++
+        val gen = convBubbleTtsGeneration
+        val utteranceBengali = "conv_bubble_bengali_${idx}_$gen"
         if (convBubbleMode == ConversationMode.TEST) {
             if (isConvBubbleRowAppByInitiator(row, idx)) {
                 // App's line: speak English (no compare for app)
                 expectedEnglishForVerification = convBubbleRows.getOrNull(idx + 1)?.english
                 textToSpeech?.setLanguage(Locale.US)
-                textToSpeech?.speak(MatchNormalizer.textForSpeakAndDisplay(row.english), TextToSpeech.QUEUE_FLUSH, null, "conv_bubble_bengali")
+                textToSpeech?.speak(MatchNormalizer.textForSpeakAndDisplay(row.english), TextToSpeech.QUEUE_FLUSH, null, utteranceBengali)
             } else {
                 // User's line: don't speak, start listening and compare
                 expectedEnglishForVerification = row.english
@@ -4832,7 +4813,73 @@ class MainActivity : AppCompatActivity() {
         }
         expectedEnglishForVerification = row.english
         textToSpeech?.setLanguage(Locale("bn"))
-        textToSpeech?.speak(row.bengali, TextToSpeech.QUEUE_FLUSH, null, "conv_bubble_bengali")
+        textToSpeech?.speak(row.bengali, TextToSpeech.QUEUE_FLUSH, null, utteranceBengali)
+    }
+
+    /** After Bengali (or TEST app English) finishes; [utteranceId] encodes row index + generation. */
+    private fun handleConvBubbleBengaliUtteranceFinished(utteranceId: String) {
+        if (isDestroyed || currentContentLayout != ContentLayout.CONVERSATION_BUBBLES) return
+        val m = convBubbleBengaliUtteranceRegex.matchEntire(utteranceId) ?: return
+        val rowIdx = m.groupValues[1].toInt()
+        val gen = m.groupValues[2].toInt()
+        if (gen != convBubbleTtsGeneration) return
+        // Test role-play: app (A) just spoke; no compare. If next is A again, speak it; only if next is B, listen and compare.
+        if (convBubbleMode == ConversationMode.TEST) {
+            convBubbleAdapter?.revealEnglishForAppSpoke(rowIdx.coerceIn(0, convBubbleRows.lastIndex))
+            val nextIdx = rowIdx + 1
+            val nextRow = convBubbleRows.getOrNull(nextIdx)
+            if (nextRow == null) {
+                convBubbleControlRunning = false
+                convBubbleControlPaused = false
+                updateConvBubbleControlBar()
+                return
+            }
+            if (isConvBubbleRowAppByInitiator(nextRow, nextIdx)) {
+                convBubbleCurrentIndex = nextIdx
+                convBubbleAdapter?.setCurrentIndex(convBubbleCurrentIndex)
+                updateConvBubbleRowPositionText()
+                speakConvBubbleCurrent()
+            } else {
+                convBubbleCurrentIndex = nextIdx
+                convBubbleAdapter?.setCurrentIndex(convBubbleCurrentIndex)
+                updateConvBubbleRowPositionText()
+                convBubbleListeningForRowIndex = nextIdx
+                startVerificationListening(nextRow.english)
+            }
+            return
+        }
+        val currentRow = convBubbleRows.getOrNull(
+            rowIdx.coerceIn(0, (convBubbleRows.size - 1).coerceAtLeast(0))
+        ) ?: return
+        val expected = currentRow.english
+        // Practice: speak Bengali only, then listen. Learning: speak English then listen.
+        if (!convBubbleLearningMode) {
+            startVerificationListening(expected)
+        } else if (!expected.isNullOrBlank() && ttsReady && textToSpeech != null) {
+            textToSpeech?.setLanguage(Locale.US)
+            textToSpeech?.speak(
+                MatchNormalizer.textForSpeakAndDisplay(expected),
+                TextToSpeech.QUEUE_FLUSH,
+                null,
+                "conv_bubble_english_${rowIdx}_$gen"
+            )
+        } else {
+            startVerificationListening(expected)
+        }
+    }
+
+    /** Learning mode: after English line finishes, listen for user to repeat. */
+    private fun handleConvBubbleEnglishUtteranceFinished(utteranceId: String) {
+        val m = convBubbleEnglishUtteranceRegex.matchEntire(utteranceId) ?: return
+        val rowIdx = m.groupValues[1].toInt()
+        val gen = m.groupValues[2].toInt()
+        if (gen != convBubbleTtsGeneration) return
+        val expected = convBubbleRows.getOrNull(
+            rowIdx.coerceIn(0, (convBubbleRows.size - 1).coerceAtLeast(0))
+        )?.english
+        if (expected != null && !isDestroyed && currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleLearningMode) {
+            startVerificationListening(expected)
+        }
     }
 
     private fun onConvBubbleVerificationResult(match: Boolean, said: String) {
@@ -5628,7 +5675,7 @@ class MainActivity : AppCompatActivity() {
         textToSpeech?.stop()
         when {
             tenseTripletShowPresent -> {
-                if (tenseTripletMode == TenseTripletMode.TEST) {
+                if (tenseTripletMode == TenseTripletMode.TEST || tenseTripletBengaliFirst) {
                     textToSpeech?.setLanguage(Locale("bn"))
                     textToSpeech?.speak(row.present.bengali, TextToSpeech.QUEUE_FLUSH, null, "tense_triplet_p_bn")
                 } else {
@@ -5730,6 +5777,58 @@ class MainActivity : AppCompatActivity() {
         val legacyMatchIgnored = match
         val idx = tenseTripletCurrentIndex.coerceIn(0, tenseTripletRows.lastIndex)
         val row = tenseTripletRows[idx]
+        if (tenseTripletAdjectiveDualMode) {
+            val englishOnlyMatch = tenseTripletSentenceMatchStrict(row.past.english, spokenTextIgnored)
+            val spokenEnglish = if (tenseTripletMode == TenseTripletMode.TEST) spokenTextIgnored else if (englishOnlyMatch) MatchNormalizer.textForSpeakAndDisplay(row.past.english) else null
+            tenseTripletAdapter?.setSpokenText(idx, null, spokenEnglish, null)
+            tenseTripletAdapter?.markCellResults(idx, null, englishOnlyMatch, null)
+            if (tenseTripletMode != TenseTripletMode.TEST) {
+                speakEnglishString(if (englishOnlyMatch) getString(R.string.correct) else getString(R.string.incorrect))
+            } else if (!englishOnlyMatch) {
+                speakEnglishString("try again")
+            }
+            if (englishOnlyMatch) {
+                tenseTripletIncorrectCount = 0
+                if (tenseTripletCurrentIndex < tenseTripletRows.lastIndex) {
+                    tenseTripletCurrentIndex++
+                    tenseTripletAdapter?.setCurrentIndex(tenseTripletCurrentIndex)
+                    updateTenseTripletAutoScrollPosition()
+                    if (tenseTripletControlRunning) {
+                        verificationHandler.postDelayed({
+                            if (!isDestroyed && currentContentLayout == ContentLayout.TENSE_TRIPLETS && tenseTripletControlRunning) speakTenseTripletCurrent()
+                        }, 1500)
+                    }
+                } else {
+                    tenseTripletControlRunning = false
+                    tenseTripletControlPaused = false
+                    updateTenseTripletControlBar()
+                }
+            } else {
+                tenseTripletIncorrectCount++
+                if (tenseTripletControlRunning) {
+                    if (tenseTripletIncorrectCount >= 3) {
+                        tenseTripletIncorrectCount = 0
+                        if (tenseTripletCurrentIndex < tenseTripletRows.lastIndex) {
+                            tenseTripletCurrentIndex++
+                            tenseTripletAdapter?.setCurrentIndex(tenseTripletCurrentIndex)
+                            updateTenseTripletAutoScrollPosition()
+                            verificationHandler.postDelayed({
+                                if (!isDestroyed && currentContentLayout == ContentLayout.TENSE_TRIPLETS && tenseTripletControlRunning) speakTenseTripletCurrent()
+                            }, 1500)
+                        } else {
+                            tenseTripletControlRunning = false
+                            tenseTripletControlPaused = false
+                            updateTenseTripletControlBar()
+                        }
+                    } else {
+                        verificationHandler.postDelayed({
+                            if (!isDestroyed && currentContentLayout == ContentLayout.TENSE_TRIPLETS && tenseTripletControlRunning) speakTenseTripletCurrent()
+                        }, 1500)
+                    }
+                }
+            }
+            return
+        }
         val presentMatch = if (tenseTripletShowPresent) tenseTripletSentenceMatch(row.present.english, spokenTextIgnored) else null
         val pastMatch = if (tenseTripletShowPast) tenseTripletSentenceMatch(row.past.english, spokenTextIgnored) else null
         val futureMatch = if (tenseTripletShowFuture) tenseTripletSentenceMatch(row.future.english, spokenTextIgnored) else null
@@ -5810,6 +5909,15 @@ class MainActivity : AppCompatActivity() {
         val spokenNorm = normalizeForMatch(spokenCombined)
         if (expectedNorm.isBlank() || spokenNorm.isBlank()) return false
         return spokenNorm.contains(expectedNorm) || expectedNorm.contains(spokenNorm)
+    }
+
+    /** Adjective mode match: spoken may be longer, but must contain full expected sentence. */
+    private fun tenseTripletSentenceMatchStrict(expectedSentence: String, spokenCombined: String): Boolean {
+        if (expectedSentence.isBlank() || spokenCombined.isBlank()) return false
+        val expectedNorm = normalizeForMatch(expectedSentence)
+        val spokenNorm = normalizeForMatch(spokenCombined)
+        if (expectedNorm.isBlank() || spokenNorm.isBlank()) return false
+        return spokenNorm.contains(expectedNorm)
     }
 
     /**

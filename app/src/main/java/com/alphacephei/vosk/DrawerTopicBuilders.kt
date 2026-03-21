@@ -36,7 +36,10 @@ object DrawerTopicBuilders {
         )),
         Topic("Grammar", listOf(
             Subtopic("Parts of speech", "grammar_pos"),
-            Subtopic("SVO sentences", "grammar_svo")
+            Subtopic("SVO sentences", "grammar_svo"),
+            Subtopic("Simple adjective", "simple_adjective_dual", ContentLayout.TENSE_TRIPLETS),
+            Subtopic("Simple adverb", "simple_adverb_dual", ContentLayout.TENSE_TRIPLETS),
+            Subtopic("Simple preposition", "simple_preposition_dual", ContentLayout.TENSE_TRIPLETS)
         )),
         Topic("Diagrams", listOf(
             Subtopic("1-to-3 (Grammar Rules)", "diagram_1to3"),

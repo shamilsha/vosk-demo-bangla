@@ -179,6 +179,35 @@ object LessonFileParsers {
     }
 
     /**
+     * Parse adjective lesson lines:
+     * English,Bengali Meaning,Bengali Pronunciation
+     * Rendered as one effective row:
+     * - present cell = Bengali meaning (col 1)
+     * - past cell = English sentence (col 2)
+     * - future cell = pronunciation (full-width row below)
+     */
+    fun parseSimpleAdjectiveDual(content: String): List<TenseTripletRow> {
+        val rows = mutableListOf<TenseTripletRow>()
+        stripVocabularyBlock(content).lines().forEach { line ->
+            val trimmed = line.trim()
+            if (trimmed.isEmpty() || trimmed.startsWith("#")) return@forEach
+            val parts = trimmed.split(",").map { it.trim() }
+            if (parts.size < 3) return@forEach
+            val english = parts[0]
+            val bengali = parts[1]
+            val pronunciation = parts[2]
+            rows.add(
+                TenseTripletRow(
+                    present = TenseTripletCell(english = "", bengali = bengali, hint = ""),
+                    past = TenseTripletCell(english = english, bengali = english, hint = ""),
+                    future = TenseTripletCell(english = pronunciation, bengali = pronunciation, hint = "")
+                )
+            )
+        }
+        return rows
+    }
+
+    /**
      * Parse conversation-bubble lesson file.
      * Format per line: PersonA: English,Bengali,Pronunciation  or  PersonB: English,Bengali,Pronunciation
      * Optional 5th/6th columns: A,B (practice/test pass 0 or 1).
