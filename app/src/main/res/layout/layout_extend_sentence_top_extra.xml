@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Part prev/next — inflated into lesson_base_top_extra; mode bar is hidden for this lesson. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/extend_sentence_top_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingHorizontal="4dp"
+    android:paddingVertical="6dp"
+    android:background="@color/lesson_topic_bar_background">
+
+    <ImageButton
+        android:id="@+id/extend_sentence_prev_group"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Previous part"
+        android:src="@drawable/ic_mode_bar_triangle_left"
+        android:scaleType="centerInside"
+        android:padding="4dp"
+        app:tint="@null" />
+
+    <TextView
+        android:id="@+id/extend_sentence_group_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:textColor="@color/lesson_topic_bar_text"
+        android:text="Part 1 / 1" />
+
+    <ImageButton
+        android:id="@+id/extend_sentence_next_group"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/next"
+        android:src="@drawable/ic_mode_bar_triangle_right"
+        android:scaleType="centerInside"
+        android:padding="4dp"
+        app:tint="@null" />
+</LinearLayout>

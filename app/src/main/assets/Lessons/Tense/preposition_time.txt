@@ -1,0 +1,41 @@
+At
+নির্দিষ্ট সময় বোঝাতে
+I wake up at 7 AM. 
+The movie starts at night.
+এই বাক্যে At ব্যবহার করে একটি Specific Time বা নির্দিষ্ট সময় বোঝানো হয়েছে। এখানে I হলো Subject এবং Wake up হলো Verb।
+
+On
+দিন এবং তারিখ বোঝাতে
+I will meet you on Monday. 
+My birthday is on March 21st.
+এখানে On ব্যবহার করে সপ্তাহের নির্দিষ্ট দিন বা তারিখ বোঝানো হয়েছে। এই বাক্যে Meet হলো Verb।
+
+In
+দীর্ঘ সময় বা মাস/বছর বোঝাতে
+It is cold in winter. 
+I was born in 2005.
+এই বাক্যে In ব্যবহার করে একটি দীর্ঘ সময় যেমন ঋতু বা বছর বোঝানো হয়েছে। এখানে Winter এবং 2005 হলো সময়ের ব্যাপ্তি।
+
+Since
+অতীতের নির্দিষ্ট সময় থেকে শুরু বোঝাতে
+It has been raining since morning. 
+I have lived here since 2010.
+এখানে Since ব্যবহার করে অতীতের একটি নির্দিষ্ট পয়েন্ট থেকে কাজ শুরু হওয়া বোঝানো হয়েছে। 
+
+For
+সময়ের ব্যাপ্তি বা কতক্ষণ ধরে বোঝাতে
+I waited for two hours. 
+He has been ill for three days.
+এই বাক্যে For ব্যবহার করে একটি Duration বা কতক্ষণ ধরে কাজটি চলছে তা বোঝানো হয়েছে। এখানে Wait হলো Verb।
+
+During
+কোনো ঘটনার চলাকালীন সময় বোঝাতে
+Don't talk during the exam. 
+We stayed inside during the storm.
+এখানে During ব্যবহার করে একটি নির্দিষ্ট ইভেন্ট বা ঘটনার চলাকালীন সময়কে বোঝানো হয়েছে। 
+
+Until
+একটি নির্দিষ্ট সময় পর্যন্ত বোঝাতে
+Wait here until I come back. 
+The shop is open until 10 PM.
+এই বাক্যে Until ব্যবহার করে একটি নির্দিষ্ট সময় শেষ হওয়া পর্যন্ত সময়কে নির্দেশ করা হয়েছে।

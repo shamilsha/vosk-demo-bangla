@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 /**
- * Adapter for layout_3coldata_2coldisplay: displays Bengali | English + Hint rows.
+ * Adapter for 3-col lesson table (layout_threecol_content in layout_lesson_base shell): Bengali | English + Hint rows.
  */
 class ThreeColDataAdapter(
     private var items: List<ThreeColRow>

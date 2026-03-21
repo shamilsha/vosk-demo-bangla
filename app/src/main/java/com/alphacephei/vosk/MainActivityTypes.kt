@@ -15,7 +15,11 @@ enum class ContentLayout {
     /** POC: subtopics shown as iPhone-style buttons; tap navigates to that subtopic. */
     POC_BUTTON_MENU,
     /** Table-like triplets: Present/Past/Future columns. */
-    TENSE_TRIPLETS
+    TENSE_TRIPLETS,
+    /** Progressive sentences: each line English / Bengali / pronunciation; groups separated by blank lines. */
+    EXTEND_SENTENCE,
+    /** Preposition blocks: heading + meaning + 2 examples; hidden guidance spoken in practice. */
+    PREPOSITION_BLOCKS
 }
 
 /** Layout resource ID for the given content layout. */
@@ -30,20 +34,27 @@ fun getContentLayoutResId(layout: ContentLayout): Int = when (layout) {
     ContentLayout.NOUN_TABS -> R.layout.layout_noun_tabs
     ContentLayout.NOUN_TEST -> R.layout.layout_noun_test
     ContentLayout.CONVERSATION -> R.layout.layout_conversation
-    ContentLayout.CONVERSATION_BUBBLES -> R.layout.layout_conversation_bubbles
+    // Shell is layout_lesson_base + layout_conversation_bubbles_content (see MainActivity.inflateLessonShellWithContent).
+    ContentLayout.CONVERSATION_BUBBLES -> R.layout.layout_lesson_base
     ContentLayout.SV_RIBBON -> R.layout.layout_sv_ribbon
     ContentLayout.CONVEYOR_TRIPLE -> R.layout.layout_conveyor_triple
     ContentLayout.SV_WORDS_CONVEYOR -> R.layout.layout_sv_words_conveyor
     ContentLayout.SV_I_FOUR_SECTIONS -> R.layout.layout_sv_i_four_sections
     ContentLayout.SIMPLE_SENTENCE -> R.layout.layout_simple_sentence
-    ContentLayout.THREECOL_TABLE -> R.layout.layout_3coldata_2coldisplay
+    // Shell is layout_lesson_base + layout_threecol_content (see MainActivity.inflateLessonShellWithContent).
+    ContentLayout.THREECOL_TABLE -> R.layout.layout_lesson_base
     ContentLayout.POC_BUTTON_MENU -> R.layout.layout_poc_button_menu
-    ContentLayout.TENSE_TRIPLETS -> R.layout.layout_tense_triplets
+    ContentLayout.TENSE_TRIPLETS -> R.layout.layout_lesson_base
+    // Shell is layout_lesson_base + top_extra + layout_extend_sentence_content (see MainActivity.inflateExtendSentenceLessonShell).
+    ContentLayout.EXTEND_SENTENCE -> R.layout.layout_lesson_base
+    // Shell is layout_lesson_base + top_extra + layout_preposition_blocks_content (see MainActivity.inflatePrepositionLessonShell).
+    ContentLayout.PREPOSITION_BLOCKS -> R.layout.layout_lesson_base
 }
 
 /** True if this layout shows the reusable Start / Stop / Pause / Resume bar. */
 fun usesControlActions(layout: ContentLayout): Boolean = layout in setOf(
     ContentLayout.CONVERSATION,
+    ContentLayout.CONVERSATION_BUBBLES,
     ContentLayout.MIC_SPEAKER_TEST,
     ContentLayout.SPEECH_INPUT,
     ContentLayout.PRACTICE_THREE_AREA,
@@ -53,7 +64,9 @@ fun usesControlActions(layout: ContentLayout): Boolean = layout in setOf(
     ContentLayout.SV_I_FOUR_SECTIONS,
     ContentLayout.SIMPLE_SENTENCE,
     ContentLayout.THREECOL_TABLE,
-    ContentLayout.TENSE_TRIPLETS
+    ContentLayout.TENSE_TRIPLETS,
+    ContentLayout.EXTEND_SENTENCE,
+    ContentLayout.PREPOSITION_BLOCKS
 )
 
 /** One ribbon item height in pixels (stripHeightDp default 40). For scroll-by-one-row. */
@@ -90,6 +103,24 @@ data class VerbRow(val english: String, val bengali: String)
 
 /** One row of generic 3-column lesson data: English, Bengali, Pronunciation/Hint. */
 data class ThreeColRow(val english: String, val bengali: String, val hint: String)
+
+/** Extend-sentence line: English, Bengali, UI hint (romanization), optional extra Bengali spoken after line 2 (hidden in UI). */
+data class ExtendSentenceRow(
+    val english: String,
+    val bengali: String,
+    val hint: String,
+    /** Bengali text; spoken after [bengali] with Bengali TTS; not shown in UI. */
+    val speakAfterBengali: String = ""
+)
+
+/** One preposition lesson block from 5 lines: heading, meaning, example1, example2, hidden spoken guidance. */
+data class PrepositionBlockRow(
+    val preposition: String,
+    val meaning: String,
+    val example1: String,
+    val example2: String,
+    val spokenGuidance: String
+)
 
 /** One cell in a tense triplet (single column). */
 data class TenseTripletCell(val english: String, val bengali: String, val hint: String)

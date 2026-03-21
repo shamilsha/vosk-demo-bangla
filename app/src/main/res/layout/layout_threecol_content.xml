@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Middle + V tab only — inflated into lesson_base_content of layout_lesson_base.xml.
+  Mode bar + control actions come from the shell.
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/lesson_box_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp">
+
+        <LinearLayout
+            android:id="@+id/threecol_main_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/threecol_row_nav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingVertical="8dp"
+                android:paddingHorizontal="12dp"
+                android:background="@color/icon_row_background">
+
+                <Switch
+                    android:id="@+id/threecol_weak_only"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Failed &amp; untried only"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp"
+                    android:switchMinWidth="48dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/threecol_header_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@color/lesson_topic_bar_background"
+                android:paddingVertical="4dp"
+                android:paddingStart="4dp"
+                android:paddingEnd="4dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/threecol_header_bengali"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Bengali"
+                        android:textColor="@color/lesson_topic_bar_text"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/threecol_header_english"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="English &amp; Hint"
+                        android:textColor="@color/lesson_topic_bar_text"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/threecol_stat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="0/0"
+                    android:textColor="@color/lesson_topic_bar_text"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/threecol_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:minHeight="200dp"
+                android:paddingVertical="2dp"
+                android:clipToPadding="false"
+                android:overScrollMode="ifContentScrolls" />
+        </LinearLayout>
+
+        <include
+            android:id="@+id/threecol_vocab_include"
+            layout="@layout/layout_lesson_vocab_pronunciation"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:visibility="gone" />
+    </LinearLayout>
+</ScrollView>

@@ -50,4 +50,5 @@ dependencies {
 // Install debug APK on connected device after every successful debug build (tasks exist after Android plugin config)
 afterEvaluate {
     tasks.named('assembleDebug').configure { it.finalizedBy(tasks.named('installDebug')) }
+    tasks.named('build').configure { it.finalizedBy(tasks.named('installDebug')) }
 }

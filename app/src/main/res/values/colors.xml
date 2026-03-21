@@ -6,6 +6,8 @@
     <color name="icon_row_background">#E0E0E0</color>
     <!-- Reusable lesson mode top bar background -->
     <color name="lesson_mode_bar_background">#E91E63</color>
+    <!-- Mode bar tabs (Learning / Practice / …): unselected pill background -->
+    <color name="lesson_mode_tab_unselected">#E0E0E0</color>
     <!-- Mic icon: blue when Start, red when Stop -->
     <color name="mic_color_start">#2196F3</color>
     <color name="mic_color_stop">#F44336</color>

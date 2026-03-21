@@ -55,7 +55,9 @@ object DrawerTopicBuilders {
             Subtopic("Present negative", "present_negative_duplex", ContentLayout.TENSE_TRIPLETS),
             Subtopic("Past negative", "past_negative_duplex", ContentLayout.TENSE_TRIPLETS),
             Subtopic("Future negative", "future_negative_duplex", ContentLayout.TENSE_TRIPLETS),
-            Subtopic("Perfect question", "perfect_question_duplex", ContentLayout.TENSE_TRIPLETS)
+            Subtopic("Perfect question", "perfect_question_duplex", ContentLayout.TENSE_TRIPLETS),
+            Subtopic("Extend sentence", "extend_sentence", ContentLayout.EXTEND_SENTENCE),
+            Subtopic("Preposition (time blocks)", "preposition_time_blocks", ContentLayout.PREPOSITION_BLOCKS)
         )),
         Topic("Lessons", listOf(
             Subtopic("Load lesson (.txt)", "lesson_file"),
@@ -156,6 +158,15 @@ object DrawerTopicBuilders {
                 }
             Subtopic(title, "pron:$filename", ContentLayout.TABLE_DISPLAY)
         }
+    }
+
+    /**
+     * Flat list of all subtopics in drawer order: Level 1 topics first, then [getTopicList] in order.
+     * Used for prev/next lesson in the app top bar.
+     */
+    fun getAllSubtopicsInNavigationOrder(assetManager: AssetManager): List<Subtopic> = buildList {
+        for (topic in getLevel1Topics()) addAll(topic.subtopics)
+        for (topic in getTopicList(assetManager)) addAll(topic.subtopics)
     }
 
     /** Build flat drawer list: Level 1 header + topic headers for the given topics. */

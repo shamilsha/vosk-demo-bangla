@@ -79,6 +79,120 @@ object LessonFileParsers {
     private const val TAG = "LessonFileParsers"
 
     /**
+     * Progressive "extend sentence" lesson: blank line separates **groups**; each line is
+     * English,Bengali,Hint[,Extra Bengali]. The first three commas delimit fields; the 4th segment
+     * may contain commas (Bengali TTS after main Bengali; not shown in UI). If only 3 fields, 4th is empty.
+     */
+    fun parseExtendSentenceGroups(content: String): List<List<ExtendSentenceRow>> {
+        val groups = mutableListOf<MutableList<ExtendSentenceRow>>()
+        var current = mutableListOf<ExtendSentenceRow>()
+        for (line in stripVocabularyBlock(content).lines()) {
+            val trimmed = line.trim()
+            if (trimmed.isEmpty() || trimmed.startsWith("#")) {
+                if (current.isNotEmpty()) {
+                    groups.add(current)
+                    current = mutableListOf()
+                }
+                continue
+            }
+            val row = parseExtendSentenceLine(trimmed) ?: continue
+            current.add(row)
+        }
+        if (current.isNotEmpty()) groups.add(current)
+        return groups
+    }
+
+    /** One line → ExtendSentenceRow; 4th field is everything after the 3rd comma (may contain commas). */
+    fun parseExtendSentenceLine(line: String): ExtendSentenceRow? {
+        val c1 = line.indexOf(',')
+        if (c1 < 0) return null
+        val c2 = line.indexOf(',', c1 + 1)
+        if (c2 < 0) {
+            // Legacy: one comma — try "English.Bengali, hint"
+            val a = line.substring(0, c1).trim()
+            val b = line.substring(c1 + 1).trim()
+            val dotIdx = a.indexOfFirst { it == '.' || it == '।' }
+            if (dotIdx > 0 && dotIdx < a.length - 1) {
+                val eng = a.substring(0, dotIdx).trim()
+                val rest = a.substring(dotIdx + 1).trim()
+                if (eng.isNotEmpty() && rest.isNotEmpty()) return ExtendSentenceRow(eng, rest, b, "")
+            }
+            return null
+        }
+        val c3 = line.indexOf(',', c2 + 1)
+        val english = line.substring(0, c1).trim()
+        val bengali = line.substring(c1 + 1, c2).trim()
+        if (c3 < 0) {
+            // Exactly 3 fields
+            val hint = line.substring(c2 + 1).trim()
+            if (english.isBlank() && bengali.isBlank()) return null
+            return ExtendSentenceRow(english, bengali, hint, "")
+        }
+        val hint = line.substring(c2 + 1, c3).trim()
+        val speakAfter = line.substring(c3 + 1).trim()
+        if (english.isBlank() && bengali.isBlank()) return null
+        return ExtendSentenceRow(english, bengali, hint, speakAfter)
+    }
+
+    /**
+     * When no `# --- VOCABULARY ---` block exists, collect candidate English words from
+     * every extend-sentence line (first field: English; HTML stripped before tokenizing).
+     */
+    fun extractVocabWordsFromExtendSentenceLines(content: String): List<String> {
+        val words = mutableSetOf<String>()
+        for (line in stripVocabularyBlock(content).lines()) {
+            val trimmed = line.trim()
+            if (trimmed.isEmpty() || trimmed.startsWith("#")) continue
+            val row = parseExtendSentenceLine(trimmed) ?: continue
+            val plain = ExtendSentenceText.englishPlainForSpeech(row.english)
+            plain.split(Regex("[^a-zA-Z]+")).forEach { token ->
+                val w = token.trim().lowercase()
+                if (w.isNotEmpty()) words.add(w)
+            }
+        }
+        return words.toList().sorted()
+    }
+
+    /**
+     * Parse preposition blocks separated by empty lines.
+     * Per block:
+     * 1) preposition
+     * 2) meaning
+     * 3) example sentence 1
+     * 4) example sentence 2
+     * 5) extra explanation spoken during practice (hidden in UI)
+     */
+    fun parsePrepositionBlocks(content: String): List<PrepositionBlockRow> {
+        val blocks = mutableListOf<PrepositionBlockRow>()
+        val lines = stripVocabularyBlock(content).lines()
+        val current = mutableListOf<String>()
+        fun flush() {
+            if (current.size >= 5) {
+                blocks.add(
+                    PrepositionBlockRow(
+                        preposition = current[0].trim(),
+                        meaning = current[1].trim(),
+                        example1 = current[2].trim(),
+                        example2 = current[3].trim(),
+                        spokenGuidance = current[4].trim()
+                    )
+                )
+            }
+            current.clear()
+        }
+        for (raw in lines) {
+            val t = raw.trim()
+            if (t.isEmpty()) {
+                if (current.isNotEmpty()) flush()
+                continue
+            }
+            current.add(t)
+        }
+        if (current.isNotEmpty()) flush()
+        return blocks
+    }
+
+    /**
      * Parse 3- or 5-column lesson CSV for THREECOL_TABLE.
      * Format: English,Bengali,Hint  or  English,Bengali,Hint,A,B
      * A = practice pass (1) or fail (0), B = test pass (1) or fail (0).

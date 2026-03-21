@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Inflated into lesson_base_content of layout_lesson_base.xml -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/conv_bubble_main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/conv_bubble_row_nav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="12dp"
+            android:background="@color/icon_row_background">
+
+            <Switch
+                android:id="@+id/conv_bubble_weak_only"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Failed &amp; untried only"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:switchMinWidth="48dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/conv_bubble_test_options_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="8dp"
+            android:paddingHorizontal="12dp"
+            android:background="@color/icon_row_background"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Initiator"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp" />
+
+            <RadioGroup
+                android:id="@+id/conv_bubble_test_initiator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="2dp">
+
+                <RadioButton
+                    android:id="@+id/conv_bubble_initiator_app"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="App starts"
+                    android:textColor="#000000"
+                    android:textSize="13sp"
+                    android:checked="true" />
+
+                <RadioButton
+                    android:id="@+id/conv_bubble_initiator_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="User starts"
+                    android:textColor="#000000"
+                    android:textSize="13sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/conv_bubble_header_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/lesson_topic_bar_background"
+            android:paddingVertical="4dp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Person A (left)  ·  Person B (right)"
+                android:textColor="@color/lesson_topic_bar_text"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/conv_bubble_stat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0/0"
+                android:textColor="@color/lesson_topic_bar_text"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/conv_bubble_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:padding="0dp"
+            android:clipToPadding="false"
+            android:overScrollMode="ifContentScrolls" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/conv_bubble_vocab_include"
+        layout="@layout/layout_lesson_vocab_pronunciation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+</FrameLayout>

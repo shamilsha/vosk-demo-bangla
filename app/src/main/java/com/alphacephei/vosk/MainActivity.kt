@@ -735,6 +735,8 @@ class MainActivity : AppCompatActivity() {
     private var tenseTripletShowFuture: Boolean = true
     private var tenseTripletLastScrolledPosition: Int = -1
     private var tenseTripletCachedRowHeightPx: Int = -1
+    /** Which inner layout is inflated into [R.id.lesson_base_content] for [ContentLayout.TENSE_TRIPLETS]. */
+    private var tenseTripletInflatedContentRes: Int = -1
 
     /**
      * Conversation bubbles: actionKey → asset path. Same layout and V tab for all; only the .txt file differs.
@@ -756,6 +758,38 @@ class MainActivity : AppCompatActivity() {
     private var convBubbleWeakOnlyFilter: Boolean = false
     private var convBubbleCurrentIndex: Int = 0
     /** Incremented each time conversation bubble TTS starts; embedded in utterance ids so completion ignores stale callbacks. */
+    /** Extend sentence: groups of progressive lines (English / Bengali / pronunciation). */
+    private var extendSentenceGroups: List<List<ExtendSentenceRow>> = emptyList()
+    private var extendSentenceHeaderAdapterPositions: IntArray = intArrayOf()
+    private var extendSentenceCurrentGroupIndex: Int = 0
+    private var extendSentenceAdapter: ExtendSentenceAdapter? = null
+    private var extendSentenceRecycler: RecyclerView? = null
+    private var extendSentenceControlRunning: Boolean = false
+    private var extendSentenceControlPaused: Boolean = false
+    /** Learning / Practice / Test / V for extend-sentence shell (same enum as bubbles / preposition). */
+    private var extendSentenceMode: ConversationMode = ConversationMode.LEARNING
+    private var extendSentenceRoot: View? = null
+    /** Bumps each time extend-sentence group TTS starts; stale callbacks ignored. */
+    private var extendSentenceTtsGeneration: Int = 0
+    private val extendSentenceUtteranceSegmentRegex = Regex("^extend_sent_(\\d+)_(\\d+)_(en|bn|ex)_(\\d+)$")
+    private val extendSentenceUtteranceEnStartRegex = Regex("^extend_sent_(\\d+)_(\\d+)_en_(\\d+)$")
+    private val prepBlockHeadUtteranceRegex = Regex("^prep_block_(\\d+)_(\\d+)_head$")
+    /** Preposition block lesson: each block has heading+meaning, 2 examples, and hidden spoken guidance. */
+    private var prepositionBlockRows: List<PrepositionBlockRow> = emptyList()
+    private var prepositionBlockCurrentIndex: Int = 0
+    private var prepositionBlocksAdapter: PrepositionBlocksAdapter? = null
+    private var prepositionBlocksRecycler: RecyclerView? = null
+    /** Root of preposition lesson shell ([layout_lesson_base] + top extra + content). */
+    private var prepositionBlocksRoot: View? = null
+    private val prepositionBlockUtteranceRegex = Regex("^prep_block_(\\d+)_(\\d+)_(head|meaning|ex1|ex2|guidance)$")
+    private var prepositionBlocksControlRunning: Boolean = false
+    private var prepositionBlocksControlPaused: Boolean = false
+    /** Bumps each time a preposition block speak sequence starts; stale TTS callbacks ignored. */
+    private var prepositionBlocksTtsGeneration: Int = 0
+    private var prepositionBlocksAutoAdvanceRunnable: Runnable? = null
+    /** Learning / Practice / Test / V — same as conversation bubbles magenta bar. */
+    private var prepositionBlocksMode: ConversationMode = ConversationMode.LEARNING
+
     private var convBubbleTtsGeneration: Int = 0
     private val convBubbleBengaliUtteranceRegex = Regex("^conv_bubble_bengali_(\\d+)_(\\d+)$")
     private val convBubbleEnglishUtteranceRegex = Regex("^conv_bubble_english_(\\d+)_(\\d+)$")
@@ -1011,11 +1045,11 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_parts_of_speech -> {
-                startActivity(Intent(this, PartsOfSpeechActivity::class.java).putExtra(PartsOfSpeechActivity.EXTRA_PAGE, PartsOfSpeechActivity.PAGE_PARTS_OF_SPEECH))
+                loadReferenceHtmlPage("parts-of-speech.html", getString(R.string.parts_of_speech_title))
                 return true
             }
             R.id.action_svo_sentences -> {
-                startActivity(Intent(this, PartsOfSpeechActivity::class.java).putExtra(PartsOfSpeechActivity.EXTRA_PAGE, PartsOfSpeechActivity.PAGE_SVO_SENTENCES))
+                loadReferenceHtmlPage("svo-sentences.html", getString(R.string.svo_sentences_title))
                 return true
             }
         }
@@ -1089,7 +1123,10 @@ class MainActivity : AppCompatActivity() {
     private lateinit var englishTextView: TextView
     private lateinit var lessonStatTextView: TextView
     private var lessonTopicText: TextView? = null
-    private var lectureButton: ImageButton? = null
+    private var topBarPrevLesson: ImageButton? = null
+    private var topBarNextLesson: ImageButton? = null
+    /** Set when user opens a lesson from the drawer; used for top-bar prev/next lesson. */
+    private var currentDrawerActionKey: String? = null
     /** Navigation drawer */
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var drawerList: ListView
@@ -1279,7 +1316,10 @@ class MainActivity : AppCompatActivity() {
 
         lessonStatTextView = findViewById(R.id.lesson_stat_text)
         lessonTopicText = findViewById(R.id.lesson_topic_text)
-        lectureButton = findViewById(R.id.lecture_button)
+        topBarPrevLesson = findViewById(R.id.top_bar_prev_lesson)
+        topBarNextLesson = findViewById(R.id.top_bar_next_lesson)
+        topBarPrevLesson?.setOnClickListener { navigateAdjacentDrawerLesson(-1) }
+        topBarNextLesson?.setOnClickListener { navigateAdjacentDrawerLesson(1) }
         updateLessonTopicDisplay()
 
         translationLabel = findViewById(R.id.translation_label)
@@ -1359,28 +1399,6 @@ class MainActivity : AppCompatActivity() {
         }
         skipButton = findViewById(R.id.skip_button)
         skipButton?.setOnClickListener { onSkipWord() }
-        lectureButton?.setOnClickListener {
-            val rows = pronunciationLessonRows
-            if (!rows.isNullOrEmpty() && ttsReady && textToSpeech != null) {
-                if (pronunciationPracticeActive) {
-                    Toast.makeText(this, getString(R.string.pronunciation_repeat_hint), Toast.LENGTH_SHORT).show()
-                    return@setOnClickListener
-                }
-                pronunciationPracticeActive = true
-                pronunciationPracticeWordIndex = 0
-                pronunciationPracticeAttempt = 0
-                val word = rows[0].getOrNull(0)?.trim()
-                if (word.isNullOrEmpty()) {
-                    pronunciationPracticeActive = false
-                    return@setOnClickListener
-                }
-                pendingPronunciationPracticeWord = word
-                textToSpeech?.setLanguage(Locale.US)
-                textToSpeech?.stop()
-                textToSpeech?.speak(word, TextToSpeech.QUEUE_FLUSH, null, "pronunciation_practice_word")
-                Toast.makeText(this, getString(R.string.pronunciation_repeat_hint), Toast.LENGTH_SHORT).show()
-            }
-        }
         findViewById<ImageButton>(R.id.speak_english_button).setOnClickListener { onSpeakEnglishButton() }
 
         if (modelStatus == ModelStatus.MODEL_STATUS_INIT || modelStatus == ModelStatus.MODEL_STATUS_START) {
@@ -1438,6 +1456,9 @@ class MainActivity : AppCompatActivity() {
                 currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleRows.isNotEmpty() -> onConvBubbleStartStop()
                 currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB && lessonVocabRows.isNotEmpty() -> onVocabStartStop()
                 currentContentLayout == ContentLayout.THREECOL_TABLE && threeColRows.isNotEmpty() -> onThreeColStartStop()
+                currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceMode == ConversationMode.VOCAB && lessonVocabRows.isNotEmpty() -> onVocabStartStop()
+                currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceGroups.isNotEmpty() -> onExtendSentenceStartStop()
+                currentContentLayout == ContentLayout.PREPOSITION_BLOCKS && prepositionBlockRows.isNotEmpty() -> onPrepositionBlocksStartStop()
                 else -> dispatchControlStartStop()
             }
         }
@@ -1451,6 +1472,9 @@ class MainActivity : AppCompatActivity() {
                 currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleRows.isNotEmpty() -> onConvBubblePauseResume()
                 currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB -> { /* V tab: no pause/resume for POC */ }
                 currentContentLayout == ContentLayout.THREECOL_TABLE && threeColRows.isNotEmpty() -> onThreeColPauseResume()
+                currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceMode == ConversationMode.VOCAB -> { /* V tab */ }
+                currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceGroups.isNotEmpty() -> onExtendSentencePauseResume()
+                currentContentLayout == ContentLayout.PREPOSITION_BLOCKS && prepositionBlockRows.isNotEmpty() -> onPrepositionBlocksPauseResume()
                 else -> dispatchControlPauseResume()
             }
         }
@@ -1464,6 +1488,40 @@ class MainActivity : AppCompatActivity() {
             sentenceList.isNotEmpty() -> getString(R.string.svo_topic_title)
             else -> getString(R.string.lesson_topic_hint)
         }
+        updateTopBarLessonNavButtons()
+    }
+
+    private fun updateTopBarLessonNavButtons() {
+        val all = DrawerTopicBuilders.getAllSubtopicsInNavigationOrder(assets)
+        val key = currentDrawerActionKey
+        val idx = if (key != null) all.indexOfFirst { it.actionKey == key } else -1
+        topBarPrevLesson?.isEnabled = idx > 0
+        topBarNextLesson?.isEnabled = idx >= 0 && idx < all.lastIndex
+    }
+
+    /** Prev/next lesson in the same order as Level 1 + main topic list (see DrawerTopicBuilders). */
+    private fun navigateAdjacentDrawerLesson(delta: Int) {
+        val all = DrawerTopicBuilders.getAllSubtopicsInNavigationOrder(assets)
+        val key = currentDrawerActionKey
+        if (key == null) {
+            Toast.makeText(this, getString(R.string.lesson_nav_no_context), Toast.LENGTH_SHORT).show()
+            return
+        }
+        val idx = all.indexOfFirst { it.actionKey == key }
+        if (idx < 0) {
+            Toast.makeText(this, getString(R.string.lesson_nav_no_context), Toast.LENGTH_SHORT).show()
+            return
+        }
+        val n = idx + delta
+        if (n !in all.indices) {
+            Toast.makeText(this, getString(if (delta < 0) R.string.lesson_nav_first else R.string.lesson_nav_last), Toast.LENGTH_SHORT).show()
+            return
+        }
+        val sub = all[n]
+        drawerLayout.closeDrawers()
+        if (sub.layoutType != ContentLayout.LEGACY) switchContentLayout(sub.layoutType)
+        else if (currentContentLayout != ContentLayout.LEGACY) switchContentLayout(ContentLayout.LEGACY)
+        handleSubtopicAction(sub)
     }
 
     /** Show or hide the sentence list area (for SVO: list of sentences to translate to Bengali). No-op when legacy layout not in content (e.g. SIMPLE_SENTENCE). */
@@ -1535,7 +1593,11 @@ class MainActivity : AppCompatActivity() {
                 }
                 ttsReady = true
                 textToSpeech?.setOnUtteranceProgressListener(object : UtteranceProgressListener() {
-                    override fun onStart(utteranceId: String?) {}
+                    override fun onStart(utteranceId: String?) {
+                        if (utteranceId != null) {
+                            runOnUiThread { handleUtteranceStartBlockHighlight(utteranceId) }
+                        }
+                    }
                     override fun onDone(utteranceId: String?) {
                         when (utteranceId) {
                             "bengali_verification" -> {
@@ -1845,6 +1907,12 @@ class MainActivity : AppCompatActivity() {
                         if (utteranceId != null && utteranceId.startsWith("conv_bubble_english_")) {
                             runOnUiThread { handleConvBubbleEnglishUtteranceFinished(utteranceId) }
                         }
+                        if (utteranceId != null && utteranceId.startsWith("prep_block_")) {
+                            runOnUiThread { handlePrepositionBlockUtteranceFinished(utteranceId, fromError = false) }
+                        }
+                        if (utteranceId != null && utteranceId.startsWith("extend_sent_")) {
+                            runOnUiThread { handleExtendSentenceUtteranceDoneForHighlight(utteranceId) }
+                        }
                         // Track segment progress for resume: "intro_0", "intro_1", etc.
                         if (utteranceId != null && utteranceId.startsWith("intro_") && utteranceId != "intro_done") {
                             val idx = utteranceId.removePrefix("intro_").toIntOrNull()
@@ -1922,6 +1990,15 @@ class MainActivity : AppCompatActivity() {
                         }
                         if (utteranceId != null && utteranceId.startsWith("conv_bubble_english_")) {
                             runOnUiThread { handleConvBubbleEnglishUtteranceFinished(utteranceId) }
+                        }
+                        if (utteranceId != null && utteranceId.startsWith("prep_block_")) {
+                            runOnUiThread {
+                                handlePrepositionBlockUtteranceFinished(utteranceId, fromError = true)
+                                prepositionBlocksAdapter?.clearHighlight()
+                            }
+                        }
+                        if (utteranceId != null && utteranceId.startsWith("extend_sent_")) {
+                            runOnUiThread { extendSentenceAdapter?.clearBlockHighlight() }
                         }
                         if (utteranceId == "lesson_verify_bengali") {
                             runOnUiThread {
@@ -2724,6 +2801,10 @@ class MainActivity : AppCompatActivity() {
             onTenseTripletVerificationResult(match, said)
             return
         }
+        if (currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceMode == ConversationMode.VOCAB) {
+            onExtendSentenceVocabVerificationResult(match, said)
+            return
+        }
         if ((currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleMode == ConversationMode.VOCAB) ||
             (currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB)) return
         val resultWord = if (match) getString(R.string.correct) else getString(R.string.incorrect)
@@ -3376,6 +3457,7 @@ class MainActivity : AppCompatActivity() {
 
     /** Map subtopic actionKey → the actual load action (reuses existing showLoadListDialog actions). */
     private fun handleSubtopicAction(subtopic: Subtopic) {
+        currentDrawerActionKey = subtopic.actionKey
         val actionKey = subtopic.actionKey
         // CONVERSATION_BUBBLES (Person A / Person B bubble format)
         val convBubbleAssetPath = conversationBubbleLessonAssetPaths[actionKey]
@@ -3388,6 +3470,14 @@ class MainActivity : AppCompatActivity() {
         val threeColAssetPath = threeColLessonAssetPaths[actionKey]
         if (threeColAssetPath != null) {
             loadThreeColLessonFromAsset(threeColAssetPath, actionKey, subtopic.title)
+            return
+        }
+        if (actionKey == "extend_sentence") {
+            loadExtendSentenceLesson("Lessons/Tense/extend_sentence.txt", subtopic.title)
+            return
+        }
+        if (actionKey == "preposition_time_blocks") {
+            loadPrepositionBlocksLesson("Lessons/Tense/preposition_time.txt", subtopic.title)
             return
         }
         // Special key must be handled before generic "simple_*" routing.
@@ -3566,8 +3656,8 @@ class MainActivity : AppCompatActivity() {
             "verb_tenses" -> showTenseVerbSelectorDialog()
             "verb_regular" -> loadVerbLessonFromAsset("Lessons/Regular_verbs.txt", "regular_verbs")
             "verb_irregular" -> loadVerbLessonFromAsset("Lessons/Irregular_verbs.txt", "irregular_verbs")
-            "grammar_pos" -> startActivity(Intent(this, PartsOfSpeechActivity::class.java).putExtra(PartsOfSpeechActivity.EXTRA_PAGE, PartsOfSpeechActivity.PAGE_PARTS_OF_SPEECH))
-            "grammar_svo" -> startActivity(Intent(this, PartsOfSpeechActivity::class.java).putExtra(PartsOfSpeechActivity.EXTRA_PAGE, PartsOfSpeechActivity.PAGE_SVO_SENTENCES))
+            "grammar_pos" -> loadReferenceHtmlPage("parts-of-speech.html", getString(R.string.parts_of_speech_title))
+            "grammar_svo" -> loadReferenceHtmlPage("svo-sentences.html", getString(R.string.svo_sentences_title))
             "diagram_1to3" -> { loadDiagramFromAssets("diagram-1to3.html"); setDescriptionInstruction(null, null) }
             "diagram_3to1" -> { loadDiagramFromAssets("diagram-3to1.html"); setDescriptionInstruction(null, null) }
             "lesson_file" -> openLessonLauncher.launch(arrayOf("text/plain", "application/octet-stream"))
@@ -3745,6 +3835,585 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /** Progressive extend-sentence lesson: blank-line groups; each line English, Bengali, hint, optional spoken explanation. */
+    private fun loadExtendSentenceLesson(assetPath: String, displayTitle: String) {
+        val content = try {
+            assets.open(assetPath).bufferedReader(StandardCharsets.UTF_8).use { it.readText() }
+        } catch (e: Exception) {
+            Toast.makeText(this, "Could not load $assetPath", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val groups = LessonFileParsers.parseExtendSentenceGroups(content)
+        if (groups.isEmpty()) {
+            Toast.makeText(this, "No valid lines in $assetPath", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (masterWordListMap == null) {
+            masterWordListMap = LessonFileParsers.loadMasterWordList(assets)
+        }
+        val embeddedVocab = LessonFileParsers.extractVocabularyBlock(content)
+        currentLessonVocabWords = if (embeddedVocab.isNotEmpty()) {
+            embeddedVocab
+        } else {
+            LessonFileParsers.extractVocabWordsFromExtendSentenceLines(content)
+        }
+        lessonVocabRows = LessonFileParsers.filterLessonVocabRowsByMaster(
+            LessonFileParsers.buildLessonVocabRowsOnlyInMaster(currentLessonVocabWords, masterWordListMap ?: emptyMap()),
+            masterWordListMap
+        )
+        extendSentenceMode = ConversationMode.LEARNING
+        lessonName = displayTitle
+        updateLessonTopicDisplay()
+        val view = switchContentLayout(ContentLayout.EXTEND_SENTENCE)
+        setupExtendSentenceLayout(view, groups)
+    }
+
+    private fun setupExtendSentenceLayout(root: View, groups: List<List<ExtendSentenceRow>>) {
+        extendSentenceRoot = root
+        extendSentenceGroups = groups
+        extendSentenceCurrentGroupIndex = 0
+        val (items, headerPos) = buildExtendSentenceListItems(groups)
+        extendSentenceHeaderAdapterPositions = headerPos
+        val recycler = root.findViewById<RecyclerView>(R.id.extend_sentence_recycler)
+        extendSentenceRecycler = recycler
+        recycler.layoutManager = LinearLayoutManager(this)
+        extendSentenceAdapter = ExtendSentenceAdapter(items).also { recycler.adapter = it }
+        val titleTv = root.findViewById<TextView>(R.id.extend_sentence_group_title)
+        val prev = root.findViewById<ImageButton>(R.id.extend_sentence_prev_group)
+        val next = root.findViewById<ImageButton>(R.id.extend_sentence_next_group)
+        val vocabInclude = root.findViewById<View>(R.id.extend_sentence_vocab_include)
+        setupVocabTabForCurrentLesson(vocabInclude) { }
+        fun updateGroupNav() {
+            val gc = groups.size
+            titleTv?.text = "Part ${extendSentenceCurrentGroupIndex + 1} of $gc"
+            prev?.isEnabled = extendSentenceCurrentGroupIndex > 0
+            next?.isEnabled = extendSentenceCurrentGroupIndex < gc - 1
+            root.findViewById<ImageButton>(R.id.lesson_mode_bar_prev)?.isEnabled = prev?.isEnabled == true
+            root.findViewById<ImageButton>(R.id.lesson_mode_bar_next)?.isEnabled = next?.isEnabled == true
+        }
+        fun navigateGroup(delta: Int) {
+            if (delta < 0 && extendSentenceCurrentGroupIndex > 0) {
+                extendSentenceCurrentGroupIndex--
+            } else if (delta > 0 && extendSentenceCurrentGroupIndex < groups.size - 1) {
+                extendSentenceCurrentGroupIndex++
+            } else {
+                return
+            }
+            val pos = extendSentenceHeaderAdapterPositions.getOrNull(extendSentenceCurrentGroupIndex) ?: 0
+            recycler.smoothScrollToPosition(pos)
+            updateGroupNav()
+        }
+        prev?.setOnClickListener { navigateGroup(-1) }
+        next?.setOnClickListener { navigateGroup(1) }
+        updateGroupNav()
+        setupExtendSentenceModeBar(root, ::navigateGroup)
+        root.findViewById<View>(R.id.lesson_base_control_include)?.visibility = View.VISIBLE
+        updateExtendSentenceControlBar()
+    }
+
+    private fun setupExtendSentenceModeBar(root: View, navigateGroup: (Int) -> Unit) {
+        val learningBtn = root.findViewById<android.widget.Button>(R.id.lesson_mode_learning)
+        val practiceBtn = root.findViewById<android.widget.Button>(R.id.lesson_mode_practice)
+        val testBtn = root.findViewById<android.widget.Button>(R.id.lesson_mode_test)
+        val vocabBtn = root.findViewById<android.widget.Button>(R.id.lesson_mode_vocab)
+        fun stopPlaybackIfModeSwitch() {
+            if (extendSentenceControlRunning || extendSentenceControlPaused) {
+                textToSpeech?.stop()
+                extendSentenceControlRunning = false
+                extendSentenceControlPaused = false
+                extendSentenceAdapter?.clearBlockHighlight()
+                updateExtendSentenceControlBar()
+            }
+            if (convBubbleControlRunning) {
+                textToSpeech?.stop()
+                cancelVerificationTimeout()
+                if (verificationMode) {
+                    verificationMode = false
+                    expectedEnglishForVerification = null
+                    try { speechRecognizer?.stopListening() } catch (_: Exception) { }
+                    stopEnglishVoskRecording()
+                    setMicButtonAppearance(recording = false)
+                }
+                isEnglishMicActive = false
+                isRecording = false
+                convBubbleControlRunning = false
+                updateExtendSentenceControlBar()
+            }
+        }
+        fun setMode(mode: ConversationMode) {
+            if (extendSentenceMode != mode) stopPlaybackIfModeSwitch()
+            extendSentenceMode = mode
+            updateExtendSentenceModeTabAppearance(root)
+        }
+        learningBtn?.setOnClickListener { setMode(ConversationMode.LEARNING) }
+        practiceBtn?.setOnClickListener { setMode(ConversationMode.PRACTICE) }
+        testBtn?.setOnClickListener { setMode(ConversationMode.TEST) }
+        vocabBtn?.setOnClickListener { setMode(ConversationMode.VOCAB) }
+        root.findViewById<ImageButton>(R.id.lesson_mode_bar_prev)?.setOnClickListener { navigateGroup(-1) }
+        root.findViewById<ImageButton>(R.id.lesson_mode_bar_next)?.setOnClickListener { navigateGroup(1) }
+        updateExtendSentenceModeTabAppearance(root)
+    }
+
+    private fun updateExtendSentenceModeTabAppearance(root: View) {
+        val learningBtn = root.findViewById<android.widget.TextView>(R.id.lesson_mode_learning)
+        val practiceBtn = root.findViewById<android.widget.TextView>(R.id.lesson_mode_practice)
+        val testBtn = root.findViewById<android.widget.TextView>(R.id.lesson_mode_test)
+        val vocabBtn = root.findViewById<android.widget.TextView>(R.id.lesson_mode_vocab)
+        val recycler = root.findViewById<View>(R.id.extend_sentence_recycler)
+        val vocabInclude = root.findViewById<View>(R.id.extend_sentence_vocab_include)
+        val white = 0xFFFFFFFF.toInt()
+        val darkText = 0xFF555555.toInt()
+        val m = extendSentenceMode
+        val sel = R.drawable.bg_lesson_mode_tab_selected
+        val unsel = R.drawable.bg_lesson_mode_tab_unselected
+        learningBtn?.setBackgroundResource(if (m == ConversationMode.LEARNING) sel else unsel)
+        learningBtn?.setTextColor(if (m == ConversationMode.LEARNING) white else darkText)
+        practiceBtn?.setBackgroundResource(if (m == ConversationMode.PRACTICE) sel else unsel)
+        practiceBtn?.setTextColor(if (m == ConversationMode.PRACTICE) white else darkText)
+        testBtn?.setBackgroundResource(if (m == ConversationMode.TEST) sel else unsel)
+        testBtn?.setTextColor(if (m == ConversationMode.TEST) white else darkText)
+        vocabBtn?.setBackgroundResource(if (m == ConversationMode.VOCAB) sel else unsel)
+        vocabBtn?.setTextColor(if (m == ConversationMode.VOCAB) white else darkText)
+        val isVocab = m == ConversationMode.VOCAB
+        recycler?.visibility = if (isVocab) View.GONE else View.VISIBLE
+        vocabInclude?.visibility = if (isVocab) View.VISIBLE else View.GONE
+        // Base lesson bar always shows V; vocab list may be empty if no master matches (fallback still fills rows when possible).
+        vocabBtn?.visibility = View.VISIBLE
+        updateExtendSentenceControlBar()
+    }
+
+    private fun updateExtendSentenceControlBar() {
+        if (extendSentenceMode == ConversationMode.VOCAB) {
+            controlStartStopButton?.let { ControlBarUtils.setControlStartStopButton(this, it, convBubbleControlRunning) }
+            controlPauseResumeButton?.let { ControlBarUtils.setControlPauseResumeButton(this, it, false) }
+        } else {
+            controlStartStopButton?.let { ControlBarUtils.setControlStartStopButton(this, it, extendSentenceControlRunning) }
+            controlPauseResumeButton?.let { ControlBarUtils.setControlPauseResumeButton(this, it, extendSentenceControlPaused) }
+        }
+    }
+
+    /** V tab verification for extend sentence (same flow as tense triplets vocab). */
+    private fun onExtendSentenceVocabVerificationResult(match: Boolean, spokenTextIgnored: String) {
+        if (currentContentLayout != ContentLayout.EXTEND_SENTENCE || extendSentenceMode != ConversationMode.VOCAB || currentVTabRows.isEmpty()) return
+        runOnUiThread { Toast.makeText(this, if (match) getString(R.string.correct) else getString(R.string.incorrect), Toast.LENGTH_SHORT).show() }
+        val curIdx = (lessonVocabAdapter?.currentIndex ?: 0).coerceIn(0, currentVTabRows.lastIndex)
+        val row = currentVTabRows.getOrNull(curIdx) ?: return
+        runOnUiThread { lessonVocabAdapter?.setSpokenText(curIdx, spokenTextIgnored) }
+        val wordKey = row.word.trim().lowercase()
+        val advance: Boolean = if (match) {
+            vocabIncorrectCount = 0
+            true
+        } else {
+            vocabIncorrectCount++
+            vocabIncorrectCount >= 3
+        }
+        if (advance) {
+            runOnUiThread { lessonVocabAdapter?.setResult(curIdx, match) }
+            vocabIncorrectCount = 0
+            vocabularyProgress[wordKey] = if (match) LessonFileParsers.VOCAB_PROGRESS_PASSED else LessonFileParsers.VOCAB_PROGRESS_FAILED
+            LessonFileParsers.saveVocabularyProgress(filesDir, vocabularyProgress)
+            if (match && !vocabShowAllWords) {
+                val v = LessonFileParsers.filterLessonVocabRowsByMaster(lessonVocabRows, masterWordListMap)
+                currentVTabRows = LessonFileParsers.filterLessonVocabRowsNeedingTest(v, vocabularyProgress)
+                runOnUiThread { lessonVocabAdapter?.updateRows(currentVTabRows) }
+            }
+            val nextIdx = if (match && !vocabShowAllWords) curIdx.coerceAtMost((currentVTabRows.size - 1).coerceAtLeast(0))
+            else (curIdx + 1).coerceAtMost((currentVTabRows.size - 1).coerceAtLeast(0))
+            lessonVocabAdapter?.currentIndex = nextIdx
+            extendSentenceRoot?.findViewById<View>(R.id.extend_sentence_vocab_include)
+                ?.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.lesson_vocab_recycler)
+                ?.scrollToPosition(nextIdx)
+            if (currentVTabRows.isNotEmpty() && convBubbleControlRunning) {
+                verificationHandler.postDelayed({
+                    if (!isDestroyed && currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceMode == ConversationMode.VOCAB && convBubbleControlRunning && currentVTabRows.isNotEmpty()) {
+                        val idx = (lessonVocabAdapter?.currentIndex ?: nextIdx).coerceIn(0, currentVTabRows.lastIndex)
+                        val nextRow = currentVTabRows.getOrNull(idx) ?: return@postDelayed
+                        textToSpeech?.stop()
+                        textToSpeech?.setLanguage(Locale.US)
+                        textToSpeech?.speak(MatchNormalizer.textForSpeakAndDisplay(nextRow.word), TextToSpeech.QUEUE_FLUSH, null, "vocab_word")
+                        expectedEnglishForVerification = nextRow.word
+                        verificationHandler.postDelayed({
+                            if (!isDestroyed && currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceMode == ConversationMode.VOCAB && convBubbleControlRunning) {
+                                startVerificationListening(nextRow.word)
+                            }
+                        }, 800)
+                    }
+                }, 1500)
+            } else {
+                convBubbleControlRunning = false
+                runOnUiThread { updateExtendSentenceControlBar() }
+            }
+        } else {
+            verificationHandler.postDelayed({
+                if (!isDestroyed && currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceMode == ConversationMode.VOCAB && convBubbleControlRunning && currentVTabRows.isNotEmpty()) {
+                    val idx = (lessonVocabAdapter?.currentIndex ?: curIdx).coerceIn(0, currentVTabRows.lastIndex)
+                    val retryRow = currentVTabRows.getOrNull(idx) ?: return@postDelayed
+                    textToSpeech?.stop()
+                    textToSpeech?.setLanguage(Locale.US)
+                    textToSpeech?.speak(MatchNormalizer.textForSpeakAndDisplay(retryRow.word), TextToSpeech.QUEUE_FLUSH, null, "vocab_word_after_fail")
+                    expectedEnglishForVerification = retryRow.word
+                    verificationHandler.postDelayed({
+                        if (!isDestroyed && currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceMode == ConversationMode.VOCAB && convBubbleControlRunning) {
+                            startVerificationListening(retryRow.word)
+                        }
+                    }, 800)
+                }
+            }, 1500)
+        }
+    }
+
+    private fun onExtendSentenceStartStop() {
+        if (extendSentenceGroups.isEmpty()) return
+        if (extendSentenceMode != ConversationMode.LEARNING) {
+            Toast.makeText(this, "Switch to Learning to play audio", Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (extendSentenceControlRunning) {
+            textToSpeech?.stop()
+            extendSentenceControlRunning = false
+            extendSentenceControlPaused = false
+            extendSentenceAdapter?.clearBlockHighlight()
+            updateExtendSentenceControlBar()
+            return
+        }
+        extendSentenceControlRunning = true
+        extendSentenceControlPaused = false
+        updateExtendSentenceControlBar()
+        speakExtendSentenceCurrentGroup()
+    }
+
+    private fun onExtendSentencePauseResume() {
+        if (extendSentenceGroups.isEmpty()) return
+        if (!extendSentenceControlRunning) return
+        if (extendSentenceControlPaused) {
+            extendSentenceControlPaused = false
+            updateExtendSentenceControlBar()
+            speakExtendSentenceCurrentGroup()
+        } else {
+            textToSpeech?.stop()
+            extendSentenceControlPaused = true
+            extendSentenceAdapter?.clearBlockHighlight()
+            updateExtendSentenceControlBar()
+        }
+    }
+
+    /** Speaks English → Bengali → optional 4th segment (Bengali; not shown in UI). Hint column is display-only. */
+    private fun speakExtendSentenceCurrentGroup() {
+        if (extendSentenceMode != ConversationMode.LEARNING) return
+        val gi = extendSentenceCurrentGroupIndex.coerceIn(0, (extendSentenceGroups.size - 1).coerceAtLeast(0))
+        val g = extendSentenceGroups.getOrNull(gi) ?: return
+        if (!ttsReady || textToSpeech == null) {
+            extendSentenceControlRunning = false
+            extendSentenceAdapter?.clearBlockHighlight()
+            updateExtendSentenceControlBar()
+            return
+        }
+        extendSentenceTtsGeneration++
+        val gen = extendSentenceTtsGeneration
+        val bnLocale = Locale("bn")
+        var first = true
+        for ((ri, row) in g.withIndex()) {
+            val q = if (first) {
+                first = false
+                TextToSpeech.QUEUE_FLUSH
+            } else {
+                TextToSpeech.QUEUE_ADD
+            }
+            textToSpeech?.setLanguage(Locale.US)
+            textToSpeech?.speak(ExtendSentenceText.englishPlainForSpeech(row.english), q, null, "extend_sent_${gen}_${gi}_en_$ri")
+            textToSpeech?.setLanguage(bnLocale)
+            textToSpeech?.speak(row.bengali, TextToSpeech.QUEUE_ADD, null, "extend_sent_${gen}_${gi}_bn_$ri")
+            if (row.speakAfterBengali.isNotBlank()) {
+                textToSpeech?.setLanguage(bnLocale)
+                textToSpeech?.speak(row.speakAfterBengali, TextToSpeech.QUEUE_ADD, null, "extend_sent_${gen}_${gi}_ex_$ri")
+            }
+        }
+    }
+
+    /** Preposition lesson blocks: each block has 5 lines in asset; line 5 is spoken-only guidance. */
+    private fun loadPrepositionBlocksLesson(assetPath: String, displayTitle: String) {
+        val content = try {
+            assets.open(assetPath).bufferedReader(StandardCharsets.UTF_8).use { it.readText() }
+        } catch (e: Exception) {
+            Toast.makeText(this, "Could not load $assetPath", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val rows = LessonFileParsers.parsePrepositionBlocks(content)
+        if (rows.isEmpty()) {
+            Toast.makeText(this, "No valid blocks in $assetPath", Toast.LENGTH_SHORT).show()
+            return
+        }
+        lessonName = displayTitle
+        updateLessonTopicDisplay()
+        val view = switchContentLayout(ContentLayout.PREPOSITION_BLOCKS)
+        setupPrepositionBlocksLayout(view, rows)
+    }
+
+    private fun setupPrepositionBlocksLayout(root: View, rows: List<PrepositionBlockRow>) {
+        prepositionBlockRows = rows
+        prepositionBlockCurrentIndex = 0
+        prepositionBlocksMode = ConversationMode.LEARNING
+        prepositionBlocksRoot = root
+        val recycler = root.findViewById<RecyclerView>(R.id.preposition_blocks_recycler)
+        prepositionBlocksRecycler = recycler
+        recycler.layoutManager = LinearLayoutManager(this)
+        prepositionBlocksAdapter = PrepositionBlocksAdapter(rows).also { recycler.adapter = it }
+        val prev = root.findViewById<ImageButton>(R.id.preposition_blocks_prev)
+        val next = root.findViewById<ImageButton>(R.id.preposition_blocks_next)
+        prev.visibility = View.GONE
+        next.visibility = View.GONE
+        fun navigateBlock(delta: Int) {
+            val target = prepositionBlockCurrentIndex + delta
+            if (target < 0 || target > rows.lastIndex) return
+            cancelPrepositionBlocksAutoAdvance()
+            prepositionBlockCurrentIndex = target
+            recycler.smoothScrollToPosition(prepositionBlockCurrentIndex)
+            updatePrepositionBlocksNavUI()
+        }
+        prev.setOnClickListener { navigateBlock(-1) }
+        next.setOnClickListener { navigateBlock(1) }
+        updatePrepositionBlocksNavUI()
+        setupPrepositionModeBar(root, ::navigateBlock)
+        root.findViewById<View>(R.id.lesson_base_control_include)?.visibility = View.VISIBLE
+        updatePrepositionBlocksControlBar()
+    }
+
+    private fun setupPrepositionModeBar(root: View, navigateBlock: (Int) -> Unit) {
+        val learningBtn = root.findViewById<Button>(R.id.lesson_mode_learning)
+        val practiceBtn = root.findViewById<Button>(R.id.lesson_mode_practice)
+        val testBtn = root.findViewById<Button>(R.id.lesson_mode_test)
+        val vocabBtn = root.findViewById<Button>(R.id.lesson_mode_vocab)
+        val prepPrev = root.findViewById<ImageButton>(R.id.lesson_mode_bar_prev)
+        val prepNext = root.findViewById<ImageButton>(R.id.lesson_mode_bar_next)
+        fun stopPlaybackIfModeSwitch() {
+            if (prepositionBlocksControlRunning || prepositionBlocksControlPaused) {
+                cancelPrepositionBlocksAutoAdvance()
+                textToSpeech?.stop()
+                prepositionBlocksControlRunning = false
+                prepositionBlocksControlPaused = false
+                prepositionBlocksAdapter?.clearHighlight()
+                updatePrepositionBlocksControlBar()
+            }
+        }
+        fun setMode(mode: ConversationMode) {
+            if (prepositionBlocksMode != mode) stopPlaybackIfModeSwitch()
+            prepositionBlocksMode = mode
+            updatePrepositionModeTabAppearance(root)
+        }
+        learningBtn?.setOnClickListener { setMode(ConversationMode.LEARNING) }
+        practiceBtn?.setOnClickListener { setMode(ConversationMode.PRACTICE) }
+        testBtn?.setOnClickListener { setMode(ConversationMode.TEST) }
+        vocabBtn?.setOnClickListener { setMode(ConversationMode.VOCAB) }
+        prepPrev?.setOnClickListener { navigateBlock(-1) }
+        prepNext?.setOnClickListener { navigateBlock(1) }
+        updatePrepositionModeTabAppearance(root)
+    }
+
+    private fun updatePrepositionModeTabAppearance(root: View) {
+        val learningBtn = root.findViewById<TextView>(R.id.lesson_mode_learning)
+        val practiceBtn = root.findViewById<TextView>(R.id.lesson_mode_practice)
+        val testBtn = root.findViewById<TextView>(R.id.lesson_mode_test)
+        val vocabBtn = root.findViewById<TextView>(R.id.lesson_mode_vocab)
+        val white = 0xFFFFFFFF.toInt()
+        val darkText = 0xFF555555.toInt()
+        val m = prepositionBlocksMode
+        val sel = R.drawable.bg_lesson_mode_tab_selected
+        val unsel = R.drawable.bg_lesson_mode_tab_unselected
+        learningBtn?.setBackgroundResource(if (m == ConversationMode.LEARNING) sel else unsel)
+        learningBtn?.setTextColor(if (m == ConversationMode.LEARNING) white else darkText)
+        practiceBtn?.setBackgroundResource(if (m == ConversationMode.PRACTICE) sel else unsel)
+        practiceBtn?.setTextColor(if (m == ConversationMode.PRACTICE) white else darkText)
+        testBtn?.setBackgroundResource(if (m == ConversationMode.TEST) sel else unsel)
+        testBtn?.setTextColor(if (m == ConversationMode.TEST) white else darkText)
+        vocabBtn?.setBackgroundResource(if (m == ConversationMode.VOCAB) sel else unsel)
+        vocabBtn?.setTextColor(if (m == ConversationMode.VOCAB) white else darkText)
+    }
+
+    private fun updatePrepositionBlocksControlBar() {
+        controlStartStopButton?.let { ControlBarUtils.setControlStartStopButton(this, it, prepositionBlocksControlRunning) }
+        controlPauseResumeButton?.let { ControlBarUtils.setControlPauseResumeButton(this, it, prepositionBlocksControlPaused) }
+    }
+
+    private fun onPrepositionBlocksStartStop() {
+        if (prepositionBlockRows.isEmpty()) return
+        if (prepositionBlocksControlRunning) {
+            cancelPrepositionBlocksAutoAdvance()
+            textToSpeech?.stop()
+            prepositionBlocksControlRunning = false
+            prepositionBlocksControlPaused = false
+            prepositionBlocksAdapter?.clearHighlight()
+            updatePrepositionBlocksControlBar()
+            return
+        }
+        if (prepositionBlocksMode != ConversationMode.LEARNING) {
+            Toast.makeText(this, "Switch to Learning to play audio", Toast.LENGTH_SHORT).show()
+            return
+        }
+        prepositionBlocksControlRunning = true
+        prepositionBlocksControlPaused = false
+        updatePrepositionBlocksControlBar()
+        speakPrepositionCurrentBlock()
+    }
+
+    private fun onPrepositionBlocksPauseResume() {
+        if (prepositionBlockRows.isEmpty() || !prepositionBlocksControlRunning) return
+        if (prepositionBlocksControlPaused) {
+            prepositionBlocksControlPaused = false
+            updatePrepositionBlocksControlBar()
+            speakPrepositionCurrentBlock()
+        } else {
+            cancelPrepositionBlocksAutoAdvance()
+            textToSpeech?.stop()
+            prepositionBlocksControlPaused = true
+            prepositionBlocksAdapter?.clearHighlight()
+            updatePrepositionBlocksControlBar()
+        }
+    }
+
+    private fun cancelPrepositionBlocksAutoAdvance() {
+        prepositionBlocksAutoAdvanceRunnable?.let { verificationHandler.removeCallbacks(it) }
+        prepositionBlocksAutoAdvanceRunnable = null
+    }
+
+    private fun updatePrepositionBlocksNavUI() {
+        val root = prepositionBlocksRoot ?: return
+        if (currentContentLayout != ContentLayout.PREPOSITION_BLOCKS) return
+        val rows = prepositionBlockRows
+        if (rows.isEmpty()) return
+        val titleTv = root.findViewById<TextView>(R.id.preposition_blocks_title) ?: return
+        val prev = root.findViewById<ImageButton>(R.id.preposition_blocks_prev)
+        val next = root.findViewById<ImageButton>(R.id.preposition_blocks_next)
+        val total = rows.size.coerceAtLeast(1)
+        titleTv.text = "Block ${prepositionBlockCurrentIndex + 1} / $total"
+        prev?.isEnabled = prepositionBlockCurrentIndex > 0
+        next?.isEnabled = prepositionBlockCurrentIndex < rows.lastIndex
+        val prepPrev = root.findViewById<ImageButton>(R.id.lesson_mode_bar_prev)
+        val prepNext = root.findViewById<ImageButton>(R.id.lesson_mode_bar_next)
+        prepPrev?.isEnabled = prepositionBlockCurrentIndex > 0
+        prepNext?.isEnabled = prepositionBlockCurrentIndex < rows.lastIndex
+    }
+
+    /** Magenta-bar lessons: red border on the row/block while TTS speaks it ([bg_threecol_row_active]). */
+    private fun handleUtteranceStartBlockHighlight(utteranceId: String) {
+        extendSentenceUtteranceEnStartRegex.matchEntire(utteranceId)?.let { m ->
+            val gen = m.groupValues[1].toInt()
+            val gi = m.groupValues[2].toInt()
+            val ri = m.groupValues[3].toInt()
+            if (gen != extendSentenceTtsGeneration) return
+            if (gi != extendSentenceCurrentGroupIndex) return
+            val header = extendSentenceHeaderAdapterPositions.getOrNull(gi) ?: return
+            val pos = header + 1 + ri
+            val count = extendSentenceAdapter?.itemCount ?: 0
+            if (pos in 0 until count) {
+                extendSentenceRecycler?.smoothScrollToPosition(pos)
+                extendSentenceAdapter?.setHighlightedAdapterPosition(pos)
+            }
+        }
+        prepBlockHeadUtteranceRegex.matchEntire(utteranceId)?.let { m ->
+            val gen = m.groupValues[1].toInt()
+            val idx = m.groupValues[2].toInt()
+            if (gen != prepositionBlocksTtsGeneration) return
+            prepositionBlocksAdapter?.setHighlightedPosition(idx)
+            prepositionBlocksRecycler?.smoothScrollToPosition(idx)
+        }
+    }
+
+    /** Clear red border when the last TTS segment of the current extend-sentence group finishes. */
+    private fun handleExtendSentenceUtteranceDoneForHighlight(utteranceId: String) {
+        if (currentContentLayout != ContentLayout.EXTEND_SENTENCE) return
+        val m = extendSentenceUtteranceSegmentRegex.matchEntire(utteranceId) ?: return
+        val gen = m.groupValues[1].toInt()
+        val gi = m.groupValues[2].toInt()
+        val part = m.groupValues[3]
+        val ri = m.groupValues[4].toInt()
+        if (gen != extendSentenceTtsGeneration) return
+        val g = extendSentenceGroups.getOrNull(gi) ?: return
+        if (ri != g.lastIndex) return
+        val row = g[ri]
+        val isLastSegmentOfGroup = when (part) {
+            "ex" -> true
+            "bn" -> row.speakAfterBengali.isBlank()
+            else -> false
+        }
+        if (isLastSegmentOfGroup) {
+            extendSentenceAdapter?.clearBlockHighlight()
+        }
+    }
+
+    /** After the last TTS segment of a block, auto-advance to the next block after 2s (or finish). */
+    private fun handlePrepositionBlockUtteranceFinished(utteranceId: String, @Suppress("UNUSED_PARAMETER") fromError: Boolean) {
+        if (isDestroyed || currentContentLayout != ContentLayout.PREPOSITION_BLOCKS) return
+        val m = prepositionBlockUtteranceRegex.matchEntire(utteranceId) ?: return
+        val gen = m.groupValues[1].toInt()
+        val idx = m.groupValues[2].toInt()
+        val part = m.groupValues[3]
+        if (gen != prepositionBlocksTtsGeneration) return
+        if (idx != prepositionBlockCurrentIndex) return
+        if (prepositionBlocksMode != ConversationMode.LEARNING) return
+        if (!prepositionBlocksControlRunning || prepositionBlocksControlPaused) return
+        val row = prepositionBlockRows.getOrNull(idx) ?: return
+        val isLast = when {
+            row.spokenGuidance.isNotBlank() -> part == "guidance"
+            else -> part == "ex2"
+        }
+        if (!isLast) return
+        schedulePrepositionBlocksAutoAdvanceAfterBlock(gen)
+    }
+
+    private fun schedulePrepositionBlocksAutoAdvanceAfterBlock(gen: Int) {
+        prepositionBlocksAutoAdvanceRunnable?.let { verificationHandler.removeCallbacks(it) }
+        prepositionBlocksAutoAdvanceRunnable = Runnable {
+            prepositionBlocksAutoAdvanceRunnable = null
+            if (isDestroyed || currentContentLayout != ContentLayout.PREPOSITION_BLOCKS) return@Runnable
+            if (prepositionBlocksMode != ConversationMode.LEARNING) return@Runnable
+            if (!prepositionBlocksControlRunning || prepositionBlocksControlPaused) return@Runnable
+            if (gen != prepositionBlocksTtsGeneration) return@Runnable
+            val rows = prepositionBlockRows
+            if (rows.isEmpty()) return@Runnable
+            if (prepositionBlockCurrentIndex >= rows.lastIndex) {
+                prepositionBlocksControlRunning = false
+                prepositionBlocksControlPaused = false
+                textToSpeech?.stop()
+                prepositionBlocksAdapter?.clearHighlight()
+                updatePrepositionBlocksControlBar()
+                return@Runnable
+            }
+            prepositionBlockCurrentIndex++
+            prepositionBlocksRecycler?.smoothScrollToPosition(prepositionBlockCurrentIndex)
+            updatePrepositionBlocksNavUI()
+            speakPrepositionCurrentBlock()
+        }
+        verificationHandler.postDelayed(prepositionBlocksAutoAdvanceRunnable!!, 2000)
+    }
+
+    /** Speak current block: line1+2+3+4 shown in UI; line5 hidden but spoken in practice. */
+    private fun speakPrepositionCurrentBlock() {
+        val idx = prepositionBlockCurrentIndex.coerceIn(0, (prepositionBlockRows.size - 1).coerceAtLeast(0))
+        val row = prepositionBlockRows.getOrNull(idx) ?: return
+        if (!ttsReady || textToSpeech == null) {
+            prepositionBlocksControlRunning = false
+            updatePrepositionBlocksControlBar()
+            return
+        }
+        cancelPrepositionBlocksAutoAdvance()
+        prepositionBlocksTtsGeneration++
+        val gen = prepositionBlocksTtsGeneration
+        prepositionBlocksAdapter?.setHighlightedPosition(idx)
+        prepositionBlocksRecycler?.smoothScrollToPosition(idx)
+        val idSuffix = { part: String -> "prep_block_${gen}_${idx}_$part" }
+        textToSpeech?.setLanguage(Locale.US)
+        textToSpeech?.speak(row.preposition, TextToSpeech.QUEUE_FLUSH, null, idSuffix("head"))
+        textToSpeech?.setLanguage(Locale("bn"))
+        textToSpeech?.speak(row.meaning, TextToSpeech.QUEUE_ADD, null, idSuffix("meaning"))
+        textToSpeech?.setLanguage(Locale.US)
+        textToSpeech?.speak(row.example1, TextToSpeech.QUEUE_ADD, null, idSuffix("ex1"))
+        textToSpeech?.speak(row.example2, TextToSpeech.QUEUE_ADD, null, idSuffix("ex2"))
+        if (row.spokenGuidance.isNotBlank()) {
+            textToSpeech?.setLanguage(Locale("bn"))
+            textToSpeech?.speak(row.spokenGuidance, TextToSpeech.QUEUE_ADD, null, idSuffix("guidance"))
+        }
+    }
+
     /** Load simple tense triplets and show as table-like rows: Present | Past | Future. */
     private fun loadSimpleTenseTripletLessonFromAsset(assetPath: String, displayTitle: String) {
         val content = try {
@@ -3774,7 +4443,7 @@ class MainActivity : AppCompatActivity() {
         clearPronunciationLessonState()
         updateLessonTopicDisplay()
 
-        val root = ensureTenseLessonRoot(R.layout.layout_tense_triplets, R.id.tense_triplet_root)
+        val root = ensureTenseLessonRoot(R.layout.layout_tense_triplets_content)
         val recycler = root.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.tense_triplet_recycler)
         if (recycler != null) {
             tenseTripletAdapter = TenseTripletAdapter(tenseTripletRows, R.layout.layout_item_tense_triplet, alwaysShowFutureCell = false, adjectiveDualMode = false)
@@ -3821,7 +4490,7 @@ class MainActivity : AppCompatActivity() {
         clearPronunciationLessonState()
         updateLessonTopicDisplay()
 
-        val root = ensureTenseLessonRoot(R.layout.layout_tense_duplex, R.id.tense_duplex_root)
+        val root = ensureTenseLessonRoot(R.layout.layout_tense_duplex_content)
         val recycler = root.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.tense_triplet_recycler)
         if (recycler != null) {
             tenseTripletAdapter = TenseTripletAdapter(tenseTripletRows, R.layout.layout_item_tense_triplet, alwaysShowFutureCell = false, adjectiveDualMode = false)
@@ -3865,7 +4534,7 @@ class MainActivity : AppCompatActivity() {
         clearPronunciationLessonState()
         updateLessonTopicDisplay()
 
-        val root = ensureTenseLessonRoot(R.layout.layout_tense_adjective_dual, R.id.tense_adjective_dual_root, forceReplace = true)
+        val root = ensureTenseLessonRoot(R.layout.layout_tense_adjective_dual_content, forceReplace = true)
         val recycler = root.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.tense_triplet_recycler)
         if (recycler != null) {
             tenseTripletAdapter = TenseTripletAdapter(
@@ -3886,15 +4555,24 @@ class MainActivity : AppCompatActivity() {
         setupTenseTripletColumnToggles(root)
     }
 
-    private fun ensureTenseLessonRoot(layoutRes: Int, requiredRootId: Int, forceReplace: Boolean = false): View {
-        if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) switchContentLayout(ContentLayout.TENSE_TRIPLETS)
-        val existing = if (contentFrame.childCount > 0) contentFrame.getChildAt(0) else null
-        if (!forceReplace && existing != null && existing.findViewById<View>(requiredRootId) != null) return existing
-        contentFrame.removeAllViews()
-        val root = layoutInflater.inflate(layoutRes, contentFrame, false)
-        contentFrame.addView(root)
-        // Rebind in-content control bar because this custom root replace bypasses switchContentLayout() binding.
-        val activeBar = root.findViewById<View>(R.id.tense_triplet_control_actions_include)
+    /**
+     * Ensures the tense-triplet lesson shell ([layout_lesson_base]) with the given **content** layout
+     * inside [R.id.lesson_base_content]. Mode bar + bottom control always come from the base shell.
+     */
+    private fun ensureTenseLessonRoot(layoutRes: Int, forceReplace: Boolean = false): View {
+        if (currentContentLayout != ContentLayout.TENSE_TRIPLETS) {
+            switchContentLayout(ContentLayout.TENSE_TRIPLETS)
+        }
+        val root = contentFrame.getChildAt(0) ?: return contentFrame
+        if (!forceReplace && tenseTripletInflatedContentRes == layoutRes) {
+            return root
+        }
+        val host = root.findViewById<android.widget.FrameLayout>(R.id.lesson_base_content)
+            ?: return root
+        host.removeAllViews()
+        layoutInflater.inflate(layoutRes, host, true)
+        tenseTripletInflatedContentRes = layoutRes
+        val activeBar = root.findViewById<View>(R.id.lesson_base_control_include)
         controlActionsBar = activeBar
         controlStartStopButton = activeBar?.findViewById(R.id.control_start_stop)
         controlPauseResumeButton = activeBar?.findViewById(R.id.control_pause_resume)
@@ -3967,12 +4645,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupTenseTripletModeButtons(root: View) {
-        val learningBtn = root.findViewById<Button>(R.id.tense_triplet_mode_learning)
-        val practiceBtn = root.findViewById<Button>(R.id.tense_triplet_mode_practice)
-        val testBtn = root.findViewById<Button>(R.id.tense_triplet_mode_test)
-        val vocabBtn = root.findViewById<Button>(R.id.tense_triplet_mode_vocab)
-        val prevBtn = root.findViewById<ImageButton>(R.id.tense_triplet_prev_row)
-        val nextBtn = root.findViewById<ImageButton>(R.id.tense_triplet_next_row)
+        val learningBtn = root.findViewById<Button>(R.id.lesson_mode_learning)
+        val practiceBtn = root.findViewById<Button>(R.id.lesson_mode_practice)
+        val testBtn = root.findViewById<Button>(R.id.lesson_mode_test)
+        val vocabBtn = root.findViewById<Button>(R.id.lesson_mode_vocab)
+        val prevBtn = root.findViewById<ImageButton>(R.id.lesson_mode_bar_prev)
+        val nextBtn = root.findViewById<ImageButton>(R.id.lesson_mode_bar_next)
         val mainContent = root.findViewById<View>(R.id.tense_triplet_main_content)
         val vocabInclude = root.findViewById<View>(R.id.tense_triplet_vocab_include)
         val vocabRecycler = vocabInclude?.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.lesson_vocab_recycler)
@@ -4117,13 +4795,13 @@ class MainActivity : AppCompatActivity() {
         mainContent: View?,
         vocabInclude: View?
     ) {
-        val blue = ContextCompat.getColor(this, R.color.lesson_topic_bar_background)
         val white = 0xFFFFFFFF.toInt()
-        val gray = 0xFFE0E0E0.toInt()
         val darkText = 0xFF555555.toInt()
+        val sel = R.drawable.bg_lesson_mode_tab_selected
+        val unsel = R.drawable.bg_lesson_mode_tab_unselected
         fun setBtn(btn: View?, selected: Boolean) {
             (btn as? TextView)?.let {
-                it.setBackgroundColor(if (selected) blue else gray)
+                it.setBackgroundResource(if (selected) sel else unsel)
                 it.setTextColor(if (selected) white else darkText)
             }
         }
@@ -4217,7 +4895,7 @@ class MainActivity : AppCompatActivity() {
                     if (recycler.adapter !== threeColAdapter) recycler.adapter = threeColAdapter
                 }
                 // Bottom padding so current row stays fully visible above the START/STOP control bar
-                val controlBar = root.findViewById<View>(R.id.threecol_control_actions_include)
+                val controlBar = root.findViewById<View>(R.id.lesson_base_control_include)
                 val bottomPaddingPx = if (controlBar != null && controlBar.height > 0) controlBar.height
                     else (72 * resources.displayMetrics.density).toInt()
                 recycler.setPadding(0, recycler.paddingTop, 0, bottomPaddingPx)
@@ -4231,7 +4909,7 @@ class MainActivity : AppCompatActivity() {
             updateThreeColRowPositionText()
             // Use the control bar inside this layout; hide the activity-level bar.
             findViewById<View>(R.id.control_actions_include)?.visibility = View.GONE
-            root.findViewById<View>(R.id.threecol_control_actions_include)?.visibility = View.VISIBLE
+            root.findViewById<View>(R.id.lesson_base_control_include)?.visibility = View.VISIBLE
         }
     }
 
@@ -4328,7 +5006,7 @@ class MainActivity : AppCompatActivity() {
             updateConvBubbleRowPositionText()
             // Use the control bar inside this layout; hide the activity-level bar.
             findViewById<View>(R.id.control_actions_include)?.visibility = View.GONE
-            root.findViewById<View>(R.id.conv_bubble_control_actions_include)?.visibility = View.VISIBLE
+            root.findViewById<View>(R.id.lesson_base_control_include)?.visibility = View.VISIBLE
             updateConvBubbleControlBar()
         }
     }
@@ -4436,12 +5114,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupConvBubbleModeButtons(root: View) {
-        val learningBtn = root.findViewById<Button>(R.id.conv_bubble_mode_learning)
-        val practiceBtn = root.findViewById<Button>(R.id.conv_bubble_mode_practice)
-        val testBtn = root.findViewById<Button>(R.id.conv_bubble_mode_test)
-        val vocabBtn = root.findViewById<Button>(R.id.conv_bubble_mode_vocab)
-        val prevRowBtn = root.findViewById<ImageButton>(R.id.conv_bubble_prev_row)
-        val nextRowBtn = root.findViewById<ImageButton>(R.id.conv_bubble_next_row)
+        val learningBtn = root.findViewById<Button>(R.id.lesson_mode_learning)
+        val practiceBtn = root.findViewById<Button>(R.id.lesson_mode_practice)
+        val testBtn = root.findViewById<Button>(R.id.lesson_mode_test)
+        val vocabBtn = root.findViewById<Button>(R.id.lesson_mode_vocab)
+        val prevRowBtn = root.findViewById<ImageButton>(R.id.lesson_mode_bar_prev)
+        val nextRowBtn = root.findViewById<ImageButton>(R.id.lesson_mode_bar_next)
         val weakOnlyCheck = root.findViewById<Switch>(R.id.conv_bubble_weak_only)
         val weakOnlyRow = root.findViewById<View>(R.id.conv_bubble_row_nav)
         val testOptionsRow = root.findViewById<View>(R.id.conv_bubble_test_options_row)
@@ -4545,21 +5223,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateConvBubbleTabAppearance(learningBtn: View?, practiceBtn: View?, testBtn: View?, vocabBtn: View?, weakOnlyCheck: View?, weakOnlyRow: View?, testOptionsRow: View?, mainContent: View?, vocabInclude: View?) {
-        val blue = ContextCompat.getColor(this, R.color.lesson_topic_bar_background)
-        val gray = 0xFFE0E0E0.toInt()
         val white = 0xFFFFFFFF.toInt()
         val darkText = 0xFF555555.toInt()
         val isLearning = convBubbleMode == ConversationMode.LEARNING
         val isPractice = convBubbleMode == ConversationMode.PRACTICE
         val isTest = convBubbleMode == ConversationMode.TEST
         val isVocab = convBubbleMode == ConversationMode.VOCAB
-        (learningBtn as? TextView)?.setBackgroundColor(if (isLearning) blue else gray)
+        val sel = R.drawable.bg_lesson_mode_tab_selected
+        val unsel = R.drawable.bg_lesson_mode_tab_unselected
+        (learningBtn as? TextView)?.setBackgroundResource(if (isLearning) sel else unsel)
         (learningBtn as? TextView)?.setTextColor(if (isLearning) white else darkText)
-        (practiceBtn as? TextView)?.setBackgroundColor(if (isPractice) blue else gray)
+        (practiceBtn as? TextView)?.setBackgroundResource(if (isPractice) sel else unsel)
         (practiceBtn as? TextView)?.setTextColor(if (isPractice) white else darkText)
-        (testBtn as? TextView)?.setBackgroundColor(if (isTest) blue else gray)
+        (testBtn as? TextView)?.setBackgroundResource(if (isTest) sel else unsel)
         (testBtn as? TextView)?.setTextColor(if (isTest) white else darkText)
-        (vocabBtn as? TextView)?.setBackgroundColor(if (isVocab) blue else gray)
+        (vocabBtn as? TextView)?.setBackgroundResource(if (isVocab) sel else unsel)
         (vocabBtn as? TextView)?.setTextColor(if (isVocab) white else darkText)
         mainContent?.visibility = if (isVocab) View.GONE else View.VISIBLE
         vocabInclude?.visibility = if (isVocab) View.VISIBLE else View.GONE
@@ -4574,8 +5252,8 @@ class MainActivity : AppCompatActivity() {
     private fun updateConvBubbleRowPositionText() {
         if (currentContentLayout != ContentLayout.CONVERSATION_BUBBLES) return
         val root = contentFrame.getChildAt(0) ?: return
-        val prevBtn = root.findViewById<ImageButton>(R.id.conv_bubble_prev_row)
-        val nextBtn = root.findViewById<ImageButton>(R.id.conv_bubble_next_row)
+        val prevBtn = root.findViewById<ImageButton>(R.id.lesson_mode_bar_prev)
+        val nextBtn = root.findViewById<ImageButton>(R.id.lesson_mode_bar_next)
         if (convBubbleMode == ConversationMode.VOCAB) {
             val n = currentVTabRows.size
             val cur = (lessonVocabAdapter?.currentIndex ?: 0).coerceIn(0, (n - 1).coerceAtLeast(0))
@@ -4736,6 +5414,7 @@ class MainActivity : AppCompatActivity() {
             convBubbleControlRunning = false
             if (currentContentLayout == ContentLayout.THREECOL_TABLE) threeColControlRunning = false
             if (currentContentLayout == ContentLayout.TENSE_TRIPLETS) tenseTripletControlRunning = false
+            if (currentContentLayout == ContentLayout.EXTEND_SENTENCE) updateExtendSentenceControlBar()
         } else {
             if (currentVTabRows.isEmpty()) return
             val idx = (lessonVocabAdapter?.currentIndex ?: 0).coerceIn(0, currentVTabRows.lastIndex)
@@ -4753,13 +5432,15 @@ class MainActivity : AppCompatActivity() {
                     val inConvV = currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleMode == ConversationMode.VOCAB
                     val inThreeV = currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB
                     val inTenseV = currentContentLayout == ContentLayout.TENSE_TRIPLETS && tenseTripletMode == TenseTripletMode.VOCAB
-                    if (inConvV || inThreeV || inTenseV) startVerificationListening(row.word)
+                    val inExtendV = currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceMode == ConversationMode.VOCAB
+                    if (inConvV || inThreeV || inTenseV || inExtendV) startVerificationListening(row.word)
                 }
             }, 800)
         }
         if (currentContentLayout == ContentLayout.CONVERSATION_BUBBLES) updateConvBubbleControlBar()
         else if (currentContentLayout == ContentLayout.THREECOL_TABLE) updateThreeColControlBar()
         else if (currentContentLayout == ContentLayout.TENSE_TRIPLETS) updateTenseTripletControlBar()
+        else if (currentContentLayout == ContentLayout.EXTEND_SENTENCE) updateExtendSentenceControlBar()
     }
 
     private fun onConvBubblePauseResume() {
@@ -5023,8 +5704,8 @@ class MainActivity : AppCompatActivity() {
     private fun updateThreeColRowPositionText() {
         if (currentContentLayout != ContentLayout.THREECOL_TABLE) return
         val root = contentFrame.getChildAt(0) ?: return
-        val prevBtn = root.findViewById<ImageButton>(R.id.threecol_prev_row)
-        val nextBtn = root.findViewById<ImageButton>(R.id.threecol_next_row)
+        val prevBtn = root.findViewById<ImageButton>(R.id.lesson_mode_bar_prev)
+        val nextBtn = root.findViewById<ImageButton>(R.id.lesson_mode_bar_next)
         if (threeColMode == ThreeColMode.VOCAB) {
             val n = currentVTabRows.size
             val cur = (lessonVocabAdapter?.currentIndex ?: 0).coerceIn(0, (n - 1).coerceAtLeast(0))
@@ -5275,12 +5956,12 @@ class MainActivity : AppCompatActivity() {
 
     /** Wire Learning / Practice / Test / V tabs, prev/next row, and Weak-only filter for THREECOL_TABLE. */
     private fun setupThreeColModeButtons(root: View) {
-        val learningBtn = root.findViewById<Button>(R.id.threecol_mode_learning)
-        val practiceBtn = root.findViewById<Button>(R.id.threecol_mode_practice)
-        val testBtn = root.findViewById<Button>(R.id.threecol_mode_test)
-        val vocabBtn = root.findViewById<Button>(R.id.threecol_mode_vocab)
-        val prevRowBtn = root.findViewById<ImageButton>(R.id.threecol_prev_row)
-        val nextRowBtn = root.findViewById<ImageButton>(R.id.threecol_next_row)
+        val learningBtn = root.findViewById<Button>(R.id.lesson_mode_learning)
+        val practiceBtn = root.findViewById<Button>(R.id.lesson_mode_practice)
+        val testBtn = root.findViewById<Button>(R.id.lesson_mode_test)
+        val vocabBtn = root.findViewById<Button>(R.id.lesson_mode_vocab)
+        val prevRowBtn = root.findViewById<ImageButton>(R.id.lesson_mode_bar_prev)
+        val nextRowBtn = root.findViewById<ImageButton>(R.id.lesson_mode_bar_next)
         val weakOnlyCheck = root.findViewById<Switch>(R.id.threecol_weak_only)
         val mainContent = root.findViewById<View>(R.id.threecol_main_content)
         val vocabInclude = root.findViewById<View>(R.id.threecol_vocab_include)
@@ -5370,28 +6051,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateThreeColTabAppearance(learningBtn: View?, practiceBtn: View?, testBtn: View?, vocabBtn: View?, weakOnlyCheck: View?, mainContent: View?, vocabInclude: View?) {
-        val blue = ContextCompat.getColor(this, R.color.lesson_topic_bar_background)
-        val gray = 0xFFE0E0E0.toInt()
         val white = 0xFFFFFFFF.toInt()
         val darkText = 0xFF555555.toInt()
+        val sel = R.drawable.bg_lesson_mode_tab_selected
+        val unsel = R.drawable.bg_lesson_mode_tab_unselected
         val isLearning = threeColMode == ThreeColMode.LEARNING
         val isPractice = threeColMode == ThreeColMode.PRACTICE
         val isTest = threeColMode == ThreeColMode.TEST
         val isVocab = threeColMode == ThreeColMode.VOCAB
         (learningBtn as? TextView)?.let {
-            it.setBackgroundColor(if (isLearning) blue else gray)
+            it.setBackgroundResource(if (isLearning) sel else unsel)
             it.setTextColor(if (isLearning) white else darkText)
         }
         (practiceBtn as? TextView)?.let {
-            it.setBackgroundColor(if (isPractice) blue else gray)
+            it.setBackgroundResource(if (isPractice) sel else unsel)
             it.setTextColor(if (isPractice) white else darkText)
         }
         (testBtn as? TextView)?.let {
-            it.setBackgroundColor(if (isTest) blue else gray)
+            it.setBackgroundResource(if (isTest) sel else unsel)
             it.setTextColor(if (isTest) white else darkText)
         }
         (vocabBtn as? TextView)?.let {
-            it.setBackgroundColor(if (isVocab) blue else gray)
+            it.setBackgroundResource(if (isVocab) sel else unsel)
             it.setTextColor(if (isVocab) white else darkText)
         }
         mainContent?.visibility = if (isVocab) View.GONE else View.VISIBLE
@@ -6232,6 +6913,38 @@ class MainActivity : AppCompatActivity() {
 
     // ───────────────────── Content Layout Switching ─────────────────────
 
+    /** Inflates [R.layout.layout_lesson_base] and attaches [contentLayoutRes] into [R.id.lesson_base_content]. */
+    private fun inflateLessonShellWithContent(contentLayoutRes: Int): View {
+        val shell = layoutInflater.inflate(R.layout.layout_lesson_base, contentFrame, false)
+        val host = shell.findViewById<android.widget.FrameLayout>(R.id.lesson_base_content)
+        layoutInflater.inflate(contentLayoutRes, host, true)
+        return shell
+    }
+
+    /** Same shell as [inflateLessonShellWithContent], plus block title row in [R.id.lesson_base_top_extra]. */
+    private fun inflatePrepositionLessonShell(): View {
+        val shell = layoutInflater.inflate(R.layout.layout_lesson_base, contentFrame, false)
+        val topExtra = shell.findViewById<android.widget.FrameLayout>(R.id.lesson_base_top_extra)
+        topExtra.visibility = View.VISIBLE
+        layoutInflater.inflate(R.layout.layout_preposition_blocks_top_extra, topExtra, true)
+        val host = shell.findViewById<android.widget.FrameLayout>(R.id.lesson_base_content)
+        layoutInflater.inflate(R.layout.layout_preposition_blocks_content, host, true)
+        return shell
+    }
+
+    /**
+     * [layout_lesson_base] with magenta mode bar visible; part navigation in [lesson_base_top_extra].
+     */
+    private fun inflateExtendSentenceLessonShell(): View {
+        val shell = layoutInflater.inflate(R.layout.layout_lesson_base, contentFrame, false)
+        val topExtra = shell.findViewById<android.widget.FrameLayout>(R.id.lesson_base_top_extra)
+        topExtra.visibility = View.VISIBLE
+        layoutInflater.inflate(R.layout.layout_extend_sentence_top_extra, topExtra, true)
+        val host = shell.findViewById<android.widget.FrameLayout>(R.id.lesson_base_content)
+        layoutInflater.inflate(R.layout.layout_extend_sentence_content, host, true)
+        return shell
+    }
+
     /**
      * Switch the content area to one of the predefined layouts.
      * Returns the inflated View so the caller can populate it.
@@ -6240,22 +6953,50 @@ class MainActivity : AppCompatActivity() {
     fun switchContentLayout(layout: ContentLayout): View {
         // Always re-inflate when requested from drawer/subtopic navigation.
         // Reusing the existing same-layout view can leave stale/empty content in some paths.
+        if (currentContentLayout == ContentLayout.PREPOSITION_BLOCKS) {
+            cancelPrepositionBlocksAutoAdvance()
+            prepositionBlocksRecycler = null
+            prepositionBlocksRoot = null
+        }
+        if (currentContentLayout == ContentLayout.EXTEND_SENTENCE) {
+            extendSentenceRoot = null
+            extendSentenceRecycler = null
+        }
         contentFrame.removeAllViews()
         // Clear references to previous layout-specific views
         if (currentContentLayout == ContentLayout.SPEECH_INPUT) speechInputView = null
         if (currentContentLayout == ContentLayout.TEXT_DISPLAY) textDisplaySpeakButton = null
         if (currentContentLayout == ContentLayout.PRACTICE_THREE_AREA) practiceView = null
 
-        val layoutRes = getContentLayoutResId(layout)
-        val view = LayoutInflater.from(this).inflate(layoutRes, contentFrame, false)
+        val view = when (layout) {
+            ContentLayout.TENSE_TRIPLETS -> inflateLessonShellWithContent(R.layout.layout_tense_triplets_content)
+            ContentLayout.THREECOL_TABLE -> inflateLessonShellWithContent(R.layout.layout_threecol_content)
+            ContentLayout.CONVERSATION_BUBBLES -> inflateLessonShellWithContent(R.layout.layout_conversation_bubbles_content)
+            ContentLayout.PREPOSITION_BLOCKS -> inflatePrepositionLessonShell()
+            ContentLayout.EXTEND_SENTENCE -> inflateExtendSentenceLessonShell()
+            else -> {
+                val layoutRes = getContentLayoutResId(layout)
+                LayoutInflater.from(this).inflate(layoutRes, contentFrame, false)
+            }
+        }
         contentFrame.addView(view)
         currentContentLayout = layout
+        if (layout == ContentLayout.TENSE_TRIPLETS) {
+            tenseTripletInflatedContentRes = R.layout.layout_tense_triplets_content
+        } else {
+            tenseTripletInflatedContentRes = -1
+        }
+
+        // App top bar (hamburger, lesson title) is shared across all content layouts — keep it visible.
+        findViewById<View>(R.id.top_bar)?.visibility = View.VISIBLE
 
         // Rebind control bar to the one that is visible for this layout, so PAUSE/RESUME text and clicks apply to the same bar the user sees.
         val activeBar = when (layout) {
-            ContentLayout.CONVERSATION_BUBBLES -> view.findViewById<View>(R.id.conv_bubble_control_actions_include)
-            ContentLayout.THREECOL_TABLE -> view.findViewById<View>(R.id.threecol_control_actions_include)
-            ContentLayout.TENSE_TRIPLETS -> view.findViewById<View>(R.id.tense_triplet_control_actions_include)
+            ContentLayout.CONVERSATION_BUBBLES,
+            ContentLayout.THREECOL_TABLE,
+            ContentLayout.TENSE_TRIPLETS,
+            ContentLayout.PREPOSITION_BLOCKS,
+            ContentLayout.EXTEND_SENTENCE -> view.findViewById<View>(R.id.lesson_base_control_include)
             else -> findViewById(R.id.control_actions_include)
         }
         controlActionsBar = activeBar
@@ -6266,7 +7007,7 @@ class MainActivity : AppCompatActivity() {
         bindControlBarListeners()
 
         // Main bar (activity-level) visibility: these layouts use their own bar in content.
-        if (layout == ContentLayout.CONVERSATION_BUBBLES || layout == ContentLayout.THREECOL_TABLE || layout == ContentLayout.TENSE_TRIPLETS) {
+        if (layout == ContentLayout.CONVERSATION_BUBBLES || layout == ContentLayout.THREECOL_TABLE || layout == ContentLayout.TENSE_TRIPLETS || layout == ContentLayout.EXTEND_SENTENCE || layout == ContentLayout.PREPOSITION_BLOCKS) {
             findViewById<View>(R.id.control_actions_include)?.visibility = View.GONE
             activeBar?.visibility = View.VISIBLE
         } else {
@@ -6274,7 +7015,7 @@ class MainActivity : AppCompatActivity() {
         }
         // Hide bottom bar when layout has its own in-content control bar.
         findViewById<View>(R.id.bottom_bar)?.visibility =
-            if (layout == ContentLayout.THREECOL_TABLE || layout == ContentLayout.CONVERSATION_BUBBLES || layout == ContentLayout.TENSE_TRIPLETS) View.GONE else View.VISIBLE
+            if (layout == ContentLayout.THREECOL_TABLE || layout == ContentLayout.CONVERSATION_BUBBLES || layout == ContentLayout.TENSE_TRIPLETS || layout == ContentLayout.EXTEND_SENTENCE || layout == ContentLayout.PREPOSITION_BLOCKS) View.GONE else View.VISIBLE
         when (layout) {
             ContentLayout.CONVERSATION_BUBBLES -> {
                 convBubbleControlRunning = false
@@ -6305,6 +7046,17 @@ class MainActivity : AppCompatActivity() {
                 tenseTripletControlPaused = false
                 tenseTripletIncorrectCount = 0
                 updateTenseTripletControlBar()
+            }
+            ContentLayout.EXTEND_SENTENCE -> {
+                convBubbleControlRunning = false
+                extendSentenceControlRunning = false
+                extendSentenceControlPaused = false
+                updateExtendSentenceControlBar()
+            }
+            ContentLayout.PREPOSITION_BLOCKS -> {
+                prepositionBlocksControlRunning = false
+                prepositionBlocksControlPaused = false
+                updatePrepositionBlocksControlBar()
             }
             else -> if (usesControlActions(layout)) updateGenericControlBar()
         }
@@ -6604,6 +7356,10 @@ class MainActivity : AppCompatActivity() {
             onThreeColStartStop()
         } else if (currentContentLayout == ContentLayout.TENSE_TRIPLETS && tenseTripletRows.isNotEmpty()) {
             onTenseTripletStartStop()
+        } else if (currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceGroups.isNotEmpty()) {
+            onExtendSentenceStartStop()
+        } else if (currentContentLayout == ContentLayout.PREPOSITION_BLOCKS && prepositionBlockRows.isNotEmpty()) {
+            onPrepositionBlocksStartStop()
         }
     }
 
@@ -6614,6 +7370,10 @@ class MainActivity : AppCompatActivity() {
             onThreeColPauseResume()
         } else if (currentContentLayout == ContentLayout.TENSE_TRIPLETS && tenseTripletRows.isNotEmpty()) {
             onTenseTripletPauseResume()
+        } else if (currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceGroups.isNotEmpty()) {
+            onExtendSentencePauseResume()
+        } else if (currentContentLayout == ContentLayout.PREPOSITION_BLOCKS && prepositionBlockRows.isNotEmpty()) {
+            onPrepositionBlocksPauseResume()
         }
     }
 
@@ -8337,6 +9097,23 @@ $phraseTexts
         pronunciationLessonRows = null
         pronunciationLessonTitle = null
         descriptionWebView.loadUrl("file:///android_asset/diagrams/$filename")
+    }
+
+    /**
+     * Reference pages in assets root (e.g. parts-of-speech.html, svo-sentences.html).
+     * Uses [ContentLayout.DIAGRAM_ONLY] WebView inside the main activity (hamburger + title stay in activity_main).
+     */
+    @SuppressLint("SetJavaScriptEnabled")
+    private fun loadReferenceHtmlPage(assetFileName: String, displayTitle: String) {
+        clearPronunciationLessonState()
+        lessonName = displayTitle
+        updateLessonTopicDisplay()
+        val root = switchContentLayout(ContentLayout.DIAGRAM_ONLY)
+        root.findViewById<View>(R.id.diagram_info_button)?.visibility = View.GONE
+        val webView = root.findViewById<WebView>(R.id.diagram_webview) ?: return
+        webView.settings.javaScriptEnabled = true
+        webView.webViewClient = WebViewClient()
+        webView.loadUrl("file:///android_asset/$assetFileName")
     }
 
     /** One config-driven table layout: columns/headers/rows come from config. Builds pure HTML (no JavaScript) so it works with WebView JS disabled. */

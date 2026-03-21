@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Canonical lesson shell inside content_frame (see LESSON_BASE_LAYOUT.md + lesson-base-layout-mockup.html).
+
+  Structure:
+    lesson_base_top_slot     → layout_lesson_mode_bar + optional lesson_base_top_extra
+    lesson_base_content      → lesson-specific UI only (no duplicate mode bar or control bar)
+    lesson_base_control_include → layout_control_actions (START/STOP, PAUSE/RESUME — bottom lesson bar)
+
+  New lessons: inflate this shell + attach content into lesson_base_content only (see LESSON_BASE_LAYOUT.md).
+  (and optionally show lesson_base_top_extra with extra rows). Wire controls in MainActivity.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/lesson_base_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/lesson_box_background"
+    android:paddingTop="16dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="8dp"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/lesson_base_top_slot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/layout_lesson_mode_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <!-- Optional second row (block title, filters). Default: hidden — override in lesson-specific layout. -->
+        <FrameLayout
+            android:id="@+id/lesson_base_top_extra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:minHeight="0dp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/lesson_base_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:minHeight="0dp" />
+
+    <include
+        android:id="@+id/lesson_base_control_include"
+        layout="@layout/layout_control_actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

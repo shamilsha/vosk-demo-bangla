@@ -28,7 +28,7 @@
         android:minHeight="0dp"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:drawableStart="@drawable/ic_mic"
+        android:drawableStart="@drawable/ic_mic_angled"
         android:drawablePadding="8dp" />
 
     <!-- Pause / Resume toggle: warning when Pause, success when Resume (with mic icon) -->
@@ -47,7 +47,7 @@
         android:minHeight="0dp"
         android:paddingStart="12dp"
         android:paddingEnd="12dp"
-        android:drawableStart="@drawable/ic_mic"
+        android:drawableStart="@drawable/ic_mic_angled"
         android:drawablePadding="8dp" />
 
     <!-- Play back last user utterance (overwritten every new sentence) -->

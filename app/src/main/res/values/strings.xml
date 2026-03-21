@@ -27,6 +27,13 @@
     <string name="list_empty">No sentences to save</string>
     <string name="no_saved_list">No saved list found</string>
     <string name="next">Next</string>
+    <string name="prev_lesson">Previous lesson</string>
+    <string name="next_lesson">Next lesson</string>
+    <string name="lesson_nav_first">First lesson in list</string>
+    <string name="lesson_nav_last">Last lesson in list</string>
+    <string name="lesson_nav_no_context">Open a lesson from the menu to use prev/next</string>
+    <string name="mode_bar_prev_block">Previous block</string>
+    <string name="mode_bar_next_block">Next block</string>
     <string name="skip">Skip word</string>
     <string name="save_list_name_hint">List name</string>
     <string name="save_list_dialog_title">Save list as</string>

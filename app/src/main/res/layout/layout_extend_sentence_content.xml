@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Inflated into lesson_base_content — shell is layout_lesson_base.xml -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:minHeight="0dp">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/extend_sentence_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp" />
+
+    <include
+        android:id="@+id/extend_sentence_vocab_include"
+        layout="@layout/layout_lesson_vocab_pronunciation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+</FrameLayout>
