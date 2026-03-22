@@ -38,3 +38,59 @@ lesson_base_root
 - **Preposition:** `inflatePrepositionLessonShell()` — base + **`layout_preposition_blocks_top_extra`** + **`layout_preposition_blocks_content`**.
 - **Extend sentence:** `inflateExtendSentenceLessonShell()` — base (mode bar visible) + **`layout_extend_sentence_top_extra`** + **`layout_extend_sentence_content`** (includes optional V tab include).
 - Mockup: `app/src/main/assets/diagrams/lesson-base-layout-mockup.html` — illustrative only; the real control bar uses `layout_control_actions.xml` with **`ic_mic_angled`** (≈45°) so the mic matches the mockup better than the upright **`ic_mic`** used elsewhere (e.g. main record button).
+
+---
+
+## ContentLayout catalog (`MainActivityTypes.kt` + `switchContentLayout`)
+
+Every **`ContentLayout`** maps to a root XML via **`getContentLayoutResId()`**, except the five **shell** types below, which **`switchContentLayout`** inflates via **`layout_lesson_base`** + a content/top_extra pair (see **`MainActivity.kt`**).
+
+### A. Shell-based (`layout_lesson_base` — mode bar + `lesson_base_content` + in-content control bar)
+
+| `ContentLayout` | Content inflated into `lesson_base_content` | Extra row (`lesson_base_top_extra`) | Helper |
+|-----------------|---------------------------------------------|--------------------------------------|--------|
+| `TENSE_TRIPLETS` | `layout_tense_triplets_content` | — | `inflateLessonShellWithContent` |
+| `THREECOL_TABLE` | `layout_threecol_content` | — | `inflateLessonShellWithContent` |
+| `CONVERSATION_BUBBLES` | `layout_conversation_bubbles_content` | — | `inflateLessonShellWithContent` |
+| `PREPOSITION_BLOCKS` | `layout_preposition_blocks_content` | `layout_preposition_blocks_top_extra` | `inflatePrepositionLessonShell` |
+| `EXTEND_SENTENCE` | `layout_extend_sentence_content` | `layout_extend_sentence_top_extra` | `inflateExtendSentenceLessonShell` |
+
+For these, **`getContentLayoutResId`** returns **`R.layout.layout_lesson_base`** as a placeholder; the real tree is built by the helpers above.
+
+**Runtime wiring:** `switchContentLayout` sets **`controlActionsBar`** to **`view.findViewById(R.id.lesson_base_control_include)`**, hides the **activity** `control_actions_include`, and **hides** **`bottom_bar`** (lesson prev/next moves to app chrome only where applicable).
+
+### B. Standalone (inflated directly into `content_frame`)
+
+| `ContentLayout` | Root layout XML | Notes |
+|-----------------|-----------------|--------|
+| `LEGACY` | `layout_content_legacy` | Original one-screen lesson UI |
+| `TEXT_DISPLAY` | `layout_text_display` | |
+| `SPEECH_INPUT` | `layout_speech_input` | |
+| `PRACTICE_THREE_AREA` | `layout_practice_three_area` | |
+| `TABLE_DISPLAY` | `layout_table_display` | HTML table / interactive table |
+| `DIAGRAM_ONLY` | `layout_content_diagram_only` | WebView diagram, info button; no translation panels |
+| `MIC_SPEAKER_TEST` | `layout_mic_speaker_test` | |
+| `NOUN_TABS` | `layout_noun_tabs` | |
+| `NOUN_TEST` | `layout_noun_test` | |
+| `CONVERSATION` | `layout_conversation` | |
+| `SV_RIBBON` | `layout_sv_ribbon` | |
+| `CONVEYOR_TRIPLE` | `layout_conveyor_triple` | |
+| `SV_WORDS_CONVEYOR` | `layout_sv_words_conveyor` | |
+| `SV_I_FOUR_SECTIONS` | `layout_sv_i_four_sections` | |
+| `SIMPLE_SENTENCE` | `layout_simple_sentence` | |
+| `POC_BUTTON_MENU` | `layout_poc_button_menu` | Drawer-style subtopic buttons |
+
+Standalone layouts use the **activity** include **`control_actions_include`** when **`usesControlActions(layout)`** is true (see **`MainActivityTypes.kt`**); they do **not** embed `layout_lesson_base`.
+
+### C. `usesControlActions` (bottom START/STOP strip)
+
+Defined in **`MainActivityTypes.kt`**: `CONVERSATION`, `CONVERSATION_BUBBLES`, `MIC_SPEAKER_TEST`, `SPEECH_INPUT`, `PRACTICE_THREE_AREA`, `SV_RIBBON`, `CONVEYOR_TRIPLE`, `SV_WORDS_CONVEYOR`, `SV_I_FOUR_SECTIONS`, `SIMPLE_SENTENCE`, `THREECOL_TABLE`, `TENSE_TRIPLETS`, `EXTEND_SENTENCE`, `PREPOSITION_BLOCKS`.
+
+Shell lessons (A) always bind the **in-content** bar; **`TABLE_DISPLAY`**, **`DIAGRAM_ONLY`**, **`NOUN_*`**, **`POC_BUTTON_MENU`**, **`LEGACY`**, etc. are **not** in this set unless wired separately in **`switchContentLayout`**.
+
+### D. Related item/layout files (not full screens)
+
+- **Extend sentence rows:** `item_extend_sentence_header.xml`, `item_extend_sentence_block.xml` (practice/test overlay badge).
+- **Tense / 3-col items:** `layout_item_tense_triplet.xml`, `layout_item_threecol_row.xml`, etc.
+
+Keep this table in sync when adding a new **`ContentLayout`** or **`layout_*.xml`** root.

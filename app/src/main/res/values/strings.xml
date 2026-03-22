@@ -96,4 +96,8 @@
     <string name="not_available_yet">Not available yet.</string>
     <string name="threecol_filter_all_passed">All sentences passed! Showing all.</string>
     <string name="threecol_filter_showing_n">Showing %1$d of %2$d sentences</string>
+    <string name="extend_sentence_you_said">You said: %1$s</string>
+    <string name="extend_sentence_use_learning_or_practice">Use Learning, Practice, or Test for audio.</string>
+    <string name="extend_sentence_test_instruction">Now speak the rest of the sentences, one at a time.</string>
+    <string name="extend_sentence_test_placeholder">Speak here…</string>
 </resources>

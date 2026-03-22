@@ -39,8 +39,7 @@ under topic "SVO"          "test_layout",                 + load simple_what.txt
   What the drawer list actually shows: level header, topic header, or **SubtopicEntry(subtopic, ...)**.
 
 - **`getContentLayoutResId(ContentLayout)`**  
-  Maps enum → layout XML, e.g.  
-  `THREECOL_TABLE` → `R.layout.layout_3coldata_2coldisplay`.
+  Maps enum → **root** layout XML. For shell lessons (3-col, tense triplets, bubbles, extend sentence, preposition), the enum maps to **`layout_lesson_base`**; **`MainActivity.switchContentLayout`** then inflates **`layout_threecol_content`** (etc.) into **`lesson_base_content`**. See **`LESSON_BASE_LAYOUT.md`** for the full catalog.
 
 ---
 
@@ -106,15 +105,13 @@ Other subtopics are handled by different branches (e.g. `simple_*`, `sv_ribbon`,
 
 In **MainActivity.kt**:
 
-1. If we’re already on `THREECOL_TABLE` and the content view is there, return that view.
-2. Otherwise: **remove all views** from `contentFrame`.
-3. **Inflate** the layout for that content type:  
-   `getContentLayoutResId(THREECOL_TABLE)` → **layout_3coldata_2coldisplay.xml**.
-4. **Add** that view to `contentFrame` and set **currentContentLayout = THREECOL_TABLE**.
-5. **Control bar**: show Start/Stop + Pause/Resume if this layout uses them (`usesControlActions(THREECOL_TABLE)` is true), and hide the bottom bar for THREECOL_TABLE.
-6. **Layout-specific setup**: for `THREECOL_TABLE`, reset three-col state and call **updateThreeColControlBar()** (no lesson data yet; that comes from `loadThreeColLessonFromAsset`).
+1. **Remove all views** from `contentFrame` (navigation always re-inflates).
+2. **Inflate the lesson shell** via **`inflateLessonShellWithContent(R.layout.layout_threecol_content)`**: **`layout_lesson_base.xml`** (magenta mode bar + **`lesson_base_control_include`**) with **`layout_threecol_content.xml`** inside **`lesson_base_content`**.
+3. **Add** that root to `contentFrame` and set **currentContentLayout = THREECOL_TABLE**.
+4. **Control bar**: bind **`controlActionsBar`** to **`lesson_base_control_include`** inside the inflated view; hide the **activity-level** `control_actions_include` and **`bottom_bar`** (same pattern as tense triplets / extend sentence).
+5. **Layout-specific setup**: for `THREECOL_TABLE`, reset three-col state and call **updateThreeColControlBar()** (no lesson data yet; that comes from `loadThreeColLessonFromAsset`).
 
-So the **structure** of the screen (tabs, table, control bar) is created here; the **rows** and **stats** are filled in by the loader.
+So the **structure** of the screen (tabs, table, in-content control bar) is created here; the **rows** and **stats** are filled in by the loader. Full layout reference: **`LESSON_BASE_LAYOUT.md`**.
 
 ---
 
@@ -152,7 +149,7 @@ So: **Topic/Subtopic** only decide *which* layout and *which* loader; the **load
 | 1 | DrawerTopicBuilders | **Topic "SVO"** contains **Subtopic("Test layout", "test_layout", THREECOL_TABLE)**. |
 | 2 | User taps "Test layout" | Drawer list fires **performDrawerItemClick** for that **SubtopicEntry**. |
 | 3 | performDrawerItemClick | Calls **switchContentLayout(THREECOL_TABLE)** then **handleSubtopicAction("test_layout")**. |
-| 4 | switchContentLayout | Inflates **layout_3coldata_2coldisplay**, sets **currentContentLayout**, shows control bar, hides bottom bar, runs THREECOL_TABLE setup (control bar state only). |
+| 4 | switchContentLayout | Inflates **`layout_lesson_base` + `layout_threecol_content`**, sets **currentContentLayout**, binds in-content control bar, hides bottom bar, runs THREECOL_TABLE setup (control bar state only). |
 | 5 | handleSubtopicAction | Sees **actionKey == "test_layout"** → calls **loadThreeColLessonFromAsset("Lessons/SVO/simple_what.txt", "test_layout")**. |
 | 6 | loadThreeColLessonFromAsset | Parses asset → **threeColBaseRows**; loads **test_layout_3col_stats.json** → **threeColStats**; sets **threeColRows** and mode; in **contentFrame.post**: attaches **ThreeColDataAdapter** to **threecol_recycler**, calls **setupThreeColModeButtons**, **updateThreeColStats**, **updateThreeColRowPositionText**. |
 | 7 | Later (Start / Practice / Test / filter) | All use **threeColRows**, **threeColDisplayToBaseIndex**, **threeColStats**; verification updates **threeColStats** and saves back to **test_layout_3col_stats.json**. |

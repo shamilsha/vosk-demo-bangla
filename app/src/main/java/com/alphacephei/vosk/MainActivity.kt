@@ -668,6 +668,8 @@ class MainActivity : AppCompatActivity() {
         }
         threeColRows = threeColDisplayToBaseIndex.map { threeColBaseRows[it] }
         threeColCurrentIndex = 0
+        threeColLastScrolledPosition = -1
+        threeColCachedRowHeightPx = -1
         threeColAdapter?.updateData(threeColRows)
         threeColAdapter?.learningMode = threeColLearningMode
         threeColAdapter?.setCurrentIndex(0)
@@ -698,8 +700,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * THREECOL_TABLE lessons: actionKey → asset path. Same layout and V tab for all; only the .txt file differs.
+     * THREECOL_TABLE lessons: actionKey → asset path. Same layout, V tab, and **auto-scroll** ([updateThreeColAutoScrollPosition]) for all —
+     * e.g. What, Where, How, When, Who, Why, Let, can, test_layout; only the .txt file differs.
      * To add a new similar lesson: (1) add entry here, (2) add Subtopic in DrawerTopicBuilders with this actionKey, (3) add .txt in assets.
+     * Also add the actionKey to [SimpleSentenceUtils.SIMPLE_TXT_ACTION_KEYS_USING_THREE_COL_TABLE] so [SimpleSentenceUtils.buildSimpleSentenceSubtopics] does not create a duplicate SIMPLE_SENTENCE row for the same file.
      */
     private val threeColLessonAssetPaths: Map<String, String> = mapOf(
         "test_layout" to "Lessons/SVO/simple_what.txt",
@@ -709,7 +713,8 @@ class MainActivity : AppCompatActivity() {
         "simple_let" to "Lessons/SVO/simple_let.txt",
         "simple_when" to "Lessons/SVO/simple_when.txt",
         "simple_who" to "Lessons/SVO/simple_who.txt",
-        "simple_why" to "Lessons/SVO/simple_why.txt"
+        "simple_why" to "Lessons/SVO/simple_why.txt",
+        "can" to "Lessons/SVO/can.txt"
     )
     /** Lesson key for current 3col lesson; used for JSON stats file ({key}_3col_stats.json). Set when loading. */
     private var threeColCurrentLessonKey: String = "test_layout"
@@ -718,6 +723,10 @@ class MainActivity : AppCompatActivity() {
     private var threeColIncorrectCount: Int = 0
     private var threeColControlRunning: Boolean = false
     private var threeColControlPaused: Boolean = false
+    /** Auto-scroll: last focused row (smooth scroll-by-row, same idea as [tenseTripletLastScrolledPosition]). */
+    private var threeColLastScrolledPosition: Int = -1
+    /** Cached typical row height px (updated from measured row views). */
+    private var threeColCachedRowHeightPx: Int = -1
 
     /** Tense triplets: rows parsed from Lessons/Tense/simple_tense.txt and shown in 3-column table style. */
     private var tenseTripletRows: List<TenseTripletRow> = emptyList()
@@ -771,6 +780,18 @@ class MainActivity : AppCompatActivity() {
     private var extendSentenceRoot: View? = null
     /** Bumps each time extend-sentence group TTS starts; stale callbacks ignored. */
     private var extendSentenceTtsGeneration: Int = 0
+    /** Practice: sentence index within current group; app speaks English then verifies user repeat. */
+    private var extendSentencePracticeRowIndex: Int = 0
+    private var extendSentencePracticeGen: Int = 0
+    private var extendSentencePracticeIncorrectStreak: Int = 0
+    /** TEST: user speaks from row index 1 onward; row 0 is model-only. */
+    private var extendSentenceTestListeningRowIndex: Int = 1
+    private var extendSentenceTestGen: Int = 0
+    private var extendSentenceTestIncorrectStreak: Int = 0
+    /** False until instruction TTS finishes and mic should start; used for pause/resume. */
+    private var extendSentenceTestIntroCompleted: Boolean = false
+    private val extendPracticePromptRegex = Regex("^extend_practice_(\\d+)_(\\d+)_(\\d+)$")
+    private val extendTestUtteranceRegex = Regex("^extend_test_(\\d+)_(\\d+)_(only|first|instr)$")
     private val extendSentenceUtteranceSegmentRegex = Regex("^extend_sent_(\\d+)_(\\d+)_(en|bn|ex)_(\\d+)$")
     private val extendSentenceUtteranceEnStartRegex = Regex("^extend_sent_(\\d+)_(\\d+)_en_(\\d+)$")
     private val prepBlockHeadUtteranceRegex = Regex("^prep_block_(\\d+)_(\\d+)_head$")
@@ -1913,6 +1934,12 @@ class MainActivity : AppCompatActivity() {
                         if (utteranceId != null && utteranceId.startsWith("extend_sent_")) {
                             runOnUiThread { handleExtendSentenceUtteranceDoneForHighlight(utteranceId) }
                         }
+                        if (utteranceId != null && utteranceId.startsWith("extend_practice_")) {
+                            runOnUiThread { handleExtendSentencePracticePromptDone(utteranceId) }
+                        }
+                        if (utteranceId != null && utteranceId.startsWith("extend_test_")) {
+                            runOnUiThread { handleExtendSentenceTestUtteranceDone(utteranceId) }
+                        }
                         // Track segment progress for resume: "intro_0", "intro_1", etc.
                         if (utteranceId != null && utteranceId.startsWith("intro_") && utteranceId != "intro_done") {
                             val idx = utteranceId.removePrefix("intro_").toIntOrNull()
@@ -1999,6 +2026,18 @@ class MainActivity : AppCompatActivity() {
                         }
                         if (utteranceId != null && utteranceId.startsWith("extend_sent_")) {
                             runOnUiThread { extendSentenceAdapter?.clearBlockHighlight() }
+                        }
+                        if (utteranceId != null && utteranceId.startsWith("extend_practice_")) {
+                            runOnUiThread {
+                                cancelExtendSentencePracticeVerification()
+                                extendSentenceAdapter?.clearBlockHighlight()
+                            }
+                        }
+                        if (utteranceId != null && utteranceId.startsWith("extend_test_")) {
+                            runOnUiThread {
+                                cancelExtendSentencePracticeVerification()
+                                extendSentenceAdapter?.clearBlockHighlight()
+                            }
                         }
                         if (utteranceId == "lesson_verify_bengali") {
                             runOnUiThread {
@@ -2803,6 +2842,14 @@ class MainActivity : AppCompatActivity() {
         }
         if (currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceMode == ConversationMode.VOCAB) {
             onExtendSentenceVocabVerificationResult(match, said)
+            return
+        }
+        if (currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceMode == ConversationMode.TEST) {
+            onExtendSentenceTestVerificationResult(match, said)
+            return
+        }
+        if (currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceMode == ConversationMode.PRACTICE) {
+            onExtendSentencePracticeVerificationResult(match, said)
             return
         }
         if ((currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleMode == ConversationMode.VOCAB) ||
@@ -3872,12 +3919,15 @@ class MainActivity : AppCompatActivity() {
         extendSentenceRoot = root
         extendSentenceGroups = groups
         extendSentenceCurrentGroupIndex = 0
-        val (items, headerPos) = buildExtendSentenceListItems(groups)
-        extendSentenceHeaderAdapterPositions = headerPos
+        val build = buildExtendSentenceListItems(groups)
+        extendSentenceHeaderAdapterPositions = build.headerPositions
         val recycler = root.findViewById<RecyclerView>(R.id.extend_sentence_recycler)
         extendSentenceRecycler = recycler
         recycler.layoutManager = LinearLayoutManager(this)
-        extendSentenceAdapter = ExtendSentenceAdapter(items).also { recycler.adapter = it }
+        extendSentenceAdapter = ExtendSentenceAdapter(build.items).also {
+            it.submitList(build)
+            recycler.adapter = it
+        }
         val titleTv = root.findViewById<TextView>(R.id.extend_sentence_group_title)
         val prev = root.findViewById<ImageButton>(R.id.extend_sentence_prev_group)
         val next = root.findViewById<ImageButton>(R.id.extend_sentence_next_group)
@@ -3899,6 +3949,23 @@ class MainActivity : AppCompatActivity() {
             } else {
                 return
             }
+            if ((extendSentenceMode == ConversationMode.PRACTICE || extendSentenceMode == ConversationMode.TEST) &&
+                (extendSentenceControlRunning || verificationMode)
+            ) {
+                textToSpeech?.stop()
+                cancelExtendSentencePracticeVerification()
+                extendSentenceControlRunning = false
+                extendSentenceControlPaused = false
+                updateExtendSentenceControlBar()
+            }
+            extendSentencePracticeRowIndex = 0
+            extendSentencePracticeIncorrectStreak = 0
+            extendSentenceTestListeningRowIndex = 1
+            extendSentenceTestIncorrectStreak = 0
+            extendSentenceTestIntroCompleted = false
+            extendSentenceAdapter?.clearSessionFeedback()
+            extendSentenceAdapter?.setTestListeningRowInGroup(1)
+            extendSentenceAdapter?.setTestActiveGroupIndex(extendSentenceCurrentGroupIndex)
             val pos = extendSentenceHeaderAdapterPositions.getOrNull(extendSentenceCurrentGroupIndex) ?: 0
             recycler.smoothScrollToPosition(pos)
             updateGroupNav()
@@ -3919,6 +3986,7 @@ class MainActivity : AppCompatActivity() {
         fun stopPlaybackIfModeSwitch() {
             if (extendSentenceControlRunning || extendSentenceControlPaused) {
                 textToSpeech?.stop()
+                cancelExtendSentencePracticeVerification()
                 extendSentenceControlRunning = false
                 extendSentenceControlPaused = false
                 extendSentenceAdapter?.clearBlockHighlight()
@@ -3943,6 +4011,18 @@ class MainActivity : AppCompatActivity() {
         fun setMode(mode: ConversationMode) {
             if (extendSentenceMode != mode) stopPlaybackIfModeSwitch()
             extendSentenceMode = mode
+            if (mode == ConversationMode.PRACTICE) {
+                extendSentencePracticeRowIndex = 0
+                extendSentencePracticeIncorrectStreak = 0
+                extendSentenceAdapter?.clearSessionFeedback()
+            }
+            if (mode == ConversationMode.TEST) {
+                extendSentenceTestListeningRowIndex = 1
+                extendSentenceTestIncorrectStreak = 0
+                extendSentenceTestIntroCompleted = false
+                extendSentenceAdapter?.clearSessionFeedback()
+                extendSentenceAdapter?.setTestListeningRowInGroup(1)
+            }
             updateExtendSentenceModeTabAppearance(root)
         }
         learningBtn?.setOnClickListener { setMode(ConversationMode.LEARNING) }
@@ -3979,6 +4059,18 @@ class MainActivity : AppCompatActivity() {
         vocabInclude?.visibility = if (isVocab) View.VISIBLE else View.GONE
         // Base lesson bar always shows V; vocab list may be empty if no master matches (fallback still fills rows when possible).
         vocabBtn?.visibility = View.VISIBLE
+        extendSentenceAdapter?.setDisplayMode(
+            when (m) {
+                ConversationMode.LEARNING -> ExtendSentenceDisplayMode.LEARNING
+                ConversationMode.PRACTICE -> ExtendSentenceDisplayMode.PRACTICE
+                ConversationMode.TEST -> ExtendSentenceDisplayMode.TEST
+                ConversationMode.VOCAB -> ExtendSentenceDisplayMode.LEARNING
+            }
+        )
+        extendSentenceAdapter?.setTestActiveGroupIndex(extendSentenceCurrentGroupIndex)
+        if (m != ConversationMode.PRACTICE && m != ConversationMode.TEST) {
+            extendSentenceAdapter?.clearSessionFeedback()
+        }
         updateExtendSentenceControlBar()
     }
 
@@ -4062,28 +4154,122 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun cancelExtendSentencePracticeVerification() {
+        cancelVerificationTimeout()
+        if (verificationMode) {
+            verificationMode = false
+            expectedEnglishForVerification = null
+            try {
+                speechRecognizer?.stopListening()
+            } catch (_: Exception) {
+            }
+            stopEnglishVoskRecording()
+            setMicButtonAppearance(recording = false)
+        }
+        isEnglishMicActive = false
+        isRecording = false
+    }
+
     private fun onExtendSentenceStartStop() {
         if (extendSentenceGroups.isEmpty()) return
-        if (extendSentenceMode != ConversationMode.LEARNING) {
-            Toast.makeText(this, "Switch to Learning to play audio", Toast.LENGTH_SHORT).show()
-            return
+        when (extendSentenceMode) {
+            ConversationMode.PRACTICE -> {
+                if (extendSentenceControlRunning) {
+                    textToSpeech?.stop()
+                    cancelExtendSentencePracticeVerification()
+                    extendSentenceControlRunning = false
+                    extendSentenceControlPaused = false
+                    extendSentenceAdapter?.clearBlockHighlight()
+                    updateExtendSentenceControlBar()
+                    return
+                }
+                extendSentencePracticeRowIndex = 0
+                extendSentencePracticeIncorrectStreak = 0
+                extendSentenceAdapter?.clearSessionFeedback()
+                extendSentenceControlRunning = true
+                extendSentenceControlPaused = false
+                updateExtendSentenceControlBar()
+                speakExtendSentencePracticeCurrentRow()
+            }
+            ConversationMode.TEST -> {
+                if (extendSentenceControlRunning) {
+                    textToSpeech?.stop()
+                    cancelExtendSentencePracticeVerification()
+                    extendSentenceControlRunning = false
+                    extendSentenceControlPaused = false
+                    extendSentenceTestIntroCompleted = false
+                    extendSentenceAdapter?.clearBlockHighlight()
+                    updateExtendSentenceControlBar()
+                    return
+                }
+                extendSentenceTestListeningRowIndex = 1
+                extendSentenceTestIncorrectStreak = 0
+                extendSentenceTestIntroCompleted = false
+                extendSentenceAdapter?.clearSessionFeedback()
+                extendSentenceAdapter?.setTestListeningRowInGroup(1)
+                extendSentenceAdapter?.setTestActiveGroupIndex(extendSentenceCurrentGroupIndex)
+                extendSentenceControlRunning = true
+                extendSentenceControlPaused = false
+                updateExtendSentenceControlBar()
+                speakExtendSentenceTestIntro()
+            }
+            ConversationMode.LEARNING -> {
+                if (extendSentenceControlRunning) {
+                    textToSpeech?.stop()
+                    extendSentenceControlRunning = false
+                    extendSentenceControlPaused = false
+                    extendSentenceAdapter?.clearBlockHighlight()
+                    updateExtendSentenceControlBar()
+                    return
+                }
+                extendSentenceControlRunning = true
+                extendSentenceControlPaused = false
+                updateExtendSentenceControlBar()
+                speakExtendSentenceCurrentGroup()
+            }
+            else -> {
+                Toast.makeText(this, getString(R.string.extend_sentence_use_learning_or_practice), Toast.LENGTH_SHORT).show()
+            }
         }
-        if (extendSentenceControlRunning) {
-            textToSpeech?.stop()
-            extendSentenceControlRunning = false
-            extendSentenceControlPaused = false
-            extendSentenceAdapter?.clearBlockHighlight()
-            updateExtendSentenceControlBar()
-            return
-        }
-        extendSentenceControlRunning = true
-        extendSentenceControlPaused = false
-        updateExtendSentenceControlBar()
-        speakExtendSentenceCurrentGroup()
     }
 
     private fun onExtendSentencePauseResume() {
         if (extendSentenceGroups.isEmpty()) return
+        if (extendSentenceMode == ConversationMode.PRACTICE) {
+            if (!extendSentenceControlRunning) return
+            if (extendSentenceControlPaused) {
+                extendSentenceControlPaused = false
+                updateExtendSentenceControlBar()
+                speakExtendSentencePracticeCurrentRow()
+            } else {
+                textToSpeech?.stop()
+                cancelExtendSentencePracticeVerification()
+                extendSentenceControlPaused = true
+                extendSentenceAdapter?.clearBlockHighlight()
+                updateExtendSentenceControlBar()
+            }
+            return
+        }
+        if (extendSentenceMode == ConversationMode.TEST) {
+            if (!extendSentenceControlRunning) return
+            if (extendSentenceControlPaused) {
+                extendSentenceControlPaused = false
+                updateExtendSentenceControlBar()
+                if (!extendSentenceTestIntroCompleted) {
+                    speakExtendSentenceTestIntro()
+                } else {
+                    startExtendSentenceTestListeningForCurrentRow()
+                }
+            } else {
+                textToSpeech?.stop()
+                cancelExtendSentencePracticeVerification()
+                extendSentenceControlPaused = true
+                extendSentenceAdapter?.clearBlockHighlight()
+                updateExtendSentenceControlBar()
+            }
+            return
+        }
+        if (extendSentenceMode != ConversationMode.LEARNING) return
         if (!extendSentenceControlRunning) return
         if (extendSentenceControlPaused) {
             extendSentenceControlPaused = false
@@ -4126,6 +4312,288 @@ class MainActivity : AppCompatActivity() {
             if (row.speakAfterBengali.isNotBlank()) {
                 textToSpeech?.setLanguage(bnLocale)
                 textToSpeech?.speak(row.speakAfterBengali, TextToSpeech.QUEUE_ADD, null, "extend_sent_${gen}_${gi}_ex_$ri")
+            }
+        }
+    }
+
+    /** Practice: English TTS only for current line; [handleExtendSentencePracticePromptDone] starts mic after prompt. */
+    private fun speakExtendSentencePracticeCurrentRow() {
+        if (extendSentenceMode != ConversationMode.PRACTICE) return
+        val gi = extendSentenceCurrentGroupIndex.coerceIn(0, (extendSentenceGroups.size - 1).coerceAtLeast(0))
+        val g = extendSentenceGroups.getOrNull(gi) ?: return
+        val ri = extendSentencePracticeRowIndex
+        if (ri !in g.indices) {
+            extendSentenceControlRunning = false
+            extendSentenceAdapter?.clearBlockHighlight()
+            updateExtendSentenceControlBar()
+            return
+        }
+        if (!ttsReady || textToSpeech == null) {
+            extendSentenceControlRunning = false
+            extendSentenceAdapter?.clearBlockHighlight()
+            updateExtendSentenceControlBar()
+            return
+        }
+        val row = g[ri]
+        // Strip HTML first; then bracket alternates for TTS. Match against rawPlain so we don't compare HTML tag noise.
+        val rawPlain = ExtendSentenceText.englishPlainForSpeech(row.english)
+        val toSpeak = MatchNormalizer.textForSpeakAndDisplay(rawPlain)
+        expectedEnglishForVerification = rawPlain
+        extendSentencePracticeGen++
+        val gen = extendSentencePracticeGen
+        val header = extendSentenceHeaderAdapterPositions.getOrNull(gi) ?: return
+        val pos = header + 1 + ri
+        extendSentenceRecycler?.smoothScrollToPosition(pos)
+        extendSentenceAdapter?.setHighlightedAdapterPosition(pos)
+        textToSpeech?.stop()
+        cancelExtendSentencePracticeVerification()
+        textToSpeech?.setLanguage(Locale.US)
+        textToSpeech?.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null, "extend_practice_${gen}_${gi}_$ri")
+    }
+
+    private fun handleExtendSentencePracticePromptDone(utteranceId: String) {
+        val m = extendPracticePromptRegex.matchEntire(utteranceId) ?: return
+        val gen = m.groupValues[1].toInt()
+        val gi = m.groupValues[2].toInt()
+        val ri = m.groupValues[3].toInt()
+        if (gen != extendSentencePracticeGen) return
+        if (gi != extendSentenceCurrentGroupIndex) return
+        if (ri != extendSentencePracticeRowIndex) return
+        if (currentContentLayout != ContentLayout.EXTEND_SENTENCE || extendSentenceMode != ConversationMode.PRACTICE) return
+        if (!extendSentenceControlRunning || extendSentenceControlPaused) return
+        val g = extendSentenceGroups.getOrNull(gi) ?: return
+        val row = g.getOrNull(ri) ?: return
+        val rawPlain = ExtendSentenceText.englishPlainForSpeech(row.english)
+        startVerificationListening(rawPlain)
+    }
+
+    private fun onExtendSentencePracticeVerificationResult(@Suppress("UNUSED_PARAMETER") match: Boolean, said: String) {
+        if (currentContentLayout != ContentLayout.EXTEND_SENTENCE || extendSentenceMode != ConversationMode.PRACTICE) return
+        val gi = extendSentenceCurrentGroupIndex.coerceIn(0, (extendSentenceGroups.size - 1).coerceAtLeast(0))
+        val g = extendSentenceGroups.getOrNull(gi) ?: return
+        val ri = extendSentencePracticeRowIndex
+        if (ri !in g.indices) return
+        val row = g[ri]
+        val rawPlain = ExtendSentenceText.englishPlainForSpeech(row.english)
+        val matchResolved = MatchNormalizer.matchesExpectedWithAlternates(rawPlain, said)
+        runOnUiThread {
+            Toast.makeText(
+                this,
+                if (matchResolved) getString(R.string.correct) else getString(R.string.incorrect),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        val header = extendSentenceHeaderAdapterPositions.getOrNull(gi) ?: return
+        val adapterPos = header + 1 + ri
+        runOnUiThread {
+            extendSentenceAdapter?.setPracticeSpokenAt(adapterPos, MatchNormalizer.sanitizeSpokenTextForDisplay(said))
+            extendSentenceAdapter?.setPracticeResultAt(adapterPos, matchResolved)
+        }
+
+        if (matchResolved) {
+            extendSentencePracticeIncorrectStreak = 0
+            if (ri < g.lastIndex) {
+                extendSentencePracticeRowIndex = ri + 1
+                verificationHandler.postDelayed({
+                    if (!isDestroyed && currentContentLayout == ContentLayout.EXTEND_SENTENCE &&
+                        extendSentenceMode == ConversationMode.PRACTICE && extendSentenceControlRunning && !extendSentenceControlPaused
+                    ) {
+                        speakExtendSentencePracticeCurrentRow()
+                    }
+                }, 1500)
+            } else {
+                extendSentenceControlRunning = false
+                extendSentenceAdapter?.clearBlockHighlight()
+                runOnUiThread { updateExtendSentenceControlBar() }
+            }
+        } else {
+            extendSentencePracticeIncorrectStreak++
+            if (extendSentencePracticeIncorrectStreak >= 3) {
+                extendSentencePracticeIncorrectStreak = 0
+                if (ri < g.lastIndex) {
+                    extendSentencePracticeRowIndex = ri + 1
+                    verificationHandler.postDelayed({
+                        if (!isDestroyed && currentContentLayout == ContentLayout.EXTEND_SENTENCE &&
+                            extendSentenceMode == ConversationMode.PRACTICE && extendSentenceControlRunning && !extendSentenceControlPaused
+                        ) {
+                            speakExtendSentencePracticeCurrentRow()
+                        }
+                    }, 1500)
+                } else {
+                    extendSentenceControlRunning = false
+                    extendSentenceAdapter?.clearBlockHighlight()
+                    runOnUiThread { updateExtendSentenceControlBar() }
+                }
+            } else {
+                verificationHandler.postDelayed({
+                    if (!isDestroyed && currentContentLayout == ContentLayout.EXTEND_SENTENCE &&
+                        extendSentenceMode == ConversationMode.PRACTICE && extendSentenceControlRunning && !extendSentenceControlPaused
+                    ) {
+                        speakExtendSentencePracticeCurrentRow()
+                    }
+                }, 1500)
+            }
+        }
+    }
+
+    /** TEST: TTS only first English line + instruction; then mic for remaining lines. */
+    private fun speakExtendSentenceTestIntro() {
+        if (extendSentenceMode != ConversationMode.TEST) return
+        val gi = extendSentenceCurrentGroupIndex.coerceIn(0, (extendSentenceGroups.size - 1).coerceAtLeast(0))
+        val g = extendSentenceGroups.getOrNull(gi) ?: return
+        extendSentenceTestIntroCompleted = false
+        extendSentenceTestGen++
+        val gen = extendSentenceTestGen
+        if (!ttsReady || textToSpeech == null) {
+            extendSentenceControlRunning = false
+            extendSentenceAdapter?.clearBlockHighlight()
+            updateExtendSentenceControlBar()
+            return
+        }
+        val header = extendSentenceHeaderAdapterPositions.getOrNull(gi) ?: return
+        textToSpeech?.stop()
+        cancelExtendSentencePracticeVerification()
+        textToSpeech?.setLanguage(Locale.US)
+        if (g.size == 1) {
+            val row = g[0]
+            val rawPlain = ExtendSentenceText.englishPlainForSpeech(row.english)
+            val toSpeak = MatchNormalizer.textForSpeakAndDisplay(rawPlain)
+            val pos0 = header + 1 + 0
+            extendSentenceRecycler?.smoothScrollToPosition(pos0)
+            extendSentenceAdapter?.setHighlightedAdapterPosition(pos0)
+            textToSpeech?.speak(toSpeak, TextToSpeech.QUEUE_FLUSH, null, "extend_test_${gen}_${gi}_only")
+            return
+        }
+        val row0 = g[0]
+        val raw0 = ExtendSentenceText.englishPlainForSpeech(row0.english)
+        val toSpeak0 = MatchNormalizer.textForSpeakAndDisplay(raw0)
+        val pos0 = header + 1 + 0
+        extendSentenceRecycler?.smoothScrollToPosition(pos0)
+        extendSentenceAdapter?.setHighlightedAdapterPosition(pos0)
+        textToSpeech?.speak(toSpeak0, TextToSpeech.QUEUE_FLUSH, null, "extend_test_${gen}_${gi}_first")
+        textToSpeech?.speak(
+            getString(R.string.extend_sentence_test_instruction),
+            TextToSpeech.QUEUE_ADD,
+            null,
+            "extend_test_${gen}_${gi}_instr"
+        )
+    }
+
+    private fun handleExtendSentenceTestUtteranceDone(utteranceId: String) {
+        val m = extendTestUtteranceRegex.matchEntire(utteranceId) ?: return
+        val gen = m.groupValues[1].toInt()
+        val gi = m.groupValues[2].toInt()
+        val kind = m.groupValues[3]
+        if (gen != extendSentenceTestGen) return
+        if (gi != extendSentenceCurrentGroupIndex) return
+        if (currentContentLayout != ContentLayout.EXTEND_SENTENCE || extendSentenceMode != ConversationMode.TEST) return
+        if (!extendSentenceControlRunning || extendSentenceControlPaused) return
+        when (kind) {
+            "only" -> {
+                extendSentenceControlRunning = false
+                extendSentenceAdapter?.clearBlockHighlight()
+                runOnUiThread { updateExtendSentenceControlBar() }
+            }
+            "first" -> { /* wait for instruction utterance */ }
+            "instr" -> {
+                extendSentenceTestIntroCompleted = true
+                startExtendSentenceTestListeningForCurrentRow()
+            }
+        }
+    }
+
+    private fun startExtendSentenceTestListeningForCurrentRow() {
+        if (extendSentenceMode != ConversationMode.TEST) return
+        if (!extendSentenceControlRunning || extendSentenceControlPaused) return
+        val gi = extendSentenceCurrentGroupIndex.coerceIn(0, (extendSentenceGroups.size - 1).coerceAtLeast(0))
+        val g = extendSentenceGroups.getOrNull(gi) ?: return
+        val ri = extendSentenceTestListeningRowIndex
+        if (ri !in g.indices) {
+            extendSentenceControlRunning = false
+            extendSentenceAdapter?.clearBlockHighlight()
+            runOnUiThread { updateExtendSentenceControlBar() }
+            return
+        }
+        val row = g[ri]
+        val rawPlain = ExtendSentenceText.englishPlainForSpeech(row.english)
+        expectedEnglishForVerification = rawPlain
+        val header = extendSentenceHeaderAdapterPositions.getOrNull(gi) ?: return
+        val pos = header + 1 + ri
+        extendSentenceRecycler?.smoothScrollToPosition(pos)
+        extendSentenceAdapter?.setHighlightedAdapterPosition(pos)
+        extendSentenceAdapter?.setTestListeningRowInGroup(ri)
+        textToSpeech?.stop()
+        cancelExtendSentencePracticeVerification()
+        startVerificationListening(rawPlain)
+    }
+
+    private fun onExtendSentenceTestVerificationResult(@Suppress("UNUSED_PARAMETER") match: Boolean, said: String) {
+        if (currentContentLayout != ContentLayout.EXTEND_SENTENCE || extendSentenceMode != ConversationMode.TEST) return
+        val gi = extendSentenceCurrentGroupIndex.coerceIn(0, (extendSentenceGroups.size - 1).coerceAtLeast(0))
+        val g = extendSentenceGroups.getOrNull(gi) ?: return
+        val ri = extendSentenceTestListeningRowIndex
+        if (ri !in g.indices) return
+        val row = g[ri]
+        val rawPlain = ExtendSentenceText.englishPlainForSpeech(row.english)
+        val matchResolved = MatchNormalizer.matchesExpectedWithAlternates(rawPlain, said)
+        runOnUiThread {
+            Toast.makeText(
+                this,
+                if (matchResolved) getString(R.string.correct) else getString(R.string.incorrect),
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+        val header = extendSentenceHeaderAdapterPositions.getOrNull(gi) ?: return
+        val adapterPos = header + 1 + ri
+        runOnUiThread {
+            extendSentenceAdapter?.setSessionSpokenAt(adapterPos, MatchNormalizer.sanitizeSpokenTextForDisplay(said))
+            extendSentenceAdapter?.setSessionResultAt(adapterPos, matchResolved)
+        }
+
+        if (matchResolved) {
+            extendSentenceTestIncorrectStreak = 0
+            if (ri < g.lastIndex) {
+                extendSentenceTestListeningRowIndex = ri + 1
+                extendSentenceAdapter?.setTestListeningRowInGroup(extendSentenceTestListeningRowIndex)
+                verificationHandler.postDelayed({
+                    if (!isDestroyed && currentContentLayout == ContentLayout.EXTEND_SENTENCE &&
+                        extendSentenceMode == ConversationMode.TEST && extendSentenceControlRunning && !extendSentenceControlPaused
+                    ) {
+                        startExtendSentenceTestListeningForCurrentRow()
+                    }
+                }, 1500)
+            } else {
+                extendSentenceControlRunning = false
+                extendSentenceAdapter?.clearBlockHighlight()
+                runOnUiThread { updateExtendSentenceControlBar() }
+            }
+        } else {
+            extendSentenceTestIncorrectStreak++
+            if (extendSentenceTestIncorrectStreak >= 3) {
+                extendSentenceTestIncorrectStreak = 0
+                if (ri < g.lastIndex) {
+                    extendSentenceTestListeningRowIndex = ri + 1
+                    extendSentenceAdapter?.setTestListeningRowInGroup(extendSentenceTestListeningRowIndex)
+                    verificationHandler.postDelayed({
+                        if (!isDestroyed && currentContentLayout == ContentLayout.EXTEND_SENTENCE &&
+                            extendSentenceMode == ConversationMode.TEST && extendSentenceControlRunning && !extendSentenceControlPaused
+                        ) {
+                            startExtendSentenceTestListeningForCurrentRow()
+                        }
+                    }, 1500)
+                } else {
+                    extendSentenceControlRunning = false
+                    extendSentenceAdapter?.clearBlockHighlight()
+                    runOnUiThread { updateExtendSentenceControlBar() }
+                }
+            } else {
+                verificationHandler.postDelayed({
+                    if (!isDestroyed && currentContentLayout == ContentLayout.EXTEND_SENTENCE &&
+                        extendSentenceMode == ConversationMode.TEST && extendSentenceControlRunning && !extendSentenceControlPaused
+                    ) {
+                        startExtendSentenceTestListeningForCurrentRow()
+                    }
+                }, 1500)
             }
         }
     }
@@ -4849,7 +5317,11 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "No rows in $assetPath", Toast.LENGTH_SHORT).show()
             return
         }
-        if (currentContentLayout != ContentLayout.THREECOL_TABLE) switchContentLayout(ContentLayout.THREECOL_TABLE)
+        // Always re-inflate 3-col shell when loading a lesson so switching e.g. Simple What → Simple Where
+        // cannot leave a stale RecyclerView / adapter (empty area with bars still visible). Same pattern as
+        // [loadConversationBubbleLesson].
+        switchContentLayout(ContentLayout.THREECOL_TABLE)
+        threeColAdapter = null
         threeColCurrentLessonKey = lessonKey
         threeColBaseRows = rows
         if (masterWordListMap == null) {
@@ -4879,6 +5351,8 @@ class MainActivity : AppCompatActivity() {
         threeColIncorrectCount = 0
         threeColSessionCorrect = 0
         threeColSessionAttempted = 0
+        threeColLastScrolledPosition = -1
+        threeColCachedRowHeightPx = -1
         lessonName = displayTitle ?: lessonKey
         updateLessonTopicDisplay()
         contentFrame.post {
@@ -4886,14 +5360,9 @@ class MainActivity : AppCompatActivity() {
             val root = contentFrame.getChildAt(0)
             val recycler = root.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.threecol_recycler)
             if (recycler != null) {
-                if (threeColAdapter == null) {
-                    threeColAdapter = ThreeColDataAdapter(threeColRows)
-                    recycler.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
-                    recycler.adapter = threeColAdapter
-                } else {
-                    threeColAdapter?.updateData(threeColRows)
-                    if (recycler.adapter !== threeColAdapter) recycler.adapter = threeColAdapter
-                }
+                threeColAdapter = ThreeColDataAdapter(threeColRows)
+                recycler.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
+                recycler.adapter = threeColAdapter
                 // Bottom padding so current row stays fully visible above the START/STOP control bar
                 val controlBar = root.findViewById<View>(R.id.lesson_base_control_include)
                 val bottomPaddingPx = if (controlBar != null && controlBar.height > 0) controlBar.height
@@ -4907,6 +5376,7 @@ class MainActivity : AppCompatActivity() {
             setupThreeColModeButtons(root)
             updateThreeColStats()
             updateThreeColRowPositionText()
+            // Initial scroll: [updateThreeColRowPositionText] → [updateThreeColAutoScrollPosition]; pos==0 pins to top.
             // Use the control bar inside this layout; hide the activity-level bar.
             findViewById<View>(R.id.control_actions_include)?.visibility = View.GONE
             root.findViewById<View>(R.id.lesson_base_control_include)?.visibility = View.VISIBLE
@@ -5718,20 +6188,66 @@ class MainActivity : AppCompatActivity() {
         val cur = threeColCurrentIndex.coerceIn(0, (n - 1).coerceAtLeast(0))
         prevBtn?.isEnabled = n > 0 && cur > 0
         nextBtn?.isEnabled = n > 0 && cur < n - 1
-        scrollThreeColCurrentIntoView()
+        updateThreeColAutoScrollPosition()
     }
 
-    /** Scroll 3col RecyclerView so the full current row is visible above the START/STOP bar (instant scroll, no lag). */
-    private fun scrollThreeColCurrentIntoView() {
+    /**
+     * Auto-scroll for every `ContentLayout.THREECOL_TABLE` lesson from [loadThreeColLessonFromAsset]
+     * (How, Let, What, Where, When, Who, Why, can, test_layout, … — same code path for all).
+     * Same behavior as [updateTenseTripletAutoScrollPosition]: center band, row-height steps, smooth [ValueAnimator].
+     */
+    private fun updateThreeColAutoScrollPosition(forceTop: Boolean = false) {
         if (currentContentLayout != ContentLayout.THREECOL_TABLE || threeColRows.isEmpty()) return
+        if (threeColMode == ThreeColMode.VOCAB) return
         val root = contentFrame.getChildAt(0) ?: return
         val recycler = root.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.threecol_recycler) ?: return
         val lm = recycler.layoutManager as? androidx.recyclerview.widget.LinearLayoutManager ?: return
-        val pos = threeColCurrentIndex.coerceIn(0, threeColRows.lastIndex)
-        recycler.post {
-            // Instant scroll so current row is at top of visible area (fully above control bar); avoids lag
-            lm.scrollToPositionWithOffset(pos, recycler.paddingTop)
-        }
+        val n = threeColRows.size
+        val pos = threeColCurrentIndex.coerceIn(0, n - 1)
+        recycler.postDelayed({
+            val visibleAreaHeight = recycler.height
+            if (visibleAreaHeight <= 0) return@postDelayed
+            var rowHeight = threeColCachedRowHeightPx
+            if (rowHeight <= 0) {
+                val viewAtPos = lm.findViewByPosition(pos)
+                val viewAt0 = lm.findViewByPosition(0)
+                val hPos = viewAtPos?.height ?: 0
+                val h0 = viewAt0?.height ?: 0
+                rowHeight = maxOf(hPos, h0).takeIf { it > 0 } ?: (visibleAreaHeight / 6).coerceAtLeast(1)
+                if (rowHeight > 0) threeColCachedRowHeightPx = rowHeight
+            }
+            val centerIndex = (visibleAreaHeight / 2 / rowHeight).toInt().coerceIn(0, (n - 1).coerceAtLeast(0))
+            if (forceTop || pos == 0) {
+                lm.scrollToPositionWithOffset(0, 0)
+                threeColLastScrolledPosition = 0
+                return@postDelayed
+            }
+            if (pos <= centerIndex) {
+                lm.scrollToPositionWithOffset(0, 0)
+                threeColLastScrolledPosition = pos
+                return@postDelayed
+            }
+            val lastPos = threeColLastScrolledPosition
+            val prevForDy = if (lastPos < 0) 0 else lastPos
+            var dy = (pos - prevForDy) * rowHeight
+            val maxScroll = (recycler.computeVerticalScrollRange() - recycler.computeVerticalScrollExtent()).coerceAtLeast(0)
+            val currentScrollY = recycler.computeVerticalScrollOffset()
+            dy = dy.coerceIn(-currentScrollY, maxScroll - currentScrollY)
+            if (dy != 0) {
+                var last = 0
+                ValueAnimator.ofInt(0, dy).apply {
+                    duration = 280
+                    interpolator = DecelerateInterpolator()
+                    addUpdateListener {
+                        val v = it.animatedValue as Int
+                        recycler.scrollBy(0, v - last)
+                        last = v
+                    }
+                    start()
+                }
+            }
+            threeColLastScrolledPosition = pos
+        }, 80)
     }
 
     private fun loadPronunciationByTitle(title: String, lessons: List<Pair<String, List<List<String>>>>) {
@@ -6151,6 +6667,7 @@ class MainActivity : AppCompatActivity() {
         val row = threeColRows[idx]
         if (row.bengali.isBlank() || row.english.isBlank()) return
         threeColAdapter?.setCurrentIndex(idx)
+        updateThreeColAutoScrollPosition()
         expectedEnglishForVerification = row.english
         textToSpeech?.stop()
         textToSpeech?.setLanguage(Locale("bn"))
