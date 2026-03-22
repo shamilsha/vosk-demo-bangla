@@ -681,6 +681,11 @@ class MainActivity : AppCompatActivity() {
         contentFrame.getChildAt(0)?.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.threecol_recycler)?.requestLayout()
         // Clear verification so we match the new first sentence, not the previous one; if mic was on, restart for first sentence
         if (currentContentLayout == ContentLayout.THREECOL_TABLE) {
+            textToSpeech?.stop()
+            incorrectFeedbackFallbackRunnable?.let { verificationHandler.removeCallbacks(it) }
+            incorrectFeedbackFallbackRunnable = null
+            tryAgainListenFallbackRunnable?.let { verificationHandler.removeCallbacks(it) }
+            tryAgainListenFallbackRunnable = null
             cancelVerificationTimeout()
             if (verificationMode) {
                 verificationMode = false
@@ -694,6 +699,7 @@ class MainActivity : AppCompatActivity() {
             if (threeColControlRunning && threeColRows.isNotEmpty()) {
                 speakThreeColCurrent()
             } else {
+                threeColTtsGeneration++
                 expectedEnglishForVerification = null
             }
         }
@@ -714,7 +720,16 @@ class MainActivity : AppCompatActivity() {
         "simple_when" to "Lessons/SVO/simple_when.txt",
         "simple_who" to "Lessons/SVO/simple_who.txt",
         "simple_why" to "Lessons/SVO/simple_why.txt",
-        "can" to "Lessons/SVO/can.txt"
+        "can" to "Lessons/SVO/can.txt",
+        "may" to "Lessons/SVO/may.txt",
+        "wish" to "Lessons/SVO/wish.txt",
+        "how_about" to "Lessons/SVO/how_about.txt",
+        "feels_like" to "Lessons/SVO/feels_like.txt",
+        "need_to" to "Lessons/SVO/need_to.txt",
+        "must" to "Lessons/SVO/must.txt",
+        "should" to "Lessons/SVO/should.txt",
+        "used_to" to "Lessons/SVO/used_to.txt",
+        "make" to "Lessons/SVO/make.txt"
     )
     /** Lesson key for current 3col lesson; used for JSON stats file ({key}_3col_stats.json). Set when loading. */
     private var threeColCurrentLessonKey: String = "test_layout"
@@ -727,6 +742,8 @@ class MainActivity : AppCompatActivity() {
     private var threeColLastScrolledPosition: Int = -1
     /** Cached typical row height px (updated from measured row views). */
     private var threeColCachedRowHeightPx: Int = -1
+    /** Bumped on each new 3-col TTS utterance / cancel so [UtteranceProgressListener] ignores stale callbacks after tab/filter/stop. */
+    private var threeColTtsGeneration: Int = 0
 
     /** Tense triplets: rows parsed from Lessons/Tense/simple_tense.txt and shown in 3-column table style. */
     private var tenseTripletRows: List<TenseTripletRow> = emptyList()
@@ -1663,26 +1680,6 @@ class MainActivity : AppCompatActivity() {
                                     }
                                 }
                             }
-                            "threecol_learning_bengali" -> {
-                                runOnUiThread {
-                                    val expected = expectedEnglishForVerification
-                                    if (!expected.isNullOrBlank() && !isDestroyed && ttsReady && textToSpeech != null) {
-                                        textToSpeech?.setLanguage(Locale.US)
-                                        textToSpeech?.speak(MatchNormalizer.textForSpeakAndDisplay(expected), TextToSpeech.QUEUE_FLUSH, null, "lesson_verify")
-                                    } else if (expected != null && !isDestroyed) {
-                                        startVerificationListening(expected)
-                                    }
-                                }
-                            }
-                            "threecol_practice_bengali" -> {
-                                runOnUiThread {
-                                    val expected = expectedEnglishForVerification
-                                    if (expected != null && !isDestroyed) {
-                                        // In Practice: do NOT speak English, just start listening.
-                                        startVerificationListening(expected)
-                                    }
-                                }
-                            }
                             "tense_triplet_p_eng" -> {
                                 runOnUiThread {
                                     if (!tenseTripletControlRunning || currentContentLayout != ContentLayout.TENSE_TRIPLETS || tenseTripletRows.isEmpty()) return@runOnUiThread
@@ -1921,6 +1918,13 @@ class MainActivity : AppCompatActivity() {
                                 }
                             }
                         }
+                        // 3-col table: ids are threecol_{learning|practice}_bengali_{generation} — stale callbacks ignored via [threeColTtsGeneration].
+                        if (utteranceId != null && utteranceId.startsWith("threecol_learning_bengali_")) {
+                            runOnUiThread { handleThreeColLearningBengaliUtteranceDone(utteranceId) }
+                        }
+                        if (utteranceId != null && utteranceId.startsWith("threecol_practice_bengali_")) {
+                            runOnUiThread { handleThreeColPracticeBengaliUtteranceDone(utteranceId) }
+                        }
                         // Conversation bubble TTS: ids are conv_bubble_{bengali|english}_{rowIdx}_{generation} — handle outside when() so stale callbacks are ignored.
                         if (utteranceId != null && utteranceId.startsWith("conv_bubble_bengali_")) {
                             runOnUiThread { handleConvBubbleBengaliUtteranceFinished(utteranceId) }
@@ -1993,24 +1997,11 @@ class MainActivity : AppCompatActivity() {
                                 }
                             }
                         }
-                        if (utteranceId == "threecol_learning_bengali") {
-                            runOnUiThread {
-                                val expected = expectedEnglishForVerification
-                                if (!expected.isNullOrBlank() && !isDestroyed && ttsReady && textToSpeech != null) {
-                                    textToSpeech?.setLanguage(Locale.US)
-                                    textToSpeech?.speak(MatchNormalizer.textForSpeakAndDisplay(expected), TextToSpeech.QUEUE_FLUSH, null, "lesson_verify")
-                                } else if (expected != null && !isDestroyed) {
-                                    startVerificationListening(expected)
-                                }
-                            }
+                        if (utteranceId != null && utteranceId.startsWith("threecol_learning_bengali_")) {
+                            runOnUiThread { handleThreeColLearningBengaliUtteranceDone(utteranceId) }
                         }
-                        if (utteranceId == "threecol_practice_bengali") {
-                            runOnUiThread {
-                                val expected = expectedEnglishForVerification
-                                if (expected != null && !isDestroyed) {
-                                    startVerificationListening(expected)
-                                }
-                            }
+                        if (utteranceId != null && utteranceId.startsWith("threecol_practice_bengali_")) {
+                            runOnUiThread { handleThreeColPracticeBengaliUtteranceDone(utteranceId) }
                         }
                         if (utteranceId != null && utteranceId.startsWith("conv_bubble_bengali_")) {
                             runOnUiThread { handleConvBubbleBengaliUtteranceFinished(utteranceId) }
@@ -2834,7 +2825,12 @@ class MainActivity : AppCompatActivity() {
         if (isDestroyed) return
         if (currentContentLayout == ContentLayout.SIMPLE_SENTENCE) setSimpleSentenceYouSaid(said)
         if (currentContentLayout == ContentLayout.SV_RIBBON) setSvRibbonYouSaid(said)
-        if (currentContentLayout == ContentLayout.THREECOL_TABLE) onThreeColVerificationResult(match, said)
+        if (currentContentLayout == ContentLayout.THREECOL_TABLE) {
+            onThreeColVerificationResult(match, said)
+            // Main 3-col table already handles TTS/strikes in [onThreeColVerificationResult]. Do not run shared
+            // [handleVerificationResult] chains (incorrect_then_correct / lesson_verify) — they duplicate audio and use stale expected.
+            if (threeColMode != ThreeColMode.VOCAB) return
+        }
         if (currentContentLayout == ContentLayout.CONVERSATION_BUBBLES) onConvBubbleVerificationResult(match, said)
         if (currentContentLayout == ContentLayout.TENSE_TRIPLETS) {
             onTenseTripletVerificationResult(match, said)
@@ -2892,16 +2888,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        if (!match && currentContentLayout == ContentLayout.THREECOL_TABLE && threeColRows.isNotEmpty()) {
-            threeColIncorrectCount++
-            if (threeColIncorrectCount >= 3) {
-                threeColIncorrectCount = 0
-                shouldAdvanceToNext = true
-                pendingRestartVerificationWith = null
-            } else {
-                pendingRestartVerificationWith = if (expected.isNotBlank()) expected else null
-            }
-        }
+        // THREECOL main table: strikes + retry listening live in [onThreeColVerificationResult] (early return above).
         if (!match && currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleRows.isNotEmpty()) {
             convBubbleIncorrectCount++
             if (convBubbleIncorrectCount >= 3) {
@@ -2976,24 +2963,6 @@ class MainActivity : AppCompatActivity() {
             speakEnglishString("Moving to next.")
             verificationHandler.postDelayed({
                 if (!isDestroyed && currentContentLayout == ContentLayout.SV_RIBBON) moveSvRibbonToNextAndSpeak()
-            }, 1500)
-        } else if (shouldAdvanceToNext && currentContentLayout == ContentLayout.THREECOL_TABLE && threeColRows.isNotEmpty()) {
-            // In THREECOL_TABLE: silently move to next sentence (no extra English TTS to avoid being cut off by the next Bengali).
-            if (!match && threeColMode == ThreeColMode.PRACTICE) {
-                // After 3 incorrect attempts in PRACTICE: show the correct English in red before advancing.
-                val idx = threeColCurrentIndex.coerceIn(0, threeColRows.lastIndex)
-                val row = threeColRows[idx]
-                threeColAdapter?.setSpokenText(idx, MatchNormalizer.textForSpeakAndDisplay(row.english))
-                threeColAdapter?.markResult(idx, false)
-                updateThreeColStats()
-            }
-            verificationHandler.postDelayed({
-                if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE) {
-                    if (threeColCurrentIndex < threeColRows.lastIndex) {
-                        threeColCurrentIndex++
-                        if (threeColControlRunning) speakThreeColCurrent()
-                    }
-                }
             }, 1500)
         } else if (shouldAdvanceToNext && currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleRows.isNotEmpty()) {
             val idx = if (convBubbleMode == ConversationMode.TEST && convBubbleListeningForRowIndex in convBubbleRows.indices)
@@ -6516,6 +6485,22 @@ class MainActivity : AppCompatActivity() {
             updateThreeColTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, weakOnlyCheck, mainContent, vocabInclude)
         }
         vocabBtn?.setOnClickListener {
+            textToSpeech?.stop()
+            incorrectFeedbackFallbackRunnable?.let { verificationHandler.removeCallbacks(it) }
+            incorrectFeedbackFallbackRunnable = null
+            tryAgainListenFallbackRunnable?.let { verificationHandler.removeCallbacks(it) }
+            tryAgainListenFallbackRunnable = null
+            threeColTtsGeneration++
+            cancelVerificationTimeout()
+            if (verificationMode) {
+                verificationMode = false
+                expectedEnglishForVerification = null
+                try { speechRecognizer?.stopListening() } catch (_: Exception) { }
+                stopEnglishVoskRecording()
+                setMicButtonAppearance(recording = false)
+            }
+            isEnglishMicActive = false
+            isRecording = false
             threeColMode = ThreeColMode.VOCAB
             lessonVocabAdapter?.currentIndex = 0
             vocabRecycler?.scrollToPosition(0)
@@ -6609,6 +6594,7 @@ class MainActivity : AppCompatActivity() {
     private fun onThreeColStartStop() {
         if (threeColControlRunning) {
             textToSpeech?.stop()
+            threeColTtsGeneration++
             cancelVerificationTimeout()
             if (verificationMode) {
                 verificationMode = false
@@ -6640,6 +6626,7 @@ class MainActivity : AppCompatActivity() {
             speakThreeColCurrent()
         } else {
             textToSpeech?.stop()
+            threeColTtsGeneration++
             cancelVerificationTimeout()
             if (verificationMode) {
                 verificationMode = false
@@ -6670,9 +6657,45 @@ class MainActivity : AppCompatActivity() {
         updateThreeColAutoScrollPosition()
         expectedEnglishForVerification = row.english
         textToSpeech?.stop()
+        threeColTtsGeneration++
+        val gen = threeColTtsGeneration
         textToSpeech?.setLanguage(Locale("bn"))
-        val utteranceId = if (threeColLearningMode) "threecol_learning_bengali" else "threecol_practice_bengali"
+        val utteranceId = if (threeColLearningMode) "threecol_learning_bengali_$gen" else "threecol_practice_bengali_$gen"
         textToSpeech?.speak(row.bengali, TextToSpeech.QUEUE_FLUSH, null, utteranceId)
+    }
+
+    /** After Bengali TTS for current row (Learning: then English; Practice: listen only). Uses [threeColCurrentIndex] row so audio matches the UI. */
+    private fun handleThreeColLearningBengaliUtteranceDone(utteranceId: String) {
+        val gen = utteranceId.substringAfterLast('_').toIntOrNull() ?: return
+        if (gen != threeColTtsGeneration) return
+        if (isDestroyed || currentContentLayout != ContentLayout.THREECOL_TABLE) return
+        if (threeColMode == ThreeColMode.VOCAB) return
+        if (threeColRows.isEmpty()) return
+        val idx = threeColCurrentIndex.coerceIn(0, threeColRows.lastIndex)
+        val row = threeColRows.getOrNull(idx) ?: return
+        val expected = row.english.trim()
+        if (expected.isEmpty()) return
+        expectedEnglishForVerification = expected
+        if (ttsReady && textToSpeech != null) {
+            textToSpeech?.setLanguage(Locale.US)
+            textToSpeech?.speak(MatchNormalizer.textForSpeakAndDisplay(expected), TextToSpeech.QUEUE_FLUSH, null, "lesson_verify")
+        } else {
+            startVerificationListening(expected)
+        }
+    }
+
+    private fun handleThreeColPracticeBengaliUtteranceDone(utteranceId: String) {
+        val gen = utteranceId.substringAfterLast('_').toIntOrNull() ?: return
+        if (gen != threeColTtsGeneration) return
+        if (isDestroyed || currentContentLayout != ContentLayout.THREECOL_TABLE) return
+        if (threeColMode == ThreeColMode.VOCAB) return
+        if (threeColRows.isEmpty()) return
+        val idx = threeColCurrentIndex.coerceIn(0, threeColRows.lastIndex)
+        val row = threeColRows.getOrNull(idx) ?: return
+        val expected = row.english.trim()
+        if (expected.isEmpty()) return
+        expectedEnglishForVerification = expected
+        startVerificationListening(expected)
     }
 
     /** Handle verification result for THREECOL_TABLE: reveal second column, update stats, and advance when appropriate. V tab: Toast, advance to next word or stop. */
@@ -6788,6 +6811,47 @@ class MainActivity : AppCompatActivity() {
                 threeColControlRunning = false
                 threeColControlPaused = false
                 updateThreeColControlBar()
+            }
+        } else {
+            // Wrong answer: 3 tries per row before advancing (was in shared [handleVerificationResult] before THREECOL early return).
+            threeColIncorrectCount++
+            val rowEnglish = threeColRows.getOrNull(idx)?.english?.trim().orEmpty()
+            if (threeColIncorrectCount >= 3) {
+                threeColIncorrectCount = 0
+                if (threeColMode == ThreeColMode.PRACTICE) {
+                    threeColRows.getOrNull(idx)?.let { failRow ->
+                        threeColAdapter?.setSpokenText(idx, MatchNormalizer.textForSpeakAndDisplay(failRow.english))
+                        threeColAdapter?.markResult(idx, false)
+                        updateThreeColStats()
+                    }
+                }
+                verificationHandler.postDelayed({
+                    if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE) {
+                        if (threeColCurrentIndex < threeColRows.lastIndex) {
+                            threeColCurrentIndex++
+                            threeColAdapter?.setCurrentIndex(threeColCurrentIndex)
+                            updateThreeColRowPositionText()
+                            if (threeColControlRunning) speakThreeColCurrent()
+                        } else {
+                            threeColControlRunning = false
+                            threeColControlPaused = false
+                            updateThreeColControlBar()
+                        }
+                    }
+                }, 1500)
+            } else {
+                val chancesLeft = 3 - threeColIncorrectCount
+                if (chancesLeft > 0) {
+                    Toast.makeText(this, getString(R.string.pronunciation_try_again_chances, chancesLeft), Toast.LENGTH_SHORT).show()
+                }
+                if (threeColControlRunning && rowEnglish.isNotBlank()) {
+                    verificationHandler.postDelayed({
+                        if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE &&
+                            threeColControlRunning && threeColCurrentIndex == idx) {
+                            startVerificationListening(rowEnglish)
+                        }
+                    }, 500)
+                }
             }
         }
     }

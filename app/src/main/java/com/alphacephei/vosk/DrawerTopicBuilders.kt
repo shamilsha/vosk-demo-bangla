@@ -106,7 +106,16 @@ object DrawerTopicBuilders {
             // "Test layout" uses key test_layout (same asset as simple_what — see threeColLessonAssetPaths).
             // Other simple_*.txt lessons (What, Where, How, …) come from [SimpleSentenceUtils.buildSimpleSentenceSubtopics] with THREECOL_TABLE.
             Subtopic("Test layout", "test_layout", ContentLayout.THREECOL_TABLE),
-            Subtopic("Can", "can", ContentLayout.THREECOL_TABLE)
+            Subtopic("Can", "can", ContentLayout.THREECOL_TABLE),
+            Subtopic("May", "may", ContentLayout.THREECOL_TABLE),
+            Subtopic("Wish", "wish", ContentLayout.THREECOL_TABLE),
+            Subtopic("How about", "how_about", ContentLayout.THREECOL_TABLE),
+            Subtopic("Feels like", "feels_like", ContentLayout.THREECOL_TABLE),
+            Subtopic("Need to", "need_to", ContentLayout.THREECOL_TABLE),
+            Subtopic("Must", "must", ContentLayout.THREECOL_TABLE),
+            Subtopic("Should", "should", ContentLayout.THREECOL_TABLE),
+            Subtopic("Used to", "used_to", ContentLayout.THREECOL_TABLE),
+            Subtopic("Make", "make", ContentLayout.THREECOL_TABLE)
         ) + SimpleSentenceUtils.buildSimpleSentenceSubtopics(assetManager)),
         Topic("SVO Practice", listOf(
             Subtopic("SVO sentences list", "svo_sentences"),

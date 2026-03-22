@@ -25,7 +25,16 @@ object SimpleSentenceUtils {
         "simple_when",
         "simple_who",
         "simple_why",
-        "can"
+        "can",
+        "may",
+        "wish",
+        "how_about",
+        "feels_like",
+        "need_to",
+        "must",
+        "should",
+        "used_to",
+        "make"
     )
 
     /** Discover simple_XXX.txt in Lessons/SVO/ — one subtopic per file; 3-col keys use [ContentLayout.THREECOL_TABLE]. */
