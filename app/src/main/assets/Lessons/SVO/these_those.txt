@@ -1,0 +1,21 @@
+These are my books., এগুলো আমার বই।, দীজ আর মাই বুকস।
+These mangoes are sweet., এই আমগুলো মিষ্টি।, দীজ ম্যাংগোজ আর সুইট।
+These flowers are beautiful., এই ফুলগুলো সুন্দর।, দীজ ফ্লাওয়ারস আর বিউটিফুল।
+These boys are my friends., এই ছেলেরা আমার বন্ধু।, দীজ বয়েজ আর মাই ফ্রেন্ডস।
+These are very expensive., এগুলো খুব দামী।, দীজ আর ভেরি এক্সপেনসিভ।
+These shirts are clean., এই শার্টগুলো পরিষ্কার।, দীজ শার্টস আর ক্লিন।
+These keys are for the car., এই চাবিগুলো গাড়ির জন্য।, দীজ কীজ আর ফর দ্য কার।
+These children are playing., এই শিশুরা খেলছে।, দীজ চিলড্রেন আর প্লেয়িং।
+These are not my shoes., এগুলো আমার জুতো নয়।, দীজ নট মাই শ্যুজ।
+These ideas are very good., এই ধারণাগুলো খুব ভালো।, দীজ আইডিয়াজ আর ভেরি গুড।
+Those are high mountains., ওগুলো উঁচু পাহাড়।, দোজ আর হাই মাউন্টেনস।
+Those birds are flying., ওই পাখিগুলো উড়ছে।, দোজ বার্ডস আর ফ্লাইয়িং।
+Those stars are shining., ওই তারাগুলো জ্বলজ্বল করছে।, দোজ স্টারস আর শাইনিং।
+Those trees are very tall., ওই গাছগুলো খুব লম্বা।, দোজ ট্রিজ আর ভেরি টল।
+Those houses are new., ওই বাড়িগুলো নতুন।, দোজ হাউসেস আর নিউ।
+Those clouds are black., ওই মেঘগুলো কালো।, দোজ ক্লাউডস আর ব্ল্যাক।
+Those people are waiting., ওই লোকগুলো অপেক্ষা করছে।, দোজ পিপল আর ওয়েটিং।
+Those toys are broken., ওই খেলনাগুলো ভাঙা।, দোজ টয়েজ আর ব্রোকেন।
+Those were good days., সেগুলো ভালো দিন ছিল।, দোজ ওয়্যার গুড ডেজ।
+Those girls are singing., ওই মেয়েরা গান গাইছে।, দোজ গার্লস আর সিঙ্গিং।
+Those fruits are fresh., ওই ফলগুলো টাটকা।, দোজ ফ্রুটস আর ফ্রেশ।

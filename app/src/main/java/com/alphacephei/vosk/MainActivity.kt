@@ -707,7 +707,7 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * THREECOL_TABLE lessons: actionKey → asset path. Same layout, V tab, and **auto-scroll** ([updateThreeColAutoScrollPosition]) for all —
-     * e.g. What, Where, How, When, Who, Why, Let, can, test_layout; only the .txt file differs.
+     * e.g. What, Where, How, When, Who, Why, Let, can, it, there, this_that, these_those, test_layout; only the .txt file differs.
      * To add a new similar lesson: (1) add entry here, (2) add Subtopic in DrawerTopicBuilders with this actionKey, (3) add .txt in assets.
      * Also add the actionKey to [SimpleSentenceUtils.SIMPLE_TXT_ACTION_KEYS_USING_THREE_COL_TABLE] so [SimpleSentenceUtils.buildSimpleSentenceSubtopics] does not create a duplicate SIMPLE_SENTENCE row for the same file.
      */
@@ -729,7 +729,11 @@ class MainActivity : AppCompatActivity() {
         "must" to "Lessons/SVO/must.txt",
         "should" to "Lessons/SVO/should.txt",
         "used_to" to "Lessons/SVO/used_to.txt",
-        "make" to "Lessons/SVO/make.txt"
+        "make" to "Lessons/SVO/make.txt",
+        "it" to "Lessons/SVO/it.txt",
+        "there" to "Lessons/SVO/there.txt",
+        "this_that" to "Lessons/SVO/this_that.txt",
+        "these_those" to "Lessons/SVO/these_those.txt"
     )
     /** Lesson key for current 3col lesson; used for JSON stats file ({key}_3col_stats.json). Set when loading. */
     private var threeColCurrentLessonKey: String = "test_layout"
@@ -5293,13 +5297,27 @@ class MainActivity : AppCompatActivity() {
         threeColAdapter = null
         threeColCurrentLessonKey = lessonKey
         threeColBaseRows = rows
-        if (masterWordListMap == null) {
-            masterWordListMap = LessonFileParsers.loadMasterWordList(assets)
+        val assetMaster = LessonFileParsers.loadMasterWordList(assets)
+        val additions = LessonFileParsers.loadMasterListAdditions(filesDir)
+        val mergedMaster = assetMaster.toMutableMap()
+        mergedMaster.putAll(additions)
+        // V tab: explicit # --- VOCABULARY --- block, else tokenize English from each 3-col row (same pattern as conversation bubbles).
+        var vocabWords = LessonFileParsers.extractVocabularyBlock(content)
+        if (vocabWords.isEmpty()) {
+            vocabWords = LessonFileParsers.extractVocabWordsFromThreeColContent(content)
         }
-        currentLessonVocabWords = LessonFileParsers.extractVocabularyBlock(content)
+        for (word in vocabWords) {
+            val key = word.trim().lowercase()
+            if (key.isNotEmpty() && !mergedMaster.containsKey(key)) {
+                LessonFileParsers.saveMasterListAddition(filesDir, key, "—", "—")
+                mergedMaster[key] = "—" to "—"
+            }
+        }
+        masterWordListMap = mergedMaster
+        currentLessonVocabWords = vocabWords
         lessonVocabRows = LessonFileParsers.filterLessonVocabRowsByMaster(
-            LessonFileParsers.buildLessonVocabRowsOnlyInMaster(currentLessonVocabWords, masterWordListMap ?: emptyMap()),
-            masterWordListMap
+            LessonFileParsers.buildLessonVocabRowsOnlyInMaster(vocabWords, mergedMaster),
+            mergedMaster
         )
         threeColStats = LessonFileParsers.loadThreeColStats(filesDir, lessonKey, rows.size)
         // Merge optional A,B from lesson file when present

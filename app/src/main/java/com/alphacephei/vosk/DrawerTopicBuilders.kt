@@ -115,7 +115,11 @@ object DrawerTopicBuilders {
             Subtopic("Must", "must", ContentLayout.THREECOL_TABLE),
             Subtopic("Should", "should", ContentLayout.THREECOL_TABLE),
             Subtopic("Used to", "used_to", ContentLayout.THREECOL_TABLE),
-            Subtopic("Make", "make", ContentLayout.THREECOL_TABLE)
+            Subtopic("Make", "make", ContentLayout.THREECOL_TABLE),
+            Subtopic("It", "it", ContentLayout.THREECOL_TABLE),
+            Subtopic("There", "there", ContentLayout.THREECOL_TABLE),
+            Subtopic("This / That", "this_that", ContentLayout.THREECOL_TABLE),
+            Subtopic("These / Those", "these_those", ContentLayout.THREECOL_TABLE)
         ) + SimpleSentenceUtils.buildSimpleSentenceSubtopics(assetManager)),
         Topic("SVO Practice", listOf(
             Subtopic("SVO sentences list", "svo_sentences"),

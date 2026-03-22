@@ -1,0 +1,21 @@
+There is a book., সেখানে একটি বই আছে।, দেয়ার ইজ আ বুক।
+There is a pen on the table., টেবিলে একটি কলম আছে।, দেয়ার ইজ আ পেন অন দ্য টেবিল।
+There is a chair in the room., ঘরে একটি চেয়ার আছে।, দেয়ার ইজ আ চেয়ার ইন দ্য রুম।
+There is no water in the glass., গ্লাসে কোনো জল নেই।, দেয়ার ইজ নো ওয়াটার ইন দ্য গ্লাস।
+There is a fan above us., আমাদের উপরে একটি ফ্যান আছে।, দেয়ার ইজ আ ফ্যান অ্যাবাভ আস।
+There is a picture on the wall., দেওয়ালে একটি ছবি আছে।, দেয়ার ইজ আ পিকচার অন দ্য ওয়াল।
+There is a tree in the garden., বাগানে একটি গাছ আছে।, দেয়ার ইজ আ ট্রি ইন দ্য গার্ডেন।
+There is a river near the village., গ্রামের কাছে একটি নদী আছে।, দেয়ার ইজ আ রিভার নিয়ার দ্য ভিলেজ।
+There are many stars in the sky., আকাশে অনেক তারা আছে।, দেয়ার আর মেনি স্টারস ইন দ্য স্কাই।
+There is a school in our area., আমাদের এলাকায় একটি স্কুল আছে।, দেয়ার ইজ আ স্কুল ইন আওয়ার এরিয়া।
+There is a beautiful park here., এখানে একটি সুন্দর পার্ক আছে।, দেয়ার ইজ আ বিউটিফুল পার্ক হেয়ার।
+There is some food in the kitchen., রান্নাঘরে কিছু খাবার আছে।, দেয়ার ইজ সাম ফুড ইন দ্য কিচেন।
+There is a boy at the door., দরজায় একটি ছেলে দাঁড়িয়ে আছে।, দেয়ার ইজ আ বয় অ্যাট দ্য ডোর।
+There are many people here., এখানে অনেক মানুষ আছে।, দেয়ার আর মেনি পিপল হেয়ার।
+There is a problem., একটি সমস্যা আছে।, দেয়ার ইজ আ প্রবলেম।
+There is a chance to win., জেতার একটি সুযোগ আছে।, দেয়ার ইজ আ চান্স টু উইন।
+There is a meeting today., আজ একটি মিটিং আছে।, দেয়ার ইজ আ মিটিং টুডে।
+There is a doctor in the hospital., হাসপাতালে একজন ডাক্তার আছেন।, দেয়ার ইজ আ ডক্টর ইন দ্য হসপিটাল।
+There is a reason for this., এর পেছনে একটি কারণ আছে।, দেয়ার ইজ আ রিজন ফর দিস।
+There is a cat under the bed., বিছানার নিচে একটি বিড়াল আছে।, দেয়ার ইজ আ ক্যাট আন্ডার দ্য বেড।
+There was a king., এক সময় একজন রাজা ছিলেন।, দেয়ার ওয়াজ আ কিং।

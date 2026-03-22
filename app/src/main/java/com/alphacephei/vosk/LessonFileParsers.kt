@@ -70,6 +70,27 @@ object LessonFileParsers {
         return words
     }
 
+    /**
+     * When a 3-col lesson file has no `# --- VOCABULARY ---` block, derive candidate English words from
+     * each sentence row (English,Bengali,Hint) by tokenizing the English column. Same idea as
+     * [extractWordsFromConversationContent] so the V tab can stay populated.
+     */
+    fun extractVocabWordsFromThreeColContent(content: String): List<String> {
+        val words = mutableSetOf<String>()
+        for (line in stripVocabularyBlock(content).lines()) {
+            val trimmed = line.trim()
+            if (trimmed.isEmpty() || trimmed.startsWith("#")) continue
+            val parts = trimmed.split(",").map { it.trim() }
+            if (parts.size < 3) continue
+            val english = parts[0]
+            english.split(Regex("[^a-zA-Z]+")).forEach { token ->
+                val w = token.trim().lowercase()
+                if (w.isNotEmpty()) words.add(w)
+            }
+        }
+        return words.sorted()
+    }
+
     /** Incorrect list file name = original lesson name + this suffix (e.g. regular_verbs_inc.json). */
     const val INCORRECT_LESSON_SUFFIX = "_inc.json"
     /** Three-column stats file name suffix: {safeLessonKey}_3col_stats.json. */
