@@ -38,7 +38,8 @@ object SimpleSentenceUtils {
         "it",
         "there",
         "this_that",
-        "these_those"
+        "these_those",
+        "prepositions"
     )
 
     /** Discover simple_XXX.txt in Lessons/SVO/ — one subtopic per file; 3-col keys use [ContentLayout.THREECOL_TABLE]. */

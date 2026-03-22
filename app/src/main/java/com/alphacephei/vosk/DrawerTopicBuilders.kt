@@ -119,7 +119,8 @@ object DrawerTopicBuilders {
             Subtopic("It", "it", ContentLayout.THREECOL_TABLE),
             Subtopic("There", "there", ContentLayout.THREECOL_TABLE),
             Subtopic("This / That", "this_that", ContentLayout.THREECOL_TABLE),
-            Subtopic("These / Those", "these_those", ContentLayout.THREECOL_TABLE)
+            Subtopic("These / Those", "these_those", ContentLayout.THREECOL_TABLE),
+            Subtopic("Prepositions", "prepositions", ContentLayout.THREECOL_TABLE)
         ) + SimpleSentenceUtils.buildSimpleSentenceSubtopics(assetManager)),
         Topic("SVO Practice", listOf(
             Subtopic("SVO sentences list", "svo_sentences"),

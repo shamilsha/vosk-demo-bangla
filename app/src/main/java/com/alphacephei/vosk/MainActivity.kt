@@ -673,6 +673,7 @@ class MainActivity : AppCompatActivity() {
         threeColAdapter?.updateData(threeColRows)
         threeColAdapter?.learningMode = threeColLearningMode
         threeColAdapter?.setCurrentIndex(0)
+        updateThreeColPrepositionsTestUiFlag()
         // Reset live stats on any transition (tab or toggle) so display is 0/0/total and never exceeds total
         threeColSessionCorrect = 0
         threeColSessionAttempted = 0
@@ -707,7 +708,7 @@ class MainActivity : AppCompatActivity() {
 
     /**
      * THREECOL_TABLE lessons: actionKey → asset path. Same layout, V tab, and **auto-scroll** ([updateThreeColAutoScrollPosition]) for all —
-     * e.g. What, Where, How, When, Who, Why, Let, can, it, there, this_that, these_those, test_layout; only the .txt file differs.
+     * e.g. What, Where, How, When, Who, Why, Let, can, prepositions, test_layout; only the .txt file differs.
      * To add a new similar lesson: (1) add entry here, (2) add Subtopic in DrawerTopicBuilders with this actionKey, (3) add .txt in assets.
      * Also add the actionKey to [SimpleSentenceUtils.SIMPLE_TXT_ACTION_KEYS_USING_THREE_COL_TABLE] so [SimpleSentenceUtils.buildSimpleSentenceSubtopics] does not create a duplicate SIMPLE_SENTENCE row for the same file.
      */
@@ -733,7 +734,8 @@ class MainActivity : AppCompatActivity() {
         "it" to "Lessons/SVO/it.txt",
         "there" to "Lessons/SVO/there.txt",
         "this_that" to "Lessons/SVO/this_that.txt",
-        "these_those" to "Lessons/SVO/these_those.txt"
+        "these_those" to "Lessons/SVO/these_those.txt",
+        "prepositions" to "Lessons/prepositions.txt"
     )
     /** Lesson key for current 3col lesson; used for JSON stats file ({key}_3col_stats.json). Set when loading. */
     private var threeColCurrentLessonKey: String = "test_layout"
@@ -1929,6 +1931,9 @@ class MainActivity : AppCompatActivity() {
                         if (utteranceId != null && utteranceId.startsWith("threecol_practice_bengali_")) {
                             runOnUiThread { handleThreeColPracticeBengaliUtteranceDone(utteranceId) }
                         }
+                        if (utteranceId != null && utteranceId.startsWith("threecol_prepositions_test_partial_")) {
+                            runOnUiThread { handleThreeColPrepositionsTestPartialDone(utteranceId) }
+                        }
                         // Conversation bubble TTS: ids are conv_bubble_{bengali|english}_{rowIdx}_{generation} — handle outside when() so stale callbacks are ignored.
                         if (utteranceId != null && utteranceId.startsWith("conv_bubble_bengali_")) {
                             runOnUiThread { handleConvBubbleBengaliUtteranceFinished(utteranceId) }
@@ -2006,6 +2011,9 @@ class MainActivity : AppCompatActivity() {
                         }
                         if (utteranceId != null && utteranceId.startsWith("threecol_practice_bengali_")) {
                             runOnUiThread { handleThreeColPracticeBengaliUtteranceDone(utteranceId) }
+                        }
+                        if (utteranceId != null && utteranceId.startsWith("threecol_prepositions_test_partial_")) {
+                            runOnUiThread { handleThreeColPrepositionsTestPartialDone(utteranceId) }
                         }
                         if (utteranceId != null && utteranceId.startsWith("conv_bubble_bengali_")) {
                             runOnUiThread { handleConvBubbleBengaliUtteranceFinished(utteranceId) }
@@ -5361,6 +5369,7 @@ class MainActivity : AppCompatActivity() {
                 threeColAdapter?.setCurrentIndex(threeColCurrentIndex)
             }
             setupThreeColModeButtons(root)
+            updateThreeColPrepositionsTestUiFlag()
             updateThreeColStats()
             updateThreeColRowPositionText()
             // Initial scroll: [updateThreeColRowPositionText] → [updateThreeColAutoScrollPosition]; pos==0 pins to top.
@@ -6663,6 +6672,13 @@ class MainActivity : AppCompatActivity() {
         updateThreeColControlBar()
     }
 
+    /** Prepositions lesson: TEST tab shows masked English and speaks only the first word; user must say the full phrase. */
+    private fun updateThreeColPrepositionsTestUiFlag() {
+        if (currentContentLayout != ContentLayout.THREECOL_TABLE) return
+        val mask = threeColLessonKey() == "prepositions" && threeColMode == ThreeColMode.TEST
+        threeColAdapter?.prepositionsTestMasking = mask
+    }
+
     /** Speak Bengali then English for current THREECOL row, then verification. */
     private fun speakThreeColCurrent() {
         if (currentContentLayout != ContentLayout.THREECOL_TABLE) return
@@ -6672,7 +6688,26 @@ class MainActivity : AppCompatActivity() {
         val row = threeColRows[idx]
         if (row.bengali.isBlank() || row.english.isBlank()) return
         threeColAdapter?.setCurrentIndex(idx)
+        updateThreeColPrepositionsTestUiFlag()
         updateThreeColAutoScrollPosition()
+        // Prepositions + TEST: partial English TTS only, then verify full phrase (3 strikes in [onThreeColVerificationResult]).
+        if (threeColLessonKey() == "prepositions" && threeColMode == ThreeColMode.TEST) {
+            val displayEng = MatchNormalizer.textForSpeakAndDisplay(row.english)
+            val partial = PrepositionTestUtils.partialForTts(displayEng)
+            if (partial.isBlank()) return
+            expectedEnglishForVerification = row.english.trim()
+            textToSpeech?.stop()
+            threeColTtsGeneration++
+            val gen = threeColTtsGeneration
+            textToSpeech?.setLanguage(Locale.US)
+            textToSpeech?.speak(
+                MatchNormalizer.textForSpeakAndDisplay(partial),
+                TextToSpeech.QUEUE_FLUSH,
+                null,
+                "threecol_prepositions_test_partial_$gen"
+            )
+            return
+        }
         expectedEnglishForVerification = row.english
         textToSpeech?.stop()
         threeColTtsGeneration++
@@ -6707,6 +6742,21 @@ class MainActivity : AppCompatActivity() {
         if (gen != threeColTtsGeneration) return
         if (isDestroyed || currentContentLayout != ContentLayout.THREECOL_TABLE) return
         if (threeColMode == ThreeColMode.VOCAB) return
+        if (threeColRows.isEmpty()) return
+        val idx = threeColCurrentIndex.coerceIn(0, threeColRows.lastIndex)
+        val row = threeColRows.getOrNull(idx) ?: return
+        val expected = row.english.trim()
+        if (expected.isEmpty()) return
+        expectedEnglishForVerification = expected
+        startVerificationListening(expected)
+    }
+
+    /** After partial English TTS in Prepositions TEST; listen for the full preposition phrase. */
+    private fun handleThreeColPrepositionsTestPartialDone(utteranceId: String) {
+        val gen = utteranceId.substringAfterLast('_').toIntOrNull() ?: return
+        if (gen != threeColTtsGeneration) return
+        if (isDestroyed || currentContentLayout != ContentLayout.THREECOL_TABLE) return
+        if (threeColMode != ThreeColMode.TEST || threeColLessonKey() != "prepositions") return
         if (threeColRows.isEmpty()) return
         val idx = threeColCurrentIndex.coerceIn(0, threeColRows.lastIndex)
         val row = threeColRows.getOrNull(idx) ?: return
@@ -6811,9 +6861,35 @@ class MainActivity : AppCompatActivity() {
         threeColAdapter?.markResult(idx, match)
         updateThreeColStats()
         updateThreeColRowPositionText()
+        val isPrepositionsTestLesson = threeColLessonKey() == "prepositions" && threeColMode == ThreeColMode.TEST
         if (match) {
             threeColIncorrectCount = 0
-            if (threeColCurrentIndex < threeColRows.lastIndex) {
+            if (isPrepositionsTestLesson) {
+                // Show full phrase briefly, then advance (do not skip to next row until after delay).
+                threeColAdapter?.prepositionsTestRevealFullRowIndex = idx
+            }
+            if (isPrepositionsTestLesson) {
+                if (threeColCurrentIndex < threeColRows.lastIndex) {
+                    verificationHandler.postDelayed({
+                        if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE) {
+                            threeColAdapter?.prepositionsTestRevealFullRowIndex = -1
+                            threeColCurrentIndex++
+                            threeColAdapter?.setCurrentIndex(threeColCurrentIndex)
+                            updateThreeColRowPositionText()
+                            if (threeColControlRunning) speakThreeColCurrent()
+                        }
+                    }, 1500)
+                } else {
+                    verificationHandler.postDelayed({
+                        if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE) {
+                            threeColAdapter?.prepositionsTestRevealFullRowIndex = -1
+                            threeColControlRunning = false
+                            threeColControlPaused = false
+                            updateThreeColControlBar()
+                        }
+                    }, 1500)
+                }
+            } else if (threeColCurrentIndex < threeColRows.lastIndex) {
                 threeColCurrentIndex++
                 threeColAdapter?.setCurrentIndex(threeColCurrentIndex)
                 updateThreeColRowPositionText()
@@ -6832,6 +6908,7 @@ class MainActivity : AppCompatActivity() {
             }
         } else {
             // Wrong answer: 3 tries per row before advancing (was in shared [handleVerificationResult] before THREECOL early return).
+            threeColAdapter?.prepositionsTestRevealFullRowIndex = -1
             threeColIncorrectCount++
             val rowEnglish = threeColRows.getOrNull(idx)?.english?.trim().orEmpty()
             if (threeColIncorrectCount >= 3) {
@@ -6843,8 +6920,14 @@ class MainActivity : AppCompatActivity() {
                         updateThreeColStats()
                     }
                 }
+                if (isPrepositionsTestLesson) {
+                    threeColAdapter?.prepositionsTestRevealFullRowIndex = idx
+                }
                 verificationHandler.postDelayed({
                     if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE) {
+                        if (isPrepositionsTestLesson) {
+                            threeColAdapter?.prepositionsTestRevealFullRowIndex = -1
+                        }
                         if (threeColCurrentIndex < threeColRows.lastIndex) {
                             threeColCurrentIndex++
                             threeColAdapter?.setCurrentIndex(threeColCurrentIndex)

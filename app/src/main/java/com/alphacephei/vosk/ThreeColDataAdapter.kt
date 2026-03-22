@@ -20,6 +20,25 @@ class ThreeColDataAdapter(
             notifyDataSetChanged()
         }
 
+    /**
+     * Prepositions lesson + TEST tab only: on the current row, show masked English (e.g. "Abide ---") until answered.
+     */
+    var prepositionsTestMasking: Boolean = false
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
+    /**
+     * Prepositions TEST: show full English on this row only during the brief reveal before advancing
+     * (correct answer, or after 3 wrong attempts). -1 = no reveal.
+     */
+    var prepositionsTestRevealFullRowIndex: Int = -1
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
     /** Per-row answer state for Practice mode. */
     private var answered: MutableList<Boolean> = MutableList(items.size) { false }
     private var correct: MutableList<Boolean> = MutableList(items.size) { false }
@@ -45,12 +64,11 @@ class ThreeColDataAdapter(
 
     override fun onBindViewHolder(holder: RowViewHolder, position: Int) {
         val row = items[position]
-        holder.bengali.text = row.bengali
-
         val ctx = holder.itemView.context
         val baseEnglishColor = ctx.getColor(R.color.lesson_topic_bar_background)
         val successColor = ctx.getColor(R.color.control_success)
         val dangerColor = ctx.getColor(R.color.control_danger)
+        val textPrimary = ctx.getColor(R.color.text_primary)
 
         // Highlight the active row; otherwise alternate row background for high contrast
         if (position == currentIndex) {
@@ -64,6 +82,7 @@ class ThreeColDataAdapter(
         holder.statusMark.text = ""
 
         if (learningMode) {
+            holder.bengali.text = row.bengali
             // Always show English + hint in Learning mode (display form: first alternative only).
             holder.english.text = MatchNormalizer.textForSpeakAndDisplay(row.english)
             holder.english.setTextColor(baseEnglishColor)
@@ -74,10 +93,47 @@ class ThreeColDataAdapter(
                 holder.statusMark.text = if (position in correct.indices && correct[position]) "✓" else "✗"
                 holder.statusMark.setTextColor(if (position in correct.indices && correct[position]) successColor else dangerColor)
             }
+        } else if (prepositionsTestMasking) {
+            // Prepositions TEST: col1 = "Word __" until reveal; full English only on reveal row before next item.
+            holder.hint.visibility = View.GONE
+            when {
+                position == prepositionsTestRevealFullRowIndex -> {
+                    holder.bengali.text = MatchNormalizer.textForSpeakAndDisplay(row.english)
+                    holder.bengali.setTextColor(textPrimary)
+                    val said = spoken.getOrNull(position) ?: ""
+                    holder.english.text = MatchNormalizer.sanitizeSpokenTextForDisplay(said)
+                    holder.english.setTextColor(if (position in correct.indices && correct[position]) successColor else dangerColor)
+                    holder.statusMark.text = if (position in correct.indices && correct[position]) "✓" else "✗"
+                    holder.statusMark.setTextColor(if (position in correct.indices && correct[position]) successColor else dangerColor)
+                }
+                position in answered.indices && answered[position] -> {
+                    val cue = MatchNormalizer.textForSpeakAndDisplay(row.english)
+                    // Wrong + still on this row with retries left: keep "Word __". Once done (pass / 3 fails), show full; it stays for earlier rows after advancing.
+                    val stillRetryingWrong =
+                        position == currentIndex &&
+                        position in correct.indices &&
+                        !correct[position]
+                    holder.bengali.text =
+                        if (stillRetryingWrong) PrepositionTestUtils.maskedDisplayEnglish(cue) else cue
+                    holder.bengali.setTextColor(textPrimary)
+                    val said = spoken.getOrNull(position) ?: ""
+                    holder.english.text = MatchNormalizer.sanitizeSpokenTextForDisplay(said)
+                    holder.english.setTextColor(if (position in correct.indices && correct[position]) successColor else dangerColor)
+                    holder.statusMark.text = if (position in correct.indices && correct[position]) "✓" else "✗"
+                    holder.statusMark.setTextColor(if (position in correct.indices && correct[position]) successColor else dangerColor)
+                }
+                else -> {
+                    val cue = MatchNormalizer.textForSpeakAndDisplay(row.english)
+                    holder.bengali.text = PrepositionTestUtils.maskedDisplayEnglish(cue)
+                    holder.bengali.setTextColor(textPrimary)
+                    holder.english.text = ""
+                    holder.english.setTextColor(baseEnglishColor)
+                }
+            }
         } else {
-            // Practice mode: initially hide English+hint until answered; then show and mark correct/incorrect.
+            holder.bengali.text = row.bengali
+            // Practice / other TEST: hide English+hint until answered; then show and mark correct/incorrect.
             if (position in answered.indices && answered[position]) {
-                // Show what the user said; no pronunciation hint in Practice.
                 val said = spoken.getOrNull(position) ?: ""
                 holder.english.text = MatchNormalizer.sanitizeSpokenTextForDisplay(said)
                 holder.english.setTextColor(if (position in correct.indices && correct[position]) successColor else dangerColor)
@@ -99,6 +155,7 @@ class ThreeColDataAdapter(
         answered = MutableList(items.size) { false }
         correct = MutableList(items.size) { false }
         spoken = MutableList(items.size) { "" }
+        prepositionsTestRevealFullRowIndex = -1
         notifyDataSetChanged()
     }
 
