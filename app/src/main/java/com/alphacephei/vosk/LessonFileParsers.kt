@@ -214,15 +214,23 @@ object LessonFileParsers {
     }
 
     /**
-     * Parse 3- or 5-column lesson CSV for THREECOL_TABLE.
-     * Format: English,Bengali,Hint  or  English,Bengali,Hint,A,B
-     * A = practice pass (1) or fail (0), B = test pass (1) or fail (0).
-     * Returns (rows, initialABPerRow) where initialABPerRow[i] = [A,B] if line had 5 columns, else null.
+     * Parse 3-, 4-, 5-, or 6-column lesson CSV for THREECOL_TABLE.
+     * - **3 columns:** English,Bengali,Hint
+     * - **4 columns:** English,Bengali,Hint,Extra — extra column ignored (UI uses first 3 only).
+     * - **5 columns:** English,Bengali,Hint,A,B — only if A and B are exactly `0` or `1` (stats); otherwise
+     *   treated as 3 data columns + extra commas in text (4th/5th not used as stats).
+     * - **6+ columns:** English,Bengali,Hint,Extra (ignored),A,B — A,B must be `0` or `1` to count as stats.
      */
     fun parseThreeColLessonFile(content: String): Pair<List<ThreeColRow>, List<IntArray?>> {
         val rows = mutableListOf<ThreeColRow>()
         val initialAB = mutableListOf<IntArray?>()
-        stripVocabularyBlock(content).lines().forEach { line ->
+        fun isBinaryStat(s: String): Boolean {
+            val t = s.trim()
+            return t == "0" || t == "1"
+        }
+        stripVocabularyBlock(content).lines().forEach { rawLine ->
+            val line = rawLine.trim().removePrefix("\uFEFF")
+            if (line.isEmpty() || line.startsWith("#")) return@forEach
             val parts = line.split(",").map { it.trim() }
             if (parts.size < 3) return@forEach
             val eng = parts[0]
@@ -230,11 +238,16 @@ object LessonFileParsers {
             val hint = parts[2]
             if (eng.isBlank() && bn.isBlank()) return@forEach
             rows.add(ThreeColRow(eng, bn, hint))
-            val ab = if (parts.size >= 5) {
-                val a = parts[3].toIntOrNull()?.coerceIn(0, 1) ?: 0
-                val b = parts[4].toIntOrNull()?.coerceIn(0, 1) ?: 0
-                intArrayOf(a, b)
-            } else null
+            // Optional 4th column (e.g. noun type): ignored for UI; only first 3 columns are rows.
+            // Legacy A,B stats: only when the last two fields are exactly "0" or "1" (avoids mis-parsing
+            // commas inside English as extra fields).
+            val ab = when {
+                parts.size >= 6 && isBinaryStat(parts[4]) && isBinaryStat(parts[5]) ->
+                    intArrayOf(parts[4].toInt(), parts[5].toInt())
+                parts.size == 5 && isBinaryStat(parts[3]) && isBinaryStat(parts[4]) ->
+                    intArrayOf(parts[3].toInt(), parts[4].toInt())
+                else -> null
+            }
             initialAB.add(ab)
         }
         return rows to initialAB

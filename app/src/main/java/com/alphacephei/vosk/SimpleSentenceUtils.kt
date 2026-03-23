@@ -14,7 +14,7 @@ object SimpleSentenceUtils {
      * Must stay in sync with `threeColLessonAssetPaths` in MainActivity.
      *
      * For each matching `simple_*.txt`, [buildSimpleSentenceSubtopics] uses **THREECOL_TABLE** and short titles
-     * ("What", "Who", …) so there is a **single** drawer row per file (no duplicate SIMPLE_SENTENCE row).
+     * ("What", "Who", …). Exact-name lessons (e.g. [be_verb]) are listed in the drawer separately; keys must appear here.
      */
     val SIMPLE_TXT_ACTION_KEYS_USING_THREE_COL_TABLE: Set<String> = setOf(
         "test_layout",
@@ -25,6 +25,11 @@ object SimpleSentenceUtils {
         "simple_when",
         "simple_who",
         "simple_why",
+        "preposition_plus",
+        "be_verb",
+        "be_verb_plus",
+        "have_verb",
+        "noun",
         "can",
         "may",
         "wish",
@@ -65,9 +70,18 @@ object SimpleSentenceUtils {
         }
     }
 
-    /** Display title for a simple-sentence lesson by actionKey (e.g. simple_let → "Let"). */
+    /** Display title for a simple-sentence lesson by actionKey (e.g. simple_let → "Let", be_verb → "Be verb"). */
     fun simpleSentenceLessonTitle(actionKey: String): String {
-        if (!actionKey.startsWith("simple_")) return actionKey
+        if (!actionKey.startsWith("simple_")) {
+            return when (actionKey) {
+                "be_verb" -> "Be verb"
+                "be_verb_plus" -> "Be verb plus"
+                "have_verb" -> "Have verb"
+                "noun" -> "Noun (sentences)"
+                "preposition_plus" -> "Preposition plus"
+                else -> actionKey
+            }
+        }
         val xxx = actionKey.removePrefix("simple_")
         return when (xxx) {
             "sentence" -> "Simple sentences"

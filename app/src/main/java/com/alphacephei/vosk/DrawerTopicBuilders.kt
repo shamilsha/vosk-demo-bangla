@@ -120,6 +120,11 @@ object DrawerTopicBuilders {
             Subtopic("There", "there", ContentLayout.THREECOL_TABLE),
             Subtopic("This / That", "this_that", ContentLayout.THREECOL_TABLE),
             Subtopic("These / Those", "these_those", ContentLayout.THREECOL_TABLE),
+            Subtopic("Preposition plus", "preposition_plus", ContentLayout.THREECOL_TABLE),
+            Subtopic("Be verb", "be_verb", ContentLayout.THREECOL_TABLE),
+            Subtopic("Be verb plus", "be_verb_plus", ContentLayout.THREECOL_TABLE),
+            Subtopic("Have verb", "have_verb", ContentLayout.THREECOL_TABLE),
+            Subtopic("Noun (sentences)", "noun", ContentLayout.THREECOL_TABLE),
             Subtopic("Prepositions", "prepositions", ContentLayout.THREECOL_TABLE)
         ) + SimpleSentenceUtils.buildSimpleSentenceSubtopics(assetManager)),
         Topic("SVO Practice", listOf(
@@ -148,7 +153,8 @@ object DrawerTopicBuilders {
             Subtopic("Vowel vs Consonant", "level1_vowel_consonant")
         )),
         Topic("Noun & Pronoun", listOf(
-            Subtopic("Noun", "level1_noun", ContentLayout.NOUN_TABS),
+            // Distinct title from SVO "Noun (sentences)" — different layout (tabs vs 3-column table).
+            Subtopic("Noun (categories)", "level1_noun", ContentLayout.NOUN_TABS),
             Subtopic("Pronoun", "level1_pronoun")
         ))
     )

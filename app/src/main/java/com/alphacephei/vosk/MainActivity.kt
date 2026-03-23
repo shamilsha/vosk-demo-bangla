@@ -721,6 +721,11 @@ class MainActivity : AppCompatActivity() {
         "simple_when" to "Lessons/SVO/simple_when.txt",
         "simple_who" to "Lessons/SVO/simple_who.txt",
         "simple_why" to "Lessons/SVO/simple_why.txt",
+        "preposition_plus" to "Lessons/preposition_plus.txt",
+        "be_verb" to "Lessons/SVO/be_verb.txt",
+        "be_verb_plus" to "Lessons/SVO/be_verb_plus.txt",
+        "have_verb" to "Lessons/SVO/have_verb.txt",
+        "noun" to "Lessons/SVO/noun.txt",
         "can" to "Lessons/SVO/can.txt",
         "may" to "Lessons/SVO/may.txt",
         "wish" to "Lessons/SVO/wish.txt",
@@ -1277,7 +1282,17 @@ class MainActivity : AppCompatActivity() {
     private var incorrectFeedbackFallbackRunnable: Runnable? = null
     /** Fallback: start mic after "Try again" if TTS onDone("try_again_then_listen") does not fire. */
     private var tryAgainListenFallbackRunnable: Runnable? = null
-    private val tryAgainListenFallbackDelayMs = 2500L
+    private val tryAgainListenFallbackDelayMs = TRY_AGAIN_LISTEN_FALLBACK_DELAY_MS
+    /** After LEARNING feedback TTS: run this (replay row / advance). */
+    private var pendingLearningVerificationFeedbackAction: (() -> Unit)? = null
+    /** If false, "Incorrect" goes straight to [pendingLearningVerificationFeedbackAction] (e.g. 3rd strike → next row). */
+    private var pendingLearningVerificationSpeakTryAgainAfterIncorrect: Boolean = true
+    private var learningVerificationFeedbackFallbackRunnable: Runnable? = null
+    /**
+     * Optional opt-out per lesson: add [threeColLessonKey] values to skip spoken Correct/Incorrect/Try again
+     * before replay in LEARNING (default: feedback on).
+     */
+    private val lessonKeysSkippingLearningVerificationSpokenFeedback: Set<String> = emptySet()
     /** Lazy so Handler is not created during Activity <init> (avoids getMainLooper() on not-yet-ready context on some devices). */
     private val verificationHandler by lazy { Handler(Looper.getMainLooper()) }
     private var verificationTimeoutRunnable: Runnable? = null
@@ -1808,6 +1823,48 @@ class MainActivity : AppCompatActivity() {
                                     if (!tenseTripletControlRunning || currentContentLayout != ContentLayout.TENSE_TRIPLETS) return@runOnUiThread
                                     val expected = expectedEnglishForVerification
                                     if (!expected.isNullOrBlank()) startVerificationListening(expected)
+                                }
+                            }
+                            UTTERANCE_LEARNING_FEEDBACK_CORRECT -> {
+                                runOnUiThread {
+                                    cancelLearningVerificationFeedbackFallback()
+                                    val a = pendingLearningVerificationFeedbackAction
+                                    pendingLearningVerificationFeedbackAction = null
+                                    if (!isDestroyed) a?.invoke()
+                                }
+                            }
+                            UTTERANCE_LEARNING_FEEDBACK_INCORRECT -> {
+                                runOnUiThread {
+                                    cancelLearningVerificationFeedbackFallback()
+                                    if (!isDestroyed && ttsReady && textToSpeech != null && pendingLearningVerificationSpeakTryAgainAfterIncorrect) {
+                                        textToSpeech?.setLanguage(Locale.US)
+                                        textToSpeech?.speak(
+                                            getString(R.string.try_again),
+                                            TextToSpeech.QUEUE_ADD,
+                                            null,
+                                            UTTERANCE_LEARNING_FEEDBACK_TRY_AGAIN
+                                        )
+                                        learningVerificationFeedbackFallbackRunnable = Runnable {
+                                            learningVerificationFeedbackFallbackRunnable = null
+                                            val a = pendingLearningVerificationFeedbackAction
+                                            pendingLearningVerificationFeedbackAction = null
+                                            if (!isDestroyed) a?.invoke()
+                                        }
+                                        verificationHandler.postDelayed(learningVerificationFeedbackFallbackRunnable!!, tryAgainListenFallbackDelayMs)
+                                    } else {
+                                        pendingLearningVerificationSpeakTryAgainAfterIncorrect = true
+                                        val a = pendingLearningVerificationFeedbackAction
+                                        pendingLearningVerificationFeedbackAction = null
+                                        if (!isDestroyed) a?.invoke()
+                                    }
+                                }
+                            }
+                            UTTERANCE_LEARNING_FEEDBACK_TRY_AGAIN -> {
+                                runOnUiThread {
+                                    cancelLearningVerificationFeedbackFallback()
+                                    val a = pendingLearningVerificationFeedbackAction
+                                    pendingLearningVerificationFeedbackAction = null
+                                    if (!isDestroyed) a?.invoke()
                                 }
                             }
                             "lesson_verify" -> {
@@ -5274,7 +5331,8 @@ class MainActivity : AppCompatActivity() {
      *
      * DATA LOAD & IN-MEMORY STRUCTURE:
      * 1) TXT (e.g. simple_what.txt): Parsed by LessonFileParsers.parseThreeColLessonFile() → (rows, initialABPerRow).
-     *    - rows: List<ThreeColRow> (english, bengali, hint). Optional 5th/6th columns = A, B (0/1).
+     *    - rows: List<ThreeColRow> (english, bengali, hint). Optional 4th column = extra (ignored). Optional A,B: 5 cols
+     *      (legacy) or 6 cols after ignored 4th field.
      * 2) JSON (test_layout_3col_stats.json): LessonFileParsers.loadThreeColStats() → MutableList<IntArray>, each [A, B].
      *    - No file or missing row → default [0, 0] (initially failed).
      * 3) In memory: threeColBaseRows = rows from txt; threeColStats[i] = [A, B] (same index as base rows).
@@ -6894,17 +6952,37 @@ class MainActivity : AppCompatActivity() {
                 threeColAdapter?.setCurrentIndex(threeColCurrentIndex)
                 updateThreeColRowPositionText()
                 if (threeColControlRunning) {
-                    verificationHandler.postDelayed({
-                        if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE) {
-                            speakThreeColCurrent()
+                    val isThreeColLearning = threeColMode == ThreeColMode.LEARNING && threeColLearningMode
+                    if (isThreeColLearning) {
+                        speakLearningModeVerificationFeedback(match = true) {
+                            verificationHandler.postDelayed({
+                                if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE && threeColControlRunning) {
+                                    speakThreeColCurrent()
+                                }
+                            }, 200)
                         }
-                    }, 1500)
+                    } else {
+                        verificationHandler.postDelayed({
+                            if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE) {
+                                speakThreeColCurrent()
+                            }
+                        }, 1500)
+                    }
                 }
             } else {
                 // Last row; stop control bar.
-                threeColControlRunning = false
-                threeColControlPaused = false
-                updateThreeColControlBar()
+                val isThreeColLearning = threeColMode == ThreeColMode.LEARNING && threeColLearningMode
+                if (isThreeColLearning) {
+                    speakLearningModeVerificationFeedback(match = true) {
+                        threeColControlRunning = false
+                        threeColControlPaused = false
+                        updateThreeColControlBar()
+                    }
+                } else {
+                    threeColControlRunning = false
+                    threeColControlPaused = false
+                    updateThreeColControlBar()
+                }
             }
         } else {
             // Wrong answer: 3 tries per row before advancing (was in shared [handleVerificationResult] before THREECOL early return).
@@ -6923,7 +7001,7 @@ class MainActivity : AppCompatActivity() {
                 if (isPrepositionsTestLesson) {
                     threeColAdapter?.prepositionsTestRevealFullRowIndex = idx
                 }
-                verificationHandler.postDelayed({
+                val advanceAfterThreeStrikes = Runnable {
                     if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE) {
                         if (isPrepositionsTestLesson) {
                             threeColAdapter?.prepositionsTestRevealFullRowIndex = -1
@@ -6939,19 +7017,39 @@ class MainActivity : AppCompatActivity() {
                             updateThreeColControlBar()
                         }
                     }
-                }, 1500)
+                }
+                val isThreeColLearningStrike = threeColMode == ThreeColMode.LEARNING && threeColLearningMode && !isPrepositionsTestLesson
+                if (isThreeColLearningStrike) {
+                    speakLearningModeVerificationFeedback(match = false, speakTryAgainAfterIncorrect = false) {
+                        verificationHandler.postDelayed(advanceAfterThreeStrikes, 200)
+                    }
+                } else {
+                    verificationHandler.postDelayed(advanceAfterThreeStrikes, 1500)
+                }
             } else {
                 val chancesLeft = 3 - threeColIncorrectCount
                 if (chancesLeft > 0) {
                     Toast.makeText(this, getString(R.string.pronunciation_try_again_chances, chancesLeft), Toast.LENGTH_SHORT).show()
                 }
                 if (threeColControlRunning && rowEnglish.isNotBlank()) {
-                    verificationHandler.postDelayed({
-                        if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE &&
-                            threeColControlRunning && threeColCurrentIndex == idx) {
-                            startVerificationListening(rowEnglish)
+                    val isThreeColLearningRetry = threeColMode == ThreeColMode.LEARNING && threeColLearningMode
+                    if (isThreeColLearningRetry) {
+                        speakLearningModeVerificationFeedback(match = false) {
+                            verificationHandler.postDelayed({
+                                if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE &&
+                                    threeColControlRunning && threeColCurrentIndex == idx) {
+                                    speakThreeColCurrent()
+                                }
+                            }, 200)
                         }
-                    }, 500)
+                    } else {
+                        verificationHandler.postDelayed({
+                            if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE &&
+                                threeColControlRunning && threeColCurrentIndex == idx) {
+                                startVerificationListening(rowEnglish)
+                            }
+                        }, 500)
+                    }
                 }
             }
         }
@@ -7145,10 +7243,18 @@ class MainActivity : AppCompatActivity() {
             val spokenEnglish = if (tenseTripletMode == TenseTripletMode.TEST) spokenTextIgnored else if (englishOnlyMatch) MatchNormalizer.textForSpeakAndDisplay(row.past.english) else null
             tenseTripletAdapter?.setSpokenText(idx, null, spokenEnglish, null)
             tenseTripletAdapter?.markCellResults(idx, null, englishOnlyMatch, null)
+            val isTlLearning = tenseTripletMode == TenseTripletMode.LEARNING
             if (tenseTripletMode != TenseTripletMode.TEST) {
-                speakEnglishString(if (englishOnlyMatch) getString(R.string.correct) else getString(R.string.incorrect))
+                if (!isTlLearning) {
+                    speakEnglishString(if (englishOnlyMatch) getString(R.string.correct) else getString(R.string.incorrect))
+                }
             } else if (!englishOnlyMatch) {
                 speakEnglishString("try again")
+            }
+            fun runSpeakTenseTripletRow() {
+                if (!isDestroyed && currentContentLayout == ContentLayout.TENSE_TRIPLETS && tenseTripletControlRunning) {
+                    speakTenseTripletCurrent()
+                }
             }
             if (englishOnlyMatch) {
                 tenseTripletIncorrectCount = 0
@@ -7157,14 +7263,26 @@ class MainActivity : AppCompatActivity() {
                     tenseTripletAdapter?.setCurrentIndex(tenseTripletCurrentIndex)
                     updateTenseTripletAutoScrollPosition()
                     if (tenseTripletControlRunning) {
-                        verificationHandler.postDelayed({
-                            if (!isDestroyed && currentContentLayout == ContentLayout.TENSE_TRIPLETS && tenseTripletControlRunning) speakTenseTripletCurrent()
-                        }, 1500)
+                        if (isTlLearning) {
+                            speakLearningModeVerificationFeedback(match = true) {
+                                verificationHandler.postDelayed({ runSpeakTenseTripletRow() }, 200)
+                            }
+                        } else {
+                            verificationHandler.postDelayed({ runSpeakTenseTripletRow() }, 1500)
+                        }
                     }
                 } else {
-                    tenseTripletControlRunning = false
-                    tenseTripletControlPaused = false
-                    updateTenseTripletControlBar()
+                    if (isTlLearning) {
+                        speakLearningModeVerificationFeedback(match = true) {
+                            tenseTripletControlRunning = false
+                            tenseTripletControlPaused = false
+                            updateTenseTripletControlBar()
+                        }
+                    } else {
+                        tenseTripletControlRunning = false
+                        tenseTripletControlPaused = false
+                        updateTenseTripletControlBar()
+                    }
                 }
             } else {
                 tenseTripletIncorrectCount++
@@ -7175,18 +7293,34 @@ class MainActivity : AppCompatActivity() {
                             tenseTripletCurrentIndex++
                             tenseTripletAdapter?.setCurrentIndex(tenseTripletCurrentIndex)
                             updateTenseTripletAutoScrollPosition()
-                            verificationHandler.postDelayed({
-                                if (!isDestroyed && currentContentLayout == ContentLayout.TENSE_TRIPLETS && tenseTripletControlRunning) speakTenseTripletCurrent()
-                            }, 1500)
+                            if (isTlLearning) {
+                                speakLearningModeVerificationFeedback(match = false, speakTryAgainAfterIncorrect = false) {
+                                    verificationHandler.postDelayed({ runSpeakTenseTripletRow() }, 200)
+                                }
+                            } else {
+                                verificationHandler.postDelayed({ runSpeakTenseTripletRow() }, 1500)
+                            }
                         } else {
-                            tenseTripletControlRunning = false
-                            tenseTripletControlPaused = false
-                            updateTenseTripletControlBar()
+                            if (isTlLearning) {
+                                speakLearningModeVerificationFeedback(match = false, speakTryAgainAfterIncorrect = false) {
+                                    tenseTripletControlRunning = false
+                                    tenseTripletControlPaused = false
+                                    updateTenseTripletControlBar()
+                                }
+                            } else {
+                                tenseTripletControlRunning = false
+                                tenseTripletControlPaused = false
+                                updateTenseTripletControlBar()
+                            }
                         }
                     } else {
-                        verificationHandler.postDelayed({
-                            if (!isDestroyed && currentContentLayout == ContentLayout.TENSE_TRIPLETS && tenseTripletControlRunning) speakTenseTripletCurrent()
-                        }, 1500)
+                        if (isTlLearning) {
+                            speakLearningModeVerificationFeedback(match = false) {
+                                verificationHandler.postDelayed({ runSpeakTenseTripletRow() }, 200)
+                            }
+                        } else {
+                            verificationHandler.postDelayed({ runSpeakTenseTripletRow() }, 1500)
+                        }
                     }
                 }
             }
@@ -7215,7 +7349,15 @@ class MainActivity : AppCompatActivity() {
         tenseTripletAdapter?.markCellResults(idx, presentMatch, pastMatch, futureMatch)
         val enabledMatches = listOf(presentMatch, pastMatch, futureMatch).filterNotNull()
         val effectiveMatch = enabledMatches.isNotEmpty() && enabledMatches.all { it }
-        speakEnglishString(if (effectiveMatch) getString(R.string.correct) else getString(R.string.incorrect))
+        val isTlLearningTriplet = tenseTripletMode == TenseTripletMode.LEARNING
+        if (!isTlLearningTriplet) {
+            speakEnglishString(if (effectiveMatch) getString(R.string.correct) else getString(R.string.incorrect))
+        }
+        fun runSpeakTenseTripletCurrentPlain() {
+            if (!isDestroyed && currentContentLayout == ContentLayout.TENSE_TRIPLETS && tenseTripletControlRunning) {
+                speakTenseTripletCurrent()
+            }
+        }
         if (effectiveMatch) {
             tenseTripletIncorrectCount = 0
             if (tenseTripletCurrentIndex < tenseTripletRows.lastIndex) {
@@ -7223,16 +7365,26 @@ class MainActivity : AppCompatActivity() {
                 tenseTripletAdapter?.setCurrentIndex(tenseTripletCurrentIndex)
                 updateTenseTripletAutoScrollPosition()
                 if (tenseTripletControlRunning) {
-                    verificationHandler.postDelayed({
-                        if (!isDestroyed && currentContentLayout == ContentLayout.TENSE_TRIPLETS && tenseTripletControlRunning) {
-                            speakTenseTripletCurrent()
+                    if (isTlLearningTriplet) {
+                        speakLearningModeVerificationFeedback(match = true) {
+                            verificationHandler.postDelayed({ runSpeakTenseTripletCurrentPlain() }, 200)
                         }
-                    }, 1500)
+                    } else {
+                        verificationHandler.postDelayed({ runSpeakTenseTripletCurrentPlain() }, 1500)
+                    }
                 }
             } else {
-                tenseTripletControlRunning = false
-                tenseTripletControlPaused = false
-                updateTenseTripletControlBar()
+                if (isTlLearningTriplet) {
+                    speakLearningModeVerificationFeedback(match = true) {
+                        tenseTripletControlRunning = false
+                        tenseTripletControlPaused = false
+                        updateTenseTripletControlBar()
+                    }
+                } else {
+                    tenseTripletControlRunning = false
+                    tenseTripletControlPaused = false
+                    updateTenseTripletControlBar()
+                }
             }
         } else {
             tenseTripletIncorrectCount++
@@ -7243,23 +7395,35 @@ class MainActivity : AppCompatActivity() {
                         tenseTripletCurrentIndex++
                         tenseTripletAdapter?.setCurrentIndex(tenseTripletCurrentIndex)
                         updateTenseTripletAutoScrollPosition()
-                        verificationHandler.postDelayed({
-                            if (!isDestroyed && currentContentLayout == ContentLayout.TENSE_TRIPLETS && tenseTripletControlRunning) {
-                                speakTenseTripletCurrent()
+                        if (isTlLearningTriplet) {
+                            speakLearningModeVerificationFeedback(match = false, speakTryAgainAfterIncorrect = false) {
+                                verificationHandler.postDelayed({ runSpeakTenseTripletCurrentPlain() }, 200)
                             }
-                        }, 1500)
+                        } else {
+                            verificationHandler.postDelayed({ runSpeakTenseTripletCurrentPlain() }, 1500)
+                        }
                     } else {
-                        tenseTripletControlRunning = false
-                        tenseTripletControlPaused = false
-                        updateTenseTripletControlBar()
+                        if (isTlLearningTriplet) {
+                            speakLearningModeVerificationFeedback(match = false, speakTryAgainAfterIncorrect = false) {
+                                tenseTripletControlRunning = false
+                                tenseTripletControlPaused = false
+                                updateTenseTripletControlBar()
+                            }
+                        } else {
+                            tenseTripletControlRunning = false
+                            tenseTripletControlPaused = false
+                            updateTenseTripletControlBar()
+                        }
                     }
                 } else {
                     // Retry same row: repeat full speak -> listen -> compare cycle.
-                    verificationHandler.postDelayed({
-                        if (!isDestroyed && currentContentLayout == ContentLayout.TENSE_TRIPLETS && tenseTripletControlRunning) {
-                            speakTenseTripletCurrent()
+                    if (isTlLearningTriplet) {
+                        speakLearningModeVerificationFeedback(match = false) {
+                            verificationHandler.postDelayed({ runSpeakTenseTripletCurrentPlain() }, 200)
                         }
-                    }, 1500)
+                    } else {
+                        verificationHandler.postDelayed({ runSpeakTenseTripletCurrentPlain() }, 1500)
+                    }
                 }
             }
         }
@@ -9991,6 +10155,53 @@ $introHtml
     private fun cancelVerificationTimeout() {
         verificationTimeoutRunnable?.let { verificationHandler.removeCallbacks(it) }
         verificationTimeoutRunnable = null
+    }
+
+    private fun shouldSkipLearningVerificationSpokenFeedback(): Boolean {
+        if (currentContentLayout == ContentLayout.THREECOL_TABLE) {
+            return threeColLessonKey() in lessonKeysSkippingLearningVerificationSpokenFeedback
+        }
+        return false
+    }
+
+    private fun cancelLearningVerificationFeedbackFallback() {
+        learningVerificationFeedbackFallbackRunnable?.let { verificationHandler.removeCallbacks(it) }
+        learningVerificationFeedbackFallbackRunnable = null
+    }
+
+    /**
+     * Universal LEARNING feedback: speak "Correct", or "Incorrect" then optionally "Try again", then [action]
+     * (replay prompt / advance). Skipped if TTS unavailable or lesson is in [lessonKeysSkippingLearningVerificationSpokenFeedback].
+     */
+    private fun speakLearningModeVerificationFeedback(
+        match: Boolean,
+        speakTryAgainAfterIncorrect: Boolean = true,
+        action: () -> Unit
+    ) {
+        cancelLearningVerificationFeedbackFallback()
+        pendingLearningVerificationFeedbackAction = null
+        pendingLearningVerificationSpeakTryAgainAfterIncorrect = speakTryAgainAfterIncorrect
+        if (shouldSkipLearningVerificationSpokenFeedback() || !ttsReady || textToSpeech == null) {
+            action()
+            return
+        }
+        pendingLearningVerificationFeedbackAction = action
+        textToSpeech?.stop()
+        textToSpeech?.setLanguage(Locale.US)
+        val id = if (match) UTTERANCE_LEARNING_FEEDBACK_CORRECT else UTTERANCE_LEARNING_FEEDBACK_INCORRECT
+        textToSpeech?.speak(
+            getString(if (match) R.string.correct else R.string.incorrect),
+            TextToSpeech.QUEUE_FLUSH,
+            null,
+            id
+        )
+        learningVerificationFeedbackFallbackRunnable = Runnable {
+            learningVerificationFeedbackFallbackRunnable = null
+            val a = pendingLearningVerificationFeedbackAction
+            pendingLearningVerificationFeedbackAction = null
+            if (!isDestroyed) a?.invoke()
+        }
+        verificationHandler.postDelayed(learningVerificationFeedbackFallbackRunnable!!, tryAgainListenFallbackDelayMs + 600L)
     }
 
     /** Start listening for user to speak English (verification mode); compare with expected and say Correct/Incorrect. */

@@ -1,0 +1,40 @@
+Rahim is a good student., রহিম একজন ভালো ছাত্র।, রহিম ইজ আ গুড স্টুডেন্ট।, Proper Noun
+Dhaka is the capital., ঢাকা রাজধানী।, ঢাকা ইজ দ্য ক্যাপিটাল।, Proper Noun
+The boy is playing., ছেলেটি খেলছে।, দ্য বয় ইজ প্লেয়িং।, Common Noun
+I have a cat., আমার একটি বিড়াল আছে।, আই হ্যাভ আ ক্যাট।, Common Noun
+Our team won the trophy., আমাদের দল ট্রফি জিতেছে।, আওয়ার টিম ওয়ান দ্য ট্রফি।, Collective Noun
+My family is happy., আমার পরিবার সুখী।, মাই ফ্যামিলি ইজ হ্যাপি।, Collective Noun
+Water is life., জলই জীবন।, ওয়াটার ইজ লাইফ।, Material Noun
+Gold is yellow., সোনা হলুদ।, গোল্ড ইজ ইয়েলো।, Material Noun
+Honesty is rare., সততা বিরল।, অনেস্টি ইজ রেয়ার।, Abstract Noun
+Kindness is a virtue., দয়া একটি গুণ।, কাইন্ডনেস ইজ আ ভার্চু।, Abstract Noun
+The teacher is coming., শিক্ষক আসছেন।, দ্য টিচার ইজ কামিং।, Common Noun
+Samsung is a brand., স্যামসাং একটি ব্র্যান্ড।, স্যামসাং ইজ আ ব্র্যান্ড।, Proper Noun
+A crowd gathered there., সেখানে একদল মানুষ জড়ো হয়েছে।, আ ক্রাউড গ্যাদারড দেয়ার।, Collective Noun
+Milk is white., দুধ সাদা।, মিল্ক ইজ হোয়াইট।, Material Noun
+Truth is beautiful., সত্য সুন্দর।, ট্রুথ ইজ বিউটিফুল।, Abstract Noun
+London is a city., লন্ডন একটি শহর।, লন্ডন ইজ আ সিটি।, Proper Noun
+Birds fly in the sky., পাখিরা আকাশে ওড়ে।, বার্ডস ফ্লাই ইন দ্য স্কাই।, Common Noun
+The class is quiet., ক্লাসটি শান্ত।, দ্য ক্লাস ইজ কোয়ায়েট।, Collective Noun
+Iron is strong., লোহা শক্ত।, আয়রন ইজ স্ট্রং।, Material Noun
+Health is wealth., স্বাস্থ্যই সম্পদ।, হেলথ ইজ ওয়েলথ।, Abstract Noun
+Kazi Nazrul is a poet., কাজী নজরুল একজন কবি।, কাজী নজরুল ইজ আ পোয়েট।, Proper Noun
+The cow gives milk., গরু দুধ দেয়।, দ্য কাউ গিভস মিল্ক।, Common Noun
+An army of soldiers., একদল সৈন্য।, অ্যান আর্মি অফ সোলজারস।, Collective Noun
+Diamond is bright., হীরা উজ্জ্বল।, ডায়মন্ড ইজ ব্রাইট।, Material Noun
+Bravery is respected., বীরত্ব সম্মানিত হয়।, ব্রেভারি ইজ রেসপেক্টেড।, Abstract Noun
+The Padma is a river., পদ্মা একটি নদী।, দ্য পদ্মা ইজ আ রিভার।, Proper Noun
+Doctors save lives., ডাক্তাররা জীবন বাঁচায়।, ডক্টরস সেভ লাইভস।, Common Noun
+The jury reached a decision., জুরি একটি সিদ্ধান্তে পৌঁছেছে।, দ্য জুরি রিচড আ ডিসিশন।, Collective Noun
+Silver is shiny., রূপা চকচকে।, সিলভার ইজ শাইনি।, Material Noun
+Poverty is a curse., দারিদ্র্য একটি অভিশাপ।, পভার্টি ইজ আ কার্স।, Abstract Noun
+Bangladesh is beautiful., বাংলাদেশ সুন্দর।, বাংলাদেশ ইজ বিউটিফুল।, Proper Noun
+Trees give oxygen., গাছ অক্সিজেন দেয়।, ট্রিজ গিভ অক্সিজেন।, Common Noun
+A bunch of keys., একগুচ্ছ চাবি।, আ বাঞ্চ অফ কীজ।, Collective Noun
+Rice is our food., ভাত আমাদের খাদ্য।, রাইস ইজ আওয়ার ফুড।, Material Noun
+Knowledge is power., জ্ঞানই শক্তি।, নলেজ ইজ পাওয়ার।, Abstract Noun
+Friday is a holiday., শুক্রবার ছুটির দিন।, ফ্রাইডে ইজ আ হলিডে।, Proper Noun
+The city is crowded., শহরটি জনাকীর্ণ।, দ্য সিটি ইজ ক্রাউডেড।, Common Noun
+A fleet of ships., একদল জাহাজ।, আ ফ্লিট অফ শিপস।, Collective Noun
+Wood is useful., কাঠ দরকারি।, উড ইজ ইউজফুল।, Material Noun
+Love is blind., ভালোবাসা অন্ধ।, লাভ ইজ ব্লাইন্ড।, Abstract Noun

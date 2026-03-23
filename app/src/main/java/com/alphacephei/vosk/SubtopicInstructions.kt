@@ -74,9 +74,17 @@ object SubtopicInstructions {
             "sv_future_cont_question_negative" -> "S-V-N-Q-future-cont: Won't + subject + be + verb-ing? (e.g. Won't I be playing? Won't they be playing?). Three ribbons. Learning / Practice, Start."
             "conveyor_triple" -> "Subject–Aux–Verb: Learning mode shows three belts and speaks Bengali then English. Practice mode shows only Bengali and you say the English. Use Learning / Practice to switch."
             "sv_words" -> "SV Words: Learning = app speaks Bengali then English, you repeat. Practice = app speaks Bengali only, you say the English word. Belt shows words (learning) or Bengali (practice). Stats in practice. Start / Stop / Pause / Resume."
-            else -> if (actionKey.startsWith("simple_")) {
-                "${SimpleSentenceUtils.simpleSentenceLessonTitle(actionKey)}: Loads Lessons/SVO/$actionKey.txt (English,Bengali,Pronunciation per line). Learning: two bubbles (Bengali, English), app speaks Bengali then English, you repeat; correct → next. Practice: Bengali only, you say English; app says Correct and keeps stats. Start to begin."
-            } else null
+            else -> when {
+                actionKey.startsWith("simple_") ->
+                    "${SimpleSentenceUtils.simpleSentenceLessonTitle(actionKey)}: Loads Lessons/SVO/$actionKey.txt (English,Bengali,Pronunciation per line). Learning: two bubbles (Bengali, English), app speaks Bengali then English, you repeat; correct → next. Practice: Bengali only, you say English; app says Correct and keeps stats. Start to begin."
+                actionKey == "preposition_plus" ->
+                    "${SimpleSentenceUtils.simpleSentenceLessonTitle(actionKey)}: Loads Lessons/preposition_plus.txt (English,Bengali,Pronunciation per line). 3-column table: Learning / Practice / Test / V."
+                actionKey in setOf("be_verb", "be_verb_plus", "have_verb") ->
+                    "${SimpleSentenceUtils.simpleSentenceLessonTitle(actionKey)}: Loads Lessons/SVO/$actionKey.txt (English,Bengali,Pronunciation per line). 3-column table: Learning / Practice / Test / V."
+                actionKey == "noun" ->
+                    "${SimpleSentenceUtils.simpleSentenceLessonTitle(actionKey)}: Loads Lessons/SVO/noun.txt — English, Bengali, pronunciation; optional 4th field (e.g. noun type) is ignored. Same 3-column lesson shell as Where/How. Open under **SVO → Noun (sentences)**, not Level 1 Noun (categories)."
+                else -> null
+            }
         } ?: when (actionKey) {
             "svo_sentences", "svo_eat", "svo_play" -> "SVO Practice: Hear a sentence in Bengali and say it in English. Tap mic when ready."
             "table_test_2col", "table_test_3col", "table_test_4col" -> "Table test: View a sample table. Tap cells to hear the word (if supported)."

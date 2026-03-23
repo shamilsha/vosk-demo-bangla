@@ -25,6 +25,11 @@ internal const val USE_SYSTEM_SPEECH_FOR_ENGLISH_VERIFICATION = true
 /** Delay (ms) before starting mic after "Try again" if TTS onDone does not fire. */
 internal const val TRY_AGAIN_LISTEN_FALLBACK_DELAY_MS = 2500L
 
+/** TTS utterance ids: universal LEARNING verification feedback (Correct / Incorrect + Try again → replay). */
+internal const val UTTERANCE_LEARNING_FEEDBACK_CORRECT = "learning_verify_feedback_correct"
+internal const val UTTERANCE_LEARNING_FEEDBACK_INCORRECT = "learning_verify_feedback_incorrect"
+internal const val UTTERANCE_LEARNING_FEEDBACK_TRY_AGAIN = "learning_verify_feedback_try_again"
+
 /** AudioRecord: mono channel, 16-bit PCM (API 21 compatible). */
 internal val AUDIO_CHANNEL_CONFIG = AudioFormat.CHANNEL_IN_MONO
 internal val AUDIO_FORMAT_PCM_16 = AudioFormat.ENCODING_PCM_16BIT
