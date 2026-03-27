@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Single-command lecture shell: prev, L (paragraphs), Learning, Practice, Test, V, next.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lesson_mode_bar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingHorizontal="4dp"
+    android:paddingVertical="4dp"
+    android:background="@color/lesson_mode_bar_background">
+
+    <ImageButton
+        android:id="@+id/lesson_mode_bar_prev"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:minWidth="32dp"
+        android:minHeight="32dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/mode_bar_prev_block"
+        android:src="@drawable/ic_mode_bar_triangle_left"
+        android:scaleType="centerInside"
+        android:padding="4dp"
+        app:tint="@null" />
+
+    <Button
+        android:id="@+id/lesson_mode_lecture"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_weight="1"
+        android:minHeight="32dp"
+        android:layout_marginHorizontal="2dp"
+        android:background="@drawable/bg_lesson_mode_tab_unselected"
+        android:stateListAnimator="@null"
+        android:paddingHorizontal="2dp"
+        android:text="L"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/lesson_mode_learning"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_weight="1"
+        android:minHeight="32dp"
+        android:layout_marginHorizontal="2dp"
+        android:background="@drawable/bg_lesson_mode_tab_unselected"
+        android:stateListAnimator="@null"
+        android:paddingHorizontal="2dp"
+        android:text="Learning"
+        android:textSize="11sp" />
+
+    <Button
+        android:id="@+id/lesson_mode_practice"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_weight="1"
+        android:minHeight="32dp"
+        android:layout_marginHorizontal="2dp"
+        android:background="@drawable/bg_lesson_mode_tab_unselected"
+        android:stateListAnimator="@null"
+        android:paddingHorizontal="2dp"
+        android:text="Practice"
+        android:textSize="11sp" />
+
+    <Button
+        android:id="@+id/lesson_mode_test"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_weight="1"
+        android:minHeight="32dp"
+        android:layout_marginHorizontal="2dp"
+        android:background="@drawable/bg_lesson_mode_tab_unselected"
+        android:stateListAnimator="@null"
+        android:paddingHorizontal="2dp"
+        android:text="Test"
+        android:textSize="11sp" />
+
+    <Button
+        android:id="@+id/lesson_mode_vocab"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_weight="1"
+        android:minHeight="32dp"
+        android:layout_marginHorizontal="2dp"
+        android:background="@drawable/bg_lesson_mode_tab_unselected"
+        android:stateListAnimator="@null"
+        android:paddingHorizontal="2dp"
+        android:text="V"
+        android:textSize="12sp" />
+
+    <ImageButton
+        android:id="@+id/lesson_mode_bar_next"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:minWidth="32dp"
+        android:minHeight="32dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/mode_bar_next_block"
+        android:src="@drawable/ic_mode_bar_triangle_right"
+        android:scaleType="centerInside"
+        android:padding="4dp"
+        app:tint="@null" />
+</LinearLayout>

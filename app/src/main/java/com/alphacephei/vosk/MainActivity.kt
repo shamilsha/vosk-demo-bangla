@@ -53,6 +53,7 @@ import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
 import android.webkit.WebView
@@ -681,7 +682,7 @@ class MainActivity : AppCompatActivity() {
         updateThreeColRowPositionText()
         contentFrame.getChildAt(0)?.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.threecol_recycler)?.requestLayout()
         // Clear verification so we match the new first sentence, not the previous one; if mic was on, restart for first sentence
-        if (currentContentLayout == ContentLayout.THREECOL_TABLE) {
+        if (isThreeColTableUiActive()) {
             textToSpeech?.stop()
             incorrectFeedbackFallbackRunnable?.let { verificationHandler.removeCallbacks(it) }
             incorrectFeedbackFallbackRunnable = null
@@ -742,6 +743,10 @@ class MainActivity : AppCompatActivity() {
         "these_those" to "Lessons/SVO/these_those.txt",
         "prepositions" to "Lessons/prepositions.txt"
     )
+    /** Lecture lessons: actionKey → HTML-like paragraph source file. */
+    private val lectureLessonAssetPaths: Map<String, String> = mapOf(
+        "single_command_lecture" to "Lessons/SVO/single_command_lecture.txt"
+    )
     /** Lesson key for current 3col lesson; used for JSON stats file ({key}_3col_stats.json). Set when loading. */
     private var threeColCurrentLessonKey: String = "test_layout"
     private fun threeColLessonKey(): String = threeColCurrentLessonKey
@@ -783,7 +788,8 @@ class MainActivity : AppCompatActivity() {
         "conv_bubble_first_meeting" to "Lessons/Conversation/conversation_1.txt",
         "conv_bubble_second_lesson" to "Lessons/Conversation/conversation_2.txt",
         "conv_bubble_third_lesson" to "Lessons/Conversation/conversation_3.txt",
-        "conv_bubble_fourth_lesson" to "Lessons/Conversation/conversation_4.txt"
+        "conv_bubble_fourth_lesson" to "Lessons/Conversation/conversation_4.txt",
+        "conv_bubble_buy_shirt" to "Lessons/Conversation/conversation_buy_shirt.txt"
     )
     private var convBubbleCurrentLessonKey: String = ""
     private var convBubbleBaseRows: List<ConversationBubbleRow> = emptyList()
@@ -838,6 +844,43 @@ class MainActivity : AppCompatActivity() {
     private var prepositionBlocksAutoAdvanceRunnable: Runnable? = null
     /** Learning / Practice / Test / V — same as conversation bubbles magenta bar. */
     private var prepositionBlocksMode: ConversationMode = ConversationMode.LEARNING
+    /** Lecture lesson: reads <p> paragraphs in Learning mode. */
+    private enum class LectureMode { LEARNING, PRACTICE, TEST }
+    private var lectureMode: LectureMode = LectureMode.LEARNING
+    private var lectureParagraphs: List<String> = emptyList()
+    private var lectureCurrentIndex: Int = 0
+    private var lectureControlRunning: Boolean = false
+    private var lectureControlPaused: Boolean = false
+    private var lectureTtsGeneration: Int = 0
+    private val lectureUtteranceRegex = Regex("^lecture_paragraph_(\\d+)_(\\d+)$")
+    /** Practice tab: CSV rows from companion asset (e.g. single_command.txt), same format as How (SIMPLE_SENTENCE). */
+    private var lecturePracticeRows: List<LessonRow> = emptyList()
+    private var lecturePracticePronunciations: List<String> = emptyList()
+    private var lecturePracticeIndex: Int = 0
+    private var lecturePracticeIncorrectCount: Int = 0
+    private var lecturePracticeSessionCorrect: Int = 0
+    private var lecturePracticeSessionAttempted: Int = 0
+    /** Lecture actionKey → practice asset path for the Practice tab. */
+    private val lecturePracticeCompanionAssets: Map<String, String> = mapOf(
+        "single_command_lecture" to "Lessons/SVO/single_command.txt"
+    )
+    /** When true, LECTURE uses [R.layout.layout_lecture_threecol_combo] and [R.layout.layout_lesson_mode_bar_with_lecture]. */
+    private var lectureUseHybridComboLayout: Boolean = false
+    private enum class LectureHybridPanel { LECTURE_PARAGRAPHS, THREE_COL_TABLE }
+    private var lectureHybridPanel: LectureHybridPanel = LectureHybridPanel.LECTURE_PARAGRAPHS
+
+    private fun isLectureHybridComboVisible(): Boolean =
+        currentContentLayout == ContentLayout.LECTURE && lectureUseHybridComboLayout
+
+    /** How-style table is on screen: standalone THREECOL or lecture hybrid on Learning/Practice/Test/V panel. */
+    private fun isThreeColTableUiActive(): Boolean =
+        currentContentLayout == ContentLayout.THREECOL_TABLE ||
+            (isLectureHybridComboVisible() && lectureHybridPanel == LectureHybridPanel.THREE_COL_TABLE)
+
+    /** THREECOL shell or hybrid lecture with table panel (for V-tab Start/Stop wiring). */
+    private fun isThreeColVocabShellActive(): Boolean =
+        currentContentLayout == ContentLayout.THREECOL_TABLE ||
+            (isLectureHybridComboVisible() && lectureHybridPanel == LectureHybridPanel.THREE_COL_TABLE)
 
     private var convBubbleTtsGeneration: Int = 0
     private val convBubbleBengaliUtteranceRegex = Regex("^conv_bubble_bengali_(\\d+)_(\\d+)$")
@@ -1293,6 +1336,34 @@ class MainActivity : AppCompatActivity() {
      * before replay in LEARNING (default: feedback on).
      */
     private val lessonKeysSkippingLearningVerificationSpokenFeedback: Set<String> = emptySet()
+    //region agent log
+    private fun debugModeLog(
+        hypothesisId: String,
+        location: String,
+        message: String,
+        data: JSONObject = JSONObject(),
+        runId: String = "runtime"
+    ) {
+        try {
+            val payload = JSONObject().apply {
+                put("sessionId", "c84ad6")
+                put("runId", runId)
+                put("hypothesisId", hypothesisId)
+                put("location", location)
+                put("message", message)
+                put("data", data)
+                put("timestamp", System.currentTimeMillis())
+            }
+            val line = payload.toString() + "\n"
+            val workspaceLog = File("c:/Users/sharif/Downloads/vosk-demo-bengali/vosk-demo-bengali/debug-c84ad6.log")
+            if (workspaceLog.parentFile?.exists() == true) {
+                workspaceLog.appendText(line)
+            } else {
+                File(filesDir, "debug-c84ad6.log").appendText(line)
+            }
+        } catch (_: Exception) { }
+    }
+    //endregion
     /** Lazy so Handler is not created during Activity <init> (avoids getMainLooper() on not-yet-ready context on some devices). */
     private val verificationHandler by lazy { Handler(Looper.getMainLooper()) }
     private var verificationTimeoutRunnable: Runnable? = null
@@ -1454,6 +1525,11 @@ class MainActivity : AppCompatActivity() {
                 moveSvRibbonNext()
                 return@setOnClickListener
             }
+            if (currentContentLayout == ContentLayout.LECTURE && lectureMode == LectureMode.PRACTICE &&
+                lecturePracticeRows.isNotEmpty() && !lectureUseHybridComboLayout) {
+                onLecturePracticeNext()
+                return@setOnClickListener
+            }
             if (lessonRows != null) onNextLessonStep() else onNextSentence()
         }
         skipButton = findViewById(R.id.skip_button)
@@ -1518,6 +1594,7 @@ class MainActivity : AppCompatActivity() {
                 currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceMode == ConversationMode.VOCAB && lessonVocabRows.isNotEmpty() -> onVocabStartStop()
                 currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceGroups.isNotEmpty() -> onExtendSentenceStartStop()
                 currentContentLayout == ContentLayout.PREPOSITION_BLOCKS && prepositionBlockRows.isNotEmpty() -> onPrepositionBlocksStartStop()
+                currentContentLayout == ContentLayout.LECTURE && lectureControlBarCanStart() -> onLectureStartStop()
                 else -> dispatchControlStartStop()
             }
         }
@@ -1534,6 +1611,7 @@ class MainActivity : AppCompatActivity() {
                 currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceMode == ConversationMode.VOCAB -> { /* V tab */ }
                 currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceGroups.isNotEmpty() -> onExtendSentencePauseResume()
                 currentContentLayout == ContentLayout.PREPOSITION_BLOCKS && prepositionBlockRows.isNotEmpty() -> onPrepositionBlocksPauseResume()
+                currentContentLayout == ContentLayout.LECTURE && lectureControlBarCanStart() -> onLecturePauseResume()
                 else -> dispatchControlPauseResume()
             }
         }
@@ -1988,8 +2066,14 @@ class MainActivity : AppCompatActivity() {
                         if (utteranceId != null && utteranceId.startsWith("threecol_practice_bengali_")) {
                             runOnUiThread { handleThreeColPracticeBengaliUtteranceDone(utteranceId) }
                         }
+                        if (utteranceId != null && utteranceId.startsWith("threecol_lesson_verify_")) {
+                            runOnUiThread { handleThreeColLessonVerifyEnglishDone(utteranceId) }
+                        }
                         if (utteranceId != null && utteranceId.startsWith("threecol_prepositions_test_partial_")) {
                             runOnUiThread { handleThreeColPrepositionsTestPartialDone(utteranceId) }
+                        }
+                        if (utteranceId != null && utteranceId.startsWith("lecture_paragraph_")) {
+                            runOnUiThread { handleLectureParagraphUtteranceDone(utteranceId) }
                         }
                         // Conversation bubble TTS: ids are conv_bubble_{bengali|english}_{rowIdx}_{generation} — handle outside when() so stale callbacks are ignored.
                         if (utteranceId != null && utteranceId.startsWith("conv_bubble_bengali_")) {
@@ -2106,11 +2190,16 @@ class MainActivity : AppCompatActivity() {
                                 if (expected != null && !isDestroyed) startVerificationListening(expected)
                             }
                         }
-                        if (utteranceId == "bengali_verification" || utteranceId == "lesson_verify" || utteranceId == "incorrect_then_sentence" ||
+                        if (utteranceId == "bengali_verification" || utteranceId == "lesson_verify" ||
+                            (utteranceId != null && utteranceId.startsWith("threecol_lesson_verify_")) ||
+                            utteranceId == "incorrect_then_sentence" ||
                             utteranceId == "incorrect_then_correct" || utteranceId == "correct_word_then_try_again" || utteranceId == "try_again_then_listen") {
                             runOnUiThread {
                                 pendingVerificationExpectedEnglish = null
-                                if (utteranceId == "lesson_verify") expectedEnglishForVerification = null
+                                if (utteranceId == "lesson_verify" ||
+                                    (utteranceId != null && utteranceId.startsWith("threecol_lesson_verify_"))) {
+                                    expectedEnglishForVerification = null
+                                }
                                 if (utteranceId == "incorrect_then_sentence") pendingBengaliAfterIncorrect = null
                                 if (utteranceId == "incorrect_then_correct" || utteranceId == "correct_word_then_try_again") pendingSpeakCorrectWordAfterIncorrect = null
                                 if (utteranceId == "incorrect_then_sentence") {
@@ -2508,6 +2597,18 @@ class MainActivity : AppCompatActivity() {
                     playbackHoldAutoPaused = true
                 }
             }
+            ContentLayout.LECTURE -> {
+                val hybridTable = isLectureHybridComboVisible() && lectureHybridPanel == LectureHybridPanel.THREE_COL_TABLE
+                if (hybridTable) {
+                    if (threeColControlRunning && !threeColControlPaused) {
+                        onLecturePauseResume()
+                        playbackHoldAutoPaused = true
+                    }
+                } else if (lectureControlRunning && !lectureControlPaused) {
+                    onLecturePauseResume()
+                    playbackHoldAutoPaused = true
+                }
+            }
             else -> {
                 // Fallback: trigger the real Pause/Resume click so the UI toggles to Resume.
                 // This covers layouts that use the shared control bar but don't have dedicated paused flags here.
@@ -2528,6 +2629,7 @@ class MainActivity : AppCompatActivity() {
                 ContentLayout.SV_RIBBON -> updateSvRibbonControlBar()
                 ContentLayout.THREECOL_TABLE -> updateThreeColControlBar()
                 ContentLayout.CONVERSATION_BUBBLES -> updateConvBubbleControlBar()
+                ContentLayout.LECTURE -> updateLectureControlBar()
                 else -> {}
             }
         }
@@ -2551,6 +2653,11 @@ class MainActivity : AppCompatActivity() {
             ContentLayout.SV_RIBBON -> if (svRibbonControlPaused) onSvRibbonPauseResume()
             ContentLayout.THREECOL_TABLE -> if (threeColControlPaused) onThreeColPauseResume()
             ContentLayout.CONVERSATION_BUBBLES -> if (convBubbleControlPaused) onConvBubblePauseResume()
+            ContentLayout.LECTURE -> {
+                val hybridTable = isLectureHybridComboVisible() && lectureHybridPanel == LectureHybridPanel.THREE_COL_TABLE
+                val paused = if (hybridTable) threeColControlPaused else lectureControlPaused
+                if (paused) onLecturePauseResume()
+            }
             else -> {
                 // Fallback: press Resume (same button) only if we paused via click.
                 if (pausedByClick) {
@@ -2565,6 +2672,7 @@ class MainActivity : AppCompatActivity() {
             ContentLayout.SV_RIBBON -> updateSvRibbonControlBar()
             ContentLayout.THREECOL_TABLE -> updateThreeColControlBar()
             ContentLayout.CONVERSATION_BUBBLES -> updateConvBubbleControlBar()
+            ContentLayout.LECTURE -> updateLectureControlBar()
             else -> {}
         }
     }
@@ -2893,14 +3001,24 @@ class MainActivity : AppCompatActivity() {
     private fun handleVerificationResult(match: Boolean, expected: String, said: String) {
         if (isDestroyed) return
         if (currentContentLayout == ContentLayout.SIMPLE_SENTENCE) setSimpleSentenceYouSaid(said)
+        if (currentContentLayout == ContentLayout.LECTURE && lectureMode == LectureMode.PRACTICE && !lectureUseHybridComboLayout) {
+            handleLecturePracticeVerificationResult(match, expected, said)
+            return
+        }
         if (currentContentLayout == ContentLayout.SV_RIBBON) setSvRibbonYouSaid(said)
-        if (currentContentLayout == ContentLayout.THREECOL_TABLE) {
+        if (currentContentLayout == ContentLayout.THREECOL_TABLE ||
+            (isLectureHybridComboVisible() && lectureHybridPanel == LectureHybridPanel.THREE_COL_TABLE)) {
             onThreeColVerificationResult(match, said)
             // Main 3-col table already handles TTS/strikes in [onThreeColVerificationResult]. Do not run shared
             // [handleVerificationResult] chains (incorrect_then_correct / lesson_verify) — they duplicate audio and use stale expected.
             if (threeColMode != ThreeColMode.VOCAB) return
         }
-        if (currentContentLayout == ContentLayout.CONVERSATION_BUBBLES) onConvBubbleVerificationResult(match, said)
+        if (currentContentLayout == ContentLayout.CONVERSATION_BUBBLES) {
+            onConvBubbleVerificationResult(match, said)
+            // Non–V tab: advance + next line are handled inside [onConvBubbleVerificationResult]. Continuing here runs
+            // shared Correct/retry logic and can race TTS / re-listen on the previous sentence (Practice & Learning).
+            if (convBubbleMode != ConversationMode.VOCAB) return
+        }
         if (currentContentLayout == ContentLayout.TENSE_TRIPLETS) {
             onTenseTripletVerificationResult(match, said)
             return
@@ -2918,7 +3036,7 @@ class MainActivity : AppCompatActivity() {
             return
         }
         if ((currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleMode == ConversationMode.VOCAB) ||
-            (currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB)) return
+            (isThreeColVocabShellActive() && threeColMode == ThreeColMode.VOCAB)) return
         val resultWord = if (match) getString(R.string.correct) else getString(R.string.incorrect)
         val inLesson = lessonRows != null
         val inSvoSentenceList = sentenceList.isNotEmpty() && !inLesson
@@ -3549,6 +3667,19 @@ class MainActivity : AppCompatActivity() {
         if (convBubbleAssetPath != null) {
             // Layout switch happens inside loader only after file parses successfully (avoids empty shell + bars).
             loadConversationBubbleLesson(convBubbleAssetPath, actionKey, subtopic.title)
+            return
+        }
+        val lectureAssetPath = lectureLessonAssetPaths[actionKey]
+        if (lectureAssetPath != null) {
+            //region agent log
+            debugModeLog(
+                hypothesisId = "H1",
+                location = "MainActivity.handleSubtopicAction",
+                message = "Matched lecture lesson action key",
+                data = JSONObject().put("actionKey", actionKey).put("assetPath", lectureAssetPath)
+            )
+            //endregion
+            loadLectureLessonFromAsset(lectureAssetPath, actionKey, subtopic.title)
             return
         }
         // THREECOL_TABLE lessons (so e.g. simple_where uses 3col layout, not simple-sentence)
@@ -5936,7 +6067,7 @@ class MainActivity : AppCompatActivity() {
             isEnglishMicActive = false
             isRecording = false
             convBubbleControlRunning = false
-            if (currentContentLayout == ContentLayout.THREECOL_TABLE) threeColControlRunning = false
+            if (isThreeColVocabShellActive()) threeColControlRunning = false
             if (currentContentLayout == ContentLayout.TENSE_TRIPLETS) tenseTripletControlRunning = false
             if (currentContentLayout == ContentLayout.EXTEND_SENTENCE) updateExtendSentenceControlBar()
         } else {
@@ -5945,7 +6076,7 @@ class MainActivity : AppCompatActivity() {
             val row = currentVTabRows.getOrNull(idx) ?: return
             vocabIncorrectCount = 0
             convBubbleControlRunning = true
-            if (currentContentLayout == ContentLayout.THREECOL_TABLE) threeColControlRunning = true
+            if (isThreeColVocabShellActive()) threeColControlRunning = true
             if (currentContentLayout == ContentLayout.TENSE_TRIPLETS) tenseTripletControlRunning = true
             textToSpeech?.stop()
             textToSpeech?.setLanguage(Locale.US)
@@ -5954,7 +6085,7 @@ class MainActivity : AppCompatActivity() {
             verificationHandler.postDelayed({
                 if (!isDestroyed && convBubbleControlRunning) {
                     val inConvV = currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleMode == ConversationMode.VOCAB
-                    val inThreeV = currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB
+                    val inThreeV = isThreeColVocabShellActive() && threeColMode == ThreeColMode.VOCAB
                     val inTenseV = currentContentLayout == ContentLayout.TENSE_TRIPLETS && tenseTripletMode == TenseTripletMode.VOCAB
                     val inExtendV = currentContentLayout == ContentLayout.EXTEND_SENTENCE && extendSentenceMode == ConversationMode.VOCAB
                     if (inConvV || inThreeV || inTenseV || inExtendV) startVerificationListening(row.word)
@@ -5962,6 +6093,7 @@ class MainActivity : AppCompatActivity() {
             }, 800)
         }
         if (currentContentLayout == ContentLayout.CONVERSATION_BUBBLES) updateConvBubbleControlBar()
+        else if (isLectureHybridComboVisible() && lectureHybridPanel == LectureHybridPanel.THREE_COL_TABLE) updateLectureControlBar()
         else if (currentContentLayout == ContentLayout.THREECOL_TABLE) updateThreeColControlBar()
         else if (currentContentLayout == ContentLayout.TENSE_TRIPLETS) updateTenseTripletControlBar()
         else if (currentContentLayout == ContentLayout.EXTEND_SENTENCE) updateExtendSentenceControlBar()
@@ -6087,6 +6219,75 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /** After 3 wrong attempts on one line: show correct (practice/test), then advance — mirrors shared [handleVerificationResult] conv-bubble branch. */
+    private fun scheduleConvBubbleStrikeOutAdvance(failedRowIdx: Int) {
+        if (convBubbleRows.isEmpty()) return
+        val idx = if (convBubbleMode == ConversationMode.TEST && convBubbleListeningForRowIndex in convBubbleRows.indices)
+            convBubbleListeningForRowIndex else failedRowIdx.coerceIn(0, convBubbleRows.lastIndex)
+        val row = convBubbleRows.getOrNull(idx) ?: return
+        val correctEnglish = MatchNormalizer.textForSpeakAndDisplay(row.english)
+        if (convBubbleMode == ConversationMode.PRACTICE || convBubbleMode == ConversationMode.TEST) {
+            convBubbleAdapter?.setSpokenText(idx, correctEnglish)
+            convBubbleAdapter?.markResult(idx, false)
+        }
+        convBubbleAdvanceRunnable?.let { verificationHandler.removeCallbacks(it) }
+        convBubbleAdvanceRunnable = Runnable {
+            convBubbleAdvanceRunnable = null
+            if (!isDestroyed && currentContentLayout == ContentLayout.CONVERSATION_BUBBLES) {
+                if (convBubbleMode == ConversationMode.TEST && convBubbleListeningForRowIndex in convBubbleRows.indices) {
+                    convBubbleCurrentIndex = convBubbleListeningForRowIndex + 1
+                    convBubbleListeningForRowIndex = -1
+                } else {
+                    convBubbleCurrentIndex++
+                }
+                convBubbleAdapter?.setCurrentIndex(convBubbleCurrentIndex.coerceIn(0, convBubbleRows.lastIndex))
+                updateConvBubbleRowPositionText()
+                if (convBubbleCurrentIndex <= convBubbleRows.lastIndex && convBubbleControlRunning) {
+                    speakConvBubbleCurrent()
+                } else {
+                    convBubbleControlRunning = false
+                    convBubbleControlPaused = false
+                    updateConvBubbleControlBar()
+                }
+            }
+        }
+        verificationHandler.postDelayed(convBubbleAdvanceRunnable!!, 1500)
+    }
+
+    /**
+     * Wrong answer for conv-bubble Learning / Practice / Test (non-V). Shared [handleVerificationResult] is skipped for these modes,
+     * so strikes, "Incorrect" → optional correct-word hint → listen again must run here.
+     */
+    private fun handleConvBubbleWrongAnswer(userRowIdx: Int, includeCorrectWordHint: Boolean) {
+        convBubbleIncorrectCount++
+        val expectedEnglish = convBubbleRows.getOrNull(
+            userRowIdx.coerceIn(0, (convBubbleRows.size - 1).coerceAtLeast(0))
+        )?.english?.trim().orEmpty()
+        if (convBubbleIncorrectCount >= 3) {
+            convBubbleIncorrectCount = 0
+            scheduleConvBubbleStrikeOutAdvance(userRowIdx)
+        } else {
+            pendingRestartVerificationWith = expectedEnglish.takeIf { it.isNotBlank() }
+            if (includeCorrectWordHint) {
+                pendingSpeakCorrectWordAfterIncorrect = expectedEnglish.takeIf { it.isNotBlank() }
+            } else {
+                pendingSpeakCorrectWordAfterIncorrect = null
+            }
+            val resultWord = getString(R.string.incorrect)
+            if (ttsReady && textToSpeech != null && expectedEnglish.isNotBlank()) {
+                textToSpeech?.setLanguage(Locale.US)
+                textToSpeech?.speak(resultWord, TextToSpeech.QUEUE_FLUSH, null, "incorrect_then_correct")
+            } else {
+                pendingSpeakCorrectWordAfterIncorrect = null
+                speakEnglishString(resultWord)
+                val toRestart = pendingRestartVerificationWith
+                pendingRestartVerificationWith = null
+                if (!toRestart.isNullOrBlank() && !isDestroyed) startVerificationListening(toRestart)
+            }
+        }
+        updateConvBubbleRowPositionText()
+    }
+
     private fun onConvBubbleVerificationResult(match: Boolean, said: String) {
         if (currentContentLayout != ContentLayout.CONVERSATION_BUBBLES) return
         if (convBubbleMode == ConversationMode.VOCAB && currentVTabRows.isNotEmpty()) {
@@ -6135,9 +6336,10 @@ class MainActivity : AppCompatActivity() {
                     }, 1500)
                 } else {
                     convBubbleControlRunning = false
-                    if (currentContentLayout == ContentLayout.THREECOL_TABLE) threeColControlRunning = false
+                    if (isThreeColVocabShellActive()) threeColControlRunning = false
                     runOnUiThread {
                         if (currentContentLayout == ContentLayout.CONVERSATION_BUBBLES) updateConvBubbleControlBar()
+                        else if (isLectureHybridComboVisible() && lectureHybridPanel == LectureHybridPanel.THREE_COL_TABLE) updateLectureControlBar()
                         else if (currentContentLayout == ContentLayout.THREECOL_TABLE) updateThreeColControlBar()
                     }
                 }
@@ -6183,7 +6385,7 @@ class MainActivity : AppCompatActivity() {
         convBubbleAdapter?.markResult(userRowIdx, match)
         updateConvBubbleStats()
         if (convBubbleMode == ConversationMode.TEST) {
-            // Only advance when correct; when wrong, 3-strike logic in handleVerificationResult will advance after 3 tries.
+            // Only advance when correct; when wrong, retries / 3-strike advance live in [handleConvBubbleWrongAnswer].
             if (match) {
                 convBubbleIncorrectCount = 0
                 convBubbleCurrentIndex = userRowIdx + 1
@@ -6200,7 +6402,7 @@ class MainActivity : AppCompatActivity() {
                     updateConvBubbleControlBar()
                 }
             } else {
-                updateConvBubbleRowPositionText()
+                handleConvBubbleWrongAnswer(userRowIdx, includeCorrectWordHint = false)
             }
             return
         }
@@ -6221,12 +6423,14 @@ class MainActivity : AppCompatActivity() {
                 convBubbleControlPaused = false
                 updateConvBubbleControlBar()
             }
+        } else {
+            handleConvBubbleWrongAnswer(userRowIdx, includeCorrectWordHint = true)
         }
     }
 
     /** Update prev/next button enabled state for THREECOL_TABLE and scroll so current row is visible. In V mode use vocab list. */
     private fun updateThreeColRowPositionText() {
-        if (currentContentLayout != ContentLayout.THREECOL_TABLE) return
+        if (!isThreeColTableUiActive()) return
         val root = contentFrame.getChildAt(0) ?: return
         val prevBtn = root.findViewById<ImageButton>(R.id.lesson_mode_bar_prev)
         val nextBtn = root.findViewById<ImageButton>(R.id.lesson_mode_bar_next)
@@ -6251,7 +6455,7 @@ class MainActivity : AppCompatActivity() {
      * Same behavior as [updateTenseTripletAutoScrollPosition]: center band, row-height steps, smooth [ValueAnimator].
      */
     private fun updateThreeColAutoScrollPosition(forceTop: Boolean = false) {
-        if (currentContentLayout != ContentLayout.THREECOL_TABLE || threeColRows.isEmpty()) return
+        if (!isThreeColTableUiActive() || threeColRows.isEmpty()) return
         if (threeColMode == ThreeColMode.VOCAB) return
         val root = contentFrame.getChildAt(0) ?: return
         val recycler = root.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.threecol_recycler) ?: return
@@ -6739,7 +6943,7 @@ class MainActivity : AppCompatActivity() {
 
     /** Speak Bengali then English for current THREECOL row, then verification. */
     private fun speakThreeColCurrent() {
-        if (currentContentLayout != ContentLayout.THREECOL_TABLE) return
+        if (!isThreeColTableUiActive()) return
         if (threeColMode == ThreeColMode.VOCAB) return
         if (threeColRows.isEmpty()) return
         val idx = threeColCurrentIndex.coerceIn(0, threeColRows.lastIndex)
@@ -6779,7 +6983,7 @@ class MainActivity : AppCompatActivity() {
     private fun handleThreeColLearningBengaliUtteranceDone(utteranceId: String) {
         val gen = utteranceId.substringAfterLast('_').toIntOrNull() ?: return
         if (gen != threeColTtsGeneration) return
-        if (isDestroyed || currentContentLayout != ContentLayout.THREECOL_TABLE) return
+        if (isDestroyed || !isThreeColTableUiActive()) return
         if (threeColMode == ThreeColMode.VOCAB) return
         if (threeColRows.isEmpty()) return
         val idx = threeColCurrentIndex.coerceIn(0, threeColRows.lastIndex)
@@ -6789,16 +6993,26 @@ class MainActivity : AppCompatActivity() {
         expectedEnglishForVerification = expected
         if (ttsReady && textToSpeech != null) {
             textToSpeech?.setLanguage(Locale.US)
-            textToSpeech?.speak(MatchNormalizer.textForSpeakAndDisplay(expected), TextToSpeech.QUEUE_FLUSH, null, "lesson_verify")
+            // Distinct id + generation so stale [onDone] after [textToSpeech.stop] cannot re-open mic for a prior row.
+            textToSpeech?.speak(MatchNormalizer.textForSpeakAndDisplay(expected), TextToSpeech.QUEUE_FLUSH, null, "threecol_lesson_verify_$gen")
         } else {
             startVerificationListening(expected)
         }
     }
 
+    /** After Learning-mode English TTS for current 3-col row; ignore callbacks from interrupted/stale generations. */
+    private fun handleThreeColLessonVerifyEnglishDone(utteranceId: String) {
+        val gen = utteranceId.removePrefix("threecol_lesson_verify_").toIntOrNull() ?: return
+        if (gen != threeColTtsGeneration) return
+        if (isDestroyed || !isThreeColTableUiActive()) return
+        val expected = expectedEnglishForVerification
+        if (expected != null) startVerificationListening(expected)
+    }
+
     private fun handleThreeColPracticeBengaliUtteranceDone(utteranceId: String) {
         val gen = utteranceId.substringAfterLast('_').toIntOrNull() ?: return
         if (gen != threeColTtsGeneration) return
-        if (isDestroyed || currentContentLayout != ContentLayout.THREECOL_TABLE) return
+        if (isDestroyed || !isThreeColTableUiActive()) return
         if (threeColMode == ThreeColMode.VOCAB) return
         if (threeColRows.isEmpty()) return
         val idx = threeColCurrentIndex.coerceIn(0, threeColRows.lastIndex)
@@ -6826,7 +7040,7 @@ class MainActivity : AppCompatActivity() {
 
     /** Handle verification result for THREECOL_TABLE: reveal second column, update stats, and advance when appropriate. V tab: Toast, advance to next word or stop. */
     private fun onThreeColVerificationResult(match: Boolean, said: String) {
-        if (currentContentLayout != ContentLayout.THREECOL_TABLE) return
+        if (!isThreeColTableUiActive()) return
         if (threeColMode == ThreeColMode.VOCAB && currentVTabRows.isNotEmpty()) {
             runOnUiThread {
                 Toast.makeText(this, if (match) getString(R.string.correct) else getString(R.string.incorrect), Toast.LENGTH_SHORT).show()
@@ -6857,7 +7071,7 @@ class MainActivity : AppCompatActivity() {
                 contentFrame.getChildAt(0)?.findViewById<View>(R.id.threecol_vocab_include)?.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.lesson_vocab_recycler)?.scrollToPosition(nextIdx)
                 if (currentVTabRows.isNotEmpty() && convBubbleControlRunning) {
                     verificationHandler.postDelayed({
-                        if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB && convBubbleControlRunning && currentVTabRows.isNotEmpty()) {
+                        if (!isDestroyed && isThreeColTableUiActive() && threeColMode == ThreeColMode.VOCAB && convBubbleControlRunning && currentVTabRows.isNotEmpty()) {
                             val idx = (lessonVocabAdapter?.currentIndex ?: nextIdx).coerceIn(0, currentVTabRows.lastIndex)
                             val nextRow = currentVTabRows.getOrNull(idx) ?: return@postDelayed
                             textToSpeech?.stop()
@@ -6865,7 +7079,7 @@ class MainActivity : AppCompatActivity() {
                             textToSpeech?.speak(MatchNormalizer.textForSpeakAndDisplay(nextRow.word), TextToSpeech.QUEUE_FLUSH, null, "vocab_word")
                             expectedEnglishForVerification = nextRow.word
                             verificationHandler.postDelayed({
-                                if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB && convBubbleControlRunning) startVerificationListening(nextRow.word)
+                                if (!isDestroyed && isThreeColTableUiActive() && threeColMode == ThreeColMode.VOCAB && convBubbleControlRunning) startVerificationListening(nextRow.word)
                             }, 800)
                         }
                     }, 1500)
@@ -6876,7 +7090,7 @@ class MainActivity : AppCompatActivity() {
                 }
             } else {
                 verificationHandler.postDelayed({
-                    if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB && convBubbleControlRunning && currentVTabRows.isNotEmpty()) {
+                    if (!isDestroyed && isThreeColTableUiActive() && threeColMode == ThreeColMode.VOCAB && convBubbleControlRunning && currentVTabRows.isNotEmpty()) {
                         val idx = (lessonVocabAdapter?.currentIndex ?: curIdx).coerceIn(0, currentVTabRows.lastIndex)
                         val retryRow = currentVTabRows.getOrNull(idx) ?: return@postDelayed
                         textToSpeech?.stop()
@@ -6884,7 +7098,7 @@ class MainActivity : AppCompatActivity() {
                         textToSpeech?.speak(MatchNormalizer.textForSpeakAndDisplay(retryRow.word), TextToSpeech.QUEUE_FLUSH, null, "vocab_word_after_fail")
                         expectedEnglishForVerification = retryRow.word
                         verificationHandler.postDelayed({
-                            if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE && threeColMode == ThreeColMode.VOCAB && convBubbleControlRunning) startVerificationListening(retryRow.word)
+                            if (!isDestroyed && isThreeColTableUiActive() && threeColMode == ThreeColMode.VOCAB && convBubbleControlRunning) startVerificationListening(retryRow.word)
                         }, 800)
                     }
                 }, 1500)
@@ -6929,7 +7143,7 @@ class MainActivity : AppCompatActivity() {
             if (isPrepositionsTestLesson) {
                 if (threeColCurrentIndex < threeColRows.lastIndex) {
                     verificationHandler.postDelayed({
-                        if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE) {
+                        if (!isDestroyed && isThreeColTableUiActive()) {
                             threeColAdapter?.prepositionsTestRevealFullRowIndex = -1
                             threeColCurrentIndex++
                             threeColAdapter?.setCurrentIndex(threeColCurrentIndex)
@@ -6939,7 +7153,7 @@ class MainActivity : AppCompatActivity() {
                     }, 1500)
                 } else {
                     verificationHandler.postDelayed({
-                        if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE) {
+                        if (!isDestroyed && isThreeColTableUiActive()) {
                             threeColAdapter?.prepositionsTestRevealFullRowIndex = -1
                             threeColControlRunning = false
                             threeColControlPaused = false
@@ -6956,14 +7170,14 @@ class MainActivity : AppCompatActivity() {
                     if (isThreeColLearning) {
                         speakLearningModeVerificationFeedback(match = true) {
                             verificationHandler.postDelayed({
-                                if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE && threeColControlRunning) {
+                                if (!isDestroyed && isThreeColTableUiActive() && threeColControlRunning) {
                                     speakThreeColCurrent()
                                 }
                             }, 200)
                         }
                     } else {
                         verificationHandler.postDelayed({
-                            if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE) {
+                            if (!isDestroyed && isThreeColTableUiActive()) {
                                 speakThreeColCurrent()
                             }
                         }, 1500)
@@ -7002,7 +7216,7 @@ class MainActivity : AppCompatActivity() {
                     threeColAdapter?.prepositionsTestRevealFullRowIndex = idx
                 }
                 val advanceAfterThreeStrikes = Runnable {
-                    if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE) {
+                    if (!isDestroyed && isThreeColTableUiActive()) {
                         if (isPrepositionsTestLesson) {
                             threeColAdapter?.prepositionsTestRevealFullRowIndex = -1
                         }
@@ -7036,7 +7250,7 @@ class MainActivity : AppCompatActivity() {
                     if (isThreeColLearningRetry) {
                         speakLearningModeVerificationFeedback(match = false) {
                             verificationHandler.postDelayed({
-                                if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE &&
+                                if (!isDestroyed && isThreeColTableUiActive() &&
                                     threeColControlRunning && threeColCurrentIndex == idx) {
                                     speakThreeColCurrent()
                                 }
@@ -7044,7 +7258,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     } else {
                         verificationHandler.postDelayed({
-                            if (!isDestroyed && currentContentLayout == ContentLayout.THREECOL_TABLE &&
+                            if (!isDestroyed && isThreeColTableUiActive() &&
                                 threeColControlRunning && threeColCurrentIndex == idx) {
                                 startVerificationListening(rowEnglish)
                             }
@@ -7053,6 +7267,976 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun parseLectureParagraphs(content: String): List<String> {
+        val pRegex = Regex("<p\\b[^>]*>(.*?)</p>", setOf(RegexOption.IGNORE_CASE, RegexOption.DOT_MATCHES_ALL))
+        val fromP = pRegex.findAll(content).mapNotNull { m ->
+            val raw = m.groupValues.getOrElse(1) { "" }
+            val plain = Html.fromHtml(raw, Html.FROM_HTML_MODE_LEGACY).toString()
+                .replace(Regex("\\s+"), " ")
+                .trim()
+            plain.takeIf { it.isNotBlank() }
+        }.toList()
+        if (fromP.isNotEmpty()) return fromP
+        return content.lines()
+            .map { Html.fromHtml(it, Html.FROM_HTML_MODE_LEGACY).toString().trim() }
+            .filter { it.isNotBlank() }
+    }
+
+    /**
+     * Split one lecture paragraph into TTS-sized chunks at sentence boundaries.
+     * Keeps trailing punctuation on each chunk so the engine can use it for prosody.
+     */
+    private fun splitLectureIntoSpeakChunks(text: String): List<String> {
+        val normalized = text.replace(Regex("\\s+"), " ").trim()
+        if (normalized.isEmpty()) return emptyList()
+        val out = mutableListOf<String>()
+        val current = StringBuilder()
+        var i = 0
+        while (i < normalized.length) {
+            val c = normalized[i]
+            current.append(c)
+            val isEnd = when {
+                c == '।' || c == '?' || c == '!' || c == '…' -> true
+                c == '.' -> i == normalized.lastIndex || normalized[i + 1].isWhitespace()
+                else -> false
+            }
+            if (isEnd) {
+                val chunk = current.toString().trim()
+                if (chunk.isNotEmpty()) out.add(chunk)
+                current.clear()
+            }
+            i++
+            if (isEnd) {
+                while (i < normalized.length && normalized[i].isWhitespace()) i++
+            }
+        }
+        val rest = current.toString().trim()
+        if (rest.isNotEmpty()) out.add(rest)
+        return if (out.isEmpty()) listOf(normalized) else out
+    }
+
+    private fun pauseMsAfterLectureChunk(chunk: String): Long {
+        val last = chunk.trimEnd().lastOrNull() ?: return 280L
+        return when (last) {
+            '?', '!' -> 420L
+            '।' -> 380L
+            '.', '…' -> 320L
+            else -> 280L
+        }
+    }
+
+    /** Slight pitch lift for questions; effect depends on the active TTS engine/voice. */
+    private fun lectureTtsParamsForChunk(chunk: String): Bundle? {
+        if (!chunk.trimEnd().endsWith('?')) return null
+        return Bundle().apply { putFloat("pitch", 1.08f) }
+    }
+
+    private fun loadLectureLessonFromAsset(assetPath: String, lessonKey: String, displayTitle: String? = null) {
+        val content = try {
+            assets.open(assetPath).bufferedReader().use { it.readText() }
+        } catch (e: Exception) {
+            Toast.makeText(this, "Could not load $assetPath", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val parsed = parseLectureParagraphs(content)
+        if (parsed.isEmpty()) {
+            Toast.makeText(this, "No <p> paragraph found in $assetPath", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val isHybrid = lessonKey == "single_command_lecture"
+        lectureUseHybridComboLayout = isHybrid
+        if (isHybrid) lectureHybridPanel = LectureHybridPanel.LECTURE_PARAGRAPHS
+        switchContentLayout(ContentLayout.LECTURE)
+        lectureParagraphs = parsed
+        lectureCurrentIndex = 0
+        lectureMode = LectureMode.LEARNING
+        lectureControlRunning = false
+        lectureControlPaused = false
+        lectureTtsGeneration++
+        lessonName = displayTitle ?: lessonKey
+        lecturePracticeRows = emptyList()
+        lecturePracticePronunciations = emptyList()
+        lecturePracticeIndex = 0
+        lecturePracticeIncorrectCount = 0
+        lecturePracticeSessionCorrect = 0
+        lecturePracticeSessionAttempted = 0
+        if (isHybrid) {
+            lecturePracticeCompanionAssets[lessonKey]?.let { practicePath ->
+                try {
+                    val pc = assets.open(practicePath).bufferedReader(StandardCharsets.UTF_8).readText()
+                    val (rows, initialABPerRow) = LessonFileParsers.parseThreeColLessonFile(pc)
+                    if (rows.isEmpty()) {
+                        Toast.makeText(this, "No rows in $practicePath", Toast.LENGTH_SHORT).show()
+                    } else {
+                        threeColAdapter = null
+                        threeColCurrentLessonKey = lessonKey
+                        threeColBaseRows = rows
+                        val assetMaster = LessonFileParsers.loadMasterWordList(assets)
+                        val additions = LessonFileParsers.loadMasterListAdditions(filesDir)
+                        val mergedMaster = assetMaster.toMutableMap()
+                        mergedMaster.putAll(additions)
+                        var vocabWords = LessonFileParsers.extractVocabularyBlock(pc)
+                        if (vocabWords.isEmpty()) {
+                            vocabWords = LessonFileParsers.extractVocabWordsFromThreeColContent(pc)
+                        }
+                        for (word in vocabWords) {
+                            val wk = word.trim().lowercase()
+                            if (wk.isNotEmpty() && !mergedMaster.containsKey(wk)) {
+                                LessonFileParsers.saveMasterListAddition(filesDir, wk, "—", "—")
+                                mergedMaster[wk] = "—" to "—"
+                            }
+                        }
+                        masterWordListMap = mergedMaster
+                        currentLessonVocabWords = vocabWords
+                        lessonVocabRows = LessonFileParsers.filterLessonVocabRowsByMaster(
+                            LessonFileParsers.buildLessonVocabRowsOnlyInMaster(vocabWords, mergedMaster),
+                            mergedMaster
+                        )
+                        threeColStats = LessonFileParsers.loadThreeColStats(filesDir, lessonKey, rows.size)
+                        for (i in rows.indices) {
+                            val ab = initialABPerRow.getOrNull(i)
+                            if (ab != null) {
+                                while (threeColStats.size <= i) threeColStats.add(IntArray(2) { 0 })
+                                threeColStats[i][0] = ab.getOrNull(0)?.coerceIn(0, 1) ?: 0
+                                threeColStats[i][1] = ab.getOrNull(1)?.coerceIn(0, 1) ?: 0
+                            }
+                        }
+                        threeColDisplayToBaseIndex = rows.indices.toList()
+                        threeColRows = rows
+                        threeColLearningMode = true
+                        threeColMode = ThreeColMode.LEARNING
+                        threeColWeakOnlyFilter = false
+                        threeColCurrentIndex = 0
+                        threeColIncorrectCount = 0
+                        threeColSessionCorrect = 0
+                        threeColSessionAttempted = 0
+                        threeColLastScrolledPosition = -1
+                        threeColCachedRowHeightPx = -1
+                    }
+                } catch (_: Exception) { }
+            }
+        } else {
+            lecturePracticeCompanionAssets[lessonKey]?.let { practicePath ->
+                try {
+                    val pc = assets.open(practicePath).bufferedReader(StandardCharsets.UTF_8).readText()
+                    parseSimpleSentenceAssetContent(pc)?.let { (r, p) ->
+                        lecturePracticeRows = r
+                        lecturePracticePronunciations = p
+                    }
+                } catch (_: Exception) { }
+            }
+        }
+        updateLessonTopicDisplay()
+        //region agent log
+        debugModeLog(
+            hypothesisId = "H2",
+            location = "MainActivity.loadLectureLessonFromAsset",
+            message = "Lecture parsed",
+            data = JSONObject()
+                .put("assetPath", assetPath)
+                .put("paragraphCount", lectureParagraphs.size)
+                .put("practiceRowCount", lecturePracticeRows.size)
+                .put("threeColRowCount", threeColRows.size)
+                .put("hybrid", isHybrid)
+                .put("mode", lectureMode.name)
+        )
+        //endregion
+        contentFrame.post {
+            if (currentContentLayout != ContentLayout.LECTURE || contentFrame.childCount == 0) return@post
+            val root = contentFrame.getChildAt(0)
+            if (lectureUseHybridComboLayout) {
+                val recycler = root.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.threecol_recycler)
+                if (recycler != null && threeColRows.isNotEmpty()) {
+                    threeColAdapter = ThreeColDataAdapter(threeColRows)
+                    recycler.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
+                    recycler.adapter = threeColAdapter
+                    val controlBar = root.findViewById<View>(R.id.lesson_base_control_include)
+                    val bottomPaddingPx = if (controlBar != null && controlBar.height > 0) controlBar.height
+                        else (72 * resources.displayMetrics.density).toInt()
+                    recycler.setPadding(0, recycler.paddingTop, 0, bottomPaddingPx)
+                    recycler.clipToPadding = true
+                    threeColAdapter?.learningMode = threeColLearningMode
+                    threeColAdapter?.setCurrentIndex(threeColCurrentIndex)
+                }
+                root.findViewById<android.widget.Switch>(R.id.threecol_weak_only)?.isChecked = threeColWeakOnlyFilter
+                setupLectureHybridCompoundModeBar(root)
+                updateLectureHybridModeBarAppearance(root)
+                updateThreeColPrepositionsTestUiFlag()
+                updateThreeColStats()
+                updateThreeColRowPositionText()
+            } else {
+                setupLectureModeButtons(root)
+                updateLectureModeAppearance(root)
+            }
+            updateLectureBody(root)
+            updateLectureControlBar()
+            updateLectureNavButtonsForLecture()
+            findViewById<View>(R.id.control_actions_include)?.visibility = View.GONE
+            root.findViewById<View>(R.id.lesson_base_control_include)?.visibility = View.VISIBLE
+        }
+    }
+
+    private fun stopLecturePracticeVerificationAndMic() {
+        cancelVerificationTimeout()
+        if (verificationMode) {
+            verificationMode = false
+            expectedEnglishForVerification = null
+            try { speechRecognizer?.stopListening() } catch (_: Exception) { }
+            stopEnglishVoskRecording()
+            setMicButtonAppearance(recording = false)
+        }
+        isEnglishMicActive = false
+        isRecording = false
+    }
+
+    private fun setLecturePracticeYouSaid(text: String) {
+        if (currentContentLayout != ContentLayout.LECTURE) return
+        val shell = contentFrame.getChildAt(0) ?: return
+        shell.findViewById<TextView>(R.id.lecture_practice_you_said)?.text =
+            MatchNormalizer.sanitizeSpokenTextForDisplay(text)
+    }
+
+    private fun updateLecturePracticeStat(root: View) {
+        val stat = root.findViewById<TextView>(R.id.lecture_practice_stat) ?: return
+        if (lecturePracticeRows.isEmpty()) {
+            stat.visibility = View.GONE
+            return
+        }
+        stat.visibility = View.VISIBLE
+        val asked = lecturePracticeSessionAttempted
+        val c = lecturePracticeSessionCorrect
+        val pct = if (asked > 0) (100 * c / asked) else 0
+        stat.text = "$c/$asked ($pct%)"
+    }
+
+    private fun handleLecturePracticeVerificationResult(match: Boolean, expected: String, said: String) {
+        if (isDestroyed) return
+        setLecturePracticeYouSaid(said)
+        val shell = contentFrame.getChildAt(0)
+        lecturePracticeSessionAttempted++
+        if (match) {
+            lecturePracticeIncorrectCount = 0
+            lecturePracticeSessionCorrect++
+            speakEnglishString(getString(R.string.correct))
+            verificationHandler.postDelayed({
+                if (isDestroyed || currentContentLayout != ContentLayout.LECTURE || lectureMode != LectureMode.PRACTICE) return@postDelayed
+                if (lecturePracticeIndex < lecturePracticeRows.lastIndex) {
+                    lecturePracticeIndex++
+                    if (shell != null) {
+                        updateLectureBody(shell)
+                        updateLecturePracticeStat(shell)
+                    }
+                    if (lectureControlRunning) speakLecturePracticePhrase()
+                } else {
+                    lectureControlRunning = false
+                    lectureControlPaused = false
+                    if (shell != null) {
+                        updateLectureBody(shell)
+                        updateLecturePracticeStat(shell)
+                    }
+                    updateLectureControlBar()
+                    Toast.makeText(this, getString(R.string.lesson_done), Toast.LENGTH_SHORT).show()
+                }
+            }, 1500)
+        } else {
+            speakEnglishString(getString(R.string.incorrect))
+            lecturePracticeIncorrectCount++
+            if (lecturePracticeIncorrectCount >= 3) {
+                lecturePracticeIncorrectCount = 0
+                verificationHandler.postDelayed({
+                    if (isDestroyed || currentContentLayout != ContentLayout.LECTURE || lectureMode != LectureMode.PRACTICE) return@postDelayed
+                    if (lecturePracticeIndex < lecturePracticeRows.lastIndex) lecturePracticeIndex++
+                    if (shell != null) {
+                        updateLectureBody(shell)
+                        updateLecturePracticeStat(shell)
+                    }
+                    if (lectureControlRunning) speakLecturePracticePhrase()
+                }, 1500)
+            } else {
+                verificationHandler.postDelayed({
+                    if (expected.isNotBlank() && !isDestroyed && currentContentLayout == ContentLayout.LECTURE && lectureMode == LectureMode.PRACTICE) {
+                        startVerificationListening(expected)
+                    }
+                }, 1500)
+            }
+        }
+        if (shell != null) updateLecturePracticeStat(shell)
+    }
+
+    private fun updateLectureModeBarNavArrowState(root: View) {
+        val prev = root.findViewById<ImageButton>(R.id.lesson_mode_bar_prev)
+        val next = root.findViewById<ImageButton>(R.id.lesson_mode_bar_next)
+        when (lectureMode) {
+            LectureMode.LEARNING -> {
+                prev?.isEnabled = lectureCurrentIndex > 0
+                next?.isEnabled = lectureParagraphs.isNotEmpty() && lectureCurrentIndex < lectureParagraphs.lastIndex
+            }
+            LectureMode.PRACTICE -> {
+                prev?.isEnabled = lecturePracticeIndex > 0 && lecturePracticeRows.isNotEmpty()
+                next?.isEnabled = lecturePracticeRows.isNotEmpty() && lecturePracticeIndex < lecturePracticeRows.lastIndex
+            }
+            else -> {
+                prev?.isEnabled = false
+                next?.isEnabled = false
+            }
+        }
+    }
+
+    private fun lectureModeBarNavigateForLecture(root: View, delta: Int) {
+        textToSpeech?.stop()
+        stopLecturePracticeVerificationAndMic()
+        lectureControlRunning = false
+        lectureControlPaused = false
+        updateLectureControlBar()
+        when (lectureMode) {
+            LectureMode.LEARNING -> {
+                if (lectureParagraphs.isEmpty()) return
+                lectureCurrentIndex = (lectureCurrentIndex + delta).coerceIn(0, lectureParagraphs.lastIndex)
+            }
+            LectureMode.PRACTICE -> {
+                if (lecturePracticeRows.isEmpty()) return
+                lecturePracticeIndex = (lecturePracticeIndex + delta).coerceIn(0, lecturePracticeRows.lastIndex)
+                lecturePracticeIncorrectCount = 0
+            }
+            else -> return
+        }
+        updateLectureBody(root)
+        updateLectureModeBarNavArrowState(root)
+    }
+
+    /** Wire shared shell mode bar (layout_lesson_mode_bar) for lecture — not duplicate tabs in content. */
+    private fun setupLectureModeButtons(root: View) {
+        val learningBtn = root.findViewById<Button>(R.id.lesson_mode_learning)
+        val practiceBtn = root.findViewById<Button>(R.id.lesson_mode_practice)
+        val testBtn = root.findViewById<Button>(R.id.lesson_mode_test)
+        val vocabBtn = root.findViewById<Button>(R.id.lesson_mode_vocab)
+        val prevBtn = root.findViewById<ImageButton>(R.id.lesson_mode_bar_prev)
+        val nextBtn = root.findViewById<ImageButton>(R.id.lesson_mode_bar_next)
+        vocabBtn?.visibility = View.GONE
+        learningBtn?.setOnClickListener {
+            textToSpeech?.stop()
+            stopLecturePracticeVerificationAndMic()
+            lectureControlRunning = false
+            lectureControlPaused = false
+            lectureMode = LectureMode.LEARNING
+            updateLectureModeAppearance(root)
+            updateLectureBody(root)
+            updateLectureControlBar()
+            //region agent log
+            debugModeLog("H3", "MainActivity.setupLectureModeButtons", "Switched lecture mode", JSONObject().put("mode", "LEARNING"))
+            //endregion
+        }
+        practiceBtn?.setOnClickListener {
+            textToSpeech?.stop()
+            stopLecturePracticeVerificationAndMic()
+            lectureControlRunning = false
+            lectureControlPaused = false
+            lectureMode = LectureMode.PRACTICE
+            updateLectureModeAppearance(root)
+            updateLectureBody(root)
+            updateLectureControlBar()
+            //region agent log
+            debugModeLog("H3", "MainActivity.setupLectureModeButtons", "Switched lecture mode", JSONObject().put("mode", "PRACTICE"))
+            //endregion
+        }
+        testBtn?.setOnClickListener {
+            textToSpeech?.stop()
+            stopLecturePracticeVerificationAndMic()
+            lectureControlRunning = false
+            lectureControlPaused = false
+            lectureMode = LectureMode.TEST
+            updateLectureModeAppearance(root)
+            updateLectureBody(root)
+            updateLectureControlBar()
+            //region agent log
+            debugModeLog("H3", "MainActivity.setupLectureModeButtons", "Switched lecture mode", JSONObject().put("mode", "TEST"))
+            //endregion
+        }
+        prevBtn?.setOnClickListener { lectureModeBarNavigateForLecture(root, -1) }
+        nextBtn?.setOnClickListener { lectureModeBarNavigateForLecture(root, 1) }
+    }
+
+    private fun stopHybridThreeColPlaybackAndVerification() {
+        textToSpeech?.stop()
+        threeColTtsGeneration++
+        cancelVerificationTimeout()
+        if (verificationMode) {
+            verificationMode = false
+            expectedEnglishForVerification = null
+            try { speechRecognizer?.stopListening() } catch (_: Exception) { }
+            stopEnglishVoskRecording()
+            setMicButtonAppearance(recording = false)
+        }
+        isEnglishMicActive = false
+        isRecording = false
+        threeColControlRunning = false
+        threeColControlPaused = false
+    }
+
+    private fun lectureHybridNavigateParagraph(root: View, delta: Int) {
+        stopHybridThreeColPlaybackAndVerification()
+        lectureControlRunning = false
+        lectureControlPaused = false
+        updateLectureControlBar()
+        if (lectureParagraphs.isEmpty()) return
+        lectureCurrentIndex = (lectureCurrentIndex + delta).coerceIn(0, lectureParagraphs.lastIndex)
+        updateLectureBody(root)
+        updateLectureHybridModeBarNavState(root)
+    }
+
+    private fun updateLectureHybridModeBarNavState(root: View) {
+        val prev = root.findViewById<ImageButton>(R.id.lesson_mode_bar_prev)
+        val next = root.findViewById<ImageButton>(R.id.lesson_mode_bar_next)
+        if (lectureHybridPanel == LectureHybridPanel.LECTURE_PARAGRAPHS) {
+            prev?.isEnabled = lectureCurrentIndex > 0
+            next?.isEnabled = lectureParagraphs.isNotEmpty() && lectureCurrentIndex < lectureParagraphs.lastIndex
+        } else {
+            updateThreeColRowPositionText()
+        }
+    }
+
+    private fun updateLectureHybridModeBarAppearance(root: View) {
+        val lectureBtn = root.findViewById<Button>(R.id.lesson_mode_lecture)
+        val learningBtn = root.findViewById<Button>(R.id.lesson_mode_learning)
+        val practiceBtn = root.findViewById<Button>(R.id.lesson_mode_practice)
+        val testBtn = root.findViewById<Button>(R.id.lesson_mode_test)
+        val vocabBtn = root.findViewById<Button>(R.id.lesson_mode_vocab)
+        val sel = R.drawable.bg_lesson_mode_tab_selected
+        val unsel = R.drawable.bg_lesson_mode_tab_unselected
+        val white = 0xFFFFFFFF.toInt()
+        val darkText = 0xFF555555.toInt()
+        val onL = lectureHybridPanel == LectureHybridPanel.LECTURE_PARAGRAPHS
+        lectureBtn?.setBackgroundResource(if (onL) sel else unsel)
+        lectureBtn?.setTextColor(if (onL) white else darkText)
+        val onTable = !onL
+        learningBtn?.setBackgroundResource(if (onTable && threeColMode == ThreeColMode.LEARNING) sel else unsel)
+        learningBtn?.setTextColor(if (onTable && threeColMode == ThreeColMode.LEARNING) white else darkText)
+        practiceBtn?.setBackgroundResource(if (onTable && threeColMode == ThreeColMode.PRACTICE) sel else unsel)
+        practiceBtn?.setTextColor(if (onTable && threeColMode == ThreeColMode.PRACTICE) white else darkText)
+        testBtn?.setBackgroundResource(if (onTable && threeColMode == ThreeColMode.TEST) sel else unsel)
+        testBtn?.setTextColor(if (onTable && threeColMode == ThreeColMode.TEST) white else darkText)
+        vocabBtn?.setBackgroundResource(if (onTable && threeColMode == ThreeColMode.VOCAB) sel else unsel)
+        vocabBtn?.setTextColor(if (onTable && threeColMode == ThreeColMode.VOCAB) white else darkText)
+        vocabBtn?.visibility = if (lessonVocabRows.isEmpty()) View.GONE else View.VISIBLE
+        updateLectureHybridModeBarNavState(root)
+    }
+
+    /** L + Learning / Practice / Test / V + same row nav / weak-only as How (THREECOL_TABLE). */
+    private fun setupLectureHybridCompoundModeBar(root: View) {
+        val lectureBtn = root.findViewById<Button>(R.id.lesson_mode_lecture)
+        val learningBtn = root.findViewById<Button>(R.id.lesson_mode_learning)
+        val practiceBtn = root.findViewById<Button>(R.id.lesson_mode_practice)
+        val testBtn = root.findViewById<Button>(R.id.lesson_mode_test)
+        val vocabBtn = root.findViewById<Button>(R.id.lesson_mode_vocab)
+        val prevRowBtn = root.findViewById<ImageButton>(R.id.lesson_mode_bar_prev)
+        val nextRowBtn = root.findViewById<ImageButton>(R.id.lesson_mode_bar_next)
+        val weakOnlyCheck = root.findViewById<android.widget.Switch>(R.id.threecol_weak_only)
+        val mainContent = root.findViewById<View>(R.id.threecol_main_content)
+        val vocabInclude = root.findViewById<View>(R.id.threecol_vocab_include)
+        val vocabRecycler = vocabInclude?.findViewById<androidx.recyclerview.widget.RecyclerView>(R.id.lesson_vocab_recycler)
+
+        setupVocabTabForCurrentLesson(vocabInclude) { updateThreeColRowPositionText() }
+
+        fun switchToLecturePanel() {
+            stopLecturePracticeVerificationAndMic()
+            stopHybridThreeColPlaybackAndVerification()
+            lectureControlRunning = false
+            lectureControlPaused = false
+            lectureHybridPanel = LectureHybridPanel.LECTURE_PARAGRAPHS
+            updateLectureBody(root)
+            updateLectureHybridModeBarAppearance(root)
+            updateLectureControlBar()
+        }
+
+        fun switchToThreeColPanelThen(
+            mode: ThreeColMode,
+            learning: Boolean,
+            applyFilter: () -> Unit
+        ) {
+            stopLecturePracticeVerificationAndMic()
+            textToSpeech?.stop()
+            threeColTtsGeneration++
+            incorrectFeedbackFallbackRunnable?.let { verificationHandler.removeCallbacks(it) }
+            incorrectFeedbackFallbackRunnable = null
+            tryAgainListenFallbackRunnable?.let { verificationHandler.removeCallbacks(it) }
+            tryAgainListenFallbackRunnable = null
+            cancelVerificationTimeout()
+            if (verificationMode) {
+                verificationMode = false
+                expectedEnglishForVerification = null
+                try { speechRecognizer?.stopListening() } catch (_: Exception) { }
+                stopEnglishVoskRecording()
+                setMicButtonAppearance(recording = false)
+            }
+            isEnglishMicActive = false
+            isRecording = false
+            lectureControlRunning = false
+            lectureControlPaused = false
+            threeColControlRunning = false
+            threeColControlPaused = false
+            lectureHybridPanel = LectureHybridPanel.THREE_COL_TABLE
+            threeColMode = mode
+            threeColLearningMode = learning
+            threeColWeakOnlyFilter = weakOnlyCheck?.isChecked == true
+            threeColIncorrectCount = 0
+            threeColSessionCorrect = 0
+            threeColSessionAttempted = 0
+            applyFilter()
+            updateLectureBody(root)
+            updateThreeColTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, weakOnlyCheck, mainContent, vocabInclude)
+            updateLectureHybridModeBarAppearance(root)
+            updateLectureControlBar()
+        }
+
+        lectureBtn?.setOnClickListener { switchToLecturePanel() }
+
+        learningBtn?.setOnClickListener {
+            switchToThreeColPanelThen(ThreeColMode.LEARNING, learning = true) {
+                applyThreeColFilterForCurrentMode()
+            }
+        }
+        practiceBtn?.setOnClickListener {
+            switchToThreeColPanelThen(ThreeColMode.PRACTICE, learning = false) {
+                applyThreeColFilterForCurrentMode()
+            }
+        }
+        testBtn?.setOnClickListener {
+            switchToThreeColPanelThen(ThreeColMode.TEST, learning = false) {
+                applyThreeColFilterForCurrentMode()
+            }
+        }
+        vocabBtn?.setOnClickListener {
+            stopLecturePracticeVerificationAndMic()
+            textToSpeech?.stop()
+            incorrectFeedbackFallbackRunnable?.let { verificationHandler.removeCallbacks(it) }
+            incorrectFeedbackFallbackRunnable = null
+            tryAgainListenFallbackRunnable?.let { verificationHandler.removeCallbacks(it) }
+            tryAgainListenFallbackRunnable = null
+            threeColTtsGeneration++
+            cancelVerificationTimeout()
+            if (verificationMode) {
+                verificationMode = false
+                expectedEnglishForVerification = null
+                try { speechRecognizer?.stopListening() } catch (_: Exception) { }
+                stopEnglishVoskRecording()
+                setMicButtonAppearance(recording = false)
+            }
+            isEnglishMicActive = false
+            isRecording = false
+            lectureControlRunning = false
+            lectureControlPaused = false
+            threeColControlRunning = false
+            threeColControlPaused = false
+            lectureHybridPanel = LectureHybridPanel.THREE_COL_TABLE
+            threeColMode = ThreeColMode.VOCAB
+            lessonVocabAdapter?.currentIndex = 0
+            vocabRecycler?.scrollToPosition(0)
+            updateLectureBody(root)
+            updateThreeColTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, weakOnlyCheck, mainContent, vocabInclude)
+            updateLectureHybridModeBarAppearance(root)
+            updateLectureControlBar()
+            updateThreeColRowPositionText()
+        }
+
+        weakOnlyCheck?.setOnCheckedChangeListener { _, isChecked ->
+            threeColWeakOnlyFilter = isChecked
+            applyThreeColFilterForCurrentMode()
+        }
+
+        prevRowBtn?.setOnClickListener {
+            if (lectureHybridPanel == LectureHybridPanel.LECTURE_PARAGRAPHS) {
+                lectureHybridNavigateParagraph(root, -1)
+                return@setOnClickListener
+            }
+            if (threeColMode == ThreeColMode.VOCAB) {
+                val n = currentVTabRows.size
+                if (n == 0) return@setOnClickListener
+                val idx = (lessonVocabAdapter?.currentIndex ?: 0).coerceIn(0, n - 1)
+                val newIdx = (idx - 1).coerceAtLeast(0)
+                lessonVocabAdapter?.currentIndex = newIdx
+                vocabRecycler?.scrollToPosition(newIdx)
+                updateThreeColRowPositionText()
+                return@setOnClickListener
+            }
+            if (threeColRows.isEmpty()) return@setOnClickListener
+            threeColCurrentIndex = (threeColCurrentIndex - 1).coerceAtLeast(0)
+            threeColAdapter?.setCurrentIndex(threeColCurrentIndex)
+            updateThreeColRowPositionText()
+            if (threeColControlRunning && !threeColControlPaused) speakThreeColCurrent()
+        }
+        nextRowBtn?.setOnClickListener {
+            if (lectureHybridPanel == LectureHybridPanel.LECTURE_PARAGRAPHS) {
+                lectureHybridNavigateParagraph(root, 1)
+                return@setOnClickListener
+            }
+            if (threeColMode == ThreeColMode.VOCAB) {
+                val n = currentVTabRows.size
+                if (n == 0) return@setOnClickListener
+                val idx = lessonVocabAdapter?.currentIndex ?: 0
+                val newIdx = (idx + 1).coerceAtMost(n - 1)
+                lessonVocabAdapter?.currentIndex = newIdx
+                vocabRecycler?.scrollToPosition(newIdx)
+                updateThreeColRowPositionText()
+                return@setOnClickListener
+            }
+            if (threeColRows.isEmpty()) return@setOnClickListener
+            threeColCurrentIndex = (threeColCurrentIndex + 1).coerceAtMost(threeColRows.lastIndex)
+            threeColAdapter?.setCurrentIndex(threeColCurrentIndex)
+            updateThreeColRowPositionText()
+            if (threeColControlRunning && !threeColControlPaused) speakThreeColCurrent()
+        }
+
+        updateThreeColTabAppearance(learningBtn, practiceBtn, testBtn, vocabBtn, weakOnlyCheck, mainContent, vocabInclude)
+        updateLectureHybridModeBarAppearance(root)
+    }
+
+    private fun updateLectureModeAppearance(root: View) {
+        val learningBtn = root.findViewById<Button>(R.id.lesson_mode_learning)
+        val practiceBtn = root.findViewById<Button>(R.id.lesson_mode_practice)
+        val testBtn = root.findViewById<Button>(R.id.lesson_mode_test)
+        val sel = R.drawable.bg_lesson_mode_tab_selected
+        val unsel = R.drawable.bg_lesson_mode_tab_unselected
+        val white = 0xFFFFFFFF.toInt()
+        val darkText = 0xFF555555.toInt()
+        val isLearning = lectureMode == LectureMode.LEARNING
+        val isPractice = lectureMode == LectureMode.PRACTICE
+        val isTest = lectureMode == LectureMode.TEST
+        learningBtn?.setBackgroundResource(if (isLearning) sel else unsel)
+        learningBtn?.setTextColor(if (isLearning) white else darkText)
+        practiceBtn?.setBackgroundResource(if (isPractice) sel else unsel)
+        practiceBtn?.setTextColor(if (isPractice) white else darkText)
+        testBtn?.setBackgroundResource(if (isTest) sel else unsel)
+        testBtn?.setTextColor(if (isTest) white else darkText)
+        updateLectureModeBarNavArrowState(root)
+    }
+
+    private fun updateLectureBody(root: View? = contentFrame.getChildAt(0)) {
+        val rootV = root ?: return
+        if (lectureUseHybridComboLayout && rootV.findViewById<View>(R.id.lecture_threecol_host) != null) {
+            val learningScroll = rootV.findViewById<ScrollView>(R.id.lecture_learning_scroll)
+            val host = rootV.findViewById<android.widget.FrameLayout>(R.id.lecture_threecol_host)
+            val txt = rootV.findViewById<TextView>(R.id.lecture_paragraph_text)
+            when (lectureHybridPanel) {
+                LectureHybridPanel.LECTURE_PARAGRAPHS -> {
+                    learningScroll?.visibility = View.VISIBLE
+                    host?.visibility = View.GONE
+                    val total = lectureParagraphs.size
+                    val idx = lectureCurrentIndex.coerceIn(0, (total - 1).coerceAtLeast(0))
+                    val body = lectureParagraphs.getOrNull(idx).orEmpty()
+                    txt?.text = if (body.isBlank()) "" else "Paragraph ${idx + 1}/$total\n\n$body"
+                }
+                LectureHybridPanel.THREE_COL_TABLE -> {
+                    learningScroll?.visibility = View.GONE
+                    host?.visibility = View.VISIBLE
+                    updateThreeColPrepositionsTestUiFlag()
+                    updateThreeColRowPositionText()
+                }
+            }
+            if (rootV.findViewById<Button>(R.id.lesson_mode_lecture) != null) {
+                updateLectureHybridModeBarNavState(rootV)
+            }
+            updateLectureNavButtonsForLecture()
+            return
+        }
+        val learningScroll = rootV.findViewById<ScrollView>(R.id.lecture_learning_scroll)
+        val practiceScroll = rootV.findViewById<ScrollView>(R.id.lecture_practice_scroll)
+        val txt = rootV.findViewById<TextView>(R.id.lecture_paragraph_text)
+        when (lectureMode) {
+            LectureMode.LEARNING -> {
+                learningScroll?.visibility = View.VISIBLE
+                practiceScroll?.visibility = View.GONE
+                val total = lectureParagraphs.size
+                val idx = lectureCurrentIndex.coerceIn(0, (total - 1).coerceAtLeast(0))
+                val body = lectureParagraphs.getOrNull(idx).orEmpty()
+                txt?.text = if (body.isBlank()) "" else "Paragraph ${idx + 1}/$total\n\n$body"
+            }
+            LectureMode.PRACTICE -> {
+                learningScroll?.visibility = View.GONE
+                practiceScroll?.visibility = View.VISIBLE
+                if (lecturePracticeRows.isEmpty()) {
+                    rootV.findViewById<TextView>(R.id.lecture_practice_stat)?.visibility = View.GONE
+                    rootV.findViewById<TextView>(R.id.lecture_practice_bengali)?.text =
+                        "No practice phrases loaded for this lesson."
+                    rootV.findViewById<TextView>(R.id.lecture_practice_english)?.apply {
+                        text = ""
+                        visibility = View.GONE
+                    }
+                    rootV.findViewById<TextView>(R.id.lecture_practice_pronunciation)?.apply {
+                        text = ""
+                        visibility = View.GONE
+                    }
+                } else {
+                    updateLecturePracticeBubbleViews(rootV)
+                }
+            }
+            LectureMode.TEST -> {
+                learningScroll?.visibility = View.VISIBLE
+                practiceScroll?.visibility = View.GONE
+                txt?.text = "Test mode is coming soon."
+            }
+        }
+        updateLectureNavButtonsForLecture()
+        updateLectureModeBarNavArrowState(rootV)
+    }
+
+    /** How-lesson Practice style: only Bengali visible; stats row like simple_sentence_stat. */
+    private fun updateLecturePracticeBubbleViews(root: View) {
+        val rows = lecturePracticeRows
+        val idx = lecturePracticeIndex.coerceIn(0, (rows.size - 1).coerceAtLeast(0))
+        val row = rows.getOrNull(idx)
+        root.findViewById<TextView>(R.id.lecture_practice_bengali)?.text = row?.bnQ ?: ""
+        root.findViewById<TextView>(R.id.lecture_practice_english)?.apply {
+            text = row?.engA ?: ""
+            visibility = View.GONE
+        }
+        root.findViewById<TextView>(R.id.lecture_practice_pronunciation)?.apply {
+            text = lecturePracticePronunciations.getOrNull(idx) ?: ""
+            visibility = View.GONE
+        }
+        root.findViewById<TextView>(R.id.lecture_practice_you_said)?.text = ""
+        root.findViewById<android.widget.ImageView>(R.id.lecture_practice_badge)?.visibility = View.GONE
+        updateLecturePracticeStat(root)
+    }
+
+    private fun updateLectureNavButtonsForLecture() {
+        if (currentContentLayout != ContentLayout.LECTURE) return
+        if (lectureUseHybridComboLayout) {
+            nextButton?.isEnabled = true
+            skipButton?.isEnabled = false
+            return
+        }
+        when (lectureMode) {
+            LectureMode.PRACTICE -> {
+                val en = lecturePracticeRows.isNotEmpty()
+                nextButton?.isEnabled = en
+                skipButton?.isEnabled = en
+            }
+            else -> {
+                nextButton?.isEnabled = true
+                skipButton?.isEnabled = false
+            }
+        }
+    }
+
+    private fun lectureControlBarCanStart(): Boolean {
+        if (isLectureHybridComboVisible()) {
+            return when (lectureHybridPanel) {
+                LectureHybridPanel.LECTURE_PARAGRAPHS -> lectureParagraphs.isNotEmpty()
+                LectureHybridPanel.THREE_COL_TABLE -> when (threeColMode) {
+                    ThreeColMode.VOCAB -> lessonVocabRows.isNotEmpty()
+                    else -> threeColRows.isNotEmpty()
+                }
+            }
+        }
+        return when (lectureMode) {
+            LectureMode.LEARNING -> lectureParagraphs.isNotEmpty()
+            LectureMode.PRACTICE -> lecturePracticeRows.isNotEmpty()
+            else -> false
+        }
+    }
+
+    private fun onLecturePracticeNext() {
+        textToSpeech?.stop()
+        stopLecturePracticeVerificationAndMic()
+        lectureControlRunning = false
+        lectureControlPaused = false
+        lecturePracticeIncorrectCount = 0
+        updateLectureControlBar()
+        if (lecturePracticeRows.isEmpty()) return
+        lecturePracticeIndex = if (lecturePracticeIndex >= lecturePracticeRows.lastIndex) 0 else lecturePracticeIndex + 1
+        updateLectureBody()
+    }
+
+    /** Bengali prompt then listen for English (same utterance id as SIMPLE_SENTENCE practice). */
+    private fun speakLecturePracticePhrase() {
+        if (currentContentLayout != ContentLayout.LECTURE || lectureMode != LectureMode.PRACTICE) return
+        val row = lecturePracticeRows.getOrNull(lecturePracticeIndex) ?: return
+        updateLectureBody()
+        textToSpeech?.stop()
+        cancelVerificationTimeout()
+        if (verificationMode) {
+            verificationMode = false
+            expectedEnglishForVerification = null
+            try { speechRecognizer?.stopListening() } catch (_: Exception) { }
+            stopEnglishVoskRecording()
+            setMicButtonAppearance(recording = false)
+        }
+        isEnglishMicActive = false
+        isRecording = false
+        textToSpeech?.setLanguage(Locale("bn"))
+        expectedEnglishForVerification = row.engA
+        textToSpeech?.speak(row.bnQ, TextToSpeech.QUEUE_FLUSH, null, "lesson_verify")
+    }
+
+    private fun updateLectureControlBar() {
+        if (isLectureHybridComboVisible() && lectureHybridPanel == LectureHybridPanel.THREE_COL_TABLE) {
+            updateThreeColControlBar()
+            return
+        }
+        controlStartStopButton?.let { ControlBarUtils.setControlStartStopButton(this, it, lectureControlRunning) }
+        controlPauseResumeButton?.let { ControlBarUtils.setControlPauseResumeButton(this, it, lectureControlPaused) }
+    }
+
+    private fun speakLectureCurrentParagraph() {
+        if (currentContentLayout != ContentLayout.LECTURE) return
+        if (isLectureHybridComboVisible()) {
+            if (lectureHybridPanel != LectureHybridPanel.LECTURE_PARAGRAPHS) return
+        } else if (lectureMode != LectureMode.LEARNING) {
+            return
+        }
+        if (lectureParagraphs.isEmpty()) return
+        val idx = lectureCurrentIndex.coerceIn(0, lectureParagraphs.lastIndex)
+        val paragraph = lectureParagraphs[idx].trim()
+        if (paragraph.isBlank()) return
+        updateLectureBody()
+        lectureTtsGeneration++
+        val gen = lectureTtsGeneration
+        val chunks = splitLectureIntoSpeakChunks(paragraph)
+        if (chunks.isEmpty()) return
+        textToSpeech?.stop()
+        textToSpeech?.setLanguage(Locale("bn"))
+        val lastUid = "lecture_paragraph_${gen}_$idx"
+        if (chunks.size == 1) {
+            textToSpeech?.speak(
+                chunks[0],
+                TextToSpeech.QUEUE_FLUSH,
+                lectureTtsParamsForChunk(chunks[0]),
+                lastUid
+            )
+        } else {
+            textToSpeech?.speak(
+                chunks[0],
+                TextToSpeech.QUEUE_FLUSH,
+                lectureTtsParamsForChunk(chunks[0]),
+                null
+            )
+            for (j in 0 until chunks.lastIndex) {
+                val pauseMs = pauseMsAfterLectureChunk(chunks[j])
+                textToSpeech?.playSilentUtterance(pauseMs, TextToSpeech.QUEUE_ADD, null)
+                val next = chunks[j + 1]
+                val isLast = j + 1 == chunks.lastIndex
+                textToSpeech?.speak(
+                    next,
+                    TextToSpeech.QUEUE_ADD,
+                    lectureTtsParamsForChunk(next),
+                    if (isLast) lastUid else null
+                )
+            }
+        }
+        //region agent log
+        debugModeLog(
+            hypothesisId = "H4",
+            location = "MainActivity.speakLectureCurrentParagraph",
+            message = "Speaking lecture paragraph (chunked)",
+            data = JSONObject()
+                .put("index", idx)
+                .put("generation", gen)
+                .put("chunkCount", chunks.size)
+        )
+        //endregion
+    }
+
+    private fun handleLectureParagraphUtteranceDone(utteranceId: String) {
+        val m = lectureUtteranceRegex.matchEntire(utteranceId) ?: return
+        val gen = m.groupValues[1].toIntOrNull() ?: return
+        if (gen != lectureTtsGeneration) return
+        if (!lectureControlRunning || lectureControlPaused) return
+        if (currentContentLayout != ContentLayout.LECTURE) return
+        if (isLectureHybridComboVisible()) {
+            if (lectureHybridPanel != LectureHybridPanel.LECTURE_PARAGRAPHS) return
+        } else if (lectureMode != LectureMode.LEARNING) {
+            return
+        }
+        //region agent log
+        debugModeLog(
+            hypothesisId = "H4",
+            location = "MainActivity.handleLectureParagraphUtteranceDone",
+            message = "Lecture paragraph completed",
+            data = JSONObject().put("index", lectureCurrentIndex).put("generation", gen)
+        )
+        //endregion
+        verificationHandler.postDelayed({
+            val okLecturePanel = if (isLectureHybridComboVisible()) {
+                lectureHybridPanel == LectureHybridPanel.LECTURE_PARAGRAPHS
+            } else {
+                lectureMode == LectureMode.LEARNING
+            }
+            if (!isDestroyed && lectureControlRunning && !lectureControlPaused &&
+                currentContentLayout == ContentLayout.LECTURE && okLecturePanel) {
+                if (lectureCurrentIndex < lectureParagraphs.lastIndex) {
+                    lectureCurrentIndex++
+                    speakLectureCurrentParagraph()
+                } else {
+                    lectureControlRunning = false
+                    lectureControlPaused = false
+                    updateLectureControlBar()
+                }
+            }
+        }, 500)
+    }
+
+    private fun onLectureStartStop() {
+        if (isLectureHybridComboVisible() && lectureHybridPanel == LectureHybridPanel.THREE_COL_TABLE) {
+            if (threeColMode == ThreeColMode.VOCAB) onVocabStartStop()
+            else onThreeColStartStop()
+            updateLectureControlBar()
+            return
+        }
+        if (lectureControlRunning) {
+            textToSpeech?.stop()
+            stopLecturePracticeVerificationAndMic()
+            lectureControlRunning = false
+            lectureControlPaused = false
+        } else {
+            when (lectureMode) {
+                LectureMode.LEARNING -> if (lectureParagraphs.isEmpty()) return
+                LectureMode.PRACTICE -> if (lecturePracticeRows.isEmpty()) {
+                    Toast.makeText(this, "No practice phrases loaded", Toast.LENGTH_SHORT).show()
+                    return
+                }
+                else -> {
+                    updateLectureBody()
+                    Toast.makeText(this, "This mode is not configured yet", Toast.LENGTH_SHORT).show()
+                    return
+                }
+            }
+            lectureControlPaused = false
+            lectureControlRunning = true
+            when (lectureMode) {
+                LectureMode.LEARNING -> speakLectureCurrentParagraph()
+                LectureMode.PRACTICE -> speakLecturePracticePhrase()
+                else -> {
+                    lectureControlRunning = false
+                }
+            }
+        }
+        updateLectureControlBar()
+    }
+
+    private fun onLecturePauseResume() {
+        if (isLectureHybridComboVisible() && lectureHybridPanel == LectureHybridPanel.THREE_COL_TABLE) {
+            if (threeColMode != ThreeColMode.VOCAB) onThreeColPauseResume()
+            updateLectureControlBar()
+            return
+        }
+        if (!lectureControlRunning && !lectureControlPaused) return
+        if (lectureControlPaused) {
+            lectureControlPaused = false
+            lectureControlRunning = true
+            when (lectureMode) {
+                LectureMode.LEARNING -> speakLectureCurrentParagraph()
+                LectureMode.PRACTICE -> speakLecturePracticePhrase()
+                else -> { }
+            }
+        } else {
+            textToSpeech?.stop()
+            stopLecturePracticeVerificationAndMic()
+            lectureControlRunning = false
+            lectureControlPaused = true
+        }
+        updateLectureControlBar()
     }
 
     /** Update Start/Stop + Pause/Resume bar for TENSE_TRIPLETS. */
@@ -7615,6 +8799,24 @@ class MainActivity : AppCompatActivity() {
         statView.text = "$c/$a/$total"
     }
 
+    /** Parse English,Bengali,Pronunciation lines (same rules as SIMPLE_SENTENCE file loader). */
+    private fun parseSimpleSentenceAssetContent(content: String): Pair<List<LessonRow>, List<String>>? {
+        val lines = content.lines().map { it.trim() }.filter { it.isNotEmpty() }
+        val rows = mutableListOf<LessonRow>()
+        val pronunciations = mutableListOf<String>()
+        for (line in lines) {
+            if (line.startsWith("Topic:", ignoreCase = true)) continue
+            val parts = line.split(",").map { it.trim() }
+            if (parts.size >= 2 && parts[0].isNotBlank() && parts[1].isNotBlank()) {
+                val english = parts[0]
+                val bengali = parts[1]
+                rows.add(LessonRow(english, bengali, english, bengali))
+                pronunciations.add(parts.getOrNull(2)?.takeIf { it.isNotBlank() } ?: "")
+            }
+        }
+        return if (rows.isEmpty()) null else rows to pronunciations
+    }
+
     /** Load simple-sentence lesson (Let, How, Who, etc.) into SIMPLE_SENTENCE layout; keeps two-bubble Learning/Practice UI. */
     private fun loadSimpleSentenceLesson(actionKey: String) {
         // Resolve path from actual asset list so we open the same file the drawer discovered (avoids path/case issues)
@@ -7640,20 +8842,13 @@ class MainActivity : AppCompatActivity() {
             return
         }
         try {
-            val lines = content.lines().map { it.trim() }.filter { it.isNotEmpty() }
-            val rows = mutableListOf<LessonRow>()
-            val pronunciations = mutableListOf<String>()
-            for (line in lines) {
-                if (line.startsWith("Topic:", ignoreCase = true)) continue
-                val parts = line.split(",").map { it.trim() }
-                if (parts.size >= 2 && parts[0].isNotBlank() && parts[1].isNotBlank()) {
-                    val english = parts[0]
-                    val bengali = parts[1]
-                    rows.add(LessonRow(english, bengali, english, bengali))
-                    pronunciations.add(parts.getOrNull(2)?.takeIf { it.isNotBlank() } ?: "")
-                }
+            val parsed = parseSimpleSentenceAssetContent(content)
+            if (parsed == null) {
+                Toast.makeText(this, "No valid rows in $usedPath", Toast.LENGTH_SHORT).show()
+                return
             }
-            if (rows.isEmpty()) { Toast.makeText(this, "No valid rows in $usedPath", Toast.LENGTH_SHORT).show(); return }
+            val rows = parsed.first
+            val pronunciations = parsed.second
             clearPronunciationLessonState()
             lessonRows = rows
             simpleSentencePronunciations = pronunciations
@@ -7767,6 +8962,19 @@ class MainActivity : AppCompatActivity() {
         return shell
     }
 
+    /** Lecture shell; when [lectureUseHybridComboLayout] replaces the mode strip with L + Learning / Practice / Test / V. */
+    private fun inflateLectureLessonShell(contentLayoutRes: Int): View {
+        val shell = layoutInflater.inflate(R.layout.layout_lesson_base, contentFrame, false)
+        if (lectureUseHybridComboLayout) {
+            val topSlot = shell.findViewById<android.widget.LinearLayout>(R.id.lesson_base_top_slot)
+            if (topSlot.childCount > 0) topSlot.removeViewAt(0)
+            layoutInflater.inflate(R.layout.layout_lesson_mode_bar_with_lecture, topSlot, true)
+        }
+        val host = shell.findViewById<android.widget.FrameLayout>(R.id.lesson_base_content)
+        layoutInflater.inflate(contentLayoutRes, host, true)
+        return shell
+    }
+
     /** Same shell as [inflateLessonShellWithContent], plus block title row in [R.id.lesson_base_top_extra]. */
     private fun inflatePrepositionLessonShell(): View {
         val shell = layoutInflater.inflate(R.layout.layout_lesson_base, contentFrame, false)
@@ -7808,6 +9016,17 @@ class MainActivity : AppCompatActivity() {
             extendSentenceRoot = null
             extendSentenceRecycler = null
         }
+        if (currentContentLayout == ContentLayout.LECTURE) {
+            lectureControlRunning = false
+            lectureControlPaused = false
+            lecturePracticeRows = emptyList()
+            lecturePracticePronunciations = emptyList()
+            lecturePracticeIndex = 0
+            lecturePracticeIncorrectCount = 0
+            lecturePracticeSessionCorrect = 0
+            lecturePracticeSessionAttempted = 0
+            stopLecturePracticeVerificationAndMic()
+        }
         contentFrame.removeAllViews()
         // Clear references to previous layout-specific views
         if (currentContentLayout == ContentLayout.SPEECH_INPUT) speechInputView = null
@@ -7820,6 +9039,10 @@ class MainActivity : AppCompatActivity() {
             ContentLayout.CONVERSATION_BUBBLES -> inflateLessonShellWithContent(R.layout.layout_conversation_bubbles_content)
             ContentLayout.PREPOSITION_BLOCKS -> inflatePrepositionLessonShell()
             ContentLayout.EXTEND_SENTENCE -> inflateExtendSentenceLessonShell()
+            ContentLayout.LECTURE -> {
+                val contentRes = if (lectureUseHybridComboLayout) R.layout.layout_lecture_threecol_combo else R.layout.layout_lecture_content
+                inflateLectureLessonShell(contentRes)
+            }
             else -> {
                 val layoutRes = getContentLayoutResId(layout)
                 LayoutInflater.from(this).inflate(layoutRes, contentFrame, false)
@@ -7827,6 +9050,10 @@ class MainActivity : AppCompatActivity() {
         }
         contentFrame.addView(view)
         currentContentLayout = layout
+        if (layout != ContentLayout.LECTURE) {
+            lectureUseHybridComboLayout = false
+            lectureHybridPanel = LectureHybridPanel.LECTURE_PARAGRAPHS
+        }
         if (layout == ContentLayout.TENSE_TRIPLETS) {
             tenseTripletInflatedContentRes = R.layout.layout_tense_triplets_content
         } else {
@@ -7842,7 +9069,8 @@ class MainActivity : AppCompatActivity() {
             ContentLayout.THREECOL_TABLE,
             ContentLayout.TENSE_TRIPLETS,
             ContentLayout.PREPOSITION_BLOCKS,
-            ContentLayout.EXTEND_SENTENCE -> view.findViewById<View>(R.id.lesson_base_control_include)
+            ContentLayout.EXTEND_SENTENCE,
+            ContentLayout.LECTURE -> view.findViewById<View>(R.id.lesson_base_control_include)
             else -> findViewById(R.id.control_actions_include)
         }
         controlActionsBar = activeBar
@@ -7853,7 +9081,7 @@ class MainActivity : AppCompatActivity() {
         bindControlBarListeners()
 
         // Main bar (activity-level) visibility: these layouts use their own bar in content.
-        if (layout == ContentLayout.CONVERSATION_BUBBLES || layout == ContentLayout.THREECOL_TABLE || layout == ContentLayout.TENSE_TRIPLETS || layout == ContentLayout.EXTEND_SENTENCE || layout == ContentLayout.PREPOSITION_BLOCKS) {
+        if (layout == ContentLayout.CONVERSATION_BUBBLES || layout == ContentLayout.THREECOL_TABLE || layout == ContentLayout.TENSE_TRIPLETS || layout == ContentLayout.EXTEND_SENTENCE || layout == ContentLayout.PREPOSITION_BLOCKS || layout == ContentLayout.LECTURE) {
             findViewById<View>(R.id.control_actions_include)?.visibility = View.GONE
             activeBar?.visibility = View.VISIBLE
         } else {
@@ -7861,7 +9089,7 @@ class MainActivity : AppCompatActivity() {
         }
         // Hide bottom bar when layout has its own in-content control bar.
         findViewById<View>(R.id.bottom_bar)?.visibility =
-            if (layout == ContentLayout.THREECOL_TABLE || layout == ContentLayout.CONVERSATION_BUBBLES || layout == ContentLayout.TENSE_TRIPLETS || layout == ContentLayout.EXTEND_SENTENCE || layout == ContentLayout.PREPOSITION_BLOCKS) View.GONE else View.VISIBLE
+            if (layout == ContentLayout.THREECOL_TABLE || layout == ContentLayout.CONVERSATION_BUBBLES || layout == ContentLayout.TENSE_TRIPLETS || layout == ContentLayout.EXTEND_SENTENCE || layout == ContentLayout.PREPOSITION_BLOCKS || layout == ContentLayout.LECTURE) View.GONE else View.VISIBLE
         when (layout) {
             ContentLayout.CONVERSATION_BUBBLES -> {
                 convBubbleControlRunning = false
@@ -7903,6 +9131,12 @@ class MainActivity : AppCompatActivity() {
                 prepositionBlocksControlRunning = false
                 prepositionBlocksControlPaused = false
                 updatePrepositionBlocksControlBar()
+            }
+            ContentLayout.LECTURE -> {
+                lectureControlRunning = false
+                lectureControlPaused = false
+                updateLectureControlBar()
+                updateLectureNavButtonsForLecture()
             }
             else -> if (usesControlActions(layout)) updateGenericControlBar()
         }
@@ -8198,6 +9432,11 @@ class MainActivity : AppCompatActivity() {
     private fun dispatchControlStartStop() {
         if (currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleRows.isNotEmpty()) {
             onConvBubbleStartStop()
+        } else if (isLectureHybridComboVisible() && lectureHybridPanel == LectureHybridPanel.THREE_COL_TABLE &&
+            threeColMode == ThreeColMode.VOCAB && currentVTabRows.isNotEmpty()) {
+            onVocabStartStop()
+        } else if (isLectureHybridComboVisible() && lectureHybridPanel == LectureHybridPanel.THREE_COL_TABLE && threeColRows.isNotEmpty()) {
+            onThreeColStartStop()
         } else if (currentContentLayout == ContentLayout.THREECOL_TABLE && threeColRows.isNotEmpty()) {
             onThreeColStartStop()
         } else if (currentContentLayout == ContentLayout.TENSE_TRIPLETS && tenseTripletRows.isNotEmpty()) {
@@ -8212,6 +9451,9 @@ class MainActivity : AppCompatActivity() {
     private fun dispatchControlPauseResume() {
         if (currentContentLayout == ContentLayout.CONVERSATION_BUBBLES && convBubbleRows.isNotEmpty()) {
             onConvBubblePauseResume()
+        } else if (isLectureHybridComboVisible() && lectureHybridPanel == LectureHybridPanel.THREE_COL_TABLE &&
+            threeColMode != ThreeColMode.VOCAB && threeColRows.isNotEmpty()) {
+            onThreeColPauseResume()
         } else if (currentContentLayout == ContentLayout.THREECOL_TABLE && threeColRows.isNotEmpty()) {
             onThreeColPauseResume()
         } else if (currentContentLayout == ContentLayout.TENSE_TRIPLETS && tenseTripletRows.isNotEmpty()) {
@@ -10158,7 +11400,7 @@ $introHtml
     }
 
     private fun shouldSkipLearningVerificationSpokenFeedback(): Boolean {
-        if (currentContentLayout == ContentLayout.THREECOL_TABLE) {
+        if (isThreeColTableUiActive()) {
             return threeColLessonKey() in lessonKeysSkippingLearningVerificationSpokenFeedback
         }
         return false
@@ -10313,6 +11555,11 @@ $introHtml
 
     /** Skip current word and move to next (escape incorrect loop). Only active when a lesson is loaded. */
     private fun onSkipWord() {
+        if (currentContentLayout == ContentLayout.LECTURE && lectureMode == LectureMode.PRACTICE &&
+            lecturePracticeRows.isNotEmpty() && !lectureUseHybridComboLayout) {
+            onLecturePracticeNext()
+            return
+        }
         if (lessonRows == null) {
             Toast.makeText(this, getString(R.string.skip), Toast.LENGTH_SHORT).show()
             return

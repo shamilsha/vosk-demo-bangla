@@ -24,6 +24,7 @@ object SubtopicInstructions {
             "intro_bengali" -> "Introduction in Bengali: Listen to the app read the introduction text. Tap the speaker button to hear it again."
             "mic_test" -> "Mic Test: Select your language (Bengali or English), then tap the mic to speak. The app will show what it heard. Use this to check that the microphone works."
             "conversation_first_meeting" -> "First meeting: Practice a simple conversation. Choose who starts (You or App). On your turn, tap the mic and speak; on the app's turn, the app will speak. Sentences are marked YOU or APP."
+            "conv_bubble_buy_shirt" -> "Buy a shirt (bubbles): Same layout as other conversation lessons — Learning / Practice / Test / V. Dialogue from Lessons/Conversation/conversation_buy_shirt.txt (PersonA / PersonB turns, optional vocabulary block)."
             "translation_practice" -> "Translation Practice: The app will say a word in Bengali. You say the English meaning. Tap the mic when you are ready to speak."
             "lesson_file" -> "Load lesson: Open a .txt lesson file from your device. Each line should have 4 pipe-separated fields: English Q | Bengali Q | English A | Bengali A."
             "lesson_introduce" -> "Introduce lesson: Load a lesson file and hear each question-answer pair. Good for first-time learning."
@@ -83,6 +84,8 @@ object SubtopicInstructions {
                     "${SimpleSentenceUtils.simpleSentenceLessonTitle(actionKey)}: Loads Lessons/SVO/$actionKey.txt (English,Bengali,Pronunciation per line). 3-column table: Learning / Practice / Test / V."
                 actionKey == "noun" ->
                     "${SimpleSentenceUtils.simpleSentenceLessonTitle(actionKey)}: Loads Lessons/SVO/noun.txt — English, Bengali, pronunciation; optional 4th field (e.g. noun type) is ignored. Same 3-column lesson shell as Where/How. Open under **SVO → Noun (sentences)**, not Level 1 Noun (categories)."
+                actionKey == "single_command_lecture" ->
+                    "Single command lecture: Same lesson shell as How — **L** reads paragraph TTS from Lessons/SVO/single_command_lecture.txt; **Learning / Practice / Test / V** use the Bengali | English & Hint table from Lessons/SVO/single_command.txt (stats, weak-only filter, mic checks)."
                 else -> null
             }
         } ?: when (actionKey) {

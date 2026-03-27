@@ -1,0 +1,45 @@
+PersonA: I am looking for shirts, আমি শার্ট খুঁজছি, আই অ্যাম লুকিং ফর শার্টস
+PersonB: Sure! What kind of shirts do you like?, অবশ্য! আপনি কী ধরণের শার্ট পছন্দ করেন?, শুর! হোয়াট কাইন্ড অফ শার্টস ডু ইউ লাইক
+PersonA: I prefer a black shirt of a medium size, আমি মাঝারি সাইজের কালো শার্ট পছন্দ করি, আই প্রিফার আ ব্ল্যাক শার্ট অফ আ মিডিয়াম সাইজ
+PersonB: Great choice. Let me check., চমৎকার পছন্দ। আমি দেখছি।, গ্রেট চয়েস। লেট মি চেক।
+PersonA: Can you help me find shirts?, আপনি কি শার্ট খুঁজে পেতে সাহায্য করবেন?, ক্যান ইউ হেল্প মি ফাইন্ড শার্টস
+PersonB: Of course. Follow me., অবশ্যই। আমার সাথে আসুন।, অফ কোর্স। ফলো মি।
+PersonB: Yes. Here is a perfect medium black one for you., হ্যাঁ। এই যে আপনার জন্য একটি মিডিয়াম সাইজের কালো শার্ট।, ইয়েস। হিয়ার ইজ আ পারফেকট মিডিয়াম ব্ল্যাক ওয়ান ফর ইউ।
+PersonA: Are there any discounts?, কোনো ছাড় আছে কি?, আর দেয়ার এনি ডিসকাউন্টস
+PersonB: Yes. Ten percent discount today., হ্যাঁ। আজ দশ শতাংশ ছাড় আছে।, ইয়েস। টেন পারসেন্ট ডিসকাউন্ট টুডে।
+PersonA: Can I try this one?, আমি কি এটা ট্রাই করে দেখতে পারি?, ক্যান আই ট্রাই দিস ওয়ান
+PersonB: The trial room is right there., ট্রায়াল রুমটি ঠিক ওখানেই।, দ্য ট্রায়াল রুম ইজ রাইট দেয়ার।
+PersonA: How much is it?, এটার দাম কত?, হাউ মাচ ইজ ইট
+PersonB: It is twelve hundred Taka., এটার দাম ১২০০ টাকা।, ইট ইজ টুয়েলভ হান্ড্রেড টাকা।
+
+# --- VOCABULARY ---
+any
+black
+can
+course
+discount
+find
+follow
+help
+here
+how
+kind
+looking
+medium
+much
+one
+percent
+perfect
+prefer
+right
+room
+shirt
+shirts
+sure
+taka
+there
+today
+trial
+try
+yes
+you

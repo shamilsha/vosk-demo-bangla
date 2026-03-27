@@ -18,7 +18,8 @@ object DrawerTopicBuilders {
             Subtopic("First meeting (bubbles)", "conv_bubble_first_meeting", ContentLayout.CONVERSATION_BUBBLES),
             Subtopic("Second lesson (bubbles)", "conv_bubble_second_lesson", ContentLayout.CONVERSATION_BUBBLES),
             Subtopic("Third lesson (bubbles)", "conv_bubble_third_lesson", ContentLayout.CONVERSATION_BUBBLES),
-            Subtopic("Fourth lesson (bubbles)", "conv_bubble_fourth_lesson", ContentLayout.CONVERSATION_BUBBLES)
+            Subtopic("Fourth lesson (bubbles)", "conv_bubble_fourth_lesson", ContentLayout.CONVERSATION_BUBBLES),
+            Subtopic("Buy a shirt (bubbles)", "conv_bubble_buy_shirt", ContentLayout.CONVERSATION_BUBBLES)
         )),
         Topic("Silent Letters", listOf(
             Subtopic("Silent e (a-e)", "pron_silent_e"),
@@ -125,6 +126,7 @@ object DrawerTopicBuilders {
             Subtopic("Be verb plus", "be_verb_plus", ContentLayout.THREECOL_TABLE),
             Subtopic("Have verb", "have_verb", ContentLayout.THREECOL_TABLE),
             Subtopic("Noun (sentences)", "noun", ContentLayout.THREECOL_TABLE),
+            Subtopic("Single command lecture", "single_command_lecture", ContentLayout.LECTURE),
             Subtopic("Prepositions", "prepositions", ContentLayout.THREECOL_TABLE)
         ) + SimpleSentenceUtils.buildSimpleSentenceSubtopics(assetManager)),
         Topic("SVO Practice", listOf(

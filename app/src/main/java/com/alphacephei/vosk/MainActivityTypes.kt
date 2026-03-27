@@ -19,7 +19,9 @@ enum class ContentLayout {
     /** Progressive sentences: each line English / Bengali / pronunciation; groups separated by blank lines. */
     EXTEND_SENTENCE,
     /** Preposition blocks: heading + meaning + 2 examples; hidden guidance spoken in practice. */
-    PREPOSITION_BLOCKS
+    PREPOSITION_BLOCKS,
+    /** Lecture-style paragraph reader from <p>...</p> sections. */
+    LECTURE
 }
 
 /** Layout resource ID for the given content layout. */
@@ -49,6 +51,8 @@ fun getContentLayoutResId(layout: ContentLayout): Int = when (layout) {
     ContentLayout.EXTEND_SENTENCE -> R.layout.layout_lesson_base
     // Shell is layout_lesson_base + top_extra + layout_preposition_blocks_content (see MainActivity.inflatePrepositionLessonShell).
     ContentLayout.PREPOSITION_BLOCKS -> R.layout.layout_lesson_base
+    // Shell is layout_lesson_base + layout_lecture_content (see MainActivity.inflateLessonShellWithContent).
+    ContentLayout.LECTURE -> R.layout.layout_lesson_base
 }
 
 /** True if this layout shows the reusable Start / Stop / Pause / Resume bar. */
@@ -66,7 +70,8 @@ fun usesControlActions(layout: ContentLayout): Boolean = layout in setOf(
     ContentLayout.THREECOL_TABLE,
     ContentLayout.TENSE_TRIPLETS,
     ContentLayout.EXTEND_SENTENCE,
-    ContentLayout.PREPOSITION_BLOCKS
+    ContentLayout.PREPOSITION_BLOCKS,
+    ContentLayout.LECTURE
 )
 
 /** One ribbon item height in pixels (stripHeightDp default 40). For scroll-by-one-row. */
